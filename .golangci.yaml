@@ -1,0 +1,148 @@
+version: "2"
+run:
+  modules-download-mode: readonly
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+linters:
+  default: all
+  disable:
+  - gocognit
+  - gocyclo
+  - cyclop
+  - depguard
+  - dogsled
+  - dupl
+  - dupword
+  - nlreturn
+  - err113
+  - funcorder
+  - funlen
+  - interfacebloat
+  - noinlineerr
+  - varnamelen
+  - wrapcheck
+  - wsl
+  - wsl_v5
+  - godox
+  settings:
+    gosec:
+      config:
+        G301: "0755"
+        G302: "0644"
+        G306: "0644"
+      excludes:
+        - G117
+    govet:
+      enable-all: true
+      disable:
+      - fieldalignment
+      settings:
+        shadow:
+          strict: true
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+    revive:
+      enable-all-rules: true
+      rules:
+      - name: exported
+        severity: warning
+        disabled: false
+        exclude: [""]
+        arguments:
+          - "disable-checks-on-constants"
+          - "disable-checks-on-functions"
+          - "disable-checks-on-methods"
+          - "disable-checks-on-types"
+          - "disable-checks-on-variables"
+      - name: unused-receiver
+        disabled: true
+      - name: add-constant
+        disabled: true
+      - name: argument-limit
+        disabled: true
+      - name: cognitive-complexity
+        disabled: true
+      - name: confusing-naming
+        disabled: true
+      - name: confusing-results
+        disabled: true
+      - name: cyclomatic
+        disabled: true
+      - name: package-naming
+        exclude: [
+          "**/internal/model/cve_v5/cve_v5.go",
+          "**/internal/model/cvss_v4_0/cvss_v4_0.go",
+          "**/internal/model/cvss_v3_x/cvss_v3_x.go",
+          "**/internal/model/cvss_v2_0/cvss_v2_0.go",
+        ]
+      - name: flag-parameter
+        disabled: true
+      - name: function-length
+        disabled: true
+      - name: function-result-limit
+        disabled: true
+      - name: line-length-limit
+        disabled: true
+      - name: max-public-structs
+        disabled: true
+      - name: nested-structs
+        disabled: true
+      - name: package-comments
+        disabled: true
+      - name: struct-tag
+        arguments:
+        - mapstructure,omitzero,remain
+        - yaml,omitzero,remain
+      - name: unchecked-type-assertion
+        arguments:
+          - accept-ignored-assertion-result: true
+      - name: var-naming
+        exclude: [
+          "**/internal/model/cve_v5/cve_v5.go",
+          "**/internal/model/cvss_v4_0/cvss_v4_0.go",
+          "**/internal/model/cvss_v3_x/cvss_v3_x.go",
+          "**/internal/model/cvss_v2_0/cvss_v2_0.go",
+        ]
+        arguments:
+          - ["ID", "CVEV5", "CVSSV4_0", "CVSSV3_x", "CVSSV3_1", "CVSSV3_0", "CVSSV2_0"]
+          - []
+          - - skip-initialism-name-checks: false
+    tagliatelle:
+      case:
+        rules:
+          json: camel
+          yaml: camel
+          xml: camel
+          toml: camel
+          bson: camel
+          avro: snake
+          header: snake
+          mapstructure: snake
+          env: upperSnake
+          envconfig: upperSnake
+        ignored-fields:
+          - CollectionURL
+          - CVSSV4_0
+          - CVSSV3_x
+          - CVSSV3_1
+          - CVSSV3_0
+          - CVSSV2_0
+
+formatters:
+  enable:
+  - gci
+  - gofmt
+  - gofumpt
+  - goimports
+  - golines
+  - swaggo
+  settings:
+    gofumpt:
+      extra-rules: true
+    golines:
+      max-len: 120
+      shorten-comments: true
+      reformat-tags: false
