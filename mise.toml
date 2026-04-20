@@ -1,0 +1,6 @@
+[env]
+
+[tools]
+"aqua:golang-migrate/migrate" = "4.19.1"
+"github:sqlc-dev/sqlc" = "latest"
+go = "1.26"
