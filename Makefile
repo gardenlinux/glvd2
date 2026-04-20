@@ -1,6 +1,10 @@
+BINARY:=bin/glvd2
+
+default: build
+
 .PHONY: build
 build:
-	@go build -o bin/glvd2 cmd/glvd2/main.go
+	@go build -o $(BINARY) cmd/glvd2/main.go
 
 .PHONY: format
 format:
@@ -11,7 +15,7 @@ lint:
 	golangci-lint run
 
 .PHONY: test
-test:
+test: clean_test
 	go test -v ./...
 
 .PHONY: db_code_generate
@@ -30,3 +34,11 @@ db_migrate_up:
 .PHONY: db_migrate_down
 db_migrate_down:
 	migrate -path=internal/db/migrations -database "sqlite://data/internal.sqlite?x-no-tx-wrap=true" -verbose down
+
+.PHONY: clean_test
+clean_test:
+	go clean -testcache
+
+.PHONY: clean 
+clean: clean_test
+	$(RM) $(BINARY)

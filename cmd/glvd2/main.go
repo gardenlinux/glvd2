@@ -3,15 +3,42 @@ package main
 import (
 	"context"
 	"log/slog"
+	"os"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/ingestion"
+	"github.com/spf13/cobra"
 	_ "modernc.org/sqlite"
 )
 
+// Set the log level via environment variable
+func set_log_level() {
+	var logLevel slog.LevelVar
+	if err := logLevel.UnmarshalText([]byte(os.Getenv("LOG_LEVEL"))); err != nil {
+		logLevel.Set(slog.LevelInfo)
+	}
+
+	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
+		Level: &logLevel,
+	})))
+}
+
+var rootCmd = &cobra.Command{Use: "glvd2"}
+
 func main() {
+	// Argument and subprogram handling
+	rootCmd.AddCommand(glrd.ReleasesCmd())
+	rootCmd.AddCommand(packages.PackagesCmd())
+
+	if err := rootCmd.Execute(); err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+
 	ctx := context.Background()
 
 	cfg, err := config.LoadAppConfig()
