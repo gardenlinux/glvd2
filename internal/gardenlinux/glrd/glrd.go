@@ -80,7 +80,7 @@ func doReleasesCmd() error {
 	}
 
 	for _, release := range glrdReleases {
-		//nolint:revive,forbidigo // just print for command
+		//nolint:revive,forbidigo,nolintlint // just print for command
 		fmt.Printf("%s - %s\n", release.Name, release.GitHub.Release)
 	}
 	return nil

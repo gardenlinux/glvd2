@@ -12,7 +12,7 @@ func NewClient() (*httpclient.HTTPClient, error) {
 	token := os.Getenv("GH_TOKEN")
 	if token == "" {
 		slog.With("client", "github").Error("GH_TOKEN is missing")
-		return nil, errors.New("Env GH_TOKEN is missing")
+		return nil, errors.New("env GH_TOKEN is missing")
 	}
 
 	client := httpclient.NewClient()
