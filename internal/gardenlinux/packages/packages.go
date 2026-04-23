@@ -124,8 +124,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	// Codename
 	match = codenameRegex.FindStringSubmatch(content)
 	if match != nil {
-		glr := version.GardenLinuxRelease{}
-		err := glr.ParseFromString(match[1])
+		glr, err := version.MakeGardenLinuxReleaseFromString(match[1])
 		if err != nil {
 			return result, err
 		}
@@ -276,8 +275,7 @@ func Cmd() (*cobra.Command, error) {
 		Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			vers, _ := cmd.Flags().GetString("version")
-			release := version.GardenLinuxRelease{}
-			err := release.ParseFromString(vers)
+			release, err := version.MakeGardenLinuxReleaseFromString(vers)
 			if err != nil {
 				return err
 			}

@@ -10,12 +10,34 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 )
 
+// GardenlinuxVersionParts: Versioning scheme before 2017.0.0.
+const GardenlinuxVersionParts = 2
+
+// GardenlinuxSemverParts: Versioning scheme after including 2017.0.0.
+const GardenlinuxSemverParts = 3
+
 type GardenLinuxRelease struct {
 	Name   string
 	Major  int
 	Minor  int
 	Patch  int
 	SemVer bool
+}
+
+func MakeGardenLinuxRelease(version glrd.Version) GardenLinuxRelease {
+	release := GardenLinuxRelease{}
+	release.parseFromGlrdVersion(version)
+	return release
+}
+
+func MakeGardenLinuxReleaseFromString(version string) (GardenLinuxRelease, error) {
+	release := GardenLinuxRelease{}
+	err := release.parseFromString(version)
+	if err != nil {
+		return GardenLinuxRelease{}, err
+	}
+
+	return release, nil
 }
 
 func (g *GardenLinuxRelease) Format() string {
@@ -26,18 +48,16 @@ func (g *GardenLinuxRelease) Format() string {
 	return fmt.Sprintf("%d.%d", g.Major, g.Minor)
 }
 
-func (g *GardenLinuxRelease) ParseFromGlrdVersion(version glrd.Version) error {
+func (g *GardenLinuxRelease) parseFromGlrdVersion(version glrd.Version) {
 	g.Major = version.Major
 	g.Minor = version.Minor
 	g.Patch = version.Patch
 	g.SemVer = true // TODO: check how version.Patch is defined before release 20xx
 
 	g.Name = fmt.Sprintf("%d.%d.%d", g.Major, g.Minor, g.Patch)
-
-	return nil
 }
 
-func (g *GardenLinuxRelease) ParseFromString(name string) error {
+func (g *GardenLinuxRelease) parseFromString(name string) error {
 	var err error
 
 	g.Name = name
@@ -47,13 +67,13 @@ func (g *GardenLinuxRelease) ParseFromString(name string) error {
 	partsCount := len(parts)
 
 	// Santity check
-	if partsCount < 2 || partsCount > 3 {
+	if partsCount < GardenlinuxVersionParts || partsCount > GardenlinuxSemverParts {
 		slog.With("name", name).With("parts", partsCount).Error("invalid version schema")
 		return errors.New("invalid version schema")
 	}
 
 	// Major and Minor
-	if partsCount >= 2 { //nolint:mnd // It's two parts
+	if partsCount >= GardenlinuxVersionParts {
 		g.SemVer = false
 		g.Major, err = strconv.Atoi(parts[0])
 		if err != nil {
@@ -68,17 +88,17 @@ func (g *GardenLinuxRelease) ParseFromString(name string) error {
 	}
 
 	// releases prior 2017.0.0 were not semver (x.y), since 2017.0.0 semver is used (x.y.z)
-	if g.Major >= 2017 && partsCount != 3 {
+	if g.Major >= 2017 && partsCount != GardenlinuxSemverParts {
 		slog.With("name", name).Error("mismatch with semver parts post 2017.x.x")
 		return errors.New("semver version schema expects three version parts")
 	}
-	if g.Major < 2017 && partsCount != 2 {
+	if g.Major < 2017 && partsCount != GardenlinuxVersionParts {
 		slog.With("name", name).Error("mismatch with semver parts prior 2017.x.x")
 		return errors.New("prior semver version expects only two version parts")
 	}
 
 	// Patch (if applicable)
-	if partsCount == 3 { //nolint:mnd // It's three parts
+	if partsCount == GardenlinuxSemverParts {
 		g.SemVer = true
 		g.Patch, err = strconv.Atoi(parts[2])
 		if err != nil {
