@@ -12,8 +12,7 @@ import (
 func TestPackageUrl(t *testing.T) {
 	t.Parallel()
 
-	release := version.GardenLinuxRelease{}
-	err := release.ParseFromString("1877.10")
+	release, err := version.MakeGardenLinuxReleaseFromString("1877.10")
 	require.NoError(t, err)
 
 	packageFile := packages.PackageFile{PackagePath: "main/binary-amd64/Packages"}
@@ -121,8 +120,7 @@ vDYmziyeV/379UIrpWZIOPplKxysAM2Nz/PvmULnO5hduCz/69w=
 	inrelease, err := packages.ParseInReleaseFile(content)
 	require.NoError(t, err)
 
-	glr := version.GardenLinuxRelease{}
-	err = glr.ParseFromString("1877.14")
+	glr, err := version.MakeGardenLinuxReleaseFromString("1877.14")
 	require.NoError(t, err)
 
 	assert.Equal(t, glr, inrelease.Codename, "should find release 1877.14")
