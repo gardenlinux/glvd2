@@ -5,16 +5,15 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/gardenlinux/glvd2/internal/client/http"
-
+	"github.com/gardenlinux/glvd2/internal/whttp"
 	"github.com/spf13/cobra"
 )
 
-const GLRD_MINOR_JSON = "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
+const glrdReleasesMinorURL = "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
 
 type Git struct {
 	Commit      string `json:"commit"`
-	CommitShort string `json:"commit_short"`
+	CommitShort string `json:"commit_short"` //nolint:tagliatelle // json field is defined with underscore
 }
 
 type GitHub struct {
@@ -38,7 +37,7 @@ type LifeCycle struct {
 }
 
 type Attributes struct {
-	SourceRepo bool `json:"source_repo"`
+	SourceRepo bool `json:"source_repo"` //nolint:tagliatelle // json field is defined with underscore
 }
 
 type Release struct {
@@ -57,17 +56,17 @@ type Releases struct {
 }
 
 func GetReleases() []Release {
-	client := http.NewClient()
-	response, err := client.Get(GLRD_MINOR_JSON)
+	client := whttp.NewClient()
+	response, err := client.Get(glrdReleasesMinorURL)
 	if err != nil {
-		slog.With("url", GLRD_MINOR_JSON).Error("Could not retrieve minor releases")
+		slog.With("url", glrdReleasesMinorURL).Error("Could not retrieve minor releases")
 	}
 
 	var releases Releases
 
 	err = json.Unmarshal(*response, &releases)
 	if err != nil {
-		slog.With("client", "glrd", "url", GLRD_MINOR_JSON, "error", err).Error("Could not unmarshal json")
+		slog.With("client", "glrd", "url", glrdReleasesMinorURL, "error", err).Error("Could not unmarshal json")
 		panic(err)
 	}
 
@@ -77,21 +76,26 @@ func GetReleases() []Release {
 func doReleasesCmd() error {
 	glrdReleases := GetReleases()
 	for _, release := range glrdReleases {
+		//nolint:revive,forbidigo // just print for command
 		fmt.Printf("%s - %s\n", release.Name, release.GitHub.Release)
 	}
 	return nil
 }
 
-func ReleasesCmd() *cobra.Command {
+func Cmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:   "releases",
 		Short: "Gets GL all releases or a specific version",
 		Args:  cobra.NoArgs,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			return doReleasesCmd()
 		},
 	}
 	cmd.Flags().String("version", "", "specific version")
-	cmd.MarkFlagRequired("version")
-	return cmd
+	err := cmd.MarkFlagRequired("version")
+	if err != nil {
+		slog.With("err", err).Error("could not set version flag to required")
+		return nil, err
+	}
+	return cmd, nil
 }

@@ -1,4 +1,4 @@
-package types
+package version
 
 import (
 	"errors"
@@ -44,45 +44,45 @@ func (g *GardenLinuxRelease) ParseFromString(name string) error {
 	g.SemVer = false
 
 	parts := strings.Split(g.Name, ".")
-	parts_count := len(parts)
+	partsCount := len(parts)
 
 	// Santity check
-	if parts_count < 2 || parts_count > 3 {
-		slog.With("name", name).With("parts", parts_count).Error("invalid version schema")
+	if partsCount < 2 || partsCount > 3 {
+		slog.With("name", name).With("parts", partsCount).Error("invalid version schema")
 		return errors.New("invalid version schema")
 	}
 
 	// Major and Minor
-	if parts_count >= 2 {
+	if partsCount >= 2 { //nolint:mnd // It's two parts
 		g.SemVer = false
 		g.Major, err = strconv.Atoi(parts[0])
 		if err != nil {
-			slog.With("name", name).Error("Could not convert part 0 (major) to integer")
+			slog.With("name", name).Error("could not convert part 0 (major) to integer")
 			return err
 		}
 		g.Minor, err = strconv.Atoi(parts[1])
 		if err != nil {
-			slog.With("name", name).Error("Could not convert part 1 (minor) to integer")
+			slog.With("name", name).Error("could not convert part 1 (minor) to integer")
 			return err
 		}
 	}
 
 	// releases prior 2017.0.0 were not semver (x.y), since 2017.0.0 semver is used (x.y.z)
-	if g.Major >= 2017 && parts_count != 3 {
+	if g.Major >= 2017 && partsCount != 3 {
 		slog.With("name", name).Error("mismatch with semver parts post 2017.x.x")
-		return errors.New("Semver version schema expects three version parts.")
+		return errors.New("semver version schema expects three version parts")
 	}
-	if g.Major < 2017 && parts_count != 2 {
+	if g.Major < 2017 && partsCount != 2 {
 		slog.With("name", name).Error("mismatch with semver parts prior 2017.x.x")
-		return errors.New("Prior semver version expects only two version parts.")
+		return errors.New("prior semver version expects only two version parts")
 	}
 
 	// Patch (if applicable)
-	if parts_count == 3 {
+	if partsCount == 3 { //nolint:mnd // It's three parts
 		g.SemVer = true
 		g.Patch, err = strconv.Atoi(parts[2])
 		if err != nil {
-			slog.With("name", name).Error("Could not convert part 2 (patch) to integer")
+			slog.With("name", name).Error("could not convert part 2 (patch) to integer")
 			return err
 		}
 	}

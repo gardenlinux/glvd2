@@ -1,6 +1,9 @@
-package http
+package whttp
+
+// Wrapped HTTP client with prepared Get-Methods
 
 import (
+	"context"
 	"io"
 	"log/slog"
 	"net/http"
@@ -11,18 +14,22 @@ type Header struct {
 	value string
 }
 
-type HttpClient struct {
+type HTTPClient struct {
 	Token   string
 	Headers []Header
 }
 
-func MakeHeader(key string, value string) Header {
-	return Header{key: key, value: value}
+func MakeHeader(key, value string) Header {
+	return Header{
+		key:   key,
+		value: value,
+	}
 }
 
-func (h *HttpClient) Get(url string) (*[]byte, error) {
+func (h *HTTPClient) Get(url string) (*[]byte, error) {
 	slog.With("client", "http", "method", "get", "url", url).Info("Performing request")
-	req, err := http.NewRequest("GET", url, nil)
+	ctx := context.Background()
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
 		slog.With("client", "http", "url", url, "error", err, "method", "GET").Error("Could not create new request")
 		panic(err)
@@ -38,7 +45,7 @@ func (h *HttpClient) Get(url string) (*[]byte, error) {
 		return nil, err
 	}
 
-	defer resp.Body.Close()
+	defer resp.Body.Close() //nolint:errcheck // Ignore errors on close
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
@@ -46,13 +53,13 @@ func (h *HttpClient) Get(url string) (*[]byte, error) {
 		return nil, err
 	}
 
-	//log.With("client", "http", "url", url).Debug(string(body))
+	// log.With("client", "http", "url", url).Debug(string(body))
 
 	return &body, err
 }
 
-func NewClient() *HttpClient {
-	httpClient := HttpClient{}
+func NewClient() *HTTPClient {
+	httpClient := HTTPClient{}
 	slog.With("client", "http").Debug("new instance")
 	return &httpClient
 }
