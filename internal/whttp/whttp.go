@@ -32,7 +32,7 @@ func (h *HTTPClient) Get(url string) (*[]byte, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
 		slog.With("client", "http", "url", url, "error", err, "method", "GET").Error("Could not create new request")
-		panic(err)
+		return nil, err
 	}
 
 	for _, header := range h.Headers {

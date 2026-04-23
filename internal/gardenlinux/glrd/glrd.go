@@ -55,7 +55,7 @@ type Releases struct {
 	Releases []Release `json:"releases"`
 }
 
-func GetReleases() []Release {
+func GetReleases() ([]Release, error) {
 	client := whttp.NewClient()
 	response, err := client.Get(glrdReleasesMinorURL)
 	if err != nil {
@@ -67,14 +67,18 @@ func GetReleases() []Release {
 	err = json.Unmarshal(*response, &releases)
 	if err != nil {
 		slog.With("client", "glrd", "url", glrdReleasesMinorURL, "error", err).Error("Could not unmarshal json")
-		panic(err)
+		return nil, err
 	}
 
-	return releases.Releases
+	return releases.Releases, nil
 }
 
 func doReleasesCmd() error {
-	glrdReleases := GetReleases()
+	glrdReleases, err := GetReleases()
+	if err != nil {
+		return err
+	}
+
 	for _, release := range glrdReleases {
 		//nolint:revive,forbidigo // just print for command
 		fmt.Printf("%s - %s\n", release.Name, release.GitHub.Release)
