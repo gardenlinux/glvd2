@@ -1,13 +1,13 @@
-package githubrest
+package github
 
 import (
 	"log/slog"
 	"os"
 
-	httpclient "github.com/gardenlinux/glvd2/internal/client/http"
+	httpclient "github.com/gardenlinux/glvd2/internal/whttp"
 )
 
-func NewClient() *httpclient.HttpClient {
+func NewClient() *httpclient.HTTPClient {
 	token := os.Getenv("GH_TOKEN")
 	if token == "" {
 		slog.With("client", "github").Error("GH_TOKEN is missing")

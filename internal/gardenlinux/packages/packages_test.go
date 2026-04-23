@@ -1,46 +1,60 @@
-package packages
+package packages_test
 
 import (
 	"testing"
 
-	"github.com/gardenlinux/glvd2/internal/types"
-
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestPackageUrl(t *testing.T) {
-	release := types.GardenLinuxRelease{}
-	release.ParseFromString("1877.10")
+	t.Parallel()
 
-	packageFile := PackageFile{PackagePath: "main/binary-amd64/Packages"}
+	release := version.GardenLinuxRelease{}
+	err := release.ParseFromString("1877.10")
+	require.NoError(t, err)
 
-	url := buildPackageUrl(release, packageFile)
-	assert.Equal(t, "https://packages.gardenlinux.io/gardenlinux/dists/1877.10/main/binary-amd64/Packages", url, "URL should match expectations")
+	packageFile := packages.PackageFile{PackagePath: "main/binary-amd64/Packages"}
+
+	url := packages.BuildPackageURL(release, packageFile)
+	assert.Equal(t, "https://packages.gardenlinux.io/gardenlinux/dists/1877.10/main/binary-amd64/Packages", url, "URL should match expectations") //nolint:golines,lll // just parameters
 }
 
 func TestParseInReleaseFileEmpty(t *testing.T) {
-	_, err := parseInReleaseFile("")
+	t.Parallel()
 
-	assert.NotNil(t, err)
+	_, err := packages.ParseInReleaseFile("")
+
+	require.Error(t, err)
 	assert.EqualError(t, err, "empty inrelease file")
 }
 
 func TestParseInReleaseFileBlank(t *testing.T) {
-	_, err := parseInReleaseFile("           ")
+	t.Parallel()
 
-	assert.NotNil(t, err)
+	_, err := packages.ParseInReleaseFile("           ")
+
+	require.Error(t, err)
 	assert.EqualError(t, err, "empty inrelease file")
 }
 
 func TestArchitectures(t *testing.T) {
-	assert.Equal(t, 3, len(architectureToName), "should only have all, amd and arm64")
+	t.Parallel()
+
+	assert.Len(t, packages.ArchitectureToName, 3, "should only have all, amd and arm64")
 }
 
 func TestComponents(t *testing.T) {
-	assert.Equal(t, 1, len(componentToName), "should only have one component")
+	t.Parallel()
+
+	assert.Len(t, packages.ComponentToName, 1, "should only have one component")
 }
 
 func TestParseInReleaseFile(t *testing.T) {
+	t.Parallel()
+
 	content := `
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA512
@@ -80,28 +94,51 @@ vDYmziyeV/379UIrpWZIOPplKxysAM2Nz/PvmULnO5hduCz/69w=
 -----END PGP SIGNATURE-----
 	`
 
-	expectedComponents := []Component{ComponentMain}
-	expectedArchitectures := []Architecture{ArchitectureAll, ArchitectureAmd64, ArchitectureArm64}
-	expectedPackageLists := []PackageFile{
-		{Sha256Sum: "56532ae360e3741c17ebb715a519034da8909d355d2ea1be0099db3009a09493", Size: 318832, PackagePath: "main/binary-all/Packages.gz"},
-		{Sha256Sum: "21d56e443b7fb44a4254b69d51a95b829b81478f43aaa190f6c4fd4cb5339f49", Size: 871597, PackagePath: "main/binary-amd64/Packages.gz"},
-		{Sha256Sum: "846d3af4e15d50b2885364f5535e4d8809193a64baca13fb988df3b7157aff89", Size: 851502, PackagePath: "main/binary-arm64/Packages.gz"}}
+	expectedComponents := []packages.Component{packages.ComponentMain}
+	expectedArchitectures := []packages.Architecture{
+		packages.ArchitectureAll,
+		packages.ArchitectureAmd64,
+		packages.ArchitectureArm64,
+	}
+	expectedPackageLists := []packages.PackageFile{
+		{
+			Sha256Sum:   "56532ae360e3741c17ebb715a519034da8909d355d2ea1be0099db3009a09493",
+			Size:        318832,
+			PackagePath: "main/binary-all/Packages.gz",
+		},
+		{
+			Sha256Sum:   "21d56e443b7fb44a4254b69d51a95b829b81478f43aaa190f6c4fd4cb5339f49",
+			Size:        871597,
+			PackagePath: "main/binary-amd64/Packages.gz",
+		},
+		{
+			Sha256Sum:   "846d3af4e15d50b2885364f5535e4d8809193a64baca13fb988df3b7157aff89",
+			Size:        851502,
+			PackagePath: "main/binary-arm64/Packages.gz",
+		},
+	}
 
-	inrelease, err := parseInReleaseFile(content)
-	glr := types.GardenLinuxRelease{}
-	glr.ParseFromString("1877.14")
+	inrelease, err := packages.ParseInReleaseFile(content)
+	require.NoError(t, err)
 
-	assert.NoError(t, err)
+	glr := version.GardenLinuxRelease{}
+	err = glr.ParseFromString("1877.14")
+	require.NoError(t, err)
+
 	assert.Equal(t, glr, inrelease.Codename, "should find release 1877.14")
-	assert.Equal(t, len(expectedComponents), len(inrelease.Components), "should find only the one expected component")
+	assert.Len(t, inrelease.Components, len(expectedComponents), "should find only the one expected component")
 	assert.Equal(t, expectedComponents, inrelease.Components, "should find component main")
-	assert.Equal(t, len(expectedArchitectures), len(inrelease.Architectures), "should find only the three expected architectures")
+	//nolint:golines // unsure what is the problem here
+	assert.Len(t, inrelease.Architectures, len(expectedArchitectures), "should find only the three expected architectures")
 	assert.Equal(t, expectedArchitectures, inrelease.Architectures, "should find all, amd and arm64")
 	assert.Equal(t, expectedPackageLists, inrelease.PackageFiles, "should find all compressed package lists")
 }
 
 func TestParsePackageList(t *testing.T) {
+	t.Parallel()
+
 	// Note: has extra line at the end
+	//nolint:nolintlint,lll // text passage is just long
 	content := `Package: node-escodegen
 Version: 2.1.0+dfsg+~0.0.8-1
 Architecture: all
@@ -171,8 +208,8 @@ Description: utilities for ESLint plugins
 
 `
 
-	packages, err := parsePackageList(content)
+	pkgs, err := packages.ParsePackageList(content)
 
-	assert.Equal(t, 3, len(packages))
+	assert.Len(t, pkgs, 3)
 	assert.NoError(t, err, "should not have errors")
 }

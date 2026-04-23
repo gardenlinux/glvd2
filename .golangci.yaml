@@ -130,6 +130,9 @@ linters:
           - CVSSV3_1
           - CVSSV3_0
           - CVSSV2_0
+    exhaustruct:
+      include:
+        - "github.com/github.com/gardenlinux/glvd2"          
 
 formatters:
   enable:
@@ -146,3 +149,4 @@ formatters:
       max-len: 120
       shorten-comments: true
       reformat-tags: false
+

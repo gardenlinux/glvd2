@@ -15,8 +15,8 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// Set the log level via environment variable
-func set_log_level() {
+// Set the log level via environment variable.
+func setLogLevelFromEnv() {
 	var logLevel slog.LevelVar
 	if err := logLevel.UnmarshalText([]byte(os.Getenv("LOG_LEVEL"))); err != nil {
 		logLevel.Set(slog.LevelInfo)
@@ -27,14 +27,31 @@ func set_log_level() {
 	})))
 }
 
-var rootCmd = &cobra.Command{Use: "glvd2"}
-
 func main() {
-	// Argument and subprogram handling
-	rootCmd.AddCommand(glrd.ReleasesCmd())
-	rootCmd.AddCommand(packages.PackagesCmd())
+	var err error
+	rootCmd := &cobra.Command{Use: "glvd2"}
 
-	if err := rootCmd.Execute(); err != nil {
+	// Logging
+	setLogLevelFromEnv()
+
+	// Argument and subprogram handling
+	var glrdCmd *cobra.Command
+	glrdCmd, err = glrd.Cmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(glrdCmd)
+
+	var packagesCmd *cobra.Command
+	packagesCmd, err = packages.Cmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(packagesCmd)
+
+	if err = rootCmd.Execute(); err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
 	}
