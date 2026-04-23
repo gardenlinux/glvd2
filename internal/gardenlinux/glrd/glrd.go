@@ -84,9 +84,10 @@ func doReleasesCmd() error {
 
 func Cmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
-		Use:   "releases",
-		Short: "Gets GL all releases or a specific version",
-		Args:  cobra.NoArgs,
+		Use:     "releases",
+		Short:   "Gets GL all releases or a specific version",
+		Args:    cobra.NoArgs,
+		GroupID: "debug",
 		RunE: func(_ *cobra.Command, _ []string) error {
 			return doReleasesCmd()
 		},

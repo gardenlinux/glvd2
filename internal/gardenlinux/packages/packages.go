@@ -270,9 +270,10 @@ func ParsePackageList(content string) ([]Package, error) {
 
 func Cmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
-		Use:   "packages <version>",
-		Short: "Print packages of a <version>",
-		Args:  cobra.MaximumNArgs(1),
+		Use:     "packages <version>",
+		Short:   "Print packages of a <version>",
+		GroupID: "debug",
+		Args:    cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			vers, _ := cmd.Flags().GetString("version")
 			release, err := version.MakeGardenLinuxReleaseFromString(vers)

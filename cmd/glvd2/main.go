@@ -16,58 +16,29 @@ import (
 )
 
 // Set the log level via environment variable.
-func setLogLevelFromEnv() {
+func setLogLevel(logLevelStr string) error {
 	var logLevel slog.LevelVar
-	if err := logLevel.UnmarshalText([]byte(os.Getenv("LOG_LEVEL"))); err != nil {
-		logLevel.Set(slog.LevelInfo)
+	err := logLevel.UnmarshalText([]byte(logLevelStr))
+	if err != nil {
+		return err
 	}
+
+	logLevel.Set(slog.LevelInfo)
 
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
 		Level: &logLevel,
 	})))
+
+	return nil
 }
 
-func main() {
+func ingestCve(cfg *config.AppConfig) error {
 	var err error
-	rootCmd := &cobra.Command{Use: "glvd2"}
-
-	// Logging
-	setLogLevelFromEnv()
-
-	// Argument and subprogram handling
-	var glrdCmd *cobra.Command
-	glrdCmd, err = glrd.Cmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(glrdCmd)
-
-	var packagesCmd *cobra.Command
-	packagesCmd, err = packages.Cmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(packagesCmd)
-
-	if err = rootCmd.Execute(); err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-
-	ctx := context.Background()
-
-	cfg, err := config.LoadAppConfig()
-	if err != nil {
-		slog.Error("Could not read the config file", slog.Any("error", err))
-		return
-	}
 
 	db, err := database.Open()
 	if err != nil {
 		slog.Error("could not open database", slog.Any("error", err))
-		return
+		return err
 	}
 	defer func() {
 		if errDb := db.Close(); errDb != nil {
@@ -78,20 +49,21 @@ func main() {
 	err = db.Ping()
 	if err != nil {
 		slog.Error("could not ping the database", slog.Any("error", err))
-		return
+		return err
 	}
 
 	// TODO: clean DB and apply migrations
+	ctx := context.Background()
 
 	submoduleService, err := git.NewSubmoduleService(cfg)
 	if err != nil {
 		slog.Error("Could not initialize the submodule service", slog.Any("error", err))
-		return
+		return err
 	}
 	err = submoduleService.GetLatest(ctx)
 	if err != nil {
 		slog.Error("Could not get the latest state of the submodules", slog.Any("error", err))
-		return
+		return err
 	}
 
 	cveV5Ingestion := ingestion.NewCVEV5IngestionService(cfg)
@@ -114,11 +86,81 @@ func main() {
 			}
 			if cveErr != nil {
 				slog.Error("Parsing the CVEs from CVEListV5 failed", slog.Any("error", cveErr))
-				return
+				return cveErr
 			}
 		}
 	}
 
 	slog.Info("finished parsing the CVEs from CVEListV5",
 		slog.Int("numberOfCVEs", cveCounter), slog.String("lastCVEParsed", tmp))
+
+	return nil
+}
+
+func cmd(cfg *config.AppConfig) *cobra.Command {
+	rootCmd := &cobra.Command{
+		Use:          "glvd2",
+		Args:         cobra.MaximumNArgs(1),
+		SilenceUsage: true,
+		Short:        "CVE-related tool for GL",
+		Long:         "Tool to ingest CVEs and triage for GL.",
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			logLevel, err := cmd.Flags().GetString("log-level")
+			if err != nil {
+				return err
+			}
+
+			err = setLogLevel(logLevel)
+			if err != nil {
+				return err
+			}
+
+			return ingestCve(cfg)
+		},
+	}
+	rootCmd.PersistentFlags().String("log-level", "error", "specify log-level")
+
+	return rootCmd
+}
+
+func main() {
+	var err error
+	var rootCmd *cobra.Command
+
+	var cfg *config.AppConfig
+	cfg, err = config.LoadAppConfig()
+	if err != nil {
+		slog.Error("Could not read the config file", slog.Any("error", err))
+		return
+	}
+
+	// Main program call
+	rootCmd = cmd(cfg)
+
+	// Argument and subprogram handling
+	rootCmd.AddGroup(&cobra.Group{
+		ID:    "debug",
+		Title: "Debugging:",
+	})
+
+	var glrdCmd *cobra.Command
+	glrdCmd, err = glrd.Cmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(glrdCmd)
+
+	var packagesCmd *cobra.Command
+	packagesCmd, err = packages.Cmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(packagesCmd)
+
+	if err = rootCmd.Execute(); err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
 }
