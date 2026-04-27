@@ -7,6 +7,7 @@ import (
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glcve"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/git"
@@ -143,6 +144,7 @@ func main() {
 		Title: "Debugging:",
 	})
 
+	// Debug: GRLD
 	var glrdCmd *cobra.Command
 	glrdCmd, err = glrd.Cmd()
 	if err != nil {
@@ -151,6 +153,7 @@ func main() {
 	}
 	rootCmd.AddCommand(glrdCmd)
 
+	// Debug: Packages
 	var packagesCmd *cobra.Command
 	packagesCmd, err = packages.Cmd()
 	if err != nil {
@@ -159,6 +162,25 @@ func main() {
 	}
 	rootCmd.AddCommand(packagesCmd)
 
+	// Debug: ReleasePage
+	var releasePageCmd *cobra.Command
+	releasePageCmd, err = glcve.ReleasePageCmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(releasePageCmd)
+
+	// Debug: Mentioned CVEs
+	var cvesCmd *cobra.Command
+	cvesCmd, err = glcve.MentionedCVEsCmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(cvesCmd)
+
+	// Execute
 	if err = rootCmd.Execute(); err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
