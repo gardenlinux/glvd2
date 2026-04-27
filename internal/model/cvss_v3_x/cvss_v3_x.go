@@ -1,3 +1,4 @@
+//nolint:tagliatelle // schema not defined by us
 package cvss_v3_x
 
 // CVSSV3_x: 3.0 and 3.1 share the same structure, but a scored differently.

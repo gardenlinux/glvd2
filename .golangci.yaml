@@ -113,7 +113,7 @@ linters:
     tagliatelle:
       case:
         rules:
-          json: camel
+          json: snake
           yaml: camel
           xml: camel
           toml: camel

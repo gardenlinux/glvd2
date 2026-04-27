@@ -1,3 +1,4 @@
+//nolint:tagliatelle // schema not defined by us
 package cvss_v2_0
 
 type CVSSV2_0 struct {
