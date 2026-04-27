@@ -1,3 +1,4 @@
+//nolint:tagliatelle // schema not defined by us
 package cve_v5
 
 import (
