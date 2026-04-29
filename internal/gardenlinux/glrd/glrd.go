@@ -57,9 +57,12 @@ type Releases struct {
 
 func GetReleases() ([]Release, error) {
 	client := whttp.NewClient()
-	response, err := client.Get(glrdReleasesMinorURL)
+	response, httpStatus, err := client.Get(glrdReleasesMinorURL)
 	if err != nil {
 		slog.With("url", glrdReleasesMinorURL).Error("Could not retrieve minor releases")
+	}
+	if httpStatus >= 400 {
+		return nil, fmt.Errorf("HTTP Status error: %d", httpStatus)
 	}
 
 	var releases Releases

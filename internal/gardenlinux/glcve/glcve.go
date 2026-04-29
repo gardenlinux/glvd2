@@ -15,6 +15,7 @@ const githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/r
 
 func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 	var err error
+	var httpStatus int
 	var client *whttp.HTTPClient
 
 	client, err = github.NewClient()
@@ -23,7 +24,7 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 	}
 
 	var result *[]byte
-	result, err = client.Get(fmt.Sprintf(githubReleaseURL, release.Name))
+	result, httpStatus, err = client.Get(fmt.Sprintf(githubReleaseURL, release.Name))
 	if err != nil {
 		slog.With("client", "github").
 			With("url", githubReleaseURL).
@@ -31,6 +32,9 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 			With("verb", "GET").
 			Error("Could not perform http request")
 		return "", err
+	}
+	if httpStatus >= 400 {
+		return "", fmt.Errorf("HTTP Status error: %d", httpStatus)
 	}
 
 	return string(*result), nil

@@ -94,10 +94,13 @@ func getInReleaseFile(release version.GardenLinuxRelease) (string, error) {
 
 	inreleaseURL := fmt.Sprintf(glInreleaseURL, release.Name)
 
-	response, err := client.Get(inreleaseURL)
+	response, httpStatus, err := client.Get(inreleaseURL)
 	if err != nil {
 		slog.With("module", "packages").With("url", inreleaseURL).Error(err.Error())
 		return "", err
+	}
+	if httpStatus >= 400 {
+		return "", fmt.Errorf("HTTP Status error: %d", httpStatus)
 	}
 
 	return string(*response), nil
@@ -216,26 +219,29 @@ func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile)
 		With("url", url).
 		Info("Retrieving package list")
 	client := whttp.NewClient()
-	body, err := client.Get(url)
+	body, httpStatus, err := client.Get(url)
 	if err != nil {
 		slog.With("release", release).With("packagefile", packageFile.PackagePath).Error(err.Error())
-		return []Package{}, err
+		return nil, err
+	}
+	if httpStatus >= 400 {
+		return nil, fmt.Errorf("HTTP Status error: %d", httpStatus)
 	}
 
 	reader, err := gzip.NewReader(bytes.NewReader(*body))
 	if err != nil {
-		return []Package{}, err
+		return nil, err
 	}
 	defer reader.Close() //nolint:errcheck // not necessary here
 
 	rawPackages, err := io.ReadAll(reader)
 	if err != nil {
-		return []Package{}, err
+		return nil, err
 	}
 
 	packages, err := ParsePackageList(string(rawPackages))
 	if err != nil {
-		return []Package{}, err
+		return nil, err
 	}
 
 	return packages, nil
