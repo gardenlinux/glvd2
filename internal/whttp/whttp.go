@@ -43,9 +43,17 @@ func (h *HTTPClient) Get(url string) (*[]byte, error) {
 		return nil, err
 	}
 
-	defer resp.Body.Close() //nolint:errcheck // Ignore errors on close
+	defer func() {
+		if closeErr := resp.Body.Close(); closeErr != nil {
+			slog.Error("error while closing response body",
+				slog.Any("error", err),
+				slog.String("url", url))
+		}
+	}()
 
-	body, err := io.ReadAll(resp.Body)
+	const limitInBytes = 30 * 1024 * 1024
+	lrb := http.MaxBytesReader(nil, resp.Body, limitInBytes)
+	body, err := io.ReadAll(lrb)
 	if err != nil {
 		slog.Error("Could not read body",
 			slog.String("url", url),
