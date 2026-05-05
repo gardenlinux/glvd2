@@ -11,7 +11,7 @@ import (
 func NewClient() (*httpclient.HTTPClient, error) {
 	token := os.Getenv("GH_TOKEN")
 	if token == "" {
-		slog.With("client", "github").Error("GH_TOKEN is missing")
+		slog.Error("GH_TOKEN is missing")
 		return nil, errors.New("env GH_TOKEN is missing")
 	}
 
@@ -19,6 +19,6 @@ func NewClient() (*httpclient.HTTPClient, error) {
 	client.Headers = append(client.Headers, httpclient.MakeHeader("Accept", "application/vnd.github+json"))
 	client.Headers = append(client.Headers, httpclient.MakeHeader("Authorization", "Bearer "+token))
 	client.Headers = append(client.Headers, httpclient.MakeHeader("X-GitHub-Api-Version", "2026-03-10"))
-	slog.With("client", "github").Debug("new http client with auth token")
+	slog.Debug("new github http client with auth token")
 	return client, nil
 }

@@ -59,14 +59,18 @@ func GetReleases() ([]Release, error) {
 	client := whttp.NewClient()
 	response, err := client.Get(glrdReleasesMinorURL)
 	if err != nil {
-		slog.With("url", glrdReleasesMinorURL).Error("Could not retrieve minor releases")
+		slog.Error("could not retrieve minor releases",
+			slog.String("url", glrdReleasesMinorURL),
+			slog.Any("error", err))
 	}
 
 	var releases Releases
 
 	err = json.Unmarshal(*response, &releases)
 	if err != nil {
-		slog.With("client", "glrd", "url", glrdReleasesMinorURL, "error", err).Error("Could not unmarshal json")
+		slog.Error("could not unmarshal json",
+			slog.String("url", glrdReleasesMinorURL),
+			slog.Any("error", err))
 		return nil, err
 	}
 
@@ -89,18 +93,12 @@ func doReleasesCmd() error {
 func Cmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:     "releases",
-		Short:   "Gets GL all releases or a specific version",
+		Short:   "Gets all Gardenlinux releases",
 		Args:    cobra.NoArgs,
 		GroupID: "debug",
 		RunE: func(_ *cobra.Command, _ []string) error {
 			return doReleasesCmd()
 		},
-	}
-	cmd.Flags().String("version", "", "specific version")
-	err := cmd.MarkFlagRequired("version")
-	if err != nil {
-		slog.With("err", err).Error("could not set version flag to required")
-		return nil, err
 	}
 	return cmd, nil
 }
