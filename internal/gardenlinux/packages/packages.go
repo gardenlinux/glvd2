@@ -55,7 +55,7 @@ var ComponentToEnum = map[string]Component{
 	"main": ComponentMain,
 }
 
-// const glPackageURL = "https://packages.gardenlinux.io/gardenlinux/dists/1877.14/main/binary-amd64/Packages.gz"
+// fully debian style url: https://packages.gardenlinux.io/gardenlinux/dists/1877.14/main/binary-amd64/Packages.gz
 //
 // Parameters:
 // 0: 1877.14, today => Suite
@@ -96,7 +96,9 @@ func getInReleaseFile(release version.GardenLinuxRelease) (string, error) {
 
 	response, err := client.Get(inreleaseURL)
 	if err != nil {
-		slog.With("module", "packages").With("url", inreleaseURL).Error(err.Error())
+		slog.Error("could not get InRelease file",
+			slog.Any("error", err),
+			slog.String("url", inreleaseURL))
 		return "", err
 	}
 
@@ -138,7 +140,8 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 		for _, c := range componentsStr {
 			tmp, ok := ComponentToEnum[c]
 			if !ok {
-				slog.With("component", tmp).Error("Could not map to component enum")
+				slog.Error("Could not map to component enum",
+					slog.Any("component", tmp))
 				continue
 			}
 			result.Components = append(result.Components, tmp)
@@ -152,7 +155,8 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 		for _, a := range architecturesStr {
 			tmp, ok := ArchitectureToEnum[a]
 			if !ok {
-				slog.With("architecture", tmp).Error("Could not map to architecture enum")
+				slog.Error("Could not map to architecture enum",
+					slog.Any("architecture", tmp))
 				continue
 			}
 			result.Architectures = append(result.Architectures, tmp)
@@ -165,7 +169,8 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 		packageFile := PackageFile{Sha256Sum: match[1]}
 		size, err := strconv.ParseUint(match[2], 10, 32)
 		if err != nil {
-			slog.With("value", match[2]).Error("could not parse int")
+			slog.Error("could not parse int",
+				slog.String("value", match[2]))
 			continue
 		}
 		packageFile.Size = size
@@ -195,7 +200,8 @@ func GetPackageLists(release version.GardenLinuxRelease) ([]Package, error) {
 		var packages []Package
 		packages, err = GetPackageList(release, packagefile)
 		if err != nil {
-			slog.Error(err.Error())
+			slog.Error("could not get packages list",
+				slog.Any("error", err))
 			continue
 		}
 		result = append(result, packages...)
@@ -207,18 +213,23 @@ func GetPackageLists(release version.GardenLinuxRelease) ([]Package, error) {
 func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile) ([]Package, error) {
 	url := BuildPackageURL(release, packageFile)
 	if url == "" {
-		slog.With("release", release).With("packagefile", packageFile.PackagePath).Error("empty url")
+		slog.Error("empty url",
+			slog.Any("release", release),
+			slog.String("packagefile", packageFile.PackagePath))
 		return []Package{}, errors.New("empty url")
 	}
 
-	slog.With("release", release).
-		With("packagefile", packageFile.PackagePath).
-		With("url", url).
-		Info("Retrieving package list")
+	slog.Info("Retrieving package list",
+		slog.Any("release", release),
+		slog.String("packagefile", packageFile.PackagePath),
+		slog.String("url", url))
 	client := whttp.NewClient()
 	body, err := client.Get(url)
 	if err != nil {
-		slog.With("release", release).With("packagefile", packageFile.PackagePath).Error(err.Error())
+		slog.Error("could not retrieve package list",
+			slog.Any("release", release),
+			slog.String("packagefile", packageFile.PackagePath),
+			slog.Any("error", err))
 		return []Package{}, err
 	}
 

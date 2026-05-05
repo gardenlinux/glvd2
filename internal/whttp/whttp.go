@@ -31,7 +31,6 @@ func (h *HTTPClient) Get(url string) (*[]byte, error) {
 	ctx := context.Background()
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		slog.With("client", "http", "url", url, "error", err, "method", "GET").Error("Could not create new request")
 		return nil, err
 	}
 
@@ -41,7 +40,6 @@ func (h *HTTPClient) Get(url string) (*[]byte, error) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		slog.With("client", "http", "method", "GET", "url", url, "error", err).Error("Could not perform request")
 		return nil, err
 	}
 
@@ -49,17 +47,16 @@ func (h *HTTPClient) Get(url string) (*[]byte, error) {
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		slog.With("client", "http", "url", url, "error", err).Error("Could not read body")
+		slog.Error("Could not read body",
+			slog.String("url", url),
+			slog.Any("error", err))
 		return nil, err
 	}
-
-	// log.With("client", "http", "url", url).Debug(string(body))
 
 	return &body, err
 }
 
 func NewClient() *HTTPClient {
 	httpClient := HTTPClient{}
-	slog.With("client", "http").Debug("new instance")
 	return &httpClient
 }

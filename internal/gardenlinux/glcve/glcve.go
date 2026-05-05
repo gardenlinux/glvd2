@@ -12,6 +12,7 @@ import (
 )
 
 const githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/releases/tags/%s"
+const cvePatternRegex = `CVE-\d+-\d+`
 
 func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 	var err error
@@ -22,14 +23,14 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 		return "", err
 	}
 
+	url := fmt.Sprintf(githubReleaseURL, release.Name)
 	var result *[]byte
-	result, err = client.Get(fmt.Sprintf(githubReleaseURL, release.Name))
+	result, err = client.Get(url)
 	if err != nil {
-		slog.With("client", "github").
-			With("url", githubReleaseURL).
-			With("error", err).
-			With("verb", "GET").
-			Error("Could not perform http request")
+		slog.Error(
+			"could not perform http request",
+			slog.Any("error", err),
+			slog.String("url", url))
 		return "", err
 	}
 
@@ -37,7 +38,7 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 }
 
 func ExtractMentionedCVEs(releasePage string) []string {
-	re := regexp.MustCompile(`CVE-\d+-\d+`)
+	re := regexp.MustCompile(cvePatternRegex)
 
 	result := re.FindAllString(releasePage, -1)
 

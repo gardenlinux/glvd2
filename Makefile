@@ -39,6 +39,6 @@ db_migrate_down:
 clean_test:
 	go clean -testcache
 
-.PHONY: clean 
+.PHONY: clean
 clean: clean_test
 	$(RM) $(BINARY)
