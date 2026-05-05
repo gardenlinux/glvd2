@@ -31,6 +31,13 @@ const (
 	ComponentAll
 )
 
+var (
+	codenameRegex     = regexp.MustCompile("Codename: (.*)")
+	componentRegex    = regexp.MustCompile("Components: (.*)")
+	architectureRegex = regexp.MustCompile("Architectures: (.*)")
+	packagesGzRegex   = regexp.MustCompile(`(?m) ([a-zA-Z0-9]{64}) (\d+) (.*/Packages.gz)$`)
+)
+
 //nolint:gochecknoglobals // not a global
 var ArchitectureToName = map[Architecture]string{
 	ArchitectureAll:   "all",
@@ -111,12 +118,6 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	}
 
 	result := InRelease{}
-
-	// Regexes
-	codenameRegex := regexp.MustCompile("Codename: (.*)")
-	componentRegex := regexp.MustCompile("Components: (.*)")
-	architectureRegex := regexp.MustCompile("Architectures: (.*)")
-	packagesGzRegex := regexp.MustCompile(`(?m) ([a-zA-Z0-9]{64}) (\d+) (.*/Packages.gz)$`)
 
 	//
 	// Extracting values
