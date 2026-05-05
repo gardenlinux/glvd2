@@ -5,4 +5,4 @@
 "github:sqlc-dev/sqlc" = "latest"
 go = "1.26"
 "go:github.com/daixiang0/gci" = "latest"
-golangci-lint = "2.11.4"
+"aqua:golangci/golangci-lint" = "latest"

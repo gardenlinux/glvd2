@@ -18,7 +18,11 @@ func TestPackageUrl(t *testing.T) {
 	packageFile := packages.PackageFile{PackagePath: "main/binary-amd64/Packages"}
 
 	url := packages.BuildPackageURL(release, packageFile)
-	assert.Equal(t, "https://packages.gardenlinux.io/gardenlinux/dists/1877.10/main/binary-amd64/Packages", url, "URL should match expectations") //nolint:golines,lll // just parameters
+	assert.Equal(
+		t,
+		"https://packages.gardenlinux.io/gardenlinux/dists/1877.10/main/binary-amd64/Packages",
+		url,
+		"URL should match expectations")
 }
 
 func TestParseInReleaseFileEmpty(t *testing.T) {
@@ -126,8 +130,11 @@ vDYmziyeV/379UIrpWZIOPplKxysAM2Nz/PvmULnO5hduCz/69w=
 	assert.Equal(t, glr, inrelease.Codename, "should find release 1877.14")
 	assert.Len(t, inrelease.Components, len(expectedComponents), "should find only the one expected component")
 	assert.Equal(t, expectedComponents, inrelease.Components, "should find component main")
-	//nolint:golines // unsure what is the problem here
-	assert.Len(t, inrelease.Architectures, len(expectedArchitectures), "should find only the three expected architectures")
+	assert.Len(
+		t,
+		inrelease.Architectures,
+		len(expectedArchitectures),
+		"should find only the three expected architectures")
 	assert.Equal(t, expectedArchitectures, inrelease.Architectures, "should find all, amd and arm64")
 	assert.Equal(t, expectedPackageLists, inrelease.PackageFiles, "should find all compressed package lists")
 }

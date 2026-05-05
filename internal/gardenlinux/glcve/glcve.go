@@ -11,8 +11,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/releases/tags/%s"
-const cvePatternRegex = `CVE-\d+-\d+`
+const (
+	githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/releases/tags/%s"
+	cvePatternRegex  = `CVE-\d+-\d+`
+)
 
 func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 	var err error
@@ -92,7 +94,7 @@ func doMentionedCVEsInRelease(v string) error {
 	}
 
 	for _, mcve := range mentionedCVEs {
-		fmt.Println(mcve) //nolint:revive,forbidigo // just debug output
+		fmt.Println(mcve) //nolint:nolintlint,revive,forbidigo // just debug output
 	}
 
 	return nil
@@ -113,7 +115,7 @@ func doReleasePage(v string) error {
 		return err
 	}
 
-	fmt.Printf("%s\n", releasePage) //nolint:revive,forbidigo // just debug output
+	fmt.Printf("%s\n", releasePage) //nolint:nolintlint,revive,forbidigo // just debug output
 	return nil
 }
 
