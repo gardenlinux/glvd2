@@ -11,10 +11,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const (
-	githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/releases/tags/%s"
-	cvePatternRegex  = `CVE-\d+-\d+`
-)
+const githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/releases/tags/%s"
+
+var cvePatternRegex = regexp.MustCompile(`CVE-\d+-\d+`)
 
 func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 	var err error
@@ -40,9 +39,7 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 }
 
 func ExtractMentionedCVEs(releasePage string) []string {
-	re := regexp.MustCompile(cvePatternRegex)
-
-	result := re.FindAllString(releasePage, -1)
+	result := cvePatternRegex.FindAllString(releasePage, -1)
 
 	if result == nil {
 		return []string{}
