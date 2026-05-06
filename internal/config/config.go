@@ -8,7 +8,9 @@ import (
 
 // AppConfig contains different configuration options for the application.
 type AppConfig struct {
-	CVEListV5SubRepoPath string `mapstructure:"cve_list_v5_sub_repo_path"`
+	CVEListV5SubRepoPath     string `mapstructure:"cve_list_v5_sub_repo_path"`
+	DebSecTrackerSubRepoPath string `mapstructure:"deb_sec_tracker_sub_repo_path"`
+	InternalSqliteDBPath     string `mapstructure:"internal_sqlite_db_path"`
 }
 
 // LoadAppConfig loads the configuration from disk.

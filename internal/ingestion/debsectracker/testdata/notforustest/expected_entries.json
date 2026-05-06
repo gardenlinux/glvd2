@@ -1,0 +1,13 @@
+[
+  {
+    "debian_triage": {
+      "cve_id": "CVE-2026-34261",
+      "status": "NOT-FOR-US",
+      "not_for_us": "SAP",
+      "notes": "",
+      "to_dos": ""
+    },
+    "affected_package": null,
+    "affected_release": null
+  }
+]

@@ -11,3 +11,12 @@ sql:
         emit_json_tags: true
         emit_enum_valid_method: true
         emit_all_enum_values: true
+        rename:
+          cve_id: "CVEID"
+          cpe: "CPE"
+        overrides:
+          - column: "debian_triage.status"
+            go_type:
+              import: "github.com/gardenlinux/glvd2/internal/model/debtriage"
+              package: "debtriage"
+              type: "StatusType"

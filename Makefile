@@ -8,7 +8,7 @@ build:
 
 .PHONY: format
 format:
-	gofmt -l -s -w .
+	golangci-lint fmt
 
 .PHONY: lint
 lint:
@@ -17,6 +17,11 @@ lint:
 .PHONY: test
 test: clean_test
 	go test -v ./...
+
+.PHONY: test-coverage-html
+test-coverage-html: clean_test
+	go test --covermode=atomic --coverprofile=coverage.out -v ./...
+	go tool cover -html=coverage.out
 
 .PHONY: db_code_generate
 db_code_generate:

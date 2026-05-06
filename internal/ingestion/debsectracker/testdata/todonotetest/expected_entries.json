@@ -1,0 +1,13 @@
+[
+  {
+    "debian_triage": {
+      "cve_id": "CVE-2026-41179",
+      "status": "TODO",
+      "not_for_us": "",
+      "notes": "",
+      "to_dos": ""
+    },
+    "affected_package": null,
+    "affected_release": null
+  }
+]

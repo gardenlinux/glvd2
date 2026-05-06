@@ -1,0 +1,21 @@
+[
+  {
+    "debian_triage": {
+      "cve_id": "CVE-2026-23952",
+      "not_for_us": "",
+      "notes": "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-5vx3-wx4q-6cj8\nFixed by: https://github.com/ImageMagick/ImageMagick/commit/1eefab41bc0ab1c6c2c1fd3e4a49e3ee1849751d (7.1.2-13)\nFixed by: https://github.com/ImageMagick/ImageMagick6/commit/0e4023775c8859d2b802e8b459a27b599ca8403a (6.9.13-38)\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    },
+    "affected_package": [
+      {
+        "cve_id": "CVE-2026-23952",
+        "id": 1,
+        "info": "bug #1126077",
+        "package_name": "imagemagick",
+        "version": "8:7.1.2.13+dfsg1-1"
+      }
+    ],
+    "affected_release": null
+  }
+]

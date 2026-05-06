@@ -1,1 +1,3 @@
+internal_sqlite_db_path: "./data/internal.sqlite"
 cve_list_v5_sub_repo_path: "./submodules/cvelistV5"
+deb_sec_tracker_sub_repo_path: "./submodules/debian-security-tracker"

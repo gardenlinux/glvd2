@@ -1,0 +1,5 @@
+CVE-2025-XXXX [RUSTSEC-2025-0020]
+	- rust-pyo3 0.22.6-3 (bug #1103894)
+	[bookworm] - rust-pyo3 <no-dsa> (Minor issue)
+	NOTE: https://rustsec.org/advisories/RUSTSEC-2025-0020.html
+	NOTE: https://github.com/PyO3/pyo3/issues/5005

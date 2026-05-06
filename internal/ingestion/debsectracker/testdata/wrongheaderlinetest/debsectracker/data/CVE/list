@@ -1,0 +1,9 @@
+CVE-2023-2311 (Insufficient policy enforcement in File System API in Google Chrome pr ...)
+	{DSA-5386-1}
+	- chromium 112.0.5615.49-1
+	[buster] - chromium <end-of-life> (see DSA 5046)
+GH-123-456
+	- packetX 42.0
+	[trixie] - grub2 <no-dsa> (Minor issue)
+	[bookworm] - grub2 <no-dsa> (Minor issue)
+	TODO: double check
