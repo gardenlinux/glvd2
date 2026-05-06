@@ -13,7 +13,7 @@ const glrdReleasesMinorURL = "https://gardenlinux-glrd.s3.eu-central-1.amazonaws
 
 type Git struct {
 	Commit      string `json:"commit"`
-	CommitShort string `json:"commit_short"` //nolint:tagliatelle // json field is defined with underscore
+	CommitShort string `json:"commit_short"`
 }
 
 type GitHub struct {
@@ -37,7 +37,7 @@ type LifeCycle struct {
 }
 
 type Attributes struct {
-	SourceRepo bool `json:"source_repo"` //nolint:tagliatelle // json field is defined with underscore
+	SourceRepo bool `json:"source_repo"`
 }
 
 type Release struct {

@@ -20,3 +20,7 @@ bin/
 
 # Internally used sqlite DB
 data/internal.sqlite
+
+# test code coverage
+coverage.out
+coverage.html

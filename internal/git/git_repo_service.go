@@ -72,6 +72,8 @@ func fixDateIssues() error {
 }
 
 func (r *SubmoduleService) GetLatest(ctx context.Context) error {
+	slog.Info("Updating the git submodules")
+
 	err := setup(ctx)
 	if err != nil {
 		return err
@@ -89,6 +91,8 @@ func (r *SubmoduleService) GetLatest(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+
+	slog.Info("Finished updating the git submodules")
 
 	return nil
 }

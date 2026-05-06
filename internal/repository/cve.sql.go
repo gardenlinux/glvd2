@@ -9,36 +9,32 @@ import (
 	"context"
 )
 
-const listCves = `-- name: ListCves :many
-SELECT c.id, c.title, c.description, c.serial, c.is_rejected, c.assigner_org_id, c.assigner_short_name, c.date_reserved, c.date_published, c.date_updated, c.date_assigned, c.date_public FROM cve As c ORDER BY c.name DESC
+const listCVEs = `-- name: ListCVEs :many
+SELECT id, title, description, serial, is_rejected, assigner_org_id, assigner_short_name, date_reserved, date_published, date_updated, date_assigned, date_public FROM cve ORDER BY name DESC
 `
 
-type ListCvesRow struct {
-	Cve Cve `json:"cve"`
-}
-
-func (q *Queries) ListCves(ctx context.Context) ([]ListCvesRow, error) {
-	rows, err := q.db.QueryContext(ctx, listCves)
+func (q *Queries) ListCVEs(ctx context.Context) ([]Cve, error) {
+	rows, err := q.db.QueryContext(ctx, listCVEs)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []ListCvesRow
+	var items []Cve
 	for rows.Next() {
-		var i ListCvesRow
+		var i Cve
 		if err := rows.Scan(
-			&i.Cve.ID,
-			&i.Cve.Title,
-			&i.Cve.Description,
-			&i.Cve.Serial,
-			&i.Cve.IsRejected,
-			&i.Cve.AssignerOrgID,
-			&i.Cve.AssignerShortName,
-			&i.Cve.DateReserved,
-			&i.Cve.DatePublished,
-			&i.Cve.DateUpdated,
-			&i.Cve.DateAssigned,
-			&i.Cve.DatePublic,
+			&i.ID,
+			&i.Title,
+			&i.Description,
+			&i.Serial,
+			&i.IsRejected,
+			&i.AssignerOrgID,
+			&i.AssignerShortName,
+			&i.DateReserved,
+			&i.DatePublished,
+			&i.DateUpdated,
+			&i.DateAssigned,
+			&i.DatePublic,
 		); err != nil {
 			return nil, err
 		}

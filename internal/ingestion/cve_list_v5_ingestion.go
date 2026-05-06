@@ -30,7 +30,7 @@ func (s CVEV5IngestionService) parseJSONFile(fp string) (*cve_v5.CVEV5, error) {
 	fp = filepath.Clean(fp)
 	if !strings.HasPrefix(fp, filepath.Clean(s.cfg.CVEListV5SubRepoPath)) {
 		slog.Error("Prefix does not match",
-			slog.String("filepath", fp), slog.String("prefix", s.cfg.CVEListV5SubRepoPath))
+			slog.String("filepath", fp), slog.String("expectedPrefix", s.cfg.CVEListV5SubRepoPath))
 		return nil, errors.New("unsafe file path used")
 	}
 	jsonFile, err := os.Open(fp)

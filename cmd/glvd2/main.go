@@ -12,6 +12,8 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/ingestion"
+	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
+	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/spf13/cobra"
 	_ "modernc.org/sqlite"
 )
@@ -33,10 +35,8 @@ func setLogLevel(logLevelStr string) error {
 	return nil
 }
 
-func ingestCve(cfg *config.AppConfig) error {
-	var err error
-
-	db, err := database.Open()
+func ingestCVEs(cfg *config.AppConfig) error {
+	db, err := database.Regenerate(cfg.InternalSqliteDBPath)
 	if err != nil {
 		slog.Error("could not open database", slog.Any("error", err))
 		return err
@@ -53,9 +53,11 @@ func ingestCve(cfg *config.AppConfig) error {
 		return err
 	}
 
-	// TODO: clean DB and apply migrations
+	queries := repository.New(db)
+
 	ctx := context.Background()
 
+	// CVEListV5 and the Debian Security Tracker are currently added as git submodules
 	submoduleService, err := git.NewSubmoduleService(cfg)
 	if err != nil {
 		slog.Error("Could not initialize the submodule service", slog.Any("error", err))
@@ -64,6 +66,13 @@ func ingestCve(cfg *config.AppConfig) error {
 	err = submoduleService.GetLatest(ctx)
 	if err != nil {
 		slog.Error("Could not get the latest state of the submodules", slog.Any("error", err))
+		return err
+	}
+
+	debSecTrackerIngestion := debsectracker.NewService(db, queries, cfg)
+	err = debSecTrackerIngestion.IngestTriage(ctx)
+	if err != nil {
+		slog.Error("Ingestion from Debian Security Tracker: %w", slog.Any("error", err))
 		return err
 	}
 
@@ -116,7 +125,7 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 				return err
 			}
 
-			return ingestCve(cfg)
+			return ingestCVEs(cfg)
 		},
 	}
 	rootCmd.PersistentFlags().String("log-level", "error", "specify log-level")

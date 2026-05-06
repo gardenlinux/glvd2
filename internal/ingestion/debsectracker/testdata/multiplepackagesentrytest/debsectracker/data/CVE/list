@@ -1,0 +1,11 @@
+CVE-2022-48468 (protobuf-c before 1.4.1 has an unsigned integer overflow in parse_requ ...)
+	- protobuf-c 1.4.1-1
+	[bullseye] - protobuf-c <no-dsa> (Minor issue)
+	[buster] - protobuf-c <no-dsa> (Minor issue)
+	- libsignal-protocol-c 2.3.3-3
+	[bullseye] - libsignal-protocol-c <no-dsa> (Minor issue)
+	[buster] - libsignal-protocol-c <no-dsa> (Minor issue)
+	NOTE: https://github.com/protobuf-c/protobuf-c/commit/289f5c18b195aa43d46a619d1188709abbfa9c82 (v1.4.1)
+	NOTE: https://github.com/protobuf-c/protobuf-c/commit/0d1fd124a4e0a07b524989f6e64410ff648fba61 (v1.4.1)
+	NOTE: https://github.com/protobuf-c/protobuf-c/pull/513
+	NOTE: https://github.com/protobuf-c/protobuf-c/issues/499

@@ -2,12 +2,47 @@ package db
 
 import (
 	"database/sql"
+	"os"
+
+	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/sqlite" // blank import like lib proposes
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
+const sqliteConnectionStringSuffix = "?journal_mode=WAL&busy_timeout=3000&secure_delete=true" +
+	"&foreign_keys=true&cache=shared&x-no-tx-wrap=true"
+
+// Regenerate clears the DB file, recreates the structure via migration, and returns a DB connection.
+func Regenerate(fp string) (*sql.DB, error) {
+	// ensure that the file exists
+	f, err := os.OpenFile(fp, os.O_CREATE, 0o644) //nolint:gosec,mnd // no user input and fil
+	if err != nil {
+		return nil, err
+	}
+	if err = f.Close(); err != nil {
+		return nil, err
+	}
+
+	// clear the file content
+	if err = os.Truncate(fp, 0); err != nil {
+		return nil, err
+	}
+
+	if err = Migrate(fp); err != nil {
+		return nil, err
+	}
+
+	db, err := Open(fp)
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
+
 // Open a sqlite db from file.
-func Open() (*sql.DB, error) {
-	db, err := sql.Open("sqlite",
-		"data/internal.sqlite?journal_mode=WAL&busy_timeout=3000&secure_delete=true&foreign_keys=true&cache=shared")
+func Open(fp string) (*sql.DB, error) {
+	db, err := sql.Open("sqlite", fp+sqliteConnectionStringSuffix)
 	if err != nil {
 		return nil, err
 	}
@@ -16,4 +51,20 @@ func Open() (*sql.DB, error) {
 	db.SetMaxOpenConns(1)
 
 	return db, nil
+}
+
+func Migrate(fp string) error {
+	m, err := migrate.New(
+		"file://internal/db/migrations/",
+		"sqlite://"+fp+sqliteConnectionStringSuffix)
+	if err != nil {
+		return err
+	}
+
+	err = m.Up()
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

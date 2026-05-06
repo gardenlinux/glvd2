@@ -1,0 +1,46 @@
+[
+  {
+    "debian_triage": {
+      "cve_id": "CVE-2025-15281",
+      "not_for_us": "",
+      "notes": "https://www.openwall.com/lists/oss-security/2026/01/20/3\nIntroduced with: https://sourceware.org/git/?p=glibc.git;a=commit;h=8f2ece695d8822e9ecc63ecd157e90bf17a6fe65 (glibc-2.0.92)\nFixed by: https://sourceware.org/git/?p=glibc.git;a=commit;h=80cc58ea2de214f85b0a1d902a3b668ad2ecb302 (glibc-2.43)\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    },
+    "affected_package": [
+      {
+        "cve_id": "CVE-2025-15281",
+        "id": 1,
+        "info": "bug #1126266",
+        "package_name": "glibc",
+        "version": "2.42-11"
+      }
+    ],
+    "affected_release": [
+      {
+        "action": "2.41-12+deb13u2",
+        "cve_id": "CVE-2025-15281",
+        "id": 1,
+        "info": "",
+        "package_name": "glibc",
+        "release_name": "trixie"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2025-15281",
+        "id": 2,
+        "info": "Minor issue",
+        "package_name": "glibc",
+        "release_name": "bookworm"
+      },
+      {
+        "action": "<postponed>",
+        "cve_id": "CVE-2025-15281",
+        "id": 3,
+        "info": "Minor issue, unlikely scenario",
+        "package_name": "glibc",
+        "release_name": "bullseye"
+      }
+    ]
+  }
+]

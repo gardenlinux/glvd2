@@ -1,0 +1,61 @@
+[
+  {
+    "debian_triage": {
+      "cve_id": "CVE-2022-48468",
+      "not_for_us": "",
+      "notes": "https://github.com/protobuf-c/protobuf-c/commit/289f5c18b195aa43d46a619d1188709abbfa9c82 (v1.4.1)\nhttps://github.com/protobuf-c/protobuf-c/commit/0d1fd124a4e0a07b524989f6e64410ff648fba61 (v1.4.1)\nhttps://github.com/protobuf-c/protobuf-c/pull/513\nhttps://github.com/protobuf-c/protobuf-c/issues/499\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    },
+    "affected_package": [
+      {
+        "cve_id": "CVE-2022-48468",
+        "id": 1,
+        "info": "",
+        "package_name": "protobuf-c",
+        "version": "1.4.1-1"
+      },
+      {
+        "cve_id": "CVE-2022-48468",
+        "id": 2,
+        "info": "",
+        "package_name": "libsignal-protocol-c",
+        "version": "2.3.3-3"
+      }
+    ],
+    "affected_release": [
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2022-48468",
+        "id": 1,
+        "info": "Minor issue",
+        "package_name": "protobuf-c",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2022-48468",
+        "id": 2,
+        "info": "Minor issue",
+        "package_name": "protobuf-c",
+        "release_name": "buster"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2022-48468",
+        "id": 3,
+        "info": "Minor issue",
+        "package_name": "libsignal-protocol-c",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2022-48468",
+        "id": 4,
+        "info": "Minor issue",
+        "package_name": "libsignal-protocol-c",
+        "release_name": "buster"
+      }
+    ]
+  }
+]

@@ -4,9 +4,14 @@
 
 package repository
 
+import (
+	debtriage "github.com/gardenlinux/glvd2/internal/model/debtriage"
+)
+
 type Affect struct {
-	ID    int64   `json:"id"`
-	CveID *string `json:"cve_id"`
+	ID        int64   `json:"id"`
+	CVEID     *string `json:"cve_id"`
+	ProductID *int64  `json:"product_id"`
 }
 
 type Cve struct {
@@ -26,7 +31,7 @@ type Cve struct {
 
 type CvssMetric struct {
 	ID           int64    `json:"id"`
-	CveID        *string  `json:"cve_id"`
+	CVEID        *string  `json:"cve_id"`
 	Issuer       *string  `json:"issuer"`
 	Version      *string  `json:"version"`
 	VectorString *string  `json:"vector_string"`
@@ -34,8 +39,41 @@ type CvssMetric struct {
 	BaseSeverity *string  `json:"base_severity"`
 }
 
+type DebianPackage struct {
+	Name string `json:"name"`
+}
+
+type DebianRelease struct {
+	Name string `json:"name"`
+}
+
+type DebianTriage struct {
+	CVEID    string               `json:"cve_id"`
+	Status   debtriage.StatusType `json:"status"`
+	NotForUs string               `json:"not_for_us"`
+	Notes    string               `json:"notes"`
+	ToDos    string               `json:"to_dos"`
+}
+
+type DebianTriageAffectedPackage struct {
+	ID          int64   `json:"id"`
+	CVEID       string  `json:"cve_id"`
+	PackageName string  `json:"package_name"`
+	Version     string  `json:"version"`
+	Info        *string `json:"info"`
+}
+
+type DebianTriageAffectedRelease struct {
+	ID          int64   `json:"id"`
+	CVEID       string  `json:"cve_id"`
+	ReleaseName string  `json:"release_name"`
+	PackageName string  `json:"package_name"`
+	Action      string  `json:"action"`
+	Info        *string `json:"info"`
+}
+
 type Product struct {
 	ID    int64   `json:"id"`
 	Title *string `json:"title"`
-	Cpe   *string `json:"cpe"`
+	CPE   *string `json:"cpe"`
 }

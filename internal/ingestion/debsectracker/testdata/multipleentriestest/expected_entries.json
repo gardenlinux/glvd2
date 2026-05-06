@@ -1,0 +1,387 @@
+[
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2026-6862",
+        "id": 2,
+        "info": "bug #1134691",
+        "package_name": "efivar",
+        "version": "<unfixed>"
+      }
+    ],
+    "affected_release": null,
+    "debian_triage": {
+      "cve_id": "CVE-2026-6862",
+      "not_for_us": "",
+      "notes": "https://bugzilla.redhat.com/show_bug.cgi?id=2459982\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2026-6515",
+        "id": 3,
+        "info": "Only affects 18.x",
+        "package_name": "gitlab",
+        "version": "<not-affected>"
+      }
+    ],
+    "affected_release": null,
+    "debian_triage": {
+      "cve_id": "CVE-2026-6515",
+      "not_for_us": "",
+      "notes": "",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": null,
+    "affected_release": null,
+    "debian_triage": {
+      "cve_id": "CVE-2026-40937",
+      "not_for_us": "RustFS",
+      "notes": "",
+      "status": "NOT-FOR-US",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2026-40517",
+        "id": 1,
+        "info": "",
+        "package_name": "radare2",
+        "version": "<unfixed>"
+      }
+    ],
+    "affected_release": null,
+    "debian_triage": {
+      "cve_id": "CVE-2026-40517",
+      "not_for_us": "",
+      "notes": "https://github.com/radareorg/radare2/issues/25730\nhttps://github.com/radareorg/radare2/pull/25731\nFixed by: https://github.com/radareorg/radare2/commit/0e38152560e689327a74d2944fa45ba7afd4cb33 (6.1.4)\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": null,
+    "affected_release": null,
+    "debian_triage": {
+      "cve_id": "CVE-2026-40448",
+      "not_for_us": "Samsung",
+      "notes": "",
+      "status": "NOT-FOR-US",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2026-35371",
+        "id": 4,
+        "info": "",
+        "package_name": "rust-coreutils",
+        "version": "<unfixed>"
+      }
+    ],
+    "affected_release": [
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2026-35371",
+        "id": 1,
+        "info": "Minor issue",
+        "package_name": "rust-coreutils",
+        "release_name": "trixie"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2026-35371",
+        "id": 2,
+        "info": "Minor issue",
+        "package_name": "rust-coreutils",
+        "release_name": "bookworm"
+      }
+    ],
+    "debian_triage": {
+      "cve_id": "CVE-2026-35371",
+      "not_for_us": "",
+      "notes": "https://github.com/uutils/coreutils/issues/10006\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2025-38513",
+        "id": 5,
+        "info": "",
+        "package_name": "linux",
+        "version": "6.16.3-1"
+      }
+    ],
+    "affected_release": [
+      {
+        "action": "6.12.41-1",
+        "cve_id": "CVE-2025-38513",
+        "id": 3,
+        "info": "",
+        "package_name": "linux",
+        "release_name": "trixie"
+      },
+      {
+        "action": "6.1.147-1",
+        "cve_id": "CVE-2025-38513",
+        "id": 4,
+        "info": "",
+        "package_name": "linux",
+        "release_name": "bookworm"
+      }
+    ],
+    "debian_triage": {
+      "cve_id": "CVE-2025-38513",
+      "not_for_us": "",
+      "notes": "https://git.kernel.org/linus/74b1ec9f5d627d2bdd5e5b6f3f81c23317657023 (6.16-rc6)\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2025-24975",
+        "id": 6,
+        "info": "Vulnerable code introduced later",
+        "package_name": "firebird3.0",
+        "version": "<not-affected>"
+      },
+      {
+        "cve_id": "CVE-2025-24975",
+        "id": 7,
+        "info": "bug #1111322",
+        "package_name": "firebird4.0",
+        "version": "4.0.6.3221.ds6-1"
+      }
+    ],
+    "affected_release": null,
+    "debian_triage": {
+      "cve_id": "CVE-2025-24975",
+      "not_for_us": "",
+      "notes": "https://github.com/FirebirdSQL/firebird/security/advisories/GHSA-fx9r-rj68-7p69\nhttps://github.com/FirebirdSQL/firebird/issues/8429\nhttps://github.com/FirebirdSQL/firebird/commit/658abd20449f72097fbbce57e8e6ae42ff837fb6\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 9,
+        "info": "bug #1055136",
+        "package_name": "nvidia-graphics-drivers",
+        "version": "525.147.05-1"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 10,
+        "info": "bug #1055144",
+        "package_name": "nvidia-open-gpu-kernel-modules",
+        "version": "525.147.05-1"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 11,
+        "info": "bug #1055143",
+        "package_name": "nvidia-graphics-drivers-tesla",
+        "version": "525.147.05-1"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 12,
+        "info": "bug #1055142",
+        "package_name": "nvidia-graphics-drivers-tesla-470",
+        "version": "470.223.02-1"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 13,
+        "info": "bug #1055141",
+        "package_name": "nvidia-graphics-drivers-tesla-460",
+        "version": "460.106.00-3"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 14,
+        "info": "bug #1055140",
+        "package_name": "nvidia-graphics-drivers-tesla-450",
+        "version": "450.248.02-4"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 15,
+        "info": "bug #1055139",
+        "package_name": "nvidia-graphics-drivers-tesla-418",
+        "version": "<unfixed>"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 16,
+        "info": "bug #1055138",
+        "package_name": "nvidia-graphics-drivers-legacy-390xx",
+        "version": "<unfixed>"
+      },
+      {
+        "cve_id": "CVE-2023-31022",
+        "id": 17,
+        "info": "bug #1055137",
+        "package_name": "nvidia-graphics-drivers-legacy-340xx",
+        "version": "<unfixed>"
+      }
+    ],
+    "affected_release": [
+      {
+        "action": "525.147.05-1~deb12u1",
+        "cve_id": "CVE-2023-31022",
+        "id": 6,
+        "info": "",
+        "package_name": "nvidia-graphics-drivers",
+        "release_name": "bookworm"
+      },
+      {
+        "action": "470.223.02-1",
+        "cve_id": "CVE-2023-31022",
+        "id": 7,
+        "info": "",
+        "package_name": "nvidia-graphics-drivers",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 8,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers",
+        "release_name": "buster"
+      },
+      {
+        "action": "525.147.05-1~deb12u1",
+        "cve_id": "CVE-2023-31022",
+        "id": 9,
+        "info": "",
+        "package_name": "nvidia-open-gpu-kernel-modules",
+        "release_name": "bookworm"
+      },
+      {
+        "action": "525.147.05-3~deb12u1",
+        "cve_id": "CVE-2023-31022",
+        "id": 10,
+        "info": "",
+        "package_name": "nvidia-graphics-drivers-tesla",
+        "release_name": "bookworm"
+      },
+      {
+        "action": "470.223.02-1~deb12u1",
+        "cve_id": "CVE-2023-31022",
+        "id": 11,
+        "info": "",
+        "package_name": "nvidia-graphics-drivers-tesla-470",
+        "release_name": "bookworm"
+      },
+      {
+        "action": "470.223.02-1~deb11u1",
+        "cve_id": "CVE-2023-31022",
+        "id": 12,
+        "info": "",
+        "package_name": "nvidia-graphics-drivers-tesla-470",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 13,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers-tesla-460",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 14,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers-tesla-450",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 15,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers-tesla-418",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 16,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers-legacy-390xx",
+        "release_name": "bullseye"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 17,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers-legacy-390xx",
+        "release_name": "buster"
+      },
+      {
+        "action": "<no-dsa>",
+        "cve_id": "CVE-2023-31022",
+        "id": 18,
+        "info": "Non-free not supported",
+        "package_name": "nvidia-graphics-drivers-legacy-340xx",
+        "release_name": "buster"
+      }
+    ],
+    "debian_triage": {
+      "cve_id": "CVE-2023-31022",
+      "not_for_us": "",
+      "notes": "460.106.00-3 turned the package into a metapackage to aid switching to nvidia-graphics-drivers-tesla-470\n450.248.02-4 turned the package into a metapackage to aid switching to nvidia-graphics-drivers-tesla-470\nhttps://nvidia.custhelp.com/app/answers/detail/a_id/5491\n",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  },
+  {
+    "affected_package": [
+      {
+        "cve_id": "CVE-2023-2311",
+        "id": 8,
+        "info": "",
+        "package_name": "chromium",
+        "version": "112.0.5615.49-1"
+      }
+    ],
+    "affected_release": [
+      {
+        "action": "<end-of-life>",
+        "cve_id": "CVE-2023-2311",
+        "id": 5,
+        "info": "see DSA 5046",
+        "package_name": "chromium",
+        "release_name": "buster"
+      }
+    ],
+    "debian_triage": {
+      "cve_id": "CVE-2023-2311",
+      "not_for_us": "",
+      "notes": "",
+      "status": "PROCESSED",
+      "to_dos": ""
+    }
+  }
+]

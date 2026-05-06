@@ -1,2 +1,2 @@
--- name: ListCves :many
-SELECT sqlc.embed(c) FROM cve As c ORDER BY c.name DESC;
+-- name: ListCVEs :many
+SELECT * FROM cve ORDER BY name DESC;
