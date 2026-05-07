@@ -1,0 +1,38 @@
+name: Build, Test and Lint
+
+on: 
+    push:
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout code
+          uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        - name: setup go
+          uses: actions/setup-go@v5
+          with:
+            go-version-file: 'go.mod'
+        - name: Download dependencies
+          run: go mod download
+        - name: Build
+          run: go build cmd/glvd2/main.go
+        - name: Test
+          run: go test -v ./...
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout code
+          uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        - name: setup go
+          uses: actions/setup-go@v5
+          with:
+            go-version-file: 'go.mod'
+        - name: Run golangci-lint
+          uses: golangci/golangci-lint-action@v6
+          with:
+            version: 'v1.59.1'
+            args: --timeout=5m
