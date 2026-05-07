@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS debian_triage_affected_release(
     action TEXT NOT NULL,
     info TEXT,
     FOREIGN KEY(cve_id) REFERENCES debian_triage(cve_id),
-    FOREIGN KEY(release_name) REFERENCES debian_releases(name)
+    FOREIGN KEY(release_name) REFERENCES debian_release(name)
 );
 
 END;
