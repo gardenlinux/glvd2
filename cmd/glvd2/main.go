@@ -10,6 +10,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glcve"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/repos"
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/ingestion"
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
@@ -188,6 +189,15 @@ func main() {
 		os.Exit(1)
 	}
 	rootCmd.AddCommand(cvesCmd)
+
+	// Debug: Repo information
+	var reposCmd *cobra.Command
+	reposCmd, err = repos.Cmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(reposCmd)
 
 	// Execute
 	if err = rootCmd.Execute(); err != nil {
