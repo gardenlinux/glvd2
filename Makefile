@@ -47,3 +47,9 @@ clean_test:
 .PHONY: clean
 clean: clean_test
 	$(RM) $(BINARY)
+
+sbom:
+	syft dir:. -c config/syft.yaml -o cyclonedx-json=bin/sbom.cyclonedx.json
+	syft dir:. -c config/syft.yaml -o spdx-json=bin/sbom.spdx.json
+
+

@@ -6,6 +6,27 @@ on:
     workflow_dispatch:
 
 jobs:
+  sbom:
+    permissions:
+      actions: read
+      contents: write    
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2      
+      - name: create cyclonedx sbom
+        uses: anchore/sbom-action@v0
+        with:
+          config: config/syft.yaml
+          format: cyclonedx-json
+          artifact-name: glvd2-sbom-cyclonedx-${{ github.sha }}.json
+      - name: create spdx sbom
+        uses: anchore/sbom-action@v0
+        with:
+          config: config/syft.yaml
+          format: spdx-json
+          artifact-name: glvd2-sbom-spdx-${{ github.sha }}.json
+
   build-and-test:
     runs-on: ubuntu-latest
     steps:
