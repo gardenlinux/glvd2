@@ -6,3 +6,4 @@
 go = "1.26"
 "go:github.com/daixiang0/gci" = "latest"
 "aqua:golangci/golangci-lint" = "latest"
+syft = "latest"
