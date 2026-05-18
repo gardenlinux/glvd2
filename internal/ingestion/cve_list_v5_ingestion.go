@@ -1,6 +1,7 @@
 package ingestion
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -59,23 +60,43 @@ func (s CVEV5IngestionService) parseJSONFile(fp string) (*cve_v5.CVEV5, error) {
 	return &cveV5, nil
 }
 
-func (s CVEV5IngestionService) parseWorker(pathQueue <-chan string, cveCh chan<- *cve_v5.CVEV5, ec chan error) {
+func (s CVEV5IngestionService) parseWorker(
+	ctx context.Context,
+	cancel context.CancelFunc,
+	pathQueue <-chan string,
+	cveCh chan<- *cve_v5.CVEV5,
+	ec chan error,
+) {
 	for path := range pathQueue {
+		select {
+		case <-ctx.Done():
+			return
+		default:
+		}
+
 		cveV5, err := s.parseJSONFile(path)
 		if err != nil {
+			cancel()
 			ec <- err
 			return
 		}
 
-		cveCh <- cveV5
+		select {
+		case cveCh <- cveV5:
+		case <-ctx.Done():
+			return
+		}
 	}
 }
 
 // ReceiveCVEs parses the cves folder.
-func (s CVEV5IngestionService) ReceiveCVEs() (<-chan *cve_v5.CVEV5, <-chan error) {
+func (s CVEV5IngestionService) ReceiveCVEs(ctx context.Context) (<-chan *cve_v5.CVEV5, <-chan error) {
 	cveBufferSize := 64
 	ch := make(chan *cve_v5.CVEV5, cveBufferSize)
 	ec := make(chan error, 1)
+
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
 
 	go func() {
 		defer close(ch)
@@ -86,7 +107,7 @@ func (s CVEV5IngestionService) ReceiveCVEs() (<-chan *cve_v5.CVEV5, <-chan error
 		var wg sync.WaitGroup
 		for range 16 {
 			wg.Go(func() {
-				s.parseWorker(pathQueue, ch, ec)
+				s.parseWorker(ctx, cancel, pathQueue, ch, ec)
 			})
 		}
 
@@ -95,13 +116,23 @@ func (s CVEV5IngestionService) ReceiveCVEs() (<-chan *cve_v5.CVEV5, <-chan error
 				return err
 			}
 
+			// stop the walk if the context got canceled
+			if err = ctx.Err(); err != nil {
+				return err
+			}
+
 			if !d.IsDir() && strings.HasPrefix(filepath.Base(fp), "CVE-") && filepath.Ext(fp) == ".json" {
-				pathQueue <- fp
+				select {
+				case pathQueue <- fp:
+				case <-ctx.Done():
+					return ctx.Err()
+				}
 			}
 
 			return nil
 		})
 		if err != nil {
+			cancel()
 			ec <- err
 		}
 		close(pathQueue)

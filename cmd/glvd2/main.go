@@ -105,7 +105,7 @@ func ingestCVEs(cfg *config.AppConfig) error {
 	}
 
 	cveV5Ingestion := ingestion.NewCVEV5IngestionService(cfg)
-	resCh, errCh := cveV5Ingestion.ReceiveCVEs()
+	resCh, errCh := cveV5Ingestion.ReceiveCVEs(ctx)
 	tmp := ""
 	cveCounter := 0
 	for resCh != nil && errCh != nil {
