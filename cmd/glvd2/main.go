@@ -121,6 +121,10 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 				return err
 			}
 
+			if logLevelFromEnv, logLevelSetFromEnv := os.LookupEnv("LOGLEVEL"); logLevelSetFromEnv {
+				logLevel = logLevelFromEnv
+			}
+
 			err = setLogLevel(logLevel)
 			if err != nil {
 				return err
@@ -129,7 +133,7 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 			return ingestCVEs(cfg)
 		},
 	}
-	rootCmd.PersistentFlags().String("log-level", "error", "specify log-level")
+	rootCmd.PersistentFlags().String("log-level", "debug", "specify log-level")
 
 	return rootCmd
 }
@@ -190,14 +194,32 @@ func main() {
 	}
 	rootCmd.AddCommand(cvesCmd)
 
-	// Debug: Repo information
+	// Debug: Repos information
 	var reposCmd *cobra.Command
-	reposCmd, err = repos.Cmd()
+	reposCmd, err = repos.ReposCmd()
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
 	}
 	rootCmd.AddCommand(reposCmd)
+
+	// Debug: Repo Branches information
+	var repoBranchCmd *cobra.Command
+	repoBranchCmd, err = repos.RepoCmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(repoBranchCmd)
+
+	// Debug: Repometa information
+	var repoMetaCmd *cobra.Command
+	repoMetaCmd, err = repos.MetaCmd()
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(repoMetaCmd)
 
 	// Execute
 	if err = rootCmd.Execute(); err != nil {
