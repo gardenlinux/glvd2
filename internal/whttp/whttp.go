@@ -4,6 +4,8 @@ package whttp
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
@@ -19,6 +21,13 @@ type HTTPClient struct {
 	Headers []Header
 }
 
+// HTTP-Response with consumed body payload
+type WHttpResponse struct {
+	Header         http.Header
+	HttpStatusCode int
+	Body           []byte
+}
+
 func MakeHeader(key, value string) Header {
 	return Header{
 		key:   key,
@@ -26,21 +35,27 @@ func MakeHeader(key, value string) Header {
 	}
 }
 
-func (h *HTTPClient) Get(url string) (*[]byte, error) {
+func (h *HTTPClient) get(url string) (WHttpResponse, error) {
+	var err error
+
 	slog.With("client", "http", "method", "get", "url", url).Info("Performing request")
 	ctx := context.Background()
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	var req *http.Request
+	req, err = http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		return nil, err
+		slog.With("client", "http", "url", url, "error", err, "method", "GET").Error("Could not create new request")
+		return WHttpResponse{Header: nil, HttpStatusCode: 500, Body: nil}, err
 	}
 
 	for _, header := range h.Headers {
 		req.Header.Set(header.key, header.value)
 	}
 
-	resp, err := http.DefaultClient.Do(req)
+	var resp *http.Response
+	resp, err = http.DefaultClient.Do(req)
 	if err != nil {
-		return nil, err
+		slog.With("client", "http", "method", "GET", "url", url, "error", err).Error("Could not perform request")
+		return WHttpResponse{Header: nil, HttpStatusCode: resp.StatusCode, Body: nil}, err
 	}
 
 	defer func() {
@@ -53,15 +68,57 @@ func (h *HTTPClient) Get(url string) (*[]byte, error) {
 
 	const limitInBytes = 30 * 1024 * 1024
 	lrb := http.MaxBytesReader(nil, resp.Body, limitInBytes)
-	body, err := io.ReadAll(lrb)
+	var body []byte
+	body, err = io.ReadAll(lrb)
 	if err != nil {
-		slog.Error("Could not read body",
-			slog.String("url", url),
-			slog.Any("error", err))
-		return nil, err
+		slog.With("client", "http", "url", url, "error", err).Error("Could not read body")
+		return WHttpResponse{Header: resp.Header, HttpStatusCode: resp.StatusCode, Body: nil}, err
 	}
 
-	return &body, err
+	if resp.StatusCode >= 400 {
+		err = fmt.Errorf("HTTP status code %d indicates error", resp.StatusCode)
+	}
+
+	return WHttpResponse{Header: resp.Header, HttpStatusCode: resp.StatusCode, Body: body}, err
+}
+
+func (h *HTTPClient) GetRaw(url string) ([]byte, int, error) {
+	response, err := h.get(url)
+	if err != nil {
+		return nil, response.HttpStatusCode, err
+	}
+
+	return response.Body, response.HttpStatusCode, nil
+}
+
+func (h *HTTPClient) GetString(url string) (string, int, error) {
+	response, err := h.get(url)
+	if err != nil {
+		return "", response.HttpStatusCode, err
+	}
+
+	return string(response.Body), response.HttpStatusCode, nil
+}
+
+func (h *HTTPClient) GetResponse(url string) (WHttpResponse, error) {
+	return h.get(url)
+}
+
+func (h *HTTPClient) GetJSON(url string, target interface{}) (interface{}, WHttpResponse, error) {
+	var err error
+	response, err := h.get(url)
+	if err != nil {
+		return nil, response, err
+	}
+
+	slog.With("payload", string(response.Body)).Debug("JSON Response")
+
+	err = json.Unmarshal(response.Body, target)
+	if err != nil {
+		return nil, response, err
+	}
+
+	return target, response, nil
 }
 
 func NewClient() *HTTPClient {

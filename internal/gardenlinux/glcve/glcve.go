@@ -25,8 +25,8 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 	}
 
 	url := fmt.Sprintf(githubReleaseURL, release.Name)
-	var result *[]byte
-	result, err = client.Get(url)
+	var result string
+	result, _, err = client.GetString(url)
 	if err != nil {
 		slog.Error(
 			"could not perform http request",
@@ -35,7 +35,7 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 		return "", err
 	}
 
-	return string(*result), nil
+	return result, nil
 }
 
 func ExtractMentionedCVEs(releasePage string) []string {

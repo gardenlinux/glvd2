@@ -101,7 +101,7 @@ func getInReleaseFile(release version.GardenLinuxRelease) (string, error) {
 
 	inreleaseURL := fmt.Sprintf(glInreleaseURL, release.Name)
 
-	response, err := client.Get(inreleaseURL)
+	response, _, err := client.GetString(inreleaseURL)
 	if err != nil {
 		slog.Error("could not get InRelease file",
 			slog.Any("error", err),
@@ -109,7 +109,7 @@ func getInReleaseFile(release version.GardenLinuxRelease) (string, error) {
 		return "", err
 	}
 
-	return string(*response), nil
+	return response, nil
 }
 
 func ParseInReleaseFile(content string) (InRelease, error) {
@@ -225,7 +225,7 @@ func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile)
 		slog.String("packagefile", packageFile.PackagePath),
 		slog.String("url", url))
 	client := whttp.NewClient()
-	body, err := client.Get(url)
+	body, _, err := client.GetRaw(url)
 	if err != nil {
 		slog.Error("could not retrieve package list",
 			slog.Any("release", release),
@@ -234,7 +234,7 @@ func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile)
 		return []Package{}, err
 	}
 
-	reader, err := gzip.NewReader(bytes.NewReader(*body))
+	reader, err := gzip.NewReader(bytes.NewReader(body))
 	if err != nil {
 		return []Package{}, err
 	}

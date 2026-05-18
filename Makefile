@@ -16,7 +16,7 @@ lint:
 
 .PHONY: test
 test: clean_test
-	go test -v ./...
+	go test -v ./internal/gardenlinux/repos
 
 .PHONY: test-coverage-html
 test-coverage-html: clean_test

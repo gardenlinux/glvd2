@@ -1,7 +1,6 @@
 package glrd
 
 import (
-	"encoding/json"
 	"fmt"
 	"log/slog"
 
@@ -57,21 +56,12 @@ type Releases struct {
 
 func GetReleases() ([]Release, error) {
 	client := whttp.NewClient()
-	response, err := client.Get(glrdReleasesMinorURL)
+	var releases Releases
+	_, _, err := client.GetJSON(glrdReleasesMinorURL, releases)
 	if err != nil {
 		slog.Error("could not retrieve minor releases",
 			slog.String("url", glrdReleasesMinorURL),
 			slog.Any("error", err))
-	}
-
-	var releases Releases
-
-	err = json.Unmarshal(*response, &releases)
-	if err != nil {
-		slog.Error("could not unmarshal json",
-			slog.String("url", glrdReleasesMinorURL),
-			slog.Any("error", err))
-		return nil, err
 	}
 
 	return releases.Releases, nil
