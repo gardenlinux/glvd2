@@ -21,10 +21,10 @@ type HTTPClient struct {
 	Headers []Header
 }
 
-// HTTP-Response with consumed body payload
-type WHttpResponse struct {
+// Response with consumed body payload.
+type Response struct {
 	Header         http.Header
-	HttpStatusCode int
+	HTTPStatusCode int
 	Body           []byte
 }
 
@@ -35,7 +35,7 @@ func MakeHeader(key, value string) Header {
 	}
 }
 
-func (h *HTTPClient) get(url string) (WHttpResponse, error) {
+func (h *HTTPClient) get(url string) (Response, error) {
 	var err error
 
 	slog.With("client", "http", "method", "get", "url", url).Info("Performing request")
@@ -44,7 +44,7 @@ func (h *HTTPClient) get(url string) (WHttpResponse, error) {
 	req, err = http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
 		slog.With("client", "http", "url", url, "error", err, "method", "GET").Error("Could not create new request")
-		return WHttpResponse{Header: nil, HttpStatusCode: 500, Body: nil}, err
+		return Response{Header: nil, HTTPStatusCode: 500, Body: nil}, err
 	}
 
 	for _, header := range h.Headers {
@@ -55,7 +55,7 @@ func (h *HTTPClient) get(url string) (WHttpResponse, error) {
 	resp, err = http.DefaultClient.Do(req)
 	if err != nil {
 		slog.With("client", "http", "method", "GET", "url", url, "error", err).Error("Could not perform request")
-		return WHttpResponse{Header: nil, HttpStatusCode: resp.StatusCode, Body: nil}, err
+		return Response{Header: nil, HTTPStatusCode: resp.StatusCode, Body: nil}, err
 	}
 
 	defer func() {
@@ -72,39 +72,39 @@ func (h *HTTPClient) get(url string) (WHttpResponse, error) {
 	body, err = io.ReadAll(lrb)
 	if err != nil {
 		slog.With("client", "http", "url", url, "error", err).Error("Could not read body")
-		return WHttpResponse{Header: resp.Header, HttpStatusCode: resp.StatusCode, Body: nil}, err
+		return Response{Header: resp.Header, HTTPStatusCode: resp.StatusCode, Body: nil}, err
 	}
 
 	if resp.StatusCode >= 400 {
 		err = fmt.Errorf("HTTP status code %d indicates error", resp.StatusCode)
 	}
 
-	return WHttpResponse{Header: resp.Header, HttpStatusCode: resp.StatusCode, Body: body}, err
+	return Response{Header: resp.Header, HTTPStatusCode: resp.StatusCode, Body: body}, err
 }
 
 func (h *HTTPClient) GetRaw(url string) ([]byte, int, error) {
 	response, err := h.get(url)
 	if err != nil {
-		return nil, response.HttpStatusCode, err
+		return nil, response.HTTPStatusCode, err
 	}
 
-	return response.Body, response.HttpStatusCode, nil
+	return response.Body, response.HTTPStatusCode, nil
 }
 
 func (h *HTTPClient) GetString(url string) (string, int, error) {
 	response, err := h.get(url)
 	if err != nil {
-		return "", response.HttpStatusCode, err
+		return "", response.HTTPStatusCode, err
 	}
 
-	return string(response.Body), response.HttpStatusCode, nil
+	return string(response.Body), response.HTTPStatusCode, nil
 }
 
-func (h *HTTPClient) GetResponse(url string) (WHttpResponse, error) {
+func (h *HTTPClient) GetResponse(url string) (Response, error) {
 	return h.get(url)
 }
 
-func (h *HTTPClient) GetJSON(url string, target interface{}) (interface{}, WHttpResponse, error) {
+func (h *HTTPClient) GetJSON(url string, target any) (any, Response, error) {
 	var err error
 	response, err := h.get(url)
 	if err != nil {
