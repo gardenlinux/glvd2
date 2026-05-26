@@ -2,6 +2,7 @@ package repos
 
 import (
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"log/slog"
 	"strings"
@@ -12,20 +13,16 @@ import (
 )
 
 type RepositoryMetadata struct {
-	Repository      string
-	Branch          string
-	DebianSrc       bool   // Loads debian directory from a different src
-	AptSrc          bool   // Loads src from GL/debian package
-	GitSrc          bool   // Loads src from git repository
-	SalsaSrc        bool   // Loads debian src from salta git repository
-	PkgSrc          bool   // ?
-	UpstreamSrc     bool   // Loads src from upstream project
-	UpstreamPatches bool   // applys upstream_patches via import_upstream_patches
-	DebianPatches   bool   // applys patches for debian, when apply_patches with directory "debian"
-	GlPatches       bool   // applys custom patches, usually via apply_patches
-	Version         string // defined target version
-	VersionOrig     string // defined src version
-	GlVersion       string // gardenlinux version
+	Repository string
+	Branch     string
+
+	DebianSrc       bool // Loads debian directory from a different src
+	AptSrc          bool // Loads src from GL/debian package
+	SalsaSrc        bool // Loads debian src from salta git repository
+	UpstreamSrc     bool // Loads src from upstream project (can be archive or git repo)
+	UpstreamPatches bool // applys upstream_patches via import_upstream_patches
+	DebianPatches   bool // applys patches for debian, when apply_patches with directory "debian"
+	GlPatches       bool // applys custom patches, usually via apply_patches
 }
 
 type FileContent struct {
@@ -43,9 +40,8 @@ func getFile(repoName string, filePath string, branch string) (FileContent, erro
 		return FileContent{}, err
 	}
 
-	var response whttp.WHttpResponse
 	var fileContent FileContent
-	_, response, err = client.GetJSON(
+	_, _, err = client.GetJSON(
 		fmt.Sprintf(
 			"https://api.github.com/repos/gardenlinux/%s/contents/%s?ref=%s",
 			repoName,
@@ -56,18 +52,13 @@ func getFile(repoName string, filePath string, branch string) (FileContent, erro
 		return FileContent{}, err
 	}
 
-	if response.HttpStatusCode >= 400 {
-		return FileContent{}, fmt.Errorf("file error %d", response.HttpStatusCode)
-	}
-
 	return fileContent, nil
 }
 
 func GetPackageMeta(repoName string, branch string) (*RepositoryMetadata, error) {
 	var err error
-	// prepare_source
-	var prepare_source FileContent
-	prepare_source, err = getFile(repoName, "prepare_source", branch)
+	var prepareSource FileContent
+	prepareSource, err = getFile(repoName, "prepare_source", branch)
 	if err != nil {
 		return &RepositoryMetadata{}, err
 	}
@@ -78,7 +69,7 @@ func GetPackageMeta(repoName string, branch string) (*RepositoryMetadata, error)
 	var content string
 
 	// Analyse prepare_source
-	content, err = getFileSrc(prepare_source)
+	content, err = getFileSrc(prepareSource)
 	if err != nil {
 		return &RepositoryMetadata{}, err
 	}
@@ -92,7 +83,7 @@ func GetPackageMeta(repoName string, branch string) (*RepositoryMetadata, error)
 	return metadata, nil
 }
 
-// Remove comments, join splitted multi-lines
+// Remove comments, join splitted multi-lines.
 func prepareContent(content string) string {
 	var buffer strings.Builder
 	var result []string
@@ -113,7 +104,6 @@ func prepareContent(content string) string {
 			result = append(result, strings.TrimSpace(buffer.String()))
 			buffer.Reset()
 		}
-
 	}
 
 	if buffer.Len() > 0 {
@@ -147,7 +137,7 @@ func getFileSrc(content FileContent) (string, error) {
 func ExtractPackageName(branch string) string {
 	branch = strings.Replace(branch, "bp-", "", 1)
 	branch = strings.Replace(branch, "package-", "", 1)
-	return branch
+	return strings.TrimSpace(branch)
 }
 
 func AnalyzePrepareSource(content string, metadata *RepositoryMetadata) (*RepositoryMetadata, error) {
@@ -156,48 +146,30 @@ func AnalyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 
 func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*RepositoryMetadata, error) {
 	if metadata == nil {
-		return nil, fmt.Errorf("no active metadata object")
+		return nil, errors.New("no active metadata object")
 	}
 
-	fmt.Printf("Content\n")
-	fmt.Printf("-------------------------\n")
-	fmt.Printf("%s\n", content)
-	fmt.Printf("-------------------------\n")
+	// fmt.Println("Content")
+	// fmt.Println("-------------------------")
+	// fmt.Printf("%s\n", content)
+	// fmt.Println("-------------------------")
 
 	pkgName := ExtractPackageName(metadata.Branch)
 
 	for line := range strings.Lines(content) {
-		// slog.Debug("Line", "line", line)
-		// // Ignore commented lines
-		// if strings.HasPrefix(strings.TrimSpace(line), "#") {
-		// 	slog.Debug("Found comment. skipping")
-
-		// 	continue
-		// }
-
-		// Has it curl or wget with the package name?
-		if strings.Contains(line, "curl") || strings.Contains(line, "wget") {
-			if strings.Contains(line, pkgName) {
-				metadata.GitSrc = true
-				continue
-			}
-		}
 
 		// apt_src
 		if strings.Contains(line, "apt_src") {
 			metadata.AptSrc = true
-			slog.Debug("Found apt_src")
-
 			continue
 		}
 
 		// apply_patches
 		if strings.Contains(line, "apply_patches") {
-			metadata.GlPatches = true
-			slog.Debug("Found apply_patches")
 			if strings.Contains(line, "debian") {
 				metadata.DebianPatches = true
-				slog.Debug("Found apply_patches for debian")
+			} else {
+				metadata.GlPatches = true
 			}
 
 			continue
@@ -206,32 +178,20 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 		// import_upstream_patches
 		if strings.Contains(line, "import_upstream_patches") {
 			metadata.UpstreamPatches = true
-			slog.Debug("Found import_upstream_patches")
 			continue
 		}
 
-		if strings.Contains(line, "git_src") {
-			metadata.GitSrc = true
-			slog.Debug("Found git_src")
+		if strings.Contains(line, "git clone") || strings.Contains(line, "git_src") || strings.Contains(line, "curl") || strings.Contains(line, "wget") {
+			if (len(pkgName) > 0 && (strings.Contains(line, pkgName))) || strings.Contains(line, "github.com") {
+				metadata.UpstreamSrc = true
+			}
+
 			if strings.Contains(line, "salsa.debian.org") {
 				metadata.SalsaSrc = true
-				slog.Debug("Found git_src for salsa")
 			}
 
 			continue
 		}
-
-		if strings.Contains(line, "git clone") {
-			metadata.GitSrc = true
-			slog.Debug("Found git clone")
-			if strings.Contains(line, "salsa.debian.org") {
-				metadata.SalsaSrc = true
-				slog.Debug("Found git clone for salsa")
-			}
-
-			continue
-		}
-
 	}
 	return metadata, nil
 }
@@ -243,7 +203,7 @@ func MetaCmd() (*cobra.Command, error) {
 		GroupID:      "debug",
 		SilenceUsage: false,
 		Args:         cobra.OnlyValidArgs,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			var repository string
 			var branch string
 			var err error
@@ -262,11 +222,10 @@ func MetaCmd() (*cobra.Command, error) {
 			// Check if all (filtered) branches or just the given
 			var branches []Branch
 			if branch == "" {
-				br, err := GetPackageRepoBranches(repository)
+				branches, err = GetPackageRepoBranches(repository)
 				if err != nil {
 					return err
 				}
-				branches = br
 			} else {
 				branches = append(branches, Branch{Name: branch})
 			}
@@ -279,14 +238,13 @@ func MetaCmd() (*cobra.Command, error) {
 
 				// print metadata
 				fmt.Printf("package %s %s\n", meta.Repository, meta.Branch)
-				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)
 				fmt.Printf("DebianSrc: %v\n", meta.DebianSrc)
-				fmt.Printf("GitSrc   : %v\n", meta.GitSrc)
-				fmt.Printf("PkgSrc   : %v\n", meta.PkgSrc)
+				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)
 				fmt.Printf("SalsaSrc : %v\n", meta.SalsaSrc)
+				fmt.Printf("UpstreamSrc : %v\n", meta.UpstreamSrc)
+				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)
 				fmt.Printf("Debian Patches      : %v\n", meta.DebianPatches)
 				fmt.Printf("Gardenlinux Patches : %v\n", meta.GlPatches)
-				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)
 			}
 			return nil
 		},

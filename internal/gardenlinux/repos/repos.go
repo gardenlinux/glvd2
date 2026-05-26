@@ -97,16 +97,11 @@ func GetPackageRepos() ([]Repository, error) {
 	// Filter only package-*
 	var filteredRepositories []Repository
 	for _, repo := range allRepository {
-		fmt.Printf("Repo: %s\n", repo.Name)
 		if strings.HasPrefix(repo.Name, "bp-") || strings.HasPrefix(repo.Name, "package-") {
 			filteredRepositories = append(filteredRepositories, repo)
-			fmt.Println("added")
-		} else {
-			fmt.Println("not added")
 		}
 	}
 
-	fmt.Printf("%v\n", filteredRepositories)
 	return filteredRepositories, nil
 }
 
@@ -116,7 +111,7 @@ func ReposCmd() (*cobra.Command, error) {
 		Short:   "Print repos",
 		GroupID: "debug",
 		Args:    cobra.NoArgs,
-		RunE: func(cmd *cobra.Command, _ []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			repos, err := GetPackageRepos()
 			if err != nil {
 				return err
