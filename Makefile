@@ -44,6 +44,10 @@ db_migrate_up:
 db_migrate_down:
 	migrate -path=internal/db/migrations -database "sqlite://data/internal.sqlite?x-no-tx-wrap=true" -verbose down
 
+.PHONY: regenerate
+regenerate:
+	bin/glvd2 regenerate
+
 .PHONY: clean_test
 clean_test:
 	go clean -testcache
