@@ -7,6 +7,8 @@ import (
 	"log/slog"
 	"strings"
 
+	"github.com/gardenlinux/glvd2/internal/config"
+	database "github.com/gardenlinux/glvd2/internal/db"
 	"github.com/gardenlinux/glvd2/internal/github"
 	"github.com/gardenlinux/glvd2/internal/whttp"
 	"github.com/spf13/cobra"
@@ -293,7 +295,7 @@ func GetRepoPackageMetadata(repoName string, branchName string) ([]*RepositoryMe
 	return result, nil
 }
 
-func MetaCmd() (*cobra.Command, error) {
+func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:          "repometa",
 		Short:        "Print repo metadata",
@@ -315,6 +317,18 @@ func MetaCmd() (*cobra.Command, error) {
 			if err != nil {
 				return err
 			}
+
+			// Update database if necessary
+			db, err := database.Regenerate(cfg.InternalSqliteDBPath)
+			if err != nil {
+				slog.Error("could not open database", slog.Any("error", err))
+				return err
+			}
+			defer func() {
+				if errDb := db.Close(); errDb != nil {
+					slog.Error("error during closing of the database", slog.Any("error", errDb))
+				}
+			}()
 
 			var metas []*RepositoryMetadata
 			metas, err = GetRepoPackageMetadata(repoName, branchName)

@@ -2,6 +2,7 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 	"log/slog"
 	"os"
 	"path/filepath"
@@ -72,6 +73,7 @@ func Migrate(fp string) error {
 		return err
 	}
 
+	fmt.Println("Up")
 	err = m.Up()
 	if err != nil {
 		return err

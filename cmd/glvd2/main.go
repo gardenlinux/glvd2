@@ -214,12 +214,21 @@ func main() {
 
 	// Debug: Repometa information
 	var repoMetaCmd *cobra.Command
-	repoMetaCmd, err = repos.MetaCmd()
+	repoMetaCmd, err = repos.MetaCmd(cfg)
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
 	}
 	rootCmd.AddCommand(repoMetaCmd)
+
+	// Regenerate
+	var regenerateCmd *cobra.Command
+	regenerateCmd, err = database.RegenerateCmd(cfg)
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	rootCmd.AddCommand(regenerateCmd)
 
 	// Execute
 	if err = rootCmd.Execute(); err != nil {
