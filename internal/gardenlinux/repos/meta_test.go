@@ -151,6 +151,7 @@ version_suffix="gl3~bp1877"`
 func TestAnalyze5(t *testing.T) {
 	t.Parallel()
 
+	//nolint:lll // source output
 	prepareSource := `version_orig=20260522.00
 plugin_manager_commit=c98709762f0de7e6b9fda26ec4dbd9dd3c43237a
 

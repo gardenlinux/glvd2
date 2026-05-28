@@ -11,6 +11,11 @@ import (
 	"net/http"
 )
 
+const (
+	HTTPInternalServerError int = 500
+	HTTPClientError         int = 400
+)
+
 type Header struct {
 	key   string
 	value string
@@ -44,7 +49,7 @@ func (h *HTTPClient) get(url string) (Response, error) {
 	req, err = http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
 		slog.With("client", "http", "url", url, "error", err, "method", "GET").Error("Could not create new request")
-		return Response{Header: nil, HTTPStatusCode: 500, Body: nil}, err
+		return Response{Header: nil, HTTPStatusCode: HTTPInternalServerError, Body: nil}, err
 	}
 
 	for _, header := range h.Headers {
@@ -75,7 +80,7 @@ func (h *HTTPClient) get(url string) (Response, error) {
 		return Response{Header: resp.Header, HTTPStatusCode: resp.StatusCode, Body: nil}, err
 	}
 
-	if resp.StatusCode >= 400 {
+	if resp.StatusCode >= HTTPClientError {
 		err = fmt.Errorf("HTTP status code %d indicates error", resp.StatusCode)
 	}
 

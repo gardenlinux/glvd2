@@ -299,7 +299,8 @@ func Cmd() (*cobra.Command, error) {
 			}
 
 			for _, pkg := range packages {
-				fmt.Printf( //nolint:revive,forbidigo // printing output for debugging
+				//nolint:revive,forbidigo // printing output for debugging
+				fmt.Printf(
 					"%s (%s) %s\n",
 					pkg.Name,
 					pkg.Architecture,

@@ -13,8 +13,9 @@ import (
 )
 
 type RepositoryMetadata struct {
-	Repository string
-	Branch     string
+	Repository string // Which Repository
+	Branch     string // Which Branch
+	CommitId   string // State of the information
 
 	DebianSrc       bool // Loads debian directory from a different src
 	AptSrc          bool // Loads src from GL/debian package
@@ -30,6 +31,39 @@ type FileContent struct {
 	Encoding string `json:"encoding"`
 	Name     string `json:"name"`
 	Content  string `json:"content"`
+}
+
+type Commit struct {
+	Sha string `json:"sha"`
+}
+
+func getLatestCommitId(repoName string, branch string) (Commit, error) {
+	var err error
+	var client *whttp.HTTPClient
+
+	client, err = github.NewClient()
+	if err != nil {
+		return Commit{}, err
+	}
+
+	var result []Commit
+	_, _, err = client.GetJSON(
+		fmt.Sprintf(
+			"https://api.github.com/repos/gardenlinux/%s/commits?sha=%s&per_page=%d&page=%d",
+			repoName,
+			branch,
+			1,
+			1), &result)
+	if err != nil {
+		return Commit{}, err
+	}
+
+	if len(result) != 1 {
+		slog.Error("Did not recieve the latest commit.", "commits", len(result), "repoName", repoName, "branch", branch)
+		return Commit{}, fmt.Errorf("Recieved more than the latest commit or no commit at all.")
+	}
+
+	return result[0], nil
 }
 
 func getFile(repoName string, filePath string, branch string) (FileContent, error) {
@@ -80,11 +114,20 @@ func GetPackageMeta(repoName string, branch string) (*RepositoryMetadata, error)
 	metadata.Repository = repoName
 	metadata.Branch = branch
 
+	// Get CommitId for caching
+	var commitId Commit
+	commitId, err = getLatestCommitId(repoName, branch)
+	if err != nil {
+		return &RepositoryMetadata{}, err
+	}
+	metadata.CommitId = commitId.Sha
+
 	return metadata, nil
 }
 
 // Remove comments, join splitted multi-lines.
-func prepareContent(content string) string {
+func prepareContent(content string) (string, error) {
+	var err error
 	var buffer strings.Builder
 	var result []string
 
@@ -95,12 +138,18 @@ func prepareContent(content string) string {
 		}
 
 		// Cojoin multiline strings for eacher parsing
-		if strings.HasSuffix(line, "\\") {
-			trimmed := strings.TrimSuffix(line, "\\")
-			buffer.WriteString(strings.TrimRight(trimmed, "\\"))
+		trimmed, found := strings.CutSuffix(line, "\\")
+		if found {
+			_, err = buffer.WriteString(strings.TrimRight(trimmed, "\\"))
+			if err != nil {
+				return "", err
+			}
 		} else {
 			// only continue with valid lines
-			buffer.WriteString(line)
+			_, err = buffer.WriteString(line)
+			if err != nil {
+				return "", err
+			}
 			result = append(result, strings.TrimSpace(buffer.String()))
 			buffer.Reset()
 		}
@@ -110,7 +159,7 @@ func prepareContent(content string) string {
 		result = append(result, strings.TrimSpace(buffer.String()))
 	}
 
-	return strings.Join(result, "\n")
+	return strings.Join(result, "\n"), nil
 }
 
 func getFileSrc(content FileContent) (string, error) {
@@ -141,7 +190,11 @@ func ExtractPackageName(branch string) string {
 }
 
 func AnalyzePrepareSource(content string, metadata *RepositoryMetadata) (*RepositoryMetadata, error) {
-	return analyzePrepareSource(prepareContent(content), metadata)
+	preparedContent, err := prepareContent(content)
+	if err != nil {
+		return nil, err
+	}
+	return analyzePrepareSource(preparedContent, metadata)
 }
 
 func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*RepositoryMetadata, error) {
@@ -149,15 +202,9 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 		return nil, errors.New("no active metadata object")
 	}
 
-	// fmt.Println("Content")
-	// fmt.Println("-------------------------")
-	// fmt.Printf("%s\n", content)
-	// fmt.Println("-------------------------")
-
 	pkgName := ExtractPackageName(metadata.Branch)
 
 	for line := range strings.Lines(content) {
-
 		// apt_src
 		if strings.Contains(line, "apt_src") {
 			metadata.AptSrc = true
@@ -171,7 +218,6 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 			} else {
 				metadata.GlPatches = true
 			}
-
 			continue
 		}
 
@@ -181,7 +227,10 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 			continue
 		}
 
-		if strings.Contains(line, "git clone") || strings.Contains(line, "git_src") || strings.Contains(line, "curl") || strings.Contains(line, "wget") {
+		if strings.Contains(line, "git clone") ||
+			strings.Contains(line, "git_src") ||
+			strings.Contains(line, "curl") ||
+			strings.Contains(line, "wget") {
 			if (len(pkgName) > 0 && (strings.Contains(line, pkgName))) || strings.Contains(line, "github.com") {
 				metadata.UpstreamSrc = true
 			}
@@ -189,72 +238,106 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 			if strings.Contains(line, "salsa.debian.org") {
 				metadata.SalsaSrc = true
 			}
-
 			continue
 		}
 	}
 	return metadata, nil
 }
 
+func GetRepoPackageMetadata(repoName string, branchName string) ([]*RepositoryMetadata, error) {
+	var repositories []Repository
+	var err error
+	var result []*RepositoryMetadata
+
+	// if no repository is given, check all repositories
+	if repoName == "" {
+		repositories, err = GetPackageRepos()
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		repositories = append(repositories, Repository{Name: repoName})
+	}
+
+	for _, repo := range repositories {
+		var branches []Branch
+		// Check if all (filtered) branches or just the given,
+		if repoName == "" { // means all repos requested
+			// when no specific repo is given, we have to get all branches
+			branches, err = GetPackageRepoBranches(repo.Name)
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			// when a specific repo is requested, we can specify a specific branch or all branches
+			if branchName == "" {
+				branches, err = GetPackageRepoBranches(repo.Name)
+				if err != nil {
+					return nil, err
+				}
+			} else {
+				branches = append(branches, Branch{Name: branchName})
+			}
+		}
+
+		for _, br := range branches {
+			var meta *RepositoryMetadata
+			meta, err = GetPackageMeta(repo.Name, br.Name)
+			if err != nil {
+				slog.Error(err.Error(), "repo", repo.Name, "branch", br.Name)
+				continue
+			}
+			result = append(result, meta)
+		}
+	}
+	return result, nil
+}
+
 func MetaCmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:          "repometa",
 		Short:        "Print repo metadata",
-		GroupID:      "debug",
+		GroupID:      "debug", //nolint:goconst // just for debug output
 		SilenceUsage: false,
 		Args:         cobra.OnlyValidArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			var repository string
-			var branch string
+			var repoName string
+
+			var branchName string
 			var err error
-			var meta *RepositoryMetadata
 
-			repository, err = cmd.Flags().GetString("repository")
+			repoName, err = cmd.Flags().GetString("repository")
 			if err != nil {
 				return err
 			}
 
-			branch, err = cmd.Flags().GetString("branch")
+			branchName, err = cmd.Flags().GetString("branch")
 			if err != nil {
 				return err
 			}
 
-			// Check if all (filtered) branches or just the given
-			var branches []Branch
-			if branch == "" {
-				branches, err = GetPackageRepoBranches(repository)
-				if err != nil {
-					return err
-				}
-			} else {
-				branches = append(branches, Branch{Name: branch})
+			var metas []*RepositoryMetadata
+			metas, err = GetRepoPackageMetadata(repoName, branchName)
+			if err != nil {
+				return err
 			}
 
-			for _, br := range branches {
-				meta, err = GetPackageMeta(repository, br.Name)
-				if err != nil {
-					return err
-				}
-
+			for _, meta := range metas {
 				// print metadata
-				fmt.Printf("package %s %s\n", meta.Repository, meta.Branch)
-				fmt.Printf("DebianSrc: %v\n", meta.DebianSrc)
-				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)
-				fmt.Printf("SalsaSrc : %v\n", meta.SalsaSrc)
-				fmt.Printf("UpstreamSrc : %v\n", meta.UpstreamSrc)
-				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)
-				fmt.Printf("Debian Patches      : %v\n", meta.DebianPatches)
-				fmt.Printf("Gardenlinux Patches : %v\n", meta.GlPatches)
+				fmt.Printf("package=%s, branch=%s, commitId=%s\n", meta.Repository, meta.Branch, meta.CommitId) //nolint:forbidigo,golines,lll,revive // just for debug output
+				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)                                                      //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("DebianSrc: %v\n", meta.DebianSrc)                                                   //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("SalsaSrc : %v\n", meta.SalsaSrc)                                                    //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("UpstreamSrc : %v\n", meta.UpstreamSrc)                                              //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)                                  //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("Debian Patches      : %v\n", meta.DebianPatches)                                    //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("Gardenlinux Patches : %v\n", meta.GlPatches)                                        //nolint:forbidigo,revive // just for debug output
 			}
 			return nil
 		},
 	}
 	cmd.Flags().String("branch", "", "specific branch name")
 	cmd.Flags().String("repository", "", "repository name")
-	err := cmd.MarkFlagRequired("repository")
-	if err != nil {
-		return nil, err
-	}
 
 	return cmd, nil
 }

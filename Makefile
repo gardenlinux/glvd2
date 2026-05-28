@@ -2,6 +2,10 @@ BINARY:=bin/glvd2
 
 default: build
 
+setup:
+	mkdir -p data
+	mise install
+
 .PHONY: build
 build:
 	@go build -o $(BINARY) cmd/glvd2/main.go

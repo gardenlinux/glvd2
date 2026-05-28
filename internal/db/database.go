@@ -2,7 +2,9 @@ package db
 
 import (
 	"database/sql"
+	"log/slog"
 	"os"
+	"path/filepath"
 
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/sqlite" // blank import like lib proposes
@@ -14,6 +16,15 @@ const sqliteConnectionStringSuffix = "?journal_mode=WAL&busy_timeout=3000&secure
 
 // Regenerate clears the DB file, recreates the structure via migration, and returns a DB connection.
 func Regenerate(fp string) (*sql.DB, error) {
+	// ensure that the directory exists
+	dataDirectory := filepath.Base(filepath.Dir(fp))
+	if _, errstat := os.Stat(dataDirectory); os.IsNotExist(errstat) {
+		errstat = os.Mkdir(dataDirectory, 0o755) //nolint:mnd // no magic number check
+		if errstat != nil {
+			return nil, errstat
+		}
+		slog.Info("Created database directory", "directory", dataDirectory)
+	}
 	// ensure that the file exists
 	f, err := os.OpenFile(fp, os.O_CREATE, 0o644) //nolint:gosec,mnd // no user input and fil
 	if err != nil {
