@@ -196,7 +196,7 @@ func main() {
 
 	// Debug: Repos information
 	var reposCmd *cobra.Command
-	reposCmd, err = repos.ReposCmd()
+	reposCmd, err = repos.PackagerepoCmd()
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
@@ -205,7 +205,7 @@ func main() {
 
 	// Debug: Repo Branches information
 	var repoBranchCmd *cobra.Command
-	repoBranchCmd, err = repos.RepoCmd()
+	repoBranchCmd, err = repos.BranchCmd()
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)

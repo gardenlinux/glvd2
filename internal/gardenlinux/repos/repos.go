@@ -12,7 +12,7 @@ import (
 type Repository struct {
 	Id       int    `json:"id"`
 	Name     string `json:"name"`
-	FullName string `json:"full_name"` //nolint:tagliatelle // json field is defined with underscore
+	FullName string `json:"full_name"`
 }
 
 type Branch struct {
@@ -31,7 +31,7 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 
 	var allBranches []Branch
 	for page := range 100 {
-		var pageSize = 30
+		pageSize := 30
 		var tmpBranches []Branch
 		_, _, err = client.GetJSON(
 			fmt.Sprintf("https://api.github.com/repos/%s/%s/branches?page=%d&per_page=%d",
@@ -40,7 +40,6 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 				page,
 				pageSize),
 			&tmpBranches)
-
 		if err != nil {
 			return nil, err
 		}
@@ -75,7 +74,7 @@ func GetPackageRepos() ([]Repository, error) {
 
 	var allRepository []Repository
 	for page := range 100 {
-		var pageSize = 30
+		pageSize := 30
 		var tmpRepos []Repository
 		_, _, err = client.GetJSON(
 			fmt.Sprintf("https://api.github.com/orgs/%s/repos?&page=%d&per_page=%d",
@@ -97,7 +96,7 @@ func GetPackageRepos() ([]Repository, error) {
 	// Filter only package-*
 	var filteredRepositories []Repository
 	for _, repo := range allRepository {
-		if strings.HasPrefix(repo.Name, "bp-") || strings.HasPrefix(repo.Name, "package-") {
+		if (strings.HasPrefix(repo.Name, "bp-") || strings.HasPrefix(repo.Name, "package-")) && repo.Name != "package-build" {
 			filteredRepositories = append(filteredRepositories, repo)
 		}
 	}
@@ -105,11 +104,11 @@ func GetPackageRepos() ([]Repository, error) {
 	return filteredRepositories, nil
 }
 
-func ReposCmd() (*cobra.Command, error) {
+func PackagerepoCmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:     "repos",
 		Short:   "Print repos",
-		GroupID: "debug",
+		GroupID: "debug", //nolint:goconst // just for debug output
 		Args:    cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
 			repos, err := GetPackageRepos()
@@ -118,7 +117,7 @@ func ReposCmd() (*cobra.Command, error) {
 			}
 
 			for _, repo := range repos {
-				fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:revive,forbidigo,golines,lll // printing output for debugging
+				fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:forbidigo,golines,revive,lll // printing output for debugging
 			}
 			return nil
 		},
@@ -127,7 +126,7 @@ func ReposCmd() (*cobra.Command, error) {
 	return cmd, nil
 }
 
-func RepoCmd() (*cobra.Command, error) {
+func BranchCmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:     "repo",
 		Short:   "Print repo's branches",
@@ -141,7 +140,8 @@ func RepoCmd() (*cobra.Command, error) {
 			}
 
 			for _, branch := range branches {
-				fmt.Printf("%s - %s\n", repository, branch.Name) //nolint:revive,forbidigo,golines,lll // printing output for debugging
+				//nolint:forbidigo,revive // printing output for debugging
+				fmt.Printf("%s - %s\n", repository, branch.Name)
 			}
 			return nil
 		},
