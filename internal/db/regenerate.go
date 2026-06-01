@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"log/slog"
 
 	"github.com/gardenlinux/glvd2/internal/config"
@@ -12,11 +11,10 @@ func RegenerateCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use:          "regenerate",
 		Short:        "regenerate database and apply migrations",
-		GroupID:      "debug", //nolint:goconst // just for debug output
+		GroupID:      "debug", //nolint:nolintlint // just for debug output
 		SilenceUsage: false,
 		Args:         cobra.NoArgs,
-		RunE: func(cmd *cobra.Command, _ []string) error {
-			fmt.Println("Regenerating database")
+		RunE: func(_ *cobra.Command, _ []string) error {
 			// Update database if necessary
 			db, err := Regenerate(cfg.InternalSqliteDBPath)
 			if err != nil {
