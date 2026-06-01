@@ -118,7 +118,7 @@ func PackagerepoCmd() (*cobra.Command, error) {
 			}
 
 			for _, repo := range repos {
-				fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:forbidigo,revive,golines,lll // printing output for debugging
+				_, _ = fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:forbidigo,golines,lll // printing output for debugging
 			}
 			return nil
 		},
@@ -141,7 +141,7 @@ func BranchCmd() (*cobra.Command, error) {
 			}
 
 			for _, branch := range branches {
-				//nolint:forbidigo,revive // printing output for debugging
+				//nolint:forbidigo,revive,nolintlint // printing output for debugging
 				fmt.Printf("%s - %s\n", repository, branch.Name)
 			}
 			return nil

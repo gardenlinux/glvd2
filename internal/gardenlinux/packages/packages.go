@@ -33,11 +33,11 @@ func Cmd() (*cobra.Command, error) {
 		Use:     "packages <version>",
 		Short:   "Print packages of a <version>",
 		GroupID: "debug",
-		Args:    cobra.MaximumNArgs(3),
+		Args:    cobra.MaximumNArgs(3), //nolint:mnd // just three possible parameters
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			var release version.GardenLinuxRelease
 			var err error
-			var packages *[]Package
+			var packages []Package
 
 			vers, _ := cmd.Flags().GetString("version")
 			if len(vers) != 0 {
@@ -61,21 +61,20 @@ func Cmd() (*cobra.Command, error) {
 					return err
 				}
 			case CycloneDXFormat:
-				var sbomUrl string
-				sbomUrl, err = cmd.Flags().GetString("sbomUrl")
+				var sbomURL string
+				sbomURL, err = cmd.Flags().GetString("sbomUrl")
 				if err != nil {
 					return err
 				}
-				if len(sbomUrl) == 0 {
+				if len(sbomURL) == 0 {
 					return errors.New("sbomUrl required when pkgfmt=cyclonedx")
 				}
-				var cycloneDxUrl *url.URL
-				cycloneDxUrl, err = url.Parse(sbomUrl)
+				var cycloneDxURL *url.URL
+				cycloneDxURL, err = url.Parse(sbomURL)
 				if err != nil {
 					return err
 				}
-				fmt.Println("GetPackagesListFromCycloneDx")
-				packages, err = GetPackageListsFromCycloneDx(cycloneDxUrl)
+				packages, err = GetPackageListsFromCycloneDx(cycloneDxURL)
 				if err != nil {
 					return err
 				}
@@ -83,9 +82,7 @@ func Cmd() (*cobra.Command, error) {
 				return fmt.Errorf("unknown packagelist format type %v", pkgListFormat)
 			}
 
-			fmt.Printf("v=%v", packages)
-			fmt.Printf("Iterating over packages: %d", len(*packages))
-			for _, pkg := range *packages {
+			for _, pkg := range packages {
 				//nolint:revive,forbidigo // printing output for debugging
 				fmt.Printf(
 					"%s (%s) %s\n",

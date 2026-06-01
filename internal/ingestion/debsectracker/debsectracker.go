@@ -337,6 +337,7 @@ func (s Service) IngestTriage(ctx context.Context) error {
 	return nil
 }
 
+//nolint:unused // will be connected later
 func (s Service) getTriageEntryFromDB(ctx context.Context, cveID string) (*TriageEntry, error) {
 	debTriage, err := s.queries.GetDebianTriage(ctx, cveID)
 	if err != nil {

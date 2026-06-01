@@ -10,12 +10,12 @@ import (
 	"github.com/package-url/packageurl-go"
 )
 
-func getCycloneDx(url *url.URL) (*cdx.BOM, error) {
+func getCycloneDx(sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
-	var client *whttp.HTTPClient = whttp.NewClient()
 	var raw string
 
-	raw, _, err = client.GetString(url.String())
+	client := whttp.NewClient()
+	raw, _, err = client.GetString(sbomURL.String())
 	if err != nil {
 		return nil, err
 	}
@@ -28,7 +28,7 @@ func getCycloneDx(url *url.URL) (*cdx.BOM, error) {
 	return sbom, nil
 }
 
-func convertSbomToPackageList(input *cdx.BOM) (*[]Package, error) {
+func convertSbomToPackageList(input *cdx.BOM) ([]Package, error) {
 	var result []Package
 	var err error
 
@@ -37,16 +37,25 @@ func convertSbomToPackageList(input *cdx.BOM) (*[]Package, error) {
 		var pkgurl packageurl.PackageURL
 		pkgurl, err = packageurl.FromString(component.PackageURL)
 		if err != nil {
-			slog.Warn("unable to parse package url", "type", "sbom", "packagename", component.Name, "packageurl", component.PackageURL)
+			slog.Warn("unable to parse package url",
+				"type", "sbom",
+				"packagename", component.Name,
+				"packageurl", component.PackageURL)
 			continue
 		}
 
 		if pkgurl.Name != component.Name {
-			slog.Warn("pkgurl name != component name", "name", component.Name, "pkgurl", pkgurl.Name, "component", component.Name)
+			slog.Warn("pkgurl name != component name",
+				"name", component.Name,
+				"pkgurl", pkgurl.Name,
+				"component", component.Name)
 		}
 
 		if pkgurl.Version != component.Version {
-			slog.Warn("pkgurl version != component version", "name", component.Name, "pkgurl", pkgurl.Version, "component", component.Version)
+			slog.Warn("pkgurl version != component version",
+				"name", component.Name,
+				"pkgurl", pkgurl.Version,
+				"component", component.Version)
 		}
 
 		pkg.Name = pkgurl.Name
@@ -56,14 +65,14 @@ func convertSbomToPackageList(input *cdx.BOM) (*[]Package, error) {
 		result = append(result, pkg)
 	}
 
-	return &result, nil
+	return result, nil
 }
 
-func GetPackageListsFromCycloneDx(url *url.URL) (*[]Package, error) {
+func GetPackageListsFromCycloneDx(sbomURL *url.URL) ([]Package, error) {
 	var err error
 	var sbom *cdx.BOM
 
-	sbom, err = getCycloneDx(url)
+	sbom, err = getCycloneDx(sbomURL)
 	if err != nil {
 		return nil, err
 	}
