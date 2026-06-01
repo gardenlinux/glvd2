@@ -1,283 +1,31 @@
 package packages
 
 import (
-	"bytes"
-	"compress/gzip"
 	"errors"
 	"fmt"
-	"io"
-	"log/slog"
-	"regexp"
-	"strconv"
-	"strings"
+	"net/url"
 
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
-	"github.com/gardenlinux/glvd2/internal/whttp"
 	"github.com/spf13/cobra"
 )
 
-type Component int
-
-type Architecture int
+type PackageListFormat int
 
 const (
-	ArchitectureAll Architecture = iota
-	ArchitectureAmd64
-	ArchitectureArm64
-)
-
-const (
-	ComponentMain Component = iota
-	ComponentAll
-)
-
-var (
-	codenameRegex     = regexp.MustCompile("Codename: (.*)")
-	componentRegex    = regexp.MustCompile("Components: (.*)")
-	architectureRegex = regexp.MustCompile("Architectures: (.*)")
-	packagesGzRegex   = regexp.MustCompile(`(?m) ([a-zA-Z0-9]{64}) (\d+) (.*/Packages.gz)$`)
+	InReleaseFormat PackageListFormat = iota
+	CycloneDXFormat
 )
 
 //nolint:gochecknoglobals // not a global
-var ArchitectureToName = map[Architecture]string{
-	ArchitectureAll:   "all",
-	ArchitectureAmd64: "amd64",
-	ArchitectureArm64: "arm64",
+var PackageListFormatToName = map[PackageListFormat]string{
+	InReleaseFormat: "inrelease",
+	CycloneDXFormat: "cyclonedx",
 }
 
 //nolint:gochecknoglobals // not a global
-var ArchitectureToEnum = map[string]Architecture{
-	"all":   ArchitectureAll,
-	"amd64": ArchitectureAmd64,
-	"arm64": ArchitectureArm64,
-}
-
-//nolint:gochecknoglobals // not a global
-var ComponentToName = map[Component]string{
-	ComponentMain: "main",
-}
-
-//nolint:gochecknoglobals // not a global
-var ComponentToEnum = map[string]Component{
-	"main": ComponentMain,
-}
-
-// fully debian style url: https://packages.gardenlinux.io/gardenlinux/dists/1877.14/main/binary-amd64/Packages.gz
-//
-// Parameters:
-// 0: 1877.14, today => Suite
-// 1: main/binary-amd64/Packages.gz => PackagePath
-const glPackageURL = "https://packages.gardenlinux.io/gardenlinux/dists/%s/%s"
-
-// Parameters
-// 0: 1877.14, today => Suite
-const glInreleaseURL = "https://packages.gardenlinux.io/gardenlinux/dists/%s/InRelease"
-
-type Package struct {
-	Name         string
-	Version      string
-	Architecture string
-}
-
-type PackageFile struct {
-	Sha256Sum   string
-	Size        uint64
-	PackagePath string
-}
-
-type InRelease struct {
-	Codename      version.GardenLinuxRelease // aka Version, Release, Suite
-	Components    []Component
-	Architectures []Architecture
-	PackageFiles  []PackageFile
-}
-
-func BuildPackageURL(release version.GardenLinuxRelease, packageFile PackageFile) string {
-	return fmt.Sprintf(glPackageURL, release.Name, packageFile.PackagePath)
-}
-
-func getInReleaseFile(release version.GardenLinuxRelease) (string, error) {
-	client := whttp.NewClient()
-
-	inreleaseURL := fmt.Sprintf(glInreleaseURL, release.Name)
-
-	response, _, err := client.GetString(inreleaseURL)
-	if err != nil {
-		slog.Error("could not get InRelease file",
-			slog.Any("error", err),
-			slog.String("url", inreleaseURL))
-		return "", err
-	}
-
-	return response, nil
-}
-
-func ParseInReleaseFile(content string) (InRelease, error) {
-	if len(strings.TrimSpace(content)) == 0 {
-		return InRelease{}, errors.New("empty inrelease file")
-	}
-
-	result := InRelease{}
-
-	//
-	// Extracting values
-	//
-	var match []string
-
-	// Codename
-	match = codenameRegex.FindStringSubmatch(content)
-	if match != nil {
-		glr, err := version.MakeGardenLinuxReleaseFromString(match[1])
-		if err != nil {
-			return result, err
-		}
-		result.Codename = glr
-	}
-
-	// Component
-	match = componentRegex.FindStringSubmatch(content)
-	if match != nil {
-		componentsStr := strings.Split(match[1], ",") //nolint:modernize // works for now
-		for _, c := range componentsStr {
-			tmp, ok := ComponentToEnum[c]
-			if !ok {
-				slog.Error("Could not map to component enum",
-					slog.Any("component", tmp))
-				continue
-			}
-			result.Components = append(result.Components, tmp)
-		}
-	}
-
-	// Architectures
-	match = architectureRegex.FindStringSubmatch(content)
-	if match != nil {
-		architecturesStr := strings.Split(match[1], " ") //nolint:modernize // works for now
-		for _, a := range architecturesStr {
-			tmp, ok := ArchitectureToEnum[a]
-			if !ok {
-				slog.Error("Could not map to architecture enum",
-					slog.Any("architecture", tmp))
-				continue
-			}
-			result.Architectures = append(result.Architectures, tmp)
-		}
-	}
-
-	// Packages.gz files
-	matches := packagesGzRegex.FindAllStringSubmatch(content, -1)
-	for _, match := range matches {
-		packageFile := PackageFile{Sha256Sum: match[1]}
-		size, err := strconv.ParseUint(match[2], 10, 32)
-		if err != nil {
-			slog.Error("could not parse int",
-				slog.String("value", match[2]))
-			continue
-		}
-		packageFile.Size = size
-		packageFile.PackagePath = match[3]
-
-		result.PackageFiles = append(result.PackageFiles, packageFile)
-	}
-
-	return result, nil
-}
-
-func GetPackageLists(release version.GardenLinuxRelease) ([]Package, error) {
-	var err error
-	content, err := getInReleaseFile(release)
-	if err != nil {
-		return nil, err
-	}
-
-	inrelease, err := ParseInReleaseFile(content)
-	if err != nil {
-		return nil, err
-	}
-
-	var result []Package
-
-	for _, packagefile := range inrelease.PackageFiles {
-		var packages []Package
-		packages, err = GetPackageList(release, packagefile)
-		if err != nil {
-			slog.Error("could not get packages list",
-				slog.Any("error", err))
-			continue
-		}
-		result = append(result, packages...)
-	}
-
-	return result, nil
-}
-
-func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile) ([]Package, error) {
-	url := BuildPackageURL(release, packageFile)
-	if url == "" {
-		slog.Error("empty url",
-			slog.Any("release", release),
-			slog.String("packagefile", packageFile.PackagePath))
-		return []Package{}, errors.New("empty url")
-	}
-
-	slog.Info("Retrieving package list",
-		slog.Any("release", release),
-		slog.String("packagefile", packageFile.PackagePath),
-		slog.String("url", url))
-	client := whttp.NewClient()
-	body, _, err := client.GetRaw(url)
-	if err != nil {
-		slog.Error("could not retrieve package list",
-			slog.Any("release", release),
-			slog.String("packagefile", packageFile.PackagePath),
-			slog.Any("error", err))
-		return []Package{}, err
-	}
-
-	reader, err := gzip.NewReader(bytes.NewReader(body))
-	if err != nil {
-		return []Package{}, err
-	}
-	defer reader.Close() //nolint:errcheck // not necessary here
-
-	rawPackages, err := io.ReadAll(reader)
-	if err != nil {
-		return []Package{}, err
-	}
-
-	packages, err := ParsePackageList(string(rawPackages))
-	if err != nil {
-		return []Package{}, err
-	}
-
-	return packages, nil
-}
-
-func ParsePackageList(content string) ([]Package, error) {
-	slog.Debug("Parsing package list")
-	items := strings.Split(strings.TrimSpace(content), "\n\n")
-
-	result := make([]Package, 0, len(items))
-
-	for _, item := range items {
-		pkg := Package{}
-		for _, line := range strings.Split(item, "\n") { //nolint:modernize // works for now
-			if strings.HasPrefix(line, "Package: ") { //nolint:modernize // Suggested CutPrefix does not work
-				pkg.Name = strings.TrimPrefix(line, "Package: ")
-			}
-			if strings.HasPrefix(line, "Version: ") { //nolint:modernize // Suggested CutPrefix does not work
-				pkg.Version = strings.TrimPrefix(line, "Version: ")
-			}
-			if strings.HasPrefix(line, "Architecture: ") { //nolint:modernize // Suggested CutPrefix does not work
-				pkg.Architecture = strings.TrimPrefix(line, "Architecture: ")
-			}
-		}
-
-		result = append(result, pkg)
-	}
-
-	slog.With("Count", len(result)).Debug("Found packages")
-	return result, nil
+var PackageListFormatToEnum = map[string]PackageListFormat{
+	"inrelease": InReleaseFormat,
+	"cyclonedx": CycloneDXFormat,
 }
 
 func Cmd() (*cobra.Command, error) {
@@ -285,20 +33,59 @@ func Cmd() (*cobra.Command, error) {
 		Use:     "packages <version>",
 		Short:   "Print packages of a <version>",
 		GroupID: "debug",
-		Args:    cobra.MaximumNArgs(1),
+		Args:    cobra.MaximumNArgs(3),
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			var release version.GardenLinuxRelease
+			var err error
+			var packages *[]Package
+
 			vers, _ := cmd.Flags().GetString("version")
-			release, err := version.MakeGardenLinuxReleaseFromString(vers)
+			if len(vers) != 0 {
+				release, err = version.MakeGardenLinuxReleaseFromString(vers)
+				if err != nil {
+					return err
+				}
+			}
+
+			var pkgfmt string
+			pkgfmt, err = cmd.Flags().GetString("pkgfmt")
 			if err != nil {
 				return err
 			}
 
-			packages, err := GetPackageLists(release)
-			if err != nil {
-				return err
+			pkgListFormat := PackageListFormatToEnum[pkgfmt]
+			switch pkgListFormat {
+			case InReleaseFormat:
+				packages, err = GetPackageListsFromInRelease(release)
+				if err != nil {
+					return err
+				}
+			case CycloneDXFormat:
+				var sbomUrl string
+				sbomUrl, err = cmd.Flags().GetString("sbomUrl")
+				if err != nil {
+					return err
+				}
+				if len(sbomUrl) == 0 {
+					return errors.New("sbomUrl required when pkgfmt=cyclonedx")
+				}
+				var cycloneDxUrl *url.URL
+				cycloneDxUrl, err = url.Parse(sbomUrl)
+				if err != nil {
+					return err
+				}
+				fmt.Println("GetPackagesListFromCycloneDx")
+				packages, err = GetPackageListsFromCycloneDx(cycloneDxUrl)
+				if err != nil {
+					return err
+				}
+			default:
+				return fmt.Errorf("unknown packagelist format type %v", pkgListFormat)
 			}
 
-			for _, pkg := range packages {
+			fmt.Printf("v=%v", packages)
+			fmt.Printf("Iterating over packages: %d", len(*packages))
+			for _, pkg := range *packages {
 				//nolint:revive,forbidigo // printing output for debugging
 				fmt.Printf(
 					"%s (%s) %s\n",
@@ -310,11 +97,9 @@ func Cmd() (*cobra.Command, error) {
 			return nil
 		},
 	}
-	cmd.Flags().String("version", "", "specific version")
-	err := cmd.MarkFlagRequired("version")
-	if err != nil {
-		return nil, err
-	}
+	cmd.Flags().String("version", "", "specific version. Required when pkgfmt=inrelease")
+	cmd.Flags().String("pkgfmt", "inrelease", "define packagelist format (inrelease,cyclonedx)")
+	cmd.Flags().String("sbomUrl", "", "URL to sbom in cyclonedx format, required when pkgfmt=cyclonedx")
 
 	return cmd, nil
 }
