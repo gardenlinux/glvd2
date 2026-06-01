@@ -8,3 +8,5 @@ go = "1.26"
 "aqua:golangci/golangci-lint" = "latest"
 syft = "latest"
 gofumpt = "latest"
+golangci-lint = "2.12.2"
+
