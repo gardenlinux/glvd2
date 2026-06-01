@@ -182,7 +182,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	return result, nil
 }
 
-func GetPackageListsFromInRelease(release version.GardenLinuxRelease) (*[]Package, error) {
+func GetPackageListsFromInRelease(release version.GardenLinuxRelease) ([]Package, error) {
 	var err error
 	content, err := getInReleaseFile(release)
 	if err != nil {
@@ -197,20 +197,20 @@ func GetPackageListsFromInRelease(release version.GardenLinuxRelease) (*[]Packag
 	var result []Package
 
 	for _, packagefile := range inrelease.PackageFiles {
-		var packages *[]Package
+		var packages []Package
 		packages, err = GetPackageList(release, packagefile)
 		if err != nil {
 			slog.Error("could not get packages list",
 				slog.Any("error", err))
 			continue
 		}
-		result = append(result, *packages...)
+		result = append(result, packages...)
 	}
 
-	return &result, nil
+	return result, nil
 }
 
-func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile) (*[]Package, error) {
+func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile) ([]Package, error) {
 	url := BuildPackageURL(release, packageFile)
 	if url == "" {
 		slog.Error("empty url",
@@ -247,11 +247,11 @@ func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile)
 	return ParsePackageListInRelease(string(rawPackages))
 }
 
-func ParsePackageListInRelease(content string) (*[]Package, error) {
+func ParsePackageListInRelease(content string) ([]Package, error) {
 	slog.Debug("Parsing package list")
 	items := strings.Split(strings.TrimSpace(content), "\n\n")
 
-	var result []Package
+	result := make([]Package, 0, 250) //nolint:mnd // just preheating array
 
 	for _, item := range items {
 		pkg := Package{}
@@ -271,5 +271,5 @@ func ParsePackageListInRelease(content string) (*[]Package, error) {
 	}
 
 	slog.With("Count", len(result)).Debug("Found packages")
-	return &result, nil
+	return result, nil
 }

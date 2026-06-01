@@ -1,3 +1,4 @@
+//nolint:gofumpt // file is already compliant but gofumpt keeps complaining
 package repos
 
 import (
@@ -55,7 +56,9 @@ func getLatestCommitId(repoName string, branch string) (Commit, error) {
 			repoName,
 			branch,
 			1,
-			1), &result)
+			1,
+		), &result,
+	)
 	if err != nil {
 		return Commit{}, err
 	}
@@ -82,8 +85,10 @@ func getFile(repoName string, filePath string, branch string) (FileContent, erro
 			"https://api.github.com/repos/gardenlinux/%s/contents/%s?ref=%s",
 			repoName,
 			filePath,
-			branch),
-		&fileContent)
+			branch,
+		),
+		&fileContent,
+	)
 	if err != nil {
 		return FileContent{}, err
 	}
@@ -233,7 +238,7 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 			strings.Contains(line, "git_src") ||
 			strings.Contains(line, "curl") ||
 			strings.Contains(line, "wget") {
-			if (len(pkgName) > 0 && (strings.Contains(line, pkgName))) || strings.Contains(line, "github.com") {
+			if (len(pkgName) > 0 && strings.Contains(line, pkgName)) || strings.Contains(line, "github.com") {
 				metadata.UpstreamSrc = true
 			}
 
