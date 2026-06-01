@@ -16,7 +16,7 @@ format:
 
 .PHONY: lint
 lint:
-	golangci-lint run
+	golangci-lint --config=.golangci.yaml run
 
 .PHONY: test
 test: clean_test
