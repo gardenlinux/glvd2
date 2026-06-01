@@ -61,8 +61,8 @@ func getLatestCommitId(repoName string, branch string) (Commit, error) {
 	}
 
 	if len(result) != 1 {
-		slog.Error("Did not recieve the latest commit.", "commits", len(result), "repoName", repoName, "branch", branch)
-		return Commit{}, fmt.Errorf("Recieved more than the latest commit or no commit at all.")
+		slog.Error("did not receive the latest commit", "commits", len(result), "repoName", repoName, "branch", branch)
+		return Commit{}, errors.New("received more than the latest commit or no commit at all")
 	}
 
 	return result[0], nil
@@ -263,23 +263,15 @@ func GetRepoPackageMetadata(repoName string, branchName string) ([]*RepositoryMe
 
 	for _, repo := range repositories {
 		var branches []Branch
-		// Check if all (filtered) branches or just the given,
-		if repoName == "" { // means all repos requested
-			// when no specific repo is given, we have to get all branches
+		// Check if all (filtered) branches or just the given. If no repo is named, we always
+		// query all branches
+		if repoName == "" || branchName == "" {
 			branches, err = GetPackageRepoBranches(repo.Name)
 			if err != nil {
 				return nil, err
 			}
 		} else {
-			// when a specific repo is requested, we can specify a specific branch or all branches
-			if branchName == "" {
-				branches, err = GetPackageRepoBranches(repo.Name)
-				if err != nil {
-					return nil, err
-				}
-			} else {
-				branches = append(branches, Branch{Name: branchName})
-			}
+			branches = append(branches, Branch{Name: branchName})
 		}
 
 		for _, br := range branches {
@@ -339,13 +331,13 @@ func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 			for _, meta := range metas {
 				// print metadata
 				fmt.Printf("package=%s, branch=%s, commitId=%s\n", meta.Repository, meta.Branch, meta.CommitId) //nolint:forbidigo,golines,lll,revive // just for debug output
-				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)                                                      //nolint:forbidigo,revive // just for debug output
-				fmt.Printf("DebianSrc: %v\n", meta.DebianSrc)                                                   //nolint:forbidigo,revive // just for debug output
-				fmt.Printf("SalsaSrc : %v\n", meta.SalsaSrc)                                                    //nolint:forbidigo,revive // just for debug output
-				fmt.Printf("UpstreamSrc : %v\n", meta.UpstreamSrc)                                              //nolint:forbidigo,revive // just for debug output
-				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)                                  //nolint:forbidigo,revive // just for debug output
-				fmt.Printf("Debian Patches      : %v\n", meta.DebianPatches)                                    //nolint:forbidigo,revive // just for debug output
-				fmt.Printf("Gardenlinux Patches : %v\n", meta.GlPatches)                                        //nolint:forbidigo,revive // just for debug output
+				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)                                                      //nolint:forbidigo,revive,lll // just for debug output
+				fmt.Printf("DebianSrc: %v\n", meta.DebianSrc)                                                   //nolint:forbidigo,revive,lll // just for debug output
+				fmt.Printf("SalsaSrc : %v\n", meta.SalsaSrc)                                                    //nolint:forbidigo,revive,lll // just for debug output
+				fmt.Printf("UpstreamSrc : %v\n", meta.UpstreamSrc)                                              //nolint:forbidigo,revive,lll // just for debug output
+				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)                                  //nolint:forbidigo,revive,lll // just for debug output
+				fmt.Printf("Debian Patches      : %v\n", meta.DebianPatches)                                    //nolint:forbidigo,revive,lll // just for debug output
+				fmt.Printf("Gardenlinux Patches : %v\n", meta.GlPatches)                                        //nolint:forbidigo,revive,lll // just for debug output
 			}
 			return nil
 		},

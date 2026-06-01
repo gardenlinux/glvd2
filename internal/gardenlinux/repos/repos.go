@@ -96,7 +96,8 @@ func GetPackageRepos() ([]Repository, error) {
 	// Filter only package-*
 	var filteredRepositories []Repository
 	for _, repo := range allRepository {
-		if (strings.HasPrefix(repo.Name, "bp-") || strings.HasPrefix(repo.Name, "package-")) && repo.Name != "package-build" {
+		if (strings.HasPrefix(repo.Name, "bp-") || strings.HasPrefix(repo.Name, "package-")) &&
+			repo.Name != "package-build" {
 			filteredRepositories = append(filteredRepositories, repo)
 		}
 	}
@@ -117,7 +118,7 @@ func PackagerepoCmd() (*cobra.Command, error) {
 			}
 
 			for _, repo := range repos {
-				fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:forbidigo,golines,revive,lll // printing output for debugging
+				fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:forbidigo,revive,golines,lll // printing output for debugging
 			}
 			return nil
 		},
