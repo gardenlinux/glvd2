@@ -213,7 +213,7 @@ Description: utilities for ESLint plugins
 
 `
 
-	pkgs, err := packages.ParsePackageList(content)
+	pkgs, err := packages.ParsePackageListInRelease(content)
 
 	assert.Len(t, pkgs, 3)
 	assert.NoError(t, err, "should not have errors")
