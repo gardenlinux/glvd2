@@ -12,17 +12,6 @@ import (
 	"github.com/gardenlinux/glvd2/internal/config"
 )
 
-// MetadataFlags contains only the boolean fields from RepositoryMetadata
-type MetadataFlags struct {
-	DebianSrc       bool `json:"debian_src"`
-	AptSrc          bool `json:"apt_src"`
-	SalsaSrc        bool `json:"salsa_src"`
-	UpstreamSrc     bool `json:"upstream_src"`
-	UpstreamPatches bool `json:"upstream_patches"`
-	DebianPatches   bool `json:"debian_patches"`
-	GlPatches       bool `json:"gl_patches"`
-}
-
 func buildCacheFilename(metadata *RepositoryMetadata) string {
 	cfg := config.GetAppConfig()
 	return path.Join(cfg.RepoMetadataCachePath, fmt.Sprintf("%s_%s.json", metadata.Repository, metadata.Branch))
@@ -30,8 +19,7 @@ func buildCacheFilename(metadata *RepositoryMetadata) string {
 
 func getFromCache(queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
 	var err error
-	var result *RepositoryMetadata
-	result = &RepositoryMetadata{}
+	result := &RepositoryMetadata{}
 
 	if len(queryData.Repository) == 0 || len(queryData.Branch) == 0 || len(queryData.CommitId) == 0 {
 		return nil, errors.New("repository, branch or commitid missing")
@@ -49,7 +37,7 @@ func getFromCache(queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
 	slog.Debug("reading file", "filePath", filePath)
 
 	var data []byte
-	data, err = os.ReadFile(filePath)
+	data, err = os.ReadFile(filePath) //nolint:gosec // filename is derived from package and branch
 	if err != nil {
 		slog.Debug("could not read file", "file", filePath, "repository", queryData.Repository)
 		return nil, err
@@ -67,23 +55,34 @@ func getFromCache(queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
 func saveToCache(metadata *RepositoryMetadata) error {
 	var err error
 	var data []byte
-	var filePath string
 
-	filePath = buildCacheFilename(metadata)
+	filePath := buildCacheFilename(metadata)
 
 	// check if directory exists
-	err = os.MkdirAll(filepath.Dir(filePath), 0o755) //nolint:mnd // no magic number check)
+	err = os.MkdirAll(filepath.Dir(filePath), 0o755) //nolint:mnd // no magic number check
 	if err != nil {
 		return err
 	}
 
 	data, err = json.MarshalIndent(metadata, "", "  ") // Marshall pretty json
-	err = os.WriteFile(filePath, data, 0644)
 	if err != nil {
 		return err
 	}
 
-	slog.Debug("persisted metadata to cache", "repository", metadata.Repository, "branch", metadata.Branch, "file", filePath)
+	err = os.WriteFile(filePath, data, 0o644) //nolint:mnd // no magic number check
+	if err != nil {
+		return err
+	}
+
+	slog.Debug(
+		"persisted metadata to cache",
+		"repository",
+		metadata.Repository,
+		"branch",
+		metadata.Branch,
+		"file",
+		filePath,
+	)
 
 	return nil
 }

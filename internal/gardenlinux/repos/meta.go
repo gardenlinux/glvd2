@@ -1,4 +1,3 @@
-//nolint:gofumpt // file is already compliant but gofumpt keeps complaining
 package repos
 
 import (

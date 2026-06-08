@@ -6,9 +6,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-var (
-	appConfig AppConfig
-)
+var appConfig AppConfig //nolint:gochecknoglobals // use of single instance for configuration
 
 // AppConfig contains different configuration options for the application.
 type AppConfig struct {
