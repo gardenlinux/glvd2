@@ -19,7 +19,7 @@ bin/
 .glide/
 
 # Internally used sqlite DB
-data/internal.sqlite
+data/**
 
 # test code coverage
 coverage.out

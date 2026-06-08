@@ -4,6 +4,7 @@ import (
 	"context"
 	"log/slog"
 	"os"
+	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
@@ -19,15 +20,19 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// Set the log level via environment variable.
+// Set the log level
 func setLogLevel(logLevelStr string) error {
 	var logLevel slog.LevelVar
-	err := logLevel.UnmarshalText([]byte(logLevelStr))
-	if err != nil {
-		return err
+	switch strings.ToLower(logLevelStr) {
+	case "error":
+		logLevel.Set(slog.LevelError)
+	case "warn":
+		logLevel.Set(slog.LevelWarn)
+	case "info":
+		logLevel.Set(slog.LevelInfo)
+	case "debug":
+		logLevel.Set(slog.LevelDebug)
 	}
-
-	logLevel.Set(slog.LevelInfo)
 
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
 		Level: &logLevel,
@@ -115,21 +120,19 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 		SilenceUsage: true,
 		Short:        "CVE-related tool for GL",
 		Long:         "Tool to ingest CVEs and triage for GL.",
-		RunE: func(cmd *cobra.Command, _ []string) error {
+		PersistentPreRun: func(cmd *cobra.Command, _ []string) {
 			logLevel, err := cmd.Flags().GetString("log-level")
 			if err != nil {
-				return err
-			}
-
-			if logLevelFromEnv, logLevelSetFromEnv := os.LookupEnv("LOGLEVEL"); logLevelSetFromEnv {
-				logLevel = logLevelFromEnv
+				slog.Error("getting loglevel failed", "error", err)
 			}
 
 			err = setLogLevel(logLevel)
 			if err != nil {
-				return err
+				slog.Error("setting loglevel failed", "error", err)
 			}
 
+		},
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			return ingestCVEs(cfg)
 		},
 	}
@@ -142,15 +145,14 @@ func main() {
 	var err error
 	var rootCmd *cobra.Command
 
-	var cfg *config.AppConfig
-	cfg, err = config.LoadAppConfig()
+	_, err = config.LoadAppConfig()
 	if err != nil {
 		slog.Error("Could not read the config file", slog.Any("error", err))
 		return
 	}
 
 	// Main program call
-	rootCmd = cmd(cfg)
+	rootCmd = cmd(config.GetAppConfig())
 
 	// Argument and subprogram handling
 	rootCmd.AddGroup(&cobra.Group{
@@ -214,7 +216,7 @@ func main() {
 
 	// Debug: Repometa information
 	var repoMetaCmd *cobra.Command
-	repoMetaCmd, err = repos.MetaCmd(cfg)
+	repoMetaCmd, err = repos.MetaCmd(config.GetAppConfig())
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
@@ -223,7 +225,7 @@ func main() {
 
 	// Regenerate
 	var regenerateCmd *cobra.Command
-	regenerateCmd, err = database.RegenerateCmd(cfg)
+	regenerateCmd, err = database.RegenerateCmd(config.GetAppConfig())
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)

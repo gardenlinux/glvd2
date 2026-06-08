@@ -2,6 +2,8 @@ package repos
 
 import (
 	"fmt"
+	"log/slog"
+	"os"
 	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/github"
@@ -117,8 +119,10 @@ func PackagerepoCmd() (*cobra.Command, error) {
 				return err
 			}
 
+			stdOutLogger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
 			for _, repo := range repos {
-				_, _ = fmt.Printf("%s (%d) %s\n", repo.Name, repo.Id, repo.FullName) //nolint:forbidigo,golines,lll // printing output for debugging
+				stdOutLogger.Info("package repo", "repo", repo)
 			}
 			return nil
 		},
@@ -129,7 +133,7 @@ func PackagerepoCmd() (*cobra.Command, error) {
 
 func BranchCmd() (*cobra.Command, error) {
 	cmd := &cobra.Command{
-		Use:     "repo",
+		Use:     "branches",
 		Short:   "Print repo's branches",
 		GroupID: "debug",
 		Args:    cobra.MaximumNArgs(1),
@@ -140,9 +144,10 @@ func BranchCmd() (*cobra.Command, error) {
 				return err
 			}
 
+			stdOutLogger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
 			for _, branch := range branches {
-				//nolint:forbidigo,revive,nolintlint // printing output for debugging
-				fmt.Printf("%s - %s\n", repository, branch.Name)
+				stdOutLogger.Info("repo branches", "repo", repository, "branch", branch.Name)
 			}
 			return nil
 		},

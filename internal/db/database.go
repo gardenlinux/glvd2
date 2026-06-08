@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/sqlite" // blank import like lib proposes
 	_ "github.com/golang-migrate/migrate/v4/source/file"
@@ -49,6 +50,10 @@ func Regenerate(fp string) (*sql.DB, error) {
 	}
 
 	return db, nil
+}
+
+func NewInstance() (*sql.DB, error) {
+	return Open(config.GetAppConfig().InternalSqliteDBPath)
 }
 
 // Open a sqlite db from file.
