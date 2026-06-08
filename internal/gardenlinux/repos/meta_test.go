@@ -1,3 +1,4 @@
+//nolint:goconst // static values for tests
 package repos_test
 
 import (
@@ -99,7 +100,11 @@ version_suffix="gl0"
 apply_patches`
 
 	var metadata *repos.RepositoryMetadata
-	queryData := repos.RepositoryMetadata{Repository: "package-checkbox-provider-gpgpu", Branch: "mybranch", CommitId: "12345d"}
+	queryData := repos.RepositoryMetadata{
+		Repository: "package-checkbox-provider-gpgpu",
+		Branch:     "mybranch",
+		CommitId:   "12345d",
+	}
 	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
@@ -197,7 +202,11 @@ import_src "$workdir"
 rm -rf "$workdir"`
 
 	var metadata *repos.RepositoryMetadata
-	queryData := repos.RepositoryMetadata{Repository: "package-google-guest-agent", Branch: "mybranch", CommitId: "12345d"}
+	queryData := repos.RepositoryMetadata{
+		Repository: "package-google-guest-agent",
+		Branch:     "mybranch",
+		CommitId:   "12345d",
+	}
 	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 

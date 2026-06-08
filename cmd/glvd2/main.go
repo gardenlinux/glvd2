@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log/slog"
 	"os"
 	"strings"
@@ -20,7 +21,7 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// Set the log level
+// Set the log level.
 func setLogLevel(logLevelStr string) error {
 	var logLevel slog.LevelVar
 	switch strings.ToLower(logLevelStr) {
@@ -32,6 +33,9 @@ func setLogLevel(logLevelStr string) error {
 		logLevel.Set(slog.LevelInfo)
 	case "debug":
 		logLevel.Set(slog.LevelDebug)
+	default:
+		logLevel.Set(slog.LevelDebug)
+		return errors.New("unknown loglevel, defaulting to 'debug'")
 	}
 
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
@@ -121,18 +125,19 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 		Short:        "CVE-related tool for GL",
 		Long:         "Tool to ingest CVEs and triage for GL.",
 		PersistentPreRun: func(cmd *cobra.Command, _ []string) {
-			logLevel, err := cmd.Flags().GetString("log-level")
+			var err error
+			var logLevel string
+			logLevel, err = cmd.Flags().GetString("log-level")
 			if err != nil {
 				slog.Error("getting loglevel failed", "error", err)
 			}
 
 			err = setLogLevel(logLevel)
 			if err != nil {
-				slog.Error("setting loglevel failed", "error", err)
+				slog.Error("could not set log level", "error", err)
 			}
-
 		},
-		RunE: func(cmd *cobra.Command, _ []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			return ingestCVEs(cfg)
 		},
 	}
