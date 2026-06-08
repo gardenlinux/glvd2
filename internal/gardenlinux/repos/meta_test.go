@@ -16,8 +16,8 @@ apply_patches
 #version_suffix="gl3"`
 
 	var metadata *repos.RepositoryMetadata
-	metadata = &repos.RepositoryMetadata{}
-	metadata, err := repos.AnalyzePrepareSource(prepareSource, metadata)
+	queryData := repos.RepositoryMetadata{Repository: "myrepo", Branch: "mybranch", CommitId: "12345d"}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
 	assert.False(t, metadata.AptSrc)
@@ -39,8 +39,9 @@ apply_patches patches-debian
 version_suffix="gl21"`
 
 	var metadata *repos.RepositoryMetadata
-	metadata = &repos.RepositoryMetadata{}
-	metadata, err := repos.AnalyzePrepareSource(prepareSource, metadata)
+
+	queryData := repos.RepositoryMetadata{Repository: "myrepo", Branch: "mybranch", CommitId: "12345d"}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
 	assert.False(t, metadata.AptSrc)
@@ -65,8 +66,8 @@ git_src_commit "39488fe01d9de5175c5ccccfcac30b667965d701" "https://salsa.debian.
 import_upstream_patches`
 
 	var metadata *repos.RepositoryMetadata
-	metadata = &repos.RepositoryMetadata{}
-	metadata, err := repos.AnalyzePrepareSource(prepareSource, metadata)
+	queryData := repos.RepositoryMetadata{Repository: "myrepo", Branch: "mybranch", CommitId: "12345d"}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
 	assert.False(t, metadata.AptSrc)
@@ -98,9 +99,8 @@ version_suffix="gl0"
 apply_patches`
 
 	var metadata *repos.RepositoryMetadata
-	metadata = &repos.RepositoryMetadata{}
-	metadata.Branch = "package-checkbox-provider-gpgpu"
-	metadata, err := repos.AnalyzePrepareSource(prepareSource, metadata)
+	queryData := repos.RepositoryMetadata{Repository: "package-checkbox-provider-gpgpu", Branch: "mybranch", CommitId: "12345d"}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
 	assert.False(t, metadata.AptSrc)
@@ -132,10 +132,8 @@ apply_patches
 version_suffix="gl3~bp1877"`
 
 	var metadata *repos.RepositoryMetadata
-	metadata = &repos.RepositoryMetadata{}
-	metadata.Branch = "package-gnutls"
-
-	metadata, err := repos.AnalyzePrepareSource(prepareSource, metadata)
+	queryData := repos.RepositoryMetadata{Repository: "package-gnutls", Branch: "mybranch", CommitId: "12345d"}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
 	assert.False(t, metadata.AptSrc)
@@ -199,10 +197,8 @@ import_src "$workdir"
 rm -rf "$workdir"`
 
 	var metadata *repos.RepositoryMetadata
-	metadata = &repos.RepositoryMetadata{}
-	metadata.Branch = "package-google-guest-agent"
-
-	metadata, err := repos.AnalyzePrepareSource(prepareSource, metadata)
+	queryData := repos.RepositoryMetadata{Repository: "package-google-guest-agent", Branch: "mybranch", CommitId: "12345d"}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
 	require.NoError(t, err)
 
 	assert.False(t, metadata.AptSrc)

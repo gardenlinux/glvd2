@@ -6,7 +6,9 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"os"
 	"strings"
+	"time"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
@@ -16,17 +18,18 @@ import (
 )
 
 type RepositoryMetadata struct {
-	Repository string // Which Repository
-	Branch     string // Which Branch
-	CommitId   string // State of the information
+	Repository string    `json:"repository"` // Which Repository
+	Branch     string    `json:"branch"`     // Which Branch
+	CommitId   string    `json:"commitid"`   // State of the information
+	CreatedAt  time.Time `json:"created_at"` // Cache created at
 
-	DebianSrc       bool // Loads debian directory from a different src
-	AptSrc          bool // Loads src from GL/debian package
-	SalsaSrc        bool // Loads debian src from salta git repository
-	UpstreamSrc     bool // Loads src from upstream project (can be archive or git repo)
-	UpstreamPatches bool // applys upstream_patches via import_upstream_patches
-	DebianPatches   bool // applys patches for debian, when apply_patches with directory "debian"
-	GlPatches       bool // applys custom patches, usually via apply_patches
+	DebianSrc       bool `json:"debian_src"`       // Loads debian directory from a different src
+	AptSrc          bool `json:"apt_src"`          // Loads src from GL/debian package
+	SalsaSrc        bool `json:"salsa_src"`        // Loads debian src from salta git repository
+	UpstreamSrc     bool `json:"upstream_src"`     // Loads src from upstream project (can be archive or git repo)
+	UpstreamPatches bool `json:"upstream_patches"` // applys upstream_patches via import_upstream_patches
+	DebianPatches   bool `json:"debian_patches"`   // applys patches for debian, when apply_patches with directory "debian"
+	GlPatches       bool `json:"gl_patches"`       // applys custom patches, usually via apply_patches
 }
 
 type FileContent struct {
@@ -40,7 +43,7 @@ type Commit struct {
 	Sha string `json:"sha"`
 }
 
-func getLatestCommitId(repoName string, branch string) (Commit, error) {
+func getLatestCommitId(repoName, branch string) (Commit, error) {
 	var err error
 	var client *whttp.HTTPClient
 
@@ -71,7 +74,7 @@ func getLatestCommitId(repoName string, branch string) (Commit, error) {
 	return result[0], nil
 }
 
-func getFile(repoName string, filePath string, branch string) (FileContent, error) {
+func getFile(repoName, filePath, branch string) (FileContent, error) {
 	var err error
 	var client *whttp.HTTPClient
 	client, err = github.NewClient()
@@ -96,38 +99,50 @@ func getFile(repoName string, filePath string, branch string) (FileContent, erro
 	return fileContent, nil
 }
 
-func GetPackageMeta(repoName string, branch string) (*RepositoryMetadata, error) {
+func GetPackageMeta(repoName, branch string) (*RepositoryMetadata, error) {
 	var err error
 	var prepareSource FileContent
-	prepareSource, err = getFile(repoName, "prepare_source", branch)
-	if err != nil {
-		return &RepositoryMetadata{}, err
-	}
-
-	var metadata *RepositoryMetadata
-	metadata = &RepositoryMetadata{Repository: repoName, Branch: branch}
-
 	var content string
+	var queryData RepositoryMetadata
+	var metadata *RepositoryMetadata
 
-	// Analyse prepare_source
-	content, err = getFileSrc(prepareSource)
-	if err != nil {
-		return &RepositoryMetadata{}, err
-	}
-	metadata, err = AnalyzePrepareSource(content, metadata)
-	if err != nil {
-		return &RepositoryMetadata{}, err
-	}
-	metadata.Repository = repoName
-	metadata.Branch = branch
+	queryData = RepositoryMetadata{Repository: repoName, Branch: branch}
 
 	// Get CommitId for caching
 	var commitId Commit
 	commitId, err = getLatestCommitId(repoName, branch)
 	if err != nil {
-		return &RepositoryMetadata{}, err
+		return nil, err
 	}
-	metadata.CommitId = commitId.Sha
+	queryData.CommitId = commitId.Sha
+
+	// check for cache
+	metadata, err = getFromCache(&queryData)
+	if err != nil {
+		// Cache miss, getting the file from github repo
+		slog.Error("cache miss", "repository", queryData.Repository, "branch", queryData.Branch, "error", err)
+
+		prepareSource, err = getFile(repoName, "prepare_source", branch)
+		if err != nil {
+			return nil, err
+		}
+
+		// Analyse prepare_source
+		content, err = getFileSrc(prepareSource)
+		if err != nil {
+			return nil, err
+		}
+		metadata, err = AnalyzePrepareSource(content, queryData)
+		if err != nil {
+			return nil, err
+		}
+
+		// Save result as cache
+		err = saveToCache(metadata)
+		if err != nil {
+			slog.Error("could not persist cache file", "repository", repoName, "branch", branch, "error", err)
+		}
+	}
 
 	return metadata, nil
 }
@@ -196,20 +211,22 @@ func ExtractPackageName(branch string) string {
 	return strings.TrimSpace(branch)
 }
 
-func AnalyzePrepareSource(content string, metadata *RepositoryMetadata) (*RepositoryMetadata, error) {
+func AnalyzePrepareSource(content string, queryData RepositoryMetadata) (*RepositoryMetadata, error) {
 	preparedContent, err := prepareContent(content)
 	if err != nil {
 		return nil, err
 	}
-	return analyzePrepareSource(preparedContent, metadata)
+	return analyzePrepareSource(preparedContent, queryData)
 }
 
-func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*RepositoryMetadata, error) {
-	if metadata == nil {
-		return nil, errors.New("no active metadata object")
-	}
+func analyzePrepareSource(content string, queryData RepositoryMetadata) (*RepositoryMetadata, error) {
+	var metadata RepositoryMetadata
+	metadata.Repository = queryData.Repository
+	metadata.Branch = queryData.Branch
+	metadata.CommitId = queryData.CommitId
+	metadata.CreatedAt = time.Now()
 
-	pkgName := ExtractPackageName(metadata.Branch)
+	pkgName := ExtractPackageName(queryData.Repository)
 
 	for line := range strings.Lines(content) {
 		// apt_src
@@ -248,10 +265,10 @@ func analyzePrepareSource(content string, metadata *RepositoryMetadata) (*Reposi
 			continue
 		}
 	}
-	return metadata, nil
+	return &metadata, nil
 }
 
-func GetRepoPackageMetadata(repoName string, branchName string) ([]*RepositoryMetadata, error) {
+func GetRepoPackageMetadata(repoName, branchName string) ([]*RepositoryMetadata, error) {
 	var repositories []Repository
 	var err error
 	var result []*RepositoryMetadata
@@ -294,7 +311,7 @@ func GetRepoPackageMetadata(repoName string, branchName string) ([]*RepositoryMe
 
 func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 	cmd := &cobra.Command{
-		Use:          "repometa",
+		Use:          "metadata",
 		Short:        "Print repo metadata",
 		GroupID:      "debug", //nolint:goconst // just for debug output
 		SilenceUsage: false,
@@ -333,16 +350,21 @@ func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 				return err
 			}
 
+			stdOutLogger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
 			for _, meta := range metas {
 				// print metadata
-				fmt.Printf("package=%s, branch=%s, commitId=%s\n", meta.Repository, meta.Branch, meta.CommitId) //nolint:forbidigo,golines,lll,revive // just for debug output
-				fmt.Printf("AptSrc   : %v\n", meta.AptSrc)                                                      //nolint:forbidigo,revive,lll // just for debug output
-				fmt.Printf("DebianSrc: %v\n", meta.DebianSrc)                                                   //nolint:forbidigo,revive,lll // just for debug output
-				fmt.Printf("SalsaSrc : %v\n", meta.SalsaSrc)                                                    //nolint:forbidigo,revive,lll // just for debug output
-				fmt.Printf("UpstreamSrc : %v\n", meta.UpstreamSrc)                                              //nolint:forbidigo,revive,lll // just for debug output
-				fmt.Printf("Upstream Patches    : %v\n", meta.UpstreamPatches)                                  //nolint:forbidigo,revive,lll // just for debug output
-				fmt.Printf("Debian Patches      : %v\n", meta.DebianPatches)                                    //nolint:forbidigo,revive,lll // just for debug output
-				fmt.Printf("Gardenlinux Patches : %v\n", meta.GlPatches)                                        //nolint:forbidigo,revive,lll // just for debug output
+				stdOutLogger.
+					With("repository", meta.Repository, "branch", meta.Branch, "commitid", meta.CommitId).
+					Info("analysis",
+						"AptSrc", meta.AptSrc,
+						"DebianSrc", meta.DebianSrc,
+						"SalsaSrc", meta.SalsaSrc,
+						"UpstreamSrc", meta.UpstreamSrc,
+						"Upstream Patches", meta.UpstreamPatches,
+						"Debian Patches", meta.DebianPatches,
+						"Gardenlinux Patches", meta.GlPatches,
+					)
 			}
 			return nil
 		},
