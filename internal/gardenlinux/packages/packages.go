@@ -3,6 +3,7 @@ package packages
 import (
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/url"
 
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
@@ -83,12 +84,10 @@ func Cmd() (*cobra.Command, error) {
 			}
 
 			for _, pkg := range packages {
-				//nolint:revive,forbidigo // printing output for debugging
-				fmt.Printf(
-					"%s (%s) %s\n",
-					pkg.Name,
-					pkg.Architecture,
-					pkg.Version,
+				slog.Info("Packages",
+					slog.String("name", pkg.Name),
+					slog.String("architecture", pkg.Architecture),
+					slog.String("version", pkg.Version),
 				)
 			}
 			return nil
