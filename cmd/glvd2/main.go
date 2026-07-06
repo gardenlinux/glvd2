@@ -22,12 +22,11 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// Allows rendering of the new log level "trace"
-func replaceAttr(groups []string, a slog.Attr) slog.Attr {
+// Allows rendering of the new log level "trace".
+func replaceAttr(_ []string, a slog.Attr) slog.Attr {
 	if a.Key == slog.LevelKey {
-		level := a.Value.Any().(slog.Level)
-		switch level {
-		case logging.LevelTrace:
+		level := a.Value.Any().(slog.Level) //nolint: forcetypeassert,revive // ignore for trace logging
+		if logging.LevelTrace == level {
 			a.Value = slog.StringValue("TRACE")
 		}
 	}
@@ -157,7 +156,8 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 			return ingestCVEs(cfg)
 		},
 	}
-	rootCmd.PersistentFlags().String("log-level", "debug", "specify log-level from: error > warn > info > debug > trace")
+	rootCmd.PersistentFlags().
+		String("log-level", "debug", "specify log-level from: error > warn > info > debug > trace")
 
 	return rootCmd
 }
