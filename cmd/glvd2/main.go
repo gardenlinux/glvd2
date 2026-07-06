@@ -25,7 +25,10 @@ import (
 // Allows rendering of the new log level "trace".
 func replaceAttr(_ []string, a slog.Attr) slog.Attr {
 	if a.Key == slog.LevelKey {
-		level := a.Value.Any().(slog.Level) //nolint: forcetypeassert,revive // ignore for trace logging
+		level, ok := a.Value.Any().(slog.Level)
+		if !ok {
+			return a
+		}
 		if logging.LevelTrace == level {
 			a.Value = slog.StringValue("TRACE")
 		}
