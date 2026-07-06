@@ -16,10 +16,23 @@ import (
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/ingestion"
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
+	"github.com/gardenlinux/glvd2/internal/logging"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/spf13/cobra"
 	_ "modernc.org/sqlite"
 )
+
+// Allows rendering of the new log level "trace"
+func replaceAttr(groups []string, a slog.Attr) slog.Attr {
+	if a.Key == slog.LevelKey {
+		level := a.Value.Any().(slog.Level)
+		switch level {
+		case logging.LevelTrace:
+			a.Value = slog.StringValue("TRACE")
+		}
+	}
+	return a
+}
 
 // Set the log level.
 func setLogLevel(logLevelStr string) error {
@@ -33,13 +46,16 @@ func setLogLevel(logLevelStr string) error {
 		logLevel.Set(slog.LevelInfo)
 	case "debug":
 		logLevel.Set(slog.LevelDebug)
+	case "trace":
+		logLevel.Set(logging.LevelTrace)
 	default:
 		logLevel.Set(slog.LevelDebug)
 		return errors.New("unknown loglevel, defaulting to 'debug'")
 	}
 
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
-		Level: &logLevel,
+		Level:       &logLevel,
+		ReplaceAttr: replaceAttr,
 	})))
 
 	return nil
@@ -141,7 +157,7 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 			return ingestCVEs(cfg)
 		},
 	}
-	rootCmd.PersistentFlags().String("log-level", "debug", "specify log-level")
+	rootCmd.PersistentFlags().String("log-level", "debug", "specify log-level from: error > warn > info > debug > trace")
 
 	return rootCmd
 }

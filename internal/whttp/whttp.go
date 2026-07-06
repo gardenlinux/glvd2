@@ -9,11 +9,19 @@ import (
 	"io"
 	"log/slog"
 	"net/http"
+	"regexp"
+	"strings"
+
+	"github.com/gardenlinux/glvd2/internal/logging"
 )
 
 const (
 	HTTPInternalServerError int = 500
 	HTTPClientError         int = 400
+)
+
+var (
+	linkHeaderRegexp = regexp.MustCompile(`<([^>]+)>;\s*rel="([^"]+)"`)
 )
 
 type Header struct {
@@ -29,8 +37,16 @@ type HTTPClient struct {
 // Response with consumed body payload.
 type Response struct {
 	Header         http.Header
+	LinkHeader     LinkHeader
 	HTTPStatusCode int
 	Body           []byte
+}
+
+type LinkHeader struct {
+	Prev  string
+	Next  string
+	First string
+	Last  string
 }
 
 func MakeHeader(key, value string) Header {
@@ -59,8 +75,8 @@ func (h *HTTPClient) get(url string) (Response, error) {
 	var resp *http.Response
 	resp, err = http.DefaultClient.Do(req)
 	if err != nil {
-		slog.With("client", "http", "method", "GET", "url", url, "error", err).Error("Could not perform request")
-		return Response{Header: nil, HTTPStatusCode: resp.StatusCode, Body: nil}, err
+		slog.Error("could not perform request", slog.String("client", "http"), slog.String("method", "GET"), slog.String("url", url), slog.Any("error", err))
+		return Response{Header: nil, HTTPStatusCode: resp.StatusCode, Body: nil, LinkHeader: LinkHeader{}}, err
 	}
 
 	defer func() {
@@ -84,7 +100,8 @@ func (h *HTTPClient) get(url string) (Response, error) {
 		err = fmt.Errorf("HTTP status code %d indicates error", resp.StatusCode)
 	}
 
-	return Response{Header: resp.Header, HTTPStatusCode: resp.StatusCode, Body: body}, err
+	linkHeader := ParseLink(resp)
+	return Response{Header: resp.Header, HTTPStatusCode: resp.StatusCode, Body: body, LinkHeader: linkHeader}, err
 }
 
 func (h *HTTPClient) GetRaw(url string) ([]byte, int, error) {
@@ -116,7 +133,7 @@ func (h *HTTPClient) GetJSON(url string, target any) (any, Response, error) {
 		return nil, response, err
 	}
 
-	slog.With("payload", string(response.Body)).Debug("JSON Response")
+	slog.Log(context.Background(), logging.LevelTrace, "payload", "url", url, "body", string(response.Body))
 
 	err = json.Unmarshal(response.Body, target)
 	if err != nil {
@@ -124,6 +141,33 @@ func (h *HTTPClient) GetJSON(url string, target any) (any, Response, error) {
 	}
 
 	return target, response, nil
+}
+
+func ParseLink(response *http.Response) LinkHeader {
+	var result LinkHeader
+
+	linkStr := response.Header.Get("link")
+	for item := range strings.SplitSeq(linkStr, ",") {
+		// now having: <https://api.github.com/organizations/61944014/repos?type=public&page=1&per_page=100>; rel=\"first\"
+		item = strings.TrimSpace(item)
+		matches := linkHeaderRegexp.FindStringSubmatch(item)
+		if len(matches) > 2 {
+			//slog.Debug("Matches", slog.String("1", matches[1]), slog.String("2", matches[2]))
+			switch matches[2] {
+			case "next":
+				result.Next = matches[1]
+			case "prev":
+				result.Prev = matches[1]
+			case "first":
+				result.First = matches[1]
+			case "last":
+				result.Last = matches[1]
+			default:
+				slog.Error("unknown link relation", "item", item)
+			}
+		}
+	}
+	return result
 }
 
 func NewClient() *HTTPClient {

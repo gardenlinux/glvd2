@@ -25,7 +25,8 @@ type Branch struct {
 var branchNamingRegexp = regexp.MustCompile(`^rel-\d{4,5}$`)
 
 const (
-	pageSize int = 100 // Allowed page size for multipage api calls
+	pageSize  int = 100 // Allowed page size for multipage api calls
+	firstPage int = 1
 )
 
 func GetPackageRepoBranches(repository string) ([]Branch, error) {
@@ -39,22 +40,22 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 	}
 
 	var allBranches []Branch
-	for page := range 100 {
-		var tmpBranches []Branch
-		_, _, err = client.GetJSON(
-			fmt.Sprintf("https://api.github.com/repos/%s/%s/branches?page=%d&per_page=%d",
-				"gardenlinux",
-				repository,
-				page,
-				pageSize),
-			&tmpBranches)
-		if err != nil {
-			return nil, err
-		}
+	var url string
+	var response whttp.Response
 
+	url = fmt.Sprintf("https://api.github.com/repos/%s/%s/branches?page=%d&per_page=%d",
+		"gardenlinux",
+		repository,
+		firstPage,
+		pageSize)
+
+	for {
+		var tmpBranches []Branch
+		_, response, err = client.GetJSON(url, &tmpBranches)
 		allBranches = append(allBranches, tmpBranches...)
 
-		if len(tmpBranches) < pageSize {
+		url = response.LinkHeader.Next
+		if url == "" {
 			break
 		}
 	}
@@ -85,21 +86,22 @@ func GetPackageRepos() ([]Repository, error) {
 	}
 
 	var allRepository []Repository
-	for page := range 100 {
-		var tmpRepos []Repository
-		_, _, err = client.GetJSON(
-			fmt.Sprintf("https://api.github.com/orgs/%s/repos?type=public&page=%d&per_page=%d",
-				"gardenlinux",
-				page,
-				pageSize),
-			&tmpRepos)
-		if err != nil {
-			return nil, err
-		}
+	var url string
+	var response whttp.Response
 
+	url = fmt.Sprintf("https://api.github.com/orgs/%s/repos?type=public&page=%d&per_page=%d",
+		"gardenlinux",
+		firstPage,
+		pageSize)
+
+	for {
+		var tmpRepos []Repository
+
+		_, response, err = client.GetJSON(url, &tmpRepos)
 		allRepository = append(allRepository, tmpRepos...)
 
-		if len(tmpRepos) < pageSize {
+		url = response.LinkHeader.Next
+		if url == "" {
 			break
 		}
 	}
