@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/github"
@@ -21,6 +22,12 @@ type Branch struct {
 	Name string `json:"name"`
 }
 
+var branchNamingRegexp = regexp.MustCompile(`^rel-\d{4,5}$`)
+
+const (
+	pageSize int = 100 // Allowed page size for multipage api calls
+)
+
 func GetPackageRepoBranches(repository string) ([]Branch, error) {
 	var err error
 
@@ -33,7 +40,6 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 
 	var allBranches []Branch
 	for page := range 100 {
-		pageSize := 30
 		var tmpBranches []Branch
 		_, _, err = client.GetJSON(
 			fmt.Sprintf("https://api.github.com/repos/%s/%s/branches?page=%d&per_page=%d",
@@ -56,12 +62,16 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 	// Filter only branches with a name pattern
 	var filteredBranches []Branch
 	for _, branch := range allBranches {
-		if branch.Name == "main" || branch.Name == "master" || strings.HasPrefix(branch.Name, "rel-") {
+		if IsRelevantBranch(branch) {
 			filteredBranches = append(filteredBranches, branch)
 		}
 	}
 
 	return filteredBranches, nil
+}
+
+func IsRelevantBranch(branch Branch) bool {
+	return branch.Name == "main" || branch.Name == "master" || branchNamingRegexp.MatchString(branch.Name)
 }
 
 func GetPackageRepos() ([]Repository, error) {
@@ -76,10 +86,9 @@ func GetPackageRepos() ([]Repository, error) {
 
 	var allRepository []Repository
 	for page := range 100 {
-		pageSize := 30
 		var tmpRepos []Repository
 		_, _, err = client.GetJSON(
-			fmt.Sprintf("https://api.github.com/orgs/%s/repos?&page=%d&per_page=%d",
+			fmt.Sprintf("https://api.github.com/orgs/%s/repos?type=public&page=%d&per_page=%d",
 				"gardenlinux",
 				page,
 				pageSize),

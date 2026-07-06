@@ -20,7 +20,7 @@ lint:
 
 .PHONY: test
 test: clean_test
-	go test -v ./internal/gardenlinux/repos
+	go test -v ./...
 
 .PHONY: test-coverage-html
 test-coverage-html: clean_test
@@ -58,6 +58,3 @@ clean: clean_test
 
 sbom:
 	syft dir:. -c config/syft.yaml -o cyclonedx-json=bin/sbom.cyclonedx.json
-	syft dir:. -c config/syft.yaml -o spdx-json=bin/sbom.spdx.json
-
-
