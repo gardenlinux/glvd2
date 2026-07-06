@@ -52,8 +52,8 @@ func Regenerate(fp string) (*sql.DB, error) {
 	return db, nil
 }
 
-func NewInstance() (*sql.DB, error) {
-	return Open(config.GetAppConfig().InternalSqliteDBPath)
+func NewInstance(cfg *config.AppConfig) (*sql.DB, error) {
+	return Open(cfg.InternalSqliteDBPath)
 }
 
 // Open a sqlite db from file.

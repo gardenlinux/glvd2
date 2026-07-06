@@ -149,15 +149,16 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 func main() {
 	var err error
 	var rootCmd *cobra.Command
+	var cfg *config.AppConfig
 
-	_, err = config.LoadAppConfig()
+	cfg, err = config.LoadAppConfig()
 	if err != nil {
 		slog.Error("Could not read the config file", slog.Any("error", err))
 		return
 	}
 
 	// Main program call
-	rootCmd = cmd(config.GetAppConfig())
+	rootCmd = cmd(cfg)
 
 	// Argument and subprogram handling
 	rootCmd.AddGroup(&cobra.Group{
@@ -221,7 +222,7 @@ func main() {
 
 	// Debug: Repometa information
 	var repoMetaCmd *cobra.Command
-	repoMetaCmd, err = repos.MetaCmd(config.GetAppConfig())
+	repoMetaCmd, err = repos.MetaCmd(cfg)
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
@@ -230,7 +231,7 @@ func main() {
 
 	// Regenerate
 	var regenerateCmd *cobra.Command
-	regenerateCmd, err = database.RegenerateCmd(config.GetAppConfig())
+	regenerateCmd, err = database.RegenerateCmd(cfg)
 	if err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
