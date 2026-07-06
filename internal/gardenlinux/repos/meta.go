@@ -98,7 +98,7 @@ func getFile(repoName, filePath, branch string) (FileContent, error) {
 	return fileContent, nil
 }
 
-func GetPackageMeta(repoName, branch string) (*RepositoryMetadata, error) {
+func GetPackageMeta(cfg *config.AppConfig, repoName, branch string) (*RepositoryMetadata, error) {
 	var err error
 	var prepareSource FileContent
 	var content string
@@ -116,7 +116,7 @@ func GetPackageMeta(repoName, branch string) (*RepositoryMetadata, error) {
 	queryData.CommitId = commitId.Sha
 
 	// check for cache
-	metadata, err = getFromCache(&queryData)
+	metadata, err = getFromCache(cfg, &queryData)
 	if err != nil {
 		// Cache miss, getting the file from github repo
 		slog.Error("cache miss", "repository", queryData.Repository, "branch", queryData.Branch, "error", err)
@@ -137,7 +137,7 @@ func GetPackageMeta(repoName, branch string) (*RepositoryMetadata, error) {
 		}
 
 		// Save result as cache
-		err = saveToCache(metadata)
+		err = saveToCache(cfg, metadata)
 		if err != nil {
 			slog.Error("could not persist cache file", "repository", repoName, "branch", branch, "error", err)
 		}
@@ -267,7 +267,7 @@ func analyzePrepareSource(content string, queryData RepositoryMetadata) (*Reposi
 	return &metadata, nil
 }
 
-func GetRepoPackageMetadata(repoName, branchName string) ([]*RepositoryMetadata, error) {
+func GetRepoPackageMetadata(cfg *config.AppConfig, repoName, branchName string) ([]*RepositoryMetadata, error) {
 	var repositories []Repository
 	var err error
 	var result []*RepositoryMetadata
@@ -297,7 +297,7 @@ func GetRepoPackageMetadata(repoName, branchName string) ([]*RepositoryMetadata,
 
 		for _, br := range branches {
 			var meta *RepositoryMetadata
-			meta, err = GetPackageMeta(repo.Name, br.Name)
+			meta, err = GetPackageMeta(cfg, repo.Name, br.Name)
 			if err != nil {
 				slog.Error(err.Error(), "repo", repo.Name, "branch", br.Name)
 				continue
@@ -344,7 +344,7 @@ func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 			}()
 
 			var metas []*RepositoryMetadata
-			metas, err = GetRepoPackageMetadata(repoName, branchName)
+			metas, err = GetRepoPackageMetadata(cfg, repoName, branchName)
 			if err != nil {
 				return err
 			}

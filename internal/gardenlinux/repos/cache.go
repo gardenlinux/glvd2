@@ -12,12 +12,11 @@ import (
 	"github.com/gardenlinux/glvd2/internal/config"
 )
 
-func buildCacheFilename(metadata *RepositoryMetadata) string {
-	cfg := config.GetAppConfig()
+func buildCacheFilename(cfg *config.AppConfig, metadata *RepositoryMetadata) string {
 	return path.Join(cfg.RepoMetadataCachePath, fmt.Sprintf("%s_%s.json", metadata.Repository, metadata.Branch))
 }
 
-func getFromCache(queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
+func getFromCache(cfg *config.AppConfig, queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
 	var err error
 	result := &RepositoryMetadata{}
 
@@ -28,7 +27,7 @@ func getFromCache(queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
 	slog.Debug("Peeking for cache", "queryData", queryData)
 
 	// check for a caching file
-	filePath := buildCacheFilename(queryData)
+	filePath := buildCacheFilename(cfg, queryData)
 	_, err = os.Stat(filePath)
 	if err != nil {
 		return nil, err
@@ -52,11 +51,11 @@ func getFromCache(queryData *RepositoryMetadata) (*RepositoryMetadata, error) {
 	return result, err
 }
 
-func saveToCache(metadata *RepositoryMetadata) error {
+func saveToCache(cfg *config.AppConfig, metadata *RepositoryMetadata) error {
 	var err error
 	var data []byte
 
-	filePath := buildCacheFilename(metadata)
+	filePath := buildCacheFilename(cfg, metadata)
 
 	// check if directory exists
 	err = os.MkdirAll(filepath.Dir(filePath), 0o755) //nolint:mnd // no magic number check
