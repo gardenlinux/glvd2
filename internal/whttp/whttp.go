@@ -20,9 +20,7 @@ const (
 	HTTPClientError         int = 400
 )
 
-var (
-	linkHeaderRegexp = regexp.MustCompile(`<([^>]+)>;\s*rel="([^"]+)"`)
-)
+var linkHeaderRegexp = regexp.MustCompile(`<([^>]+)>;\s*rel="([^"]+)"`)
 
 type Header struct {
 	key   string
@@ -75,7 +73,13 @@ func (h *HTTPClient) get(url string) (Response, error) {
 	var resp *http.Response
 	resp, err = http.DefaultClient.Do(req)
 	if err != nil {
-		slog.Error("could not perform request", slog.String("client", "http"), slog.String("method", "GET"), slog.String("url", url), slog.Any("error", err))
+		slog.Error(
+			"could not perform request",
+			slog.String("client", "http"),
+			slog.String("method", "GET"),
+			slog.String("url", url),
+			slog.Any("error", err),
+		)
 		return Response{Header: nil, HTTPStatusCode: resp.StatusCode, Body: nil, LinkHeader: LinkHeader{}}, err
 	}
 
@@ -146,13 +150,16 @@ func (h *HTTPClient) GetJSON(url string, target any) (any, Response, error) {
 func ParseLink(response *http.Response) LinkHeader {
 	var result LinkHeader
 
-	linkStr := response.Header.Get("link")
+	linkStr := response.Header.Get(
+		"link", //nolint: revive,canonicalheader,nolintlint // see: Link Pagination in Github API
+	)
 	for item := range strings.SplitSeq(linkStr, ",") {
-		// now having: <https://api.github.com/organizations/61944014/repos?type=public&page=1&per_page=100>; rel=\"first\"
+		// now having: <https://api.github.com/organizations/61944014/repos?type=public&page=1&per_page=100>;
+		// rel=\"first\"
 		item = strings.TrimSpace(item)
 		matches := linkHeaderRegexp.FindStringSubmatch(item)
-		if len(matches) > 2 {
-			//slog.Debug("Matches", slog.String("1", matches[1]), slog.String("2", matches[2]))
+
+		if len(matches) > 2 { //nolint: mnd,revive,nolintlint // must match comment above
 			switch matches[2] {
 			case "next":
 				result.Next = matches[1]

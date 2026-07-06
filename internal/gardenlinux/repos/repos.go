@@ -52,6 +52,10 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 	for {
 		var tmpBranches []Branch
 		_, response, err = client.GetJSON(url, &tmpBranches)
+		if err != nil {
+			slog.Error("branch download failed", "error", err)
+			break
+		}
 		allBranches = append(allBranches, tmpBranches...)
 
 		url = response.LinkHeader.Next
@@ -98,6 +102,10 @@ func GetPackageRepos() ([]Repository, error) {
 		var tmpRepos []Repository
 
 		_, response, err = client.GetJSON(url, &tmpRepos)
+		if err != nil {
+			slog.Error("repo download failed", "error", err)
+			break
+		}
 		allRepository = append(allRepository, tmpRepos...)
 
 		url = response.LinkHeader.Next
