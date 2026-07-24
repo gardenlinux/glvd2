@@ -12,6 +12,7 @@ type AppConfig struct {
 	DebSecTrackerSubRepoPath string `mapstructure:"deb_sec_tracker_sub_repo_path"`
 	InternalSqliteDBPath     string `mapstructure:"internal_sqlite_db_path"`
 	RepoMetadataCachePath    string `mapstructure:"repo_metadata_cache_path"`
+	AuditDir                 string `mapstructure:"audit_dir"`
 }
 
 // LoadAppConfig loads the configuration from disk.

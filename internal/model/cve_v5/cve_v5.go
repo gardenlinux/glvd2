@@ -2,6 +2,8 @@
 package cve_v5
 
 import (
+	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/gardenlinux/glvd2/internal/model/cvss_v2_0"
@@ -39,33 +41,35 @@ type Containers struct {
 }
 
 type CNAContainer struct {
-	ProviderMetadata ProviderMetadata `json:"providerMetadata"`
-	DatePublic       time.Time        `json:"datePublic"`
-	Title            string           `json:"title"`
-	Descriptions     []Description    `json:"descriptions"`
-	Affected         []Affected       `json:"affected"`
-	Metrics          []Metric         `json:"metrics,omitempty"`
-	Configurations   []Description    `json:"configurations,omitempty"`
-	Workarounds      []Description    `json:"workarounds,omitempty"`
-	Solutions        []Description    `json:"solutions,omitempty"`
-	Exploits         []Description    `json:"exploits,omitempty"`
-	Timeline         []TimelineEntry  `json:"timeline,omitempty"`
-	Tags             []string         `json:"tags,omitempty"`
+	ProviderMetadata ProviderMetadata            `json:"providerMetadata"`
+	DatePublic       time.Time                   `json:"datePublic"`
+	Title            string                      `json:"title"`
+	Descriptions     []Description               `json:"descriptions"`
+	Affected         []Affected                  `json:"affected"`
+	Metrics          []Metric                    `json:"metrics,omitempty"`
+	Configurations   []Description               `json:"configurations,omitempty"`
+	Workarounds      []Description               `json:"workarounds,omitempty"`
+	Solutions        []Description               `json:"solutions,omitempty"`
+	Exploits         []Description               `json:"exploits,omitempty"`
+	Timeline         []TimelineEntry             `json:"timeline,omitempty"`
+	Tags             []string                    `json:"tags,omitempty"`
+	CPEApplicability []CPEApplicabilityStatement `json:"cpeApplicability,omitempty"`
 }
 
 type ADPContainer struct {
-	ProviderMetadata ProviderMetadata `json:"providerMetadata"`
-	DatePublic       *time.Time       `json:"datePublic,omitempty"`
-	Title            string           `json:"title,omitempty"`
-	Descriptions     []Description    `json:"descriptions,omitempty"`
-	Affected         []Affected       `json:"affected,omitempty"`
-	Metrics          []Metric         `json:"metrics,omitempty"`
-	Configurations   []Description    `json:"configurations,omitempty"`
-	Workarounds      []Description    `json:"workarounds,omitempty"`
-	Solutions        []Description    `json:"solutions,omitempty"`
-	Exploits         []Description    `json:"exploits,omitempty"`
-	Timeline         []TimelineEntry  `json:"timeline,omitempty"`
-	Tags             []string         `json:"tags,omitempty"`
+	ProviderMetadata ProviderMetadata            `json:"providerMetadata"`
+	DatePublic       *time.Time                  `json:"datePublic,omitempty"`
+	Title            string                      `json:"title,omitempty"`
+	Descriptions     []Description               `json:"descriptions,omitempty"`
+	Affected         []Affected                  `json:"affected,omitempty"`
+	Metrics          []Metric                    `json:"metrics,omitempty"`
+	Configurations   []Description               `json:"configurations,omitempty"`
+	Workarounds      []Description               `json:"workarounds,omitempty"`
+	Solutions        []Description               `json:"solutions,omitempty"`
+	Exploits         []Description               `json:"exploits,omitempty"`
+	Timeline         []TimelineEntry             `json:"timeline,omitempty"`
+	Tags             []string                    `json:"tags,omitempty"`
+	CPEApplicability []CPEApplicabilityStatement `json:"cpeApplicability,omitempty"`
 }
 
 type ProviderMetadata struct {
@@ -81,8 +85,9 @@ type Description struct {
 type Affected struct {
 	Vendor          string            `json:"vendor,omitempty"`
 	Product         string            `json:"product,omitempty"`
-	CollectionURL   string            `json:"collectionURL,omitempty"` // TODO: can be debian related
-	PackageName     string            `json:"packageName,omitempty"`   // TODO: see collection url
+	PackageURL      string            `json:"packageURL,omitempty"`
+	CollectionURL   string            `json:"collectionURL,omitempty"`
+	PackageName     string            `json:"packageName,omitempty"`
 	Platforms       []string          `json:"platforms,omitempty"`
 	Repo            string            `json:"repo,omitempty"`
 	CPEs            []string          `json:"cpes,omitempty"`
@@ -139,4 +144,48 @@ type TimelineEntry struct {
 	Time  time.Time `json:"time"`
 	Lang  string    `json:"lang"`
 	Value string    `json:"value"`
+}
+
+type CPEApplicabilityStatement struct {
+	Nodes []LogicalNode `json:"nodes"`
+}
+
+type LogicalOperator string
+
+const (
+	OperatorAnd LogicalOperator = "AND"
+	OperatorOr  LogicalOperator = "OR"
+)
+
+func (o *LogicalOperator) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+
+	switch LogicalOperator(s) {
+	case OperatorAnd, OperatorOr:
+		*o = LogicalOperator(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid logical operator: %q (must be AND or OR)", s)
+	}
+}
+
+type LogicalNode struct {
+	Operator LogicalOperator `json:"operator"`
+	Negate   bool            `json:"negate,omitempty"`
+	CPEMatch []CPEMatch      `json:"cpeMatch"`
+}
+
+type CPEMatch struct {
+	Vulnerable bool   `json:"vulnerable"`
+	Criteria   string `json:"criteria"` // CPE 2.3
+	// optional UUID with a key for the NIST NVD CPE Match Criteria API
+	MatchCriteriaID string `json:"matchCriteriaId,omitempty"`
+
+	VersionStartIncluding string `json:"versionStartIncluding,omitempty"`
+	VersionStartExcluding string `json:"versionStartExcluding,omitempty"`
+	VersionEndIncluding   string `json:"versionEndIncluding,omitempty"`
+	VersionEndExcluding   string `json:"versionEndExcluding,omitempty"`
 }

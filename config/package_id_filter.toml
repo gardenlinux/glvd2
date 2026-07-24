@@ -1,0 +1,39 @@
+# Package ID (CollectionURL + PackageName) filter configuration.
+#
+# Used to filter out specific package ID combinations inside our matching logic.
+# Neeeded because some combinations are added to CVEs not for the causing component,
+# but for affected product.
+#
+# Each [[rules]] entry defines a filter rule for a specific collectionURL (or set of collectionURLs),
+# which are called group in the generalizid filter format.
+# A combination is discarded if ANY rule matches.
+#
+# Fields:
+#   groups           - list of group names (collectionURL here) that this rule applies to (matched exactly)
+#   discard_all      - if true, discard ALL matches for this group
+#   prefix_filters   - discard if PackageName starts with any of these strings
+#   contains_filters - discard if PackageName contains any of these strings
+#   suffix_filters   - discard if PackageName ends with any of these strings
+#   equals           - discard if PackageName matches exactly
+
+[[rules]]
+groups = ["https://catalog.redhat.com/software/containers/"]
+contains_filters = ["/"]                                     # most likely has a namespace prefix
+equals = ["rhcos"]
+
+[[rules]]
+groups = ["https://access.redhat.com/downloads/content/package-browser/"]
+prefix_filters = ["jbcs-", "qt5-", "qt6-", "openstack-"]
+contains_filters = [
+  "/", # most likely has a namespace prefix (indicates a product or container component)
+]
+equals = [
+  "rhcos",
+  "jbcs",
+  "skopeo",
+  "buildah",
+  "grype",
+  "gjs",
+  "platform-server",
+  "containers-common",
+]

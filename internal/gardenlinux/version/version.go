@@ -66,7 +66,7 @@ func (g *GardenLinuxRelease) parseFromString(name string) error {
 	parts := strings.Split(g.Name, ".")
 	partsCount := len(parts)
 
-	// Santity check
+	// Sanity check
 	if partsCount < GardenlinuxVersionParts || partsCount > GardenlinuxSemverParts {
 		slog.Error("invalid version schema",
 			slog.String("name", name),

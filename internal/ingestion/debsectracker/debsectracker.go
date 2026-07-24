@@ -127,7 +127,7 @@ var releaseRegex = regexp.MustCompile(
 
 var advisoryRegex = regexp.MustCompile(`^\t{.*}\n$`)
 
-// processLine is called consecutively for all lines of the data/CVE file and calls itself processTriage once
+// processLine is called consecutively for all lines of the data/CVE file and calls processTriage once
 // a triage entry has been read completely (a valid entry spans multiple lines).
 func (s Service) processLine(ctx context.Context, qtx *repository.Queries,
 	entry *TriageEntry, line string,

@@ -10,9 +10,18 @@ setup:
 build:
 	@go build -o $(BINARY) cmd/glvd2/main.go
 
+.PHONY: fmt
+fmt: format
+
 .PHONY: format
-format:
+format: format-toml
+	@echo "Formatting go files..."
 	golangci-lint fmt
+
+.PHONY: format-toml
+format-toml:
+	@echo "Formatting TOML files..."
+	mise run fmt:toml
 
 .PHONY: lint
 lint:
@@ -20,7 +29,7 @@ lint:
 
 .PHONY: test
 test: clean_test
-	go test -v ./...
+	gotestsum
 
 .PHONY: test-coverage-html
 test-coverage-html: clean_test

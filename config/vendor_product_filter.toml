@@ -1,0 +1,305 @@
+# Vendor/product-pair filter configuration.
+#
+# Used to filter out specific vendor/product combinations inside our matching logic.
+# Needed because some combinations are added to CVEs not for the causing component,
+# but for affected product.
+#
+# Each [[rules]] entry defines a filter rule for a specific vendor (or set of vendors),
+# which are called group in the generalizid filter format.
+# A combination is discarded if ANY rule matches.
+#
+# Fields:
+#   groups           - list of group names (vendors here) that this rule applies to (matched exactly)
+#   discard_all      - if true, discard ALL matches for this group
+#   prefix_filters   - discard if product starts with any of these strings
+#   contains_filters - discard if product contains any of these strings
+#   suffix_filters   - discard if product ends with any of these strings
+#   equals           - discard if product matches exactly
+
+[[rules]]
+groups = ["*"]
+contains_filters = [
+  # Filter out CVE description speak like "php before 7.0.12"
+  " before ",
+  " through ",
+  " and earlier ",
+  " prior to ",
+]
+equals = ["android"]
+
+[[rules]]
+groups = ["n/a"]
+prefix_filters = [
+  "google chrome prior",
+  "chrome prior",
+  "google chrome os prior",
+]
+
+[[rules]]
+groups = ["redhat"]
+equals = ["enterprise_linux"]
+
+[[rules]]
+groups = ["graphite project"]
+equals = ["graphite"]
+
+[[rules]]
+groups = ["mozilla"]
+contains_filters = ["firefox"]
+equals = ["thunderbird"]
+
+[[rules]]
+groups = ["google"]
+equals = ["chrome", "chromeos"]
+
+[[rules]]
+groups = ["ietf"]
+equals = ["http", "rfc"]
+
+[[rules]]
+groups = ["red hat", "red hat, inc."]
+prefix_filters = [
+  "red hat",
+  "openshift ",
+  "multicluster engine for",
+  "migration toolkit",
+  "openshift service mesh",
+  "openshift developer tools",
+  "streams for apache kafka",
+  "lightspeed core",
+  "hawtio hawtio",
+  "node maintenance",
+  "multicluster global hub",
+  "zerotrust workload",
+  "zero trust workload",
+  "exploit intelligence",
+  "cryostat ",
+  "network observability ",
+  "self-service automation",
+  "compliance operator",
+  "gatekeeper ",
+  "custom metric ",
+  "confidential compute attestation",
+  "devworkspace operator",
+  "cluster observability operator",
+  "logical volume manager storage",
+  "service telemetry framework",
+  "cost management",
+  "enterprise_linux",
+  "ansible automation platform",
+  "rhacs-",
+  "rhoss-",
+  "jboss ",
+  "rhol-",
+  "rhodf-",
+]
+contains_filters = [
+  "red hat openshift",
+  "red hat enterprise",
+  " for rhel ",
+  "rhel-",
+]
+suffix_filters = [" operator"]
+
+[[rules]]
+groups = ["suse"]
+prefix_filters = [
+  "suse linux",
+  "suse manager",
+  "suse enterprise",
+  "enterpise module",
+  "opensuse",
+  "image ",
+  "container ",
+  "caas platform",
+  "suse openstack",
+  "suse_linux_enterprise_server",
+]
+
+[[rules]]
+groups = ["opensuse"]
+prefix_filters = ["leap ", "opensuse leap", "opensuse backports"]
+equals = [
+  "opensuse",
+  "leap",
+  "factory",
+  "opensuse factory",
+  "tumbleweed",
+  "opensuse tumbleweed",
+]
+
+[[rules]]
+groups = ["suse linux"]
+equals = ["opensuse leap"]
+
+[[rules]]
+groups = ["intel corporation"]
+equals = ["most modern operating systems"]
+
+[[rules]]
+groups = ["siemens"]
+prefix_filters = [
+  "ai lightweight inference server",
+  "desigo ",
+  "industrial edge ",
+  "mcenter",
+  "openpcs ",
+  "power meter ",
+  "powerlink ",
+  "ruggedcom ",
+  "scalance ",
+  "sicam ",
+  "sicore ",
+  "sidis ",
+  "simatic ",
+  "simocode",
+  "simotion",
+  "simove ",
+  "sinamics ",
+  "sinaut ",
+  "sinec",
+  "sinema ",
+  "sinumerik ",
+  "siplant",
+  "siplus ",
+  "siprotec ",
+  "sentron ",
+  "cadra",
+  "bfcclient",
+  "himed ",
+  "sirius ",
+  "sitrans ",
+  "teamcenter ",
+  "telecontrol",
+  "tia ",
+  "tim ",
+  "calibre",
+  "siemens opc",
+  "shopfloor",
+  "user management",
+  "visual inspection cockpit",
+  "connector for azure",
+  "security configuration tool",
+  "databus",
+  "cpc",
+]
+
+[[rules]]
+groups = ["fedoraproject"]
+equals = ["fedora"]
+
+[[rules]]
+groups = ["fedora"]
+prefix_filters = ["fedora", "extra packages"]
+
+[[rules]]
+groups = ["netapp"]
+prefix_filters = ["ontap_", "solidfire_"]
+suffix_filters = ["baseboard_management_controller"]
+equals = [
+  "oncommand_insight",
+  "bluexp",
+  "ontap_tools",
+  "oncommand_workflow_automation",
+  "active_iq_unified_manage",
+  "hci_baseboard_management_controller",
+  "hci_bootstrap_os",
+  "management_services_for_element_software",
+  "altavault_ost_plug-in",
+  "smi-s_provider",
+  "ontap_select_deploy_administration_utility",
+  "active_iq_unified_manager_for_vmware_vsphere",
+  "ontap_antivirus_connector",
+  "brocade_fabric_operating_system_firmware",
+  "snapcenter",
+  "steelstore_cloud_integrated_storage",
+]
+
+[[rules]]
+groups = ["ibm"]
+equals = ["spectrum_fusion_hci"]
+
+[[rules]]
+groups = ["oracle", "oracle corporation"]
+equals = [
+  "oracle linux",
+  "oracle vm",
+  "retail_service_backbone",
+  "communications_instant_messaging_server",
+  "financial_services_retail_customer_analytics",
+  "retail_sales_audit",
+  "banking_digital_experience",
+  "communications_network_charging_and_control",
+  "communications_session_route_manager",
+  "enterprise_manager_base_platform",
+  "financial_services_analytical_applications_infrastructure",
+  "financial_services_price_creation_and_discovery",
+  "global_lifecycle_management_opatch",
+  "autovue_for_agile_product_lifecycle_management",
+  "jd_edwards_enterpriseone_orchestrator",
+  "primavera_unifier",
+  "retail_merchandising_system",
+  "retail_xstore_point_of_service",
+  "weblogic_server",
+  "agile_plm",
+  "communications_calendar_server",
+  "communications_diameter_signaling_router",
+  "communications_element_manager",
+  "communications_evolved_communications_application_server",
+  "financial_services_institutional_performance_analytics",
+  "insurance_policy_administration_j2ee",
+  "communications policy management",
+  "trade management",
+  "solaris operating system",
+]
+
+[[rules]]
+groups = ["openbsd"]
+equals = ["openbsd"]
+
+[[rules]]
+groups = ["debian"]
+equals = ["debian_linux", "debian edu"]
+
+[[rules]]
+groups = ["canonical"]
+equals = ["ubuntu_linux"]
+
+[[rules]]
+groups = ["ubuntu"]
+equals = ["linux", "ubuntu"]
+
+[[rules]]
+groups = ["apple"]
+equals = ["macos"]
+
+[[rules]]
+groups = ["microsoft"]
+equals = [
+  "windows 11 version 22h2",
+  "windows 11 version 22h3",
+  "windows 11 version 23h2",
+  "windows server 2022, 23h2 edition (server core installation)",
+  "windows 10 version 1809",
+  "windows server 2019",
+  "windows server 2019 (server core installation)",
+  "windows server 2022",
+  "windows 11 version 21h2",
+  "windows 10 version 21h2",
+  "windows 10 version 22h",
+  "windows server 2016",
+  "windows server 2016 (server core installation)",
+  "windows server 2008 service pack 2",
+  "windows server 2008 service pack 2 (server core installation)",
+  "windows server 2008  service pack 2",
+  "windows server 2008 r2 service pack 1",
+  "windows server 2008 r2 service pack 1 (server core installation)",
+  "windows server 2012",
+  "windows server 2012 (server core installation)",
+  "windows server 2012 r2",
+  "windows server 2012 r2 (server core installation)",
+  "windows server version 2004",
+  "windows server, version 1909 (server core installation)",
+  "windows server, version 1903 (server core installation)",
+  "windows server version 20h2",
+]

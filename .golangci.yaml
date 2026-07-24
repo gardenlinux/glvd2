@@ -29,6 +29,11 @@ linters:
   - wsl
   - wsl_v5
   - godox
+  exclusions:
+    rules:
+    - path: _test\.go$
+      linters:
+        - goconst
   settings:
     gosec:
       config:
@@ -74,6 +79,8 @@ linters:
         disabled: true
       - name: cyclomatic
         disabled: true
+      - name: enforce-switch-style
+        disabled: true
       - name: package-naming
         exclude: [
           "**/internal/model/cve_v5/cve_v5.go",
@@ -113,13 +120,23 @@ linters:
           - ["ID", "CVEV5", "CVSSV4_0", "CVSSV3_x", "CVSSV3_1", "CVSSV3_0", "CVSSV2_0"]
           - []
           - - skip-initialism-name-checks: false
+      - name: unhandled-error
+        arguments:
+          - "^fmt\\.Printf$"
+          - "^fmt\\.Println$"
+          - "^fmt\\.Fprintf$"
+          - "^fmt\\.Print$"
+          - "^strings\\.Builder\\.WriteString$"
+          - "^strings\\.Builder\\.Write$"
+          - "^strings\\.Builder\\.WriteByte$"
+          - "^strings\\.Builder\\.WriteRune$"
     tagliatelle:
       case:
         rules:
           json: snake
           yaml: camel
           xml: camel
-          toml: camel
+          toml: snake
           bson: camel
           avro: snake
           header: snake

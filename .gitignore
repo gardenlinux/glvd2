@@ -18,8 +18,8 @@ bin/
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
 
-# Internally used sqlite DB
-data/**
+# Temporary runtime artifacts (sqlite DB, caches)
+data/tmp/
 
 # test code coverage
 coverage.out

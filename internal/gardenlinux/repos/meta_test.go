@@ -1,4 +1,3 @@
-//nolint:goconst // static values for tests
 package repos_test
 
 import (
@@ -87,9 +86,9 @@ func TestAnalyze3(t *testing.T) {
 	prepareSource := `UPSTREAM_VERSION="v7.2.0"
 
 upstream=$(mktemp -d)
-git clone -b "$UPSTREAM_VERSION" --depth=1 https://github.com/canonical/checkbox.git "$upstream" 
+git clone -b "$UPSTREAM_VERSION" --depth=1 https://github.com/canonical/checkbox.git "$upstream"
 pushd "$upstream"
-git sparse-checkout set providers/gpgpu 
+git sparse-checkout set providers/gpgpu
 popd
 
 import_src "$upstream/providers/gpgpu"
