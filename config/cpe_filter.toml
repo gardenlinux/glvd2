@@ -1,0 +1,235 @@
+# Vendor/product-pair filter configuration for CPE sources.
+#
+# Used to filter out specific vendor/product combinations inside our matching logic.
+# Neeeded because some combinations are added to CVEs not for the causing component,
+# but for affected product. Need seperate rules for the vendor/product-pairs and the
+# vendor/product-pairs inside the CPE, because they can use a different format.
+#
+# Each [[rules]] entry defines a filter rule for a specific vendor (or set of vendors),
+# which are called group in the generalizid filter format.
+# A combination is discarded if ANY rule matches.
+#
+# Fields:
+#   groups           - list of group names (vendors here) that this rule applies to (matched exactly)
+#   discard_all      - if true, discard ALL matches for this group
+#   prefix_filters   - discard if product starts with any of these strings
+#   contains_filters - discard if product contains any of these strings
+#   suffix_filters   - discard if product ends with any of these strings
+#   equals           - discard if product matches exactly
+
+[[rules]]
+groups = ["ietf"]
+equals = ["http", "rfc"]
+
+[[rules]]
+groups = ["redhat"]
+prefix_filters = [
+  "enterprise_linux",
+  "rhel_",
+  "directory_server",
+  "openshift",
+  "openstack",
+  "hummingbird",
+  "amq_",
+  "offline_knowledge_portal",
+  "jboss",
+  "camel_spring_boot",
+  "ansible_automation_platform",
+  "ansible_portal",
+  "ansible_core",
+  "magration_toolkit",
+  "red_hat",
+  "ai_inference_server",
+  "container_native_virtualization",
+  "apache_camel_",
+  "service_mesh",
+  "source_to_image",
+  "exploit_intelligence",
+  "multicluster_globalhub",
+  "ceph_storage",
+  "multicluster_engine",
+  "certificate_system",
+  "workload_availability",
+  "lightspeed_core",
+  "satellite_",
+  "rhev_",
+  "rhacs-",
+  "rhoss-",
+  "jboss ",
+  "rhol-",
+  "rhodf-",
+]
+contains_filters = ["-rhel", "rhel-"]
+suffix_filters = []
+equals = [
+  "storage",
+  "job_set",
+  "leader_worker_set",
+  "kube_descheduler_operator",
+  "run_once_duration_override_operator",
+  "cluster_observability_operator",
+  "trusted_application_pipeline",
+  "kueue_operator",
+  "kernel_module_management",
+  "podman_desktop",
+  "migration_toolkit_virtualization",
+  "dynamic_accelerator_slicer",
+  "trusted_profile_analyzer",
+  "trusted_application_pipeline:",
+  "rhosemc",
+  "rhui",
+  "advanced_virtualization",
+  "optaplanner",
+  "integration",
+  "devworkspace",
+  "quay",
+  "satellite",
+  "stf",
+  "discovery",
+  "acm",
+  "connectivity_link",
+  "cost_management",
+  "insights_proxy",
+  "confidential_compute_attestation",
+  "apicurio_registry",
+  "build_keycloak",
+  "debezium",
+  "quarkus",
+  "camel_quarkus",
+  "ocp_tools",
+  "logging",
+  "cryostat",
+  "webterminal",
+  "advanced_cluster_security",
+  "serverless",
+  "zero_trust_workload_identity_manager",
+  "service_interconnect",
+  "rhmt",
+  "mirror_registry",
+  "gatekeeper",
+  "deployment_validator_operator",
+  "external_secrets_operator",
+  "windows_machine_config",
+  "migration_toolkit_applications",
+  "lightspeed_for_runtimes",
+  "multiarch_tuning_operator",
+  "rhdh",
+  "assisted_installer",
+  "edge_manager",
+  "trusted_artifact_signer",
+  "cert_manager",
+  "network_observ_optr",
+  "lvms",
+  "certifications",
+  "service_registry",
+  "ext_dns_optr",
+  "mobile_application_platform",
+  "migration_toolkit_runtimes",
+]
+
+[[rules]]
+groups = ["fedoraproject"]
+equals = ["fedora"]
+
+[[rules]]
+groups = ["suse"]
+equals = ["suse_linux_enterprise_server", "opensuse_tumbleweed"]
+
+[[rules]]
+groups = ["opensuse"]
+prefix_filters = ["leap ", "opensuse leap"]
+equals = ["opensuse", "leap", "factory"]
+
+[[rules]]
+groups = ["intel corporation"]
+equals = ["most modern operating systems"]
+
+[[rules]]
+groups = ["netapp"]
+prefix_filters = ["ontap_", "solidfire_"]
+suffix_filters = ["baseboard_management_controller"]
+equals = [
+  "oncommand_insight",
+  "bluexp",
+  "ontap_tools",
+  "oncommand_workflow_automation",
+  "active_iq_unified_manage",
+  "hci_baseboard_management_controller",
+  "hci_bootstrap_os",
+  "management_services_for_element_software",
+  "altavault_ost_plug-in",
+  "smi-s_provider",
+  "ontap_select_deploy_administration_utility",
+  "active_iq_unified_manager_for_vmware_vsphere",
+  "ontap_antivirus_connector",
+  "brocade_fabric_operating_system_firmware",
+  "steelstore_cloud_integrated_storage",
+  "snapcenter",
+]
+
+[[rules]]
+groups = ["siemens"]
+equals = ["sinec_ins"]
+
+[[rules]]
+groups = ["oracle", "oracle corporation"]
+equals = [
+  "oracle linux",
+  "retail_service_backbone",
+  "communications_instant_messaging_server",
+  "financial_services_retail_customer_analytics",
+  "retail_sales_audit",
+  "banking_digital_experience",
+  "communications_network_charging_and_control",
+  "communications_session_route_manager",
+  "enterprise_manager_base_platform",
+  "financial_services_analytical_applications_infrastructure",
+  "financial_services_price_creation_and_discovery",
+  "global_lifecycle_management_opatch",
+  "autovue_for_agile_product_lifecycle_management",
+  "jd_edwards_enterpriseone_orchestrator",
+  "primavera_unifier",
+  "retail_merchandising_system",
+  "retail_xstore_point_of_service",
+  "weblogic_server",
+  "agile_plm",
+  "communications_calendar_server",
+  "communications_diameter_signaling_router",
+  "communications_element_manager",
+  "communications_evolved_communications_application_server",
+  "financial_services_institutional_performance_analytics",
+  "insurance_policy_administration_j2ee",
+  "web_analytics",
+]
+
+[[rules]]
+groups = ["google"]
+equals = ["android"]
+
+[[rules]]
+groups = ["ibm"]
+equals = ["spectrum_fusion_hci"]
+
+[[rules]]
+groups = ["openbsd"]
+equals = ["openbsd"]
+
+[[rules]]
+groups = ["debian"]
+equals = ["debian_linux"]
+
+[[rules]]
+groups = ["canonical"]
+equals = ["ubuntu_linux"]
+
+[[rules]]
+groups = ["ubuntu"]
+equals = ["ubuntu", "linux"]
+
+[[rules]]
+groups = ["apple"]
+equals = ["macos"]
+
+[[rules]]
+groups = ["microsoft"]
+prefix_filters = ["windows_"]

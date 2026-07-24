@@ -4,6 +4,9 @@ SELECT * FROM debian_triage WHERE cve_id = ? LIMIT 1;
 -- name: ListDebianTriages :many
 SELECT * FROM debian_triage ORDER BY cve_id DESC;
 
+-- name: ListAffectedDebianPackages :many
+SELECT * FROM debian_triage_affected_package;
+
 -- name: ListAffectedPackagesForDebianTriage :many
 SELECT * FROM debian_triage_affected_package WHERE cve_id = ? ORDER BY id ASC;
 

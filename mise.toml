@@ -1,12 +1,17 @@
 [env]
 
 [tools]
-"aqua:golang-migrate/migrate" = "4.19.1"
-"github:sqlc-dev/sqlc" = "latest"
 go = "1.26"
 "go:github.com/daixiang0/gci" = "latest"
+"github:sqlc-dev/sqlc" = "latest"
+"aqua:golang-migrate/migrate" = "4.19.1"
 "aqua:golangci/golangci-lint" = "latest"
+"aqua:gotestyourself/gotestsum" = "latest"
 syft = "latest"
 gofumpt = "latest"
-golangci-lint = "2.12.2"
+taplo = "latest"                           # TOML formatting
 
+[tasks."fmt:toml"]
+description = "Format all TOML files using taplo"
+run = "taplo fmt"
+sources = ["**/*.toml"]

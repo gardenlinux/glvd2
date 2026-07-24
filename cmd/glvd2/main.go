@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"errors"
+	"fmt"
 	"log/slog"
 	"os"
 	"strings"
 
+	"github.com/gardenlinux/glvd2/internal/audit"
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glcve"
@@ -14,9 +16,10 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/repos"
 	"github.com/gardenlinux/glvd2/internal/git"
-	"github.com/gardenlinux/glvd2/internal/ingestion"
+	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/logging"
+	"github.com/gardenlinux/glvd2/internal/mapping"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/spf13/cobra"
 	_ "modernc.org/sqlite"
@@ -63,7 +66,7 @@ func setLogLevel(logLevelStr string) error {
 	return nil
 }
 
-func ingestCVEs(cfg *config.AppConfig) error {
+func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 	db, err := database.Regenerate(cfg.InternalSqliteDBPath)
 	if err != nil {
 		slog.Error("could not open database", slog.Any("error", err))
@@ -91,10 +94,14 @@ func ingestCVEs(cfg *config.AppConfig) error {
 		slog.Error("Could not initialize the submodule service", slog.Any("error", err))
 		return err
 	}
-	err = submoduleService.GetLatest(ctx)
-	if err != nil {
-		slog.Error("Could not get the latest state of the submodules", slog.Any("error", err))
-		return err
+	if skipSubmoduleUpdate {
+		slog.Info("Skipping updating the git submodules, since corresponding flag is set")
+	} else {
+		err = submoduleService.GetLatest(ctx)
+		if err != nil {
+			slog.Error("Could not get the latest state of the submodules", slog.Any("error", err))
+			return err
+		}
 	}
 
 	debSecTrackerIngestion := debsectracker.NewService(db, queries, cfg)
@@ -104,8 +111,33 @@ func ingestCVEs(cfg *config.AppConfig) error {
 		return err
 	}
 
-	cveV5Ingestion := ingestion.NewCVEV5IngestionService(cfg)
-	resCh, errCh := cveV5Ingestion.ReceiveCVEs(ctx)
+	// TODO: Find CVEs that are only present in the Deb Sec Tracker, but not in our repo from CVEListV5 (reserved ones).
+
+	cveV5Service := cvelistv5.NewService(cfg)
+	idsForCVEs, err := cveV5Service.GetIDsForCVEs(ctx)
+	if err != nil {
+		return err
+	}
+
+	mappingService, err := mapping.NewService(queries)
+	if err != nil {
+		return err
+	}
+
+	mappingResult, pkgIDIndex, err := mappingService.Analyze(ctx, idsForCVEs)
+	if err != nil {
+		return err
+	}
+
+	auditService := audit.NewService(cfg)
+	if err = auditService.Record("mapping_result.json", mappingResult); err != nil {
+		return fmt.Errorf("recording audit mapping result: %w", err)
+	}
+	if err = auditService.Record("package_index.json", pkgIDIndex); err != nil {
+		return fmt.Errorf("recording audit package index: %w", err)
+	}
+
+	resCh, errCh := cveV5Service.ReceiveCVEs(ctx)
 	tmp := ""
 	cveCounter := 0
 	for resCh != nil && errCh != nil {
@@ -155,12 +187,19 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 				slog.Error("could not set log level", "error", err)
 			}
 		},
-		RunE: func(_ *cobra.Command, _ []string) error {
-			return ingestCVEs(cfg)
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			skipSubmoduleUpdates, err := cmd.Flags().GetBool("skip-submodule-updates")
+			if err != nil {
+				return err
+			}
+
+			return ingestCVEs(cfg, skipSubmoduleUpdates)
 		},
 	}
 	rootCmd.PersistentFlags().
 		String("log-level", "debug", "specify log-level from: error > warn > info > debug > trace")
+	rootCmd.PersistentFlags().
+		Bool("skip-submodule-updates", false, "skip updating the submodules used for data ingestion")
 
 	return rootCmd
 }
@@ -185,7 +224,7 @@ func main() {
 		Title: "Debugging:",
 	})
 
-	// Debug: GRLD
+	// Debug: GLRD
 	var glrdCmd *cobra.Command
 	glrdCmd, err = glrd.Cmd()
 	if err != nil {

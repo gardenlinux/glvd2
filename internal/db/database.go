@@ -18,13 +18,13 @@ const sqliteConnectionStringSuffix = "?journal_mode=WAL&busy_timeout=3000&secure
 // Regenerate clears the DB file, recreates the structure via migration, and returns a DB connection.
 func Regenerate(fp string) (*sql.DB, error) {
 	// ensure that the directory exists
-	dataDirectory := filepath.Base(filepath.Dir(fp))
-	if _, errstat := os.Stat(dataDirectory); os.IsNotExist(errstat) {
-		errstat = os.Mkdir(dataDirectory, 0o755) //nolint:mnd // no magic number check
+	dbDirectory := filepath.Dir(fp)
+	if _, errstat := os.Stat(dbDirectory); os.IsNotExist(errstat) {
+		errstat = os.MkdirAll(dbDirectory, 0o755) //nolint:mnd // no magic number check
 		if errstat != nil {
 			return nil, errstat
 		}
-		slog.Info("Created database directory", "directory", dataDirectory)
+		slog.Info("Created database directory", "directory", dbDirectory)
 	}
 	// ensure that the file exists
 	f, err := os.OpenFile(fp, os.O_CREATE, 0o644) //nolint:gosec,mnd // no user input and fil
