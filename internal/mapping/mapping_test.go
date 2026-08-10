@@ -165,7 +165,7 @@ func TestAnalyze_MatchesVendorProductPairs(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	vpID := `"curl":"curl"`
@@ -203,7 +203,7 @@ func TestAnalyze_MatchesCPEs(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	expectedCPE := "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*"
@@ -232,7 +232,7 @@ func TestAnalyze_MatchesPackageIDs(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	pIDStr := `"https://packages.debian.org/":"vim"`
@@ -259,7 +259,7 @@ func TestAnalyze_MatchesPackageURLs(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	purl := "pkg:deb/debian/glibc"
@@ -294,7 +294,7 @@ groups = ["oracle"]
 discard_all = true
 `
 	s := newTestServiceWithVPFilter(t, pkgs, vpTOML)
-	result, _, err := s.Analyze(context.Background(), idsForCVEs)
+	result, _, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	oracleID := `"oracle":"database"`
@@ -328,7 +328,7 @@ groups = ["oracle"]
 discard_all = true
 `
 	s := newTestServiceWithCPEFilter(t, pkgs, cpeTOML)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	expectedCPE := "cpe:2.3:a:vim:vim:*:*:*:*:*:*:*:*"
@@ -364,7 +364,7 @@ groups = ["https://example.com/unwanted/"]
 discard_all = true
 `
 	s := newTestServiceWithPkgIDFilter(t, pkgs, pkgIDTOML)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	keptID := `"https://packages.debian.org/":"curl"`
@@ -405,7 +405,7 @@ func TestAnalyze_SpecialRedHatProductsPackageIDFiltering(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	keptRedHat := `"https://access.redhat.com/downloads/content/package-browser/":"curl"`
@@ -440,7 +440,7 @@ func TestAnalyze_NoCVEIDsFound_Continues(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	vpID := `"curl":"curl"`
@@ -465,7 +465,7 @@ func TestAnalyze_QuerierError(t *testing.T) {
 	))
 	require.NoError(t, err)
 
-	_, _, err = s.Analyze(context.Background(), nil)
+	_, _, err = s.Analyze(t.Context(), nil)
 	require.Error(t, err)
 	assert.ErrorIs(t, err, expectedErr)
 }
@@ -474,7 +474,7 @@ func TestAnalyze_EmptyInputs(t *testing.T) {
 	t.Parallel()
 
 	s := newTestService(t, nil)
-	result, pkgIndex, err := s.Analyze(context.Background(), cvelistv5.IDsForCVEs{})
+	result, pkgIndex, err := s.Analyze(t.Context(), cvelistv5.IDsForCVEs{})
 	require.NoError(t, err)
 
 	assert.Empty(t, result.VendorProductPairs)
@@ -543,7 +543,7 @@ func TestAnalyze_MultipleOccurrencesIncrementCount(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, _, err := s.Analyze(context.Background(), idsForCVEs)
+	result, _, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	vpID := `"apache":"http_server"`
@@ -612,7 +612,7 @@ discard_all = true
 	))
 	require.NoError(t, err)
 
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	// VP: oracle:database discarded, libfoo:libfoo kept.
@@ -674,7 +674,7 @@ func TestAnalyze_PackageIndexIdentifiersAreUnique(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	vpID := `"nginx":"nginx"`
@@ -688,7 +688,7 @@ func TestAnalyze_PackageIndexIdentifiersAreUnique(t *testing.T) {
 	assert.Equal(t, 2, result.PackageIDs[pkgIDStr]["nginx"])
 	assert.Equal(t, 2, result.PackageURLs[purl]["nginx"])
 
-	// Index entries must be deduplicated — length 1 despite two CVEs contributing.
+	// Index entries must be deduplicated - length 1 despite two CVEs contributing.
 	assert.Len(t, pkgIndex["nginx"].VendorProductIDs, 1)
 	assert.Len(t, pkgIndex["nginx"].CPEs, 1)
 	assert.Len(t, pkgIndex["nginx"].PackageIDs, 1)
@@ -715,7 +715,7 @@ func TestAnalyze_SkipsCPEsWithNonStringVendorOrProduct(t *testing.T) {
 	}
 
 	s := newTestService(t, pkgs)
-	result, pkgIndex, err := s.Analyze(context.Background(), idsForCVEs)
+	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
 	expectedCPE := "cpe:2.3:a:acme:somelib:*:*:*:*:*:*:*:*"

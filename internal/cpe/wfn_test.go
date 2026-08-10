@@ -167,11 +167,11 @@ func TestWFNEqualAllFields(t *testing.T) {
 	}
 }
 
-// WFN.Validate — every attribute that can be invalid.
+// WFN.Validate - every attribute that can be invalid.
 func TestWFNValidateAllFields(t *testing.T) {
 	t.Parallel()
 
-	invalid := cpe.StringAV("a*b") // embedded * — invalid
+	invalid := cpe.StringAV("a*b") // embedded * - invalid
 
 	fields := []struct {
 		name string
