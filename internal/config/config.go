@@ -13,6 +13,8 @@ type AppConfig struct {
 	InternalSqliteDBPath     string `mapstructure:"internal_sqlite_db_path"`
 	RepoMetadataCachePath    string `mapstructure:"repo_metadata_cache_path"`
 	AuditDir                 string `mapstructure:"audit_dir"`
+	AssessmentDataDir        string `mapstructure:"assessment_data_dir"`
+	BaselineCommitAnchor     string `mapstructure:"baseline_commit_anchor"`
 }
 
 // LoadAppConfig loads the configuration from disk.

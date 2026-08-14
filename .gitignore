@@ -24,3 +24,6 @@ data/tmp/
 # test code coverage
 coverage.out
 coverage.html
+
+# dump output files
+tmp_output*
