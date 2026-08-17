@@ -48,8 +48,7 @@ func ExtractMentionedCVEs(releasePage string) []string {
 	return result
 }
 
-func MentionedCVEsCmd() (*cobra.Command, error) {
-	var err error
+func MentionedCVEsCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "cves <version>",
 		Short:   "Find CVEs mentioned in release page of <version>",
@@ -57,15 +56,16 @@ func MentionedCVEsCmd() (*cobra.Command, error) {
 		GroupID: "debug",
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			version, _ := cmd.Flags().GetString("version")
+
 			return doMentionedCVEsInRelease(version)
 		},
 	}
+
 	cmd.Flags().String("version", "", "specific version")
-	err = cmd.MarkFlagRequired("version")
-	if err != nil {
-		return nil, err
-	}
-	return cmd, nil
+	// MarkFlagRequired only errors when the flag is unregistered, which cannot happen here.
+	_ = cmd.MarkFlagRequired("version")
+
+	return cmd
 }
 
 func GetMentionedCVEs(v string) ([]string, error) {
@@ -113,30 +113,31 @@ func doReleasePage(v string) error {
 	}
 
 	fmt.Printf("%s\n", releasePage) //nolint:nolintlint,revive,forbidigo // just debug output
+
 	return nil
 }
 
-func ReleasePageCmd() (*cobra.Command, error) {
-	var err error
-
+func ReleasePageCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "releasepage <version>",
 		Short:   "Print the release page of a <version>",
 		Args:    cobra.MaximumNArgs(1),
 		GroupID: "debug",
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			var err error
 			var vers string
 			vers, err = cmd.Flags().GetString("version")
 			if err != nil {
 				return err
 			}
+
 			return doReleasePage(vers)
 		},
 	}
+
 	cmd.Flags().String("version", "", "specific version")
-	err = cmd.MarkFlagRequired("version")
-	if err != nil {
-		return nil, err
-	}
-	return cmd, nil
+	// MarkFlagRequired only errors when the flag is unregistered, which cannot happen here.
+	_ = cmd.MarkFlagRequired("version")
+
+	return cmd
 }

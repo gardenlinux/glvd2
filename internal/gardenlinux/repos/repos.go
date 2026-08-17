@@ -126,7 +126,7 @@ func GetPackageRepos() ([]Repository, error) {
 	return filteredRepositories, nil
 }
 
-func PackagerepoCmd() (*cobra.Command, error) {
+func PackagerepoCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "repos",
 		Short:   "Print repos",
@@ -147,10 +147,10 @@ func PackagerepoCmd() (*cobra.Command, error) {
 		},
 	}
 
-	return cmd, nil
+	return cmd
 }
 
-func BranchCmd() (*cobra.Command, error) {
+func BranchCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "branches",
 		Short:   "Print repo's branches",
@@ -173,10 +173,8 @@ func BranchCmd() (*cobra.Command, error) {
 	}
 
 	cmd.Flags().String("repository", "", "name of the repository")
-	err := cmd.MarkFlagRequired("repository")
-	if err != nil {
-		return nil, err
-	}
+	// MarkFlagRequired only errors when the flag is unregistered, which cannot happen here.
+	_ = cmd.MarkFlagRequired("repository")
 
-	return cmd, nil
+	return cmd
 }

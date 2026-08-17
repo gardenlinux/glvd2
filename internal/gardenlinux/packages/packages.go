@@ -29,7 +29,7 @@ var PackageListFormatToEnum = map[string]PackageListFormat{
 	"cyclonedx": CycloneDXFormat,
 }
 
-func Cmd() (*cobra.Command, error) {
+func Cmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "packages <version>",
 		Short:   "Print packages of a <version>",
@@ -97,5 +97,5 @@ func Cmd() (*cobra.Command, error) {
 	cmd.Flags().String("pkgfmt", "inrelease", "define packagelist format (inrelease,cyclonedx)")
 	cmd.Flags().String("sbomUrl", "", "URL to sbom in cyclonedx format, required when pkgfmt=cyclonedx")
 
-	return cmd, nil
+	return cmd
 }

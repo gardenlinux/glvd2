@@ -308,7 +308,7 @@ func GetRepoPackageMetadata(cfg *config.AppConfig, repoName, branchName string) 
 	return result, nil
 }
 
-func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
+func MetaCmd(cfg *config.AppConfig) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:          "metadata",
 		Short:        "Print repo metadata",
@@ -371,5 +371,5 @@ func MetaCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 	cmd.Flags().String("branch", "", "specific branch name")
 	cmd.Flags().String("repository", "", "repository name")
 
-	return cmd, nil
+	return cmd
 }

@@ -80,7 +80,7 @@ func doReleasesCmd() error {
 	return nil
 }
 
-func Cmd() (*cobra.Command, error) {
+func Cmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "releases",
 		Short:   "Gets all Gardenlinux releases",
@@ -90,5 +90,6 @@ func Cmd() (*cobra.Command, error) {
 			return doReleasesCmd()
 		},
 	}
-	return cmd, nil
+
+	return cmd
 }

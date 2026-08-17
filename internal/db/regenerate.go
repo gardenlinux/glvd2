@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func RegenerateCmd(cfg *config.AppConfig) (*cobra.Command, error) {
+func RegenerateCmd(cfg *config.AppConfig) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:          "regenerate",
 		Short:        "regenerate database and apply migrations",
@@ -31,5 +31,5 @@ func RegenerateCmd(cfg *config.AppConfig) (*cobra.Command, error) {
 		},
 	}
 
-	return cmd, nil
+	return cmd
 }

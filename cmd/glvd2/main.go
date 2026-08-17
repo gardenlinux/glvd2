@@ -214,76 +214,28 @@ func main() {
 	})
 
 	// Debug: GLRD
-	var glrdCmd *cobra.Command
-	glrdCmd, err = glrd.Cmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(glrdCmd)
+	rootCmd.AddCommand(glrd.Cmd())
 
 	// Debug: Packages
-	var packagesCmd *cobra.Command
-	packagesCmd, err = packages.Cmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(packagesCmd)
+	rootCmd.AddCommand(packages.Cmd())
 
 	// Debug: ReleasePage
-	var releasePageCmd *cobra.Command
-	releasePageCmd, err = glcve.ReleasePageCmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(releasePageCmd)
+	rootCmd.AddCommand(glcve.ReleasePageCmd())
 
 	// Debug: Mentioned CVEs
-	var cvesCmd *cobra.Command
-	cvesCmd, err = glcve.MentionedCVEsCmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(cvesCmd)
+	rootCmd.AddCommand(glcve.MentionedCVEsCmd())
 
 	// Debug: Repos information
-	var reposCmd *cobra.Command
-	reposCmd, err = repos.PackagerepoCmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(reposCmd)
+	rootCmd.AddCommand(repos.PackagerepoCmd())
 
 	// Debug: Repo Branches information
-	var repoBranchCmd *cobra.Command
-	repoBranchCmd, err = repos.BranchCmd()
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(repoBranchCmd)
+	rootCmd.AddCommand(repos.BranchCmd())
 
 	// Debug: Repometa information
-	var repoMetaCmd *cobra.Command
-	repoMetaCmd, err = repos.MetaCmd(cfg)
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(repoMetaCmd)
+	rootCmd.AddCommand(repos.MetaCmd(cfg))
 
 	// Regenerate
-	var regenerateCmd *cobra.Command
-	regenerateCmd, err = database.RegenerateCmd(cfg)
-	if err != nil {
-		slog.Error(err.Error())
-		os.Exit(1)
-	}
-	rootCmd.AddCommand(regenerateCmd)
+	rootCmd.AddCommand(database.RegenerateCmd(cfg))
 
 	// Execute
 	if err = rootCmd.Execute(); err != nil {
