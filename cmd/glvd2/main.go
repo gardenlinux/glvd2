@@ -2,11 +2,9 @@ package main
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log/slog"
 	"os"
-	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/audit"
@@ -26,47 +24,6 @@ import (
 	"github.com/spf13/cobra"
 	_ "modernc.org/sqlite"
 )
-
-// Allows rendering of the new log level "trace".
-func replaceAttr(_ []string, a slog.Attr) slog.Attr {
-	if a.Key == slog.LevelKey {
-		level, ok := a.Value.Any().(slog.Level)
-		if !ok {
-			return a
-		}
-		if logging.LevelTrace == level {
-			a.Value = slog.StringValue("TRACE")
-		}
-	}
-	return a
-}
-
-// Set the log level.
-func setLogLevel(logLevelStr string) error {
-	var logLevel slog.LevelVar
-	switch strings.ToLower(logLevelStr) {
-	case "error":
-		logLevel.Set(slog.LevelError)
-	case "warn":
-		logLevel.Set(slog.LevelWarn)
-	case "info":
-		logLevel.Set(slog.LevelInfo)
-	case "debug":
-		logLevel.Set(slog.LevelDebug)
-	case "trace":
-		logLevel.Set(logging.LevelTrace)
-	default:
-		logLevel.Set(slog.LevelDebug)
-		return errors.New("unknown loglevel, defaulting to 'debug'")
-	}
-
-	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
-		Level:       &logLevel,
-		ReplaceAttr: replaceAttr,
-	})))
-
-	return nil
-}
 
 func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 	db, err := database.Regenerate(cfg.InternalSqliteDBPath)
@@ -214,7 +171,7 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 				slog.Error("getting loglevel failed", "error", err)
 			}
 
-			err = setLogLevel(logLevel)
+			err = logging.Configure(logLevel)
 			if err != nil {
 				slog.Error("could not set log level", "error", err)
 			}
