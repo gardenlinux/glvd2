@@ -314,6 +314,51 @@ func TestDiffFilesSince(t *testing.T) {
 		assert.Nil(t, files)
 	})
 
+	t.Run("uncommitted change appears in diff", func(t *testing.T) {
+		t.Parallel()
+
+		dir := initTestRepo(t)
+		writeFile(t, dir, "foo/a.txt", "original")
+		shaA := stageAllAndCommit(t, dir, "feat: add file")
+
+		// Modify a tracked file without committing.
+		writeFile(t, dir, "foo/a.txt", "uncommitted")
+
+		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
+		require.NoError(t, err)
+		assert.Contains(t, files, "foo/a.txt")
+	})
+
+	t.Run("staged but uncommitted change appears in diff", func(t *testing.T) {
+		t.Parallel()
+
+		dir := initTestRepo(t)
+		writeFile(t, dir, "foo/a.txt", "original")
+		shaA := stageAllAndCommit(t, dir, "feat: add file")
+
+		// Stage without committing.
+		writeFile(t, dir, "foo/a.txt", "staged")
+		runGit(t, dir, "add", "foo/a.txt")
+
+		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
+		require.NoError(t, err)
+		assert.Contains(t, files, "foo/a.txt")
+	})
+
+	t.Run("untracked file appears in diff", func(t *testing.T) {
+		t.Parallel()
+
+		dir := initTestRepo(t)
+		shaA := addEmptyCommit(t, dir, "chore: init")
+
+		// Never committed or staged.
+		writeFile(t, dir, "foo/a.txt", "untracked")
+
+		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
+		require.NoError(t, err)
+		assert.Contains(t, files, "foo/a.txt")
+	})
+
 	t.Run("deleted file appears in diff", func(t *testing.T) {
 		t.Parallel()
 

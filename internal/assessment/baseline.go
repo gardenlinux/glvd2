@@ -15,8 +15,8 @@ type GitReader interface {
 	// message contains a line matching anchor. Returns empty string if no match is found.
 	FindCommitByMessageAnchor(ctx context.Context, anchor string) (string, error)
 
-	// DiffFilesSince returns file paths changed between commitSHA and HEAD
-	// within the given path prefix. Returns nil if no files were modified.
+	// DiffFilesSince returns file paths that differ from commitSHA within the given path prefix,
+	// covering tracked changes and untracked files. Returns nil if none differ.
 	DiffFilesSince(ctx context.Context, commitSHA, pathPrefix string) ([]string, error)
 
 	// ShowFileAtCommit returns the content of a file at a specific commit.

@@ -127,8 +127,9 @@ func FindCommitByMessageAnchor(ctx context.Context, dir, anchor string) (string,
 	return strings.TrimSpace(stdout), nil
 }
 
-// DiffFilesSince returns the list of file paths changed between commitSHA and HEAD
-// within the given path prefix. Returns nil if no files were modified.
+// DiffFilesSince returns file paths that differ from commitSHA within the given path prefix,
+// covering tracked changes (committed, staged, or unstaged) and untracked files.
+// Returns nil if none differ.
 func DiffFilesSince(ctx context.Context, dir, commitSHA, pathPrefix string) ([]string, error) {
 	if err := validateCommitSHA(commitSHA); err != nil {
 		return nil, fmt.Errorf("DiffFilesSince: %w", err)
@@ -138,19 +139,40 @@ func DiffFilesSince(ctx context.Context, dir, commitSHA, pathPrefix string) ([]s
 		return nil, fmt.Errorf("DiffFilesSince: %w", err)
 	}
 
-	stdout, err := RunOutput(ctx, dir,
-		"diff", "--name-only", commitSHA, "HEAD", "--", pathPrefix+"/",
+	// Tracked changes vs the working tree.
+	diffOut, err := RunOutput(ctx, dir,
+		"diff", "--name-only", commitSHA, "--", pathPrefix+"/",
 	)
 	if err != nil {
 		return nil, fmt.Errorf("listing files changed since %s: %w", commitSHA, err)
 	}
 
-	trimmed := strings.TrimSpace(stdout)
-	if trimmed == "" {
+	// Untracked files, missed by git diff.
+	untrackedOut, err := RunOutput(ctx, dir,
+		"ls-files", "--others", "--exclude-standard", "--", pathPrefix+"/",
+	)
+	if err != nil {
+		return nil, fmt.Errorf("listing untracked files under %s: %w", pathPrefix, err)
+	}
+
+	files := append(splitLines(diffOut), splitLines(untrackedOut)...)
+	if len(files) == 0 {
 		return nil, nil
 	}
 
-	return strings.Split(trimmed, "\n"), nil
+	slices.Sort(files)
+
+	return slices.Compact(files), nil
+}
+
+// splitLines trims and splits by newlines into a slice, returning nil for empty input.
+func splitLines(out string) []string {
+	trimmed := strings.TrimSpace(out)
+	if trimmed == "" {
+		return nil
+	}
+
+	return strings.Split(trimmed, "\n")
 }
 
 // ShowFileAtCommit returns the content of a file at a specific commit.
