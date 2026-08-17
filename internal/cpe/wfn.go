@@ -61,7 +61,7 @@ const (
 	PartHardware    = "h"
 )
 
-// WFN is a Well-Formed Name — the canonical logical representation of a CPE.
+// WFN is a Well-Formed Name - the canonical logical representation of a CPE.
 type WFN struct {
 	Part      AttributeValue
 	Vendor    AttributeValue

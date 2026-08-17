@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/audit"
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
@@ -20,6 +21,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/logging"
 	"github.com/gardenlinux/glvd2/internal/mapping"
+	"github.com/gardenlinux/glvd2/internal/reactor"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/spf13/cobra"
 	_ "modernc.org/sqlite"
@@ -107,7 +109,7 @@ func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 	debSecTrackerIngestion := debsectracker.NewService(db, queries, cfg)
 	err = debSecTrackerIngestion.IngestTriage(ctx)
 	if err != nil {
-		slog.Error("Ingestion from Debian Security Tracker: %w", slog.Any("error", err))
+		slog.Error("Ingestion from Debian Security Tracker failed", slog.Any("error", err))
 		return err
 	}
 
@@ -137,18 +139,46 @@ func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 		return fmt.Errorf("recording audit package index: %w", err)
 	}
 
+	assessmentStore := assessment.NewStore(cfg)
+	gitReader := git.NewReader(".")
+	baseline, err := assessment.NewBaseline(ctx, gitReader, cfg)
+	if err != nil {
+		return fmt.Errorf("resolving baseline: %w", err)
+	}
+	cveDataService, err := assessment.NewService(ctx, assessmentStore, baseline, []assessment.Reactor{
+		reactor.Log{Logger: slog.Default()},
+	})
+	if err != nil {
+		return fmt.Errorf("setting up CVE data service: %w", err)
+	}
+
 	resCh, errCh := cveV5Service.ReceiveCVEs(ctx)
-	tmp := ""
-	cveCounter := 0
-	for resCh != nil && errCh != nil {
+	var cveCounter, createdCount, updatedCount int
+	for resCh != nil || errCh != nil { // || is important, otherwise not all CVEs are processed
 		select {
 		case cve, ok := <-resCh:
 			if !ok {
 				resCh = nil
 				continue
 			}
-			tmp = cve.Metadata.ID
 			cveCounter++
+
+			incoming := assessment.RecordFromCVEV5(cve)
+
+			_, cs, processErr := cveDataService.Process(ctx, incoming)
+			if processErr != nil {
+				slog.Error("processing record", slog.String("cve", incoming.ID), slog.Any("error", processErr))
+				continue
+			}
+
+			switch cs.Type {
+			case assessment.Created:
+				createdCount++
+			case assessment.Updated:
+				updatedCount++
+			case assessment.Unchanged:
+			}
+
 		case cveErr, ok := <-errCh:
 			if !ok {
 				errCh = nil
@@ -161,8 +191,10 @@ func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 		}
 	}
 
-	slog.Info("finished parsing the CVEs from CVEListV5",
-		slog.Int("numberOfCVEs", cveCounter), slog.String("lastCVEParsed", tmp))
+	slog.Info("finished processing CVEs from CVEListV5",
+		slog.Int("total", cveCounter),
+		slog.Int("created", createdCount),
+		slog.Int("updated", updatedCount))
 
 	return nil
 }

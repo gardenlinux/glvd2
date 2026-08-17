@@ -154,7 +154,7 @@ func TestService_IngestTriage(t *testing.T) {
 			queries := repository.New(db)
 
 			s := debsectracker.NewService(db, queries, tt.cfg)
-			gotErr := s.IngestTriage(context.Background()) // TODO: right context during a test?
+			gotErr := s.IngestTriage(t.Context())
 			if gotErr != nil {
 				if tt.expectedError != nil {
 					if !errors.Is(gotErr, tt.expectedError) { // XXX use specific errors
@@ -169,7 +169,7 @@ func TestService_IngestTriage(t *testing.T) {
 				t.Fatalf("%s succeeded unexpectedly", th)
 			}
 
-			entries, err := getAllTriageEntriesWithRelationsFromDB(context.Background(), queries)
+			entries, err := getAllTriageEntriesWithRelationsFromDB(t.Context(), queries)
 			if err != nil {
 				t.Fatalf("%s failed: could not get the data from the DB: %v", th, err)
 			}

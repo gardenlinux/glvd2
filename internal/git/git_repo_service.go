@@ -1,14 +1,12 @@
 package git
 
 import (
-	"bytes"
 	"context"
 	"errors"
 	"fmt"
 	"log/slog"
 	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 )
@@ -28,45 +26,25 @@ func gitBinaryExists() bool {
 	return err == nil
 }
 
-// runGit executes a git command and returns a wrapped error including stderr on failure.
-func runGit(ctx context.Context, args ...string) error {
-	cmd := exec.CommandContext(ctx, "git", args...) //nolint:gosec // private function with only hard-coded values
-
-	var stdout bytes.Buffer
-	cmd.Stdout = &stdout
-
-	var stderr bytes.Buffer
-	cmd.Stderr = &stderr
-
-	err := cmd.Run()
-	if err != nil {
-		return fmt.Errorf("git %s: %w (stderr: %s)", args[0], err, strings.TrimSpace(stderr.String()))
-	}
-
-	if stdout.Len() > 0 {
-		slog.Debug("git output", slog.String("cmd", strings.Join(args, " ")), slog.String("stdout", stdout.String()))
-	}
-
-	return nil
-}
-
 func setup(ctx context.Context) error {
 	if !gitBinaryExists() {
 		return errors.New("git is not available as shell command; " +
 			"maybe it is not installed or the path is not set correctly")
 	}
 
+	// all git commands for the submodule service use "." as the working directory
+
 	// ensure that we really have no local changes
-	if err := runGit(ctx, "submodule", "foreach", "--recursive", "git", "reset", "--hard"); err != nil {
+	if err := Run(ctx, ".", "submodule", "foreach", "--recursive", "git", "reset", "--hard"); err != nil {
 		return fmt.Errorf("resetting submodules: %w", err)
 	}
 
 	// use the blob:none filter in the submodules
-	if err := runGit(ctx, "config", "clone.filterSubmodules", "true"); err != nil {
+	if err := Run(ctx, ".", "config", "clone.filterSubmodules", "true"); err != nil {
 		return fmt.Errorf("configuring submodule filter: %w", err)
 	}
 
-	if err := runGit(ctx, "submodule", "update", "--init", "--recursive", "--filter=blob:none"); err != nil {
+	if err := Run(ctx, ".", "submodule", "update", "--init", "--recursive", "--filter=blob:none"); err != nil {
 		return fmt.Errorf("initializing submodules: %w", err)
 	}
 
@@ -101,7 +79,7 @@ func (r *SubmoduleService) GetLatest(ctx context.Context) error {
 	}
 
 	slog.Info("Start updating the git submodules")
-	if err = runGit(ctx, "submodule", "update", "--remote"); err != nil {
+	if err = Run(ctx, ".", "submodule", "update", "--remote"); err != nil {
 		return fmt.Errorf("updating submodules: %w", err)
 	}
 
