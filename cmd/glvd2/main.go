@@ -198,7 +198,7 @@ func main() {
 	var rootCmd *cobra.Command
 	var cfg *config.AppConfig
 
-	cfg, err = config.LoadAppConfig()
+	cfg, err = config.LoadAppConfig("./config")
 	if err != nil {
 		slog.Error("Could not read the config file", slog.Any("error", err))
 		return
