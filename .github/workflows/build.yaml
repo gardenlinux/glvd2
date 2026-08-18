@@ -42,7 +42,7 @@ jobs:
       - name: Download dependencies
         run: go mod download
       - name: Build
-        run: go build cmd/glvd2/main.go
+        run: make build
       - name: Test
         run: go test -v ./...
 
