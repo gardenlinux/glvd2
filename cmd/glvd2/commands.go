@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log/slog"
-
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glcve"
@@ -20,18 +18,12 @@ func newRootCmd(cfg *config.AppConfig) *cobra.Command {
 		SilenceUsage: true,
 		Short:        "Garden Linux Vulnerability Database 2",
 		Long:         "Ingests and triages CVEs for Garden Linux.",
-		PersistentPreRun: func(cmd *cobra.Command, _ []string) {
-			var err error
-			var logLevel string
-			logLevel, err = cmd.Flags().GetString("log-level")
+		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
+			logLevel, err := cmd.Flags().GetString("log-level")
 			if err != nil {
-				slog.Error("getting loglevel failed", "error", err)
+				return err
 			}
-
-			err = logging.Configure(logLevel)
-			if err != nil {
-				slog.Error("could not set log level", "error", err)
-			}
+			return logging.Configure(logLevel)
 		},
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			skipSubmoduleUpdates, err := cmd.Flags().GetBool("skip-submodule-updates")

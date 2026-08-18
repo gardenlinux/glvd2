@@ -2,7 +2,7 @@ package logging
 
 import (
 	"context"
-	"errors"
+	"fmt"
 	"log/slog"
 	"os"
 	"strings"
@@ -48,7 +48,7 @@ func Configure(levelStr string) error {
 		logLevel.Set(LevelTrace)
 	default:
 		logLevel.Set(slog.LevelDebug)
-		err = errors.New("unknown loglevel, defaulting to 'debug'")
+		err = fmt.Errorf("unknown log level: %s", levelStr)
 	}
 
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
