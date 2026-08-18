@@ -1,0 +1,157 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"log/slog"
+
+	"github.com/gardenlinux/glvd2/internal/assessment"
+	"github.com/gardenlinux/glvd2/internal/audit"
+	"github.com/gardenlinux/glvd2/internal/config"
+	database "github.com/gardenlinux/glvd2/internal/db"
+	"github.com/gardenlinux/glvd2/internal/git"
+	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
+	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
+	"github.com/gardenlinux/glvd2/internal/mapping"
+	"github.com/gardenlinux/glvd2/internal/reactor"
+	"github.com/gardenlinux/glvd2/internal/repository"
+)
+
+type pipelineOptions struct {
+	SkipSubmoduleUpdate bool
+}
+
+type pipelineSummary struct {
+	Total, Created, Updated int
+}
+
+func runPipeline(ctx context.Context, cfg *config.AppConfig, opts pipelineOptions) (pipelineSummary, error) {
+	db, err := database.Regenerate(cfg.InternalSqliteDBPath)
+	if err != nil {
+		slog.Error("could not open database", slog.Any("error", err))
+		return pipelineSummary{}, err
+	}
+	defer func() {
+		if errDb := db.Close(); errDb != nil {
+			slog.Error("error during closing of the database", slog.Any("error", errDb))
+		}
+	}()
+
+	err = db.Ping()
+	if err != nil {
+		slog.Error("could not ping the database", slog.Any("error", err))
+		return pipelineSummary{}, err
+	}
+
+	queries := repository.New(db)
+
+	// CVEListV5 and the Debian Security Tracker are currently added as git submodules
+	submoduleService, err := git.NewSubmoduleService(cfg)
+	if err != nil {
+		slog.Error("Could not initialize the submodule service", slog.Any("error", err))
+		return pipelineSummary{}, err
+	}
+	if opts.SkipSubmoduleUpdate {
+		slog.Info("Skipping updating the git submodules, since corresponding flag is set")
+	} else {
+		err = submoduleService.GetLatest(ctx)
+		if err != nil {
+			slog.Error("Could not get the latest state of the submodules", slog.Any("error", err))
+			return pipelineSummary{}, err
+		}
+	}
+
+	debSecTrackerIngestion := debsectracker.NewService(db, queries, cfg)
+	err = debSecTrackerIngestion.IngestTriage(ctx)
+	if err != nil {
+		slog.Error("Ingestion from Debian Security Tracker failed", slog.Any("error", err))
+		return pipelineSummary{}, err
+	}
+
+	// TODO: Find CVEs that are only present in the Deb Sec Tracker, but not in our repo from CVEListV5 (reserved ones).
+
+	cveV5Service := cvelistv5.NewService(cfg)
+	idsForCVEs, err := cveV5Service.GetIDsForCVEs(ctx)
+	if err != nil {
+		return pipelineSummary{}, err
+	}
+
+	mappingService, err := mapping.NewService(queries)
+	if err != nil {
+		return pipelineSummary{}, err
+	}
+
+	mappingResult, pkgIDIndex, err := mappingService.Analyze(ctx, idsForCVEs)
+	if err != nil {
+		return pipelineSummary{}, err
+	}
+
+	auditService := audit.NewService(cfg)
+	if err = auditService.Record("mapping_result.json", mappingResult); err != nil {
+		return pipelineSummary{}, fmt.Errorf("recording audit mapping result: %w", err)
+	}
+	if err = auditService.Record("package_index.json", pkgIDIndex); err != nil {
+		return pipelineSummary{}, fmt.Errorf("recording audit package index: %w", err)
+	}
+
+	assessmentStore := assessment.NewStore(cfg)
+	gitReader := git.NewReader(".")
+	baseline, err := assessment.NewBaseline(ctx, gitReader, cfg)
+	if err != nil {
+		return pipelineSummary{}, fmt.Errorf("resolving baseline: %w", err)
+	}
+	cveDataService, err := assessment.NewService(ctx, assessmentStore, baseline, []assessment.Reactor{
+		reactor.Log{Logger: slog.Default()},
+	})
+	if err != nil {
+		return pipelineSummary{}, fmt.Errorf("setting up CVE data service: %w", err)
+	}
+
+	resCh, errCh := cveV5Service.ReceiveCVEs(ctx)
+	var summary pipelineSummary
+	for resCh != nil || errCh != nil { // || is important, otherwise not all CVEs are processed
+		select {
+		case <-ctx.Done():
+			return pipelineSummary{}, ctx.Err()
+		case cve, ok := <-resCh:
+			if !ok {
+				resCh = nil
+				continue
+			}
+			summary.Total++
+
+			incoming := assessment.RecordFromCVEV5(cve)
+
+			_, cs, processErr := cveDataService.Process(ctx, incoming)
+			if processErr != nil {
+				slog.Error("processing record", slog.String("cve", incoming.ID), slog.Any("error", processErr))
+				continue
+			}
+
+			switch cs.Type {
+			case assessment.Created:
+				summary.Created++
+			case assessment.Updated:
+				summary.Updated++
+			case assessment.Unchanged:
+			}
+
+		case cveErr, ok := <-errCh:
+			if !ok {
+				errCh = nil
+				continue
+			}
+			if cveErr != nil {
+				slog.Error("Parsing the CVEs from CVEListV5 failed", slog.Any("error", cveErr))
+				return pipelineSummary{}, cveErr
+			}
+		}
+	}
+
+	slog.Info("finished processing CVEs from CVEListV5",
+		slog.Int("total", summary.Total),
+		slog.Int("created", summary.Created),
+		slog.Int("updated", summary.Updated))
+
+	return summary, nil
+}

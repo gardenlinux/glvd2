@@ -8,7 +8,7 @@ setup:
 
 .PHONY: build
 build:
-	@go build -o $(BINARY) cmd/glvd2/main.go
+	@go build -o $(BINARY) ./cmd/glvd2/
 
 .PHONY: fmt
 fmt: format
