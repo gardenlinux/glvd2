@@ -2,9 +2,12 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/audit"
@@ -25,7 +28,10 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
+// Exit code for interrupt (SIGINT): 128 + 2.
+const exitInterrupted = 130
+
+func ingestCVEs(ctx context.Context, cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 	db, err := database.Regenerate(cfg.InternalSqliteDBPath)
 	if err != nil {
 		slog.Error("could not open database", slog.Any("error", err))
@@ -44,8 +50,6 @@ func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 	}
 
 	queries := repository.New(db)
-
-	ctx := context.Background()
 
 	// CVEListV5 and the Debian Security Tracker are currently added as git submodules
 	submoduleService, err := git.NewSubmoduleService(cfg)
@@ -113,6 +117,8 @@ func ingestCVEs(cfg *config.AppConfig, skipSubmoduleUpdate bool) error {
 	var cveCounter, createdCount, updatedCount int
 	for resCh != nil || errCh != nil { // || is important, otherwise not all CVEs are processed
 		select {
+		case <-ctx.Done():
+			return ctx.Err()
 		case cve, ok := <-resCh:
 			if !ok {
 				resCh = nil
@@ -182,7 +188,7 @@ func cmd(cfg *config.AppConfig) *cobra.Command {
 				return err
 			}
 
-			return ingestCVEs(cfg, skipSubmoduleUpdates)
+			return ingestCVEs(cmd.Context(), cfg, skipSubmoduleUpdates)
 		},
 	}
 	rootCmd.PersistentFlags().
@@ -213,32 +219,38 @@ func main() {
 		Title: "Debugging:",
 	})
 
-	// Debug: GLRD
+	// Debug commands
 	rootCmd.AddCommand(glrd.Cmd())
-
-	// Debug: Packages
 	rootCmd.AddCommand(packages.Cmd())
-
-	// Debug: ReleasePage
 	rootCmd.AddCommand(glcve.ReleasePageCmd())
-
-	// Debug: Mentioned CVEs
 	rootCmd.AddCommand(glcve.MentionedCVEsCmd())
-
-	// Debug: Repos information
 	rootCmd.AddCommand(repos.PackagerepoCmd())
-
-	// Debug: Repo Branches information
 	rootCmd.AddCommand(repos.BranchCmd())
-
-	// Debug: Repometa information
 	rootCmd.AddCommand(repos.MetaCmd(cfg))
-
-	// Regenerate
 	rootCmd.AddCommand(database.RegenerateCmd(cfg))
 
-	// Execute
-	if err = rootCmd.Execute(); err != nil {
+	// stop() must be called explicitly: os.Exit skips deferred calls.
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+
+	// Force-exit on second SIGINT or SIGTERM signal.
+	hardExit := make(chan os.Signal, 1)
+	signal.Notify(hardExit, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		<-ctx.Done() // first signal
+		<-hardExit   // second signal
+		slog.Warn("second interrupt received, forcing exit")
+		os.Exit(exitInterrupted)
+	}()
+
+	err = rootCmd.ExecuteContext(ctx)
+	stop() // defer not possible (os.exit)
+	switch {
+	case err == nil:
+		// normal exit
+	case errors.Is(err, context.Canceled):
+		slog.Info("interrupted, shutting down")
+		os.Exit(exitInterrupted)
+	default:
 		slog.Error(err.Error())
 		os.Exit(1)
 	}
