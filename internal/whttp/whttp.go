@@ -54,11 +54,10 @@ func MakeHeader(key, value string) Header {
 	}
 }
 
-func (h *HTTPClient) get(url string) (Response, error) {
+func (h *HTTPClient) get(ctx context.Context, url string) (Response, error) {
 	var err error
 
 	slog.With("client", "http", "method", "get", "url", url).Info("Performing request")
-	ctx := context.Background()
 	var req *http.Request
 	req, err = http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
@@ -108,8 +107,8 @@ func (h *HTTPClient) get(url string) (Response, error) {
 	return Response{Header: resp.Header, HTTPStatusCode: resp.StatusCode, Body: body, LinkHeader: linkHeader}, err
 }
 
-func (h *HTTPClient) GetRaw(url string) ([]byte, int, error) {
-	response, err := h.get(url)
+func (h *HTTPClient) GetRaw(ctx context.Context, url string) ([]byte, int, error) {
+	response, err := h.get(ctx, url)
 	if err != nil {
 		return nil, response.HTTPStatusCode, err
 	}
@@ -117,8 +116,8 @@ func (h *HTTPClient) GetRaw(url string) ([]byte, int, error) {
 	return response.Body, response.HTTPStatusCode, nil
 }
 
-func (h *HTTPClient) GetString(url string) (string, int, error) {
-	response, err := h.get(url)
+func (h *HTTPClient) GetString(ctx context.Context, url string) (string, int, error) {
+	response, err := h.get(ctx, url)
 	if err != nil {
 		return "", response.HTTPStatusCode, err
 	}
@@ -126,18 +125,18 @@ func (h *HTTPClient) GetString(url string) (string, int, error) {
 	return string(response.Body), response.HTTPStatusCode, nil
 }
 
-func (h *HTTPClient) GetResponse(url string) (Response, error) {
-	return h.get(url)
+func (h *HTTPClient) GetResponse(ctx context.Context, url string) (Response, error) {
+	return h.get(ctx, url)
 }
 
-func (h *HTTPClient) GetJSON(url string, target any) (any, Response, error) {
+func (h *HTTPClient) GetJSON(ctx context.Context, url string, target any) (any, Response, error) {
 	var err error
-	response, err := h.get(url)
+	response, err := h.get(ctx, url)
 	if err != nil {
 		return nil, response, err
 	}
 
-	slog.Log(context.Background(), logging.LevelTrace, "payload", "url", url, "body", string(response.Body))
+	slog.Log(ctx, logging.LevelTrace, "payload", "url", url, "body", string(response.Body))
 
 	err = json.Unmarshal(response.Body, target)
 	if err != nil {

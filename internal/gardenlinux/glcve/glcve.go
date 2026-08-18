@@ -1,6 +1,7 @@
 package glcve
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"regexp"
@@ -15,7 +16,7 @@ const githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/r
 
 var cvePatternRegex = regexp.MustCompile(`CVE-\d+-\d+`)
 
-func getReleasePage(release version.GardenLinuxRelease) (string, error) {
+func getReleasePage(ctx context.Context, release version.GardenLinuxRelease) (string, error) {
 	var err error
 	var client *whttp.HTTPClient
 
@@ -26,7 +27,7 @@ func getReleasePage(release version.GardenLinuxRelease) (string, error) {
 
 	url := fmt.Sprintf(githubReleaseURL, release.Name)
 	var result string
-	result, _, err = client.GetString(url)
+	result, _, err = client.GetString(ctx, url)
 	if err != nil {
 		slog.Error(
 			"could not perform http request",
@@ -48,33 +49,36 @@ func ExtractMentionedCVEs(releasePage string) []string {
 	return result
 }
 
+type mentionedCVEsOptions struct {
+	Version string
+}
+
 func MentionedCVEsCmd() *cobra.Command {
+	var opts mentionedCVEsOptions
 	cmd := &cobra.Command{
 		Use:     "cves <version>",
 		Short:   "Find CVEs mentioned in release page of <version>",
 		Args:    cobra.MaximumNArgs(1),
 		GroupID: "debug",
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			version, _ := cmd.Flags().GetString("version")
-
-			return doMentionedCVEsInRelease(version)
+			return doMentionedCVEsInRelease(cmd.Context(), opts.Version)
 		},
 	}
 
-	cmd.Flags().String("version", "", "specific version")
+	cmd.Flags().StringVar(&opts.Version, "version", "", "specific version")
 	// MarkFlagRequired only errors when the flag is unregistered, which cannot happen here.
 	_ = cmd.MarkFlagRequired("version")
 
 	return cmd
 }
 
-func GetMentionedCVEs(v string) ([]string, error) {
+func GetMentionedCVEs(ctx context.Context, v string) ([]string, error) {
 	vers, err := version.MakeGardenLinuxReleaseFromString(v)
 	if err != nil {
 		return nil, err
 	}
 
-	releasePage, err := getReleasePage(vers)
+	releasePage, err := getReleasePage(ctx, vers)
 	if err != nil {
 		return nil, err
 	}
@@ -84,8 +88,8 @@ func GetMentionedCVEs(v string) ([]string, error) {
 	return mentionedCVEs, nil
 }
 
-func doMentionedCVEsInRelease(v string) error {
-	mentionedCVEs, err := GetMentionedCVEs(v)
+func doMentionedCVEsInRelease(ctx context.Context, v string) error {
+	mentionedCVEs, err := GetMentionedCVEs(ctx, v)
 	if err != nil {
 		return err
 	}
@@ -97,7 +101,7 @@ func doMentionedCVEsInRelease(v string) error {
 	return nil
 }
 
-func doReleasePage(v string) error {
+func doReleasePage(ctx context.Context, v string) error {
 	var err error
 	var vers version.GardenLinuxRelease
 
@@ -107,7 +111,7 @@ func doReleasePage(v string) error {
 	}
 
 	var releasePage string
-	releasePage, err = getReleasePage(vers)
+	releasePage, err = getReleasePage(ctx, vers)
 	if err != nil {
 		return err
 	}
@@ -117,25 +121,23 @@ func doReleasePage(v string) error {
 	return nil
 }
 
+type releasePageOptions struct {
+	Version string
+}
+
 func ReleasePageCmd() *cobra.Command {
+	var opts releasePageOptions
 	cmd := &cobra.Command{
 		Use:     "releasepage <version>",
 		Short:   "Print the release page of a <version>",
 		Args:    cobra.MaximumNArgs(1),
 		GroupID: "debug",
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			var err error
-			var vers string
-			vers, err = cmd.Flags().GetString("version")
-			if err != nil {
-				return err
-			}
-
-			return doReleasePage(vers)
+			return doReleasePage(cmd.Context(), opts.Version)
 		},
 	}
 
-	cmd.Flags().String("version", "", "specific version")
+	cmd.Flags().StringVar(&opts.Version, "version", "", "specific version")
 	// MarkFlagRequired only errors when the flag is unregistered, which cannot happen here.
 	_ = cmd.MarkFlagRequired("version")
 

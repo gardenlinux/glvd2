@@ -3,6 +3,7 @@ package packages
 import (
 	"bytes"
 	"compress/gzip"
+	"context"
 	"errors"
 	"fmt"
 	"io"
@@ -95,12 +96,12 @@ func BuildPackageURL(release version.GardenLinuxRelease, packageFile PackageFile
 	return fmt.Sprintf(glPackageURL, release.Name, packageFile.PackagePath)
 }
 
-func getInReleaseFile(release version.GardenLinuxRelease) (string, error) {
+func getInReleaseFile(ctx context.Context, release version.GardenLinuxRelease) (string, error) {
 	client := whttp.NewClient()
 
 	inreleaseURL := fmt.Sprintf(glInreleaseURL, release.Name)
 
-	response, _, err := client.GetString(inreleaseURL)
+	response, _, err := client.GetString(ctx, inreleaseURL)
 	if err != nil {
 		slog.Error("could not get InRelease file",
 			slog.Any("error", err),
@@ -182,9 +183,9 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	return result, nil
 }
 
-func GetPackageListsFromInRelease(release version.GardenLinuxRelease) ([]Package, error) {
+func GetPackageListsFromInRelease(ctx context.Context, release version.GardenLinuxRelease) ([]Package, error) {
 	var err error
-	content, err := getInReleaseFile(release)
+	content, err := getInReleaseFile(ctx, release)
 	if err != nil {
 		return nil, err
 	}
@@ -198,7 +199,7 @@ func GetPackageListsFromInRelease(release version.GardenLinuxRelease) ([]Package
 
 	for _, packagefile := range inrelease.PackageFiles {
 		var packages []Package
-		packages, err = GetPackageList(release, packagefile)
+		packages, err = GetPackageList(ctx, release, packagefile)
 		if err != nil {
 			slog.Error("could not get packages list",
 				slog.Any("error", err))
@@ -210,7 +211,11 @@ func GetPackageListsFromInRelease(release version.GardenLinuxRelease) ([]Package
 	return result, nil
 }
 
-func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile) ([]Package, error) {
+func GetPackageList(
+	ctx context.Context,
+	release version.GardenLinuxRelease,
+	packageFile PackageFile,
+) ([]Package, error) {
 	url := BuildPackageURL(release, packageFile)
 	if url == "" {
 		slog.Error("empty url",
@@ -224,7 +229,7 @@ func GetPackageList(release version.GardenLinuxRelease, packageFile PackageFile)
 		slog.String("packagefile", packageFile.PackagePath),
 		slog.String("url", url))
 	client := whttp.NewClient()
-	body, _, err := client.GetRaw(url)
+	body, _, err := client.GetRaw(ctx, url)
 	if err != nil {
 		slog.Error("could not retrieve package list",
 			slog.Any("release", release),

@@ -1,6 +1,7 @@
 package glrd
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 
@@ -54,10 +55,10 @@ type Releases struct {
 	Releases []Release `json:"releases"`
 }
 
-func GetReleases() ([]Release, error) {
+func GetReleases(ctx context.Context) ([]Release, error) {
 	client := whttp.NewClient()
 	var releases Releases
-	_, _, err := client.GetJSON(glrdReleasesMinorURL, releases)
+	_, _, err := client.GetJSON(ctx, glrdReleasesMinorURL, releases)
 	if err != nil {
 		slog.Error("could not retrieve minor releases",
 			slog.String("url", glrdReleasesMinorURL),
@@ -67,8 +68,8 @@ func GetReleases() ([]Release, error) {
 	return releases.Releases, nil
 }
 
-func doReleasesCmd() error {
-	glrdReleases, err := GetReleases()
+func doReleasesCmd(ctx context.Context) error {
+	glrdReleases, err := GetReleases(ctx)
 	if err != nil {
 		return err
 	}
@@ -86,8 +87,8 @@ func Cmd() *cobra.Command {
 		Short:   "Gets all Gardenlinux releases",
 		Args:    cobra.NoArgs,
 		GroupID: "debug",
-		RunE: func(_ *cobra.Command, _ []string) error {
-			return doReleasesCmd()
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			return doReleasesCmd(cmd.Context())
 		},
 	}
 

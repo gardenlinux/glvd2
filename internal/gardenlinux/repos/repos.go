@@ -1,6 +1,7 @@
 package repos
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"os"
@@ -29,7 +30,7 @@ const (
 	firstPage int = 1
 )
 
-func GetPackageRepoBranches(repository string) ([]Branch, error) {
+func GetPackageRepoBranches(ctx context.Context, repository string) ([]Branch, error) {
 	var err error
 
 	var client *whttp.HTTPClient
@@ -51,7 +52,7 @@ func GetPackageRepoBranches(repository string) ([]Branch, error) {
 
 	for {
 		var tmpBranches []Branch
-		_, response, err = client.GetJSON(url, &tmpBranches)
+		_, response, err = client.GetJSON(ctx, url, &tmpBranches)
 		if err != nil {
 			slog.Error("branch download failed", "error", err)
 			break
@@ -79,7 +80,7 @@ func IsRelevantBranch(branch Branch) bool {
 	return branch.Name == "main" || branch.Name == "master" || branchNamingRegexp.MatchString(branch.Name)
 }
 
-func GetPackageRepos() ([]Repository, error) {
+func GetPackageRepos(ctx context.Context) ([]Repository, error) {
 	var err error
 
 	var client *whttp.HTTPClient
@@ -101,7 +102,7 @@ func GetPackageRepos() ([]Repository, error) {
 	for {
 		var tmpRepos []Repository
 
-		_, response, err = client.GetJSON(url, &tmpRepos)
+		_, response, err = client.GetJSON(ctx, url, &tmpRepos)
 		if err != nil {
 			slog.Error("repo download failed", "error", err)
 			break
@@ -132,8 +133,8 @@ func PackagerepoCmd() *cobra.Command {
 		Short:   "Print repos",
 		GroupID: "debug", //nolint:goconst // just for debug output
 		Args:    cobra.NoArgs,
-		RunE: func(_ *cobra.Command, _ []string) error {
-			repos, err := GetPackageRepos()
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			repos, err := GetPackageRepos(cmd.Context())
 			if err != nil {
 				return err
 			}
@@ -150,15 +151,19 @@ func PackagerepoCmd() *cobra.Command {
 	return cmd
 }
 
+type branchOptions struct {
+	Repository string
+}
+
 func BranchCmd() *cobra.Command {
+	var opts branchOptions
 	cmd := &cobra.Command{
 		Use:     "branches",
 		Short:   "Print repo's branches",
 		GroupID: "debug",
 		Args:    cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			repository, _ := cmd.Flags().GetString("repository")
-			branches, err := GetPackageRepoBranches(repository)
+			branches, err := GetPackageRepoBranches(cmd.Context(), opts.Repository)
 			if err != nil {
 				return err
 			}
@@ -166,13 +171,13 @@ func BranchCmd() *cobra.Command {
 			stdOutLogger := slog.New(slog.NewTextHandler(os.Stdout, nil))
 
 			for _, branch := range branches {
-				stdOutLogger.Info("repo branches", "repo", repository, "branch", branch.Name)
+				stdOutLogger.Info("repo branches", "repo", opts.Repository, "branch", branch.Name)
 			}
 			return nil
 		},
 	}
 
-	cmd.Flags().String("repository", "", "name of the repository")
+	cmd.Flags().StringVar(&opts.Repository, "repository", "", "name of the repository")
 	// MarkFlagRequired only errors when the flag is unregistered, which cannot happen here.
 	_ = cmd.MarkFlagRequired("repository")
 

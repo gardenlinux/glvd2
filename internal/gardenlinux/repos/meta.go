@@ -1,6 +1,7 @@
 package repos
 
 import (
+	"context"
 	"encoding/base64"
 	"errors"
 	"fmt"
@@ -42,7 +43,7 @@ type Commit struct {
 	Sha string `json:"sha"`
 }
 
-func getLatestCommitId(repoName, branch string) (Commit, error) {
+func getLatestCommitId(ctx context.Context, repoName, branch string) (Commit, error) {
 	var err error
 	var client *whttp.HTTPClient
 
@@ -53,6 +54,7 @@ func getLatestCommitId(repoName, branch string) (Commit, error) {
 
 	var result []Commit
 	_, _, err = client.GetJSON(
+		ctx,
 		fmt.Sprintf(
 			"https://api.github.com/repos/gardenlinux/%s/commits?sha=%s&per_page=%d&page=%d",
 			repoName,
@@ -73,7 +75,7 @@ func getLatestCommitId(repoName, branch string) (Commit, error) {
 	return result[0], nil
 }
 
-func getFile(repoName, filePath, branch string) (FileContent, error) {
+func getFile(ctx context.Context, repoName, filePath, branch string) (FileContent, error) {
 	var err error
 	var client *whttp.HTTPClient
 	client, err = github.NewClient()
@@ -83,6 +85,7 @@ func getFile(repoName, filePath, branch string) (FileContent, error) {
 
 	var fileContent FileContent
 	_, _, err = client.GetJSON(
+		ctx,
 		fmt.Sprintf(
 			"https://api.github.com/repos/gardenlinux/%s/contents/%s?ref=%s",
 			repoName,
@@ -98,7 +101,7 @@ func getFile(repoName, filePath, branch string) (FileContent, error) {
 	return fileContent, nil
 }
 
-func GetPackageMeta(cfg *config.AppConfig, repoName, branch string) (*RepositoryMetadata, error) {
+func GetPackageMeta(ctx context.Context, cfg *config.AppConfig, repoName, branch string) (*RepositoryMetadata, error) {
 	var err error
 	var prepareSource FileContent
 	var content string
@@ -109,7 +112,7 @@ func GetPackageMeta(cfg *config.AppConfig, repoName, branch string) (*Repository
 
 	// Get CommitId for caching
 	var commitId Commit
-	commitId, err = getLatestCommitId(repoName, branch)
+	commitId, err = getLatestCommitId(ctx, repoName, branch)
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +124,7 @@ func GetPackageMeta(cfg *config.AppConfig, repoName, branch string) (*Repository
 		// Cache miss, getting the file from github repo
 		slog.Error("cache miss", "repository", queryData.Repository, "branch", queryData.Branch, "error", err)
 
-		prepareSource, err = getFile(repoName, "prepare_source", branch)
+		prepareSource, err = getFile(ctx, repoName, "prepare_source", branch)
 		if err != nil {
 			return nil, err
 		}
@@ -267,14 +270,18 @@ func analyzePrepareSource(content string, queryData RepositoryMetadata) (*Reposi
 	return &metadata, nil
 }
 
-func GetRepoPackageMetadata(cfg *config.AppConfig, repoName, branchName string) ([]*RepositoryMetadata, error) {
+func GetRepoPackageMetadata(
+	ctx context.Context,
+	cfg *config.AppConfig,
+	repoName, branchName string,
+) ([]*RepositoryMetadata, error) {
 	var repositories []Repository
 	var err error
 	var result []*RepositoryMetadata
 
 	// if no repository is given, check all repositories
 	if repoName == "" {
-		repositories, err = GetPackageRepos()
+		repositories, err = GetPackageRepos(ctx)
 		if err != nil {
 			return nil, err
 		}
@@ -287,7 +294,7 @@ func GetRepoPackageMetadata(cfg *config.AppConfig, repoName, branchName string) 
 		// Check if all (filtered) branches or just the given. If no repo is named, we always
 		// query all branches
 		if repoName == "" || branchName == "" {
-			branches, err = GetPackageRepoBranches(repo.Name)
+			branches, err = GetPackageRepoBranches(ctx, repo.Name)
 			if err != nil {
 				return nil, err
 			}
@@ -297,7 +304,7 @@ func GetRepoPackageMetadata(cfg *config.AppConfig, repoName, branchName string) 
 
 		for _, br := range branches {
 			var meta *RepositoryMetadata
-			meta, err = GetPackageMeta(cfg, repo.Name, br.Name)
+			meta, err = GetPackageMeta(ctx, cfg, repo.Name, br.Name)
 			if err != nil {
 				slog.Error(err.Error(), "repo", repo.Name, "branch", br.Name)
 				continue
@@ -308,7 +315,13 @@ func GetRepoPackageMetadata(cfg *config.AppConfig, repoName, branchName string) 
 	return result, nil
 }
 
+type metaOptions struct {
+	Repository string
+	Branch     string
+}
+
 func MetaCmd(cfg *config.AppConfig) *cobra.Command {
+	var opts metaOptions
 	cmd := &cobra.Command{
 		Use:          "metadata",
 		Short:        "Print repo metadata",
@@ -316,60 +329,49 @@ func MetaCmd(cfg *config.AppConfig) *cobra.Command {
 		SilenceUsage: false,
 		Args:         cobra.OnlyValidArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			var repoName string
-
-			var branchName string
-			var err error
-
-			repoName, err = cmd.Flags().GetString("repository")
-			if err != nil {
-				return err
-			}
-
-			branchName, err = cmd.Flags().GetString("branch")
-			if err != nil {
-				return err
-			}
-
-			// Update database if necessary
-			db, err := database.Regenerate(cfg.InternalSqliteDBPath)
-			if err != nil {
-				slog.Error("could not open database", slog.Any("error", err))
-				return err
-			}
-			defer func() {
-				if errDb := db.Close(); errDb != nil {
-					slog.Error("error during closing of the database", slog.Any("error", errDb))
-				}
-			}()
-
-			var metas []*RepositoryMetadata
-			metas, err = GetRepoPackageMetadata(cfg, repoName, branchName)
-			if err != nil {
-				return err
-			}
-
-			stdOutLogger := slog.New(slog.NewTextHandler(os.Stdout, nil))
-
-			for _, meta := range metas {
-				// print metadata
-				stdOutLogger.
-					With("repository", meta.Repository, "branch", meta.Branch, "commitid", meta.CommitId).
-					Info("analysis",
-						"AptSrc", meta.AptSrc,
-						"DebianSrc", meta.DebianSrc,
-						"SalsaSrc", meta.SalsaSrc,
-						"UpstreamSrc", meta.UpstreamSrc,
-						"Upstream Patches", meta.UpstreamPatches,
-						"Debian Patches", meta.DebianPatches,
-						"Gardenlinux Patches", meta.GlPatches,
-					)
-			}
-			return nil
+			return runMeta(cmd.Context(), cfg, opts)
 		},
 	}
-	cmd.Flags().String("branch", "", "specific branch name")
-	cmd.Flags().String("repository", "", "repository name")
+	cmd.Flags().StringVar(&opts.Branch, "branch", "", "specific branch name")
+	cmd.Flags().StringVar(&opts.Repository, "repository", "", "repository name")
 
 	return cmd
+}
+
+func runMeta(ctx context.Context, cfg *config.AppConfig, opts metaOptions) error {
+	// Update database if necessary
+	db, err := database.Regenerate(cfg.InternalSqliteDBPath)
+	if err != nil {
+		slog.Error("could not open database", slog.Any("error", err))
+		return err
+	}
+	defer func() {
+		if errDb := db.Close(); errDb != nil {
+			slog.Error("error during closing of the database", slog.Any("error", errDb))
+		}
+	}()
+
+	var metas []*RepositoryMetadata
+	metas, err = GetRepoPackageMetadata(ctx, cfg, opts.Repository, opts.Branch)
+	if err != nil {
+		return err
+	}
+
+	stdOutLogger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
+	for _, meta := range metas {
+		// print metadata
+		stdOutLogger.
+			With("repository", meta.Repository, "branch", meta.Branch, "commitid", meta.CommitId).
+			Info("analysis",
+				"AptSrc", meta.AptSrc,
+				"DebianSrc", meta.DebianSrc,
+				"SalsaSrc", meta.SalsaSrc,
+				"UpstreamSrc", meta.UpstreamSrc,
+				"Upstream Patches", meta.UpstreamPatches,
+				"Debian Patches", meta.DebianPatches,
+				"Gardenlinux Patches", meta.GlPatches,
+			)
+	}
+	return nil
 }

@@ -1,6 +1,7 @@
 package packages
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"log/slog"
@@ -29,73 +30,73 @@ var PackageListFormatToEnum = map[string]PackageListFormat{
 	"cyclonedx": CycloneDXFormat,
 }
 
+type options struct {
+	Version string
+	PkgFmt  string
+	SBOMURL string
+}
+
 func Cmd() *cobra.Command {
+	var opts options
 	cmd := &cobra.Command{
 		Use:     "packages <version>",
 		Short:   "Print packages of a <version>",
 		GroupID: "debug",
 		Args:    cobra.MaximumNArgs(3), //nolint:mnd // just three possible parameters
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			var release version.GardenLinuxRelease
-			var err error
-			var packages []Package
-
-			vers, _ := cmd.Flags().GetString("version")
-			if len(vers) != 0 {
-				release, err = version.MakeGardenLinuxReleaseFromString(vers)
-				if err != nil {
-					return err
-				}
-			}
-
-			var pkgfmt string
-			pkgfmt, err = cmd.Flags().GetString("pkgfmt")
-			if err != nil {
-				return err
-			}
-
-			pkgListFormat := PackageListFormatToEnum[pkgfmt]
-			switch pkgListFormat {
-			case InReleaseFormat:
-				packages, err = GetPackageListsFromInRelease(release)
-				if err != nil {
-					return err
-				}
-			case CycloneDXFormat:
-				var sbomURL string
-				sbomURL, err = cmd.Flags().GetString("sbomUrl")
-				if err != nil {
-					return err
-				}
-				if len(sbomURL) == 0 {
-					return errors.New("sbomUrl required when pkgfmt=cyclonedx")
-				}
-				var cycloneDxURL *url.URL
-				cycloneDxURL, err = url.Parse(sbomURL)
-				if err != nil {
-					return err
-				}
-				packages, err = GetPackageListsFromCycloneDx(cycloneDxURL)
-				if err != nil {
-					return err
-				}
-			default:
-				return fmt.Errorf("unknown packagelist format type %v", pkgListFormat)
-			}
-
-			for _, pkg := range packages {
-				slog.Info("Packages",
-					slog.String("name", pkg.Name),
-					slog.String("architecture", pkg.Architecture),
-					slog.String("version", pkg.Version),
-				)
-			}
-			return nil
+			return run(cmd.Context(), opts)
 		},
 	}
-	cmd.Flags().String("version", "", "specific version. Required when pkgfmt=inrelease")
-	cmd.Flags().String("pkgfmt", "inrelease", "define packagelist format (inrelease,cyclonedx)")
-	cmd.Flags().String("sbomUrl", "", "URL to sbom in cyclonedx format, required when pkgfmt=cyclonedx")
+	cmd.Flags().StringVar(&opts.Version, "version", "", "specific version. Required when pkgfmt=inrelease")
+	cmd.Flags().StringVar(&opts.PkgFmt, "pkgfmt", "inrelease", "define packagelist format (inrelease,cyclonedx)")
+	cmd.Flags().
+		StringVar(&opts.SBOMURL, "sbomUrl", "", "URL to sbom in cyclonedx format, required when pkgfmt=cyclonedx")
 
 	return cmd
+}
+
+func run(ctx context.Context, opts options) error {
+	var release version.GardenLinuxRelease
+	var err error
+	var packages []Package
+
+	if len(opts.Version) != 0 {
+		release, err = version.MakeGardenLinuxReleaseFromString(opts.Version)
+		if err != nil {
+			return err
+		}
+	}
+
+	pkgListFormat := PackageListFormatToEnum[opts.PkgFmt]
+	switch pkgListFormat {
+	case InReleaseFormat:
+		packages, err = GetPackageListsFromInRelease(ctx, release)
+		if err != nil {
+			return err
+		}
+	case CycloneDXFormat:
+		if len(opts.SBOMURL) == 0 {
+			return errors.New("sbomUrl required when pkgfmt=cyclonedx")
+		}
+		var cycloneDxURL *url.URL
+		cycloneDxURL, err = url.Parse(opts.SBOMURL)
+		if err != nil {
+			return err
+		}
+		packages, err = GetPackageListsFromCycloneDx(ctx, cycloneDxURL)
+		if err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("unknown packagelist format type %v", pkgListFormat)
+	}
+
+	for _, pkg := range packages {
+		slog.Info("Packages",
+			slog.String("name", pkg.Name),
+			slog.String("architecture", pkg.Architecture),
+			slog.String("version", pkg.Version),
+		)
+	}
+	return nil
 }

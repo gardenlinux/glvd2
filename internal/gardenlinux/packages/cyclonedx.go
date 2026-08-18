@@ -1,6 +1,7 @@
 package packages
 
 import (
+	"context"
 	"log/slog"
 	"net/url"
 	"strings"
@@ -10,12 +11,12 @@ import (
 	"github.com/package-url/packageurl-go"
 )
 
-func getCycloneDx(sbomURL *url.URL) (*cdx.BOM, error) {
+func getCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
 	var raw string
 
 	client := whttp.NewClient()
-	raw, _, err = client.GetString(sbomURL.String())
+	raw, _, err = client.GetString(ctx, sbomURL.String())
 	if err != nil {
 		return nil, err
 	}
@@ -68,11 +69,11 @@ func convertSbomToPackageList(input *cdx.BOM) ([]Package, error) {
 	return result, nil
 }
 
-func GetPackageListsFromCycloneDx(sbomURL *url.URL) ([]Package, error) {
+func GetPackageListsFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Package, error) {
 	var err error
 	var sbom *cdx.BOM
 
-	sbom, err = getCycloneDx(sbomURL)
+	sbom, err = getCycloneDx(ctx, sbomURL)
 	if err != nil {
 		return nil, err
 	}
