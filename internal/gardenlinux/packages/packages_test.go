@@ -46,13 +46,24 @@ func TestParseInReleaseFileBlank(t *testing.T) {
 func TestArchitectures(t *testing.T) {
 	t.Parallel()
 
-	assert.Len(t, packages.ArchitectureToName, 3, "should only have all, amd and arm64")
+	architectures := []packages.Architecture{
+		packages.ArchitectureAll,
+		packages.ArchitectureAmd64,
+		packages.ArchitectureArm64,
+	}
+	seen := make(map[string]bool, len(architectures))
+	for _, a := range architectures {
+		s := a.String()
+		assert.NotEmpty(t, s, "Architecture %d should have a non-empty string", a)
+		assert.False(t, seen[s], "Architecture %d has duplicate string %q", a, s)
+		seen[s] = true
+	}
 }
 
 func TestComponents(t *testing.T) {
 	t.Parallel()
 
-	assert.Len(t, packages.ComponentToName, 1, "should only have one component")
+	assert.NotEmpty(t, packages.ComponentMain.String(), "ComponentMain should have a non-empty string")
 }
 
 func TestParseInReleaseFile(t *testing.T) {

@@ -25,7 +25,7 @@ func (f PackageListFormat) String() string {
 	case CycloneDXFormat:
 		return "cyclonedx"
 	default:
-		return "unknown"
+		return "unknown format"
 	}
 }
 
@@ -71,7 +71,7 @@ func Cmd() *cobra.Command {
 func run(ctx context.Context, opts options) error {
 	pkgListFormat, err := parsePackageListFormat(opts.PkgFmt)
 	if err != nil {
-		return fmt.Errorf("unknown packagelist format %q", opts.PkgFmt)
+		return err
 	}
 
 	var packages []Package

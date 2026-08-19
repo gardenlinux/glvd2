@@ -28,7 +28,6 @@ const (
 
 const (
 	ComponentMain Component = iota
-	ComponentAll
 )
 
 var (
@@ -38,28 +37,53 @@ var (
 	packagesGzRegex   = regexp.MustCompile(`(?m) ([a-zA-Z0-9]{64}) (\d+) (.*/Packages.gz)$`)
 )
 
-//nolint:gochecknoglobals // not a global
-var ArchitectureToName = map[Architecture]string{
-	ArchitectureAll:   "all",
-	ArchitectureAmd64: "amd64",
-	ArchitectureArm64: "arm64",
+func (a Architecture) String() string {
+	switch a {
+	case ArchitectureAll:
+		return "all"
+	case ArchitectureAmd64:
+		return "amd64"
+	case ArchitectureArm64:
+		return "arm64"
+	default:
+		return "unknown architecture"
+	}
 }
 
-//nolint:gochecknoglobals // not a global
-var ArchitectureToEnum = map[string]Architecture{
-	"all":   ArchitectureAll,
-	"amd64": ArchitectureAmd64,
-	"arm64": ArchitectureArm64,
+func parseArchitecture(s string) (Architecture, bool) {
+	switch s {
+	case "all":
+		return ArchitectureAll, true
+	case "amd64":
+		return ArchitectureAmd64, true
+	case "arm64":
+		return ArchitectureArm64, true
+	default:
+		return 0, false
+	}
 }
 
-//nolint:gochecknoglobals // not a global
-var ComponentToName = map[Component]string{
-	ComponentMain: "main",
+func (c Component) String() string {
+	switch c {
+	case ComponentMain:
+		return "main"
+	default:
+		return "unknown component"
+	}
 }
 
-//nolint:gochecknoglobals // not a global
-var ComponentToEnum = map[string]Component{
-	"main": ComponentMain,
+// parseComponent maps a Debian component name to its enum value.
+// Component currently has a single member; the Component result is kept for
+// symmetry with parseArchitecture and to stay open to future components.
+//
+//nolint:unparam // single-member enum today; return kept for future components
+func parseComponent(s string) (Component, bool) {
+	switch s {
+	case "main":
+		return ComponentMain, true
+	default:
+		return 0, false
+	}
 }
 
 // fully debian style url: https://packages.gardenlinux.io/gardenlinux/dists/1877.14/main/binary-amd64/Packages.gz
@@ -139,7 +163,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	if match != nil {
 		componentsStr := strings.Split(match[1], ",") //nolint:modernize // works for now
 		for _, c := range componentsStr {
-			tmp, ok := ComponentToEnum[c]
+			tmp, ok := parseComponent(c)
 			if !ok {
 				slog.Error("Could not map to component enum",
 					slog.Any("component", tmp))
@@ -154,7 +178,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	if match != nil {
 		architecturesStr := strings.Split(match[1], " ") //nolint:modernize // works for now
 		for _, a := range architecturesStr {
-			tmp, ok := ArchitectureToEnum[a]
+			tmp, ok := parseArchitecture(a)
 			if !ok {
 				slog.Error("Could not map to architecture enum",
 					slog.Any("architecture", tmp))
