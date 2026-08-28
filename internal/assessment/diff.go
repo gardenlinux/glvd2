@@ -26,7 +26,7 @@ func (ct ChangeType) String() string {
 	case Created:
 		return "created"
 	case Updated:
-		return "updated" //nolint:goconst // unrelated to test data values
+		return "updated"
 	default:
 		return "unknown"
 	}

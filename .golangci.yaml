@@ -11,6 +11,8 @@ linters:
   - gomodguard_v2
   disable:
   - gomodguard
+  - exhaustruct
+  - exhaustruct_v5
   - gocognit
   - gocyclo
   - cyclop
@@ -150,9 +152,6 @@ linters:
           - CVSSV3_1
           - CVSSV3_0
           - CVSSV2_0
-    exhaustruct:
-      include:
-        - "github.com/github.com/gardenlinux/glvd2"
 
 formatters:
   enable:
@@ -164,7 +163,8 @@ formatters:
   - swaggo
   settings:
     gofumpt:
-      extra-rules: true
+      extra:
+        group-params: true
     golines:
       max-len: 120
       shorten-comments: true
