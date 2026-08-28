@@ -7,18 +7,12 @@ import (
 	"log/slog"
 	"os"
 	"os/exec"
-
-	"github.com/gardenlinux/glvd2/internal/config"
 )
 
-type SubmoduleService struct {
-	cfg *config.AppConfig
-}
+type SubmoduleService struct{}
 
-func NewSubmoduleService(cfg *config.AppConfig) (*SubmoduleService, error) {
-	return &SubmoduleService{
-		cfg: cfg,
-	}, nil
+func NewSubmoduleService() *SubmoduleService {
+	return &SubmoduleService{}
 }
 
 func gitBinaryExists() bool {

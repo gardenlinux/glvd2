@@ -13,7 +13,7 @@ func Validate(cfg *AppConfig) error {
 		{cfg.DebSecTrackerSubRepoPath, "deb_sec_tracker_sub_repo_path"},
 		{cfg.InternalSqliteDBPath, "internal_sqlite_db_path"},
 		{cfg.AuditDir, "audit_dir"},
-		{cfg.AssessmentDataDir, "assessment_data_dir"},
+		{cfg.AssessmentsDir, "assessments_dir"},
 		{cfg.BaselineCommitAnchor, "baseline_commit_anchor"},
 	}
 	var errs []error

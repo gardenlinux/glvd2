@@ -15,7 +15,7 @@ func TestStore_RoundTrip(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	rec := assessment.Record{
 		ID: "CVE-2025-4176",
@@ -46,7 +46,7 @@ func TestStore_GetNotFound(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	_, err := store.Get("CVE-2025-9999")
 	require.Error(t, err)
@@ -57,7 +57,7 @@ func TestStore_Save_CreatesDirectories(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	rec := assessment.Record{
 		ID: "CVE-2024-50001",
@@ -80,7 +80,7 @@ func TestStore_Save_Overwrites(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	rec := assessment.Record{
 		ID: "CVE-2025-1000",
@@ -103,7 +103,7 @@ func TestStore_Get_InvalidID(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	_, err := store.Get("not-a-cve")
 	require.Error(t, err)
@@ -114,7 +114,7 @@ func TestStore_Save_InvalidID(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	rec := assessment.Record{ID: "not-a-cve"}
 	err := store.Save(rec)

@@ -46,7 +46,7 @@ func (f *fakeGitReader) ShowFileAtCommit(_ context.Context, commitSHA, filePath 
 
 func testConfig() *config.AppConfig {
 	return &config.AppConfig{
-		AssessmentDataDir:    "data/cves",
+		AssessmentsDir:       "data/assessments",
 		BaselineCommitAnchor: "GLVD2-Baseline: true",
 	}
 }
@@ -106,7 +106,7 @@ func TestBaseline_LoadAssessmentRecord(t *testing.T) {
 	gitReader := &fakeGitReader{
 		commitSHA: "abc123",
 		showFiles: map[string][]byte{
-			"abc123:data/cves/2025/2xxx/CVE-2025-2000.json": data,
+			"abc123:data/assessments/2025/2xxx/CVE-2025-2000.json": data,
 		},
 	}
 
@@ -142,7 +142,7 @@ func TestBaseline_ExternallyModifiedFiles(t *testing.T) {
 	ctx := t.Context()
 	gitReader := &fakeGitReader{
 		commitSHA: "abc123",
-		diffFiles: []string{"data/cves/2025/3xxx/CVE-2025-3000.json"},
+		diffFiles: []string{"data/assessments/2025/3xxx/CVE-2025-3000.json"},
 	}
 
 	b, err := assessment.NewBaseline(ctx, gitReader, testConfig())

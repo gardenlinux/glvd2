@@ -4,9 +4,20 @@ repo_metadata_cache_path: "./data/tmp/metadata"
 
 audit_dir: "./data/audit"
 
-assessment_data_dir: "./data/assessments"
+assessments_dir: "./data/assessments"
 
 cve_list_v5_sub_repo_path: "./submodules/cvelistV5"
 deb_sec_tracker_sub_repo_path: "./submodules/debian-security-tracker"
 
 baseline_commit_anchor: "GLVD2-Baseline: true"
+
+# Remote and branch used to store our persisted data via git
+push:
+  remote: "origin"
+  branch: "main"
+
+# Optional committer identity. Used when both are not empty (!= "").
+# Otherwise the default ones from current environment are used.
+committer:
+  name: ""
+  email: ""

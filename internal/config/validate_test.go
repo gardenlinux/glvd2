@@ -16,7 +16,7 @@ func TestValidate_AcceptsValidConfig(t *testing.T) {
 		DebSecTrackerSubRepoPath: "./submodules/debian-security-tracker",
 		InternalSqliteDBPath:     "./data/tmp/internal.sqlite",
 		AuditDir:                 "./data/audit",
-		AssessmentDataDir:        "./data/assessments",
+		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 		// RepoMetadataCachePath intentionally empty - it is optional.
 	}
@@ -31,7 +31,7 @@ func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
 		DebSecTrackerSubRepoPath: "./submodules/debian-security-tracker",
 		InternalSqliteDBPath:     "./data/tmp/internal.sqlite",
 		AuditDir:                 "./data/audit",
-		AssessmentDataDir:        "./data/assessments",
+		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 	}
 
@@ -43,7 +43,7 @@ func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
 		{"missing DebSecTrackerSubRepoPath", func(c *config.AppConfig) { c.DebSecTrackerSubRepoPath = "" }},
 		{"missing InternalSqliteDBPath", func(c *config.AppConfig) { c.InternalSqliteDBPath = "" }},
 		{"missing AuditDir", func(c *config.AppConfig) { c.AuditDir = "" }},
-		{"missing AssessmentDataDir", func(c *config.AppConfig) { c.AssessmentDataDir = "" }},
+		{"missing AssessmentDataDir", func(c *config.AppConfig) { c.AssessmentsDir = "" }},
 		{"missing BaselineCommitAnchor", func(c *config.AppConfig) { c.BaselineCommitAnchor = "" }},
 	}
 

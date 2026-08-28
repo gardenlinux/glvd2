@@ -53,7 +53,7 @@ func (f *serviceTestGitReader) ShowFileAtCommit(_ context.Context, commitSHA, fi
 
 func testServiceConfig(dir string) *config.AppConfig {
 	return &config.AppConfig{
-		AssessmentDataDir:    dir,
+		AssessmentsDir:       dir,
 		BaselineCommitAnchor: "GLVD2-Baseline: true",
 	}
 }
@@ -98,7 +98,7 @@ func TestServiceProcess_Overwrites(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	rec := assessment.Record{
@@ -141,7 +141,7 @@ func TestServiceProcess_NewRecord(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	// No baseline records; treat it as first run.
@@ -176,7 +176,7 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	// Seed an existing record with manual fields.
@@ -259,7 +259,7 @@ func TestServiceProcess_PreservesEOLReleases(t *testing.T) {
 	ctx := t.Context()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 
 	// Existing record has an old release.
 	existing := assessment.Record{
@@ -323,7 +323,7 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	baseline := assessment.Record{
@@ -412,7 +412,7 @@ func TestServiceProcess_CommittedOverwriteBotEdit(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	const originalDesc = "Original description."
@@ -464,7 +464,7 @@ func TestServiceProcess_FirstRunUsesEmptyBaseline(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	// Record exists on disk but there is no baseline commit yet (first run).
@@ -513,7 +513,7 @@ func TestServiceProcess_Unchanged(t *testing.T) {
 	t.Parallel()
 
 	dir := t.TempDir()
-	store := assessment.NewStore(&config.AppConfig{AssessmentDataDir: dir})
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
 	ctx := t.Context()
 
 	rec := assessment.Record{

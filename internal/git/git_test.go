@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/git"
+	"github.com/gardenlinux/glvd2/internal/gittest"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -175,7 +176,7 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("no commits returns empty string", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
+		dir := gittest.InitRepo(t)
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
 		assert.Empty(t, sha)
@@ -184,9 +185,9 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("no matching commits returns empty string", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		addEmptyCommit(t, dir, "chore: first commit")
-		addEmptyCommit(t, dir, "chore: second commit")
+		dir := gittest.InitRepo(t)
+		gittest.AddEmptyCommit(t, dir, "chore: first commit")
+		gittest.AddEmptyCommit(t, dir, "chore: second commit")
 
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
@@ -196,8 +197,8 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("exact match returns SHA", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		want := addEmptyCommit(t, dir, "chore: release\n\nGLVD2-Baseline: true")
+		dir := gittest.InitRepo(t)
+		want := gittest.AddEmptyCommit(t, dir, "chore: release\n\nGLVD2-Baseline: true")
 
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
@@ -207,8 +208,8 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("trailing text rejected by $ anchor", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		addEmptyCommit(t, dir, "chore: release\n\nGLVD2-Baseline: true extra")
+		dir := gittest.InitRepo(t)
+		gittest.AddEmptyCommit(t, dir, "chore: release\n\nGLVD2-Baseline: true extra")
 
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
@@ -218,8 +219,8 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("trailing chars rejected by $ anchor", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		addEmptyCommit(t, dir, "chore: release\n\nGLVD2-Baseline: truefalse")
+		dir := gittest.InitRepo(t)
+		gittest.AddEmptyCommit(t, dir, "chore: release\n\nGLVD2-Baseline: truefalse")
 
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
@@ -229,8 +230,8 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("anchor in subject line is matched (--grep is not trailer-aware)", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		want := addEmptyCommit(t, dir, "GLVD2-Baseline: true")
+		dir := gittest.InitRepo(t)
+		want := gittest.AddEmptyCommit(t, dir, "GLVD2-Baseline: true")
 
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
@@ -240,13 +241,13 @@ func TestFindCommitByMessageAnchor(t *testing.T) {
 	t.Run("most recent of multiple matching commits is returned", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		addEmptyCommit(t, dir, "chore: first baseline\n\nGLVD2-Baseline: true")
-		addEmptyCommit(t, dir, "something else")
-		addEmptyCommit(t, dir, "chore: second baseline\n\nGLVD2-Baseline: true")
-		want := addEmptyCommit(t, dir, "chore: third baseline\n\nGLVD2-Baseline: true")
-		addEmptyCommit(t, dir, "and more stuff\n\nblub\nGLVD2-IMPORTANT: true")
-		addEmptyCommit(t, dir, "chore(assessments): update") // should not match, since without the anchor
+		dir := gittest.InitRepo(t)
+		gittest.AddEmptyCommit(t, dir, "chore: first baseline\n\nGLVD2-Baseline: true")
+		gittest.AddEmptyCommit(t, dir, "something else")
+		gittest.AddEmptyCommit(t, dir, "chore: second baseline\n\nGLVD2-Baseline: true")
+		want := gittest.AddEmptyCommit(t, dir, "chore: third baseline\n\nGLVD2-Baseline: true")
+		gittest.AddEmptyCommit(t, dir, "and more stuff\n\nblub\nGLVD2-IMPORTANT: true")
+		gittest.AddEmptyCommit(t, dir, "data(assessments): update") // should not match, since the trailer is not used
 
 		sha, err := git.FindCommitByMessageAnchor(t.Context(), dir, anchor)
 		require.NoError(t, err)
@@ -261,8 +262,8 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("no changes returns nil", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		sha := addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		sha := gittest.AddEmptyCommit(t, dir, "chore: init")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, sha, "foo")
 		require.NoError(t, err)
@@ -272,11 +273,11 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("changed file is returned", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		shaA := addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		shaA := gittest.AddEmptyCommit(t, dir, "chore: init")
 
-		writeFile(t, dir, "foo/a.txt", "hello")
-		stageAllAndCommit(t, dir, "feat: add file")
+		gittest.WriteFile(t, dir, "foo/a.txt", "hello")
+		gittest.StageAllAndCommit(t, dir, "feat: add file")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
 		require.NoError(t, err)
@@ -286,12 +287,12 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("prefix includes only matching paths", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		shaA := addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		shaA := gittest.AddEmptyCommit(t, dir, "chore: init")
 
-		writeFile(t, dir, "foo/a.txt", "hello")
-		writeFile(t, dir, "bar/b.txt", "world")
-		stageAllAndCommit(t, dir, "feat: add files")
+		gittest.WriteFile(t, dir, "foo/a.txt", "hello")
+		gittest.WriteFile(t, dir, "bar/b.txt", "world")
+		gittest.StageAllAndCommit(t, dir, "feat: add files")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
 		require.NoError(t, err)
@@ -302,12 +303,12 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("prefix excluding all existing paths returns nil", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		shaA := addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		shaA := gittest.AddEmptyCommit(t, dir, "chore: init")
 
-		writeFile(t, dir, "foo/a.txt", "hello")
-		writeFile(t, dir, "bar/b.txt", "world")
-		stageAllAndCommit(t, dir, "feat: add files")
+		gittest.WriteFile(t, dir, "foo/a.txt", "hello")
+		gittest.WriteFile(t, dir, "bar/b.txt", "world")
+		gittest.StageAllAndCommit(t, dir, "feat: add files")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "baz")
 		require.NoError(t, err)
@@ -317,12 +318,12 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("uncommitted change appears in diff", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		writeFile(t, dir, "foo/a.txt", "original")
-		shaA := stageAllAndCommit(t, dir, "feat: add file")
+		dir := gittest.InitRepo(t)
+		gittest.WriteFile(t, dir, "foo/a.txt", "original")
+		shaA := gittest.StageAllAndCommit(t, dir, "feat: add file")
 
 		// Modify a tracked file without committing.
-		writeFile(t, dir, "foo/a.txt", "uncommitted")
+		gittest.WriteFile(t, dir, "foo/a.txt", "uncommitted")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
 		require.NoError(t, err)
@@ -332,13 +333,13 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("staged but uncommitted change appears in diff", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		writeFile(t, dir, "foo/a.txt", "original")
-		shaA := stageAllAndCommit(t, dir, "feat: add file")
+		dir := gittest.InitRepo(t)
+		gittest.WriteFile(t, dir, "foo/a.txt", "original")
+		shaA := gittest.StageAllAndCommit(t, dir, "feat: add file")
 
 		// Stage without committing.
-		writeFile(t, dir, "foo/a.txt", "staged")
-		runGit(t, dir, "add", "foo/a.txt")
+		gittest.WriteFile(t, dir, "foo/a.txt", "staged")
+		gittest.Run(t, dir, "add", "foo/a.txt")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
 		require.NoError(t, err)
@@ -348,11 +349,11 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("untracked file appears in diff", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		shaA := addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		shaA := gittest.AddEmptyCommit(t, dir, "chore: init")
 
 		// Never committed or staged.
-		writeFile(t, dir, "foo/a.txt", "untracked")
+		gittest.WriteFile(t, dir, "foo/a.txt", "untracked")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
 		require.NoError(t, err)
@@ -362,13 +363,13 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("deleted file appears in diff", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		writeFile(t, dir, "foo/del.txt", "to be deleted")
-		shaA := stageAllAndCommit(t, dir, "feat: add file")
+		dir := gittest.InitRepo(t)
+		gittest.WriteFile(t, dir, "foo/del.txt", "to be deleted")
+		shaA := gittest.StageAllAndCommit(t, dir, "feat: add file")
 
 		// Delete the file and commit - stageAllAndCommit uses git add -A which stages deletions.
-		runGit(t, dir, "rm", "foo/del.txt")
-		stageAllAndCommit(t, dir, "chore: delete file")
+		gittest.Run(t, dir, "rm", "foo/del.txt")
+		gittest.StageAllAndCommit(t, dir, "chore: delete file")
 
 		files, err := git.DiffFilesSince(t.Context(), dir, shaA, "foo")
 		require.NoError(t, err)
@@ -378,8 +379,8 @@ func TestDiffFilesSince(t *testing.T) {
 	t.Run("nonexistent valid SHA returns error", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		gittest.AddEmptyCommit(t, dir, "chore: init")
 
 		_, err := git.DiffFilesSince(t.Context(), dir, "abcdef1", "foo")
 		require.Error(t, err)
@@ -395,9 +396,9 @@ func TestShowFileAtCommit(t *testing.T) {
 	t.Run("file exists returns content", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		writeFile(t, dir, "data/entry.json", `{"id":"CVE-2024-1"}`)
-		sha := stageAllAndCommit(t, dir, "feat: add entry")
+		dir := gittest.InitRepo(t)
+		gittest.WriteFile(t, dir, "data/entry.json", `{"id":"CVE-2024-1"}`)
+		sha := gittest.StageAllAndCommit(t, dir, "feat: add entry")
 
 		content, err := git.ShowFileAtCommit(t.Context(), dir, sha, "data/entry.json")
 		require.NoError(t, err)
@@ -408,12 +409,12 @@ func TestShowFileAtCommit(t *testing.T) {
 	t.Run("file absent at commit returns (nil, nil)", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		sha := addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		sha := gittest.AddEmptyCommit(t, dir, "chore: init")
 
 		// Add the file in a later commit - it must not exist at sha.
-		writeFile(t, dir, "data/entry.json", "later")
-		stageAllAndCommit(t, dir, "feat: add entry later")
+		gittest.WriteFile(t, dir, "data/entry.json", "later")
+		gittest.StageAllAndCommit(t, dir, "feat: add entry later")
 
 		content, err := git.ShowFileAtCommit(t.Context(), dir, sha, "data/entry.json")
 		require.NoError(t, err)
@@ -423,12 +424,12 @@ func TestShowFileAtCommit(t *testing.T) {
 	t.Run("file modified later returns original content at SHA", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		writeFile(t, dir, "data/entry.json", "original")
-		sha := stageAllAndCommit(t, dir, "feat: add entry")
+		dir := gittest.InitRepo(t)
+		gittest.WriteFile(t, dir, "data/entry.json", "original")
+		sha := gittest.StageAllAndCommit(t, dir, "feat: add entry")
 
-		writeFile(t, dir, "data/entry.json", "modified")
-		stageAllAndCommit(t, dir, "fix: update entry")
+		gittest.WriteFile(t, dir, "data/entry.json", "modified")
+		gittest.StageAllAndCommit(t, dir, "fix: update entry")
 
 		content, err := git.ShowFileAtCommit(t.Context(), dir, sha, "data/entry.json")
 		require.NoError(t, err)
@@ -438,12 +439,12 @@ func TestShowFileAtCommit(t *testing.T) {
 	t.Run("file deleted later returns original content at SHA", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		writeFile(t, dir, "data/entry.json", "original")
-		sha := stageAllAndCommit(t, dir, "feat: add entry")
+		dir := gittest.InitRepo(t)
+		gittest.WriteFile(t, dir, "data/entry.json", "original")
+		sha := gittest.StageAllAndCommit(t, dir, "feat: add entry")
 
-		runGit(t, dir, "rm", "data/entry.json")
-		stageAllAndCommit(t, dir, "chore: delete entry")
+		gittest.Run(t, dir, "rm", "data/entry.json")
+		gittest.StageAllAndCommit(t, dir, "chore: delete entry")
 
 		content, err := git.ShowFileAtCommit(t.Context(), dir, sha, "data/entry.json")
 		require.NoError(t, err)
@@ -453,8 +454,8 @@ func TestShowFileAtCommit(t *testing.T) {
 	t.Run("nonexistent valid SHA returns error", func(t *testing.T) {
 		t.Parallel()
 
-		dir := initTestRepo(t)
-		addEmptyCommit(t, dir, "chore: init")
+		dir := gittest.InitRepo(t)
+		gittest.AddEmptyCommit(t, dir, "chore: init")
 
 		_, err := git.ShowFileAtCommit(t.Context(), dir, "abcdef1", "data/entry.json")
 		require.Error(t, err)

@@ -25,10 +25,10 @@ type Store struct {
 	baseDir string
 }
 
-// NewStore creates a new Store that stores assessment [Record]s under the configured CVE data directory.
+// NewStore creates a persistent assessment [Record]s [Store] under the configured directory.
 // It follows the CVEListV5 bucketing scheme: {base}/{year}/{bucket}xxx/{cveID}.json.
 func NewStore(cfg *config.AppConfig) *Store {
-	return &Store{baseDir: cfg.AssessmentDataDir}
+	return &Store{baseDir: cfg.AssessmentsDir}
 }
 
 // Get retrieves a CVE assessment record by its ID.

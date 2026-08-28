@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glcve"
@@ -8,6 +10,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/repos"
 	"github.com/gardenlinux/glvd2/internal/logging"
+	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/spf13/cobra"
 )
 
@@ -31,8 +34,23 @@ func newRootCmd(cfg *config.AppConfig) *cobra.Command {
 				return err
 			}
 
-			opts := pipelineOptions{SkipSubmoduleUpdate: skipSubmoduleUpdates}
-			_, err = runPipeline(cmd.Context(), cfg, opts)
+			publishStr, err := cmd.Flags().GetString("publish-level")
+			if err != nil {
+				return err
+			}
+			level, ok := publish.ParseLevel(publishStr)
+			if !ok {
+				return fmt.Errorf(
+					"invalid --publish-level value %q: must be one \"none\", \"commit\", or \"push\"",
+					publishStr,
+				)
+			}
+
+			flags := pipelineFlags{
+				SkipSubmoduleUpdate: skipSubmoduleUpdates,
+				PublishLevel:        level,
+			}
+			err = runPipeline(cmd.Context(), cfg, flags)
 			return err
 		},
 	}
@@ -40,6 +58,8 @@ func newRootCmd(cfg *config.AppConfig) *cobra.Command {
 		String("log-level", "debug", "specify log-level from: error > warn > info > debug > trace (default: debug)")
 	rootCmd.PersistentFlags().
 		Bool("skip-submodule-updates", false, "skip updating the submodules used for data ingestion")
+	rootCmd.Flags().
+		String("publish-level", "none", "artifact publishing level: none | commit | push")
 
 	return rootCmd
 }

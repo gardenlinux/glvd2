@@ -20,6 +20,6 @@ func TestLoadAppConfig_RealFile(t *testing.T) {
 	assert.NotEmpty(t, cfg.DebSecTrackerSubRepoPath)
 	assert.NotEmpty(t, cfg.InternalSqliteDBPath)
 	assert.NotEmpty(t, cfg.AuditDir)
-	assert.NotEmpty(t, cfg.AssessmentDataDir)
+	assert.NotEmpty(t, cfg.AssessmentsDir)
 	assert.NotEmpty(t, cfg.BaselineCommitAnchor)
 }

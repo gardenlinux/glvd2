@@ -12,21 +12,45 @@ import (
 	"strings"
 )
 
-// Error is returned by git commands when they exit non-zero.
-// It carries the original stderr output separately so callers can inspect it
-// without parsing a formatted error string.
-type Error struct {
-	Args   []string
-	Stderr string
-	Err    error
+// ErrNoCommitsYet is used when a git command fails because the repository
+// has no commits yet like on a freshly initialized repo.
+var ErrNoCommitsYet = errors.New("repository has no commits yet")
+
+// ErrNonFastForward is returned when the remote rejected the push,
+// because it would not be a fast-forward merge.
+var ErrNonFastForward = errors.New("push rejected: non-fast-forward")
+
+// ErrDetachedHEAD is returned when HEAD is not on any branch.
+var ErrDetachedHEAD = errors.New("HEAD is detached: not on any branch")
+
+// newError builds an error describing a failed git command and returns custom
+// ones for known stderr matches.
+func newError(args []string, stderr string, err error) error {
+	base := fmt.Errorf("git %s: %w (stderr: %s)",
+		strings.Join(args, " "), err, strings.TrimSpace(stderr))
+	if kind := classifyStderr(stderr); kind != nil {
+		return fmt.Errorf("%w: %w", base, kind)
+	}
+
+	return base
 }
 
-func (e *Error) Error() string {
-	return fmt.Sprintf("git %s: %s (stderr: %s)",
-		strings.Join(e.Args, " "), e.Err, strings.TrimSpace(e.Stderr))
-}
+// classifyStderr maps git's stderr output to a known sentinel error, or nil if none matches.
+func classifyStderr(stderr string) error {
+	lower := strings.ToLower(stderr)
 
-func (e *Error) Unwrap() error { return e.Err }
+	switch {
+	case strings.Contains(lower, "does not have any commits yet"):
+		return ErrNoCommitsYet
+	// These are the substrings git prints when it rejects a non-fast-forward push.
+	case strings.Contains(lower, "non-fast-forward"),
+		strings.Contains(lower, "rejected"),
+		strings.Contains(lower, "fetch first"):
+		return ErrNonFastForward
+	default:
+		return nil
+	}
+}
 
 // commitSHAPattern matches valid git commit SHAs: lowercase hex, 4-40 characters.
 // 4 characters is the minimum that git accepts for an abbreviated SHA.
@@ -81,7 +105,7 @@ func Run(ctx context.Context, dir string, args ...string) error {
 	cmd.Stderr = &stderr
 
 	if err := cmd.Run(); err != nil {
-		return &Error{Args: args, Stderr: stderr.String(), Err: err}
+		return newError(args, stderr.String(), err)
 	}
 
 	return nil
@@ -98,7 +122,7 @@ func RunOutput(ctx context.Context, dir string, args ...string) (string, error) 
 	cmd.Stderr = &stderr
 
 	if err := cmd.Run(); err != nil {
-		return "", &Error{Args: args, Stderr: stderr.String(), Err: err}
+		return "", newError(args, stderr.String(), err)
 	}
 
 	return stdout.String(), nil
@@ -116,8 +140,7 @@ func FindCommitByMessageAnchor(ctx context.Context, dir, anchor string) (string,
 	)
 	if err != nil {
 		// git log exits non-zero on a repo with no commits yet; treat as "no match".
-		var gitErr *Error
-		if errors.As(err, &gitErr) && strings.Contains(gitErr.Stderr, "does not have any commits yet") {
+		if errors.Is(err, ErrNoCommitsYet) {
 			return "", nil
 		}
 		// A non-zero exit indicates a real error (not a repo, bad ref, etc).

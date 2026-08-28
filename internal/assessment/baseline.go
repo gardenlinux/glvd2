@@ -24,18 +24,15 @@ type GitReader interface {
 	ShowFileAtCommit(ctx context.Context, commitSHA, filePath string) ([]byte, error)
 }
 
-// Baseline provides access to the state of assessment records at the last program run.
-// It derives the baseline from git history using commit messages to identify
-// program baseline commits vs external bot commits.
+// Baseline provides access to the state of assessment records from the last program run.
 type Baseline struct {
-	git       GitReader
-	commitSHA string // empty if no previous baseline commit exists (first run)
-	cveDir    string // relative path to data/cves/ within the repo
+	git            GitReader
+	commitSHA      string // empty if no previous baseline commit exists (first run)
+	assessmentsDir string // relative path to assessments (default: data/assessments)
 }
 
-// NewBaseline resolves the last baseline commit and returns a Baseline.
+// NewBaseline resolves the last baseline commit and returns a [Baseline].
 // If no previous baseline commit exists (first run), returns a Baseline that always yields empty records.
-// Configuration values (CveDataDir or BaselineCommitMessage) are read from cfg.
 func NewBaseline(ctx context.Context, gitReader GitReader, cfg *config.AppConfig) (*Baseline, error) {
 	sha, err := gitReader.FindCommitByMessageAnchor(ctx, cfg.BaselineCommitAnchor)
 	if err != nil {
@@ -49,9 +46,9 @@ func NewBaseline(ctx context.Context, gitReader GitReader, cfg *config.AppConfig
 	}
 
 	return &Baseline{
-		git:       gitReader,
-		commitSHA: sha,
-		cveDir:    cfg.AssessmentDataDir,
+		git:            gitReader,
+		commitSHA:      sha,
+		assessmentsDir: cfg.AssessmentsDir,
 	}, nil
 }
 
@@ -73,7 +70,7 @@ func (b *Baseline) ExternallyModifiedFiles(ctx context.Context) ([]string, error
 		return nil, nil
 	}
 
-	files, err := b.git.DiffFilesSince(ctx, b.commitSHA, b.cveDir)
+	files, err := b.git.DiffFilesSince(ctx, b.commitSHA, b.assessmentsDir)
 	if err != nil {
 		return nil, fmt.Errorf("listing bot-modified files: %w", err)
 	}
@@ -89,7 +86,7 @@ func (b *Baseline) LoadAssessmentRecord(ctx context.Context, cveID string) (Reco
 		return Record{}, nil
 	}
 
-	relPath, err := Path(b.cveDir, cveID)
+	relPath, err := Path(b.assessmentsDir, cveID)
 	if err != nil {
 		return Record{}, err
 	}
