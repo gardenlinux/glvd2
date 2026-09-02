@@ -695,6 +695,68 @@ func TestAnalyze_PackageIndexIdentifiersAreUnique(t *testing.T) {
 	assert.Len(t, pkgIndex["nginx"].PackageURLs, 1)
 }
 
+func TestAnalyze_PackageIndexIdentifiersAreSorted(t *testing.T) {
+	t.Parallel()
+
+	pkgs := []repository.DebianTriageAffectedPackage{
+		{CVEID: "CVE-2026-0098", PackageName: "nginx"},
+		{CVEID: "CVE-2026-0099", PackageName: "nginx"},
+	}
+
+	idsForCVEs := cvelistv5.IDsForCVEs{
+		"CVE-2026-0098": &cvelistv5.Identifiers{
+			VendorProductPairs: []component.Pair{
+				{Vendor: "nginx", Product: "b-nginx"},
+			},
+			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
+				{Part: cpe.StringAV("a"), Vendor: cpe.StringAV("nginx"), Product: cpe.StringAV("b-nginx")},
+			}),
+			PackageIDs: []cvelistv5.PackageIdentifier{
+				{CollectionURL: "https://packages.debian.org/", PackageName: "b-nginx"},
+			},
+			PackageURLs: []string{"pkg:deb/debian/b-nginx"},
+		},
+		"CVE-2026-0099": &cvelistv5.Identifiers{
+			VendorProductPairs: []component.Pair{
+				{Vendor: "nginx", Product: "a-nginx"},
+			},
+			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
+				{Part: cpe.StringAV("a"), Vendor: cpe.StringAV("nginx"), Product: cpe.StringAV("a-nginx")},
+			}),
+			PackageIDs: []cvelistv5.PackageIdentifier{
+				{CollectionURL: "https://packages.debian.org/", PackageName: "a-nginx"},
+			},
+			PackageURLs: []string{"pkg:deb/debian/a-nginx"},
+		},
+	}
+
+	s := newTestService(t, pkgs)
+	_, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
+	require.NoError(t, err)
+
+	// Slices should be sorted in ascending order.
+	assert.Equal(
+		t,
+		[]string{`"nginx":"a-nginx"`, `"nginx":"b-nginx"`},
+		pkgIndex["nginx"].VendorProductIDs,
+	)
+	assert.Equal(
+		t,
+		[]string{"cpe:2.3:a:nginx:a-nginx:*:*:*:*:*:*:*:*", "cpe:2.3:a:nginx:b-nginx:*:*:*:*:*:*:*:*"},
+		pkgIndex["nginx"].CPEs,
+	)
+	assert.Equal(
+		t,
+		[]string{`"https://packages.debian.org/":"a-nginx"`, `"https://packages.debian.org/":"b-nginx"`},
+		pkgIndex["nginx"].PackageIDs,
+	)
+	assert.Equal(
+		t,
+		[]string{"pkg:deb/debian/a-nginx", "pkg:deb/debian/b-nginx"},
+		pkgIndex["nginx"].PackageURLs,
+	)
+}
+
 func TestAnalyze_SkipsCPEsWithNonStringVendorOrProduct(t *testing.T) {
 	t.Parallel()
 

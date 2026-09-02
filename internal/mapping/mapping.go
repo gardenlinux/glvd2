@@ -183,12 +183,20 @@ func (s *Service) Analyze(
 		s.processPackageURLs(pkgName, ids, result.PackageURLs, pkgIndex)
 	}
 
+	// Sort the slices inside the package index s.t. only real changes are shown in our audit json files.
+	for _, pkgIDs := range pkgIndex {
+		slices.Sort(pkgIDs.VendorProductIDs)
+		slices.Sort(pkgIDs.CPEs)
+		slices.Sort(pkgIDs.PackageIDs)
+		slices.Sort(pkgIDs.PackageURLs)
+	}
+
 	if len(missingIDs) > 0 {
 		cveIDs := make([]string, 0, len(missingIDs))
 		for id := range missingIDs {
 			cveIDs = append(cveIDs, id)
 		}
-		slices.SortFunc(cveIDs, func(a, b string) int {
+		slices.SortFunc(cveIDs, func(a, b string) int { // descending order
 			return cmp.Compare(b, a)
 		})
 		slog.Debug("CVEs without IDs while identifying corresponding Debian package names",
