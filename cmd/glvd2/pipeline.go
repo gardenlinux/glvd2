@@ -123,10 +123,10 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 
 	auditService := audit.NewService(cfg)
 	if err = auditService.Record("mapping_result.json", mappingResult); err != nil {
-		return fmt.Errorf("recording audit mapping result: %w", err)
+		return fmt.Errorf("recording audit artifact - mapping result: %w", err)
 	}
-	if err = auditService.Record("package_index.json", pkgIDIndex); err != nil {
-		return fmt.Errorf("recording audit package index: %w", err)
+	if err = auditService.Record("package_identifiers.json", pkgIDIndex); err != nil {
+		return fmt.Errorf("recording audit artifact - package identifiers: %w", err)
 	}
 
 	assessmentStore := assessment.NewStore(cfg)
