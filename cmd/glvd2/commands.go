@@ -56,7 +56,7 @@ func newRootCmd(cfg *config.AppConfig) *cobra.Command {
 	}
 	rootCmd.PersistentFlags().
 		String("log-level", "debug", "specify log-level from: error > warn > info > debug > trace (default: debug)")
-	rootCmd.PersistentFlags().
+	rootCmd.Flags().
 		Bool("skip-submodule-updates", false, "skip updating the submodules used for data ingestion")
 	rootCmd.Flags().
 		String("publish-level", "none", "artifact publishing level: none | commit | push")
