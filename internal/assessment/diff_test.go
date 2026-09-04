@@ -1,12 +1,59 @@
 package assessment //nolint:testpackage // white-box tests require access to unexported types
 
 import (
+	"encoding/json"
+	"reflect"
 	"testing"
 	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
+
+// leafStructWithMarshaler implements json.Marshaler with meaningful state in an unexported field
+// Used to test the isLeafStruct behavior with something that behaves like time.Time.
+type leafStructWithMarshaler struct{ hidden int }
+
+func (l leafStructWithMarshaler) MarshalJSON() ([]byte, error) {
+	return json.Marshal(l.hidden)
+}
+
+// transparentStructWithMarshaler implements json.Marshaler, but opts out of leaf treatment via diffTransparent(),
+// so diff should recurses into its exported fields.
+type transparentStructWithMarshaler struct{ Field int }
+
+func (transparentStructWithMarshaler) MarshalJSON() ([]byte, error) { return []byte(`null`), nil }
+func (transparentStructWithMarshaler) diffTransparent()             {}
+
+// plainStruct implements no marshaler - always recursed into.
+type plainStruct struct{ Field int }
+
+// TestIsLeafStruct tests the leaf vs recurse speciality that allows to either treat nested structs
+// as JSON blobs or traverse into them, if they make use of a custom marshaler.
+func TestIsLeafStruct(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name string
+		typ  reflect.Type
+		want bool
+	}{
+		{"marshaler with unexported state is a leaf", reflect.TypeFor[leafStructWithMarshaler](), true},
+		{
+			"diffTransparent opts out of leaf despite implementing json.Marshaler",
+			reflect.TypeFor[transparentStructWithMarshaler](),
+			false,
+		},
+		{"plain struct is not a leaf", reflect.TypeFor[plainStruct](), false},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, tc.want, isLeafStruct(tc.typ))
+		})
+	}
+}
 
 func TestDetectExternalOverwriteEdits(t *testing.T) {
 	t.Parallel()
@@ -25,29 +72,29 @@ func TestDetectExternalOverwriteEdits(t *testing.T) {
 			baseline: Record{
 				ID: "CVE-2025-9001",
 				Screening: ScreeningResult{
-					AutoTriage: Triage{Status: StatusRelevant, Justification: "original"},
+					AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 				},
 			},
 			existing: Record{
 				ID: "CVE-2025-9001",
 				Screening: ScreeningResult{
-					AutoTriage: Triage{Status: StatusNotRelevant, Justification: "bot changed this"},
+					AutoTriage: AutoTriage{Reason: TriageReasonRejectedUpstream},
 				},
 			},
-			wantFields: []string{"screening.auto_triage.status", "screening.auto_triage.justification"},
+			wantFields: []string{"screening.auto_triage.reason"},
 		},
 		{
 			name: "preserve field edited externally - ignored",
 			baseline: Record{
 				ID: "CVE-2025-9002",
 				Manual: ManualOverride{
-					ManualTriage: Triage{Status: StatusRelevant},
+					ManualTriage: ManualTriage{Status: StatusRelevant},
 				},
 			},
 			existing: Record{
 				ID: "CVE-2025-9002",
 				Manual: ManualOverride{
-					ManualTriage: Triage{Status: StatusNotRelevant},
+					ManualTriage: ManualTriage{Status: StatusNotRelevant},
 				},
 			},
 			wantEmpty: true,
@@ -57,13 +104,13 @@ func TestDetectExternalOverwriteEdits(t *testing.T) {
 			baseline: Record{
 				ID: "CVE-2025-9003",
 				Screening: ScreeningResult{
-					AutoTriage: Triage{Status: StatusRelevant},
+					AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 				},
 			},
 			existing: Record{
 				ID: "CVE-2025-9003",
 				Screening: ScreeningResult{
-					AutoTriage: Triage{Status: StatusRelevant}, // same as baseline
+					AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage}, // same as baseline
 				},
 			},
 			wantEmpty: true,
@@ -149,8 +196,8 @@ func TestDiffRecords_Created(t *testing.T) {
 			Description: "New vuln.",
 		},
 		Screening: ScreeningResult{
-			AutoTriage:    Triage{Status: StatusRelevant, Justification: "reason"},
-			PriorityScore: 7.5,
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
+			Matched:    []string{"pkg:deb/debian/foo"},
 		},
 	}
 
@@ -166,9 +213,8 @@ func TestDiffRecords_Created(t *testing.T) {
 		fieldNames = append(fieldNames, c.Field.String())
 	}
 	assert.Contains(t, fieldNames, "upstream.description")
-	assert.Contains(t, fieldNames, "screening.auto_triage.status")
-	assert.Contains(t, fieldNames, "screening.auto_triage.justification")
-	assert.Contains(t, fieldNames, "screening.priority_score")
+	assert.Contains(t, fieldNames, "screening.auto_triage.reason")
+	assert.Contains(t, fieldNames, "screening.matched")
 }
 
 func TestDiffRecords_Updated_Description(t *testing.T) {
@@ -182,7 +228,7 @@ func TestDiffRecords_Updated_Description(t *testing.T) {
 			Description: "Old desc.",
 		},
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant, Justification: "reason"},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 	}
 
@@ -192,7 +238,7 @@ func TestDiffRecords_Updated_Description(t *testing.T) {
 			Description: "New desc.",
 		},
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant, Justification: "reason"},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 	}
 
@@ -205,7 +251,7 @@ func TestDiffRecords_Updated_Description(t *testing.T) {
 	assert.Equal(t, "New desc.", cs.Changes[0].NewValue)
 }
 
-func TestDiffRecords_Updated_AutoTriageStatus(t *testing.T) {
+func TestDiffRecords_Updated_AutoTriageReason(t *testing.T) {
 	t.Parallel()
 
 	schema := newMergeSpec[Record]()
@@ -213,14 +259,14 @@ func TestDiffRecords_Updated_AutoTriageStatus(t *testing.T) {
 	baseline := Record{
 		ID: "CVE-2025-3001",
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant, Justification: "old"},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 	}
 
 	merged := Record{
 		ID: "CVE-2025-3001",
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusCritical, Justification: "CVSS bumped"},
+			AutoTriage: AutoTriage{Reason: TriageReasonAwaitingDebian},
 		},
 	}
 
@@ -233,13 +279,13 @@ func TestDiffRecords_Updated_AutoTriageStatus(t *testing.T) {
 		changeMap[c.Field.String()] = c
 	}
 
-	assert.Equal(t, "relevant", changeMap["screening.auto_triage.status"].OldValue)
-	assert.Equal(t, "critical", changeMap["screening.auto_triage.status"].NewValue)
-	assert.Equal(t, "old", changeMap["screening.auto_triage.justification"].OldValue)
-	assert.Equal(t, "CVSS bumped", changeMap["screening.auto_triage.justification"].NewValue)
+	// AutoTriage is diffed field by field (diffTransparent) - reason is the source of truth.
+	assert.Contains(t, changeMap, "screening.auto_triage.reason")
+	assert.Equal(t, "affects-debian-package", changeMap["screening.auto_triage.reason"].OldValue)
+	assert.Equal(t, "awaiting-debian", changeMap["screening.auto_triage.reason"].NewValue)
 }
 
-func TestDiffRecords_Updated_PriorityScore(t *testing.T) {
+func TestDiffRecords_Updated_Matched(t *testing.T) {
 	t.Parallel()
 
 	schema := newMergeSpec[Record]()
@@ -247,14 +293,14 @@ func TestDiffRecords_Updated_PriorityScore(t *testing.T) {
 	baseline := Record{
 		ID: "CVE-2025-3501",
 		Screening: ScreeningResult{
-			PriorityScore: 5.0,
+			Matched: []string{"pkg:deb/debian/foo"},
 		},
 	}
 
 	merged := Record{
 		ID: "CVE-2025-3501",
 		Screening: ScreeningResult{
-			PriorityScore: 9.8,
+			Matched: []string{"pkg:deb/debian/foo", "pkg:deb/debian/bar"},
 		},
 	}
 
@@ -262,9 +308,7 @@ func TestDiffRecords_Updated_PriorityScore(t *testing.T) {
 
 	assert.Equal(t, Updated, cs.Type)
 	require.Len(t, cs.Changes, 1)
-	assert.Equal(t, FieldPath{"screening", "priority_score"}, cs.Changes[0].Field)
-	assert.Equal(t, "5", cs.Changes[0].OldValue)
-	assert.Equal(t, "9.8", cs.Changes[0].NewValue)
+	assert.Equal(t, FieldPath{"screening", "matched"}, cs.Changes[0].Field)
 }
 
 func TestDiffRecords_Updated_ReleaseAutoStatus(t *testing.T) {
@@ -318,7 +362,7 @@ func TestDiffRecords_Unchanged(t *testing.T) {
 			Description: "Stable.",
 		},
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusNotRelevant, Justification: "reason"},
+			AutoTriage: AutoTriage{Reason: TriageReasonRejectedUpstream},
 		},
 	}
 
@@ -338,7 +382,7 @@ func TestDiffRecords_BotEditDetected(t *testing.T) {
 	baseline := Record{
 		ID: "CVE-2025-6001",
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant, Justification: "reason"},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {
@@ -353,10 +397,10 @@ func TestDiffRecords_BotEditDetected(t *testing.T) {
 	merged := Record{
 		ID: "CVE-2025-6001",
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant, Justification: "reason"},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 		Manual: ManualOverride{
-			ManualTriage: Triage{
+			ManualTriage: ManualTriage{
 				Status: StatusNotRelevant, Justification: "human decided",
 			},
 		},
@@ -399,7 +443,7 @@ func TestDiffRecords_NewReleaseAdded(t *testing.T) {
 	baseline := Record{
 		ID: "CVE-2025-7001",
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {AutoTriage: ReleaseTriage{Status: ImpactAffected}},
@@ -409,7 +453,7 @@ func TestDiffRecords_NewReleaseAdded(t *testing.T) {
 	merged := Record{
 		ID: "CVE-2025-7001",
 		Screening: ScreeningResult{
-			AutoTriage: Triage{Status: StatusRelevant},
+			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {AutoTriage: ReleaseTriage{Status: ImpactAffected}},

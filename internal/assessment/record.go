@@ -1,6 +1,9 @@
 package assessment
 
-import "time"
+import (
+	"encoding/json"
+	"time"
+)
 
 // Record represents our knowledge and decisions about a CVE.
 type Record struct {
@@ -30,21 +33,14 @@ type CVSSScore struct {
 
 // ScreeningResult is what the program computes during matching and triage.
 type ScreeningResult struct {
-	AutoTriage    Triage  `json:"auto_triage,omitzero"`
-	Matches       Matches `json:"matches,omitzero"`
-	PriorityScore float64 `json:"priority_score,omitempty"`
-}
-
-// Matches holds which CPEs and packages were matched to this CVE.
-type Matches struct {
-	CPEs     []string `json:"cpes,omitempty"`
-	Packages []string `json:"packages,omitempty"`
+	AutoTriage AutoTriage `json:"auto_triage,omitzero"`
+	Matched    []string   `json:"matched,omitempty"`
 }
 
 // ManualOverride is human-provided data - never touched by the program.
 type ManualOverride struct {
-	ManualTriage Triage `json:"manual_triage,omitzero"`
-	Notes        string `json:"notes,omitempty"`
+	ManualTriage ManualTriage `json:"manual_triage,omitzero"`
+	Notes        string       `json:"notes,omitempty"`
 }
 
 // Metadata is set once as a side effect and preserved across runs.
@@ -57,27 +53,92 @@ type Metadata struct {
 type TriageStatus string
 
 const (
-	// StatusUndecided means no decision has been made yet (needs human triage).
+	// StatusUndecided means no decision has been made yet.
 	StatusUndecided TriageStatus = ""
 	// StatusRelevant means the CVE affects Garden Linux and needs attention.
 	StatusRelevant TriageStatus = "relevant"
 	// StatusNotRelevant means the CVE does not affect Garden Linux.
 	StatusNotRelevant TriageStatus = "not-relevant"
-	// StatusCritical means the CVE urgently affects Garden Linux.
-	StatusCritical TriageStatus = "critical"
-	// StatusLowPriority means the CVE affects Garden Linux but with low impact.
-	StatusLowPriority TriageStatus = "low-priority"
 )
 
-// Triage holds a triage decision with its justification.
-type Triage struct {
+// TriageReason is the encoded decision the auto-triage made with the current data.
+// The actual status (undecided, relevant, or not-relevant) is derived from this reason.
+type TriageReason string
+
+const (
+	// TriageReasonAffectsDebianPackage means the CVE affects a Debian package. Status: relevant.
+	TriageReasonAffectsDebianPackage TriageReason = "affects-debian-package"
+	// TriageReasonAffectsGardenLinuxPackage means the CVE affects a Garden Linux package. Status: relevant.
+	TriageReasonAffectsGardenLinuxPackage TriageReason = "affects-gardenlinux-package"
+	// TriageReasonRejectedUpstream means the CVE was rejected upstream. Status: not-relevant.
+	TriageReasonRejectedUpstream TriageReason = "rejected-upstream"
+	// TriageReasonDebianNotForUs means the Debian Security Tracker marks the package as not-for-us. Status:
+	// not-relevant.
+	TriageReasonDebianNotForUs TriageReason = "debian-not-for-us"
+	// TriageReasonDebianPackageNotShipped means the Debian package is not shipped by Garden Linux. Status:
+	// not-relevant.
+	TriageReasonDebianPackageNotShipped TriageReason = "debian-package-not-shipped"
+	// TriageReasonAwaitingDebian means the CVE is pending a Debian triage decision. Status: undecided.
+	TriageReasonAwaitingDebian TriageReason = "awaiting-debian"
+)
+
+// AutoTriage is the program-owned triage result. It holds only a TriageReason; the
+// TriageStatus is derived and emitted in JSON for human readability, but is never
+// stored as a field - TriageReason is the single source of truth.
+type AutoTriage struct {
+	Reason TriageReason `json:"reason,omitempty"`
+}
+
+// diffTransparent opts AutoTriage out of opaque-leaf diffing so the diff walker
+// recurses into its exported Reason field instead of comparing the marshaled JSON blob.
+func (AutoTriage) diffTransparent() {}
+
+// Status returns the derived TriageStatus for the AutoTriage's Reason.
+func (a AutoTriage) Status() TriageStatus {
+	switch a.Reason {
+	case TriageReasonAffectsDebianPackage, TriageReasonAffectsGardenLinuxPackage:
+		return StatusRelevant
+	case TriageReasonRejectedUpstream, TriageReasonDebianNotForUs, TriageReasonDebianPackageNotShipped:
+		return StatusNotRelevant
+	case TriageReasonAwaitingDebian, "":
+		return StatusUndecided
+	}
+
+	return StatusUndecided
+}
+
+// IsEmpty returns true if the AutoTriage has no reason set.
+func (a AutoTriage) IsEmpty() bool {
+	return a.Reason == ""
+}
+
+// autoTriageJSON is the enriched struct emitted by AutoTriage.MarshalJSON.
+type autoTriageJSON struct {
+	Status string       `json:"status,omitempty"`
+	Reason TriageReason `json:"reason,omitempty"`
+}
+
+// MarshalJSON emits both reason for the decision and the derived, output-only status.
+// UnmarshalJSON is not overridden so the output-only status is ignored on read.
+func (a AutoTriage) MarshalJSON() ([]byte, error) {
+	v := autoTriageJSON{
+		Reason: a.Reason,
+	}
+	if s := a.Status(); s != StatusUndecided {
+		v.Status = string(s)
+	}
+	return json.Marshal(v)
+}
+
+// ManualTriage is the human-owned triage result.
+type ManualTriage struct {
 	Status        TriageStatus `json:"status,omitempty"`
 	Justification string       `json:"justification,omitempty"`
 }
 
-// IsEmpty returns true if the triage has no status set.
-func (t Triage) IsEmpty() bool {
-	return t.Status == StatusUndecided
+// IsEmpty returns true if the ManualTriage has no status set.
+func (m ManualTriage) IsEmpty() bool {
+	return m.Status == StatusUndecided
 }
 
 // ImpactStatus represents the per-release impact of a CVE.
@@ -114,13 +175,13 @@ type ReleaseDecision struct {
 	ManualTriage   ReleaseTriage `json:"manual_triage,omitzero"    merge:"preserve"`
 }
 
-// GetGlobalStatus returns the global triage decision (manual overrides auto).
+// GetGlobalStatus returns the effective triage status (manual overrides auto).
 func (r Record) GetGlobalStatus() TriageStatus {
 	if r.Manual.ManualTriage.Status != StatusUndecided {
 		return r.Manual.ManualTriage.Status
 	}
 
-	return r.Screening.AutoTriage.Status
+	return r.Screening.AutoTriage.Status()
 }
 
 // GetReleaseStatus returns the impact status for a specific release.

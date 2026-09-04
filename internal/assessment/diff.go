@@ -402,9 +402,19 @@ func diffPointer(fieldPath FieldPath, old, updated reflect.Value) []FieldChange 
 
 //nolint:gochecknoglobals // cached immutable reflect.Type descriptors
 var (
-	textMarshalerType = reflect.TypeFor[encoding.TextMarshaler]()
-	jsonMarshalerType = reflect.TypeFor[json.Marshaler]()
+	textMarshalerType   = reflect.TypeFor[encoding.TextMarshaler]()
+	jsonMarshalerType   = reflect.TypeFor[json.Marshaler]()
+	diffTransparentType = reflect.TypeFor[diffTransparent]()
 )
+
+// diffTransparent marks a struct to be not tread as an opaque leaf by diff.
+// Useful if the struct implements json.Marshaler (for persistency), but should
+// still be diffed field by field rather than as an opaque leaf.
+// Only types whose meaningful state lives in exported fields
+// should use this - see isLeafStruct.
+type diffTransparent interface {
+	diffTransparent()
+}
 
 // isLeafStruct reports whether a struct type should be treated as an opaque
 // leaf value during diffing (compared and serialized as a whole) rather than
@@ -412,8 +422,14 @@ var (
 // This applies to types that implement encoding.TextMarshaler or json.Marshaler
 // (e.g. time.Time), whose meaningful state lives in unexported fields that
 // diffStructField would otherwise skip.
+// Types implementing diffTransparent opt out of leaf treatment even though they
+// implement json.Marshaler or encoding.TextMarshaler, because their meaningful
+// state is in exported fields (see AutoTriage).
 func isLeafStruct(t reflect.Type) bool {
 	ptr := reflect.PointerTo(t)
+	if t.Implements(diffTransparentType) || ptr.Implements(diffTransparentType) {
+		return false
+	}
 	return t.Implements(textMarshalerType) || ptr.Implements(textMarshalerType) ||
 		t.Implements(jsonMarshalerType) || ptr.Implements(jsonMarshalerType)
 }

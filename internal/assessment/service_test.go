@@ -153,7 +153,7 @@ func TestServiceProcess_NewRecord(t *testing.T) {
 			Description: "New vulnerability.",
 		},
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "affects bar"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
@@ -186,10 +186,10 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 			Description: "Old description.",
 		},
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "old reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Manual: assessment.ManualOverride{
-			ManualTriage: assessment.Triage{
+			ManualTriage: assessment.ManualTriage{
 				Status: assessment.StatusNotRelevant, Justification: "human says no",
 			},
 			Notes: "reviewed in sprint 42",
@@ -217,7 +217,7 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 			Description: "Updated description.",
 		},
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusCritical, Justification: "CVSS bumped"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsGardenLinuxPackage},
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
@@ -234,8 +234,7 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 
 	// Overwrite: overwritten.
 	assert.Equal(t, "Updated description.", merged.Upstream.Description)
-	assert.Equal(t, assessment.StatusCritical, merged.Screening.AutoTriage.Status)
-	assert.Equal(t, "CVSS bumped", merged.Screening.AutoTriage.Justification)
+	assert.Equal(t, assessment.TriageReasonAffectsGardenLinuxPackage, merged.Screening.AutoTriage.Reason)
 	// Preserve: preserved.
 	assert.Equal(t, assessment.StatusNotRelevant, merged.Manual.ManualTriage.Status)
 	assert.Equal(t, "human says no", merged.Manual.ManualTriage.Justification)
@@ -329,7 +328,7 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 	baseline := assessment.Record{
 		ID: "CVE-2025-6002",
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
@@ -344,10 +343,10 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 	botEdited := assessment.Record{
 		ID: "CVE-2025-6002",
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Manual: assessment.ManualOverride{
-			ManualTriage: assessment.Triage{
+			ManualTriage: assessment.ManualTriage{
 				Status: assessment.StatusNotRelevant, Justification: "human decided",
 			},
 		},
@@ -368,7 +367,7 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 	incoming := assessment.Record{
 		ID: "CVE-2025-6002",
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
@@ -475,7 +474,7 @@ func TestServiceProcess_FirstRunUsesEmptyBaseline(t *testing.T) {
 			Description: "A vuln.",
 		},
 		Manual: assessment.ManualOverride{
-			ManualTriage: assessment.Triage{
+			ManualTriage: assessment.ManualTriage{
 				Status: assessment.StatusNotRelevant, Justification: "human says no",
 			},
 		},
@@ -522,7 +521,7 @@ func TestServiceProcess_Unchanged(t *testing.T) {
 			Description: "Stable vuln.",
 		},
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {

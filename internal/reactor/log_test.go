@@ -41,7 +41,7 @@ func TestLog_React_Created(t *testing.T) {
 	rec := &assessment.Record{
 		ID: "CVE-2025-2000",
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "affects foo"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 	}
 	cs := assessment.ChangeSet{
@@ -49,7 +49,11 @@ func TestLog_React_Created(t *testing.T) {
 		Type:  assessment.Created,
 		Changes: []assessment.FieldChange{
 			{Field: assessment.FieldPath{"upstream", "description"}, OldValue: "", NewValue: "buffer overflow in foo"},
-			{Field: assessment.FieldPath{"screening", "auto_triage", "status"}, OldValue: "", NewValue: "relevant"},
+			{
+				Field:    assessment.FieldPath{"screening", "auto_triage", "reason"},
+				OldValue: "",
+				NewValue: "affects-debian-package",
+			},
 		},
 	}
 
@@ -70,13 +74,13 @@ func TestLog_React_Updated(t *testing.T) {
 	old := assessment.Record{
 		ID: "CVE-2025-3000",
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "old reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAwaitingDebian},
 		},
 	}
-	rec := &assessment.Record{
+	cur := &assessment.Record{
 		ID: "CVE-2025-3000",
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusCritical, Justification: "CVSS bumped"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 	}
 	cs := assessment.ChangeSet{
@@ -84,20 +88,20 @@ func TestLog_React_Updated(t *testing.T) {
 		Type:  assessment.Updated,
 		Changes: []assessment.FieldChange{
 			{
-				Field:    assessment.FieldPath{"screening", "auto_triage", "status"},
-				OldValue: "relevant",
-				NewValue: "critical",
+				Field:    assessment.FieldPath{"screening", "auto_triage", "reason"},
+				OldValue: "awaiting-debian",
+				NewValue: "affects-debian-package",
 			},
 		},
 	}
 
-	err := r.React(t.Context(), old, rec, cs)
+	err := r.React(t.Context(), old, cur, cs)
 	require.NoError(t, err)
 
 	output := buf.String()
 	assert.Contains(t, output, "CVE-2025-3000")
 	assert.Contains(t, output, "updated")
-	assert.Contains(t, output, "critical")
+	assert.Contains(t, output, "affects-debian-package")
 }
 
 func TestLog_React_NilLoggerFallsBackToDefault(t *testing.T) {
@@ -105,7 +109,7 @@ func TestLog_React_NilLoggerFallsBackToDefault(t *testing.T) {
 
 	r := reactor.Log{} // nil logger
 	old := assessment.Record{ID: "CVE-2025-4000"}
-	rec := &assessment.Record{ID: "CVE-2025-4000"}
+	cur := &assessment.Record{ID: "CVE-2025-4000"}
 	cs := assessment.ChangeSet{
 		CVEID: "CVE-2025-4000",
 		Type:  assessment.Created,
@@ -115,6 +119,6 @@ func TestLog_React_NilLoggerFallsBackToDefault(t *testing.T) {
 	}
 
 	// Should not panic.
-	err := r.React(t.Context(), old, rec, cs)
+	err := r.React(t.Context(), old, cur, cs)
 	require.NoError(t, err)
 }

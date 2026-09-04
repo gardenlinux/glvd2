@@ -96,7 +96,7 @@ func TestBaseline_LoadAssessmentRecord(t *testing.T) {
 			Description: "original description",
 		},
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "reason"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 	}
 

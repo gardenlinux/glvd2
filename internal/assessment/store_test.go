@@ -23,7 +23,7 @@ func TestStore_RoundTrip(t *testing.T) {
 			Description: "A test vulnerability in foo package.",
 		},
 		Screening: assessment.ScreeningResult{
-			AutoTriage: assessment.Triage{Status: assessment.StatusRelevant, Justification: "affects foo"},
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
