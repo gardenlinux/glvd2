@@ -337,8 +337,9 @@ func (s Service) IngestTriage(ctx context.Context) error {
 	return nil
 }
 
-//nolint:unused // will be connected later
-func (s Service) getTriageEntryFromDB(ctx context.Context, cveID string) (*TriageEntry, error) {
+// GetTriageEntryFromDB returns the full TriageEntry for the CVE with cveID.
+// It returns (nil, sql.ErrNoRows), if the CVE has no Debian triage entry.
+func (s Service) GetTriageEntryFromDB(ctx context.Context, cveID string) (*TriageEntry, error) {
 	debTriage, err := s.queries.GetDebianTriage(ctx, cveID)
 	if err != nil {
 		return nil, err
