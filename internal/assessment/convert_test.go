@@ -18,6 +18,7 @@ func TestRecordFromCVEV5(t *testing.T) {
 	cve := &cve_v5.CVEV5{}
 	cve.Metadata.ID = "CVE-2026-1234"
 	cve.Metadata.DatePublished = published
+	cve.Metadata.State = cve_v5.StatePublished
 	cve.Containers.CNAContainer.Descriptions = []cve_v5.Description{
 		{Lang: "de", Value: "Speicherüberlauf in foo"},
 		{Lang: "en", Value: "buffer overflow in foo"},
@@ -30,11 +31,24 @@ func TestRecordFromCVEV5(t *testing.T) {
 	assert.Equal(t, "CVE-2026-1234", rec.ID)
 	assert.Equal(t, "buffer overflow in foo", rec.Upstream.Description)
 	assert.Equal(t, published, rec.Upstream.PublishedAt)
+	assert.Equal(t, assessment.CVEStatePublished, rec.Upstream.State)
 
 	// FirstSeenAt is seeded to the current time on the incoming record.
 	require.False(t, rec.Meta.FirstSeenAt.IsZero(), "FirstSeenAt must be seeded")
 	assert.False(t, rec.Meta.FirstSeenAt.Before(before))
 	assert.False(t, rec.Meta.FirstSeenAt.After(after))
+}
+
+func TestRecordFromCVEV5_Rejected(t *testing.T) {
+	t.Parallel()
+
+	cve := &cve_v5.CVEV5{}
+	cve.Metadata.ID = "CVE-2026-9999"
+	cve.Metadata.State = cve_v5.StateRejected
+
+	rec := assessment.RecordFromCVEV5(cve)
+
+	assert.Equal(t, assessment.CVEStateRejected, rec.Upstream.State)
 }
 
 func TestRecordFromCVEV5_DescriptionFallback(t *testing.T) {

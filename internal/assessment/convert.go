@@ -10,8 +10,8 @@ import (
 // suitable for merging. It populates the Upstream fields from the CVE data and
 // seeds Meta.FirstSeenAt to the current time.
 //
-// FirstSeenAt is seeded here on every incoming record. For a new CVE,
-// mergeRecords returns the incoming record and the time is set.
+// FirstSeenAt is set here on every incoming record. For a new CVE,
+// mergeRecords returns the incoming record's FirstSeenAt value and the time is set.
 // On subsequent runs the preserve mechanism of the field keeps the original value.
 func RecordFromCVEV5(cve *cve_v5.CVEV5) Record {
 	a := Record{
@@ -19,6 +19,7 @@ func RecordFromCVEV5(cve *cve_v5.CVEV5) Record {
 		Upstream: UpstreamData{
 			Description: firstEnglishDescriptionWithFallback(cve),
 			PublishedAt: cve.Metadata.DatePublished,
+			State:       cveStateFromV5(cve.Metadata.State),
 		},
 		Meta: Metadata{
 			FirstSeenAt: time.Now().UTC(),
@@ -26,6 +27,17 @@ func RecordFromCVEV5(cve *cve_v5.CVEV5) Record {
 	}
 
 	return a
+}
+
+// cveStateFromV5 maps a cve_v5.StateType to the domain-local CVEState.
+func cveStateFromV5(s cve_v5.StateType) CVEState {
+	switch s {
+	case cve_v5.StateRejected:
+		return CVEStateRejected
+	case cve_v5.StatePublished:
+		return CVEStatePublished
+	}
+	return CVEStatePublished
 }
 
 // firstEnglishDescriptionWithFallback returns the first English-language description from the CNA container.

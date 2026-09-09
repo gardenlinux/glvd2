@@ -15,6 +15,14 @@ type Record struct {
 	Releases  map[string]ReleaseDecision `json:"releases,omitempty" merge:"map,preserve"`
 }
 
+// CVEState is the global lifecycle state of a CVE record.
+type CVEState string
+
+const (
+	CVEStatePublished CVEState = "PUBLISHED"
+	CVEStateRejected  CVEState = "REJECTED"
+)
+
 // UpstreamData is ingested from CVEListV5 - purely derived from external sources.
 type UpstreamData struct {
 	Description string     `json:"description,omitempty"`
@@ -23,6 +31,7 @@ type UpstreamData struct {
 	CWEs        []string   `json:"cwes,omitempty"`
 	PublishedAt time.Time  `json:"published_at,omitzero"`
 	References  []string   `json:"references,omitempty"`
+	State       CVEState   `json:"state,omitempty"`
 }
 
 // CVSSScore holds a CVSS score and its vector string.
