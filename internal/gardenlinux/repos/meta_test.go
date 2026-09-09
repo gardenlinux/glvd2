@@ -219,6 +219,78 @@ rm -rf "$workdir"`
 	assert.False(t, metadata.UpstreamPatches)
 }
 
+func TestAddSbom(t *testing.T) {
+	t.Parallel()
+
+	//nolint:lll // source output
+	prepareSource := `version_orig=20260522.00
+plugin_manager_commit=c98709762f0de7e6b9fda26ec4dbd9dd3c43237a
+
+plugin_manager_workdir="$(mktemp -d)"
+
+git clone --depth=1 --revision="$plugin_manager_commit" https://github.com/GoogleCloudPlatform/google-guest-agent.git "$plugin_manager_workdir"
+rm -rf "$plugin_manager_workdir/.git"
+
+
+# Clone upstream repository
+workdir="$(mktemp -d)"
+
+git clone --depth 1 --recurse-submodules --branch "${version_orig}" https://github.com/GoogleCloudPlatform/guest-agent.git "$workdir"
+
+pushd "$workdir"
+
+# Fix upstream Debian package definition
+mv ./packaging/debian ./
+
+latest_commit_message="$(git log -1 --pretty="format:%s" ./google_guest_agent)"
+latest_commit_datetime="$(git log -1 --pretty="format:%aD" ./google_guest_agent)"
+
+tee ./debian/changelog << EOF
+google-guest-agent (1:${version_orig}) stable; urgency=medium
+
+  * $latest_commit_message
+  * Detailed changelog can be found at https://github.com/GoogleCloudPlatform/guest-agent/commits/${version_orig}
+
+ -- $maintainer <$email>  $latest_commit_datetime
+EOF
+
+echo "3.0 (native)" > ./debian/source/format
+
+cp -r -T "$plugin_manager_workdir" google-guest-agent
+
+# Cleanup
+rm -rf ./.git
+rm -rf ./packaging
+
+popd
+
+# Import modified upstream source distribution
+import_src "$workdir"
+
+add_sbom "$dir/src" "" "google-guest-agent" "$version_orig"
+
+rm -rf "$workdir"`
+
+	var metadata *repos.RepositoryMetadata
+	queryData := repos.RepositoryMetadata{
+		Repository: "package-google-guest-agent",
+		Branch:     "mybranch",
+		CommitId:   "12345d",
+	}
+	metadata, err := repos.AnalyzePrepareSource(prepareSource, queryData)
+	require.NoError(t, err)
+
+	assert.False(t, metadata.AptSrc)
+	assert.False(t, metadata.DebianSrc)
+	assert.False(t, metadata.SalsaSrc)
+	assert.True(t, metadata.UpstreamSrc)
+
+	assert.False(t, metadata.DebianPatches)
+	assert.False(t, metadata.GlPatches)
+	assert.False(t, metadata.UpstreamPatches)
+	assert.True(t, metadata.VendoredPackage)
+}
+
 func TestGetPackageNameFromBranch(t *testing.T) {
 	t.Parallel()
 

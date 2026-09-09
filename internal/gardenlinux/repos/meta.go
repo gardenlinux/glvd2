@@ -30,6 +30,8 @@ type RepositoryMetadata struct {
 	UpstreamPatches bool `json:"upstream_patches"` // applys upstream_patches via import_upstream_patches
 	DebianPatches   bool `json:"debian_patches"`   // applys patches for debian, when apply_patches with directory "debian"
 	GlPatches       bool `json:"gl_patches"`       // applys custom patches, usually via apply_patches
+
+	VendoredPackage bool `json:"vendored_package"` // Is a vendored build and provides a package sbom
 }
 
 type FileContent struct {
@@ -265,6 +267,10 @@ func analyzePrepareSource(content string, queryData RepositoryMetadata) (*Reposi
 				metadata.SalsaSrc = true
 			}
 			continue
+		}
+
+		if strings.Contains(line, "add_sbom") {
+			metadata.VendoredPackage = true
 		}
 	}
 	return &metadata, nil
