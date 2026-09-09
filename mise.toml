@@ -6,10 +6,10 @@ go = "1.26"
 "github:sqlc-dev/sqlc" = "latest"
 "aqua:golang-migrate/migrate" = "4.19.1"
 "aqua:golangci/golangci-lint" = "2.13.2"
-"aqua:gotestyourself/gotestsum" = "latest"
 syft = "latest"
 gofumpt = "latest"
 taplo = "latest"                           # TOML formatting
+gotestsum = "latest"
 
 [tasks."fmt:toml"]
 description = "Format all TOML files using taplo"
