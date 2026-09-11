@@ -2,49 +2,52 @@ package db
 
 import (
 	"database/sql"
+	"errors"
+	"fmt"
 	"log/slog"
 	"os"
 	"path/filepath"
 
-	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/golang-migrate/migrate/v4/database/sqlite" // blank import like lib proposes
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"github.com/golang-migrate/migrate/v4/database/sqlite"
+	_ "github.com/golang-migrate/migrate/v4/source/file" // registers the file:// migration source
+	_ "modernc.org/sqlite"                               // registers the "sqlite" modernc driver
 )
 
-const sqliteConnectionStringSuffix = "?journal_mode=WAL&busy_timeout=3000&secure_delete=true" +
-	"&foreign_keys=true&cache=shared&x-no-tx-wrap=true"
+// modernc.org/sqlite ignores plain query params (journal_mode=..., cache=...);
+// pragmas must use its _pragma syntax on a file URI.
+const sqlitePragmas = "?_pragma=busy_timeout(3000)" +
+	"&_pragma=journal_mode(WAL)" +
+	"&_pragma=foreign_keys(true)"
 
 // Regenerate clears the DB file, recreates the structure via migration, and returns a DB connection.
 func Regenerate(fp string) (*sql.DB, error) {
-	// ensure that the directory exists
+	// Ensure that the directory for the db file exists.
 	dbDirectory := filepath.Dir(fp)
-	if _, errstat := os.Stat(dbDirectory); os.IsNotExist(errstat) {
-		errstat = os.MkdirAll(dbDirectory, 0o755) //nolint:mnd // no magic number check
-		if errstat != nil {
-			return nil, errstat
+	switch _, err := os.Stat(dbDirectory); {
+	case err == nil:
+		// directory already exists
+	case errors.Is(err, os.ErrNotExist):
+		if mkErr := os.MkdirAll(dbDirectory, 0o755); mkErr != nil { //nolint:mnd // folder permissions
+			return nil, fmt.Errorf("creating database directory %s: %w", dbDirectory, mkErr)
 		}
 		slog.Info("Created database directory", "directory", dbDirectory)
+	default:
+		return nil, fmt.Errorf("checking database directory %s: %w", dbDirectory, err)
 	}
-	// ensure that the file exists
-	f, err := os.OpenFile(fp, os.O_CREATE, 0o644) //nolint:gosec,mnd // no user input and fil
-	if err != nil {
-		return nil, err
+
+	// We start each run with a fresh database.
+	for _, p := range []string{fp, fp + "-wal", fp + "-shm"} {
+		if err := os.Remove(p); err != nil && !errors.Is(err, os.ErrNotExist) {
+			return nil, fmt.Errorf("removing %s: %w", p, err)
+		}
 	}
-	if err = f.Close(); err != nil {
+
+	if err := runMigrations(fp); err != nil {
 		return nil, err
 	}
 
-	// clear the file content
-	if err = os.Truncate(fp, 0); err != nil {
-		return nil, err
-	}
-
-	if err = Migrate(fp); err != nil {
-		return nil, err
-	}
-
-	db, err := Open(fp)
+	db, err := open(fp)
 	if err != nil {
 		return nil, err
 	}
@@ -52,34 +55,38 @@ func Regenerate(fp string) (*sql.DB, error) {
 	return db, nil
 }
 
-func NewInstance(cfg *config.AppConfig) (*sql.DB, error) {
-	return Open(cfg.InternalSqliteDBPath)
-}
-
-// Open a sqlite db from file.
-func Open(fp string) (*sql.DB, error) {
-	db, err := sql.Open("sqlite", fp+sqliteConnectionStringSuffix)
+// open a sqlite db from file.
+func open(fp string) (*sql.DB, error) {
+	db, err := sql.Open("sqlite", "file:"+fp+sqlitePragmas)
 	if err != nil {
 		return nil, err
 	}
 
-	// no parallel access
+	// SQLite has a single writer. Pin to one connection to serialize all access.
 	db.SetMaxOpenConns(1)
 
 	return db, nil
 }
 
-func Migrate(fp string) error {
-	m, err := migrate.New(
-		"file://internal/db/migrations/",
-		"sqlite://"+fp+sqliteConnectionStringSuffix)
+func runMigrations(fp string) error {
+	db, err := open(fp)
 	if err != nil {
 		return err
 	}
 
-	err = m.Up()
+	driver, err := sqlite.WithInstance(db, &sqlite.Config{NoTxWrap: true})
 	if err != nil {
-		return err
+		return errors.Join(fmt.Errorf("creating migrate driver: %w", err), db.Close())
+	}
+
+	m, err := migrate.NewWithDatabaseInstance("file://internal/db/migrations/", "sqlite", driver)
+	if err != nil {
+		return errors.Join(fmt.Errorf("creating migrator: %w", err), db.Close())
+	}
+	defer func() { _, _ = m.Close() }()
+
+	if upErr := m.Up(); upErr != nil && !errors.Is(upErr, migrate.ErrNoChange) {
+		return fmt.Errorf("applying migrations: %w", upErr)
 	}
 
 	return nil
