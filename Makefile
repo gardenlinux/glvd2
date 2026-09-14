@@ -16,7 +16,7 @@ fmt: format
 .PHONY: format
 format: format-toml
 	@echo "Formatting go files..."
-	golangci-lint fmt
+	golangci-lint fmt ./cmd/... ./internal/...
 
 .PHONY: format-toml
 format-toml:
@@ -25,7 +25,7 @@ format-toml:
 
 .PHONY: lint
 lint:
-	golangci-lint --config=.golangci.yaml run
+	golangci-lint --config=.golangci.yaml run ./cmd/... ./internal/...
 
 .PHONY: test
 test: clean_test

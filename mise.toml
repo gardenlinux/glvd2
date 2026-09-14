@@ -13,5 +13,5 @@ taplo = "latest"                           # TOML formatting
 
 [tasks."fmt:toml"]
 description = "Format all TOML files using taplo"
-run = "taplo fmt"
-sources = ["**/*.toml"]
+run = "taplo fmt *.toml config/*.toml"
+sources = ["*.toml", "config/*.toml"]
