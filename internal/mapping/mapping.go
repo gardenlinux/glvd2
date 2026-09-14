@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/component"
+	"github.com/gardenlinux/glvd2/internal/configpath"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/gardenlinux/glvd2/internal/sliceutil"
@@ -96,13 +97,13 @@ type Service struct {
 type Option func(*serviceConfig)
 
 type serviceConfig struct {
-	vpFilterPath  component.SafePath
-	cpeFilterPath component.SafePath
-	pkgFilterPath component.SafePath
+	vpFilterPath  configpath.SafePath
+	cpeFilterPath configpath.SafePath
+	pkgFilterPath configpath.SafePath
 }
 
 // WithFilterPaths overrides the default filter config file paths.
-func WithFilterPaths(vp, cpeFilter, pkgID component.SafePath) Option {
+func WithFilterPaths(vp, cpeFilter, pkgID configpath.SafePath) Option {
 	return func(cfg *serviceConfig) {
 		cfg.vpFilterPath = vp
 		cfg.cpeFilterPath = cpeFilter
@@ -115,9 +116,9 @@ func WithFilterPaths(vp, cpeFilter, pkgID component.SafePath) Option {
 // affected package data.
 func NewService(querier AffectedPackageQuerier, opts ...Option) (*Service, error) {
 	cfg := serviceConfig{
-		vpFilterPath:  component.DefaultVendorProductFilterConfigPath,
-		cpeFilterPath: component.DefaultCPEFilterConfigPath,
-		pkgFilterPath: component.DefaultPackageIDFilterConfigPath,
+		vpFilterPath:  configpath.DefaultVendorProductFilterConfigPath,
+		cpeFilterPath: configpath.DefaultCPEFilterConfigPath,
+		pkgFilterPath: configpath.DefaultPackageIDFilterConfigPath,
 	}
 	for _, o := range opts {
 		o(&cfg)

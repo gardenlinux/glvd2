@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/gardenlinux/glvd2/internal/configpath"
 	"github.com/pelletier/go-toml/v2"
 )
 
@@ -45,18 +46,8 @@ type Filter struct {
 	wildcardRules []Rule
 }
 
-// TODO: use this SafePath pattern everywhere
-
-type SafePath string
-
-const (
-	DefaultPackageIDFilterConfigPath     SafePath = "./config/package_id_filter.toml"
-	DefaultCPEFilterConfigPath           SafePath = "./config/cpe_filter.toml"
-	DefaultVendorProductFilterConfigPath SafePath = "./config/vendor_product_filter.toml"
-)
-
-// LoadFilterConfig reads and parses a TOML filter configuration file from the given path.
-func loadFilterConfig(path SafePath) (FilterConfig, error) {
+// loadFilterConfig reads and parses a TOML filter configuration file from the given path.
+func loadFilterConfig(path configpath.SafePath) (FilterConfig, error) {
 	data, err := os.ReadFile(string(path))
 	if err != nil {
 		return FilterConfig{}, fmt.Errorf("reading filter config %q: %w", path, err)
@@ -71,7 +62,7 @@ func loadFilterConfig(path SafePath) (FilterConfig, error) {
 }
 
 // NewFilter creates a new vendor-product pair filter from the given configuration TOML-file.
-func NewFilter(path SafePath) (Filter, error) {
+func NewFilter(path configpath.SafePath) (Filter, error) {
 	cfg, err := loadFilterConfig(path)
 	if err != nil {
 		return Filter{}, err

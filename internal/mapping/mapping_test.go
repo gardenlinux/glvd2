@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/component"
+	"github.com/gardenlinux/glvd2/internal/configpath"
 	"github.com/gardenlinux/glvd2/internal/cpe"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/mapping"
@@ -27,7 +28,7 @@ func (s *stubQuerier) ListAffectedDebianPackages(_ context.Context) ([]repositor
 }
 
 // emptyFilterPath returns the path to a TOML filter that discards nothing.
-func emptyFilterPath(t *testing.T) component.SafePath {
+func emptyFilterPath(t *testing.T) configpath.SafePath {
 	t.Helper()
 
 	return writeTempFilter(t, "")
@@ -98,25 +99,25 @@ func newTestServiceWithPkgIDFilter(
 }
 
 // writeTempFilter writes toml content to a temp file and returns its path.
-func writeTempFilter(t *testing.T, content string) component.SafePath {
+func writeTempFilter(t *testing.T, content string) configpath.SafePath {
 	t.Helper()
 
 	p := filepath.Join(t.TempDir(), "filter.toml")
 	require.NoError(t, os.WriteFile(p, []byte(content), 0o644))
-	return component.SafePath(p)
+	return configpath.SafePath(p)
 }
 
 func TestNewService_MissingFilterFiles(t *testing.T) {
 	t.Parallel()
 
-	nonexistent := component.SafePath("/tmp/cacce6ce-c7ad-44f5-98e9-4c053be6be20/nonexistent_filter.toml")
+	nonexistent := configpath.SafePath("/tmp/cacce6ce-c7ad-44f5-98e9-4c053be6be20/nonexistent_filter.toml")
 	valid := emptyFilterPath(t)
 
 	tests := []struct {
 		name string
-		vp   component.SafePath
-		cpe  component.SafePath
-		pkg  component.SafePath
+		vp   configpath.SafePath
+		cpe  configpath.SafePath
+		pkg  configpath.SafePath
 	}{
 		{
 			name: "missing vendor-product filter",

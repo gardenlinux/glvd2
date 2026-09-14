@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/component"
+	"github.com/gardenlinux/glvd2/internal/configpath"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -54,7 +55,7 @@ equals = ["ms-teams"]
 	path := filepath.Join(t.TempDir(), "filter.toml")
 	require.NoError(t, os.WriteFile(path, []byte(rawRules), 0o644))
 
-	f, err := component.NewFilter(component.SafePath(path))
+	f, err := component.NewFilter(configpath.SafePath(path))
 	require.NoError(t, err)
 
 	tests := []struct {
@@ -200,7 +201,7 @@ func TestProjectFilterConfig(t *testing.T) {
 	t.Parallel()
 
 	path := filepath.Join("..", "..", "config", "vendor_product_filter.toml")
-	f, err := component.NewFilter(component.SafePath(path))
+	f, err := component.NewFilter(configpath.SafePath(path))
 	require.NoError(t, err)
 
 	// Smoke-tests
