@@ -1,4 +1,4 @@
-package mapping_test
+package debmap_test
 
 import (
 	"context"
@@ -7,17 +7,17 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/gardenlinux/glvd2/internal/component"
 	"github.com/gardenlinux/glvd2/internal/configpath"
 	"github.com/gardenlinux/glvd2/internal/cpe"
+	"github.com/gardenlinux/glvd2/internal/debmap"
+	"github.com/gardenlinux/glvd2/internal/identifier"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
-	"github.com/gardenlinux/glvd2/internal/mapping"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-// stubQuerier implements mapping.AffectedPackageQuerier for tests.
+// stubQuerier implements debmap.AffectedPackageQuerier for tests.
 type stubQuerier struct {
 	packages []repository.DebianTriageAffectedPackage
 	err      error
@@ -34,15 +34,14 @@ func emptyFilterPath(t *testing.T) configpath.SafePath {
 	return writeTempFilter(t, "")
 }
 
-// newTestService creates a Service with noop filter configs and a stub querier.
-func newTestService(t *testing.T, pkgs []repository.DebianTriageAffectedPackage) *mapping.Service {
+// newTestService creates a Service with no-op filter configs and a stub querier.
+func newTestService(t *testing.T, pkgs []repository.DebianTriageAffectedPackage) *debmap.Service {
 	t.Helper()
 
-	s, err := mapping.NewService(&stubQuerier{packages: pkgs}, mapping.WithFilterPaths(
-		emptyFilterPath(t),
-		emptyFilterPath(t),
-		emptyFilterPath(t),
-	))
+	s, err := debmap.NewService(
+		&stubQuerier{packages: pkgs},
+		debmap.WithFilterPaths(emptyFilterPath(t), emptyFilterPath(t), emptyFilterPath(t)),
+	)
 	require.NoError(t, err)
 	return s
 }
@@ -52,14 +51,12 @@ func newTestServiceWithVPFilter(
 	t *testing.T,
 	pkgs []repository.DebianTriageAffectedPackage,
 	vpTOML string,
-) *mapping.Service {
+) *debmap.Service {
 	t.Helper()
 
-	s, err := mapping.NewService(&stubQuerier{packages: pkgs}, mapping.WithFilterPaths(
-		writeTempFilter(t, vpTOML),
-		emptyFilterPath(t),
-		emptyFilterPath(t),
-	))
+	s, err := debmap.NewService(&stubQuerier{packages: pkgs},
+		debmap.WithFilterPaths(writeTempFilter(t, vpTOML), emptyFilterPath(t), emptyFilterPath(t)),
+	)
 	require.NoError(t, err)
 	return s
 }
@@ -69,14 +66,12 @@ func newTestServiceWithCPEFilter(
 	t *testing.T,
 	pkgs []repository.DebianTriageAffectedPackage,
 	cpeTOML string,
-) *mapping.Service {
+) *debmap.Service {
 	t.Helper()
 
-	s, err := mapping.NewService(&stubQuerier{packages: pkgs}, mapping.WithFilterPaths(
-		emptyFilterPath(t),
-		writeTempFilter(t, cpeTOML),
-		emptyFilterPath(t),
-	))
+	s, err := debmap.NewService(&stubQuerier{packages: pkgs},
+		debmap.WithFilterPaths(emptyFilterPath(t), writeTempFilter(t, cpeTOML), emptyFilterPath(t)),
+	)
 	require.NoError(t, err)
 	return s
 }
@@ -86,19 +81,17 @@ func newTestServiceWithPkgIDFilter(
 	t *testing.T,
 	pkgs []repository.DebianTriageAffectedPackage,
 	pkgIDTOML string,
-) *mapping.Service {
+) *debmap.Service {
 	t.Helper()
 
-	s, err := mapping.NewService(&stubQuerier{packages: pkgs}, mapping.WithFilterPaths(
-		emptyFilterPath(t),
-		emptyFilterPath(t),
-		writeTempFilter(t, pkgIDTOML),
-	))
+	s, err := debmap.NewService(&stubQuerier{packages: pkgs},
+		debmap.WithFilterPaths(emptyFilterPath(t), emptyFilterPath(t), writeTempFilter(t, pkgIDTOML)),
+	)
 	require.NoError(t, err)
 	return s
 }
 
-// writeTempFilter writes toml content to a temp file and returns its path.
+// writeTempFilter writes TOML content to a temp file and returns its path.
 func writeTempFilter(t *testing.T, content string) configpath.SafePath {
 	t.Helper()
 
@@ -143,7 +136,9 @@ func TestNewService_MissingFilterFiles(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			_, err := mapping.NewService(&stubQuerier{}, mapping.WithFilterPaths(tt.vp, tt.cpe, tt.pkg))
+			_, err := debmap.NewService(&stubQuerier{},
+				debmap.WithFilterPaths(tt.vp, tt.cpe, tt.pkg),
+			)
 			require.Error(t, err)
 		})
 	}
@@ -159,7 +154,7 @@ func TestAnalyze_MatchesVendorProductPairs(t *testing.T) {
 
 	idsForCVEs := cvelistv5.IDsForCVEs{
 		"CVE-2026-0001": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "curl", Product: "curl"},
 			},
 		},
@@ -170,11 +165,11 @@ func TestAnalyze_MatchesVendorProductPairs(t *testing.T) {
 	require.NoError(t, err)
 
 	vpID := `"curl":"curl"`
-	assert.Equal(t, 1, result.VendorProductPairs[vpID]["curl"])
-	assert.Equal(t, 1, result.VendorProductPairs[vpID]["libcurl"])
+	assert.Equal(t, 1, result.VendorProductPairs[vpID]["pkg:deb/debian/curl"])
+	assert.Equal(t, 1, result.VendorProductPairs[vpID]["pkg:deb/debian/libcurl"])
 
-	assert.Contains(t, pkgIndex["curl"].VendorProductIDs, vpID)
-	assert.Contains(t, pkgIndex["libcurl"].VendorProductIDs, vpID)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/curl"].VendorProductIDs, vpID)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/libcurl"].VendorProductIDs, vpID)
 
 	// No cross-contamination into other identifier types.
 	assert.Empty(t, result.CPEs)
@@ -208,8 +203,8 @@ func TestAnalyze_MatchesCPEs(t *testing.T) {
 	require.NoError(t, err)
 
 	expectedCPE := "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*"
-	assert.Equal(t, 1, result.CPEs[expectedCPE]["openssl"])
-	assert.Contains(t, pkgIndex["openssl"].CPEs, expectedCPE)
+	assert.Equal(t, 1, result.CPEs[expectedCPE]["pkg:deb/debian/openssl"])
+	assert.Contains(t, pkgIndex["pkg:deb/debian/openssl"].CPEs, expectedCPE)
 
 	// No cross-contamination into other identifier types.
 	assert.Empty(t, result.VendorProductPairs)
@@ -237,8 +232,8 @@ func TestAnalyze_MatchesPackageIDs(t *testing.T) {
 	require.NoError(t, err)
 
 	pIDStr := `"https://packages.debian.org/":"vim"`
-	assert.Equal(t, 1, result.PackageIDs[pIDStr]["vim"])
-	assert.Contains(t, pkgIndex["vim"].PackageIDs, pIDStr)
+	assert.Equal(t, 1, result.PackageIDs[pIDStr]["pkg:deb/debian/vim"])
+	assert.Contains(t, pkgIndex["pkg:deb/debian/vim"].PackageIDs, pIDStr)
 
 	// No cross-contamination into other identifier types.
 	assert.Empty(t, result.VendorProductPairs)
@@ -263,9 +258,9 @@ func TestAnalyze_MatchesPackageURLs(t *testing.T) {
 	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
-	purl := "pkg:deb/debian/glibc"
-	assert.Equal(t, 1, result.PackageURLs[purl]["glibc"])
-	assert.Contains(t, pkgIndex["glibc"].PackageURLs, purl)
+	rawPURL := "pkg:deb/debian/glibc"
+	assert.Equal(t, 1, result.PackageURLs[rawPURL]["pkg:deb/debian/glibc"])
+	assert.Contains(t, pkgIndex["pkg:deb/debian/glibc"].PackageURLs, rawPURL)
 
 	// No cross-contamination into other identifier types.
 	assert.Empty(t, result.VendorProductPairs)
@@ -282,7 +277,7 @@ func TestAnalyze_FiltersVendorProduct(t *testing.T) {
 
 	idsForCVEs := cvelistv5.IDsForCVEs{
 		"CVE-2026-0010": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "oracle", Product: "database"},
 				{Vendor: "curl", Product: "curl"},
 			},
@@ -302,7 +297,7 @@ discard_all = true
 	assert.Empty(t, result.VendorProductPairs[oracleID])
 
 	curlID := `"curl":"curl"`
-	assert.Equal(t, 1, result.VendorProductPairs[curlID]["curl"])
+	assert.Equal(t, 1, result.VendorProductPairs[curlID]["pkg:deb/debian/curl"])
 }
 
 func TestAnalyze_FiltersCPE(t *testing.T) {
@@ -313,7 +308,7 @@ func TestAnalyze_FiltersCPE(t *testing.T) {
 	}
 
 	wfnMap := cpe.NewUniqueWFNMapFrom([]cpe.WFN{
-		{Part: cpe.StringAV("a"), Vendor: cpe.StringAV("oracle"), Product: cpe.StringAV("jdk")},
+		{Part: cpe.StringAV("a"), Vendor: cpe.StringAV("oracle"), Product: cpe.StringAV("somelib")},
 		{Part: cpe.StringAV("a"), Vendor: cpe.StringAV("vim"), Product: cpe.StringAV("vim")},
 	})
 
@@ -333,14 +328,14 @@ discard_all = true
 	require.NoError(t, err)
 
 	expectedCPE := "cpe:2.3:a:vim:vim:*:*:*:*:*:*:*:*"
-	discardedCPE := "cpe:2.3:a:oracle:jdk:*:*:*:*:*:*:*:*"
+	discardedCPE := "cpe:2.3:a:oracle:somelib:*:*:*:*:*:*:*:*"
 
 	assert.Len(t, result.CPEs, 1)
-	assert.Equal(t, 1, result.CPEs[expectedCPE]["vim"])
+	assert.Equal(t, 1, result.CPEs[expectedCPE]["pkg:deb/debian/vim"])
 	assert.Empty(t, result.CPEs[discardedCPE])
 
-	assert.Contains(t, pkgIndex["vim"].CPEs, expectedCPE)
-	assert.NotContains(t, pkgIndex["vim"].CPEs, discardedCPE)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/vim"].CPEs, expectedCPE)
+	assert.NotContains(t, pkgIndex["pkg:deb/debian/vim"].CPEs, discardedCPE)
 }
 
 func TestAnalyze_FiltersPackageID(t *testing.T) {
@@ -372,11 +367,11 @@ discard_all = true
 	discardedID := `"https://example.com/unwanted/":"curl"`
 
 	assert.Len(t, result.PackageIDs, 1)
-	assert.Equal(t, 1, result.PackageIDs[keptID]["curl"])
+	assert.Equal(t, 1, result.PackageIDs[keptID]["pkg:deb/debian/curl"])
 	assert.Empty(t, result.PackageIDs[discardedID])
 
-	assert.Contains(t, pkgIndex["curl"].PackageIDs, keptID)
-	assert.NotContains(t, pkgIndex["curl"].PackageIDs, discardedID)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/curl"].PackageIDs, keptID)
+	assert.NotContains(t, pkgIndex["pkg:deb/debian/curl"].PackageIDs, discardedID)
 }
 
 func TestAnalyze_SpecialRedHatProductsPackageIDFiltering(t *testing.T) {
@@ -415,13 +410,13 @@ func TestAnalyze_SpecialRedHatProductsPackageIDFiltering(t *testing.T) {
 
 	// Two entries kept: the Red Hat one containing "curl" and the Debian one.
 	assert.Len(t, result.PackageIDs, 2)
-	assert.Equal(t, 1, result.PackageIDs[keptRedHat]["curl"])
-	assert.Equal(t, 1, result.PackageIDs[keptDebian]["curl"])
+	assert.Equal(t, 1, result.PackageIDs[keptRedHat]["pkg:deb/debian/curl"])
+	assert.Equal(t, 1, result.PackageIDs[keptDebian]["pkg:deb/debian/curl"])
 	assert.Empty(t, result.PackageIDs[discardedRedHat])
 
-	assert.Contains(t, pkgIndex["curl"].PackageIDs, keptRedHat)
-	assert.Contains(t, pkgIndex["curl"].PackageIDs, keptDebian)
-	assert.NotContains(t, pkgIndex["curl"].PackageIDs, discardedRedHat)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/curl"].PackageIDs, keptRedHat)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/curl"].PackageIDs, keptDebian)
+	assert.NotContains(t, pkgIndex["pkg:deb/debian/curl"].PackageIDs, discardedRedHat)
 }
 
 func TestAnalyze_NoCVEIDsFound_Continues(t *testing.T) {
@@ -434,7 +429,7 @@ func TestAnalyze_NoCVEIDsFound_Continues(t *testing.T) {
 
 	idsForCVEs := cvelistv5.IDsForCVEs{
 		"CVE-2026-0001": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "curl", Product: "curl"},
 			},
 		},
@@ -445,25 +440,24 @@ func TestAnalyze_NoCVEIDsFound_Continues(t *testing.T) {
 	require.NoError(t, err)
 
 	vpID := `"curl":"curl"`
-	assert.Equal(t, 1, result.VendorProductPairs[vpID]["curl"])
+	assert.Equal(t, 1, result.VendorProductPairs[vpID]["pkg:deb/debian/curl"])
 
 	// The unknown package should not appear in results or index.
-	assert.Empty(t, result.VendorProductPairs[vpID]["unknown-pkg"])
-	assert.Empty(t, pkgIndex["unknown-pkg"])
+	assert.Empty(t, result.VendorProductPairs[vpID]["pkg:deb/debian/unknown-pkg"])
+	assert.Empty(t, pkgIndex["pkg:deb/debian/unknown-pkg"])
 
 	// The valid package should be in the index.
-	assert.Contains(t, pkgIndex["curl"].VendorProductIDs, vpID)
+	assert.Contains(t, pkgIndex["pkg:deb/debian/curl"].VendorProductIDs, vpID)
 }
 
 func TestAnalyze_QuerierError(t *testing.T) {
 	t.Parallel()
 
 	expectedErr := errors.New("db connection lost")
-	s, err := mapping.NewService(&stubQuerier{err: expectedErr}, mapping.WithFilterPaths(
-		emptyFilterPath(t),
-		emptyFilterPath(t),
-		emptyFilterPath(t),
-	))
+	s, err := debmap.NewService(
+		&stubQuerier{err: expectedErr},
+		debmap.WithFilterPaths(emptyFilterPath(t), emptyFilterPath(t), emptyFilterPath(t)),
+	)
 	require.NoError(t, err)
 
 	_, _, err = s.Analyze(t.Context(), nil)
@@ -502,7 +496,7 @@ func TestAnalyze_MultipleOccurrencesIncrementCount(t *testing.T) {
 	idsForCVEs := cvelistv5.IDsForCVEs{
 		// CVE-0050: all four identifier types
 		"CVE-2026-0050": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "apache", Product: "http_server"},
 			},
 			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
@@ -515,7 +509,7 @@ func TestAnalyze_MultipleOccurrencesIncrementCount(t *testing.T) {
 		},
 		// CVE-0051: all four identifier types
 		"CVE-2026-0051": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "apache", Product: "http_server"},
 			},
 			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
@@ -528,7 +522,7 @@ func TestAnalyze_MultipleOccurrencesIncrementCount(t *testing.T) {
 		},
 		// CVE-0052: VP + CPE only
 		"CVE-2026-0052": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "apache", Product: "http_server"},
 			},
 			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
@@ -537,7 +531,7 @@ func TestAnalyze_MultipleOccurrencesIncrementCount(t *testing.T) {
 		},
 		// CVE-0053: VP only
 		"CVE-2026-0053": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "apache", Product: "http_server"},
 			},
 		},
@@ -550,19 +544,22 @@ func TestAnalyze_MultipleOccurrencesIncrementCount(t *testing.T) {
 	vpID := `"apache":"http_server"`
 	cpeStr := "cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*"
 	pIDStr := `"https://packages.debian.org/":"apache2"`
-	purl := "pkg:deb/debian/apache2"
+	rawPURL := "pkg:deb/debian/apache2"
+
+	apache2PURL := "pkg:deb/debian/apache2"
+	utilsPURL := "pkg:deb/debian/apache2-utils"
 
 	// "apache2" appears in 4 CVEs with VP, 3 with CPE, 2 with package ID, 2 with PURL.
-	assert.Equal(t, 4, result.VendorProductPairs[vpID]["apache2"])
-	assert.Equal(t, 3, result.CPEs[cpeStr]["apache2"])
-	assert.Equal(t, 2, result.PackageIDs[pIDStr]["apache2"])
-	assert.Equal(t, 2, result.PackageURLs[purl]["apache2"])
+	assert.Equal(t, 4, result.VendorProductPairs[vpID][apache2PURL])
+	assert.Equal(t, 3, result.CPEs[cpeStr][apache2PURL])
+	assert.Equal(t, 2, result.PackageIDs[pIDStr][apache2PURL])
+	assert.Equal(t, 2, result.PackageURLs[rawPURL][apache2PURL])
 
 	// "apache2-utils" only appears in CVE-0050, so all its counters are 1.
-	assert.Equal(t, 1, result.VendorProductPairs[vpID]["apache2-utils"])
-	assert.Equal(t, 1, result.CPEs[cpeStr]["apache2-utils"])
-	assert.Equal(t, 1, result.PackageIDs[pIDStr]["apache2-utils"])
-	assert.Equal(t, 1, result.PackageURLs[purl]["apache2-utils"])
+	assert.Equal(t, 1, result.VendorProductPairs[vpID][utilsPURL])
+	assert.Equal(t, 1, result.CPEs[cpeStr][utilsPURL])
+	assert.Equal(t, 1, result.PackageIDs[pIDStr][utilsPURL])
+	assert.Equal(t, 1, result.PackageURLs[rawPURL][utilsPURL])
 }
 
 func TestAnalyze_MultipleFiltersActive(t *testing.T) {
@@ -574,7 +571,7 @@ func TestAnalyze_MultipleFiltersActive(t *testing.T) {
 
 	idsForCVEs := cvelistv5.IDsForCVEs{
 		"CVE-2026-0070": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "oracle", Product: "database"},
 				{Vendor: "libfoo", Product: "libfoo"},
 			},
@@ -606,45 +603,49 @@ groups = ["https://unwanted.example.com/"]
 discard_all = true
 `
 
-	s, err := mapping.NewService(&stubQuerier{packages: pkgs}, mapping.WithFilterPaths(
-		writeTempFilter(t, vpTOML),
-		writeTempFilter(t, cpeTOML),
-		writeTempFilter(t, pkgIDTOML),
-	))
+	s, err := debmap.NewService(&stubQuerier{packages: pkgs},
+		debmap.WithFilterPaths(
+			writeTempFilter(t, vpTOML),
+			writeTempFilter(t, cpeTOML),
+			writeTempFilter(t, pkgIDTOML),
+		),
+	)
 	require.NoError(t, err)
 
 	result, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
+	libfooPURL := "pkg:deb/debian/libfoo"
+
 	// VP: oracle:database discarded, libfoo:libfoo kept.
 	discardedVP := `"oracle":"database"`
 	keptVP := `"libfoo":"libfoo"`
 	assert.Empty(t, result.VendorProductPairs[discardedVP])
-	assert.Equal(t, 1, result.VendorProductPairs[keptVP]["libfoo"])
+	assert.Equal(t, 1, result.VendorProductPairs[keptVP][libfooPURL])
 
 	// CPE: microsoft:windows discarded, libfoo:libfoo kept.
 	discardedCPE := "cpe:2.3:a:microsoft:windows:*:*:*:*:*:*:*:*"
 	keptCPE := "cpe:2.3:a:libfoo:libfoo:*:*:*:*:*:*:*:*"
 	assert.Empty(t, result.CPEs[discardedCPE])
-	assert.Equal(t, 1, result.CPEs[keptCPE]["libfoo"])
+	assert.Equal(t, 1, result.CPEs[keptCPE][libfooPURL])
 
 	// PackageID: unwanted discarded, Debian kept.
 	discardedPkgID := `"https://unwanted.example.com/":"libfoo"`
 	keptPkgID := `"https://packages.debian.org/":"libfoo"`
 	assert.Empty(t, result.PackageIDs[discardedPkgID])
-	assert.Equal(t, 1, result.PackageIDs[keptPkgID]["libfoo"])
+	assert.Equal(t, 1, result.PackageIDs[keptPkgID][libfooPURL])
 
 	// PURL: unfiltered, always kept.
-	assert.Equal(t, 1, result.PackageURLs["pkg:deb/debian/libfoo"]["libfoo"])
+	assert.Equal(t, 1, result.PackageURLs["pkg:deb/debian/libfoo"][libfooPURL])
 
 	// PackageIdentifierIndex only contains surviving identifiers.
-	assert.Contains(t, pkgIndex["libfoo"].VendorProductIDs, keptVP)
-	assert.NotContains(t, pkgIndex["libfoo"].VendorProductIDs, discardedVP)
-	assert.Contains(t, pkgIndex["libfoo"].CPEs, keptCPE)
-	assert.NotContains(t, pkgIndex["libfoo"].CPEs, discardedCPE)
-	assert.Contains(t, pkgIndex["libfoo"].PackageIDs, keptPkgID)
-	assert.NotContains(t, pkgIndex["libfoo"].PackageIDs, discardedPkgID)
-	assert.Contains(t, pkgIndex["libfoo"].PackageURLs, "pkg:deb/debian/libfoo")
+	assert.Contains(t, pkgIndex[libfooPURL].VendorProductIDs, keptVP)
+	assert.NotContains(t, pkgIndex[libfooPURL].VendorProductIDs, discardedVP)
+	assert.Contains(t, pkgIndex[libfooPURL].CPEs, keptCPE)
+	assert.NotContains(t, pkgIndex[libfooPURL].CPEs, discardedCPE)
+	assert.Contains(t, pkgIndex[libfooPURL].PackageIDs, keptPkgID)
+	assert.NotContains(t, pkgIndex[libfooPURL].PackageIDs, discardedPkgID)
+	assert.Contains(t, pkgIndex[libfooPURL].PackageURLs, "pkg:deb/debian/libfoo")
 }
 
 func TestAnalyze_PackageIndexIdentifiersAreUnique(t *testing.T) {
@@ -657,7 +658,7 @@ func TestAnalyze_PackageIndexIdentifiersAreUnique(t *testing.T) {
 
 	// Both CVEs share identical identifiers.
 	sharedIDs := &cvelistv5.Identifiers{
-		VendorProductPairs: []component.Pair{
+		VendorProductPairs: []identifier.VendorProduct{
 			{Vendor: "nginx", Product: "nginx"},
 		},
 		WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
@@ -681,19 +682,20 @@ func TestAnalyze_PackageIndexIdentifiersAreUnique(t *testing.T) {
 	vpID := `"nginx":"nginx"`
 	cpeStr := "cpe:2.3:a:nginx:nginx:*:*:*:*:*:*:*:*"
 	pkgIDStr := `"https://packages.debian.org/":"nginx"`
-	purl := "pkg:deb/debian/nginx"
+	rawPURL := "pkg:deb/debian/nginx"
+	nginxPURL := "pkg:deb/debian/nginx"
 
 	// Counters should be 2 (one per CVE).
-	assert.Equal(t, 2, result.VendorProductPairs[vpID]["nginx"])
-	assert.Equal(t, 2, result.CPEs[cpeStr]["nginx"])
-	assert.Equal(t, 2, result.PackageIDs[pkgIDStr]["nginx"])
-	assert.Equal(t, 2, result.PackageURLs[purl]["nginx"])
+	assert.Equal(t, 2, result.VendorProductPairs[vpID][nginxPURL])
+	assert.Equal(t, 2, result.CPEs[cpeStr][nginxPURL])
+	assert.Equal(t, 2, result.PackageIDs[pkgIDStr][nginxPURL])
+	assert.Equal(t, 2, result.PackageURLs[rawPURL][nginxPURL])
 
 	// Index entries must be deduplicated - length 1 despite two CVEs contributing.
-	assert.Len(t, pkgIndex["nginx"].VendorProductIDs, 1)
-	assert.Len(t, pkgIndex["nginx"].CPEs, 1)
-	assert.Len(t, pkgIndex["nginx"].PackageIDs, 1)
-	assert.Len(t, pkgIndex["nginx"].PackageURLs, 1)
+	assert.Len(t, pkgIndex[nginxPURL].VendorProductIDs, 1)
+	assert.Len(t, pkgIndex[nginxPURL].CPEs, 1)
+	assert.Len(t, pkgIndex[nginxPURL].PackageIDs, 1)
+	assert.Len(t, pkgIndex[nginxPURL].PackageURLs, 1)
 }
 
 func TestAnalyze_PackageIndexIdentifiersAreSorted(t *testing.T) {
@@ -706,7 +708,7 @@ func TestAnalyze_PackageIndexIdentifiersAreSorted(t *testing.T) {
 
 	idsForCVEs := cvelistv5.IDsForCVEs{
 		"CVE-2026-0098": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "nginx", Product: "b-nginx"},
 			},
 			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
@@ -718,7 +720,7 @@ func TestAnalyze_PackageIndexIdentifiersAreSorted(t *testing.T) {
 			PackageURLs: []string{"pkg:deb/debian/b-nginx"},
 		},
 		"CVE-2026-0099": &cvelistv5.Identifiers{
-			VendorProductPairs: []component.Pair{
+			VendorProductPairs: []identifier.VendorProduct{
 				{Vendor: "nginx", Product: "a-nginx"},
 			},
 			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{
@@ -735,26 +737,28 @@ func TestAnalyze_PackageIndexIdentifiersAreSorted(t *testing.T) {
 	_, pkgIndex, err := s.Analyze(t.Context(), idsForCVEs)
 	require.NoError(t, err)
 
+	nginxPURL := "pkg:deb/debian/nginx"
+
 	// Slices should be sorted in ascending order.
 	assert.Equal(
 		t,
 		[]string{`"nginx":"a-nginx"`, `"nginx":"b-nginx"`},
-		pkgIndex["nginx"].VendorProductIDs,
+		pkgIndex[nginxPURL].VendorProductIDs,
 	)
 	assert.Equal(
 		t,
 		[]string{"cpe:2.3:a:nginx:a-nginx:*:*:*:*:*:*:*:*", "cpe:2.3:a:nginx:b-nginx:*:*:*:*:*:*:*:*"},
-		pkgIndex["nginx"].CPEs,
+		pkgIndex[nginxPURL].CPEs,
 	)
 	assert.Equal(
 		t,
 		[]string{`"https://packages.debian.org/":"a-nginx"`, `"https://packages.debian.org/":"b-nginx"`},
-		pkgIndex["nginx"].PackageIDs,
+		pkgIndex[nginxPURL].PackageIDs,
 	)
 	assert.Equal(
 		t,
 		[]string{"pkg:deb/debian/a-nginx", "pkg:deb/debian/b-nginx"},
-		pkgIndex["nginx"].PackageURLs,
+		pkgIndex[nginxPURL].PackageURLs,
 	)
 }
 
@@ -782,9 +786,10 @@ func TestAnalyze_SkipsCPEsWithNonStringVendorOrProduct(t *testing.T) {
 	require.NoError(t, err)
 
 	expectedCPE := "cpe:2.3:a:acme:somelib:*:*:*:*:*:*:*:*"
+	somelibPURL := "pkg:deb/debian/somelib"
 
 	assert.Len(t, result.CPEs, 1)
-	assert.Equal(t, 1, result.CPEs[expectedCPE]["somelib"])
-	assert.Contains(t, pkgIndex["somelib"].CPEs, expectedCPE)
-	assert.Len(t, pkgIndex["somelib"].CPEs, 1)
+	assert.Equal(t, 1, result.CPEs[expectedCPE][somelibPURL])
+	assert.Contains(t, pkgIndex[somelibPURL].CPEs, expectedCPE)
+	assert.Len(t, pkgIndex[somelibPURL].CPEs, 1)
 }

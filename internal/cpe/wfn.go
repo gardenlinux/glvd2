@@ -79,6 +79,16 @@ type WFN struct {
 // NewWFN returns a WFN with all attributes set to ANY.
 func NewWFN() WFN { return WFN{} }
 
+// VendorProduct returns the vendor and product string values of the WFN.
+// The bool is false unless both attributes are concrete strings (not ANY or NA).
+func (w *WFN) VendorProduct() (string, string, bool) {
+	if !w.Vendor.IsString() || !w.Product.IsString() {
+		return "", "", false
+	}
+
+	return w.Vendor.Value, w.Product.Value, true
+}
+
 // String returns the WFN as CPE 2.3 formatted string.
 func (w *WFN) String() string {
 	return w.FormatAsCPE23String()

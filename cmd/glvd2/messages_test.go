@@ -23,12 +23,12 @@ func TestBuildAssessmentsUpdateMessage(t *testing.T) {
 func TestBuildAuditUpdateMessage(t *testing.T) {
 	t.Parallel()
 
-	msg := buildAuditUpdateMessage([]string{"mapping_result.json", "package_identifiers.json"})
+	msg := buildAuditUpdateMessage([]string{"deb_mapping_result.json", "deb_package_identifiers.json"})
 
 	want := "data(audit): update\n\n" +
 		"recorded artifacts:\n" +
-		"- mapping_result.json\n" +
-		"- package_identifiers.json\n"
+		"- deb_mapping_result.json\n" +
+		"- deb_package_identifiers.json\n"
 	assert.Equal(t, want, msg)
 }
 

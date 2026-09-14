@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gardenlinux/glvd2/internal/component"
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/gardenlinux/glvd2/internal/cpe"
+	"github.com/gardenlinux/glvd2/internal/identifier"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/model/cve_v5"
 	"github.com/stretchr/testify/assert"
@@ -109,7 +109,7 @@ func TestGetIDsForCVEs_ValidFixtures(t *testing.T) {
 		assert.Empty(t, ids.PackageURLs)
 
 		assert.Len(t, ids.VendorProductPairs, 1)
-		assert.Equal(t, component.Pair{Vendor: "vim", Product: "vim"}, ids.VendorProductPairs[0])
+		assert.Equal(t, identifier.VendorProduct{Vendor: "vim", Product: "vim"}, ids.VendorProductPairs[0])
 
 		assert.Len(t, ids.WFNs, 2)
 		wfn1 := createWFN("vim", "vim")
@@ -125,8 +125,8 @@ func TestGetIDsForCVEs_ValidFixtures(t *testing.T) {
 		require.NotNil(t, ids, "CVE-2026-0004 should be present")
 
 		assert.Len(t, ids.VendorProductPairs, 2)
-		assert.Contains(t, ids.VendorProductPairs, component.Pair{Vendor: "n/a", Product: "specialtool"})
-		assert.Contains(t, ids.VendorProductPairs, component.Pair{Vendor: "upper", Product: "case"})
+		assert.Contains(t, ids.VendorProductPairs, identifier.VendorProduct{Vendor: "n/a", Product: "specialtool"})
+		assert.Contains(t, ids.VendorProductPairs, identifier.VendorProduct{Vendor: "upper", Product: "case"})
 	})
 
 	t.Run("CPENormalization_VersionStripped", func(t *testing.T) {
@@ -203,7 +203,7 @@ func TestGetIDsForCVEs_InvalidCPESkipped(t *testing.T) {
 	require.NotNil(t, ids)
 
 	assert.Len(t, ids.VendorProductPairs, 1)
-	assert.Equal(t, component.Pair{Vendor: "nginx", Product: "nginx"}, ids.VendorProductPairs[0])
+	assert.Equal(t, identifier.VendorProduct{Vendor: "nginx", Product: "nginx"}, ids.VendorProductPairs[0])
 
 	assert.Len(t, ids.WFNs, 1)
 	wfn := createWFN("nginx", "nginx")
