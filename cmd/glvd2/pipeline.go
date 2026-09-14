@@ -9,10 +9,10 @@ import (
 	"github.com/gardenlinux/glvd2/internal/audit"
 	"github.com/gardenlinux/glvd2/internal/config"
 	database "github.com/gardenlinux/glvd2/internal/db"
+	"github.com/gardenlinux/glvd2/internal/debmap"
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
-	"github.com/gardenlinux/glvd2/internal/mapping"
 	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/gardenlinux/glvd2/internal/reactor"
 	"github.com/gardenlinux/glvd2/internal/repository"
@@ -111,22 +111,22 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	mappingService, err := mapping.NewService(queries)
+	debMapper, err := debmap.NewService(queries)
 	if err != nil {
 		return err
 	}
 
-	mappingResult, pkgIDIndex, err := mappingService.Analyze(ctx, idsForCVEs)
+	debMapping, debPkgIDIndex, err := debMapper.Analyze(ctx, idsForCVEs)
 	if err != nil {
 		return err
 	}
 
 	auditService := audit.NewService(cfg)
-	if err = auditService.Record("mapping_result.json", mappingResult); err != nil {
-		return fmt.Errorf("recording audit artifact - mapping result: %w", err)
+	if err = auditService.Record("deb_mapping_result.json", debMapping); err != nil {
+		return fmt.Errorf("recording audit artifact - debian mapping result: %w", err)
 	}
-	if err = auditService.Record("package_identifiers.json", pkgIDIndex); err != nil {
-		return fmt.Errorf("recording audit artifact - package identifiers: %w", err)
+	if err = auditService.Record("deb_package_identifiers.json", debPkgIDIndex); err != nil {
+		return fmt.Errorf("recording audit artifact - debian package identifiers: %w", err)
 	}
 
 	assessmentStore := assessment.NewStore(cfg)

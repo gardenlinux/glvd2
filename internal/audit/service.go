@@ -27,7 +27,7 @@ func NewService(cfg *config.AppConfig) *Service {
 }
 
 // Record persists a named audit artifact into the configured audit directory.
-// The filename must include an extension like "mapping_result.json".
+// The filename must include an extension like "deb_mapping_result.json".
 // Existing audit artifacts will be overwritten.
 func (s *Service) Record(filename string, data any) error {
 	outputDir := s.cfg.AuditDir

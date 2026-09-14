@@ -1,0 +1,39 @@
+# GL-specific package inclusion configuration.
+#
+# Maps a set of CVE identifiers to a single Garden Linux PURL.
+# This is the curated inclusion path: deliberate "we care about this" assertions
+# for GL-only packages Debian never knew about, or overrides for Debian NOT-FOR-US
+# entries where GL ships the affected software.
+#
+# Each rule maps any mix of input identifiers to one target GL PURL:
+#   target_purl     - target Garden Linux PURL (required)
+#   vendor_products - list of vendor/product pairs
+#   cpes            - list of CPE vendor/product pairs
+#   package_ids     - list of collection-URL / package-name pairs.
+#   input_purls     - list of upstream PURL aliases
+#
+# The identifier sets across all rules must be disjoint; this is validated at load.
+#
+# Example:
+# [[rules]]
+# target_purl = "pkg:deb/gardenlinux/myspeciallib"
+# vendor_products = [
+#   { vendor = "acme", product = "myspeciallib" },
+#   { vendor = "acme-corp", product = "myspeciallib" },
+# ]
+# cpes = [
+#   { vendor = "acme", product = "myspeciallib" },
+#   { vendor = "acme", product = "libmyspecial" },
+# ]
+# package_ids = [
+#   { collection_url = "https://example.com/pkgs", package_name = "myspeciallib" },
+#   { collection_url = "https://other.example/pkgs", package_name = "libmyspecial" },
+# ]
+# input_purls = [
+#   "pkg:generic/myspeciallib",
+#   "pkg:generic/libmyspecial",
+# ]
+#
+# [[rules]]
+# target_purl = "pkg:deb/gardenlinux/anotherlib"
+# input_purls = [ "pkg:generic/anotherlib" ]

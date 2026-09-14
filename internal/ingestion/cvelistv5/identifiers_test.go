@@ -3,8 +3,8 @@ package cvelistv5 //nolint:testpackage // white-box test: needs access to unexpo
 import (
 	"testing"
 
-	"github.com/gardenlinux/glvd2/internal/component"
 	"github.com/gardenlinux/glvd2/internal/cpe"
+	"github.com/gardenlinux/glvd2/internal/identifier"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -20,7 +20,7 @@ func TestMerge(t *testing.T) {
 
 		ids := &Identifiers{}
 		ids.merge(Identifiers{
-			VendorProductPairs: []component.Pair{{Vendor: "v", Product: "p"}},
+			VendorProductPairs: []identifier.VendorProduct{{Vendor: "v", Product: "p"}},
 			WFNs:               cpe.NewUniqueWFNMapFrom([]cpe.WFN{createWFN("v", "p")}),
 			PackageIDs:         []PackageIdentifier{{CollectionURL: "u", PackageName: "n"}},
 			PackageURLs:        []string{"pkg:deb/debian/foo"},
@@ -36,7 +36,7 @@ func TestMerge(t *testing.T) {
 		t.Parallel()
 
 		ids := &Identifiers{
-			VendorProductPairs: []component.Pair{{Vendor: "existing", Product: "pair"}},
+			VendorProductPairs: []identifier.VendorProduct{{Vendor: "existing", Product: "pair"}},
 		}
 		ids.merge(Identifiers{
 			WFNs: cpe.NewUniqueWFNMapFrom([]cpe.WFN{createWFN("v", "p")}),
@@ -71,10 +71,10 @@ func TestMerge(t *testing.T) {
 	t.Run("overlapping VendorProductPairs deduplicated", func(t *testing.T) {
 		t.Parallel()
 
-		pair1 := component.Pair{Vendor: "v", Product: "p"}
-		pair2 := component.Pair{Vendor: "v", Product: "p"}
-		ids := &Identifiers{VendorProductPairs: []component.Pair{pair1}}
-		ids.merge(Identifiers{VendorProductPairs: []component.Pair{pair2}})
+		pair1 := identifier.VendorProduct{Vendor: "v", Product: "p"}
+		pair2 := identifier.VendorProduct{Vendor: "v", Product: "p"}
+		ids := &Identifiers{VendorProductPairs: []identifier.VendorProduct{pair1}}
+		ids.merge(Identifiers{VendorProductPairs: []identifier.VendorProduct{pair2}})
 
 		assert.Len(t, ids.VendorProductPairs, 1)
 	})
@@ -103,7 +103,7 @@ func TestMerge(t *testing.T) {
 		t.Parallel()
 
 		ids := &Identifiers{
-			VendorProductPairs: []component.Pair{{Vendor: "v", Product: "p"}},
+			VendorProductPairs: []identifier.VendorProduct{{Vendor: "v", Product: "p"}},
 			WFNs:               cpe.NewUniqueWFNMapFrom([]cpe.WFN{createWFN("v", "p")}),
 			PackageIDs:         []PackageIdentifier{{CollectionURL: "c", PackageName: "p"}},
 			PackageURLs:        []string{"pkg:deb/debian/foo"},
@@ -123,13 +123,13 @@ func TestMerge(t *testing.T) {
 		ids := &Identifiers{WFNs: make(cpe.UniqueWFNMap)}
 
 		ids.merge(Identifiers{
-			VendorProductPairs: []component.Pair{{Vendor: "a", Product: "a"}},
+			VendorProductPairs: []identifier.VendorProduct{{Vendor: "a", Product: "a"}},
 			WFNs:               cpe.NewUniqueWFNMapFrom([]cpe.WFN{createWFN("a", "a")}),
 			PackageIDs:         []PackageIdentifier{{CollectionURL: "u1", PackageName: "n1"}},
 			PackageURLs:        []string{"pkg:deb/debian/a"},
 		})
 		ids.merge(Identifiers{
-			VendorProductPairs: []component.Pair{{Vendor: "b", Product: "b"}},
+			VendorProductPairs: []identifier.VendorProduct{{Vendor: "b", Product: "b"}},
 			WFNs:               cpe.NewUniqueWFNMapFrom([]cpe.WFN{createWFN("b", "b")}),
 			PackageIDs:         []PackageIdentifier{{CollectionURL: "u2", PackageName: "n2"}},
 			PackageURLs:        []string{"pkg:deb/debian/b"},

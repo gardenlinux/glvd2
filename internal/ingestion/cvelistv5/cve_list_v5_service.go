@@ -14,9 +14,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gardenlinux/glvd2/internal/component"
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/gardenlinux/glvd2/internal/cpe"
+	"github.com/gardenlinux/glvd2/internal/identifier"
 	"github.com/gardenlinux/glvd2/internal/model/cve_v5"
 	"github.com/gardenlinux/glvd2/internal/sliceutil"
 )
@@ -160,10 +160,10 @@ func (pID PackageIdentifier) String() string {
 }
 
 type Identifiers struct {
-	VendorProductPairs []component.Pair    // fallback of using a combination of the vendor and product as id
-	WFNs               cpe.UniqueWFNMap    // CPE identifiers used in the CVE
-	PackageIDs         []PackageIdentifier // was introduced before packageURL
-	PackageURLs        []string            // newest format to identify a package
+	VendorProductPairs []identifier.VendorProduct // fallback of using a combination of the vendor and product as id
+	WFNs               cpe.UniqueWFNMap           // CPE identifiers used in the CVE
+	PackageIDs         []PackageIdentifier        // was introduced before packageURL
+	PackageURLs        []string                   // newest format to identify a package
 }
 
 // merge incorporates all identifiers from other into ids, deduplicating the result.
@@ -200,7 +200,7 @@ func normalizeVendorProductString(str string) string {
 	return strings.ToLower(strings.TrimSpace(str))
 }
 
-func getVendorProductPairIfPossible(rawVendor, rawProduct string) *component.Pair {
+func getVendorProductPairIfPossible(rawVendor, rawProduct string) *identifier.VendorProduct {
 	vendor := normalizeVendorProductString(rawVendor)
 	product := normalizeVendorProductString(rawProduct)
 
@@ -212,12 +212,12 @@ func getVendorProductPairIfPossible(rawVendor, rawProduct string) *component.Pai
 		return nil
 	}
 
-	return &component.Pair{Vendor: vendor, Product: product}
+	return &identifier.VendorProduct{Vendor: vendor, Product: product}
 }
 
 func processAffectedEntries(idsForCVEs IDsForCVEs, cveID string, affected []cve_v5.Affected) {
 	newIDs := Identifiers{
-		VendorProductPairs: []component.Pair{},
+		VendorProductPairs: []identifier.VendorProduct{},
 		WFNs:               cpe.NewUniqueWFNMapFrom([]cpe.WFN{}),
 		PackageURLs:        []string{},
 		PackageIDs:         []PackageIdentifier{},

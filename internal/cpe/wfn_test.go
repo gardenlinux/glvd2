@@ -263,3 +263,41 @@ func TestNewWFNAllAny(t *testing.T) {
 		}
 	}
 }
+
+func TestWFNVendorProduct(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name        string
+		vendor      cpe.AttributeValue
+		product     cpe.AttributeValue
+		wantVendor  string
+		wantProduct string
+		wantOK      bool
+	}{
+		{"both strings", cpe.StringAV("acme"), cpe.StringAV("lib"), "acme", "lib", true},
+		{"vendor any", cpe.Any(), cpe.StringAV("lib"), "", "", false},
+		{"product any", cpe.StringAV("acme"), cpe.Any(), "", "", false},
+		{"vendor na", cpe.NA(), cpe.StringAV("lib"), "", "", false},
+		{"product na", cpe.StringAV("acme"), cpe.NA(), "", "", false},
+		{"both any", cpe.Any(), cpe.Any(), "", "", false},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			w := cpe.WFN{Vendor: tc.vendor, Product: tc.product}
+			vendor, product, ok := w.VendorProduct()
+			if ok != tc.wantOK {
+				t.Errorf("ok = %v, want %v", ok, tc.wantOK)
+			}
+			if vendor != tc.wantVendor {
+				t.Errorf("vendor = %q, want %q", vendor, tc.wantVendor)
+			}
+			if product != tc.wantProduct {
+				t.Errorf("product = %q, want %q", product, tc.wantProduct)
+			}
+		})
+	}
+}
