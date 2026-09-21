@@ -11,23 +11,15 @@ import (
 	packageurl "github.com/package-url/packageurl-go"
 )
 
-// Origin classifies who owns a PURL: the Debian namespace or the GardenLinux namespace.
-type Origin int
-
 const (
-	// OriginUnknown is returned for PURLs that do not match any known origin.
-	OriginUnknown Origin = iota
-	// OriginDebian covers pkg:deb/debian/... packages.
-	OriginDebian
-	// OriginGardenLinux covers pkg:deb/gardenlinux/... packages.
-	OriginGardenLinux
+	// NamespaceDebian is the deb namespace for Debian-owned packages.
+	NamespaceDebian = "debian"
+	// NamespaceGardenLinux is the deb namespace for GardenLinux-owned packages.
+	NamespaceGardenLinux = "gardenlinux"
 )
 
 // normalize parses raw PURL strings and returns a PackageURL with a lowercased type
-// and the default debian namespace applied.
-//
-// Adding the default debian namespace is necessary, since the package-url library
-// does not enforce a namespace for `pkg:deb` prefixes.
+// and the default debian namespace applied when type debian.
 func normalize(raw string) (packageurl.PackageURL, error) {
 	p, err := packageurl.FromString(raw)
 	if err != nil {
@@ -36,8 +28,9 @@ func normalize(raw string) (packageurl.PackageURL, error) {
 
 	p.Type = strings.ToLower(p.Type)
 	p.Namespace = strings.ToLower(p.Namespace)
+
 	if p.Type == packageurl.TypeDebian && p.Namespace == "" {
-		p.Namespace = "debian"
+		p.Namespace = NamespaceDebian
 	}
 
 	return p, nil
@@ -55,20 +48,34 @@ func Canonicalize(raw string) (string, error) {
 	return canon.ToString(), nil
 }
 
-// OriginOf returns who owns the PURL for this package.
-// It returns OriginUnknown for any PURL that cannot be parsed or does not match a known origin.
-func OriginOf(raw string) Origin {
+// NamespaceOf returns the namespace of the PURL as parsed, applying the
+// deb convention that an empty namespace means debian if type is debian.
+// It returns an error if the PURL cannot be parsed.
+func NamespaceOf(raw string) (string, error) {
 	p, err := normalize(raw)
-	if err != nil || p.Type != packageurl.TypeDebian {
-		return OriginUnknown
+	if err != nil {
+		return "", err
 	}
 
-	switch p.Namespace {
-	case "debian":
-		return OriginDebian
-	case "gardenlinux":
-		return OriginGardenLinux
+	return p.Namespace, nil
+}
+
+// NamespaceVariants returns the canonical identity PURLs.
+// For deb type with debian or gardenlinux namespaces, it returns both variants.
+// All other PURLs get returned as is.
+func NamespaceVariants(raw string) ([]string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return nil, err
 	}
 
-	return OriginUnknown
+	if p.Type != packageurl.TypeDebian || (p.Namespace != NamespaceDebian && p.Namespace != NamespaceGardenLinux) {
+		canon := packageurl.NewPackageURL(p.Type, p.Namespace, p.Name, "", nil, "").ToString()
+		return []string{canon}, nil
+	}
+
+	debian := packageurl.NewPackageURL(p.Type, NamespaceDebian, p.Name, "", nil, "").ToString()
+	gardenlinux := packageurl.NewPackageURL(p.Type, NamespaceGardenLinux, p.Name, "", nil, "").ToString()
+
+	return []string{debian, gardenlinux}, nil
 }

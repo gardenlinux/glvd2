@@ -136,53 +136,54 @@ func TestCanonicalize_Idempotent(t *testing.T) {
 	}
 }
 
-func TestOriginOf(t *testing.T) {
+func TestNamespaceOf(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {
-		name string
-		raw  string
-		want purl.Origin
+		name    string
+		raw     string
+		want    string
+		wantErr bool
 	}{
 		{
-			name: "debian package routes to Debian",
+			name: "debian package yields debian",
 			raw:  "pkg:deb/debian/curl",
-			want: purl.OriginDebian,
+			want: "debian",
 		},
 		{
-			name: "debian package with version routes to Debian",
+			name: "debian package with version yields debian",
 			raw:  "pkg:deb/debian/openssl@3.0.0",
-			want: purl.OriginDebian,
+			want: "debian",
 		},
 		{
-			name: "gardenlinux package routes to GardenLinux",
+			name: "gardenlinux package yields gardenlinux",
 			raw:  "pkg:deb/gardenlinux/curl",
-			want: purl.OriginGardenLinux,
+			want: "gardenlinux",
 		},
 		{
-			name: "gardenlinux package with version routes to GardenLinux",
-			raw:  "pkg:deb/gardenlinux/curl@1.0",
-			want: purl.OriginGardenLinux,
+			name: "deb without namespace defaults to debian",
+			raw:  "pkg:deb/curl@7.88.1",
+			want: "debian",
 		},
 		{
-			name: "deb with non-debian namespace is unknown",
+			name: "deb with foreign namespace is preserved",
 			raw:  "pkg:deb/ubuntu/curl",
-			want: purl.OriginUnknown,
+			want: "ubuntu",
 		},
 		{
-			name: "generic package is unknown",
-			raw:  "pkg:generic/openssl",
-			want: purl.OriginUnknown,
-		},
-		{
-			name: "golang package is unknown",
+			name: "non-deb namespace is preserved",
 			raw:  "pkg:golang/github.com/foo/bar",
-			want: purl.OriginUnknown,
+			want: "github.com/foo",
 		},
 		{
-			name: "invalid purl is unknown",
-			raw:  "not-a-purl",
-			want: purl.OriginUnknown,
+			name: "generic package has no namespace",
+			raw:  "pkg:generic/openssl",
+			want: "",
+		},
+		{
+			name:    "invalid purl errors",
+			raw:     "not-a-purl",
+			wantErr: true,
 		},
 	}
 
@@ -190,7 +191,12 @@ func TestOriginOf(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 
-			got := purl.OriginOf(tc.raw)
+			got, err := purl.NamespaceOf(tc.raw)
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
 			assert.Equal(t, tc.want, got)
 		})
 	}
@@ -220,6 +226,47 @@ func TestConsistency(t *testing.T) {
 			got, err := purl.Canonicalize(raw)
 			require.NoError(t, err)
 			assert.Equal(t, wantKey, got, "all variants must canonicalize to the same join key")
+		})
+	}
+}
+
+func TestNamespaceVariants(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name string
+		raw  string
+		want []string
+	}{
+		{
+			name: "debian expands to both namespaces",
+			raw:  "pkg:deb/debian/glibc",
+			want: []string{"pkg:deb/debian/glibc", "pkg:deb/gardenlinux/glibc"},
+		},
+		{
+			name: "gardenlinux expands to both namespaces",
+			raw:  "pkg:deb/gardenlinux/glibc@2.31?arch=amd64",
+			want: []string{"pkg:deb/debian/glibc", "pkg:deb/gardenlinux/glibc"},
+		},
+		{
+			name: "unnamespaced deb defaults to debian then expands",
+			raw:  "pkg:deb/glibc",
+			want: []string{"pkg:deb/debian/glibc", "pkg:deb/gardenlinux/glibc"},
+		},
+		{
+			name: "non-deb namespace stays exact",
+			raw:  "pkg:deb/ubuntu/glibc",
+			want: []string{"pkg:deb/ubuntu/glibc"},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := purl.NamespaceVariants(tc.raw)
+			require.NoError(t, err)
+			assert.ElementsMatch(t, tc.want, got)
 		})
 	}
 }
