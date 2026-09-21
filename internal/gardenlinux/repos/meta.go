@@ -52,16 +52,16 @@ func getLatestCommitId(ctx context.Context, repoName, branch string) (Commit, er
 		return Commit{}, err
 	}
 
-	var result []Commit
-	_, _, err = client.GetJSON(
+	result, _, err := whttp.GetJSON[[]Commit](
 		ctx,
+		client,
 		fmt.Sprintf(
 			"https://api.github.com/repos/gardenlinux/%s/commits?sha=%s&per_page=%d&page=%d",
 			repoName,
 			branch,
 			1,
 			1,
-		), &result,
+		),
 	)
 	if err != nil {
 		return Commit{}, err
@@ -83,16 +83,15 @@ func getFile(ctx context.Context, repoName, filePath, branch string) (FileConten
 		return FileContent{}, err
 	}
 
-	var fileContent FileContent
-	_, _, err = client.GetJSON(
+	fileContent, _, err := whttp.GetJSON[FileContent](
 		ctx,
+		client,
 		fmt.Sprintf(
 			"https://api.github.com/repos/gardenlinux/%s/contents/%s?ref=%s",
 			repoName,
 			filePath,
 			branch,
 		),
-		&fileContent,
 	)
 	if err != nil {
 		return FileContent{}, err

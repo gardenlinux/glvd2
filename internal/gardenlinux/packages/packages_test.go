@@ -5,6 +5,7 @@ import (
 
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
+	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -228,4 +229,154 @@ Description: utilities for ESLint plugins
 
 	assert.Len(t, pkgs, 3)
 	assert.NoError(t, err, "should not have errors")
+}
+
+func TestParsePackageListSource(t *testing.T) {
+	t.Parallel()
+
+	content := `Package: libc6
+Source: glibc
+Version: 2.31-13
+Architecture: amd64
+
+Package: libc-bin
+Source: glibc (2.31-13)
+Version: 2.31-13
+Architecture: amd64
+
+Package: openssl
+Version: 3.0.11-1
+Architecture: amd64
+`
+
+	pkgs, err := packages.ParsePackageListInRelease(content)
+	require.NoError(t, err)
+	require.Len(t, pkgs, 3)
+
+	// Source: field present.
+	assert.Equal(t, "glibc", pkgs[0].Source)
+	// Source: field present with a version suffix that must be stripped.
+	assert.Equal(t, "glibc", pkgs[1].Source)
+	// Source: absent - falls back to the binary name.
+	assert.Equal(t, "openssl", pkgs[2].Name)
+	assert.Equal(t, "openssl", pkgs[2].Source)
+}
+
+func TestParsePackageListRejectsInvalidNames(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		content string
+	}{
+		{
+			name:    "missing Package field",
+			content: "Version: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "empty Package name",
+			content: "Package: \nVersion: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "Package name with invalid character",
+			content: "Package: Foo_Bar\nVersion: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "invalid Source name",
+			content: "Package: libc6\nSource: Glibc!\nVersion: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "missing Version field",
+			content: "Package: libc6\nArchitecture: amd64\n",
+		},
+		{
+			name:    "missing Architecture field",
+			content: "Package: libc6\nVersion: 1.0\n",
+		},
+		{
+			name:    "duplicate field",
+			content: "Package: libc6\nPackage: bash\nVersion: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "malformed line",
+			content: "Package: libc6\ngarbage-without-separator\nVersion: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "continuation with no preceding field",
+			content: " orphaned continuation\nPackage: libc6\nVersion: 1.0\nArchitecture: amd64\n",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+
+			_, err := packages.ParsePackageListInRelease(tt.content)
+			require.Error(t, err)
+		})
+	}
+}
+
+func TestParsePackageListAcceptsFoldedContinuation(t *testing.T) {
+	t.Parallel()
+
+	// A folded field (Description continued on indented lines) must parse.
+	content := "Package: libc6\nVersion: 1.0\nArchitecture: amd64\n" +
+		"Description: the C library\n continued line one\n continued line two\n"
+
+	pkgs, err := packages.ParsePackageListInRelease(content)
+	require.NoError(t, err)
+	require.Len(t, pkgs, 1)
+	assert.Equal(t, "libc6", pkgs[0].Name)
+}
+
+func TestParsePackageListSkipsBlankParagraphs(t *testing.T) {
+	t.Parallel()
+
+	// Trailing and interleaved blank paragraphs must not produce empty packages
+	// or errors.
+	content := "Package: libc6\nVersion: 1.0\nArchitecture: amd64\n\n\n\n" +
+		"Package: bash\nVersion: 5.2\nArchitecture: all\n\n\n"
+
+	pkgs, err := packages.ParsePackageListInRelease(content)
+	require.NoError(t, err)
+	require.Len(t, pkgs, 2)
+	assert.Equal(t, "libc6", pkgs[0].Name)
+	assert.Equal(t, "bash", pkgs[1].Name)
+}
+
+func TestIdentityPURL(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name string
+		pkg  packages.Package
+		want string
+	}{
+		{
+			name: "debian namespace",
+			pkg:  packages.Package{Name: "libssl3", Source: "openssl", Namespace: purl.NamespaceDebian},
+			want: "pkg:deb/debian/openssl",
+		},
+		{
+			name: "gardenlinux namespace",
+			pkg:  packages.Package{Name: "libc6", Source: "glibc", Namespace: purl.NamespaceGardenLinux},
+			want: "pkg:deb/gardenlinux/glibc",
+		},
+		{
+			name: "empty namespace defaults to debian",
+			pkg:  packages.Package{Name: "bash", Source: "bash"},
+			want: "pkg:deb/debian/bash",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := tc.pkg.IdentityPURL()
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
 }

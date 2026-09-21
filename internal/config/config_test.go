@@ -22,4 +22,5 @@ func TestLoadAppConfig_RealFile(t *testing.T) {
 	assert.NotEmpty(t, cfg.AuditDir)
 	assert.NotEmpty(t, cfg.AssessmentsDir)
 	assert.NotEmpty(t, cfg.BaselineCommitAnchor)
+	assert.NotEmpty(t, cfg.GLRDReleasesURL)
 }

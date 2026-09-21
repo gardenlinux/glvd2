@@ -26,6 +26,7 @@ type AppConfig struct {
 	AuditDir                 string    `mapstructure:"audit_dir"`
 	AssessmentsDir           string    `mapstructure:"assessments_dir"`
 	BaselineCommitAnchor     string    `mapstructure:"baseline_commit_anchor"`
+	GLRDReleasesURL          string    `mapstructure:"glrd_releases_url"`
 	Push                     Push      `mapstructure:"push"`
 	Committer                Committer `mapstructure:"committer"`
 }
@@ -44,6 +45,7 @@ func LoadAppConfig(configDir string) (*AppConfig, error) {
 	v.SetDefault("audit_dir", "./data/audit")
 	v.SetDefault("assessments_dir", "./data/assessments")
 	v.SetDefault("baseline_commit_anchor", "GLVD2-Baseline: true")
+	v.SetDefault("glrd_releases_url", "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json")
 	v.SetDefault("push.remote", "origin")
 	v.SetDefault("push.branch", "main")
 	v.SetDefault("committer.name", "")

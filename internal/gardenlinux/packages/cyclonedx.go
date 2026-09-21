@@ -2,14 +2,29 @@ package packages
 
 import (
 	"context"
-	"log/slog"
+	"errors"
+	"fmt"
 	"net/url"
 	"strings"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
+	"github.com/gardenlinux/glvd2/internal/debian"
+	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/whttp"
 	"github.com/package-url/packageurl-go"
 )
+
+// syftSourceProperty is the CycloneDX component property syft uses to record
+// the Debian source package name.
+const syftSourceProperty = "syft:metadata:source"
+
+// errNoComponents is returned when an SBOM contains no components.
+var errNoComponents = errors.New("sbom has no components")
+
+// FetchCycloneDx fetches and decodes a CycloneDX SBOM.
+func FetchCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
+	return getCycloneDx(ctx, sbomURL)
+}
 
 func getCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
@@ -29,44 +44,93 @@ func getCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	return sbom, nil
 }
 
-func convertSbomToPackageList(input *cdx.BOM) ([]Package, error) {
-	var result []Package
-	var err error
+func convertSBOMToPackageList(input *cdx.BOM) ([]Package, error) {
+	if input.Components == nil || len(*input.Components) == 0 {
+		return nil, errNoComponents
+	}
 
-	for _, component := range *input.Components {
-		var pkg Package
-		var pkgurl packageurl.PackageURL
-		pkgurl, err = packageurl.FromString(component.PackageURL)
-		if err != nil {
-			slog.Warn("unable to parse package url",
-				"type", "sbom",
-				"packagename", component.Name,
-				"packageurl", component.PackageURL)
-			continue
-		}
+	// Classify every component up front so nothing is silently dropped.
+	classified := classifyComponents(*input.Components)
+	if err := checkComponentCoverage(classified); err != nil {
+		return nil, err
+	}
+
+	pkgs := make([]Package, 0, len(classified.Deb))
+	for _, cc := range classified.Deb {
+		component := cc.Component
+		pkgurl := cc.PURL
 
 		if pkgurl.Name != component.Name {
-			slog.Warn("pkgurl name != component name",
-				"name", component.Name,
-				"pkgurl", pkgurl.Name,
-				"component", component.Name)
+			return nil, fmt.Errorf("package url name %q does not match component name %q", pkgurl.Name, component.Name)
 		}
 
 		if pkgurl.Version != component.Version {
-			slog.Warn("pkgurl version != component version",
-				"name", component.Name,
-				"pkgurl", pkgurl.Version,
-				"component", component.Version)
+			return nil, fmt.Errorf("package url version %q does not match component version %q for %q",
+				pkgurl.Version, component.Version, component.Name)
 		}
 
-		pkg.Name = pkgurl.Name
-		pkg.Version = pkgurl.Version
-		pkg.Architecture = pkgurl.Qualifiers.Map()["arch"]
+		if err := debian.ValidatePackageName(pkgurl.Name); err != nil {
+			return nil, fmt.Errorf("invalid package name %q: %w", pkgurl.Name, err)
+		}
 
-		result = append(result, pkg)
+		if pkgurl.Version == "" {
+			return nil, fmt.Errorf("empty version for package %q", pkgurl.Name)
+		}
+
+		source, err := extractSource(component, pkgurl)
+		if err != nil {
+			return nil, fmt.Errorf("extracting source for package %q: %w", pkgurl.Name, err)
+		}
+
+		namespace, err := purl.NamespaceOf(component.PackageURL)
+		if err != nil {
+			return nil, fmt.Errorf("resolving namespace for package %q: %w", pkgurl.Name, err)
+		}
+
+		pkgs = append(pkgs, Package{
+			Name:         pkgurl.Name,
+			Source:       source,
+			Version:      pkgurl.Version,
+			Architecture: pkgurl.Qualifiers.Map()["arch"],
+			Namespace:    namespace,
+		})
 	}
 
-	return result, nil
+	return pkgs, nil
+}
+
+// extractSource returns the Debian source package name for a dpkg component.
+func extractSource(component cdx.Component, pkgurl packageurl.PackageURL) (string, error) {
+	// First check, if there is an "upstream" qualifier in the PURL.
+	if upstream := pkgurl.Qualifiers.Map()["upstream"]; upstream != "" {
+		name, _, _ := strings.Cut(upstream, "@")
+		if err := debian.ValidatePackageName(name); err != nil {
+			return "", fmt.Errorf("invalid upstream source name %q in qualifier %q: %w", name, upstream, err)
+		}
+
+		return name, nil
+	}
+
+	// Second option is the "syft:metadata:source" property.
+	if component.Properties != nil {
+		for _, prop := range *component.Properties {
+			if prop.Name == syftSourceProperty && prop.Value != "" {
+				if err := debian.ValidatePackageName(prop.Value); err != nil {
+					return "", fmt.Errorf("invalid source name %q in %s property: %w",
+						prop.Value, syftSourceProperty, err)
+				}
+
+				return prop.Value, nil
+			}
+		}
+	}
+
+	// Fallback: binary name, which dpkg uses as the source name when they are equal.
+	if err := debian.ValidatePackageName(pkgurl.Name); err != nil {
+		return "", fmt.Errorf("invalid source name fallback %q: %w", pkgurl.Name, err)
+	}
+
+	return pkgurl.Name, nil
 }
 
 func GetPackageListsFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Package, error) {
@@ -78,5 +142,5 @@ func GetPackageListsFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Pack
 		return nil, err
 	}
 
-	return convertSbomToPackageList(sbom)
+	return convertSBOMToPackageList(sbom)
 }

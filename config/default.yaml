@@ -11,6 +11,8 @@ deb_sec_tracker_sub_repo_path: "./submodules/debian-security-tracker"
 
 baseline_commit_anchor: "GLVD2-Baseline: true"
 
+glrd_releases_url: "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
+
 # Remote and branch used to store our persisted data via git
 push:
   remote: "origin"

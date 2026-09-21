@@ -129,18 +129,23 @@ func (h *HTTPClient) GetResponse(ctx context.Context, url string) (Response, err
 	return h.get(ctx, url)
 }
 
-func (h *HTTPClient) GetJSON(ctx context.Context, url string, target any) (any, Response, error) {
-	var err error
+// GetJSON fetches the URL and decodes the JSON body into a value of type T.
+// It allocates the target internally so callers cannot accidentally pass a
+// non-pointer, and returns the decoded value along with the raw response.
+//
+//nolint:ireturn // generic T return is intentional
+func GetJSON[T any](ctx context.Context, h *HTTPClient, url string) (T, Response, error) {
+	var target T
+
 	response, err := h.get(ctx, url)
 	if err != nil {
-		return nil, response, err
+		return target, response, err
 	}
 
 	slog.Log(ctx, logging.LevelTrace, "payload", "url", url, "body", string(response.Body))
 
-	err = json.Unmarshal(response.Body, target)
-	if err != nil {
-		return nil, response, err
+	if err = json.Unmarshal(response.Body, &target); err != nil {
+		return target, response, fmt.Errorf("decoding JSON from %q: %w", url, err)
 	}
 
 	return target, response, nil

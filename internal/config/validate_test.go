@@ -18,6 +18,7 @@ func TestValidate_AcceptsValidConfig(t *testing.T) {
 		AuditDir:                 "./data/audit",
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
+		GLRDReleasesURL:          "https://example.com/releases-minor.json",
 		// RepoMetadataCachePath intentionally empty - it is optional.
 	}
 	require.NoError(t, config.Validate(cfg))
@@ -33,6 +34,7 @@ func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
 		AuditDir:                 "./data/audit",
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
+		GLRDReleasesURL:          "https://example.com/releases-minor.json",
 	}
 
 	cases := []struct {
@@ -45,6 +47,7 @@ func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
 		{"missing AuditDir", func(c *config.AppConfig) { c.AuditDir = "" }},
 		{"missing AssessmentDataDir", func(c *config.AppConfig) { c.AssessmentsDir = "" }},
 		{"missing BaselineCommitAnchor", func(c *config.AppConfig) { c.BaselineCommitAnchor = "" }},
+		{"missing GLRDReleasesURL", func(c *config.AppConfig) { c.GLRDReleasesURL = "" }},
 	}
 
 	for _, tc := range cases {

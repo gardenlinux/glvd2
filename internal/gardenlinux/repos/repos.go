@@ -42,7 +42,6 @@ func GetPackageRepoBranches(ctx context.Context, repository string) ([]Branch, e
 
 	var allBranches []Branch
 	var url string
-	var response whttp.Response
 
 	url = fmt.Sprintf("https://api.github.com/repos/%s/%s/branches?page=%d&per_page=%d",
 		"gardenlinux",
@@ -51,10 +50,9 @@ func GetPackageRepoBranches(ctx context.Context, repository string) ([]Branch, e
 		pageSize)
 
 	for {
-		var tmpBranches []Branch
-		_, response, err = client.GetJSON(ctx, url, &tmpBranches)
-		if err != nil {
-			slog.Error("branch download failed", "error", err)
+		tmpBranches, response, getErr := whttp.GetJSON[[]Branch](ctx, client, url)
+		if getErr != nil {
+			slog.Error("branch download failed", "error", getErr)
 			break
 		}
 		allBranches = append(allBranches, tmpBranches...)
@@ -92,7 +90,6 @@ func GetPackageRepos(ctx context.Context) ([]Repository, error) {
 
 	var allRepository []Repository
 	var url string
-	var response whttp.Response
 
 	url = fmt.Sprintf("https://api.github.com/orgs/%s/repos?type=public&page=%d&per_page=%d",
 		"gardenlinux",
@@ -100,11 +97,9 @@ func GetPackageRepos(ctx context.Context) ([]Repository, error) {
 		pageSize)
 
 	for {
-		var tmpRepos []Repository
-
-		_, response, err = client.GetJSON(ctx, url, &tmpRepos)
-		if err != nil {
-			slog.Error("repo download failed", "error", err)
+		tmpRepos, response, getErr := whttp.GetJSON[[]Repository](ctx, client, url)
+		if getErr != nil {
+			slog.Error("repo download failed", "error", getErr)
 			break
 		}
 		allRepository = append(allRepository, tmpRepos...)

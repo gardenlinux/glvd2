@@ -12,7 +12,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gardenlinux/glvd2/internal/debian"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
+	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/whttp"
 )
 
@@ -97,12 +99,6 @@ const glPackageURL = "https://packages.gardenlinux.io/gardenlinux/dists/%s/%s"
 // 0: 1877.14, today => Suite
 const glInreleaseURL = "https://packages.gardenlinux.io/gardenlinux/dists/%s/InRelease"
 
-type Package struct {
-	Name         string
-	Version      string
-	Architecture string
-}
-
 type PackageFile struct {
 	Sha256Sum   string
 	Size        uint64
@@ -161,8 +157,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	// Component
 	match = componentRegex.FindStringSubmatch(content)
 	if match != nil {
-		componentsStr := strings.Split(match[1], ",") //nolint:modernize // works for now
-		for _, c := range componentsStr {
+		for c := range strings.SplitSeq(match[1], ",") {
 			tmp, ok := parseComponent(c)
 			if !ok {
 				slog.Error("Could not map to component enum",
@@ -176,8 +171,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	// Architectures
 	match = architectureRegex.FindStringSubmatch(content)
 	if match != nil {
-		architecturesStr := strings.Split(match[1], " ") //nolint:modernize // works for now
-		for _, a := range architecturesStr {
+		for a := range strings.SplitSeq(match[1], " ") {
 			tmp, ok := parseArchitecture(a)
 			if !ok {
 				slog.Error("Could not map to architecture enum",
@@ -194,9 +188,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 		packageFile := PackageFile{Sha256Sum: match[1]}
 		size, err := strconv.ParseUint(match[2], 10, 32)
 		if err != nil {
-			slog.Error("could not parse int",
-				slog.String("value", match[2]))
-			continue
+			return result, fmt.Errorf("parsing Packages.gz size %q: %w", match[2], err)
 		}
 		packageFile.Size = size
 		packageFile.PackagePath = match[3]
@@ -208,7 +200,6 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 }
 
 func GetPackageListsFromInRelease(ctx context.Context, release version.GardenLinuxRelease) ([]Package, error) {
-	var err error
 	content, err := getInReleaseFile(ctx, release)
 	if err != nil {
 		return nil, err
@@ -220,14 +211,10 @@ func GetPackageListsFromInRelease(ctx context.Context, release version.GardenLin
 	}
 
 	var result []Package
-
 	for _, packagefile := range inrelease.PackageFiles {
-		var packages []Package
-		packages, err = GetPackageList(ctx, release, packagefile)
-		if err != nil {
-			slog.Error("could not get packages list",
-				slog.Any("error", err))
-			continue
+		packages, listErr := GetPackageList(ctx, release, packagefile)
+		if listErr != nil {
+			return nil, fmt.Errorf("getting package list %q: %w", packagefile.PackagePath, listErr)
 		}
 		result = append(result, packages...)
 	}
@@ -276,29 +263,114 @@ func GetPackageList(
 	return ParsePackageListInRelease(string(rawPackages))
 }
 
+// parseSourceField extracts the bare source name from a Debian "Source:" value,
+// dropping an optional "(version)" suffix.
+func parseSourceField(value string) string {
+	name, _, _ := strings.Cut(value, "(")
+
+	return strings.TrimSpace(name)
+}
+
+// parseParagraph parses one deb822 paragraph into a Package. Every line must be
+// a recognized "key: value" field or a folded continuation (leading space or tab);
+// anything else is a structural error. Duplicate fields are rejected.
+func parseParagraph(item string) (Package, error) {
+	pkg := Package{Namespace: purl.NamespaceGardenLinux}
+	seen := make(map[string]bool)
+	var lastKey string
+
+	for line := range strings.SplitSeq(item, "\n") {
+		if line == "" {
+			continue
+		}
+		// A folded continuation line starts with a space or tab and belongs to the previous field.
+		if line[0] == ' ' || line[0] == '\t' {
+			if lastKey == "" {
+				return Package{}, fmt.Errorf("continuation line with no preceding field: %q", line)
+			}
+			continue
+		}
+
+		key, value, ok := strings.Cut(line, ": ")
+		if !ok {
+			return Package{}, fmt.Errorf("malformed field line: %q", line)
+		}
+
+		// deb822 field names are case-insensitive.
+		key = strings.ToLower(key)
+		if seen[key] {
+			return Package{}, fmt.Errorf("duplicate field %q", key)
+		}
+		seen[key] = true
+		lastKey = key
+
+		switch key {
+		case "package":
+			pkg.Name = value
+		case "source":
+			pkg.Source = parseSourceField(value)
+		case "version":
+			pkg.Version = value
+		case "architecture":
+			pkg.Architecture = value
+		}
+	}
+
+	return pkg, nil
+}
+
+// validatePackage enforces the structural invariants of a parsed Package:
+// required fields are present and non-empty, and names match the Debian
+// grammar. Version and Architecture value grammar is validated later, where
+// they are consumed.
+func validatePackage(pkg *Package) error {
+	if err := debian.ValidatePackageName(pkg.Name); err != nil {
+		return fmt.Errorf("invalid Package name %q: %w", pkg.Name, err)
+	}
+
+	if pkg.Version == "" {
+		return fmt.Errorf("package %q is missing a Version field", pkg.Name)
+	}
+
+	if pkg.Architecture == "" {
+		return fmt.Errorf("package %q is missing an Architecture field", pkg.Name)
+	}
+
+	// An absent Source field means the source name equals the binary name.
+	if pkg.Source == "" {
+		pkg.Source = pkg.Name
+		return nil
+	}
+
+	if err := debian.ValidatePackageName(pkg.Source); err != nil {
+		return fmt.Errorf("invalid Source name %q for package %q: %w", pkg.Source, pkg.Name, err)
+	}
+
+	return nil
+}
+
 func ParsePackageListInRelease(content string) ([]Package, error) {
 	slog.Debug("Parsing package list")
-	items := strings.Split(strings.TrimSpace(content), "\n\n")
+	const assumedPackageCount = 3500
+	result := make([]Package, 0, assumedPackageCount)
 
-	result := make([]Package, 0, 250) //nolint:mnd // just preheating array
+	for item := range strings.SplitSeq(strings.TrimSpace(content), "\n\n") {
+		if strings.TrimSpace(item) == "" {
+			continue // formatting gap, not a package paragraph
+		}
 
-	for _, item := range items {
-		pkg := Package{}
-		for _, line := range strings.Split(item, "\n") { //nolint:modernize // works for now
-			if strings.HasPrefix(line, "Package: ") { //nolint:modernize // Suggested CutPrefix does not work
-				pkg.Name = strings.TrimPrefix(line, "Package: ")
-			}
-			if strings.HasPrefix(line, "Version: ") { //nolint:modernize // Suggested CutPrefix does not work
-				pkg.Version = strings.TrimPrefix(line, "Version: ")
-			}
-			if strings.HasPrefix(line, "Architecture: ") { //nolint:modernize // Suggested CutPrefix does not work
-				pkg.Architecture = strings.TrimPrefix(line, "Architecture: ")
-			}
+		pkg, err := parseParagraph(item)
+		if err != nil {
+			return nil, err
+		}
+		if vErr := validatePackage(&pkg); vErr != nil {
+			return nil, vErr
 		}
 
 		result = append(result, pkg)
 	}
 
 	slog.With("Count", len(result)).Debug("Found packages")
+
 	return result, nil
 }

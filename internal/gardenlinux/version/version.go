@@ -16,6 +16,10 @@ const GardenlinuxVersionParts = 2
 // GardenlinuxSemverParts: Versioning scheme after including 2017.0.0.
 const GardenlinuxSemverParts = 3
 
+// SemverMajorThreshold is the first major version that uses the three-part
+// semver scheme (major.minor.patch). Earlier majors use two parts (major.minor).
+const SemverMajorThreshold = 2017
+
 type GardenLinuxRelease struct {
 	Name   string
 	Major  int
@@ -52,9 +56,13 @@ func (g *GardenLinuxRelease) parseFromGlrdVersion(version glrd.Version) {
 	g.Major = version.Major
 	g.Minor = version.Minor
 	g.Patch = version.Patch
-	g.SemVer = true // TODO: check how version.Patch is defined before release 20xx
+	g.SemVer = version.Major >= SemverMajorThreshold
 
-	g.Name = fmt.Sprintf("%d.%d.%d", g.Major, g.Minor, g.Patch)
+	if g.SemVer {
+		g.Name = fmt.Sprintf("%d.%d.%d", g.Major, g.Minor, g.Patch)
+	} else {
+		g.Name = fmt.Sprintf("%d.%d", g.Major, g.Minor)
+	}
 }
 
 func (g *GardenLinuxRelease) parseFromString(name string) error {
@@ -94,13 +102,13 @@ func (g *GardenLinuxRelease) parseFromString(name string) error {
 	}
 
 	// releases prior 2017.0.0 were not semver (x.y), since 2017.0.0 semver is used (x.y.z)
-	if g.Major >= 2017 && partsCount != GardenlinuxSemverParts {
+	if g.Major >= SemverMajorThreshold && partsCount != GardenlinuxSemverParts {
 		slog.Error("mismatch with semver parts post 2017.x.x",
 			slog.String("name", name),
 			slog.Int("partsCount", partsCount))
 		return errors.New("semver version schema expects three version parts")
 	}
-	if g.Major < 2017 && partsCount != GardenlinuxVersionParts {
+	if g.Major < SemverMajorThreshold && partsCount != GardenlinuxVersionParts {
 		slog.Error("mismatch with semver parts prior 2017.x.x",
 			slog.String("name", name),
 			slog.Int("partsCount", partsCount))
