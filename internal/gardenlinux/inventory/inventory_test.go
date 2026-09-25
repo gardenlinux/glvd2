@@ -3,11 +3,11 @@ package inventory_test
 import (
 	"context"
 	"errors"
-	"net/url"
 	"strconv"
 	"strings"
 	"testing"
 
+	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
@@ -16,16 +16,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
-
-// fakeLister returns a fixed set of releases.
-type fakeLister struct {
-	releases []glrd.Release
-	err      error
-}
-
-func (f fakeLister) GetMaintainedReleases(_ context.Context) ([]glrd.Release, error) {
-	return f.releases, f.err
-}
 
 // contains queries the set and fails the test if the PURL cannot be parsed.
 func contains(t *testing.T, set *inventory.Set, canonicalPURL string) bool {
@@ -37,8 +27,8 @@ func contains(t *testing.T, set *inventory.Set, canonicalPURL string) bool {
 	return ok
 }
 
-// release builds a GLRD release from a version string like "1877.3" (legacy)
-// or "2150.8.1" (semver) and the given flavors.
+// release builds a GLRD release from a version string
+// like "1877.3" (legacy) or "2150.8.1" (semver) and the given flavors.
 func release(t *testing.T, ver string, flavors ...string) glrd.Release {
 	t.Helper()
 
@@ -58,29 +48,55 @@ func release(t *testing.T, ver string, flavors ...string) glrd.Release {
 		v.Patch = nums[2]
 	}
 
-	return glrd.Release{Name: "test", Version: v, Flavors: flavors}
+	return glrd.Release{Name: ver, Version: v, Flavors: flavors}
 }
 
-// testOpts sets a tiny threshold to keep tests hermetic.
-func testOpts(extra ...inventory.Option) []inventory.Option {
-	base := make([]inventory.Option, 0, 1+len(extra))
-	base = append(base, inventory.WithMinPURLs(1))
+// bomFromPackages builds a CycloneDX BOM whose deb components should round-trip through
+// the real conversion back to the given packages.
+func bomFromPackages(pkgs []packages.Package) *cdx.BOM {
+	components := make([]cdx.Component, 0, len(pkgs))
+	for _, pkg := range pkgs {
+		components = append(components, debComponent(pkg))
+	}
 
-	return append(base, extra...)
+	return &cdx.BOM{Components: &components}
 }
 
-// sbomLocator resolves every flavor to a per-flavor URL.
-func sbomLocator() inventory.Option {
-	return inventory.WithSBOMLocator(func(_ glrd.Release, flavor string) (*url.URL, error) {
-		return &url.URL{Scheme: "https", Host: "example", Path: "/" + flavor}, nil
-	})
+// debComponent builds a deb component whose PURL encodes name, version,
+// namespace, architecture, and (when it differs from the name) the source.
+func debComponent(pkg packages.Package) cdx.Component {
+	namespace := pkg.Namespace
+	if namespace == "" {
+		namespace = purl.NamespaceDebian
+	}
+	pkgVersion := pkg.Version
+	if pkgVersion == "" {
+		pkgVersion = "1.0"
+	}
+
+	purlStr := "pkg:deb/" + namespace + "/" + pkg.Name + "@" + pkgVersion
+	qualifiers := make([]string, 0, 2)
+	if pkg.Architecture != "" {
+		qualifiers = append(qualifiers, "arch="+pkg.Architecture)
+	}
+	if pkg.Source != "" && pkg.Source != pkg.Name {
+		qualifiers = append(qualifiers, "upstream="+pkg.Source)
+	}
+	if len(qualifiers) > 0 {
+		purlStr += "?" + strings.Join(qualifiers, "&")
+	}
+
+	return cdx.Component{
+		Type:       cdx.ComponentTypeLibrary,
+		Name:       pkg.Name,
+		Version:    pkgVersion,
+		PackageURL: purlStr,
+	}
 }
 
-func TestBuild_JoinAgainstFixtureInventory(t *testing.T) {
+func TestAccumulator_TwoInventoryItems(t *testing.T) {
 	t.Parallel()
 
-	// An SBOM ships binary libc6 with source glibc:
-	// a Debian match on source glibc is a hit, wayland a miss.
 	sbomPkgs := []packages.Package{
 		{
 			Name:         "libc6",
@@ -98,16 +114,10 @@ func TestBuild_JoinAgainstFixtureInventory(t *testing.T) {
 		},
 	}
 
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "kvm-amd64")}},
-		testOpts(
-			sbomLocator(),
-			inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
-				return sbomPkgs, nil
-			}),
-		)...,
-	)
+	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
+	require.NoError(t, s.AddSBOM(bomFromPackages(sbomPkgs)))
+
+	set, err := s.Result()
 	require.NoError(t, err)
 
 	assert.Equal(t, 2, set.Len())
@@ -116,23 +126,16 @@ func TestBuild_JoinAgainstFixtureInventory(t *testing.T) {
 	assert.True(t, contains(t, set, "pkg:deb/gardenlinux/glibc"), "gardenlinux query hits gardenlinux-stored source")
 	assert.True(t, contains(t, set, "pkg:deb/debian/openssl"), "debian query hits debian-stored source")
 	assert.True(t, contains(t, set, "pkg:deb/gardenlinux/openssl"), "gardenlinux query hits debian-stored source")
-	assert.False(t, contains(t, set, "pkg:deb/debian/wayland"), "unshipped source must be a miss")
+	assert.False(t, contains(t, set, "pkg:deb/debian/wayland"), "unshipped source must be a miss (debian)")
+	assert.False(t, contains(t, set, "pkg:deb/gardenlinux/wayland"), "unshipped source must be a miss (gardenlinux)")
 }
 
-func TestContains_InvalidPURLReturnsError(t *testing.T) {
+func TestContains_ContainsWithInvalidPURLReturnsError(t *testing.T) {
 	t.Parallel()
 
-	pkgs := []packages.Package{{Name: "libc6", Source: "glibc"}}
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.3", "metal-amd64")}},
-		testOpts(
-			sbomLocator(),
-			inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
-				return pkgs, nil
-			}),
-		)...,
-	)
+	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
+	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
+	set, err := s.Result()
 	require.NoError(t, err)
 
 	ok, err := set.Contains("not-a-purl")
@@ -140,9 +143,20 @@ func TestContains_InvalidPURLReturnsError(t *testing.T) {
 	assert.False(t, ok)
 }
 
-// The InRelease fallback fires when no SBOM exists, and the suite handed to the fetcher
-// is derived from the release version (formatting itself is covered by version_test).
-func TestBuild_FallsBackToInReleaseWhenNoSBOM(t *testing.T) {
+// A conversion failure (here, an unclassifiable component - a coverage gap)
+// aborts AddSBOM.
+func TestAccumulator_HardFailsOnSBOMConversionError(t *testing.T) {
+	t.Parallel()
+
+	// A package-like component without a PURL is unclassifiable.
+	components := []cdx.Component{{Type: cdx.ComponentTypeLibrary, Name: "mystery"}}
+
+	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
+	err := s.AddSBOM(&cdx.BOM{Components: &components})
+	require.Error(t, err)
+}
+
+func TestAccumulator_FallsBackToInReleaseOnMissingSBOMSet(t *testing.T) {
 	t.Parallel()
 
 	inRelPkgs := []packages.Package{
@@ -151,50 +165,34 @@ func TestBuild_FallsBackToInReleaseWhenNoSBOM(t *testing.T) {
 	}
 
 	var gotRelease version.GardenLinuxRelease
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.3", "metal-amd64")}},
-		testOpts(
-			inventory.WithSBOMLocator(func(_ glrd.Release, _ string) (*url.URL, error) {
-				return nil, glrd.ErrNoSBOM // no SBOM for this release
-			}),
-			inventory.WithInReleaseFetch(
-				func(_ context.Context, r version.GardenLinuxRelease) ([]packages.Package, error) {
-					gotRelease = r
+	s := inventory.NewAccumulator(
+		inventory.WithMinPURLs(1),
+		inventory.WithInReleaseFetch(
+			func(_ context.Context, r version.GardenLinuxRelease) ([]packages.Package, error) {
+				gotRelease = r
 
-					return inRelPkgs, nil
-				}),
-		)...,
+				return inRelPkgs, nil
+			}),
 	)
+	require.NoError(t, s.MissingSBOMSet(t.Context(), release(t, "1877.3", "metal-amd64")))
+
+	set, err := s.Result()
 	require.NoError(t, err)
 
-	assert.Equal(t, "1877.3", gotRelease.Name, "fallback suite comes from the release version")
+	assert.Equal(t, "1877.3", gotRelease.Name, "right fallback release name")
 	assert.True(t, contains(t, set, "pkg:deb/debian/glibc"))
 	assert.True(t, contains(t, set, "pkg:deb/debian/bash"))
 }
 
-func TestBuild_UnionsAcrossReleasesAndFlavors(t *testing.T) {
+func TestAccumulator_UnionsAcrossSBOMs(t *testing.T) {
 	t.Parallel()
 
-	byFlavor := map[string][]packages.Package{
-		"kvm-amd64":   {{Name: "libc6", Source: "glibc"}},
-		"metal-arm64": {{Name: "libssl3", Source: "openssl"}},
-		"cloud-amd64": {{Name: "libc6", Source: "glibc"}}, // duplicate source
-	}
+	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
+	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
+	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libssl3", Source: "openssl"}})))
+	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}}))) // duplicate
 
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{
-			release(t, "1877.0", "kvm-amd64", "metal-arm64"),
-			release(t, "1877.1", "cloud-amd64"),
-		}},
-		testOpts(
-			sbomLocator(),
-			inventory.WithSBOMFetch(func(_ context.Context, u *url.URL) ([]packages.Package, error) {
-				return byFlavor[u.Path[1:]], nil
-			}),
-		)...,
-	)
+	set, err := s.Result()
 	require.NoError(t, err)
 
 	assert.Equal(t, 2, set.Len(), "duplicate sources dedupe")
@@ -202,34 +200,22 @@ func TestBuild_UnionsAcrossReleasesAndFlavors(t *testing.T) {
 	assert.True(t, contains(t, set, "pkg:deb/debian/openssl"))
 }
 
-// One release publishes an SBOM, another has none and falls back to InRelease;
-// both projections contribute to the merged set.
-func TestBuild_MixedSBOMAndInReleaseAcrossReleases(t *testing.T) {
+// One release feeds an SBOM, another has none and falls back to InRelease;
+// both accumulators contribute to the merged set.
+func TestAccumulator_MixedSBOMAndInRelease(t *testing.T) {
 	t.Parallel()
 
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{
-			release(t, "1877.0", "kvm-amd64"),
-			release(t, "1877.1", "metal-amd64"),
-		}},
-		testOpts(
-			inventory.WithSBOMLocator(func(_ glrd.Release, flavor string) (*url.URL, error) {
-				if flavor == "kvm-amd64" {
-					return &url.URL{Scheme: "https", Host: "example", Path: "/sbom"}, nil
-				}
-
-				return nil, glrd.ErrNoSBOM
+	s := inventory.NewAccumulator(
+		inventory.WithMinPURLs(1),
+		inventory.WithInReleaseFetch(
+			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+				return []packages.Package{{Name: "bash", Source: "bash"}}, nil
 			}),
-			inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
-				return []packages.Package{{Name: "libc6", Source: "glibc"}}, nil
-			}),
-			inventory.WithInReleaseFetch(
-				func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
-					return []packages.Package{{Name: "bash", Source: "bash"}}, nil
-				}),
-		)...,
 	)
+	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
+	require.NoError(t, s.MissingSBOMSet(t.Context(), release(t, "1877.1", "metal-amd64")))
+
+	set, err := s.Result()
 	require.NoError(t, err)
 
 	assert.Equal(t, 2, set.Len())
@@ -237,173 +223,49 @@ func TestBuild_MixedSBOMAndInReleaseAcrossReleases(t *testing.T) {
 	assert.True(t, contains(t, set, "pkg:deb/debian/bash"), "from InRelease fallback")
 }
 
-// When any flavor of a release lacks an SBOM, the release does not use the partial per-flavor SBOMs;a
-// it falls back to the release InRelease file, which is per release and a superset of every flavor's contents.
-func TestBuild_PartialFlavorSBOMFallsBackToInRelease(t *testing.T) {
+// An empty source can only reach the set via the InRelease path;
+// SBOM conversion always resolves a non-empty source (falling back to the binary name).
+func TestAccumulator_HardFailsOnEmptySource(t *testing.T) {
 	t.Parallel()
 
-	inReleaseCalled := false
-	sbomFetched := false
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "has-sbom", "no-sbom")}},
-		testOpts(
-			inventory.WithSBOMLocator(func(_ glrd.Release, flavor string) (*url.URL, error) {
-				if flavor == "has-sbom" {
-					return &url.URL{Scheme: "https", Host: "example", Path: "/sbom"}, nil
-				}
-
-				return nil, glrd.ErrNoSBOM
-			}),
-			inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
-				sbomFetched = true
-
-				return []packages.Package{{Name: "libc6", Source: "glibc"}}, nil
-			}),
-			inventory.WithInReleaseFetch(
-				func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
-					inReleaseCalled = true
-
-					return []packages.Package{{Name: "bash", Source: "bash"}}, nil
-				}),
-		)...,
-	)
-	require.NoError(t, err)
-
-	assert.True(t, inReleaseCalled, "release missing an SBOM for any flavor must fall back to InRelease")
-	assert.False(t, sbomFetched, "partial per-flavor SBOMs must not be fetched on the fallback path")
-	assert.Equal(t, 1, set.Len())
-	assert.True(t, contains(t, set, "pkg:deb/debian/bash"), "from InRelease fallback")
-	assert.False(t, contains(t, set, "pkg:deb/debian/glibc"), "partial SBOM contents must not leak in")
-}
-
-// A release with no flavors has no SBOMs, so it falls back to InRelease.
-func TestBuild_NoFlavorsFallsBackToInRelease(t *testing.T) {
-	t.Parallel()
-
-	inReleaseCalled := false
-	set, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0")}},
-		testOpts(
-			sbomLocator(),
-			inventory.WithInReleaseFetch(
-				func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
-					inReleaseCalled = true
-
-					return []packages.Package{{Name: "bash", Source: "bash"}}, nil
-				}),
-		)...,
-	)
-	require.NoError(t, err)
-
-	assert.True(t, inReleaseCalled, "release with no flavors must fall back to InRelease")
-	assert.True(t, contains(t, set, "pkg:deb/debian/bash"))
-}
-
-func TestBuild_HardFailsOnEmptySource(t *testing.T) {
-	t.Parallel()
-
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "kvm-amd64")}},
-		testOpts(
-			sbomLocator(),
-			inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
+	s := inventory.NewAccumulator(
+		inventory.WithMinPURLs(1),
+		inventory.WithInReleaseFetch(
+			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
 				return []packages.Package{{Name: "libc6", Source: ""}}, nil
 			}),
-		)...,
 	)
+	err := s.MissingSBOMSet(t.Context(), release(t, "1877.0", "metal-amd64"))
 	require.ErrorIs(t, err, inventory.ErrEmptySource)
 }
 
-func TestBuild_HardFailsOnSBOMLocatorError(t *testing.T) {
-	t.Parallel()
-
-	locatorErr := errors.New("cannot build SBOM URL")
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "kvm-amd64")}},
-		testOpts(
-			inventory.WithSBOMLocator(func(_ glrd.Release, _ string) (*url.URL, error) {
-				return nil, locatorErr
-			}),
-		)...,
-	)
-	require.ErrorIs(t, err, locatorErr)
-}
-
-func TestBuild_HardFailsOnSBOMFetchError(t *testing.T) {
-	t.Parallel()
-
-	fetchErr := errors.New("network down")
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "kvm-amd64")}},
-		testOpts(
-			sbomLocator(),
-			inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
-				return nil, fetchErr
-			}),
-		)...,
-	)
-	require.ErrorIs(t, err, fetchErr)
-}
-
-func TestBuild_HardFailsOnInReleaseFetchError(t *testing.T) {
+func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 	t.Parallel()
 
 	fetchErr := errors.New("pool unreachable")
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "metal-amd64")}},
-		testOpts(
-			inventory.WithSBOMLocator(func(_ glrd.Release, _ string) (*url.URL, error) {
-				return nil, glrd.ErrNoSBOM
+	s := inventory.NewAccumulator(
+		inventory.WithInReleaseFetch(
+			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+				return nil, fetchErr
 			}),
-			inventory.WithInReleaseFetch(
-				func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
-					return nil, fetchErr
-				}),
-		)...,
 	)
+	err := s.MissingSBOMSet(t.Context(), release(t, "1877.0", "metal-amd64"))
 	require.ErrorIs(t, err, fetchErr)
 }
 
-func TestBuild_HardFailsBelowThreshold(t *testing.T) {
+func TestAccumulator_HardFailsBelowThreshold(t *testing.T) {
 	t.Parallel()
 
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: []glrd.Release{release(t, "1877.0", "kvm-amd64")}},
-		inventory.WithMinPURLs(100),
-		sbomLocator(),
-		inventory.WithSBOMFetch(func(_ context.Context, _ *url.URL) ([]packages.Package, error) {
-			return []packages.Package{{Name: "libc6", Source: "glibc"}}, nil
-		}),
-	)
+	s := inventory.NewAccumulator(inventory.WithMinPURLs(100))
+	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
+
+	_, err := s.Result()
 	require.ErrorIs(t, err, inventory.ErrBelowThreshold)
 }
 
-func TestBuild_HardFailsOnEmptyInventory(t *testing.T) {
+func TestAccumulator_HardFailsOnEmptyInventory(t *testing.T) {
 	t.Parallel()
 
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{releases: nil},
-		testOpts()...,
-	)
+	_, err := inventory.NewAccumulator().Result()
 	require.ErrorIs(t, err, inventory.ErrBelowThreshold)
-}
-
-func TestBuild_HardFailsWhenListerErrors(t *testing.T) {
-	t.Parallel()
-
-	listErr := errors.New("glrd unavailable")
-	_, err := inventory.Build(
-		context.Background(),
-		fakeLister{err: listErr},
-		testOpts()...,
-	)
-	require.ErrorIs(t, err, listErr)
 }

@@ -21,11 +21,6 @@ const syftSourceProperty = "syft:metadata:source"
 // errNoComponents is returned when an SBOM contains no components.
 var errNoComponents = errors.New("sbom has no components")
 
-// FetchCycloneDx fetches and decodes a CycloneDX SBOM.
-func FetchCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
-	return getCycloneDx(ctx, sbomURL)
-}
-
 func getCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
 	var raw string
@@ -41,68 +36,157 @@ func getCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	if err = decoder.Decode(sbom); err != nil {
 		return nil, err
 	}
+
 	return sbom, nil
 }
 
-func convertSBOMToPackageList(input *cdx.BOM) ([]Package, error) {
-	if input.Components == nil || len(*input.Components) == 0 {
-		return nil, errNoComponents
-	}
+func GetPackageListFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Package, error) {
+	var err error
+	var sbom *cdx.BOM
 
-	// Classify every component up front so nothing is silently dropped.
-	classified := classifyComponents(*input.Components)
-	if err := checkComponentCoverage(classified); err != nil {
+	sbom, err = getCycloneDx(ctx, sbomURL)
+	if err != nil {
 		return nil, err
 	}
 
-	pkgs := make([]Package, 0, len(classified.Deb))
-	for _, cc := range classified.Deb {
-		component := cc.Component
-		pkgurl := cc.PURL
+	return PackageListFromSBOM(sbom)
+}
 
-		if pkgurl.Name != component.Name {
-			return nil, fmt.Errorf("package url name %q does not match component name %q", pkgurl.Name, component.Name)
-		}
+// PackageListFromSBOM projects a CycloneDX SBOM to its source-resolved deb packages.
+// Non-deb components are skipped; an unclassifiable component is an error to avoid potential coverage gaps.
+func PackageListFromSBOM(bom *cdx.BOM) ([]Package, error) {
+	var rawComponents []cdx.Component
+	if bom.Components != nil {
+		rawComponents = *bom.Components
+	}
 
-		if pkgurl.Version != component.Version {
-			return nil, fmt.Errorf("package url version %q does not match component version %q for %q",
-				pkgurl.Version, component.Version, component.Name)
-		}
+	components := classifyComponents(rawComponents)
+	if components.isEmpty() {
+		return nil, errNoComponents
+	}
+	if err := checkComponentCoverage(components); err != nil {
+		return nil, err
+	}
 
-		if err := debian.ValidatePackageName(pkgurl.Name); err != nil {
-			return nil, fmt.Errorf("invalid package name %q: %w", pkgurl.Name, err)
-		}
-
-		if pkgurl.Version == "" {
-			return nil, fmt.Errorf("empty version for package %q", pkgurl.Name)
-		}
-
-		source, err := extractSource(component, pkgurl)
+	pkgs := make([]Package, 0, len(components.Deb))
+	for _, cc := range components.Deb {
+		pkg, err := debPackageOf(cc)
 		if err != nil {
-			return nil, fmt.Errorf("extracting source for package %q: %w", pkgurl.Name, err)
+			return nil, err
 		}
 
-		namespace, err := purl.NamespaceOf(component.PackageURL)
-		if err != nil {
-			return nil, fmt.Errorf("resolving namespace for package %q: %w", pkgurl.Name, err)
-		}
-
-		pkgs = append(pkgs, Package{
-			Name:         pkgurl.Name,
-			Source:       source,
-			Version:      pkgurl.Version,
-			Architecture: pkgurl.Qualifiers.Map()["arch"],
-			Namespace:    namespace,
-		})
+		pkgs = append(pkgs, pkg)
 	}
 
 	return pkgs, nil
 }
 
+// VendoredFromSBOM projects a CycloneDX SBOM to its vendored-inclusion groups:
+// for every deb component that ships non-deb components (direct dependency edges),
+// it returns the deb-source target paired with the shipped components' raw identifiers.
+//
+// A deb component with no vendored (non-deb) children is skipped, so an SBOM
+// with no vendored edges yields nil.
+func VendoredFromSBOM(bom *cdx.BOM) ([]ShippedBy, error) {
+	var rawComponents []cdx.Component
+	if bom.Components != nil {
+		rawComponents = *bom.Components
+	}
+
+	components := classifyComponents(rawComponents)
+
+	var rawDependencies []cdx.Dependency
+	if bom.Dependencies != nil {
+		rawDependencies = *bom.Dependencies
+	}
+
+	graph := buildDependencyGraph(rawDependencies)
+	nonDebByRef := indexByRef(components.NonDeb)
+
+	var groups []ShippedBy
+	for _, debCC := range components.Deb {
+		childRefs := graph.dependsOn(debCC.Component.BOMRef)
+		if len(childRefs) == 0 {
+			continue
+		}
+
+		target, err := debTargetOf(debCC)
+		if err != nil {
+			return nil, fmt.Errorf("deriving deb source for %q: %w", debCC.Component.Name, err)
+		}
+
+		var children []VendoredComponent
+		for _, childRef := range childRefs {
+			childCC, isNonDeb := nonDebByRef[childRef]
+			if !isNonDeb {
+				continue
+			}
+
+			children = append(children, VendoredComponent{
+				PURL: childCC.Component.PackageURL,
+				CPE:  childCC.Component.CPE,
+			})
+		}
+
+		if len(children) == 0 {
+			continue
+		}
+
+		groups = append(groups, ShippedBy{Target: target, Children: children})
+	}
+
+	return groups, nil
+}
+
+// debPackageOf validates a classified deb component and resolves it to a Package.
+func debPackageOf(cc classifiedComponent) (Package, error) {
+	component := cc.Component
+	pkgURL := cc.PURL
+
+	if pkgURL.Name != component.Name {
+		return Package{}, fmt.Errorf(
+			"package url name %q does not match component name %q",
+			pkgURL.Name,
+			component.Name,
+		)
+	}
+
+	if pkgURL.Version == "" {
+		return Package{}, fmt.Errorf("empty version for package %q", pkgURL.Name)
+	}
+
+	if pkgURL.Version != component.Version {
+		return Package{}, fmt.Errorf("package url version %q does not match component version %q for %q",
+			pkgURL.Version, component.Version, component.Name)
+	}
+
+	if err := debian.ValidatePackageName(pkgURL.Name); err != nil {
+		return Package{}, fmt.Errorf("invalid package name %q: %w", pkgURL.Name, err)
+	}
+
+	source, err := extractSource(component, pkgURL)
+	if err != nil {
+		return Package{}, fmt.Errorf("extracting source for package %q: %w", pkgURL.Name, err)
+	}
+
+	namespace, err := purl.NamespaceOf(component.PackageURL)
+	if err != nil {
+		return Package{}, fmt.Errorf("resolving namespace for package %q: %w", pkgURL.Name, err)
+	}
+
+	return Package{
+		Name:         pkgURL.Name,
+		Source:       source,
+		Version:      pkgURL.Version,
+		Architecture: pkgURL.Qualifiers.Map()["arch"],
+		Namespace:    namespace,
+	}, nil
+}
+
 // extractSource returns the Debian source package name for a dpkg component.
-func extractSource(component cdx.Component, pkgurl packageurl.PackageURL) (string, error) {
+func extractSource(component cdx.Component, pkgURL packageurl.PackageURL) (string, error) {
 	// First check, if there is an "upstream" qualifier in the PURL.
-	if upstream := pkgurl.Qualifiers.Map()["upstream"]; upstream != "" {
+	if upstream := pkgURL.Qualifiers.Map()["upstream"]; upstream != "" {
 		name, _, _ := strings.Cut(upstream, "@")
 		if err := debian.ValidatePackageName(name); err != nil {
 			return "", fmt.Errorf("invalid upstream source name %q in qualifier %q: %w", name, upstream, err)
@@ -126,21 +210,9 @@ func extractSource(component cdx.Component, pkgurl packageurl.PackageURL) (strin
 	}
 
 	// Fallback: binary name, which dpkg uses as the source name when they are equal.
-	if err := debian.ValidatePackageName(pkgurl.Name); err != nil {
-		return "", fmt.Errorf("invalid source name fallback %q: %w", pkgurl.Name, err)
+	if err := debian.ValidatePackageName(pkgURL.Name); err != nil {
+		return "", fmt.Errorf("invalid source name fallback %q: %w", pkgURL.Name, err)
 	}
 
-	return pkgurl.Name, nil
-}
-
-func GetPackageListsFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Package, error) {
-	var err error
-	var sbom *cdx.BOM
-
-	sbom, err = getCycloneDx(ctx, sbomURL)
-	if err != nil {
-		return nil, err
-	}
-
-	return convertSBOMToPackageList(sbom)
+	return pkgURL.Name, nil
 }

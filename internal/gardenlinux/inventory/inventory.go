@@ -1,5 +1,5 @@
 // Package inventory builds the set of source-name identity PURLs
-// that Garden Linux ships, unioned across all currently-supported releases.
+// that Garden Linux ships, unioned across all currently-maintained releases.
 package inventory
 
 import (
@@ -7,10 +7,11 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
-	"net/url"
 
+	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 )
@@ -27,7 +28,7 @@ var ErrBelowThreshold = errors.New("inventory below minimum size")
 var ErrEmptySource = errors.New("empty source name")
 
 // Set is a set of canonical source-name identity PURLs.
-// The zero value is not usable; construct it via Build.
+// The zero value is not usable; construct it via an Accumulator.
 type Set struct {
 	purls map[string]struct{}
 }
@@ -56,156 +57,105 @@ func (s *Set) Len() int {
 	return len(s.purls)
 }
 
-// ReleaseLister provides the maintained Garden Linux releases to build the set from.
-type ReleaseLister interface {
-	GetMaintainedReleases(ctx context.Context) ([]glrd.Release, error)
-}
-
-// sbomLocatorFunc resolves the SBOM URL for a release flavor.
-// It returns glrd.ErrNoSBOM when no SBOM exists, so the caller falls back to InRelease.
-type sbomLocatorFunc func(release glrd.Release, flavor string) (*url.URL, error)
-
-// sbomFetchFunc fetches and parses the package list from a CycloneDX SBOM.
-type sbomFetchFunc func(ctx context.Context, sbomURL *url.URL) ([]packages.Package, error)
-
 // inReleaseFetchFunc fetches and parses the package list from the InRelease file.
 type inReleaseFetchFunc func(ctx context.Context, release version.GardenLinuxRelease) ([]packages.Package, error)
 
-// builder holds the configuration used to assemble a Set.
-type builder struct {
-	lister         ReleaseLister
+// Accumulator accumulates the inventory through consuming the SBOMs.
+// It implements [sbom.Consumer].
+// The zero value is not usable; construct it via [NewAccumulator].
+type Accumulator struct {
 	minPURLs       int
-	locateSBOM     sbomLocatorFunc
-	fetchSBOM      sbomFetchFunc
 	fetchInRelease inReleaseFetchFunc
+	purls          map[string]struct{}
 }
 
-// Option configures a Build call.
-type Option func(*builder)
+var _ sbom.Consumer = (*Accumulator)(nil)
+
+// Option configures an Accumulator.
+type Option func(*Accumulator)
 
 // WithMinPURLs overrides the sanity-threshold floor (for tests).
 func WithMinPURLs(n int) Option {
-	return func(b *builder) { b.minPURLs = n }
-}
-
-// WithSBOMLocator overrides SBOM-URL resolution (for tests).
-func WithSBOMLocator(f func(release glrd.Release, flavor string) (*url.URL, error)) Option {
-	return func(b *builder) { b.locateSBOM = f }
-}
-
-// WithSBOMFetch overrides SBOM fetching/parsing (for tests).
-func WithSBOMFetch(f func(ctx context.Context, sbomURL *url.URL) ([]packages.Package, error)) Option {
-	return func(b *builder) { b.fetchSBOM = f }
+	return func(a *Accumulator) { a.minPURLs = n }
 }
 
 // WithInReleaseFetch overrides InRelease fetching/parsing (for tests).
 func WithInReleaseFetch(
 	f func(ctx context.Context, release version.GardenLinuxRelease) ([]packages.Package, error),
 ) Option {
-	return func(b *builder) { b.fetchInRelease = f }
+	return func(a *Accumulator) { a.fetchInRelease = f }
 }
 
-// Build assembles the set over all currently-maintained releases, using the
-// given release lister. It returns an error on any fetch/parse failure or if
-// the set is below the minimum size.
-func Build(ctx context.Context, lister ReleaseLister, opts ...Option) (*Set, error) {
-	b := &builder{
-		lister:         lister,
+// NewAccumulator constructs an inventory accumulator with the given options.
+func NewAccumulator(opts ...Option) *Accumulator {
+	a := &Accumulator{
 		minPURLs:       defaultMinPURLs,
-		locateSBOM:     func(r glrd.Release, flavor string) (*url.URL, error) { return r.LocateSBOM(flavor) },
-		fetchSBOM:      packages.GetPackageListsFromCycloneDx,
 		fetchInRelease: packages.GetPackageListsFromInRelease,
+		purls:          make(map[string]struct{}),
 	}
 	for _, opt := range opts {
-		opt(b)
+		opt(a)
 	}
 
-	return b.build(ctx)
+	return a
 }
 
-// build performs the assembly with the resolved configuration.
-func (b *builder) build(ctx context.Context) (*Set, error) {
-	releases, err := b.lister.GetMaintainedReleases(ctx)
+// AddSBOM folds a release-flavor SBOM's deb packages into the set.
+// A conversion error is a hard failure: the inventory gates CVEs and must be trustworthy.
+func (a *Accumulator) AddSBOM(bom *cdx.BOM) error {
+	pkgs, err := packages.PackageListFromSBOM(bom)
 	if err != nil {
-		return nil, fmt.Errorf("listing releases: %w", err)
+		return fmt.Errorf("converting SBOM: %w", err)
 	}
 
-	set := &Set{purls: make(map[string]struct{})}
-
-	for _, release := range releases {
-		pkgs, pkgErr := b.packagesForRelease(ctx, release)
-		if pkgErr != nil {
-			return nil, fmt.Errorf("collecting packages for release %s: %w", release.Name, pkgErr)
-		}
-
-		for _, pkg := range pkgs {
-			if pkg.Source == "" {
-				return nil, fmt.Errorf("release %s: %w", release.Name, ErrEmptySource)
-			}
-			canon, idErr := pkg.IdentityPURL()
-			if idErr != nil {
-				return nil, fmt.Errorf("identity PURL for source %q in release %s: %w", pkg.Source, release.Name, idErr)
-			}
-			set.purls[canon] = struct{}{}
-		}
-	}
-
-	if set.Len() < b.minPURLs {
-		return nil, fmt.Errorf(
-			"%w: has %d purls, success threshold %d",
-			ErrBelowThreshold, set.Len(), b.minPURLs,
-		)
-	}
-
-	slog.Info("built GL package inventory", slog.Int("purls", set.Len()))
-
-	return set, nil
+	return a.addPackages(pkgs)
 }
 
-// packagesForRelease collects the release's packages. It uses the per-flavor SBOMs (unioned)
-// only when every flavor has one; otherwise it falls back to the release's InRelease file.
-func (b *builder) packagesForRelease(ctx context.Context, release glrd.Release) ([]packages.Package, error) {
-	sbomURLs := make([]*url.URL, 0, len(release.Flavors))
-	allHaveSBOMs := len(release.Flavors) > 0 // fall back to InRelease, if there are no flavors
-
-	for _, flavor := range release.Flavors {
-		sbomURL, err := b.locateSBOM(release, flavor)
-		if errors.Is(err, glrd.ErrNoSBOM) {
-			allHaveSBOMs = false
-			break
-		}
-		if err != nil {
-			return nil, fmt.Errorf("resolving SBOM URL for flavor %q: %w", flavor, err)
-		}
-
-		sbomURLs = append(sbomURLs, sbomURL)
-	}
-
-	if allHaveSBOMs {
-		var result []packages.Package
-		for _, sbomURL := range sbomURLs {
-			pkgs, err := b.fetchSBOM(ctx, sbomURL)
-			if err != nil {
-				return nil, fmt.Errorf("fetching SBOM: %w", err)
-			}
-
-			result = append(result, pkgs...)
-		}
-
-		return result, nil
-	}
-
+// MissingSBOMSet falls back to the release's InRelease file
+// for a maintained release that lacks a complete SBOM set for all flavors.
+func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) error {
 	slog.Warn("not all flavors of the release have an SBOM; "+
 		"falling back to the release InRelease file",
 		slog.String("release", release.Name))
 
-	glRelease := releaseSuite(release)
-	pkgs, err := b.fetchInRelease(ctx, glRelease)
+	pkgs, err := a.fetchInRelease(ctx, releaseSuite(release))
 	if err != nil {
-		return nil, fmt.Errorf("fetching InRelease: %w", err)
+		return fmt.Errorf("fetching InRelease for release %s: %w", release.Name, err)
 	}
 
-	return pkgs, nil
+	return a.addPackages(pkgs)
+}
+
+// Result applies the sanity threshold and returns the assembled set.
+func (a *Accumulator) Result() (*Set, error) {
+	if len(a.purls) < a.minPURLs {
+		return nil, fmt.Errorf(
+			"%w: has %d purls, success threshold %d",
+			ErrBelowThreshold, len(a.purls), a.minPURLs,
+		)
+	}
+
+	slog.Info("built GL package inventory", slog.Int("purls", len(a.purls)))
+
+	return &Set{purls: a.purls}, nil
+}
+
+// addPackages folds each package's identity PURL into the set.
+func (a *Accumulator) addPackages(pkgs []packages.Package) error {
+	for _, pkg := range pkgs {
+		if pkg.Source == "" {
+			return fmt.Errorf("package %q: %w", pkg.Name, ErrEmptySource)
+		}
+
+		canon, err := pkg.IdentityPURL()
+		if err != nil {
+			return fmt.Errorf("identity PURL for source %q: %w", pkg.Source, err)
+		}
+
+		a.purls[canon] = struct{}{}
+	}
+
+	return nil
 }
 
 // releaseSuite converts a GLRD release into the version.GardenLinuxRelease used

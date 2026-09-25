@@ -47,6 +47,11 @@ type classification struct {
 	Unknown []cdx.Component       // must stay empty; otherwise we could have a coverage gap
 }
 
+// isEmpty reports whether the classification holds no components at all.
+func (c classification) isEmpty() bool {
+	return len(c.Deb)+len(c.NonDeb)+len(c.Ignored)+len(c.Unknown) == 0
+}
+
 // classifyComponents assigns each component to one of the classification buckets.
 func classifyComponents(components []cdx.Component) classification {
 	var c classification

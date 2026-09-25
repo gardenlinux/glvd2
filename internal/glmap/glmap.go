@@ -66,6 +66,14 @@ type Rule struct {
 	PackageIDs     []PackageID                `toml:"package_ids,omitempty"`
 }
 
+// IsEmpty reports whether the rule carries no input identifiers.
+func (r Rule) IsEmpty() bool {
+	return len(r.InputPURLs) == 0 &&
+		len(r.CPEs) == 0 &&
+		len(r.VendorProducts) == 0 &&
+		len(r.PackageIDs) == 0
+}
+
 // config is the raw TOML structure.
 type config struct {
 	Rules []Rule `toml:"rules"`

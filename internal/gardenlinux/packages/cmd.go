@@ -95,7 +95,7 @@ func run(ctx context.Context, opts options) error {
 		if err != nil {
 			return err
 		}
-		packages, err = GetPackageListsFromCycloneDx(ctx, sbomURL)
+		packages, err = GetPackageListFromCycloneDx(ctx, sbomURL)
 	default:
 		return fmt.Errorf("unhandled packagelist format %v", pkgListFormat)
 	}
