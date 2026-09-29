@@ -19,10 +19,8 @@ type LocatorFunc func(release glrd.Release, flavor string) (*url.URL, error)
 // FetchFunc fetches and decodes an SBOM into its CycloneDX BOM struct.
 type FetchFunc func(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error)
 
-// ReleaseLister provides the maintained Garden Linux releases to feed from.
-type ReleaseLister interface {
-	GetMaintainedReleases(ctx context.Context) ([]glrd.Release, error)
-}
+// ReleaseSource provides the maintained Garden Linux releases for the feed.
+type ReleaseSource func(ctx context.Context) ([]glrd.Release, error)
 
 // Consumer receives via [Feed] either [AddSBOM] or [MissingSBOMSet] for each release-flavor.
 type Consumer interface {
@@ -39,12 +37,12 @@ type Consumer interface {
 // When the SBOM set is incomplete it calls every consumer with MissingSBOMSet.
 func Feed(
 	ctx context.Context,
-	lister ReleaseLister,
+	releaseSource ReleaseSource,
 	locate LocatorFunc,
 	fetch FetchFunc,
 	consumers ...Consumer,
 ) error {
-	releases, err := lister.GetMaintainedReleases(ctx)
+	releases, err := releaseSource(ctx)
 	if err != nil {
 		return fmt.Errorf("listing releases: %w", err)
 	}

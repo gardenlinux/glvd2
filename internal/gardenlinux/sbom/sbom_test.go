@@ -14,18 +14,18 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// fakeLister returns a fixed set of releases.
-type fakeLister struct {
-	releases []glrd.Release
-	err      error
+// source returns a ReleaseSource yielding a fixed set of releases.
+func source(releases ...glrd.Release) sbom.ReleaseSource {
+	return func(context.Context) ([]glrd.Release, error) {
+		return releases, nil
+	}
 }
 
-func (f fakeLister) GetMaintainedReleases(_ context.Context) ([]glrd.Release, error) {
-	return f.releases, f.err
-}
-
-func lister(releases ...glrd.Release) fakeLister {
-	return fakeLister{releases: releases}
+// failingSource returns a ReleaseSource that always fails with err.
+func failingSource(err error) sbom.ReleaseSource {
+	return func(context.Context) ([]glrd.Release, error) {
+		return nil, err
+	}
 }
 
 func release(flavors ...string) glrd.Release {
@@ -90,7 +90,7 @@ func TestFeed_FeedsAddSBOMOncePerFlavorForCompleteRelease(t *testing.T) {
 	}
 
 	col := &recordingConsumer{}
-	err := sbom.Feed(t.Context(), lister(release("kvm", "metal")), locator(), fetch, col)
+	err := sbom.Feed(t.Context(), source(release("kvm", "metal")), locator(), fetch, col)
 	require.NoError(t, err)
 
 	assert.Equal(t, []string{"/kvm", "/metal"}, fetched)
@@ -126,7 +126,7 @@ func TestFeed_IncompleteReleaseCallsMissingSBOMSetWithoutFetching(t *testing.T) 
 	}
 
 	col := &recordingConsumer{}
-	err := sbom.Feed(t.Context(), lister(release("has-sbom", "no-sbom")), locate, fetch, col)
+	err := sbom.Feed(t.Context(), source(release("has-sbom", "no-sbom")), locate, fetch, col)
 	require.NoError(t, err)
 
 	// since one flavor has no SBOM; no SBOMs should be fetched
@@ -140,7 +140,7 @@ func TestFeed_NoFlavorsCallsMissingSBOMSet(t *testing.T) {
 
 	fetchCalled := false
 	col := &recordingConsumer{}
-	err := sbom.Feed(t.Context(), lister(release()), locator(),
+	err := sbom.Feed(t.Context(), source(release()), locator(),
 		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) {
 			fetchCalled = true
 
@@ -164,7 +164,7 @@ func TestFeed_OneFetchOnly(t *testing.T) {
 	}
 
 	a, b := &recordingConsumer{}, &recordingConsumer{}
-	err := sbom.Feed(t.Context(), lister(release("kvm")), locator(), fetch, a, b)
+	err := sbom.Feed(t.Context(), source(release("kvm")), locator(), fetch, a, b)
 	require.NoError(t, err)
 
 	assert.Equal(t, 1, fetchCount, "the SBOM is fetched exactly once")
@@ -172,11 +172,11 @@ func TestFeed_OneFetchOnly(t *testing.T) {
 	assert.Len(t, b.added, 1)
 }
 
-func TestFeed_AbortsOnListerError(t *testing.T) {
+func TestFeed_AbortsOnReleaseSourceError(t *testing.T) {
 	t.Parallel()
 
 	listErr := errors.New("glrd unavailable")
-	err := sbom.Feed(t.Context(), fakeLister{err: listErr}, locator(),
+	err := sbom.Feed(t.Context(), failingSource(listErr), locator(),
 		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) { return &cdx.BOM{}, nil }, &recordingConsumer{})
 	require.ErrorIs(t, err, listErr)
 }
@@ -185,7 +185,7 @@ func TestFeed_AbortsOnLocatorError(t *testing.T) {
 	t.Parallel()
 
 	locatorErr := errors.New("cannot build SBOM URL")
-	err := sbom.Feed(t.Context(), lister(release("kvm")),
+	err := sbom.Feed(t.Context(), source(release("kvm")),
 		func(_ glrd.Release, _ string) (*url.URL, error) { return nil, locatorErr },
 		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) { return &cdx.BOM{}, nil }, &recordingConsumer{})
 	require.ErrorIs(t, err, locatorErr)
@@ -195,7 +195,7 @@ func TestFeed_AbortsOnFetchError(t *testing.T) {
 	t.Parallel()
 
 	fetchErr := errors.New("network down")
-	err := sbom.Feed(t.Context(), lister(release("kvm")), locator(),
+	err := sbom.Feed(t.Context(), source(release("kvm")), locator(),
 		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) { return nil, fetchErr }, &recordingConsumer{})
 	require.ErrorIs(t, err, fetchErr)
 }
@@ -204,7 +204,7 @@ func TestFeed_ForwardsAddSBOMError(t *testing.T) {
 	t.Parallel()
 
 	addErr := errors.New("consumer failed")
-	err := sbom.Feed(t.Context(), lister(release("kvm")), locator(),
+	err := sbom.Feed(t.Context(), source(release("kvm")), locator(),
 		func(_ context.Context, u *url.URL) (*cdx.BOM, error) { return bomNamed(u.Path), nil },
 		&recordingConsumer{addErr: addErr})
 	require.ErrorIs(t, err, addErr)
@@ -214,7 +214,7 @@ func TestFeed_ForwardsMissingSBOMSetError(t *testing.T) {
 	t.Parallel()
 
 	fallbackErr := errors.New("fallback failed")
-	err := sbom.Feed(t.Context(), lister(release()), locator(),
+	err := sbom.Feed(t.Context(), source(release()), locator(),
 		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) { return &cdx.BOM{}, nil },
 		&recordingConsumer{missingError: fallbackErr})
 	require.ErrorIs(t, err, fallbackErr)
@@ -254,7 +254,7 @@ func TestFeed_HoldsOneSBOMAtATime(t *testing.T) {
 		return bomNamed(u.Path), nil
 	}
 
-	err := sbom.Feed(t.Context(), lister(release(flavors...)), locator(), fetch, col)
+	err := sbom.Feed(t.Context(), source(release(flavors...)), locator(), fetch, col)
 	require.NoError(t, err)
 
 	assert.Equal(t, flavorCount, fetches)

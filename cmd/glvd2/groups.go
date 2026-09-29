@@ -46,7 +46,13 @@ func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummar
 			cfg.BaselineCommitAnchor,
 		)
 	case commitGroupAudit:
-		return buildAuditUpdateMessage([]string{"deb_mapping_result.json", "deb_package_identifiers.json"})
+		return buildAuditUpdateMessage([]string{
+			"deb_mapping_result.json",
+			"deb_package_identifiers.json",
+			"gl_specific_mapping.json",
+			"gl_package_inventory.json",
+			"vendored_inclusion.json",
+		})
 	default:
 		panic(fmt.Sprintf("no commit message builder for group %q", name))
 	}

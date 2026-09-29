@@ -79,6 +79,9 @@ const (
 	TriageReasonAffectsDebianPackage TriageReason = "affects-debian-package"
 	// TriageReasonAffectsGardenLinuxPackage means the CVE affects a Garden Linux package. Status: relevant.
 	TriageReasonAffectsGardenLinuxPackage TriageReason = "affects-gardenlinux-package"
+	// TriageReasonAffectsVendoredDependency means the CVE affects a non-deb component vendored
+	// into a Garden Linux package. Status: relevant.
+	TriageReasonAffectsVendoredDependency TriageReason = "affects-vendored-dependency"
 	// TriageReasonRejectedUpstream means the CVE was rejected upstream. Status: not-relevant.
 	TriageReasonRejectedUpstream TriageReason = "rejected-upstream"
 	// TriageReasonDebianNotForUs means the Debian Security Tracker marks the package as not-for-us. Status:
@@ -105,7 +108,9 @@ func (AutoTriage) diffTransparent() {}
 // Status returns the derived TriageStatus for the AutoTriage's Reason.
 func (a AutoTriage) Status() TriageStatus {
 	switch a.Reason {
-	case TriageReasonAffectsDebianPackage, TriageReasonAffectsGardenLinuxPackage:
+	case TriageReasonAffectsDebianPackage,
+		TriageReasonAffectsGardenLinuxPackage,
+		TriageReasonAffectsVendoredDependency:
 		return StatusRelevant
 	case TriageReasonRejectedUpstream, TriageReasonDebianNotForUs, TriageReasonDebianPackageNotShipped:
 		return StatusNotRelevant

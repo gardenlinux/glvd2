@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"slices"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
@@ -37,7 +38,7 @@ type Set struct {
 // under both the debian and gardenlinux namespaces, so a source stored under
 // one namespace still matches a query using the other.
 // It returns an error if canonicalPURL cannot be parsed into its namespace variants.
-func (s *Set) Contains(canonicalPURL string) (bool, error) {
+func (s Set) Contains(canonicalPURL string) (bool, error) {
 	variants, err := purl.NamespaceVariants(canonicalPURL)
 	if err != nil {
 		return false, fmt.Errorf("deriving namespace variants for %q: %w", canonicalPURL, err)
@@ -53,8 +54,19 @@ func (s *Set) Contains(canonicalPURL string) (bool, error) {
 }
 
 // Len returns the number of distinct identity PURLs in the set.
-func (s *Set) Len() int {
+func (s Set) Len() int {
 	return len(s.purls)
+}
+
+// AuditEntries returns the set's identity PURLs, sorted, for audit output.
+func (s Set) AuditEntries() []string {
+	out := make([]string, 0, len(s.purls))
+	for p := range s.purls {
+		out = append(out, p)
+	}
+	slices.Sort(out)
+
+	return out
 }
 
 // inReleaseFetchFunc fetches and parses the package list from the InRelease file.
@@ -127,9 +139,9 @@ func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) 
 }
 
 // Result applies the sanity threshold and returns the assembled set.
-func (a *Accumulator) Result() (*Set, error) {
+func (a *Accumulator) Result() (Set, error) {
 	if len(a.purls) < a.minPURLs {
-		return nil, fmt.Errorf(
+		return Set{}, fmt.Errorf(
 			"%w: has %d purls, success threshold %d",
 			ErrBelowThreshold, len(a.purls), a.minPURLs,
 		)
@@ -137,7 +149,7 @@ func (a *Accumulator) Result() (*Set, error) {
 
 	slog.Info("built GL package inventory", slog.Int("purls", len(a.purls)))
 
-	return &Set{purls: a.purls}, nil
+	return Set{purls: a.purls}, nil
 }
 
 // addPackages folds each package's identity PURL into the set.

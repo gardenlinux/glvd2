@@ -77,4 +77,7 @@ CREATE TABLE IF NOT EXISTS debian_triage_affected_release(
     FOREIGN KEY(release_name) REFERENCES debian_release(name)
 );
 
+CREATE INDEX idx_dta_package_cve_id ON debian_triage_affected_package(cve_id);
+CREATE INDEX idx_dta_release_cve_id ON debian_triage_affected_release(cve_id);
+
 END;

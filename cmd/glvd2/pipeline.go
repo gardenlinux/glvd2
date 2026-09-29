@@ -4,18 +4,27 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"net/url"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/audit"
 	"github.com/gardenlinux/glvd2/internal/config"
+	"github.com/gardenlinux/glvd2/internal/configpath"
 	database "github.com/gardenlinux/glvd2/internal/db"
 	"github.com/gardenlinux/glvd2/internal/debmap"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/vendormap"
 	"github.com/gardenlinux/glvd2/internal/git"
+	"github.com/gardenlinux/glvd2/internal/glmap"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/gardenlinux/glvd2/internal/reactor"
 	"github.com/gardenlinux/glvd2/internal/repository"
+	"github.com/gardenlinux/glvd2/internal/screening"
 )
 
 type pipelineFlags struct {
@@ -111,6 +120,49 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
+	auditService := audit.NewService(cfg)
+
+	if err = recordDebMappingAudit(ctx, queries, auditService, idsForCVEs); err != nil {
+		return err
+	}
+
+	screener, err := buildScreener(ctx, cfg, auditService, debSecTrackerIngestion, idsForCVEs)
+	if err != nil {
+		return err
+	}
+
+	assessmentService, err := buildAssessmentService(ctx, cfg)
+	if err != nil {
+		return err
+	}
+
+	summary, err := processCVEs(ctx, cveV5Service, screener, assessmentService)
+	if err != nil {
+		return err
+	}
+
+	slog.Info("finished processing CVEs from CVEListV5",
+		slog.Int("total", summary.Total),
+		slog.Int("created", summary.Created),
+		slog.Int("updated", summary.Updated))
+
+	if err = publisher.Run(ctx, commitGroups, func(name string) string {
+		return commitMessageForGroup(name, cfg, summary)
+	}); err != nil {
+		slog.Error("publishing artifacts failed", slog.Any("error", err))
+		return err
+	}
+
+	return nil
+}
+
+// recordDebMappingAudit analyzes Debian package mappings and records the audit artifacts.
+func recordDebMappingAudit(
+	ctx context.Context,
+	queries *repository.Queries,
+	auditService *audit.Service,
+	idsForCVEs cvelistv5.IDsForCVEs,
+) error {
 	debMapper, err := debmap.NewService(queries)
 	if err != nil {
 		return err
@@ -121,7 +173,6 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	auditService := audit.NewService(cfg)
 	if err = auditService.Record("deb_mapping_result.json", debMapping); err != nil {
 		return fmt.Errorf("recording audit artifact - debian mapping result: %w", err)
 	}
@@ -129,25 +180,125 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return fmt.Errorf("recording audit artifact - debian package identifiers: %w", err)
 	}
 
+	return nil
+}
+
+func buildScreener(
+	ctx context.Context,
+	cfg *config.AppConfig,
+	auditService *audit.Service,
+	debian screening.DebianVerdictLookup,
+	idsForCVEs cvelistv5.IDsForCVEs,
+) (*screening.Service, error) {
+	curated, vendored, inv, err := buildScreeningResolvers(ctx, cfg)
+	if err != nil {
+		return nil, fmt.Errorf("building screening resolvers: %w", err)
+	}
+
+	if err = recordScreeningAudit(auditService, curated, inv, vendored); err != nil {
+		return nil, err
+	}
+
+	return screening.NewService(curated, vendored, inv, debian, idsForCVEs), nil
+}
+
+func buildAssessmentService(ctx context.Context, cfg *config.AppConfig) (*assessment.Service, error) {
 	assessmentStore := assessment.NewStore(cfg)
+
 	gitReader := git.NewReader(".")
+
 	baseline, err := assessment.NewBaseline(ctx, gitReader, cfg)
 	if err != nil {
-		return fmt.Errorf("resolving baseline: %w", err)
+		return nil, fmt.Errorf("resolving baseline: %w", err)
 	}
+
 	assessmentService, err := assessment.NewService(ctx, assessmentStore, baseline, []assessment.Reactor{
 		reactor.Log{Logger: slog.Default()},
 	})
 	if err != nil {
-		return fmt.Errorf("setting up CVE data service: %w", err)
+		return nil, fmt.Errorf("setting up CVE data service: %w", err)
 	}
 
+	return assessmentService, nil
+}
+
+func buildScreeningResolvers(
+	ctx context.Context,
+	cfg *config.AppConfig,
+) (glmap.Rules, glmap.Rules, inventory.Set, error) {
+	curated, err := glmap.New(configpath.DefaultGLSpecificMappingConfigPath)
+	if err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf("loading curated GL-specific mapping: %w", err)
+	}
+
+	releaseSource := func(ctx context.Context) ([]glrd.Release, error) {
+		return glrd.GetMaintainedReleases(ctx, cfg.GLRDReleasesURL)
+	}
+	invAcc := inventory.NewAccumulator()
+	vmAcc := vendormap.NewAccumulator()
+
+	locate := func(release glrd.Release, flavor string) (*url.URL, error) {
+		return release.LocateSBOM(flavor)
+	}
+
+	if err = sbom.Feed(ctx, releaseSource, locate, packages.GetCycloneDx, invAcc, vmAcc); err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf("feeding SBOMs: %w", err)
+	}
+
+	inv, err := invAcc.Result()
+	if err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf("building GL package inventory: %w", err)
+	}
+
+	vendored, err := vmAcc.Result()
+	if err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf(
+			"building vendored-inclusion resolver: %w",
+			err,
+		)
+	}
+
+	return curated, vendored, inv, nil
+}
+
+func recordScreeningAudit(
+	auditService *audit.Service,
+	curated glmap.Rules,
+	inv inventory.Set,
+	vendored glmap.Rules,
+) error {
+	artifacts := []struct {
+		label    string
+		filename string
+		data     any
+	}{
+		{"GL-specific mapping", "gl_specific_mapping.json", curated.AuditEntries()},
+		{"GL package inventory", "gl_package_inventory.json", inv.AuditEntries()},
+		{"vendored inclusion", "vendored_inclusion.json", vendored.AuditEntries()},
+	}
+
+	for _, a := range artifacts {
+		if err := auditService.Record(a.filename, a.data); err != nil {
+			return fmt.Errorf("recording audit artifact - %s: %w", a.label, err)
+		}
+	}
+
+	return nil
+}
+
+// processCVEs consumes the CVE stream, screens and persists each record, and returns a summary.
+func processCVEs(
+	ctx context.Context,
+	cveV5Service *cvelistv5.Service,
+	screener *screening.Service,
+	assessmentService *assessment.Service,
+) (runSummary, error) {
 	resCh, errCh := cveV5Service.ReceiveCVEs(ctx)
 	var summary runSummary
 	for resCh != nil || errCh != nil { // || is important, otherwise not all CVEs are processed
 		select {
 		case <-ctx.Done():
-			return ctx.Err()
+			return summary, ctx.Err()
 		case cve, ok := <-resCh:
 			if !ok {
 				resCh = nil
@@ -157,10 +308,15 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 
 			incoming := assessment.RecordFromCVEV5(cve)
 
-			_, cs, processErr := assessmentService.Process(ctx, incoming)
-			if processErr != nil {
-				slog.Error("processing record", slog.String("cve", incoming.ID), slog.Any("error", processErr))
-				continue
+			screened, err := screener.Screen(ctx, incoming)
+			if err != nil {
+				return summary, fmt.Errorf("screening %s: %w", incoming.ID, err)
+			}
+			incoming.Screening = screened
+
+			_, cs, procErr := assessmentService.Process(ctx, incoming)
+			if procErr != nil {
+				return summary, fmt.Errorf("processing %s: %w", incoming.ID, procErr)
 			}
 
 			switch cs.Type {
@@ -179,22 +335,10 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 			}
 			if cveErr != nil {
 				slog.Error("Parsing the CVEs from CVEListV5 failed", slog.Any("error", cveErr))
-				return cveErr
+				return summary, cveErr
 			}
 		}
 	}
 
-	slog.Info("finished processing CVEs from CVEListV5",
-		slog.Int("total", summary.Total),
-		slog.Int("created", summary.Created),
-		slog.Int("updated", summary.Updated))
-
-	if err = publisher.Run(ctx, commitGroups, func(name string) string {
-		return commitMessageForGroup(name, cfg, summary)
-	}); err != nil {
-		slog.Error("publishing artifacts failed", slog.Any("error", err))
-		return err
-	}
-
-	return nil
+	return summary, nil
 }

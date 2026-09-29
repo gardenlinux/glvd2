@@ -97,10 +97,10 @@ func (a *Accumulator) MissingSBOMSet(_ context.Context, release glrd.Release) er
 //
 // glmap is set-valued, so unioning across releases and packages just works:
 // duplicate (identifier, target) pairs dedupe and multiple targets accumulate.
-func (a *Accumulator) Result() (*glmap.Rules, error) {
+func (a *Accumulator) Result() (glmap.Rules, error) {
 	rules, err := glmap.NewFromRules(a.derived)
 	if err != nil {
-		return nil, fmt.Errorf("compiling derived vendored inclusion rules: %w", err)
+		return glmap.Rules{}, fmt.Errorf("compiling derived vendored inclusion rules: %w", err)
 	}
 
 	slog.Info("built derived vendored-dependency inclusion", slog.Int("rules", len(a.derived)))

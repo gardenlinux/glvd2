@@ -18,7 +18,7 @@ import (
 )
 
 // contains queries the set and fails the test if the PURL cannot be parsed.
-func contains(t *testing.T, set *inventory.Set, canonicalPURL string) bool {
+func contains(t *testing.T, set inventory.Set, canonicalPURL string) bool {
 	t.Helper()
 
 	ok, err := set.Contains(canonicalPURL)

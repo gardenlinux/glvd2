@@ -21,7 +21,8 @@ const syftSourceProperty = "syft:metadata:source"
 // errNoComponents is returned when an SBOM contains no components.
 var errNoComponents = errors.New("sbom has no components")
 
-func getCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
+// GetCycloneDx fetches and decodes the CycloneDX SBOM at sbomURL.
+func GetCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
 	var raw string
 
@@ -44,7 +45,7 @@ func GetPackageListFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Packa
 	var err error
 	var sbom *cdx.BOM
 
-	sbom, err = getCycloneDx(ctx, sbomURL)
+	sbom, err = GetCycloneDx(ctx, sbomURL)
 	if err != nil {
 		return nil, err
 	}

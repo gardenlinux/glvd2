@@ -81,22 +81,22 @@ type config struct {
 
 // New loads and validates the TOML config at path.
 // It returns an error if the file cannot be read, parsed, or fails validation.
-func New(path configpath.SafePath) (*Rules, error) {
+func New(path configpath.SafePath) (Rules, error) {
 	const errMsg = "reading GL-specific inclusion config %q: %w"
 
 	data, err := os.ReadFile(string(path))
 	if err != nil {
-		return nil, fmt.Errorf(errMsg, path, err)
+		return Rules{}, fmt.Errorf(errMsg, path, err)
 	}
 
 	var cfg config
 	if err = toml.Unmarshal(data, &cfg); err != nil {
-		return nil, fmt.Errorf(errMsg, path, err)
+		return Rules{}, fmt.Errorf(errMsg, path, err)
 	}
 
 	rules, err := NewFromRules(cfg.Rules)
 	if err != nil {
-		return nil, fmt.Errorf(errMsg, path, err)
+		return Rules{}, fmt.Errorf(errMsg, path, err)
 	}
 
 	return rules, nil
@@ -104,20 +104,19 @@ func New(path configpath.SafePath) (*Rules, error) {
 
 // NewFromRules builds a [Rules] directly from a slice of rules.
 // Useful for testing without a config file on disk.
-func NewFromRules(rules []Rule) (*Rules, error) {
-	r := &Rules{m: make(map[string]map[string]struct{})}
+func NewFromRules(rules []Rule) (Rules, error) {
+	m := make(map[string]map[string]struct{})
 
 	for i := range rules {
-		if err := r.addRule(rules[i]); err != nil {
-			return nil, err
+		if err := addRule(m, rules[i]); err != nil {
+			return Rules{}, err
 		}
 	}
 
-	return r, nil
+	return Rules{m: m}, nil
 }
 
-// addRule validates a single rule and inserts all of its input identifier keys.
-func (r *Rules) addRule(rule Rule) error {
+func addRule(m map[string]map[string]struct{}, rule Rule) error {
 	if rule.TargetPURL == "" {
 		return errors.New("rule has empty target_purl")
 	}
@@ -136,10 +135,10 @@ func (r *Rules) addRule(rule Rule) error {
 	}
 
 	for _, key := range keys {
-		targets, ok := r.m[key]
+		targets, ok := m[key]
 		if !ok {
 			targets = make(map[string]struct{})
-			r.m[key] = targets
+			m[key] = targets
 		}
 		targets[target] = struct{}{}
 	}
@@ -175,7 +174,7 @@ func ruleKeys(rule Rule) ([]string, error) {
 // of the CVE's identifiers, across all identifier types. It returns nil if none
 // match. A single identifier may contribute several targets, and several
 // identifiers may contribute the same target; both are collapsed into one set.
-func (r *Rules) Lookup(ids cvelistv5.Identifiers) []string {
+func (r Rules) Lookup(ids cvelistv5.Identifiers) []string {
 	matched := make(map[string]struct{})
 
 	for _, vp := range ids.VendorProductPairs {
@@ -217,4 +216,35 @@ func collect(dst, src map[string]struct{}) {
 	for t := range src {
 		dst[t] = struct{}{}
 	}
+}
+
+// AuditEntry is a single mapping entry rendered for audit output.
+type AuditEntry struct {
+	Identifier string   `json:"identifier"`
+	Targets    []string `json:"targets"`
+}
+
+// AuditEntries returns the compiled rules as a sorted, human-readable slice.
+// The internal key separator is rendered as "|" so the identifier kind and its
+// components stay legible: purl keys render as "purl|<canonical-purl>", while
+// vendor-product, CPE, and package-id keys render as "vp|<vendor>|<product>",
+// "cpe|<vendor>|<product>", and "pid|<collection-url>|<package-name>".
+func (r Rules) AuditEntries() []AuditEntry {
+	entries := make([]AuditEntry, 0, len(r.m))
+	for key, targets := range r.m {
+		ts := make([]string, 0, len(targets))
+		for t := range targets {
+			ts = append(ts, t)
+		}
+		slices.Sort(ts)
+		entries = append(entries, AuditEntry{
+			Identifier: strings.ReplaceAll(key, keySep, "|"),
+			Targets:    ts,
+		})
+	}
+	slices.SortFunc(entries, func(a, b AuditEntry) int {
+		return strings.Compare(a.Identifier, b.Identifier)
+	})
+
+	return entries
 }
