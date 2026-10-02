@@ -2,6 +2,7 @@ package config_test
 
 import (
 	"testing"
+	"time"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/stretchr/testify/assert"
@@ -19,12 +20,13 @@ func TestValidate_AcceptsValidConfig(t *testing.T) {
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
+		Screening:                config.Screening{EscalationWindow: 24 * time.Hour},
 		// RepoMetadataCachePath intentionally empty - it is optional.
 	}
 	require.NoError(t, config.Validate(cfg))
 }
 
-func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
+func TestValidate_ValidationErrors(t *testing.T) {
 	t.Parallel()
 
 	full := config.AppConfig{
@@ -35,6 +37,7 @@ func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
+		Screening:                config.Screening{EscalationWindow: 24 * time.Hour},
 	}
 
 	cases := []struct {
@@ -48,6 +51,7 @@ func TestValidate_RejectsEmptyRequiredFields(t *testing.T) {
 		{"missing AssessmentDataDir", func(c *config.AppConfig) { c.AssessmentsDir = "" }},
 		{"missing BaselineCommitAnchor", func(c *config.AppConfig) { c.BaselineCommitAnchor = "" }},
 		{"missing GLRDReleasesURL", func(c *config.AppConfig) { c.GLRDReleasesURL = "" }},
+		{"non-positive EscalationWindow", func(c *config.AppConfig) { c.Screening.EscalationWindow = 0 }},
 	}
 
 	for _, tc := range cases {

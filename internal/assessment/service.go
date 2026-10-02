@@ -29,7 +29,8 @@ type Service struct {
 	mergeSpecCache  *mergeSpec
 	store           *Store
 	baseline        *Baseline
-	reactors        []Reactor
+	alwaysReactors  []Reactor
+	changeReactors  []Reactor
 	extModifiedCVEs map[string]struct{}
 }
 
@@ -40,11 +41,21 @@ func NewService(
 ) (*Service, error) {
 	cache := newMergeSpec[Record]() // cached Assessment reflections
 
+	var always, change []Reactor
+	for _, r := range reactors {
+		if r.Kind() == ReactorKindAlways {
+			always = append(always, r)
+			continue
+		}
+		change = append(change, r)
+	}
+
 	return &Service{
 		mergeSpecCache:  cache,
 		store:           store,
 		baseline:        baseline,
-		reactors:        reactors,
+		alwaysReactors:  always,
+		changeReactors:  change,
 		extModifiedCVEs: loadExternallyModifiedCVEs(ctx, baseline),
 	}, nil
 }
@@ -131,12 +142,20 @@ func (s *Service) Process(ctx context.Context, incoming Record) (Record, ChangeS
 	}
 
 	reactorDiff := diffRecords(s.mergeSpecCache, baseline, merged)
+
+	// Always reactors run every run, even on an empty diff.
+	for _, r := range s.alwaysReactors {
+		if reactErr := r.React(ctx, baseline, &merged, reactorDiff); reactErr != nil {
+			return Record{}, ChangeSet{}, fmt.Errorf("always-reactor failed for %s: %w", incoming.ID, reactErr)
+		}
+	}
+
 	if !reactorDiff.HasChanges() && !hasExternalModification {
 		return merged, reactorDiff, nil // nothing to save or react to
 	}
 
 	if reactorDiff.HasChanges() {
-		for _, r := range s.reactors {
+		for _, r := range s.changeReactors {
 			if reactErr := r.React(ctx, baseline, &merged, reactorDiff); reactErr != nil {
 				return Record{}, ChangeSet{}, fmt.Errorf("reactor failed for %s: %w", incoming.ID, reactErr)
 			}

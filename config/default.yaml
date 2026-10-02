@@ -13,6 +13,11 @@ baseline_commit_anchor: "GLVD2-Baseline: true"
 
 glrd_releases_url: "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
 
+# CVE relevance screening tunables.
+screening:
+  # How long we wait until an unresolved CVE (waiting for its Debian triage) is escalated to a human.
+  escalation_window: 24h
+
 # Remote and branch used to store our persisted data via git
 push:
   remote: "origin"

@@ -21,6 +21,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/glmap"
 	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
+	"github.com/gardenlinux/glvd2/internal/pkgsuggest"
 	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/gardenlinux/glvd2/internal/reactor"
 	"github.com/gardenlinux/glvd2/internal/repository"
@@ -122,7 +123,8 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 
 	auditService := audit.NewService(cfg)
 
-	if err = recordDebMappingAudit(ctx, queries, auditService, idsForCVEs); err != nil {
+	debMapping, err := buildDebMapping(ctx, queries, auditService, idsForCVEs)
+	if err != nil {
 		return err
 	}
 
@@ -131,7 +133,9 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	assessmentService, err := buildAssessmentService(ctx, cfg)
+	suggester := pkgsuggest.New(debMapping, idsForCVEs)
+
+	assessmentService, err := buildAssessmentService(ctx, cfg, suggester)
 	if err != nil {
 		return err
 	}
@@ -156,31 +160,33 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 	return nil
 }
 
-// recordDebMappingAudit analyzes Debian package mappings and records the audit artifacts.
-func recordDebMappingAudit(
+func buildDebMapping(
 	ctx context.Context,
 	queries *repository.Queries,
 	auditService *audit.Service,
 	idsForCVEs cvelistv5.IDsForCVEs,
-) error {
+) (debmap.MatchingDebianPackages, error) {
 	debMapper, err := debmap.NewService(queries)
 	if err != nil {
-		return err
+		return debmap.MatchingDebianPackages{}, err
 	}
 
 	debMapping, debPkgIDIndex, err := debMapper.Analyze(ctx, idsForCVEs)
 	if err != nil {
-		return err
+		return debmap.MatchingDebianPackages{}, err
 	}
 
 	if err = auditService.Record("deb_mapping_result.json", debMapping); err != nil {
-		return fmt.Errorf("recording audit artifact - debian mapping result: %w", err)
+		return debmap.MatchingDebianPackages{}, fmt.Errorf("recording audit artifact - debian mapping result: %w", err)
 	}
 	if err = auditService.Record("deb_package_identifiers.json", debPkgIDIndex); err != nil {
-		return fmt.Errorf("recording audit artifact - debian package identifiers: %w", err)
+		return debmap.MatchingDebianPackages{}, fmt.Errorf(
+			"recording audit artifact - debian package identifiers: %w",
+			err,
+		)
 	}
 
-	return nil
+	return debMapping, nil
 }
 
 func buildScreener(
@@ -202,7 +208,11 @@ func buildScreener(
 	return screening.NewService(curated, vendored, inv, debian, idsForCVEs), nil
 }
 
-func buildAssessmentService(ctx context.Context, cfg *config.AppConfig) (*assessment.Service, error) {
+func buildAssessmentService(
+	ctx context.Context,
+	cfg *config.AppConfig,
+	suggester *pkgsuggest.Suggester,
+) (*assessment.Service, error) {
 	assessmentStore := assessment.NewStore(cfg)
 
 	gitReader := git.NewReader(".")
@@ -212,8 +222,15 @@ func buildAssessmentService(ctx context.Context, cfg *config.AppConfig) (*assess
 		return nil, fmt.Errorf("resolving baseline: %w", err)
 	}
 
+	deadline := reactor.DebianVerdictDeadline{
+		TimeToWait: cfg.Screening.EscalationWindow,
+		Suggester:  suggester,
+		Logger:     slog.Default(),
+	}
+
 	assessmentService, err := assessment.NewService(ctx, assessmentStore, baseline, []assessment.Reactor{
 		reactor.Log{Logger: slog.Default()},
+		deadline,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("setting up CVE data service: %w", err)

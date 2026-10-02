@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/spf13/viper"
 )
@@ -18,6 +19,15 @@ type Push struct {
 	Branch string `mapstructure:"branch"`
 }
 
+// Screening holds tunables for the CVE relevance screening stage.
+type Screening struct {
+	// EscalationWindow is how long an undecided CVE waits before it escalates to human triage.
+	EscalationWindow time.Duration `mapstructure:"escalation_window"`
+}
+
+// defaultEscalationWindow is the wait before an undecided CVE escalates to human triage.
+const defaultEscalationWindow = 24 * time.Hour
+
 type AppConfig struct {
 	CVEListV5SubRepoPath     string    `mapstructure:"cve_list_v5_sub_repo_path"`
 	DebSecTrackerSubRepoPath string    `mapstructure:"deb_sec_tracker_sub_repo_path"`
@@ -27,6 +37,7 @@ type AppConfig struct {
 	AssessmentsDir           string    `mapstructure:"assessments_dir"`
 	BaselineCommitAnchor     string    `mapstructure:"baseline_commit_anchor"`
 	GLRDReleasesURL          string    `mapstructure:"glrd_releases_url"`
+	Screening                Screening `mapstructure:"screening"`
 	Push                     Push      `mapstructure:"push"`
 	Committer                Committer `mapstructure:"committer"`
 }
@@ -46,6 +57,7 @@ func LoadAppConfig(configDir string) (*AppConfig, error) {
 	v.SetDefault("assessments_dir", "./data/assessments")
 	v.SetDefault("baseline_commit_anchor", "GLVD2-Baseline: true")
 	v.SetDefault("glrd_releases_url", "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json")
+	v.SetDefault("screening.escalation_window", defaultEscalationWindow.String())
 	v.SetDefault("push.remote", "origin")
 	v.SetDefault("push.branch", "main")
 	v.SetDefault("committer.name", "")

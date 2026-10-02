@@ -24,5 +24,12 @@ func Validate(cfg *AppConfig) error {
 		}
 	}
 
+	if cfg.Screening.EscalationWindow <= 0 {
+		errs = append(
+			errs,
+			fmt.Errorf("screening.escalation_window must be positive, got %s", cfg.Screening.EscalationWindow),
+		)
+	}
+
 	return errors.Join(errs...)
 }

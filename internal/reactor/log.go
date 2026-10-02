@@ -12,6 +12,9 @@ type Log struct {
 	Logger *slog.Logger
 }
 
+// Kind reports that Log runs only when there are actual changes not always.
+func (Log) Kind() assessment.ReactorKind { return assessment.ReactorKindChange }
+
 // React logs the change type and field-level diffs for a CVE assessment record.
 func (l Log) React(
 	ctx context.Context,

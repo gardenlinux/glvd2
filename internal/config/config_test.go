@@ -2,6 +2,7 @@ package config_test
 
 import (
 	"testing"
+	"time"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/stretchr/testify/assert"
@@ -23,4 +24,5 @@ func TestLoadAppConfig_RealFile(t *testing.T) {
 	assert.NotEmpty(t, cfg.AssessmentsDir)
 	assert.NotEmpty(t, cfg.BaselineCommitAnchor)
 	assert.NotEmpty(t, cfg.GLRDReleasesURL)
+	assert.Equal(t, 24*time.Hour, cfg.Screening.EscalationWindow)
 }
