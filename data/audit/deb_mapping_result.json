@@ -23554,7 +23554,7 @@
             "pkg:deb/debian/wireshark": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"xdg-dbus-proxy\"": {
-            "pkg:deb/debian/xdg-dbus-proxy": 1
+            "pkg:deb/debian/xdg-dbus-proxy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"xorg-x11-server-Xwayland\"": {
             "pkg:deb/debian/xwayland": 44
@@ -23820,6 +23820,9 @@
         "\"https://bodhi.fedoraproject.org/updates/?packages=PackageKit\":\"PackageKit\"": {
             "pkg:deb/debian/packagekit": 1
         },
+        "\"https://bodhi.fedoraproject.org/updates/?packages=xdg-dbus-proxy\":\"xdg-dbus-proxy\"": {
+            "pkg:deb/debian/xdg-dbus-proxy": 1
+        },
         "\"https://brew.sh/\":\"log4cxx\"": {
             "pkg:deb/debian/log4cxx": 1
         },
@@ -23833,7 +23836,7 @@
             "pkg:deb/debian/busybox": 7
         },
         "\"https://catalog.redhat.com/software/containers/\":\"crun-main\"": {
-            "pkg:deb/debian/crun": 1
+            "pkg:deb/debian/crun": 2
         },
         "\"https://catalog.redhat.com/software/containers/\":\"cups-main\"": {
             "pkg:deb/debian/cups": 2
@@ -23883,6 +23886,9 @@
         "\"https://catalog.redhat.com/software/containers/\":\"libxslt-main\"": {
             "pkg:deb/debian/libxslt": 3
         },
+        "\"https://catalog.redhat.com/software/containers/\":\"lvm2-main\"": {
+            "pkg:deb/debian/lvm2": 1
+        },
         "\"https://catalog.redhat.com/software/containers/\":\"openssh-main\"": {
             "pkg:deb/debian/openssh": 3
         },
@@ -23911,7 +23917,7 @@
             "pkg:deb/debian/python-urllib3": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"rpm-main\"": {
-            "pkg:deb/debian/rpm": 2
+            "pkg:deb/debian/rpm": 3
         },
         "\"https://catalog.redhat.com/software/containers/\":\"runc\"": {
             "pkg:deb/debian/runc": 1
@@ -24589,6 +24595,9 @@
         },
         "\"https://github.com/executablebooks/markdown-it-py/releases\":\"markdown-it-py\"": {
             "pkg:deb/debian/markdown-it-py": 2
+        },
+        "\"https://github.com/flatpak/xdg-dbus-proxy\":\"xdg-dbus-proxy\"": {
+            "pkg:deb/debian/xdg-dbus-proxy": 1
         },
         "\"https://github.com/freeipa/freeipa\":\"freeipa\"": {
             "pkg:deb/debian/freeipa": 3

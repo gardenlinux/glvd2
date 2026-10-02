@@ -16094,7 +16094,8 @@
         "VendorProductIDs": null,
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"lvm2\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"lvm2\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"lvm2-main\""
         ],
         "PackageURLs": null
     },
@@ -32859,7 +32860,9 @@
         ],
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"xdg-dbus-proxy\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"xdg-dbus-proxy\"",
+            "\"https://bodhi.fedoraproject.org/updates/?packages=xdg-dbus-proxy\":\"xdg-dbus-proxy\"",
+            "\"https://github.com/flatpak/xdg-dbus-proxy\":\"xdg-dbus-proxy\""
         ],
         "PackageURLs": null
     },
