@@ -1,0 +1,71 @@
+# Scheduled run of the full glvd2 pipeline that ingests, screens, assesses and
+# publishes (commit + fast-forward push) its generated data.
+name: Run
+
+on:
+  schedule:
+    - cron: "0 6,10,14 * * *" # UTC
+  workflow_dispatch:
+
+permissions:
+  # pushes artifacts and assessments into the repo itself
+  contents: write
+  # calling `gh cache delete`
+  actions: write
+
+concurrency:
+  group: run
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      # TEMPORARY: disposable evaluation branch; becomes main for production.
+      BRANCH: experiment/screening
+      # Single static key, refreshed each run via delete-then-save.
+      CACHE_KEY: submodule-git-objects
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+          # glvd2 manages submodule init/update itself, so we skip actions/checkout's recursive clone.
+          submodules: false
+          persist-credentials: true
+
+      # Cache/Restore only the submodule object stores.
+      # Their working trees are then re-created by glvd2's submodule update.
+      # A missing cache is fine, since glvd2 then fetches from upstream.
+      - name: Restore submodule object stores
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .git/modules/submodules
+          key: ${{ env.CACHE_KEY }}
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: "go.mod"
+
+      # Abort the run if the branches code is broken.
+      - name: Test
+        run: go test ./...
+
+      - name: Build
+        run: make build
+
+      - name: Run publish pipeline
+        run: ./bin/glvd2 --publish-level=push --log-level=info
+
+      - name: Delete previous submodule cache entry
+        run: gh cache delete "$CACHE_KEY" --repo "$GITHUB_REPOSITORY" || true
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Save submodule object stores
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .git/modules/submodules
+          key: ${{ env.CACHE_KEY }}
