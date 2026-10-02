@@ -21,10 +21,10 @@ screening:
 # Remote and branch used to store our persisted data via git
 push:
   remote: "origin"
-  branch: "main"
+  branch: "experiment/screening"
 
 # Optional committer identity. Used when both are not empty (!= "").
 # Otherwise the default ones from current environment are used.
 committer:
-  name: ""
-  email: ""
+  name: "github-actions[bot]"
+  email: "41898282+github-actions[bot]@users.noreply.github.com"
