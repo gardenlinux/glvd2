@@ -321,8 +321,6 @@ func processCVEs(
 				resCh = nil
 				continue
 			}
-			summary.Total++
-
 			incoming := assessment.RecordFromCVEV5(cve)
 
 			screened, err := screener.Screen(ctx, incoming)
@@ -343,6 +341,15 @@ func processCVEs(
 				summary.Updated++
 			case assessment.Unchanged:
 				summary.Unchanged++
+			}
+
+			summary.Total++
+			if summary.Total%10_000 == 0 {
+				slog.Info("CVE processing progress",
+					slog.Int("processed", summary.Total),
+					slog.Int("created", summary.Created),
+					slog.Int("updated", summary.Updated),
+					slog.Int("unchanged", summary.Unchanged))
 			}
 
 		case cveErr, ok := <-errCh:
