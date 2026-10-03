@@ -363,6 +363,9 @@
         "\"aio-libs\":\"aiosmtpd\"": {
             "pkg:deb/debian/python-aiosmtpd": 2
         },
+        "\"aio-libs\":\"multidict\"": {
+            "pkg:deb/debian/python-multidict": 1
+        },
         "\"aio-libs_project\":\"aiohttp\"": {
             "pkg:deb/debian/python-aiohttp": 2
         },
@@ -2220,6 +2223,9 @@
         "\"babiloo\":\"babiloo\"": {
             "pkg:deb/debian/babiloo": 1
         },
+        "\"backdrop\":\"backdrop\"": {
+            "pkg:deb/debian/backdrop": 1
+        },
         "\"backdropcms\":\"backdrop\"": {
             "pkg:deb/debian/backdrop": 3
         },
@@ -2507,7 +2513,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "\"bytecodealliance\":\"wasmtime\"": {
-            "pkg:deb/debian/rust-wasmtime": 43
+            "pkg:deb/debian/rust-wasmtime": 44
         },
         "\"byvoid\":\"opencc\"": {
             "pkg:deb/debian/opencc": 1
@@ -14207,7 +14213,7 @@
             "pkg:deb/debian/logback": 5
         },
         "\"qos.ch sarl\":\"logback-classic\"": {
-            "pkg:deb/debian/logback": 1
+            "pkg:deb/debian/logback": 2
         },
         "\"qos.ch sarl\":\"logback-core\"": {
             "pkg:deb/debian/logback": 4
@@ -18517,7 +18523,7 @@
             "pkg:deb/debian/b2evolution": 1
         },
         "cpe:2.3:a:backdropcms:backdrop:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/backdrop": 3
+            "pkg:deb/debian/backdrop": 4
         },
         "cpe:2.3:a:badaix:snapcast:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/snapcast": 1

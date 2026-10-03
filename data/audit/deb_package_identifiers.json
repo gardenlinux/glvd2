@@ -1365,6 +1365,7 @@
     },
     "pkg:deb/debian/backdrop": {
         "VendorProductIDs": [
+            "\"backdrop\":\"backdrop\"",
             "\"backdropcms\":\"backdrop\""
         ],
         "CPEs": [
@@ -25265,6 +25266,14 @@
     "pkg:deb/debian/python-msgpack": {
         "VendorProductIDs": [
             "\"msgpack\":\"msgpack-python\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/python-multidict": {
+        "VendorProductIDs": [
+            "\"aio-libs\":\"multidict\""
         ],
         "CPEs": null,
         "PackageIDs": null,
