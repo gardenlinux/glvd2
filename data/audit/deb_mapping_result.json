@@ -1265,7 +1265,7 @@
             "pkg:deb/debian/derby": 3
         },
         "\"apache software foundation\":\"apache directory ldap api\"": {
-            "pkg:deb/debian/apache-directory-api": 1
+            "pkg:deb/debian/apache-directory-api": 7
         },
         "\"apache software foundation\":\"apache directory studio\"": {
             "pkg:deb/debian/apache-directory-studio": 1
@@ -1493,7 +1493,7 @@
         },
         "\"apache software foundation\":\"apache thrift\"": {
             "pkg:deb/debian/libthrift-java": 1,
-            "pkg:deb/debian/thrift": 27,
+            "pkg:deb/debian/thrift": 88,
             "pkg:deb/debian/thrift-compiler": 1
         },
         "\"apache software foundation\":\"apache tika core\"": {
@@ -1531,7 +1531,7 @@
             "pkg:deb/debian/tomcat9": 124
         },
         "\"apache software foundation\":\"apache traffic server\"": {
-            "pkg:deb/debian/trafficserver": 95
+            "pkg:deb/debian/trafficserver": 96
         },
         "\"apache software foundation\":\"apache uima\"": {
             "pkg:deb/debian/uimaj": 1
@@ -2124,7 +2124,7 @@
             "pkg:deb/debian/rust-astral-tokio-tar": 3
         },
         "\"astral-sh\":\"uv\"": {
-            "pkg:deb/debian/uv": 2
+            "pkg:deb/debian/uv": 3
         },
         "\"astropy\":\"astropy\"": {
             "pkg:deb/debian/astropy": 1
@@ -2898,6 +2898,9 @@
         },
         "\"civicrm\":\"civicrm\"": {
             "pkg:deb/debian/civicrm": 1
+        },
+        "\"cjbassi\":\"gotop\"": {
+            "pkg:deb/debian/gotop": 1
         },
         "\"cjson project\":\"cjson\"": {
             "pkg:deb/debian/cjson": 2
@@ -4334,6 +4337,9 @@
         "\"frysk\":\"frysk\"": {
             "pkg:deb/debian/frysk": 1
         },
+        "\"fsspec\":\"filesystem_spec\"": {
+            "pkg:deb/debian/fsspec": 1
+        },
         "\"fusesource\":\"jansi\"": {
             "pkg:deb/debian/jansi": 1,
             "pkg:deb/debian/jansi-native": 1,
@@ -4882,7 +4888,7 @@
             "pkg:deb/debian/libgcrypt20": 2
         },
         "\"gnu\":\"grub2\"": {
-            "pkg:deb/debian/grub2": 9
+            "pkg:deb/debian/grub2": 10
         },
         "\"gnu\":\"guix\"": {
             "pkg:deb/debian/guix": 2
@@ -7409,16 +7415,16 @@
             "pkg:deb/debian/bouncycastle": 2
         },
         "\"legion of the bouncy castle inc.\":\"bc-fja\"": {
-            "pkg:deb/debian/bouncycastle": 24
+            "pkg:deb/debian/bouncycastle": 25
         },
         "\"legion of the bouncy castle inc.\":\"bc-java\"": {
-            "pkg:deb/debian/bouncycastle": 37
+            "pkg:deb/debian/bouncycastle": 40
         },
         "\"legion of the bouncy castle inc.\":\"bc-lts\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"legion of the bouncy castle inc.\":\"bc-lts-java\"": {
-            "pkg:deb/debian/bouncycastle": 28
+            "pkg:deb/debian/bouncycastle": 29
         },
         "\"legion of the bouncy castle inc.\":\"bcpix-lts\"": {
             "pkg:deb/debian/bouncycastle": 1
@@ -7701,7 +7707,7 @@
             "pkg:deb/debian/limesurvey": 1
         },
         "\"limesurvey\":\"limesurvey\"": {
-            "pkg:deb/debian/limesurvey": 24
+            "pkg:deb/debian/limesurvey": 25
         },
         "\"linaro/op-tee\":\"op-tee\"": {
             "pkg:deb/debian/optee-os": 7
@@ -8416,7 +8422,7 @@
             "pkg:deb/debian/ocaml-cohttp": 1
         },
         "\"misp\":\"misp\"": {
-            "pkg:deb/debian/misp": 134
+            "pkg:deb/debian/misp": 142
         },
         "\"misp\":\"misp-stix\"": {
             "pkg:deb/debian/misp": 4
@@ -13786,6 +13792,9 @@
         "\"prismjs\":\"prismjs/prism\"": {
             "pkg:deb/debian/node-prismjs": 1
         },
+        "\"processone\":\"ejabberd\"": {
+            "pkg:deb/debian/ejabberd": 1
+        },
         "\"proftpd project\":\"proftpd\"": {
             "pkg:deb/debian/proftpd-dfsg": 2
         },
@@ -16902,7 +16911,7 @@
             "pkg:deb/debian/arm-trusted-firmware": 1
         },
         "\"tryghost\":\"ghost\"": {
-            "pkg:deb/debian/ghost": 56
+            "pkg:deb/debian/ghost": 64
         },
         "\"tryton\":\"sao\"": {
             "pkg:deb/debian/tryton-sao": 2
@@ -19111,7 +19120,7 @@
             "pkg:deb/debian/llama.cpp": 10
         },
         "cpe:2.3:a:ghost:ghost:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ghost": 30
+            "pkg:deb/debian/ghost": 38
         },
         "cpe:2.3:a:ghostscript:ghostscript:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghostscript": 1
@@ -19893,7 +19902,7 @@
             "pkg:deb/debian/lighttpd": 2
         },
         "cpe:2.3:a:limesurvey:limesurvey:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/limesurvey": 22
+            "pkg:deb/debian/limesurvey": 23
         },
         "cpe:2.3:a:linux:kernel:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/linux": 2
@@ -20052,7 +20061,7 @@
             "pkg:deb/debian/rust-mio-0.6": 1
         },
         "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/misp": 24
+            "pkg:deb/debian/misp": 32
         },
         "cpe:2.3:a:mit:kerberos_5:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/krb5": 4
@@ -21151,6 +21160,7 @@
             "pkg:deb/debian/zlib": 1
         },
         "cpe:2.3:a:redhat:openjdk_els:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/freetype": 1,
             "pkg:deb/debian/giflib": 1,
             "pkg:deb/debian/libpng1.6": 1,
             "pkg:deb/debian/openjdk-11": 4,
@@ -22447,6 +22457,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman-installer\"": {
             "pkg:deb/debian/foreman": 2
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"freetype\"": {
+            "pkg:deb/debian/freetype": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"frr\"": {
             "pkg:deb/debian/frr": 3
         },
@@ -22792,6 +22805,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-expat\"": {
             "pkg:deb/debian/expat": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-freetype\"": {
+            "pkg:deb/debian/freetype": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-icu\"": {
             "pkg:deb/debian/icu": 1
@@ -23369,6 +23385,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rubygem-foreman_kubevirt\"": {
             "pkg:deb/debian/foreman": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"rubygem-foreman_remote_execution\"": {
+            "pkg:deb/debian/foreman": 2
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"runc\"": {
             "pkg:deb/debian/runc": 1
         },
@@ -23853,6 +23872,9 @@
         "\"https://catalog.redhat.com/software/containers/\":\"firefox\"": {
             "pkg:deb/debian/firefox": 85
         },
+        "\"https://catalog.redhat.com/software/containers/\":\"freetype-main\"": {
+            "pkg:deb/debian/freetype": 1
+        },
         "\"https://catalog.redhat.com/software/containers/\":\"kbd-main\"": {
             "pkg:deb/debian/kbd": 1
         },
@@ -23965,7 +23987,7 @@
             "pkg:deb/debian/log4cxx": 1
         },
         "\"https://conan.io/center\":\"thrift\"": {
-            "pkg:deb/debian/thrift": 6
+            "pkg:deb/debian/thrift": 17
         },
         "\"https://conda-forge.org/\":\"pyarrow\"": {
             "pkg:deb/debian/apache-arrow": 1
@@ -24230,6 +24252,9 @@
         "\"https://cpan.org/modules\":\"Text-CSV_XS\"": {
             "pkg:deb/debian/libtext-csv-xs-perl": 1
         },
+        "\"https://cpan.org/modules\":\"Thrift\"": {
+            "pkg:deb/debian/thrift": 5
+        },
         "\"https://cpan.org/modules\":\"Tie-Hash-Regex\"": {
             "pkg:deb/debian/libtie-hash-regex-perl": 1
         },
@@ -24289,7 +24314,7 @@
             "pkg:deb/debian/rust-hickory-resolver": 1
         },
         "\"https://crates.io\":\"thrift\"": {
-            "pkg:deb/debian/thrift": 1
+            "pkg:deb/debian/thrift": 2
         },
         "\"https://crates.io/crates/idna\":\"idna\"": {
             "pkg:deb/debian/rust-idna": 1
@@ -25036,6 +25061,9 @@
         "\"https://gnutls.org/download.html\":\"gnutls\"": {
             "pkg:deb/debian/gnutls28": 1
         },
+        "\"https://golang.org/pkg\":\"github.com/apache/thrift\"": {
+            "pkg:deb/debian/thrift": 5
+        },
         "\"https://juju.is/\":\"juju\"": {
             "pkg:deb/debian/juju": 3
         },
@@ -25122,6 +25150,9 @@
         },
         "\"https://npmjs.com/sha.js\":\"sha.js\"": {
             "pkg:deb/debian/node-sha.js": 1
+        },
+        "\"https://nuget.org/packages\":\"ApacheThrift\"": {
+            "pkg:deb/debian/thrift": 2
         },
         "\"https://nuget.org/packages\":\"TinyMCE\"": {
             "pkg:deb/debian/tinymce": 3
@@ -25263,7 +25294,7 @@
             "pkg:deb/debian/linux": 1
         },
         "\"https://packagist.org\":\"apache/thrift\"": {
-            "pkg:deb/debian/thrift": 1
+            "pkg:deb/debian/thrift": 11
         },
         "\"https://pagure.io/pagure\":\"pagure\"": {
             "pkg:deb/debian/pagure": 4
@@ -25873,7 +25904,7 @@
             "pkg:deb/debian/buildstream": 1
         },
         "\"https://pypi.python.org\":\"thrift\"": {
-            "pkg:deb/debian/thrift": 3
+            "pkg:deb/debian/thrift": 10
         },
         "\"https://pypi.python.org\":\"xmltodict\"": {
             "pkg:deb/debian/python-xmltodict": 1
@@ -25910,6 +25941,9 @@
         },
         "\"https://registry.npmjs.org\":\"tar-fs\"": {
             "pkg:deb/debian/node-tar-fs": 1
+        },
+        "\"https://registry.npmjs.org\":\"thrift\"": {
+            "pkg:deb/debian/thrift": 6
         },
         "\"https://repo.hex.pm\":\"cowboy\"": {
             "pkg:deb/debian/erlang-cowboy": 2
@@ -26014,7 +26048,19 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.commons:commons-vfs2\"": {
             "pkg:deb/debian/commons-vfs": 2
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-asn1-ber\"": {
+            "pkg:deb/debian/apache-directory-api": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-client-api\"": {
+            "pkg:deb/debian/apache-directory-api": 2
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-codec-core\"": {
+            "pkg:deb/debian/apache-directory-api": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-model\"": {
+            "pkg:deb/debian/apache-directory-api": 2
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-schema-data\"": {
             "pkg:deb/debian/apache-directory-api": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.druid.extensions:druid-lookups-cached-global\"": {
@@ -26168,7 +26214,7 @@
             "pkg:deb/debian/libstruts1.2-java": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.thrift:libthrift\"": {
-            "pkg:deb/debian/thrift": 3
+            "pkg:deb/debian/thrift": 9
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.tika:tika-core\"": {
             "pkg:deb/debian/tika": 1
@@ -26376,6 +26422,9 @@
         "\"https://rubygems.org\":\"httparty\"": {
             "pkg:deb/debian/ruby-httparty": 1
         },
+        "\"https://rubygems.org\":\"thrift\"": {
+            "pkg:deb/debian/thrift": 3
+        },
         "\"https://saltproject.io/\":\"salt\"": {
             "pkg:deb/debian/salt": 2
         },
@@ -26455,7 +26504,7 @@
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcpkix-fips\"": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bctls-fips\"": {
             "pkg:deb/debian/bouncycastle": 3
@@ -26473,10 +26522,10 @@
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcpkix-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcprov-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 16
+            "pkg:deb/debian/bouncycastle": 17
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bctls-lts8on\"": {
             "pkg:deb/debian/bouncycastle": 2
@@ -26488,16 +26537,16 @@
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcmls\"": {
-            "pkg:deb/debian/bouncycastle": 2
+            "pkg:deb/debian/bouncycastle": 3
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcpg\"": {
             "pkg:deb/debian/bouncycastle": 6
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcpkix\"": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 7
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcprov\"": {
-            "pkg:deb/debian/bouncycastle": 18
+            "pkg:deb/debian/bouncycastle": 20
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bctls\"": {
             "pkg:deb/debian/bouncycastle": 2
@@ -26702,6 +26751,12 @@
         "pkg:cargo/sequoia-openpgp": {
             "pkg:deb/debian/rust-sequoia-openpgp": 1
         },
+        "pkg:cargo/thrift": {
+            "pkg:deb/debian/thrift": 1
+        },
+        "pkg:composer/apache/thrift": {
+            "pkg:deb/debian/thrift": 10
+        },
         "pkg:composer/james-heinrich/getid3": {
             "pkg:deb/debian/php-getid3": 2
         },
@@ -26716,6 +26771,9 @@
         },
         "pkg:conan/log4cxx": {
             "pkg:deb/debian/log4cxx": 1
+        },
+        "pkg:conan/thrift": {
+            "pkg:deb/debian/thrift": 11
         },
         "pkg:cpan/Authen-SASL": {
             "pkg:deb/debian/libauthen-sasl-perl": 1
@@ -26771,6 +26829,9 @@
         "pkg:cpan/Template-Toolkit": {
             "pkg:deb/debian/libtemplate-perl": 1
         },
+        "pkg:cpan/Thrift": {
+            "pkg:deb/debian/thrift": 5
+        },
         "pkg:cpan/Tie-Hash-Regex": {
             "pkg:deb/debian/libtie-hash-regex-perl": 1
         },
@@ -26799,6 +26860,9 @@
         },
         "pkg:gem/rubyzip": {
             "pkg:deb/debian/ruby-zip": 1
+        },
+        "pkg:gem/thrift": {
+            "pkg:deb/debian/thrift": 3
         },
         "pkg:github/Alinto/sogo": {
             "pkg:deb/debian/sogo": 1
@@ -27109,6 +27173,9 @@
         "pkg:golang/code.gitea.io/gitea": {
             "pkg:deb/debian/gitea": 10
         },
+        "pkg:golang/github.com/apache/thrift": {
+            "pkg:deb/debian/thrift": 5
+        },
         "pkg:golang/github.com/diskfs/go-diskfs": {
             "pkg:deb/debian/rclone": 1
         },
@@ -27178,6 +27245,21 @@
         "pkg:maven/io.netty/netty-handler": {
             "pkg:deb/debian/netty": 1
         },
+        "pkg:maven/org.apache.directory.api/api-asn1-ber": {
+            "pkg:deb/debian/apache-directory-api": 1
+        },
+        "pkg:maven/org.apache.directory.api/api-ldap-client-api": {
+            "pkg:deb/debian/apache-directory-api": 1
+        },
+        "pkg:maven/org.apache.directory.api/api-ldap-codec-core": {
+            "pkg:deb/debian/apache-directory-api": 1
+        },
+        "pkg:maven/org.apache.directory.api/api-ldap-model": {
+            "pkg:deb/debian/apache-directory-api": 2
+        },
+        "pkg:maven/org.apache.directory.api/api-ldap-schema-data": {
+            "pkg:deb/debian/apache-directory-api": 1
+        },
         "pkg:maven/org.apache.logging.log4j/log4j-1.2-api": {
             "pkg:deb/debian/apache-log4j1.2": 1,
             "pkg:deb/debian/apache-log4j2": 1
@@ -27226,6 +27308,9 @@
         "pkg:maven/org.apache.sshd/sshd-sftp": {
             "pkg:deb/debian/libmina-sshd-java": 2
         },
+        "pkg:maven/org.apache.thrift/libthrift": {
+            "pkg:deb/debian/thrift": 5
+        },
         "pkg:maven/org.apache.wss4j/wss4j-ws-security-common": {
             "pkg:deb/debian/wss4j": 2
         },
@@ -27257,7 +27342,7 @@
             "pkg:deb/debian/bouncycastle": 1
         },
         "pkg:maven/org.bouncycastle/bcmls-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 2
+            "pkg:deb/debian/bouncycastle": 3
         },
         "pkg:maven/org.bouncycastle/bcpg-fips": {
             "pkg:deb/debian/bouncycastle": 5
@@ -27269,19 +27354,19 @@
             "pkg:deb/debian/bouncycastle": 4
         },
         "pkg:maven/org.bouncycastle/bcpkix-fips": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "pkg:maven/org.bouncycastle/bcpkix-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "pkg:maven/org.bouncycastle/bcpkix-lts8on": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "pkg:maven/org.bouncycastle/bcprov-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 17
+            "pkg:deb/debian/bouncycastle": 19
         },
         "pkg:maven/org.bouncycastle/bcprov-lts8on": {
-            "pkg:deb/debian/bouncycastle": 15
+            "pkg:deb/debian/bouncycastle": 16
         },
         "pkg:maven/org.bouncycastle/bctls-fips": {
             "pkg:deb/debian/bouncycastle": 3
@@ -27341,7 +27426,7 @@
             "pkg:deb/debian/node-ajv": 13
         },
         "pkg:npm/ghost": {
-            "pkg:deb/debian/ghost": 26
+            "pkg:deb/debian/ghost": 34
         },
         "pkg:npm/http-cache-semantics": {
             "pkg:deb/debian/node-got": 2
@@ -27388,6 +27473,9 @@
         "pkg:npm/source-map-js": {
             "pkg:deb/debian/node-postcss": 1
         },
+        "pkg:npm/thrift": {
+            "pkg:deb/debian/thrift": 6
+        },
         "pkg:npm/tryton-sao": {
             "pkg:deb/debian/tryton-sao": 2
         },
@@ -27402,6 +27490,9 @@
         },
         "pkg:npm/yauzl": {
             "pkg:deb/debian/node-yauzl": 1
+        },
+        "pkg:nuget/ApacheThrift": {
+            "pkg:deb/debian/thrift": 2
         },
         "pkg:nuget/TinyMCE": {
             "pkg:deb/debian/tinymce": 3
@@ -27578,6 +27669,9 @@
         },
         "pkg:pypi/starlette": {
             "pkg:deb/debian/starlette": 1
+        },
+        "pkg:pypi/thrift": {
+            "pkg:deb/debian/thrift": 6
         },
         "pkg:pypi/torchvision": {
             "pkg:deb/debian/pytorch-vision": 1

@@ -727,9 +727,19 @@
         ],
         "CPEs": null,
         "PackageIDs": [
-            "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-client-api\""
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-asn1-ber\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-client-api\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-codec-core\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-model\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.directory.api:api-ldap-schema-data\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.directory.api/api-asn1-ber",
+            "pkg:maven/org.apache.directory.api/api-ldap-client-api",
+            "pkg:maven/org.apache.directory.api/api-ldap-codec-core",
+            "pkg:maven/org.apache.directory.api/api-ldap-model",
+            "pkg:maven/org.apache.directory.api/api-ldap-schema-data"
+        ]
     },
     "pkg:deb/debian/apache-directory-studio": {
         "VendorProductIDs": [
@@ -4422,6 +4432,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/ejabberd": {
+        "VendorProductIDs": [
+            "\"processone\":\"ejabberd\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/ekiga": {
         "VendorProductIDs": [
             "\"gnome\":\"ekiga\""
@@ -5473,6 +5491,7 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman-installer\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"rubygem-foreman_kubevirt\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"rubygem-foreman_remote_execution\"",
             "\"https://github.com/theforeman/foreman\":\"foreman\"",
             "\"https://github.com/theforeman/puppet-foreman\":\"puppet-foreman\"",
             "\"https://theforeman.org/\":\"foreman\""
@@ -5656,8 +5675,14 @@
         "VendorProductIDs": [
             "\"freetype\":\"freetype\""
         ],
-        "CPEs": null,
-        "PackageIDs": null,
+        "CPEs": [
+            "cpe:2.3:a:redhat:openjdk_els:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"freetype\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-freetype\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"freetype-main\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/freexl": {
@@ -5745,6 +5770,14 @@
         "VendorProductIDs": [
             "\"google llc\":\"fscrypt\"",
             "\"the fscrypt project\":\"fscrypt\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/fsspec": {
+        "VendorProductIDs": [
+            "\"fsspec\":\"filesystem_spec\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -8907,6 +8940,14 @@
         "PackageIDs": [
             "\"https://pkg.go.dev\":\"golang.org/x/tools/gopls\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/gotop": {
+        "VendorProductIDs": [
+            "\"cjbassi\":\"gotop\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/gpac": {
@@ -30743,17 +30784,33 @@
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libthrift\"",
             "\"https://conan.io/center\":\"thrift\"",
+            "\"https://cpan.org/modules\":\"Thrift\"",
             "\"https://crates.io\":\"thrift\"",
+            "\"https://golang.org/pkg\":\"github.com/apache/thrift\"",
             "\"https://lib.haxe.org\":\"thrift\"",
+            "\"https://nuget.org/packages\":\"ApacheThrift\"",
             "\"https://packagist.org\":\"apache/thrift\"",
             "\"https://proxy.golang.org\":\"github.com/apache/thrift\"",
             "\"https://pypi.python.org\":\"thrift\"",
             "\"https://pypi.python.org/\":\"thrift\"",
+            "\"https://registry.npmjs.org\":\"thrift\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.thrift:libthrift\"",
+            "\"https://rubygems.org\":\"thrift\"",
             "\"https://www.npmjs.com\":\"thrift\"",
             "\"https://www.nuget.org\":\"ApacheThrift\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cargo/thrift",
+            "pkg:composer/apache/thrift",
+            "pkg:conan/thrift",
+            "pkg:cpan/Thrift",
+            "pkg:gem/thrift",
+            "pkg:golang/github.com/apache/thrift",
+            "pkg:maven/org.apache.thrift/libthrift",
+            "pkg:npm/thrift",
+            "pkg:nuget/ApacheThrift",
+            "pkg:pypi/thrift"
+        ]
     },
     "pkg:deb/debian/thrift-compiler": {
         "VendorProductIDs": [
