@@ -1869,6 +1869,9 @@
         "\"apt-cacher-ng\":\"apt-cacher-ng\"": {
             "pkg:deb/debian/apt-cacher-ng": 2
         },
+        "\"aquasec\":\"trivy\"": {
+            "pkg:deb/debian/trivy": 1
+        },
         "\"aquasecurity\":\"setup-trivy\"": {
             "pkg:deb/debian/trivy": 1
         },
@@ -6408,7 +6411,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 189
+            "pkg:deb/debian/imagemagick": 190
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -10683,6 +10686,9 @@
         "\"n/a\":\"pdfresurrect\"": {
             "pkg:deb/debian/pdfresurrect": 1
         },
+        "\"n/a\":\"peazip\"": {
+            "pkg:deb/debian/peazip": 1
+        },
         "\"n/a\":\"pengutronix rauc\"": {
             "pkg:deb/debian/rauc": 1
         },
@@ -13345,7 +13351,7 @@
             "pkg:deb/debian/pdm": 4
         },
         "\"peazip\":\"peazip\"": {
-            "pkg:deb/debian/peazip": 1
+            "pkg:deb/debian/peazip": 3
         },
         "\"pendulum-project\":\"ntpd-rs\"": {
             "pkg:deb/debian/rust-ntp-proto": 1,
@@ -18447,6 +18453,9 @@
         "cpe:2.3:a:appneta:tcpreplay:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/tcpreplay": 1
         },
+        "cpe:2.3:a:aquasec:trivy:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/trivy": 1
+        },
         "cpe:2.3:a:arangodb:arangodb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/arangodb": 1
         },
@@ -19548,7 +19557,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 53
+            "pkg:deb/debian/imagemagick": 54
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -20804,6 +20813,9 @@
         },
         "cpe:2.3:a:pdfio_project:pdfio:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ippsample": 1
+        },
+        "cpe:2.3:a:peazip:peazip:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/peazip": 2
         },
         "cpe:2.3:a:pengutronix:barebox:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/barebox": 6
@@ -22290,7 +22302,7 @@
             "pkg:deb/debian/dnsmasq": 8
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dogtag-pki\"": {
-            "pkg:deb/debian/dogtag-pki": 6
+            "pkg:deb/debian/dogtag-pki": 7
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dovecot\"": {
             "pkg:deb/debian/dovecot": 7

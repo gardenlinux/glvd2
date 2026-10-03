@@ -22711,9 +22711,12 @@
     },
     "pkg:deb/debian/peazip": {
         "VendorProductIDs": [
+            "\"n/a\":\"peazip\"",
             "\"peazip\":\"peazip\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:peazip:peazip:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -31341,6 +31344,7 @@
     },
     "pkg:deb/debian/trivy": {
         "VendorProductIDs": [
+            "\"aquasec\":\"trivy\"",
             "\"aquasecurity\":\"setup-trivy\"",
             "\"aquasecurity\":\"trivy\"",
             "\"aquasecurity\":\"trivy-action\"",
@@ -31348,7 +31352,9 @@
             "\"berriai\":\"litellm\"",
             "\"team-telnyx\":\"telnyx\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:aquasec:trivy:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
