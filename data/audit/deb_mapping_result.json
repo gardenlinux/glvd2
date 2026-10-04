@@ -7424,16 +7424,16 @@
             "pkg:deb/debian/bouncycastle": 2
         },
         "\"legion of the bouncy castle inc.\":\"bc-fja\"": {
-            "pkg:deb/debian/bouncycastle": 25
+            "pkg:deb/debian/bouncycastle": 29
         },
         "\"legion of the bouncy castle inc.\":\"bc-java\"": {
-            "pkg:deb/debian/bouncycastle": 40
+            "pkg:deb/debian/bouncycastle": 51
         },
         "\"legion of the bouncy castle inc.\":\"bc-lts\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"legion of the bouncy castle inc.\":\"bc-lts-java\"": {
-            "pkg:deb/debian/bouncycastle": 29
+            "pkg:deb/debian/bouncycastle": 33
         },
         "\"legion of the bouncy castle inc.\":\"bcpix-lts\"": {
             "pkg:deb/debian/bouncycastle": 1
@@ -7736,6 +7736,9 @@
         },
         "\"linux kernel\":\"linux kernel\"": {
             "pkg:deb/debian/linux": 11
+        },
+        "\"linux mint\":\"xreader\"": {
+            "pkg:deb/debian/xreader": 2
         },
         "\"linux\":\"acrn\"": {
             "pkg:deb/debian/linux": 3
@@ -8384,8 +8387,7 @@
             "pkg:deb/debian/python-engineio": 2
         },
         "\"miguelgrinberg\":\"python-socketio\"": {
-            "pkg:deb/debian/python-engineio": 1,
-            "pkg:deb/debian/python-socketio": 1
+            "pkg:deb/debian/python-socketio": 2
         },
         "\"mik\":\"cryptx\"": {
             "pkg:deb/debian/libcryptx-perl": 5
@@ -14325,7 +14327,7 @@
             "pkg:deb/debian/golang-github-rabbitmq-amqp091-go": 11
         },
         "\"rabbitmq\":\"rabbitmq-java-client\"": {
-            "pkg:deb/debian/rabbitmq-java-client": 7
+            "pkg:deb/debian/rabbitmq-java-client": 8
         },
         "\"rabbitmq\":\"rabbitmq-server\"": {
             "pkg:deb/debian/rabbitmq-server": 74
@@ -21115,6 +21117,9 @@
         "cpe:2.3:a:r_project:r:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/r-base": 1
         },
+        "cpe:2.3:a:rabbitmq:rabbitmq-java-client:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/rabbitmq-java-client": 1
+        },
         "cpe:2.3:a:rack-cors_project:rack-cors:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-rack-cors": 1
         },
@@ -22108,6 +22113,9 @@
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/linux": 17126
+        },
+        "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/xreader": 2
         },
         "cpe:2.3:o:nixos:nix:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/nix": 1
@@ -26516,61 +26524,61 @@
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcpg-fips\"": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcpkix\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcpkix-fips\"": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 9
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bctls-fips\"": {
             "pkg:deb/debian/bouncycastle": 3
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcutil-fips\"": {
-            "pkg:deb/debian/bouncycastle": 1
+            "pkg:deb/debian/bouncycastle": 2
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcmail-lts8on\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcpg-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 4
+            "pkg:deb/debian/bouncycastle": 5
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcpkix\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcpkix-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 8
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcprov-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 17
+            "pkg:deb/debian/bouncycastle": 18
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bctls-lts8on\"": {
             "pkg:deb/debian/bouncycastle": 2
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java-lts/\":\"bcutil-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 1
+            "pkg:deb/debian/bouncycastle": 2
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcmail\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcmls\"": {
-            "pkg:deb/debian/bouncycastle": 3
+            "pkg:deb/debian/bouncycastle": 5
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcpg\"": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 9
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcpkix\"": {
-            "pkg:deb/debian/bouncycastle": 7
+            "pkg:deb/debian/bouncycastle": 10
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcprov\"": {
-            "pkg:deb/debian/bouncycastle": 20
+            "pkg:deb/debian/bouncycastle": 24
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bctls\"": {
             "pkg:deb/debian/bouncycastle": 2
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"bcutil\"": {
-            "pkg:deb/debian/bouncycastle": 1
+            "pkg:deb/debian/bouncycastle": 2
         },
         "\"https://www.bouncycastle.org/download/bouncy-castle-java/\":\"core\"": {
             "pkg:deb/debian/bouncycastle": 1
@@ -27360,31 +27368,31 @@
             "pkg:deb/debian/bouncycastle": 1
         },
         "pkg:maven/org.bouncycastle/bcmls-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 3
+            "pkg:deb/debian/bouncycastle": 5
         },
         "pkg:maven/org.bouncycastle/bcpg-fips": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 6
         },
         "pkg:maven/org.bouncycastle/bcpg-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 5
+            "pkg:deb/debian/bouncycastle": 8
         },
         "pkg:maven/org.bouncycastle/bcpg-lts8on": {
-            "pkg:deb/debian/bouncycastle": 4
+            "pkg:deb/debian/bouncycastle": 5
         },
         "pkg:maven/org.bouncycastle/bcpkix-fips": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 9
         },
         "pkg:maven/org.bouncycastle/bcpkix-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 9
         },
         "pkg:maven/org.bouncycastle/bcpkix-lts8on": {
-            "pkg:deb/debian/bouncycastle": 6
+            "pkg:deb/debian/bouncycastle": 8
         },
         "pkg:maven/org.bouncycastle/bcprov-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 19
+            "pkg:deb/debian/bouncycastle": 23
         },
         "pkg:maven/org.bouncycastle/bcprov-lts8on": {
-            "pkg:deb/debian/bouncycastle": 16
+            "pkg:deb/debian/bouncycastle": 17
         },
         "pkg:maven/org.bouncycastle/bctls-fips": {
             "pkg:deb/debian/bouncycastle": 3
@@ -27396,13 +27404,13 @@
             "pkg:deb/debian/bouncycastle": 2
         },
         "pkg:maven/org.bouncycastle/bcutil-fips": {
-            "pkg:deb/debian/bouncycastle": 1
+            "pkg:deb/debian/bouncycastle": 2
         },
         "pkg:maven/org.bouncycastle/bcutil-jdk18on": {
-            "pkg:deb/debian/bouncycastle": 1
+            "pkg:deb/debian/bouncycastle": 2
         },
         "pkg:maven/org.bouncycastle/bcutil-lts8on": {
-            "pkg:deb/debian/bouncycastle": 1
+            "pkg:deb/debian/bouncycastle": 2
         },
         "pkg:maven/org.freemarker/freemarker": {
             "pkg:deb/debian/libfreemarker-java": 1

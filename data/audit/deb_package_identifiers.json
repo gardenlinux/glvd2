@@ -24927,8 +24927,7 @@
     },
     "pkg:deb/debian/python-engineio": {
         "VendorProductIDs": [
-            "\"miguelgrinberg\":\"python-engineio\"",
-            "\"miguelgrinberg\":\"python-socketio\""
+            "\"miguelgrinberg\":\"python-engineio\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -26365,7 +26364,9 @@
         "VendorProductIDs": [
             "\"rabbitmq\":\"rabbitmq-java-client\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:rabbitmq:rabbitmq-java-client:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -33270,9 +33271,12 @@
     },
     "pkg:deb/debian/xreader": {
         "VendorProductIDs": [
+            "\"linux mint\":\"xreader\"",
             "\"mate-desktop\":\"atril\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
