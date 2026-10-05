@@ -30270,6 +30270,7 @@
     },
     "pkg:deb/debian/stunnel4": {
         "VendorProductIDs": [
+            "\"mobi-com polska sp. z o.o.\":\"stunnel\"",
             "\"n/a\":\"stunnel\""
         ],
         "CPEs": null,

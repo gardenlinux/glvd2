@@ -8487,7 +8487,8 @@
             "pkg:deb/debian/libjson-xs-perl": 1
         },
         "\"mobi-com polska sp. z o.o.\":\"stunnel\"": {
-            "pkg:deb/debian/stunnel": 2
+            "pkg:deb/debian/stunnel": 2,
+            "pkg:deb/debian/stunnel4": 2
         },
         "\"moby\":\"buildkit\"": {
             "pkg:deb/debian/docker.io": 2,
