@@ -22668,7 +22668,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 92
+            "pkg:deb/debian/keycloak": 95
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -24234,6 +24234,9 @@
         "\"https://cpan.org/modules\":\"Net-Statsd\"": {
             "pkg:deb/debian/libnet-statsd-perl": 1
         },
+        "\"https://cpan.org/modules\":\"Net-Whois-Raw\"": {
+            "pkg:deb/debian/libnet-whois-raw-perl": 1
+        },
         "\"https://cpan.org/modules\":\"Plack\"": {
             "pkg:deb/debian/libplack-perl": 1
         },
@@ -24308,6 +24311,9 @@
         },
         "\"https://cpan.org/modules\":\"XS-Parse-Keyword\"": {
             "pkg:deb/debian/libxs-parse-keyword-perl": 1
+        },
+        "\"https://cpan.org/modules\":\"YAML\"": {
+            "pkg:deb/debian/libyaml-perl": 2
         },
         "\"https://cpan.org/modules\":\"YAML-LibYAML\"": {
             "pkg:deb/debian/libyaml-libyaml-perl": 1
@@ -26850,6 +26856,9 @@
         "pkg:cpan/Net-OAuth": {
             "pkg:deb/debian/libnet-oauth-perl": 4
         },
+        "pkg:cpan/Net-Whois-Raw": {
+            "pkg:deb/debian/libnet-whois-raw-perl": 1
+        },
         "pkg:cpan/Protocol-HTTP2": {
             "pkg:deb/debian/libprotocol-http2-perl": 1
         },
@@ -26867,6 +26876,9 @@
         },
         "pkg:cpan/XS-Parse-Keyword": {
             "pkg:deb/debian/libxs-parse-keyword-perl": 1
+        },
+        "pkg:cpan/YAML": {
+            "pkg:deb/debian/libyaml-perl": 2
         },
         "pkg:cpan/perl": {
             "pkg:deb/debian/perl": 6,

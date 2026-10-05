@@ -13991,6 +13991,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libnet-whois-raw-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Net-Whois-Raw\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Net-Whois-Raw"
+        ]
+    },
     "pkg:deb/debian/libnetwork-ipv4addr-perl": {
         "VendorProductIDs": [
             "\"perl\":\"perl\""
@@ -15361,6 +15371,16 @@
             "\"https://cpan.org/modules\":\"YAML-LibYAML\""
         ],
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libyaml-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"YAML\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/YAML"
+        ]
     },
     "pkg:deb/debian/libyaml-syck-perl": {
         "VendorProductIDs": [
