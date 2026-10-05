@@ -7444,12 +7444,6 @@
         "\"legion of the bouncy castle inc.\":\"bcpkix-fips\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
-        "\"legion of the bouncy castle inc.\":\"bouncy castle for java fips\"": {
-            "pkg:deb/debian/bouncycastle": 1
-        },
-        "\"legion of the bouncy castle inc.\":\"bouncy castle for java lts\"": {
-            "pkg:deb/debian/bouncycastle": 1
-        },
         "\"legion of the bouncy castle\":\"bouncy castle\"": {
             "pkg:deb/debian/bouncycastle": 1
         },
@@ -16309,7 +16303,7 @@
             "pkg:deb/debian/dnsmasq": 1
         },
         "\"the document foundation\":\"libreoffice\"": {
-            "pkg:deb/debian/libreoffice": 41
+            "pkg:deb/debian/libreoffice": 47
         },
         "\"the dovecot project\":\"dovecot\"": {
             "pkg:deb/debian/dovecot": 3
@@ -19808,12 +19802,6 @@
         },
         "cpe:2.3:a:ledgersmb:ledgersmb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ledgersmb": 1
-        },
-        "cpe:2.3:a:legion_of_the_bouncy_castle_inc.:bouncy_castle_for_java_fips:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/bouncycastle": 1
-        },
-        "cpe:2.3:a:legion_of_the_bouncy_castle_inc.:bouncy_castle_for_java_lts:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/bouncycastle": 1
         },
         "cpe:2.3:a:lemonldap-ng:lemonldap-ng:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/lemonldap-ng": 5
@@ -26420,7 +26408,7 @@
             "pkg:deb/debian/jackson-dataformat-smile": 1
         },
         "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bc-fips\"": {
-            "pkg:deb/debian/bouncycastle": 2
+            "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcpkix\"": {
             "pkg:deb/debian/bouncycastle": 1
@@ -26430,9 +26418,6 @@
         },
         "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcprov\"": {
             "pkg:deb/debian/bouncycastle": 2
-        },
-        "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcprov-lts8on\"": {
-            "pkg:deb/debian/bouncycastle": 1
         },
         "\"https://repos.fedorapeople.org/repos/openstack/\":\"openstack-barbican\"": {
             "pkg:deb/debian/barbican": 2

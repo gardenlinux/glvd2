@@ -1845,8 +1845,6 @@
             "\"legion of the bouncy castle inc.\":\"bcpix-lts\"",
             "\"legion of the bouncy castle inc.\":\"bcpkix fips\"",
             "\"legion of the bouncy castle inc.\":\"bcpkix-fips\"",
-            "\"legion of the bouncy castle inc.\":\"bouncy castle for java fips\"",
-            "\"legion of the bouncy castle inc.\":\"bouncy castle for java lts\"",
             "\"legion of the bouncy castle\":\"bouncy castle\"",
             "\"legion of the bouncy castle\":\"bouncycastle tls\"",
             "\"netapp\":\"active_iq_unified_manager\""
@@ -1857,8 +1855,6 @@
             "cpe:2.3:a:bouncycastle:bc_c_.net:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:bouncycastle:bouncy_castle_for_java:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:bouncycastle:legion-of-the-bouncy-castle-java-crytography-api:*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:legion_of_the_bouncy_castle_inc.:bouncy_castle_for_java_fips:*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:legion_of_the_bouncy_castle_inc.:bouncy_castle_for_java_lts:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:netapp:active_iq_unified_manager:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
@@ -1868,7 +1864,6 @@
             "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcpkix\"",
             "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcpkix-fips\"",
             "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcprov\"",
-            "\"https://repo1.maven.org/maven2/org/bouncycastle\":\"bcprov-lts8on\"",
             "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bc-fips\"",
             "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcjmail-fips\"",
             "\"https://www.bouncycastle.org/download/bouncy-castle-java-fips/\":\"bcmail-fips\"",
