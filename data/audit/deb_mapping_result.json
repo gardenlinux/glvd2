@@ -2182,7 +2182,7 @@
             "pkg:deb/debian/ruby-omniauth-auth0": 1
         },
         "\"authlib\":\"authlib\"": {
-            "pkg:deb/debian/python-authlib": 11
+            "pkg:deb/debian/python-authlib": 13
         },
         "\"authlib\":\"joserfc\"": {
             "pkg:deb/debian/joserfc": 6
@@ -3480,6 +3480,9 @@
         },
         "\"docker\":\"cs docker engine\"": {
             "pkg:deb/debian/docker.io": 2
+        },
+        "\"docker\":\"docker buildx\"": {
+            "pkg:deb/debian/docker-buildx": 1
         },
         "\"docker\":\"docker cli\"": {
             "pkg:deb/debian/golang-github-moby-go-archive": 1
@@ -7410,7 +7413,7 @@
             "pkg:deb/debian/luksmeta": 1
         },
         "\"laurent22\":\"joplin\"": {
-            "pkg:deb/debian/joplin": 26
+            "pkg:deb/debian/joplin": 30
         },
         "\"laurent_22\":\"joplin\"": {
             "pkg:deb/debian/joplin": 3
@@ -7773,7 +7776,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17134,
+            "pkg:deb/debian/linux": 17342,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8507,7 +8510,7 @@
         },
         "\"moby\":\"buildkit\"": {
             "pkg:deb/debian/docker.io": 2,
-            "pkg:deb/debian/golang-github-moby-buildkit": 22
+            "pkg:deb/debian/golang-github-moby-buildkit": 25
         },
         "\"moby\":\"docker engine\"": {
             "pkg:deb/debian/docker.io": 1
@@ -15339,7 +15342,7 @@
             "pkg:deb/debian/python-protego": 1
         },
         "\"scrapy\":\"scrapy\"": {
-            "pkg:deb/debian/python-scrapy": 6
+            "pkg:deb/debian/python-scrapy": 7
         },
         "\"scrapy\":\"scrapy/scrapy\"": {
             "pkg:deb/debian/python-scrapy": 6
@@ -16947,7 +16950,7 @@
             "pkg:deb/debian/arm-trusted-firmware": 1
         },
         "\"tryghost\":\"ghost\"": {
-            "pkg:deb/debian/ghost": 69
+            "pkg:deb/debian/ghost": 84
         },
         "\"tryton\":\"sao\"": {
             "pkg:deb/debian/tryton-sao": 2
@@ -17386,7 +17389,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 84
+            "pkg:deb/debian/vllm": 94
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -21753,7 +21756,7 @@
             "pkg:deb/debian/cron": 1
         },
         "cpe:2.3:a:vllm-project:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 6
+            "pkg:deb/debian/vllm": 7
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/vllm": 26
@@ -22134,7 +22137,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17126
+            "pkg:deb/debian/linux": 17334
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -23489,7 +23492,7 @@
             "pkg:deb/debian/squid": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"sssd\"": {
-            "pkg:deb/debian/sssd": 15
+            "pkg:deb/debian/sssd": 32
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"stunnel\"": {
             "pkg:deb/debian/stunnel": 2
@@ -27590,11 +27593,8 @@
         "pkg:otp/eldap": {
             "pkg:deb/debian/erlang": 1
         },
-        "pkg:otp/elixir?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git": {
-            "pkg:deb/debian/elixir-lang": 1
-        },
         "pkg:otp/elixir?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git": {
-            "pkg:deb/debian/elixir-lang": 1
+            "pkg:deb/debian/elixir-lang": 2
         },
         "pkg:otp/erl_interface?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1

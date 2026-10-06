@@ -3907,7 +3907,8 @@
     },
     "pkg:deb/debian/docker-buildx": {
         "VendorProductIDs": [
-            "\"docker\":\"buildx\""
+            "\"docker\":\"buildx\"",
+            "\"docker\":\"docker buildx\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -4527,7 +4528,6 @@
         ],
         "PackageURLs": [
             "pkg:github/elixir-lang/elixir",
-            "pkg:otp/elixir?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git",
             "pkg:otp/elixir?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git"
         ]
     },
