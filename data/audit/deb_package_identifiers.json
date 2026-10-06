@@ -1065,25 +1065,36 @@
     },
     "pkg:deb/debian/arm-trusted-firmware": {
         "VendorProductIDs": [
+            "\"arm\":\"c1 pro\"",
             "\"arm\":\"c1-premium\"",
             "\"arm\":\"c1-pro\"",
             "\"arm\":\"c1-ultra\"",
             "\"arm\":\"cortex-78c\"",
             "\"arm\":\"cortex-a710\"",
+            "\"arm\":\"cortex-a76\"",
+            "\"arm\":\"cortex-a76ae\"",
             "\"arm\":\"cortex-a77\"",
             "\"arm\":\"cortex-a78\"",
             "\"arm\":\"cortex-a78ae\"",
+            "\"arm\":\"cortex-a78c\"",
             "\"arm\":\"cortex-x1\"",
             "\"arm\":\"cortex-x1c\"",
             "\"arm\":\"cortex-x2\"",
             "\"arm\":\"cortex-x3\"",
             "\"arm\":\"cortex-x4\"",
             "\"arm\":\"cortex-x925\"",
+            "\"arm\":\"neoverse n1\"",
             "\"arm\":\"neoverse n2\"",
             "\"arm\":\"neoverse v1\"",
             "\"arm\":\"neoverse v2\"",
             "\"arm\":\"neoverse v3\"",
             "\"arm\":\"neoverse v3ae\"",
+            "\"arm\":\"neoverse-n2\"",
+            "\"arm\":\"neoverse-v2\"",
+            "\"arm\":\"neoverse-v3\"",
+            "\"arm\":\"neoverse-v3ae\"",
+            "\"intel corporation\":\"microprocessors with speculative execution\"",
+            "\"intel corporation\":\"multiple\"",
             "\"renesas\":\"rcar_gen3_firmware\"",
             "\"renesas\":\"rcar_gen3_v2.5\"",
             "\"trustedfirmware\":\"trusted firmware-m\"",
@@ -3742,6 +3753,16 @@
             "\"carltongibson\":\"django-filter\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/django-haystack": {
+        "VendorProductIDs": [
+            "\"n/a\":\"django-haystack\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:django-haystack:django-haystack:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -29375,9 +29396,12 @@
     },
     "pkg:deb/debian/shaarli": {
         "VendorProductIDs": [
+            "\"n/a\":\"shaarli\"",
             "\"shaarli\":\"shaarli\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:shaarli:shaarli:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },

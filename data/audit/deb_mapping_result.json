@@ -1959,8 +1959,11 @@
             "pkg:deb/debian/llvm-toolchain-19": 1,
             "pkg:deb/debian/llvm-toolchain-21": 1
         },
+        "\"arm\":\"c1 pro\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1
+        },
         "\"arm\":\"c1-premium\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 3,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
@@ -1968,7 +1971,7 @@
             "pkg:deb/debian/arm-trusted-firmware": 1
         },
         "\"arm\":\"c1-ultra\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 3,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
@@ -1976,64 +1979,67 @@
             "pkg:deb/debian/arm-trusted-firmware": 1
         },
         "\"arm\":\"cortex-a710\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 3,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-a76\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-a76ae\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-a77\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-a78\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-a78ae\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-a78c\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-x1\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-x1c\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-x2\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 3,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-x3\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 2,
+            "pkg:deb/debian/arm-trusted-firmware": 4,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-x4\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 2,
+            "pkg:deb/debian/arm-trusted-firmware": 4,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"cortex-x925\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 2,
+            "pkg:deb/debian/arm-trusted-firmware": 4,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
@@ -2045,16 +2051,17 @@
             "pkg:deb/debian/mbedtls": 1
         },
         "\"arm\":\"neoverse n1\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"neoverse n2\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"neoverse v1\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 2,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
@@ -2062,14 +2069,26 @@
             "pkg:deb/debian/arm-trusted-firmware": 2
         },
         "\"arm\":\"neoverse v3\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 2,
+            "pkg:deb/debian/arm-trusted-firmware": 3,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"arm\":\"neoverse v3ae\"": {
-            "pkg:deb/debian/arm-trusted-firmware": 2,
+            "pkg:deb/debian/arm-trusted-firmware": 3,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 1
+        },
+        "\"arm\":\"neoverse-n2\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1
+        },
+        "\"arm\":\"neoverse-v2\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1
+        },
+        "\"arm\":\"neoverse-v3\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1
+        },
+        "\"arm\":\"neoverse-v3ae\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1
         },
         "\"arodland\":\"crypt::pbkdf2\"": {
             "pkg:deb/debian/libcrypt-pbkdf2-perl": 3
@@ -4950,7 +4969,7 @@
             "pkg:deb/debian/wget2": 1
         },
         "\"gnupg\":\"gnupg\"": {
-            "pkg:deb/debian/gnupg2": 7
+            "pkg:deb/debian/gnupg2": 8
         },
         "\"gnupg\":\"libgcrypt\"": {
             "pkg:deb/debian/gnupg": 1,
@@ -6472,6 +6491,7 @@
         },
         "\"intel corporation\":\"microprocessors with speculative execution\"": {
             "pkg:deb/debian/amd64-microcode": 1,
+            "pkg:deb/debian/arm-trusted-firmware": 1,
             "pkg:deb/debian/intel-microcode": 1,
             "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/linux-grsec": 1,
@@ -6484,6 +6504,7 @@
             "pkg:deb/debian/xen": 1
         },
         "\"intel corporation\":\"multiple\"": {
+            "pkg:deb/debian/arm-trusted-firmware": 1,
             "pkg:deb/debian/intel-microcode": 5,
             "pkg:deb/debian/linux": 3,
             "pkg:deb/debian/xen": 3
@@ -8486,7 +8507,7 @@
         },
         "\"moby\":\"buildkit\"": {
             "pkg:deb/debian/docker.io": 2,
-            "pkg:deb/debian/golang-github-moby-buildkit": 15
+            "pkg:deb/debian/golang-github-moby-buildkit": 22
         },
         "\"moby\":\"docker engine\"": {
             "pkg:deb/debian/docker.io": 1
@@ -9317,6 +9338,9 @@
         },
         "\"n/a\":\"django rest framework\"": {
             "pkg:deb/debian/djangorestframework": 1
+        },
+        "\"n/a\":\"django-haystack\"": {
+            "pkg:deb/debian/django-haystack": 1
         },
         "\"n/a\":\"djangorestframework\"": {
             "pkg:deb/debian/djangorestframework": 1
@@ -11081,6 +11105,9 @@
         },
         "\"n/a\":\"set-value\"": {
             "pkg:deb/debian/node-set-value": 2
+        },
+        "\"n/a\":\"shaarli\"": {
+            "pkg:deb/debian/shaarli": 1
         },
         "\"n/a\":\"shadowsocks\"": {
             "pkg:deb/debian/shadowsocks-libev": 3
@@ -16920,7 +16947,7 @@
             "pkg:deb/debian/arm-trusted-firmware": 1
         },
         "\"tryghost\":\"ghost\"": {
-            "pkg:deb/debian/ghost": 64
+            "pkg:deb/debian/ghost": 69
         },
         "\"tryton\":\"sao\"": {
             "pkg:deb/debian/tryton-sao": 2
@@ -18002,7 +18029,7 @@
             "pkg:deb/debian/zabbix": 1
         },
         "\"zabbix\":\"zabbix\"": {
-            "pkg:deb/debian/zabbix": 78
+            "pkg:deb/debian/zabbix": 84
         },
         "\"zabbix\":\"zabbix-agent2\"": {
             "pkg:deb/debian/zabbix": 1
@@ -18825,6 +18852,9 @@
         "cpe:2.3:a:distrobox:distrobox:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/distrobox": 1
         },
+        "cpe:2.3:a:django-haystack:django-haystack:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/django-haystack": 1
+        },
         "cpe:2.3:a:django-rest-framework:django_rest_framework:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/djangorestframework": 1,
             "pkg:deb/debian/python-django": 1
@@ -19286,7 +19316,7 @@
             "pkg:deb/debian/wget": 6
         },
         "cpe:2.3:a:gnupg:gnupg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gnupg2": 7
+            "pkg:deb/debian/gnupg2": 8
         },
         "cpe:2.3:a:gnupg:libgcrypt:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libgcrypt20": 2
@@ -21367,6 +21397,9 @@
         "cpe:2.3:a:sftpgo_project:sftpgo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sftpgo": 2
         },
+        "cpe:2.3:a:shaarli:shaarli:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/shaarli": 1
+        },
         "cpe:2.3:a:shadow-maint:shadow-utils:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/shadow": 1
         },
@@ -22287,7 +22320,7 @@
             "pkg:deb/debian/crun": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cups\"": {
-            "pkg:deb/debian/cups": 2
+            "pkg:deb/debian/cups": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cups-filters\"": {
             "pkg:deb/debian/cups-filters": 1
