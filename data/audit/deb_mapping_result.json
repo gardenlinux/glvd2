@@ -23404,7 +23404,7 @@
             "pkg:deb/debian/resteasy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rh-sso7-keycloak\"": {
-            "pkg:deb/debian/keycloak": 26
+            "pkg:deb/debian/keycloak": 31
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rhoso-openvswitch\"": {
             "pkg:deb/debian/openvswitch": 1
