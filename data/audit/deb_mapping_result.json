@@ -7816,7 +7816,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17342,
+            "pkg:deb/debian/linux": 17344,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -22208,7 +22208,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17334
+            "pkg:deb/debian/linux": 17336
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
