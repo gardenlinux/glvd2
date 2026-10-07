@@ -1498,8 +1498,12 @@
             "\"apache software foundation\":\"apache xalan-j\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.bcel:bcel\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/org.apache.bcel/bcel"
+        ]
     },
     "pkg:deb/debian/beep": {
         "VendorProductIDs": [
@@ -6297,7 +6301,9 @@
             "cpe:2.3:a:ghostscript:ghostscript:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript-chinese\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript-fonts\""
         ],
         "PackageURLs": null
     },
@@ -16065,6 +16071,7 @@
             "cpe:2.3:a:apache:log4net:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://nuget.org/packages\":\"log4net\"",
             "\"https://www.nuget.org/packages\":\"log4net\""
         ],
         "PackageURLs": [
@@ -26624,6 +26631,22 @@
     "pkg:deb/debian/rawtherapee": {
         "VendorProductIDs": [
             "\"rawtherapee\":\"rawtherapee\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/rccl": {
+        "VendorProductIDs": [
+            "\"amd\":\"amd instinct™ mi210\"",
+            "\"amd\":\"amd instinct™ mi250\"",
+            "\"amd\":\"amd instinct™ mi250x\"",
+            "\"amd\":\"amd instinct™ mi300a\"",
+            "\"amd\":\"amd instinct™ mi300x\"",
+            "\"amd\":\"amd instinct™ mi308x\"",
+            "\"amd\":\"amd instinct™ mi325x\"",
+            "\"amd\":\"amd instinct™ mi350x\"",
+            "\"amd\":\"amd instinct™ mi355x\""
         ],
         "CPEs": null,
         "PackageIDs": null,
