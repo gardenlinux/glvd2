@@ -1118,6 +1118,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/aspell": {
+        "VendorProductIDs": [
+            "\"gnu\":\"aspell\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:gnu:aspell:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/assertj-core": {
         "VendorProductIDs": [
             "\"assertj\":\"assertj\""
@@ -13777,6 +13787,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libmikmod": {
+        "VendorProductIDs": [
+            "\"sezero\":\"libmikmod\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:raphael_assenat:libmikmod:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/sezero/mikmod"
+        ]
+    },
     "pkg:deb/debian/libmina-sshd-java": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache mina sshd\""
@@ -16113,6 +16135,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/lrzsz": {
+        "VendorProductIDs": [
+            "\"uwe ohse\":\"lrzsz\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:lrzsz_project:lrzsz:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/lua-http": {
         "VendorProductIDs": [
             "\"daurnimator\":\"lua-http\""
@@ -16925,7 +16957,9 @@
             "\"misp\":\"sachertortephp\""
         ],
         "CPEs": [
-            "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:misp:sachertortephp_\\(cakephp-based_misp_application\\):*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -18981,6 +19015,14 @@
     "pkg:deb/debian/node-http-signature": {
         "VendorProductIDs": [
             "\"hackerone\":\"http-signature node module\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/node-i18next-http-backend": {
+        "VendorProductIDs": [
+            "\"i18next\":\"i18next-http-backend\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -26398,6 +26440,7 @@
     },
     "pkg:deb/debian/rabbitmq-java-client": {
         "VendorProductIDs": [
+            "\"com.rabbitmq\":\"amqp-client\"",
             "\"rabbitmq\":\"rabbitmq-java-client\""
         ],
         "CPEs": [
@@ -28817,6 +28860,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/rust-russh-cryptovec": {
+        "VendorProductIDs": [
+            "\"eugeny\":\"russh\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/rust-rustix": {
         "VendorProductIDs": [
             "\"bytecodealliance\":\"rustix\""
@@ -29701,20 +29752,26 @@
             "\"smarty3\":\"smarty3\""
         ],
         "CPEs": [
+            "cpe:2.3:a:newmediacompany:smarty:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:smarty-php:smarty:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/smarty/smarty"
+        ]
     },
     "pkg:deb/debian/smarty4": {
         "VendorProductIDs": [
             "\"smarty-php\":\"smarty\""
         ],
         "CPEs": [
+            "cpe:2.3:a:newmediacompany:smarty:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:smarty-php:smarty:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/smarty/smarty"
+        ]
     },
     "pkg:deb/debian/smb4k": {
         "VendorProductIDs": [
@@ -30797,6 +30854,16 @@
         ],
         "CPEs": [
             "cpe:2.3:a:textpattern:textpattern:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/tftp-hpa": {
+        "VendorProductIDs": [
+            "\"h. peter anvin\":\"tftp-hpa\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:tftp-hpa_project:tftp-hpa:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -32782,6 +32849,7 @@
             "\"wordpress.org\":\"wordpress\""
         ],
         "CPEs": [
+            "cpe:2.3:a:automattic:wordpress:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:wordpress:wordpress-develop:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*"
         ],

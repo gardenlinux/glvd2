@@ -2194,7 +2194,7 @@
             "pkg:deb/debian/autojump": 1
         },
         "\"automattic\":\"wordpress\"": {
-            "pkg:deb/debian/wordpress": 3
+            "pkg:deb/debian/wordpress": 4
         },
         "\"avahi\":\"avahi\"": {
             "pkg:deb/debian/avahi": 6
@@ -3059,6 +3059,9 @@
         "\"collerek\":\"ormar\"": {
             "pkg:deb/debian/ormar": 1
         },
+        "\"com.rabbitmq\":\"amqp-client\"": {
+            "pkg:deb/debian/rabbitmq-java-client": 3
+        },
         "\"comex\":\"shlex\"": {
             "pkg:deb/debian/rust-shlex": 1
         },
@@ -3443,7 +3446,7 @@
             "pkg:deb/debian/python-daphne": 2
         },
         "\"djangoproject\":\"django\"": {
-            "pkg:deb/debian/python-django": 52
+            "pkg:deb/debian/python-django": 56
         },
         "\"djvunet\":\"djvulibre\"": {
             "pkg:deb/debian/djvulibre": 1
@@ -3945,7 +3948,8 @@
             "pkg:deb/debian/ettercap": 1
         },
         "\"eugeny\":\"russh\"": {
-            "pkg:deb/debian/rust-russh": 19
+            "pkg:deb/debian/rust-russh": 19,
+            "pkg:deb/debian/rust-russh-cryptovec": 1
         },
         "\"eventlet\":\"eventlet\"": {
             "pkg:deb/debian/dnspython": 1,
@@ -4853,6 +4857,9 @@
         },
         "\"gnu wget\":\"wget\"": {
             "pkg:deb/debian/wget": 1
+        },
+        "\"gnu\":\"aspell\"": {
+            "pkg:deb/debian/aspell": 3
         },
         "\"gnu\":\"binutils\"": {
             "pkg:deb/debian/binutils": 43
@@ -5934,6 +5941,9 @@
             "pkg:deb/debian/php-guzzlehttp-psr7": 6,
             "pkg:deb/debian/php-nyholm-psr7": 1
         },
+        "\"h. peter anvin\":\"tftp-hpa\"": {
+            "pkg:deb/debian/tftp-hpa": 1
+        },
         "\"h2database\":\"h2\"": {
             "pkg:deb/debian/h2database": 1
         },
@@ -6367,6 +6377,9 @@
         },
         "\"hyprland\":\"hyprland\"": {
             "pkg:deb/debian/hyprland": 1
+        },
+        "\"i18next\":\"i18next-http-backend\"": {
+            "pkg:deb/debian/node-i18next-http-backend": 1
         },
         "\"ibm\":\"aix\"": {
             "pkg:deb/debian/linux": 1
@@ -7353,7 +7366,7 @@
             "pkg:deb/debian/cairosvg": 3
         },
         "\"kozea\":\"weasyprint\"": {
-            "pkg:deb/debian/weasyprint": 4
+            "pkg:deb/debian/weasyprint": 5
         },
         "\"kpdecker\":\"jsdiff\"": {
             "pkg:deb/debian/node-diff": 1
@@ -8451,13 +8464,13 @@
             "pkg:deb/debian/ocaml-cohttp": 1
         },
         "\"misp\":\"misp\"": {
-            "pkg:deb/debian/misp": 142
+            "pkg:deb/debian/misp": 143
         },
         "\"misp\":\"misp-stix\"": {
             "pkg:deb/debian/misp": 4
         },
         "\"misp\":\"sachertortephp\"": {
-            "pkg:deb/debian/misp": 1
+            "pkg:deb/debian/misp": 2
         },
         "\"mit\":\"kerberos 5\"": {
             "pkg:deb/debian/krb5": 3
@@ -11583,7 +11596,7 @@
             "pkg:deb/debian/netbox": 18
         },
         "\"netbox-community\":\"netbox\"": {
-            "pkg:deb/debian/netbox": 3
+            "pkg:deb/debian/netbox": 4
         },
         "\"netdata\":\"netdata\"": {
             "pkg:deb/debian/netdata": 11
@@ -14352,7 +14365,7 @@
             "pkg:deb/debian/golang-github-rabbitmq-amqp091-go": 11
         },
         "\"rabbitmq\":\"rabbitmq-java-client\"": {
-            "pkg:deb/debian/rabbitmq-java-client": 8
+            "pkg:deb/debian/rabbitmq-java-client": 11
         },
         "\"rabbitmq\":\"rabbitmq-server\"": {
             "pkg:deb/debian/rabbitmq-server": 74
@@ -15400,6 +15413,9 @@
         "\"setasign\":\"fpdi\"": {
             "pkg:deb/debian/icingaweb2-module-pdfexport": 1
         },
+        "\"sezero\":\"libmikmod\"": {
+            "pkg:deb/debian/libmikmod": 3
+        },
         "\"sfackler\":\"openssl\"": {
             "pkg:deb/debian/rust-openssl": 1
         },
@@ -15665,8 +15681,8 @@
         },
         "\"smarty-php\":\"smarty\"": {
             "pkg:deb/debian/smarty": 1,
-            "pkg:deb/debian/smarty3": 8,
-            "pkg:deb/debian/smarty4": 8
+            "pkg:deb/debian/smarty3": 9,
+            "pkg:deb/debian/smarty4": 9
         },
         "\"smarty3\":\"smarty3\"": {
             "pkg:deb/debian/smarty": 1,
@@ -17273,6 +17289,9 @@
         "\"uutils\":\"coreutils\"": {
             "pkg:deb/debian/rust-coreutils": 45
         },
+        "\"uwe ohse\":\"lrzsz\"": {
+            "pkg:deb/debian/lrzsz": 3
+        },
         "\"uzbl\":\"uzbl\"": {
             "pkg:deb/debian/uzbl": 1
         },
@@ -17389,7 +17408,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 94
+            "pkg:deb/debian/vllm": 95
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -18540,6 +18559,9 @@
         "cpe:2.3:a:autocaliweb:autocaliweb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/calibre-web": 2
         },
+        "cpe:2.3:a:automattic:wordpress:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/wordpress": 1
+        },
         "cpe:2.3:a:axios:axios:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-axios": 12
         },
@@ -19256,6 +19278,9 @@
         },
         "cpe:2.3:a:gnome_maps:gnome_maps:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gnome-maps": 1
+        },
+        "cpe:2.3:a:gnu:aspell:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/aspell": 2
         },
         "cpe:2.3:a:gnu:binutils:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/binutils": 19
@@ -19979,6 +20004,9 @@
             "pkg:deb/debian/llvm-toolchain-21": 2,
             "pkg:deb/debian/llvm-toolchain-22": 2
         },
+        "cpe:2.3:a:lrzsz_project:lrzsz:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/lrzsz": 3
+        },
         "cpe:2.3:a:luben:zstd-jni:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/zstd-jni-java": 1
         },
@@ -20101,6 +20129,12 @@
         },
         "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/misp": 32
+        },
+        "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/misp": 1
+        },
+        "cpe:2.3:a:misp:sachertortephp_\\(cakephp-based_misp_application\\):*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:mit:kerberos_5:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/krb5": 4
@@ -20312,6 +20346,10 @@
         },
         "cpe:2.3:a:newlib_project:newlib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/newlib": 1
+        },
+        "cpe:2.3:a:newmediacompany:smarty:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/smarty3": 1,
+            "pkg:deb/debian/smarty4": 1
         },
         "cpe:2.3:a:newplane:open5gs:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/open5gs": 2
@@ -21166,6 +21204,9 @@
         "cpe:2.3:a:randombit:botan:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/botan": 3
         },
+        "cpe:2.3:a:raphael_assenat:libmikmod:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libmikmod": 3
+        },
         "cpe:2.3:a:rarlab:unrar:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rar": 1,
             "pkg:deb/debian/unrar-nonfree": 1
@@ -21566,6 +21607,9 @@
         "cpe:2.3:a:textpattern:textpattern:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/textpattern": 6
         },
+        "cpe:2.3:a:tftp-hpa_project:tftp-hpa:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/tftp-hpa": 1
+        },
         "cpe:2.3:a:the_biosig_project:libbiosig:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/biosig": 8
         },
@@ -21756,7 +21800,7 @@
             "pkg:deb/debian/cron": 1
         },
         "cpe:2.3:a:vllm-project:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 7
+            "pkg:deb/debian/vllm": 8
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/vllm": 26
@@ -22692,7 +22736,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 95
+            "pkg:deb/debian/keycloak": 96
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -23492,7 +23536,7 @@
             "pkg:deb/debian/squid": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"sssd\"": {
-            "pkg:deb/debian/sssd": 32
+            "pkg:deb/debian/sssd": 33
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"stunnel\"": {
             "pkg:deb/debian/stunnel": 2
@@ -23667,7 +23711,7 @@
             "pkg:deb/debian/undertow": 3
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jbcs-httpd24-mod_proxy_cluster\"": {
-            "pkg:deb/debian/libapache2-mod-cluster": 2
+            "pkg:deb/debian/libapache2-mod-cluster": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7-eap74-els-openjdk17-openshift-rhel8/jboss-eap-7-eap74-els-openjdk17-openshift-rhel8\"": {
             "pkg:deb/debian/wildfly": 1
@@ -23742,7 +23786,7 @@
             "pkg:deb/debian/libxml2": 6
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"mod_proxy_cluster\"": {
-            "pkg:deb/debian/libapache2-mod-cluster": 2
+            "pkg:deb/debian/libapache2-mod-cluster": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"netty-codec-haproxy\"": {
             "pkg:deb/debian/netty": 1
@@ -25922,7 +25966,7 @@
             "pkg:deb/debian/apache-arrow": 1
         },
         "\"https://pypi.org/project/Django/\":\"django\"": {
-            "pkg:deb/debian/python-django": 32
+            "pkg:deb/debian/python-django": 36
         },
         "\"https://pypi.org/project/apache-airflow-providers-fab/\":\"apache-airflow-providers-fab\"": {
             "pkg:deb/debian/airflow": 1
@@ -26817,6 +26861,10 @@
         "pkg:composer/kanboard/kanboard": {
             "pkg:deb/debian/kanboard": 1
         },
+        "pkg:composer/smarty/smarty": {
+            "pkg:deb/debian/smarty3": 1,
+            "pkg:deb/debian/smarty4": 1
+        },
         "pkg:composer/snipe/snipe-it": {
             "pkg:deb/debian/snipe-it": 1
         },
@@ -27094,7 +27142,7 @@
             "pkg:deb/debian/net-snmp": 1
         },
         "pkg:github/netbox-community/netbox": {
-            "pkg:deb/debian/netbox": 2
+            "pkg:deb/debian/netbox": 3
         },
         "pkg:github/netdata/netdata": {
             "pkg:deb/debian/netdata": 1
@@ -27172,6 +27220,9 @@
         },
         "pkg:github/seaweedfs/seaweedfs": {
             "pkg:deb/debian/seaweedfs": 2
+        },
+        "pkg:github/sezero/mikmod": {
+            "pkg:deb/debian/libmikmod": 3
         },
         "pkg:github/strongswan/strongswan": {
             "pkg:deb/debian/strongswan": 1
