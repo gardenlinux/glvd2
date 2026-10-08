@@ -19898,6 +19898,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/node-traverse": {
+        "VendorProductIDs": [
+            "\"ljharb\":\"traverse\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://www.npmjs.com\":\"traverse\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/node-turndown": {
         "VendorProductIDs": [
             "\"mixmark-io\":\"turndown\""
@@ -30810,13 +30820,17 @@
     },
     "pkg:deb/debian/telegram-desktop": {
         "VendorProductIDs": [
-            "\"telegram\":\"desktop\""
+            "\"telegram\":\"desktop\"",
+            "\"telegram\":\"telegram desktop\""
         ],
         "CPEs": [
-            "cpe:2.3:a:telegram:desktop:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:telegram:desktop:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:telegram:telegram_desktop:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/telegramdesktop/tdesktop"
+        ]
     },
     "pkg:deb/debian/templated-dictionary": {
         "VendorProductIDs": [

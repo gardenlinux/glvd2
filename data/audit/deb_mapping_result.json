@@ -7888,6 +7888,9 @@
         "\"ljharb\":\"shell-quote\"": {
             "pkg:deb/debian/node-shell-quote": 1
         },
+        "\"ljharb\":\"traverse\"": {
+            "pkg:deb/debian/node-traverse": 1
+        },
         "\"llama.cpp\":\"llama.cpp\"": {
             "pkg:deb/debian/llama.cpp": 5
         },
@@ -16319,6 +16322,9 @@
         "\"telegram\":\"desktop\"": {
             "pkg:deb/debian/telegram-desktop": 1
         },
+        "\"telegram\":\"telegram desktop\"": {
+            "pkg:deb/debian/telegram-desktop": 2
+        },
         "\"teluu\":\"pjsip\"": {
             "pkg:deb/debian/asterisk": 5,
             "pkg:deb/debian/pjproject": 5,
@@ -21637,6 +21643,9 @@
         "cpe:2.3:a:telegram:desktop:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/telegram-desktop": 1
         },
+        "cpe:2.3:a:telegram:telegram_desktop:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/telegram-desktop": 2
+        },
         "cpe:2.3:a:tencent:rapidjson:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rapidjson": 1
         },
@@ -23487,7 +23496,7 @@
             "pkg:deb/debian/redis": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"resteasy\"": {
-            "pkg:deb/debian/resteasy": 1
+            "pkg:deb/debian/resteasy": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"resteasy-core\"": {
             "pkg:deb/debian/resteasy": 3
@@ -26772,6 +26781,9 @@
         "\"https://www.npmjs.com\":\"thrift\"": {
             "pkg:deb/debian/thrift": 1
         },
+        "\"https://www.npmjs.com\":\"traverse\"": {
+            "pkg:deb/debian/node-traverse": 1
+        },
         "\"https://www.npmjs.com/package\":\"shell-quote\"": {
             "pkg:deb/debian/node-shell-quote": 1
         },
@@ -27301,6 +27313,9 @@
         },
         "pkg:github/svarshavchik/courier": {
             "pkg:deb/debian/courier": 1
+        },
+        "pkg:github/telegramdesktop/tdesktop": {
+            "pkg:deb/debian/telegram-desktop": 1
         },
         "pkg:github/tiny-http/tiny-http": {
             "pkg:deb/debian/rust-tiny-http": 2
