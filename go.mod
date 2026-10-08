@@ -4,6 +4,7 @@ go 1.26
 
 require (
 	github.com/CycloneDX/cyclonedx-go v0.11.0
+	github.com/git-pkgs/vers v0.7.2
 	github.com/golang-migrate/migrate/v4 v4.19.1
 	github.com/google/uuid v1.6.0
 	github.com/package-url/packageurl-go v0.1.6
