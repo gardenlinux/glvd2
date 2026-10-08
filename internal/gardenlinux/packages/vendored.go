@@ -35,7 +35,7 @@ func indexByRef(components []classifiedComponent) map[string]classifiedComponent
 // debTargetOf resolves the deb-source identity Package (Source + Namespace) for a deb component,
 // reusing the inventory source-extraction path.
 func debTargetOf(cc classifiedComponent) (Package, error) {
-	source, err := extractSource(cc.Component, cc.PURL)
+	source, _, err := extractSource(cc.Component, cc.PURL)
 	if err != nil {
 		return Package{}, fmt.Errorf("extracting source: %w", err)
 	}

@@ -3,12 +3,11 @@ package inventory_test
 import (
 	"context"
 	"errors"
-	"strconv"
-	"strings"
 	"testing"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/gltest"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
@@ -25,73 +24,6 @@ func contains(t *testing.T, set inventory.Set, canonicalPURL string) bool {
 	require.NoError(t, err)
 
 	return ok
-}
-
-// release builds a GLRD release from a version string
-// like "1877.3" (legacy) or "2150.8.1" (semver) and the given flavors.
-func release(t *testing.T, ver string, flavors ...string) glrd.Release {
-	t.Helper()
-
-	parts := strings.Split(ver, ".")
-	require.GreaterOrEqual(t, len(parts), 2, "version needs at least major.minor")
-	require.LessOrEqual(t, len(parts), 3, "version has at most major.minor.patch")
-
-	nums := make([]int, len(parts))
-	for i, p := range parts {
-		n, err := strconv.Atoi(p)
-		require.NoErrorf(t, err, "parsing version part %q", p)
-		nums[i] = n
-	}
-
-	v := glrd.Version{Major: nums[0], Minor: nums[1]}
-	if len(parts) == 3 {
-		v.Patch = nums[2]
-	}
-
-	return glrd.Release{Name: ver, Version: v, Flavors: flavors}
-}
-
-// bomFromPackages builds a CycloneDX BOM whose deb components should round-trip through
-// the real conversion back to the given packages.
-func bomFromPackages(pkgs []packages.Package) *cdx.BOM {
-	components := make([]cdx.Component, 0, len(pkgs))
-	for _, pkg := range pkgs {
-		components = append(components, debComponent(pkg))
-	}
-
-	return &cdx.BOM{Components: &components}
-}
-
-// debComponent builds a deb component whose PURL encodes name, version,
-// namespace, architecture, and (when it differs from the name) the source.
-func debComponent(pkg packages.Package) cdx.Component {
-	namespace := pkg.Namespace
-	if namespace == "" {
-		namespace = purl.NamespaceDebian
-	}
-	pkgVersion := pkg.Version
-	if pkgVersion == "" {
-		pkgVersion = "1.0"
-	}
-
-	purlStr := "pkg:deb/" + namespace + "/" + pkg.Name + "@" + pkgVersion
-	qualifiers := make([]string, 0, 2)
-	if pkg.Architecture != "" {
-		qualifiers = append(qualifiers, "arch="+pkg.Architecture)
-	}
-	if pkg.Source != "" && pkg.Source != pkg.Name {
-		qualifiers = append(qualifiers, "upstream="+pkg.Source)
-	}
-	if len(qualifiers) > 0 {
-		purlStr += "?" + strings.Join(qualifiers, "&")
-	}
-
-	return cdx.Component{
-		Type:       cdx.ComponentTypeLibrary,
-		Name:       pkg.Name,
-		Version:    pkgVersion,
-		PackageURL: purlStr,
-	}
 }
 
 func TestAccumulator_TwoInventoryItems(t *testing.T) {
@@ -115,7 +47,7 @@ func TestAccumulator_TwoInventoryItems(t *testing.T) {
 	}
 
 	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
-	require.NoError(t, s.AddSBOM(bomFromPackages(sbomPkgs)))
+	require.NoError(t, s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(sbomPkgs...)))
 
 	set, err := s.Result()
 	require.NoError(t, err)
@@ -134,7 +66,10 @@ func TestContains_ContainsWithInvalidPURLReturnsError(t *testing.T) {
 	t.Parallel()
 
 	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
-	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(packages.Package{Name: "libc6", Source: "glibc"})),
+	)
 	set, err := s.Result()
 	require.NoError(t, err)
 
@@ -152,7 +87,7 @@ func TestAccumulator_HardFailsOnSBOMConversionError(t *testing.T) {
 	components := []cdx.Component{{Type: cdx.ComponentTypeLibrary, Name: "mystery"}}
 
 	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
-	err := s.AddSBOM(&cdx.BOM{Components: &components})
+	err := s.AddSBOM(glrd.Release{}, "", &cdx.BOM{Components: &components})
 	require.Error(t, err)
 }
 
@@ -174,7 +109,7 @@ func TestAccumulator_FallsBackToInReleaseOnMissingSBOMSet(t *testing.T) {
 				return inRelPkgs, nil
 			}),
 	)
-	require.NoError(t, s.MissingSBOMSet(t.Context(), release(t, "1877.3", "metal-amd64")))
+	require.NoError(t, s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.3", "metal-amd64")))
 
 	set, err := s.Result()
 	require.NoError(t, err)
@@ -188,9 +123,18 @@ func TestAccumulator_UnionsAcrossSBOMs(t *testing.T) {
 	t.Parallel()
 
 	s := inventory.NewAccumulator(inventory.WithMinPURLs(1))
-	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
-	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libssl3", Source: "openssl"}})))
-	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}}))) // duplicate
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(packages.Package{Name: "libc6", Source: "glibc"})),
+	)
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(packages.Package{Name: "libssl3", Source: "openssl"})),
+	)
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(packages.Package{Name: "libc6", Source: "glibc"})),
+	) // duplicate
 
 	set, err := s.Result()
 	require.NoError(t, err)
@@ -212,8 +156,11 @@ func TestAccumulator_MixedSBOMAndInRelease(t *testing.T) {
 				return []packages.Package{{Name: "bash", Source: "bash"}}, nil
 			}),
 	)
-	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
-	require.NoError(t, s.MissingSBOMSet(t.Context(), release(t, "1877.1", "metal-amd64")))
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(packages.Package{Name: "libc6", Source: "glibc"})),
+	)
+	require.NoError(t, s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.1", "metal-amd64")))
 
 	set, err := s.Result()
 	require.NoError(t, err)
@@ -235,7 +182,7 @@ func TestAccumulator_HardFailsOnEmptySource(t *testing.T) {
 				return []packages.Package{{Name: "libc6", Source: ""}}, nil
 			}),
 	)
-	err := s.MissingSBOMSet(t.Context(), release(t, "1877.0", "metal-amd64"))
+	err := s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.0", "metal-amd64"))
 	require.ErrorIs(t, err, inventory.ErrEmptySource)
 }
 
@@ -249,7 +196,7 @@ func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 				return nil, fetchErr
 			}),
 	)
-	err := s.MissingSBOMSet(t.Context(), release(t, "1877.0", "metal-amd64"))
+	err := s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.0", "metal-amd64"))
 	require.ErrorIs(t, err, fetchErr)
 }
 
@@ -257,7 +204,10 @@ func TestAccumulator_HardFailsBelowThreshold(t *testing.T) {
 	t.Parallel()
 
 	s := inventory.NewAccumulator(inventory.WithMinPURLs(100))
-	require.NoError(t, s.AddSBOM(bomFromPackages([]packages.Package{{Name: "libc6", Source: "glibc"}})))
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", gltest.BOMFromPackages(packages.Package{Name: "libc6", Source: "glibc"})),
+	)
 
 	_, err := s.Result()
 	require.ErrorIs(t, err, inventory.ErrBelowThreshold)

@@ -37,8 +37,9 @@ func NewAccumulator() *Accumulator {
 // AddSBOM folds a release-flavor SBOM's vendored-inclusion rules into the union.
 // Each vendored group (one deb source and the components it ships) becomes a
 // single rule mapping the shipped components' identifiers to the deb-source identity PURL.
+// The release and flavor parameters are unused: the vendormap unions all releases and flavors.
 // A derivation error is a hard failure.
-func (a *Accumulator) AddSBOM(bom *cdx.BOM) error {
+func (a *Accumulator) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
 	groups, err := packages.VendoredFromSBOM(bom)
 	if err != nil {
 		return fmt.Errorf("deriving vendored components: %w", err)

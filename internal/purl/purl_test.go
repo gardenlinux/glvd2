@@ -111,6 +111,57 @@ func TestCanonicalize(t *testing.T) {
 	}
 }
 
+func TestCanonicalizeVersioned(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		raw     string
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "keeps version, strips qualifiers",
+			raw:  "pkg:deb/debian/curl@7.88.1?arch=amd64",
+			want: "pkg:deb/debian/curl@7.88.1",
+		},
+		{
+			name: "keeps version, strips subpath",
+			raw:  "pkg:deb/gardenlinux/curl@1.2.3#usr/bin/curl",
+			want: "pkg:deb/gardenlinux/curl@1.2.3",
+		},
+		{
+			name: "defaults namespace to debian",
+			raw:  "pkg:deb/curl@7.88.1",
+			want: "pkg:deb/debian/curl@7.88.1",
+		},
+		{
+			name:    "missing version is an error",
+			raw:     "pkg:deb/debian/curl",
+			wantErr: true,
+		},
+		{
+			name:    "unparseable PURL is an error",
+			raw:     "not-a-purl",
+			wantErr: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := purl.CanonicalizeVersioned(tc.raw)
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
 func TestCanonicalize_Idempotent(t *testing.T) {
 	t.Parallel()
 

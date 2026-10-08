@@ -31,7 +31,7 @@ var ErrEmptySource = errors.New("empty source name")
 // Set is a set of canonical source-name identity PURLs.
 // The zero value is not usable; construct it via an Accumulator.
 type Set struct {
-	purls map[string]struct{}
+	purls purl.VariantMap[struct{}]
 }
 
 // Contains reports whether the identity PURL is in the set. It checks the PURL
@@ -39,18 +39,9 @@ type Set struct {
 // one namespace still matches a query using the other.
 // It returns an error if canonicalPURL cannot be parsed into its namespace variants.
 func (s Set) Contains(canonicalPURL string) (bool, error) {
-	variants, err := purl.NamespaceVariants(canonicalPURL)
-	if err != nil {
-		return false, fmt.Errorf("deriving namespace variants for %q: %w", canonicalPURL, err)
-	}
+	_, ok, err := s.purls.Get(canonicalPURL)
 
-	for _, v := range variants {
-		if _, ok := s.purls[v]; ok {
-			return true, nil
-		}
-	}
-
-	return false, nil
+	return ok, err
 }
 
 // Len returns the number of distinct identity PURLs in the set.
@@ -78,7 +69,7 @@ type inReleaseFetchFunc func(ctx context.Context, release version.GardenLinuxRel
 type Accumulator struct {
 	minPURLs       int
 	fetchInRelease inReleaseFetchFunc
-	purls          map[string]struct{}
+	purls          purl.VariantMap[struct{}]
 }
 
 var _ sbom.Consumer = (*Accumulator)(nil)
@@ -103,7 +94,7 @@ func NewAccumulator(opts ...Option) *Accumulator {
 	a := &Accumulator{
 		minPURLs:       defaultMinPURLs,
 		fetchInRelease: packages.GetPackageListsFromInRelease,
-		purls:          make(map[string]struct{}),
+		purls:          make(purl.VariantMap[struct{}]),
 	}
 	for _, opt := range opts {
 		opt(a)
@@ -113,8 +104,9 @@ func NewAccumulator(opts ...Option) *Accumulator {
 }
 
 // AddSBOM folds a release-flavor SBOM's deb packages into the set.
+// The release and flavor parameters are unused: the inventory unions all releases and flavors.
 // A conversion error is a hard failure: the inventory gates CVEs and must be trustworthy.
-func (a *Accumulator) AddSBOM(bom *cdx.BOM) error {
+func (a *Accumulator) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
 	pkgs, err := packages.PackageListFromSBOM(bom)
 	if err != nil {
 		return fmt.Errorf("converting SBOM: %w", err)
@@ -130,7 +122,7 @@ func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) 
 		"falling back to the release InRelease file",
 		slog.String("release", release.Name))
 
-	pkgs, err := a.fetchInRelease(ctx, releaseSuite(release))
+	pkgs, err := a.fetchInRelease(ctx, version.ReleaseSuite(release))
 	if err != nil {
 		return fmt.Errorf("fetching InRelease for release %s: %w", release.Name, err)
 	}
@@ -168,11 +160,4 @@ func (a *Accumulator) addPackages(pkgs []packages.Package) error {
 	}
 
 	return nil
-}
-
-// releaseSuite converts a GLRD release into the version.GardenLinuxRelease used
-// to address package pool. The suite name mirrors the release's version scheme:
-// "major.minor" for legacy releases and "major.minor.patch" for semver releases.
-func releaseSuite(release glrd.Release) version.GardenLinuxRelease {
-	return version.MakeGardenLinuxRelease(release.Version)
 }

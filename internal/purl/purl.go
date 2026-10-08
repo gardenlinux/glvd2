@@ -48,6 +48,22 @@ func Canonicalize(raw string) (string, error) {
 	return canon.ToString(), nil
 }
 
+// CanonicalizeVersioned behaves like [Canonicalize] but keeps the version:
+// it returns the normalized type, namespace, name and version with qualifiers and subpath stripped.
+func CanonicalizeVersioned(raw string) (string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return "", err
+	}
+
+	if p.Version == "" {
+		return "", fmt.Errorf("versioned PURL %q has no version", raw)
+	}
+
+	canon := packageurl.NewPackageURL(p.Type, p.Namespace, p.Name, p.Version, nil, "")
+	return canon.ToString(), nil
+}
+
 // NamespaceOf returns the namespace of the PURL as parsed, applying the
 // deb convention that an empty namespace means debian if type is debian.
 // It returns an error if the PURL cannot be parsed.

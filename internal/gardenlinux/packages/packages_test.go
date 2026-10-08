@@ -240,26 +240,51 @@ Version: 2.31-13
 Architecture: amd64
 
 Package: libc-bin
-Source: glibc (2.31-13)
+Source: glibc (2.31-13-test)
 Version: 2.31-13
 Architecture: amd64
 
 Package: openssl
 Version: 3.0.11-1
 Architecture: amd64
+
+Package: libc-dev
+Source: glibc()
+Version: 2.31-13
+Architecture: amd64
 `
 
 	pkgs, err := packages.ParsePackageListInRelease(content)
 	require.NoError(t, err)
-	require.Len(t, pkgs, 3)
+	require.Len(t, pkgs, 4)
 
+	assert.Equal(t, "libc6", pkgs[0].Name)
+	assert.Equal(t, "2.31-13", pkgs[0].Version)
 	// Source: field present.
 	assert.Equal(t, "glibc", pkgs[0].Source)
-	// Source: field present with a version suffix that must be stripped.
+	// Binary and source versions match when no source version is present.
+	assert.Equal(t, "2.31-13", pkgs[0].SourceVersion)
+
+	assert.Equal(t, "libc-bin", pkgs[1].Name)
+	assert.Equal(t, "2.31-13", pkgs[1].Version)
+	// Source: field present with a version suffix that must be captured as the source version.
 	assert.Equal(t, "glibc", pkgs[1].Source)
-	// Source: absent - falls back to the binary name.
+	assert.Equal(t, "2.31-13-test", pkgs[1].SourceVersion)
+
+	// Source: absent - falls back to the binary name, and the binary version is the source version.
 	assert.Equal(t, "openssl", pkgs[2].Name)
+	assert.Equal(t, "3.0.11-1", pkgs[2].Version)
 	assert.Equal(t, "openssl", pkgs[2].Source)
+	assert.Equal(t, "3.0.11-1", pkgs[2].SourceVersion)
+
+	// Empty parentheses with no separating space edge case, which should not happen, but
+	// needs to be handled correctly nevertheless.
+	// The name must stop at '(', yielding "glibc" rather than "glibc()",
+	// and the empty source version falls back to the binary version.
+	assert.Equal(t, "libc-dev", pkgs[3].Name)
+	assert.Equal(t, "2.31-13", pkgs[3].Version)
+	assert.Equal(t, "glibc", pkgs[3].Source)
+	assert.Equal(t, "2.31-13", pkgs[3].SourceVersion)
 }
 
 func TestParsePackageListRejectsInvalidNames(t *testing.T) {
@@ -284,6 +309,10 @@ func TestParsePackageListRejectsInvalidNames(t *testing.T) {
 		{
 			name:    "invalid Source name",
 			content: "Package: libc6\nSource: Glibc!\nVersion: 1.0\nArchitecture: amd64\n",
+		},
+		{
+			name:    "empty Source field",
+			content: "Package: libc6\nSource: \nVersion: 1.0\nArchitecture: amd64\n",
 		},
 		{
 			name:    "missing Version field",
@@ -375,6 +404,51 @@ func TestIdentityPURL(t *testing.T) {
 			t.Parallel()
 
 			got, err := tc.pkg.IdentityPURL()
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
+func TestVersionedIdentityPURL(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		pkg     packages.Package
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "debian namespace with source version",
+			pkg: packages.Package{
+				Name: "libssl3", Source: "openssl", SourceVersion: "3.0.11-1", Namespace: purl.NamespaceDebian,
+			},
+			want: "pkg:deb/debian/openssl@3.0.11-1",
+		},
+		{
+			name: "gardenlinux namespace with source version",
+			pkg: packages.Package{
+				Name: "libc6", Source: "glibc", SourceVersion: "2.31-13", Namespace: purl.NamespaceGardenLinux,
+			},
+			want: "pkg:deb/gardenlinux/glibc@2.31-13",
+		},
+		{
+			name:    "empty source version is an error",
+			pkg:     packages.Package{Name: "bash", Source: "bash", Namespace: purl.NamespaceDebian},
+			wantErr: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := tc.pkg.VersionedIdentityPURL()
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
 			require.NoError(t, err)
 			assert.Equal(t, tc.want, got)
 		})

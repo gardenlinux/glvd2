@@ -37,6 +37,7 @@ var (
 	componentRegex    = regexp.MustCompile("Components: (.*)")
 	architectureRegex = regexp.MustCompile("Architectures: (.*)")
 	packagesGzRegex   = regexp.MustCompile(`(?m) ([a-zA-Z0-9]{64}) (\d+) (.*/Packages.gz)$`)
+	sourceFieldRegex  = regexp.MustCompile(`^([^\s(]+)(?:\s*\(([^)]*)\))?`)
 )
 
 func (a Architecture) String() string {
@@ -263,12 +264,14 @@ func GetPackageList(
 	return ParsePackageListInRelease(string(rawPackages))
 }
 
-// parseSourceField extracts the bare source name from a Debian "Source:" value,
-// dropping an optional "(version)" suffix.
-func parseSourceField(value string) string {
-	name, _, _ := strings.Cut(value, "(")
+// parseSourceField extracts the source name and optional source version from a Debian "Source:" value.
+func parseSourceField(value string) (string, string, error) {
+	match := sourceFieldRegex.FindStringSubmatch(strings.TrimSpace(value))
+	if match == nil {
+		return "", "", fmt.Errorf("invalid source field %q", value)
+	}
 
-	return strings.TrimSpace(name)
+	return match[1], match[2], nil
 }
 
 // parseParagraph parses one deb822 paragraph into a Package. Every line must be
@@ -308,7 +311,11 @@ func parseParagraph(item string) (Package, error) {
 		case "package":
 			pkg.Name = value
 		case "source":
-			pkg.Source = parseSourceField(value)
+			source, sourceVersion, err := parseSourceField(value)
+			if err != nil {
+				return Package{}, err
+			}
+			pkg.Source, pkg.SourceVersion = source, sourceVersion
 		case "version":
 			pkg.Version = value
 		case "architecture":
@@ -334,6 +341,12 @@ func validatePackage(pkg *Package) error {
 
 	if pkg.Architecture == "" {
 		return fmt.Errorf("package %q is missing an Architecture field", pkg.Name)
+	}
+
+	// An explicit source version appears only when it differs from the binary version.
+	// Absent means by definition that they are equal.
+	if pkg.SourceVersion == "" {
+		pkg.SourceVersion = pkg.Version
 	}
 
 	// An absent Source field means the source name equals the binary name.

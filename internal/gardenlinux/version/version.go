@@ -34,6 +34,18 @@ func MakeGardenLinuxRelease(version glrd.Version) GardenLinuxRelease {
 	return release
 }
 
+// ReleaseSuite converts a GLRD release into the GardenLinuxRelease used to address the package pool.
+// The suite name mirrors the release's version scheme: "major.minor" for legacy releases
+// and "major.minor.patch" for semver releases.
+func ReleaseSuite(release glrd.Release) GardenLinuxRelease {
+	return MakeGardenLinuxRelease(release.Version)
+}
+
+// ReleaseKey returns the GL version string that keys a release (its suite name).
+func ReleaseKey(release glrd.Release) string {
+	return ReleaseSuite(release).Name
+}
+
 func MakeGardenLinuxReleaseFromString(version string) (GardenLinuxRelease, error) {
 	release := GardenLinuxRelease{}
 	err := release.parseFromString(version)

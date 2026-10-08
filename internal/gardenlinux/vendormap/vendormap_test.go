@@ -35,7 +35,7 @@ func TestAccumulator_ResolvesVendoredGolangToDebSource(t *testing.T) {
 	t.Parallel()
 
 	s := vendormap.NewAccumulator()
-	require.NoError(t, s.AddSBOM(bomDebVendorsGolang("containerd",
+	require.NoError(t, s.AddSBOM(glrd.Release{}, "", bomDebVendorsGolang("containerd",
 		"pkg:deb/debian/containerd@1.0?arch=amd64", "pkg:golang/golang.org/x/net@v0.23.0")))
 
 	rules, err := s.Result()
@@ -52,7 +52,7 @@ func TestAccumulator_UnionsSameDepAcrossReleases(t *testing.T) {
 
 	s := vendormap.NewAccumulator()
 	for range 2 {
-		require.NoError(t, s.AddSBOM(bomDebVendorsGolang("containerd",
+		require.NoError(t, s.AddSBOM(glrd.Release{}, "", bomDebVendorsGolang("containerd",
 			"pkg:deb/debian/containerd@1.0?arch=amd64", "pkg:golang/golang.org/x/net@v0.23.0")))
 	}
 
@@ -70,8 +70,14 @@ func TestAccumulator_SameDepTwoPackagesYieldsBothTargets(t *testing.T) {
 	goPURL := "pkg:golang/github.com/shared/mod@v1.0.0"
 
 	s := vendormap.NewAccumulator()
-	require.NoError(t, s.AddSBOM(bomDebVendorsGolang("pkga", "pkg:deb/debian/pkga@1.0?arch=amd64", goPURL)))
-	require.NoError(t, s.AddSBOM(bomDebVendorsGolang("pkgb", "pkg:deb/debian/pkgb@1.0?arch=amd64", goPURL)))
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", bomDebVendorsGolang("pkga", "pkg:deb/debian/pkga@1.0?arch=amd64", goPURL)),
+	)
+	require.NoError(
+		t,
+		s.AddSBOM(glrd.Release{}, "", bomDebVendorsGolang("pkgb", "pkg:deb/debian/pkgb@1.0?arch=amd64", goPURL)),
+	)
 
 	rules, err := s.Result()
 	require.NoError(t, err)

@@ -9,11 +9,12 @@ import (
 
 // Package is a source-resolved package entry used with both formats.
 type Package struct {
-	Name         string
-	Source       string
-	Version      string
-	Architecture string
-	Namespace    string
+	Name          string
+	Source        string
+	Version       string
+	SourceVersion string
+	Architecture  string
+	Namespace     string
 }
 
 // IdentityPURL returns the canonical, version-free source-name identity PURL
@@ -23,6 +24,18 @@ func (p Package) IdentityPURL() (string, error) {
 	canon, err := purl.Canonicalize(raw)
 	if err != nil {
 		return "", fmt.Errorf("canonicalizing identity PURL %q: %w", raw, err)
+	}
+
+	return canon, nil
+}
+
+// VersionedIdentityPURL returns the canonical source-name identity PURL
+// carrying the shipped source version (pkg:deb/<namespace>/<source>@<version>).
+func (p Package) VersionedIdentityPURL() (string, error) {
+	raw := packageurl.NewPackageURL(packageurl.TypeDebian, p.Namespace, p.Source, p.SourceVersion, nil, "").ToString()
+	canon, err := purl.CanonicalizeVersioned(raw)
+	if err != nil {
+		return "", fmt.Errorf("canonicalizing versioned identity PURL %q: %w", raw, err)
 	}
 
 	return canon, nil

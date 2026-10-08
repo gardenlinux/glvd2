@@ -40,7 +40,7 @@ type recordingConsumer struct {
 	missingError error
 }
 
-func (r *recordingConsumer) AddSBOM(bom *cdx.BOM) error {
+func (r *recordingConsumer) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
 	if r.addErr != nil {
 		return r.addErr
 	}
@@ -226,7 +226,7 @@ type countingConsumer struct {
 	added int
 }
 
-func (c *countingConsumer) AddSBOM(_ *cdx.BOM) error {
+func (c *countingConsumer) AddSBOM(_ glrd.Release, _ string, _ *cdx.BOM) error {
 	c.added++
 
 	return nil
