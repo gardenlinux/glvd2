@@ -2185,7 +2185,7 @@
             "pkg:deb/debian/astropy": 1
         },
         "\"asynchttpclient\":\"async-http-client\"": {
-            "pkg:deb/debian/async-http-client": 10
+            "pkg:deb/debian/async-http-client": 23
         },
         "\"asynchttpclient_project\":\"async-http-client\"": {
             "pkg:deb/debian/async-http-client": 1
@@ -12717,7 +12717,7 @@
         },
         "\"openbsd\":\"openssh\"": {
             "pkg:deb/debian/openssh": 32,
-            "pkg:deb/debian/openssh-gssapi": 3
+            "pkg:deb/debian/openssh-gssapi": 14
         },
         "\"opencfd\":\"openfoam\"": {
             "pkg:deb/debian/openfoam": 1
@@ -13495,7 +13495,7 @@
             "pkg:deb/debian/pgadmin4": 41
         },
         "\"pgjdbc\":\"pgjdbc\"": {
-            "pkg:deb/debian/libpgjava": 7
+            "pkg:deb/debian/libpgjava": 9
         },
         "\"pgpartman\":\"pg_partman\"": {
             "pkg:deb/debian/pg-partman": 7
@@ -20661,7 +20661,7 @@
         },
         "cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openssh": 32,
-            "pkg:deb/debian/openssh-gssapi": 3
+            "pkg:deb/debian/openssh-gssapi": 14
         },
         "cpe:2.3:a:opendmarc:opendmarc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/opendmarc": 1
@@ -26422,7 +26422,7 @@
             "pkg:deb/debian/jansi1": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.postgresql:postgresql\"": {
-            "pkg:deb/debian/libpgjava": 1
+            "pkg:deb/debian/libpgjava": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"": {
             "pkg:deb/debian/jetty12": 1,
