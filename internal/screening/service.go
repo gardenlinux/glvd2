@@ -8,10 +8,10 @@ import (
 	"slices"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
+	"github.com/gardenlinux/glvd2/internal/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/glmap"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
-	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/model/debtriage"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/repository"

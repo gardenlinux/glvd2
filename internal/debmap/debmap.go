@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/configpath"
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/debmap/filter"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/gardenlinux/glvd2/internal/sliceutil"

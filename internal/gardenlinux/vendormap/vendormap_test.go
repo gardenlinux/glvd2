@@ -5,9 +5,9 @@ import (
 	"testing"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/vendormap"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

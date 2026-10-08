@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/cpe"
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/debmap"
 	"github.com/gardenlinux/glvd2/internal/identifier"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/pkgsuggest"
 	"github.com/stretchr/testify/assert"
 )

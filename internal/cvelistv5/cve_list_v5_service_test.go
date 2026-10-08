@@ -6,8 +6,8 @@ import (
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/gardenlinux/glvd2/internal/cpe"
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/identifier"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/model/cve_v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -21,8 +21,8 @@ import (
 	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/configpath"
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/identifier"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/pelletier/go-toml/v2"
 )

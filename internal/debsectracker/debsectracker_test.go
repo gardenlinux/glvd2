@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/config"
-	"github.com/gardenlinux/glvd2/internal/ingestion/debsectracker"
+	"github.com/gardenlinux/glvd2/internal/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/sqlite"
@@ -32,7 +32,7 @@ func newTestService(t *testing.T, cfg *config.AppConfig) (*debsectracker.Service
 	driver, err := sqlite.WithInstance(db, &sqlite.Config{NoTxWrap: true})
 	require.NoError(t, err)
 
-	m, err := migrate.NewWithDatabaseInstance("file://../../db/migrations/", "sqlite", driver)
+	m, err := migrate.NewWithDatabaseInstance("file://../db/migrations/", "sqlite", driver)
 	require.NoError(t, err)
 	require.NoError(t, m.Up())
 

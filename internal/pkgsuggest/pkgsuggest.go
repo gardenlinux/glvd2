@@ -6,8 +6,8 @@ import (
 	"cmp"
 	"slices"
 
+	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/debmap"
-	"github.com/gardenlinux/glvd2/internal/ingestion/cvelistv5"
 )
 
 // Match is one identifier's evidence for a Candidate.
