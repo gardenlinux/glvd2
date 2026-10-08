@@ -3159,7 +3159,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/coturn/coturn"
+        ]
     },
     "pkg:deb/debian/couchdb": {
         "VendorProductIDs": [
@@ -3951,12 +3953,14 @@
             "\"containerd\":\"containerd\"",
             "\"docker\":\"cli\"",
             "\"docker\":\"cs docker engine\"",
+            "\"docker\":\"docker engine overlay network driver\"",
             "\"docker\":\"docker engine\"",
             "\"docker\":\"docker/daemon\"",
             "\"docker\":\"moby\"",
             "\"docker.io\":\"docker.io\"",
             "\"moby\":\"buildkit\"",
             "\"moby\":\"docker engine\"",
+            "\"moby\":\"moby overlay network driver\"",
             "\"moby\":\"moby\"",
             "\"moby\":\"moby/v2/daemon\"",
             "\"mobyproject\":\"moby\"",
@@ -8800,11 +8804,13 @@
     "pkg:deb/debian/golang-golang-x-text": {
         "VendorProductIDs": [
             "\"golang.org/x/text\":\"golang.org/x/text/language\"",
+            "\"golang.org/x/text\":\"golang.org/x/text/secure/precis\"",
             "\"golang.org/x/text\":\"golang.org/x/text/unicode/norm\""
         ],
         "CPEs": null,
         "PackageIDs": [
             "\"https://pkg.go.dev\":\"golang.org/x/text/language\"",
+            "\"https://pkg.go.dev\":\"golang.org/x/text/secure/precis\"",
             "\"https://pkg.go.dev\":\"golang.org/x/text/unicode/norm\""
         ],
         "PackageURLs": null
@@ -10712,9 +10718,14 @@
         ],
         "PackageIDs": [
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-core\"",
-            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-jcr-commons\""
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-jcr-commons\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-jcr-server\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-spi2dav\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.jackrabbit/jackrabbit-jcr-server",
+            "pkg:maven/org.apache.jackrabbit/jackrabbit-spi2dav"
+        ]
     },
     "pkg:deb/debian/jackson-core": {
         "VendorProductIDs": [
@@ -14245,7 +14256,9 @@
         "CPEs": [
             "cpe:2.3:a:pgjdbc:pgjdbc:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.postgresql:postgresql\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/libphp-adodb": {
@@ -15893,7 +15906,9 @@
             "cpe:2.3:a:llama.cpp:llama.cpp:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/ggml-org/llama.cpp"
+        ]
     },
     "pkg:deb/debian/lldpad": {
         "VendorProductIDs": [
@@ -16298,6 +16313,14 @@
             "\"https://repo1.maven.org/maven2\":\"net.jpountz.lz4:lz4\"",
             "\"https://repo1.maven.org/maven2\":\"org.lz4:lz4-java\"",
             "\"https://repo1.maven.org/maven2\":\"org.lz4:lz4-pure-java\""
+        ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/m17n-lib": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"m17n-lib\""
         ],
         "PackageURLs": null
     },
@@ -17332,6 +17355,7 @@
             "\"six apart ltd.\":\"movable type advanced\"",
             "\"six apart ltd.\":\"movable type cloud edition (8.x series)\"",
             "\"six apart ltd.\":\"movable type cloud edition (version 7)\"",
+            "\"six apart ltd.\":\"movable type cloud edition\"",
             "\"six apart ltd.\":\"movable type premium  (cloud edition)\"",
             "\"six apart ltd.\":\"movable type premium (2.x series)\"",
             "\"six apart ltd.\":\"movable type premium (advanced edition) (2.x series)\"",

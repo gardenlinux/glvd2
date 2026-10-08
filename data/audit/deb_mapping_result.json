@@ -1361,7 +1361,7 @@
             "pkg:deb/debian/jackrabbit": 1
         },
         "\"apache software foundation\":\"apache jackrabbit\"": {
-            "pkg:deb/debian/jackrabbit": 1
+            "pkg:deb/debian/jackrabbit": 3
         },
         "\"apache software foundation\":\"apache james mime4j\"": {
             "pkg:deb/debian/apache-mime4j": 1
@@ -3166,7 +3166,7 @@
             "pkg:deb/debian/libnet-statsd-perl": 1
         },
         "\"coturn\":\"coturn\"": {
-            "pkg:deb/debian/coturn": 21
+            "pkg:deb/debian/coturn": 22
         },
         "\"covesa\":\"dlt-daemon\"": {
             "pkg:deb/debian/dlt-daemon": 2
@@ -3523,8 +3523,11 @@
         "\"docker\":\"docker desktop\"": {
             "pkg:deb/debian/golang-github-moby-go-archive": 1
         },
+        "\"docker\":\"docker engine overlay network driver\"": {
+            "pkg:deb/debian/docker.io": 1
+        },
         "\"docker\":\"docker engine\"": {
-            "pkg:deb/debian/docker.io": 2,
+            "pkg:deb/debian/docker.io": 4,
             "pkg:deb/debian/golang-github-moby-go-archive": 1
         },
         "\"docker\":\"docker sandboxes\"": {
@@ -4498,7 +4501,7 @@
         },
         "\"ggml-org\":\"llama.cpp\"": {
             "pkg:deb/debian/ggml": 1,
-            "pkg:deb/debian/llama.cpp": 24
+            "pkg:deb/debian/llama.cpp": 25
         },
         "\"ggml-org\":\"whisper.cpp\"": {
             "pkg:deb/debian/whisper.cpp": 4
@@ -4671,7 +4674,7 @@
         },
         "\"gitlab\":\"gitlab\"": {
             "pkg:deb/debian/consul": 1,
-            "pkg:deb/debian/gitlab": 981,
+            "pkg:deb/debian/gitlab": 982,
             "pkg:deb/debian/octoprint": 1,
             "pkg:deb/debian/ruby-apollo-upload-server": 1
         },
@@ -5604,6 +5607,9 @@
             "pkg:deb/debian/golang-golang-x-text": 1,
             "pkg:deb/debian/golang-x-text": 1
         },
+        "\"golang.org/x/text\":\"golang.org/x/text/secure/precis\"": {
+            "pkg:deb/debian/golang-golang-x-text": 1
+        },
         "\"golang.org/x/text\":\"golang.org/x/text/unicode/norm\"": {
             "pkg:deb/debian/golang-golang-x-text": 1
         },
@@ -6479,7 +6485,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 190
+            "pkg:deb/debian/imagemagick": 210
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -7587,7 +7593,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "\"libexpat\":\"libexpat\"": {
-            "pkg:deb/debian/expat": 3
+            "pkg:deb/debian/expat": 4
         },
         "\"libexpat_project\":\"libexpat\"": {
             "pkg:deb/debian/expat": 3,
@@ -8481,7 +8487,7 @@
             "pkg:deb/debian/minio": 1
         },
         "\"miniupnp project\":\"miniupnpd\"": {
-            "pkg:deb/debian/miniupnpd": 1
+            "pkg:deb/debian/miniupnpd": 2
         },
         "\"mio_project\":\"mio\"": {
             "pkg:deb/debian/rust-mio": 1,
@@ -8491,7 +8497,7 @@
             "pkg:deb/debian/ocaml-cohttp": 1
         },
         "\"misp\":\"misp\"": {
-            "pkg:deb/debian/misp": 143
+            "pkg:deb/debian/misp": 147
         },
         "\"misp\":\"misp-stix\"": {
             "pkg:deb/debian/misp": 4
@@ -8558,9 +8564,12 @@
         "\"moby\":\"go-archive\"": {
             "pkg:deb/debian/golang-github-moby-go-archive": 1
         },
+        "\"moby\":\"moby overlay network driver\"": {
+            "pkg:deb/debian/docker.io": 1
+        },
         "\"moby\":\"moby\"": {
             "pkg:deb/debian/containerd": 1,
-            "pkg:deb/debian/docker.io": 18
+            "pkg:deb/debian/docker.io": 19
         },
         "\"moby\":\"moby/v2/daemon\"": {
             "pkg:deb/debian/docker.io": 1
@@ -10600,7 +10609,7 @@
             "pkg:deb/debian/open-vm-tools": 2
         },
         "\"n/a\":\"open5gs\"": {
-            "pkg:deb/debian/open5gs": 124
+            "pkg:deb/debian/open5gs": 125
         },
         "\"n/a\":\"open62541\"": {
             "pkg:deb/debian/open62541": 2
@@ -12943,7 +12952,7 @@
             "pkg:deb/debian/vitrage": 1
         },
         "\"openstack\":\"zaqar\"": {
-            "pkg:deb/debian/zaqar": 2
+            "pkg:deb/debian/zaqar": 3
         },
         "\"openstack-dashboard\":\"openstack-dashboard\"": {
             "pkg:deb/debian/horizon": 1
@@ -13486,7 +13495,7 @@
             "pkg:deb/debian/pgadmin4": 41
         },
         "\"pgjdbc\":\"pgjdbc\"": {
-            "pkg:deb/debian/libpgjava": 6
+            "pkg:deb/debian/libpgjava": 7
         },
         "\"pgpartman\":\"pg_partman\"": {
             "pkg:deb/debian/pg-partman": 7
@@ -15623,6 +15632,9 @@
         "\"six apart ltd.\":\"movable type cloud edition (version 7)\"": {
             "pkg:deb/debian/movabletype-opensource": 1
         },
+        "\"six apart ltd.\":\"movable type cloud edition\"": {
+            "pkg:deb/debian/movabletype-opensource": 2
+        },
         "\"six apart ltd.\":\"movable type premium  (cloud edition)\"": {
             "pkg:deb/debian/movabletype-opensource": 2
         },
@@ -15657,16 +15669,16 @@
             "pkg:deb/debian/movabletype-opensource": 3
         },
         "\"six apart ltd.\":\"movable type premium cloud edition\"": {
-            "pkg:deb/debian/movabletype-opensource": 1
+            "pkg:deb/debian/movabletype-opensource": 3
         },
         "\"six apart ltd.\":\"movable type premium\"": {
-            "pkg:deb/debian/movabletype-opensource": 4
+            "pkg:deb/debian/movabletype-opensource": 6
         },
         "\"six apart ltd.\":\"movable type xmlrpc api\"": {
             "pkg:deb/debian/movabletype-opensource": 1
         },
         "\"six apart ltd.\":\"movable type\"": {
-            "pkg:deb/debian/movabletype-opensource": 23
+            "pkg:deb/debian/movabletype-opensource": 25
         },
         "\"six apart, ltd.\":\"movable type\"": {
             "pkg:deb/debian/movabletype-opensource": 1
@@ -19211,7 +19223,7 @@
             "pkg:deb/debian/whisper.cpp": 3
         },
         "cpe:2.3:a:ggml:llama.cpp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/llama.cpp": 10
+            "pkg:deb/debian/llama.cpp": 11
         },
         "cpe:2.3:a:ghost:ghost:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghost": 38
@@ -19252,7 +19264,7 @@
         },
         "cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/consul": 1,
-            "pkg:deb/debian/gitlab": 500
+            "pkg:deb/debian/gitlab": 501
         },
         "cpe:2.3:a:gitoxidelabs:gitoxide:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rust-gix": 3,
@@ -20148,14 +20160,14 @@
             "pkg:deb/debian/minio": 3
         },
         "cpe:2.3:a:miniupnp_project:miniupnpd:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/miniupnpd": 1
+            "pkg:deb/debian/miniupnpd": 2
         },
         "cpe:2.3:a:mio_project:mio:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rust-mio": 1,
             "pkg:deb/debian/rust-mio-0.6": 1
         },
         "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/misp": 32
+            "pkg:deb/debian/misp": 36
         },
         "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/misp": 1
@@ -20627,7 +20639,7 @@
             "pkg:deb/debian/dovecot": 1
         },
         "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/open5gs": 115
+            "pkg:deb/debian/open5gs": 116
         },
         "cpe:2.3:a:open62541:open62541:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/open62541": 5
@@ -22640,7 +22652,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 59
+            "pkg:deb/debian/gimp": 63
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 12
@@ -22769,7 +22781,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 96
+            "pkg:deb/debian/keycloak": 97
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -22885,6 +22897,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"lvm2\"": {
             "pkg:deb/debian/lvm2": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"m17n-lib\"": {
+            "pkg:deb/debian/m17n-lib": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"m2crypto\"": {
             "pkg:deb/debian/m2crypto": 1
@@ -23986,7 +24001,7 @@
             "pkg:deb/debian/crun": 2
         },
         "\"https://catalog.redhat.com/software/containers/\":\"cups-main\"": {
-            "pkg:deb/debian/cups": 2
+            "pkg:deb/debian/cups": 3
         },
         "\"https://catalog.redhat.com/software/containers/\":\"dracut-main\"": {
             "pkg:deb/debian/dracut": 2
@@ -25754,6 +25769,9 @@
             "pkg:deb/debian/golang-golang-x-text": 1,
             "pkg:deb/debian/golang-x-text": 1
         },
+        "\"https://pkg.go.dev\":\"golang.org/x/text/secure/precis\"": {
+            "pkg:deb/debian/golang-golang-x-text": 1
+        },
         "\"https://pkg.go.dev\":\"golang.org/x/text/unicode/norm\"": {
             "pkg:deb/debian/golang-golang-x-text": 1
         },
@@ -26227,6 +26245,12 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-jcr-commons\"": {
             "pkg:deb/debian/jackrabbit": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-jcr-server\"": {
+            "pkg:deb/debian/jackrabbit": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jackrabbit:jackrabbit-spi2dav\"": {
+            "pkg:deb/debian/jackrabbit": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.james:apache-mime4j-dom\"": {
             "pkg:deb/debian/apache-mime4j": 1
         },
@@ -26396,6 +26420,9 @@
             "pkg:deb/debian/jansi": 1,
             "pkg:deb/debian/jansi-native": 1,
             "pkg:deb/debian/jansi1": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.postgresql:postgresql\"": {
+            "pkg:deb/debian/libpgjava": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"": {
             "pkg:deb/debian/jetty12": 1,
@@ -27085,6 +27112,9 @@
         "pkg:github/composefs/tar-rs": {
             "pkg:deb/debian/rust-tar": 1
         },
+        "pkg:github/coturn/coturn": {
+            "pkg:deb/debian/coturn": 1
+        },
         "pkg:github/dani-garcia/vaultwarden": {
             "pkg:deb/debian/vaultwarden": 1
         },
@@ -27116,6 +27146,9 @@
         "pkg:github/froxlor/Froxlor": {
             "pkg:deb/debian/froxlor": 1
         },
+        "pkg:github/ggml-org/llama.cpp": {
+            "pkg:deb/debian/llama.cpp": 1
+        },
         "pkg:github/gleam-lang/gleam": {
             "pkg:deb/debian/gleam": 5
         },
@@ -27144,7 +27177,7 @@
             "pkg:deb/debian/kanboard": 1
         },
         "pkg:github/libexpat/libexpat": {
-            "pkg:deb/debian/expat": 3
+            "pkg:deb/debian/expat": 4
         },
         "pkg:github/libjxl/libjxl": {
             "pkg:deb/debian/jpeg-xl": 1
@@ -27412,6 +27445,12 @@
         },
         "pkg:maven/org.apache.directory.api/api-ldap-schema-data": {
             "pkg:deb/debian/apache-directory-api": 1
+        },
+        "pkg:maven/org.apache.jackrabbit/jackrabbit-jcr-server": {
+            "pkg:deb/debian/jackrabbit": 1
+        },
+        "pkg:maven/org.apache.jackrabbit/jackrabbit-spi2dav": {
+            "pkg:deb/debian/jackrabbit": 1
         },
         "pkg:maven/org.apache.logging.log4j/log4j-1.2-api": {
             "pkg:deb/debian/apache-log4j1.2": 1,
