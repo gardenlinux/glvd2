@@ -4051,6 +4051,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:composer/dolibarr/dolibarr",
             "pkg:github/Dolibarr/dolibarr"
         ]
     },
@@ -5764,6 +5765,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:composer/froxlor/froxlor",
             "pkg:github/froxlor/Froxlor"
         ]
     },
@@ -6076,7 +6078,8 @@
             "\"gnu\":\"gdb\""
         ],
         "CPEs": [
-            "cpe:2.3:a:gnu:gdb:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:gnu:gdb:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\""
@@ -6597,7 +6600,8 @@
             "\"xdg\":\"xdgmime\""
         ],
         "CPEs": [
-            "cpe:2.3:a:gnome:glib:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:gnome:glib:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://gitlab.freedesktop.org/xdg/xdgmime\":\"xdgmime\"",
@@ -7220,6 +7224,7 @@
             "\"go standard library\":\"html/template\"",
             "\"go standard library\":\"internal/safefilepath\"",
             "\"go standard library\":\"internal/syscall/unix\"",
+            "\"go standard library\":\"internal/syscall/windows\"",
             "\"go standard library\":\"io/fs\"",
             "\"go standard library\":\"math/big\"",
             "\"go standard library\":\"mime\"",
@@ -7229,6 +7234,7 @@
             "\"go standard library\":\"net/http/cookiejar\"",
             "\"go standard library\":\"net/http/httputil\"",
             "\"go standard library\":\"net/http/internal\"",
+            "\"go standard library\":\"net/http/internal/http2\"",
             "\"go standard library\":\"net/mail\"",
             "\"go standard library\":\"net/netip\"",
             "\"go standard library\":\"net/textproto\"",
@@ -7292,6 +7298,7 @@
             "\"https://pkg.go.dev\":\"html/template\"",
             "\"https://pkg.go.dev\":\"internal/safefilepath\"",
             "\"https://pkg.go.dev\":\"internal/syscall/unix\"",
+            "\"https://pkg.go.dev\":\"internal/syscall/windows\"",
             "\"https://pkg.go.dev\":\"io/fs\"",
             "\"https://pkg.go.dev\":\"math/big\"",
             "\"https://pkg.go.dev\":\"mime\"",
@@ -7301,6 +7308,7 @@
             "\"https://pkg.go.dev\":\"net/http/cookiejar\"",
             "\"https://pkg.go.dev\":\"net/http/httputil\"",
             "\"https://pkg.go.dev\":\"net/http/internal\"",
+            "\"https://pkg.go.dev\":\"net/http/internal/http2\"",
             "\"https://pkg.go.dev\":\"net/mail\"",
             "\"https://pkg.go.dev\":\"net/netip\"",
             "\"https://pkg.go.dev\":\"net/textproto\"",
@@ -7537,11 +7545,14 @@
             "\"go standard library\":\"encoding/xml\"",
             "\"go standard library\":\"html/template\"",
             "\"go standard library\":\"internal/syscall/unix\"",
+            "\"go standard library\":\"internal/syscall/windows\"",
             "\"go standard library\":\"mime\"",
+            "\"go standard library\":\"mime/multipart\"",
             "\"go standard library\":\"net\"",
             "\"go standard library\":\"net/http\"",
             "\"go standard library\":\"net/http/httputil\"",
             "\"go standard library\":\"net/http/internal\"",
+            "\"go standard library\":\"net/http/internal/http2\"",
             "\"go standard library\":\"net/mail\"",
             "\"go standard library\":\"net/textproto\"",
             "\"go standard library\":\"net/url\"",
@@ -7555,6 +7566,7 @@
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
             "\"golang.org/x/net\":\"golang.org/x/net/http/httpproxy\"",
+            "\"golang.org/x/net\":\"golang.org/x/net/http2\"",
             "\"golang.org/x/net\":\"golang.org/x/net/proxy\""
         ],
         "CPEs": null,
@@ -7574,14 +7586,18 @@
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb/tlog\"",
             "\"https://pkg.go.dev\":\"golang.org/x/net/http/httpproxy\"",
+            "\"https://pkg.go.dev\":\"golang.org/x/net/http2\"",
             "\"https://pkg.go.dev\":\"golang.org/x/net/proxy\"",
             "\"https://pkg.go.dev\":\"html/template\"",
             "\"https://pkg.go.dev\":\"internal/syscall/unix\"",
+            "\"https://pkg.go.dev\":\"internal/syscall/windows\"",
             "\"https://pkg.go.dev\":\"mime\"",
+            "\"https://pkg.go.dev\":\"mime/multipart\"",
             "\"https://pkg.go.dev\":\"net\"",
             "\"https://pkg.go.dev\":\"net/http\"",
             "\"https://pkg.go.dev\":\"net/http/httputil\"",
             "\"https://pkg.go.dev\":\"net/http/internal\"",
+            "\"https://pkg.go.dev\":\"net/http/internal/http2\"",
             "\"https://pkg.go.dev\":\"net/mail\"",
             "\"https://pkg.go.dev\":\"net/textproto\"",
             "\"https://pkg.go.dev\":\"net/url\"",
@@ -7603,10 +7619,13 @@
             "\"go standard library\":\"encoding/xml\"",
             "\"go standard library\":\"html/template\"",
             "\"go standard library\":\"internal/syscall/unix\"",
+            "\"go standard library\":\"internal/syscall/windows\"",
             "\"go standard library\":\"mime\"",
+            "\"go standard library\":\"mime/multipart\"",
             "\"go standard library\":\"net\"",
             "\"go standard library\":\"net/http\"",
             "\"go standard library\":\"net/http/httputil\"",
+            "\"go standard library\":\"net/http/internal/http2\"",
             "\"go standard library\":\"net/mail\"",
             "\"go standard library\":\"net/textproto\"",
             "\"go standard library\":\"net/url\"",
@@ -7615,7 +7634,8 @@
             "\"go toolchain\":\"cmd/compile\"",
             "\"go toolchain\":\"cmd/go\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
-            "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\""
+            "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
+            "\"golang.org/x/net\":\"golang.org/x/net/http2\""
         ],
         "CPEs": null,
         "PackageIDs": [
@@ -7631,12 +7651,16 @@
             "\"https://pkg.go.dev\":\"encoding/xml\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb/tlog\"",
+            "\"https://pkg.go.dev\":\"golang.org/x/net/http2\"",
             "\"https://pkg.go.dev\":\"html/template\"",
             "\"https://pkg.go.dev\":\"internal/syscall/unix\"",
+            "\"https://pkg.go.dev\":\"internal/syscall/windows\"",
             "\"https://pkg.go.dev\":\"mime\"",
+            "\"https://pkg.go.dev\":\"mime/multipart\"",
             "\"https://pkg.go.dev\":\"net\"",
             "\"https://pkg.go.dev\":\"net/http\"",
             "\"https://pkg.go.dev\":\"net/http/httputil\"",
+            "\"https://pkg.go.dev\":\"net/http/internal/http2\"",
             "\"https://pkg.go.dev\":\"net/mail\"",
             "\"https://pkg.go.dev\":\"net/textproto\"",
             "\"https://pkg.go.dev\":\"net/url\"",
@@ -7653,10 +7677,13 @@
             "\"go standard library\":\"encoding/xml\"",
             "\"go standard library\":\"html/template\"",
             "\"go standard library\":\"internal/syscall/unix\"",
+            "\"go standard library\":\"internal/syscall/windows\"",
             "\"go standard library\":\"mime\"",
+            "\"go standard library\":\"mime/multipart\"",
             "\"go standard library\":\"net\"",
             "\"go standard library\":\"net/http\"",
             "\"go standard library\":\"net/http/httputil\"",
+            "\"go standard library\":\"net/http/internal/http2\"",
             "\"go standard library\":\"net/mail\"",
             "\"go standard library\":\"net/textproto\"",
             "\"go standard library\":\"net/url\"",
@@ -7664,7 +7691,8 @@
             "\"go toolchain\":\"cmd/compile\"",
             "\"go toolchain\":\"cmd/go\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
-            "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\""
+            "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
+            "\"golang.org/x/net\":\"golang.org/x/net/http2\""
         ],
         "CPEs": null,
         "PackageIDs": [
@@ -7677,12 +7705,16 @@
             "\"https://pkg.go.dev\":\"encoding/xml\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb/tlog\"",
+            "\"https://pkg.go.dev\":\"golang.org/x/net/http2\"",
             "\"https://pkg.go.dev\":\"html/template\"",
             "\"https://pkg.go.dev\":\"internal/syscall/unix\"",
+            "\"https://pkg.go.dev\":\"internal/syscall/windows\"",
             "\"https://pkg.go.dev\":\"mime\"",
+            "\"https://pkg.go.dev\":\"mime/multipart\"",
             "\"https://pkg.go.dev\":\"net\"",
             "\"https://pkg.go.dev\":\"net/http\"",
             "\"https://pkg.go.dev\":\"net/http/httputil\"",
+            "\"https://pkg.go.dev\":\"net/http/internal/http2\"",
             "\"https://pkg.go.dev\":\"net/mail\"",
             "\"https://pkg.go.dev\":\"net/textproto\"",
             "\"https://pkg.go.dev\":\"net/url\"",
@@ -7696,12 +7728,18 @@
             "\"go standard library\":\"encoding/asn1\"",
             "\"go standard library\":\"encoding/xml\"",
             "\"go standard library\":\"html/template\"",
+            "\"go standard library\":\"internal/syscall/windows\"",
+            "\"go standard library\":\"mime/multipart\"",
             "\"go standard library\":\"net/http\"",
+            "\"go standard library\":\"net/http/httputil\"",
+            "\"go standard library\":\"net/http/internal/http2\"",
+            "\"go standard library\":\"net/textproto\"",
             "\"go standard library\":\"net/url\"",
             "\"go standard library\":\"os\"",
             "\"go toolchain\":\"cmd/go\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
-            "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\""
+            "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
+            "\"golang.org/x/net\":\"golang.org/x/net/http2\""
         ],
         "CPEs": null,
         "PackageIDs": [
@@ -7711,8 +7749,14 @@
             "\"https://pkg.go.dev\":\"encoding/xml\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb/tlog\"",
+            "\"https://pkg.go.dev\":\"golang.org/x/net/http2\"",
             "\"https://pkg.go.dev\":\"html/template\"",
+            "\"https://pkg.go.dev\":\"internal/syscall/windows\"",
+            "\"https://pkg.go.dev\":\"mime/multipart\"",
             "\"https://pkg.go.dev\":\"net/http\"",
+            "\"https://pkg.go.dev\":\"net/http/httputil\"",
+            "\"https://pkg.go.dev\":\"net/http/internal/http2\"",
+            "\"https://pkg.go.dev\":\"net/textproto\"",
             "\"https://pkg.go.dev\":\"net/url\"",
             "\"https://pkg.go.dev\":\"os\""
         ],
@@ -8032,9 +8076,8 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:golang/chi",
-            "pkg:golang/github.com/go-chi/chi/middleware",
-            "pkg:golang/https://github.com/go-chi/chi"
+            "pkg:golang/github.com/go-chi/chi",
+            "pkg:golang/github.com/go-chi/chi/v5"
         ]
     },
     "pkg:deb/debian/golang-github-go-ethereum": {
@@ -9488,7 +9531,9 @@
             "cpe:2.3:a:guzzlephp:guzzle:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/guzzlehttp/guzzle"
+        ]
     },
     "pkg:deb/debian/gvfs": {
         "VendorProductIDs": [
@@ -11537,7 +11582,6 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:composer/kanboard/kanboard",
             "pkg:github/kanboard/kanboard"
         ]
     },
@@ -12360,7 +12404,8 @@
             "\"n/a\":\"libarchive\""
         ],
         "CPEs": [
-            "cpe:2.3:a:libarchive:libarchive:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:libarchive:libarchive:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libarchive\"",
@@ -15298,6 +15343,7 @@
             "\"xmlsoft\":\"xmllint\""
         ],
         "CPEs": [
+            "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xmlsoft:libxml2:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xmlsoft:xmllint:*:*:*:*:*:*:*:*"
         ],
@@ -15563,6 +15609,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:composer/limesurvey/limesurvey",
             "pkg:github/LimeSurvey/LimeSurvey"
         ]
     },
@@ -18459,7 +18506,6 @@
             "\"https://pypi.org\":\"nltk\""
         ],
         "PackageURLs": [
-            "pkg:github/nltk/nltk",
             "pkg:pypi/nltk"
         ]
     },
@@ -19337,7 +19383,9 @@
             "cpe:2.3:a:nanoid_project:nanoid:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:npm/nanoid"
+        ]
     },
     "pkg:deb/debian/node-moment": {
         "VendorProductIDs": [
@@ -19547,6 +19595,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:npm/nanoid",
             "pkg:npm/source-map-js"
         ]
     },
@@ -20963,7 +21012,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:golang/github.com/oauth2-proxy/oauth2-proxy"
+            "pkg:golang/github.com/oauth2-proxy/oauth2-proxy/v7"
         ]
     },
     "pkg:deb/debian/obs-build": {
@@ -21211,6 +21260,16 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/onefetch": {
+        "VendorProductIDs": [
+            "\"o2sh\":\"onefetch\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/onefetch"
+        ]
     },
     "pkg:deb/debian/onevpl-intel-gpu": {
         "VendorProductIDs": [
@@ -22108,7 +22167,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:golang/github.com/opentofu/opentofu"
+        ]
     },
     "pkg:deb/debian/openttd": {
         "VendorProductIDs": [
@@ -23182,7 +23243,9 @@
             "cpe:2.3:a:thephpleague:commonmark:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/league/commonmark"
+        ]
     },
     "pkg:deb/debian/php-league-flysystem": {
         "VendorProductIDs": [
@@ -23333,7 +23396,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:github/twigphp/Twig"
+            "pkg:composer/twig/twig"
         ]
     },
     "pkg:deb/debian/php-zend-db": {
@@ -25117,7 +25180,6 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:pypi/GitPython",
             "pkg:pypi/gitpython"
         ]
     },
@@ -25239,7 +25301,9 @@
             "cpe:2.3:a:dpkp:kafka-python:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/kafka-python"
+        ]
     },
     "pkg:deb/debian/python-kdcproxy": {
         "VendorProductIDs": [
@@ -25667,7 +25731,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/tablib"
+        ]
     },
     "pkg:deb/debian/python-tornado": {
         "VendorProductIDs": [
@@ -28586,8 +28652,7 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:cargo/gitoxide",
-            "pkg:cargo/gix",
-            "pkg:cargo/gix-submodule"
+            "pkg:cargo/gix"
         ]
     },
     "pkg:deb/debian/rust-gix-transport": {
@@ -28962,7 +29027,9 @@
         "VendorProductIDs": [
             "\"sequoia-pgp\":\"sequoia\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:cargo/sequoia-openpgp"
@@ -29422,7 +29489,8 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:github/seaweedfs/seaweedfs"
+            "pkg:github/seaweedfs/seaweedfs",
+            "pkg:golang/github.com/seaweedfs/seaweedfs"
         ]
     },
     "pkg:deb/debian/sed": {
@@ -30617,6 +30685,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/sync-http-client": {
+        "VendorProductIDs": [
+            "\"asynchttpclient\":\"async-http-client\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/syncthing": {
         "VendorProductIDs": [
             "\"syncthing\":\"syncthing\""
@@ -31474,8 +31550,9 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:golang/Traefik",
-            "pkg:golang/github.com/traefik/traefik"
+            "pkg:golang/github.com/traefik/traefik",
+            "pkg:golang/github.com/traefik/traefik/v2",
+            "pkg:golang/github.com/traefik/traefik/v3"
         ]
     },
     "pkg:deb/debian/trafficserver": {
