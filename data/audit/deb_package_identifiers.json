@@ -3742,6 +3742,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/dislocker": {
+        "VendorProductIDs": [
+            "\"aorimn\":\"dislocker\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/distrobox": {
         "VendorProductIDs": [
             "\"distrobox\":\"distrobox\""
@@ -4628,6 +4636,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/eog": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"eog\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/epics-base": {
         "VendorProductIDs": [
             "\"brianmario\":\"yajl-ruby\""
@@ -5103,7 +5119,8 @@
             "\"https://www.ffmpeg.org/\":\"FFmpeg\""
         ],
         "PackageURLs": [
-            "pkg:github/FFmpeg/FFmpeg"
+            "pkg:github/FFmpeg/FFmpeg",
+            "pkg:github/ffmpeg/ffmpeg"
         ]
     },
     "pkg:deb/debian/ffuf": {
@@ -9752,6 +9769,7 @@
     },
     "pkg:deb/debian/hazelcast": {
         "VendorProductIDs": [
+            "\"hazelcast\":\"hazelcast\"",
             "\"hazelcast\":\"hazelcast/hazelcast\""
         ],
         "CPEs": null,
@@ -12010,7 +12028,9 @@
             "\"https://catalog.redhat.com/software/containers/\":\"krb5-main\"",
             "\"https://web.mit.edu/kerberos/\":\"krb5\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/krb5/krb5"
+        ]
     },
     "pkg:deb/debian/krita": {
         "VendorProductIDs": [

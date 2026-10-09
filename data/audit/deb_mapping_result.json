@@ -1166,6 +1166,9 @@
         "\"aomedia\":\"libavif\"": {
             "pkg:deb/debian/libavif": 2
         },
+        "\"aorimn\":\"dislocker\"": {
+            "pkg:deb/debian/dislocker": 2
+        },
         "\"apache software foundation\":\"apache activemq all module\"": {
             "pkg:deb/debian/activemq": 1
         },
@@ -2274,7 +2277,7 @@
             "pkg:deb/debian/backdrop": 1
         },
         "\"backdropcms\":\"backdrop\"": {
-            "pkg:deb/debian/backdrop": 3
+            "pkg:deb/debian/backdrop": 4
         },
         "\"badaix\":\"snapcast\"": {
             "pkg:deb/debian/snapcast": 1
@@ -4164,7 +4167,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 68
+            "pkg:deb/debian/ffmpeg": 69
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -4335,7 +4338,7 @@
             "pkg:deb/debian/libinput": 1
         },
         "\"freedesktop\":\"poppler\"": {
-            "pkg:deb/debian/poppler": 10
+            "pkg:deb/debian/poppler": 11
         },
         "\"freedesktop\":\"xdg-utils\"": {
             "pkg:deb/debian/xdg-utils": 1
@@ -6198,7 +6201,7 @@
             "pkg:deb/debian/nomad": 21
         },
         "\"hashicorp\":\"shared library\"": {
-            "pkg:deb/debian/golang-github-hashicorp-go-getter": 4,
+            "pkg:deb/debian/golang-github-hashicorp-go-getter": 5,
             "pkg:deb/debian/golang-github-hashicorp-go-retryablehttp": 1,
             "pkg:deb/debian/nomad": 1
         },
@@ -6226,6 +6229,9 @@
         },
         "\"haxx\":\"curl\"": {
             "pkg:deb/debian/curl": 2
+        },
+        "\"hazelcast\":\"hazelcast\"": {
+            "pkg:deb/debian/hazelcast": 2
         },
         "\"hazelcast\":\"hazelcast/hazelcast\"": {
             "pkg:deb/debian/hazelcast": 1
@@ -6508,7 +6514,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 210
+            "pkg:deb/debian/imagemagick": 223
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -8538,7 +8544,7 @@
             "pkg:deb/debian/krb5": 1
         },
         "\"mit\":\"krb5\"": {
-            "pkg:deb/debian/krb5": 2
+            "pkg:deb/debian/krb5": 4
         },
         "\"mitmproxy\":\"mitmproxy\"": {
             "pkg:deb/debian/mitmproxy": 4
@@ -8947,7 +8953,7 @@
             "pkg:deb/debian/musl": 2
         },
         "\"mutt\":\"mutt\"": {
-            "pkg:deb/debian/mutt": 10,
+            "pkg:deb/debian/mutt": 11,
             "pkg:deb/debian/neomutt": 1
         },
         "\"mvantellingen\":\"python-zeep\"": {
@@ -12576,7 +12582,7 @@
             "pkg:deb/debian/dcmtk": 5
         },
         "\"offis\":\"dcmtk\"": {
-            "pkg:deb/debian/dcmtk": 14
+            "pkg:deb/debian/dcmtk": 21
         },
         "\"offis.de\":\"dcmtk\"": {
             "pkg:deb/debian/dcmtk": 1
@@ -12611,7 +12617,7 @@
             "pkg:deb/debian/ollama": 1
         },
         "\"ollama\":\"ollama\"": {
-            "pkg:deb/debian/ollama": 11
+            "pkg:deb/debian/ollama": 12
         },
         "\"ollama\":\"ollama/ollama\"": {
             "pkg:deb/debian/ollama": 7
@@ -12831,7 +12837,7 @@
             "pkg:deb/debian/cpdb-libs": 1
         },
         "\"openprinting\":\"cups\"": {
-            "pkg:deb/debian/cups": 16,
+            "pkg:deb/debian/cups": 20,
             "pkg:deb/debian/cups-filters": 1,
             "pkg:deb/debian/libppd": 1
         },
@@ -12956,7 +12962,7 @@
             "pkg:deb/debian/python-keystonemiddleware": 1
         },
         "\"openstack\":\"mistral\"": {
-            "pkg:deb/debian/mistral": 1
+            "pkg:deb/debian/mistral": 5
         },
         "\"openstack\":\"neutron\"": {
             "pkg:deb/debian/neutron": 4
@@ -15820,7 +15826,7 @@
             "pkg:deb/debian/openjdk-8": 1
         },
         "\"sparklemotion\":\"mechanize\"": {
-            "pkg:deb/debian/ruby-mechanize": 2
+            "pkg:deb/debian/ruby-mechanize": 5
         },
         "\"sparklemotion\":\"nekohtml\"": {
             "pkg:deb/debian/nekohtml": 1
@@ -18643,7 +18649,7 @@
             "pkg:deb/debian/b2evolution": 1
         },
         "cpe:2.3:a:backdropcms:backdrop:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/backdrop": 4
+            "pkg:deb/debian/backdrop": 5
         },
         "cpe:2.3:a:badaix:snapcast:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/snapcast": 1
@@ -19138,7 +19144,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 53
+            "pkg:deb/debian/ffmpeg": 54
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -19183,7 +19189,7 @@
             "pkg:deb/debian/libinput": 1
         },
         "cpe:2.3:a:freedesktop:poppler:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/poppler": 10
+            "pkg:deb/debian/poppler": 11
         },
         "cpe:2.3:a:freedesktop:xdg-utils:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xdg-utils": 1
@@ -19689,7 +19695,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 54
+            "pkg:deb/debian/imagemagick": 67
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -20208,7 +20214,7 @@
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:mit:kerberos_5:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/krb5": 4
+            "pkg:deb/debian/krb5": 6
         },
         "cpe:2.3:a:mitre:caldera:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libde265": 1
@@ -20638,7 +20644,7 @@
             "pkg:deb/debian/odoo": 3
         },
         "cpe:2.3:a:offis:dcmtk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/dcmtk": 10
+            "pkg:deb/debian/dcmtk": 17
         },
         "cpe:2.3:a:offlineimap:offlineimap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/offlineimap3": 1
@@ -20724,7 +20730,7 @@
             "pkg:deb/debian/opennebula": 1
         },
         "cpe:2.3:a:openprinting:cups:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/cups": 1,
+            "pkg:deb/debian/cups": 5,
             "pkg:deb/debian/cups-filters": 1
         },
         "cpe:2.3:a:openprinting:libcupsfilters:*:*:*:*:*:*:*:*": {
@@ -22340,7 +22346,7 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ansible-core\"": {
             "pkg:deb/debian/ansible": 8,
-            "pkg:deb/debian/ansible-core": 8
+            "pkg:deb/debian/ansible-core": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"aom\"": {
             "pkg:deb/debian/aom": 4
@@ -22543,6 +22549,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"environment-modules\"": {
             "pkg:deb/debian/modules": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"eog\"": {
+            "pkg:deb/debian/eog": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"erlang\"": {
             "pkg:deb/debian/erlang": 5
         },
@@ -22625,7 +22634,7 @@
             "pkg:deb/debian/flatpak": 16
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"flatpak-builder\"": {
-            "pkg:deb/debian/flatpak-builder": 1
+            "pkg:deb/debian/flatpak-builder": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman\"": {
             "pkg:deb/debian/foreman": 24
@@ -22823,7 +22832,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 97
+            "pkg:deb/debian/keycloak": 100
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -22935,7 +22944,7 @@
             "pkg:deb/debian/expat": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"luksmeta\"": {
-            "pkg:deb/debian/luksmeta": 1
+            "pkg:deb/debian/luksmeta": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"lvm2\"": {
             "pkg:deb/debian/lvm2": 1
@@ -27222,6 +27231,9 @@
         "pkg:github/esnet/iperf": {
             "pkg:deb/debian/iperf3": 1
         },
+        "pkg:github/ffmpeg/ffmpeg": {
+            "pkg:deb/debian/ffmpeg": 1
+        },
         "pkg:github/frostming/unearth": {
             "pkg:deb/debian/unearth": 1
         },
@@ -27257,6 +27269,9 @@
         },
         "pkg:github/kanboard/kanboard": {
             "pkg:deb/debian/kanboard": 2
+        },
+        "pkg:github/krb5/krb5": {
+            "pkg:deb/debian/krb5": 2
         },
         "pkg:github/libexpat/libexpat": {
             "pkg:deb/debian/expat": 4
