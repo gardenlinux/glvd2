@@ -4167,7 +4167,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 69
+            "pkg:deb/debian/ffmpeg": 77
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -6514,7 +6514,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 223
+            "pkg:deb/debian/imagemagick": 210
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -8779,7 +8779,7 @@
             "pkg:deb/debian/php-mongodb": 2
         },
         "\"mongodb\":\"python driver\"": {
-            "pkg:deb/debian/pymongo": 4
+            "pkg:deb/debian/pymongo": 5
         },
         "\"mongodb\":\"ruby driver\"": {
             "pkg:deb/debian/ruby-mongo": 1
@@ -14433,7 +14433,7 @@
             "pkg:deb/debian/r-base": 1
         },
         "\"rabbitmq\":\"amqp091-go\"": {
-            "pkg:deb/debian/golang-github-rabbitmq-amqp091-go": 11
+            "pkg:deb/debian/golang-github-rabbitmq-amqp091-go": 12
         },
         "\"rabbitmq\":\"rabbitmq-java-client\"": {
             "pkg:deb/debian/rabbitmq-java-client": 11
@@ -19144,7 +19144,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 54
+            "pkg:deb/debian/ffmpeg": 62
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -19695,7 +19695,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 67
+            "pkg:deb/debian/imagemagick": 54
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -27232,7 +27232,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 1
+            "pkg:deb/debian/ffmpeg": 9
         },
         "pkg:github/frostming/unearth": {
             "pkg:deb/debian/unearth": 1
