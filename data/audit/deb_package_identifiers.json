@@ -8478,6 +8478,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/golang-github-moby-sys": {
+        "VendorProductIDs": [
+            "\"moby\":\"sys\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/golang-github-nats-io-nkeys": {
         "VendorProductIDs": [
             "\"nats-io\":\"nkeys\""
@@ -13392,6 +13400,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libhangul": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libhangul\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libharfbuzz-shaper-perl": {
         "VendorProductIDs": [
             "\"jv\":\"harfbuzz::shaper\""
@@ -16302,7 +16318,8 @@
         "VendorProductIDs": [
             "\"lwip\":\"lwip api\"",
             "\"lwip\":\"tcp/ip stack mqtt\"",
-            "\"n/a\":\"lwip\""
+            "\"n/a\":\"lwip\"",
+            "\"savannah\":\"lwip smtp client\""
         ],
         "CPEs": [
             "cpe:2.3:a:lwip:lwip:*:*:*:*:*:*:*:*"
@@ -16596,6 +16613,14 @@
     "pkg:deb/debian/mariadb-10.6": {
         "VendorProductIDs": [
             "\"mariadb\":\"mariadb\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/mariadb-connector-c": {
+        "VendorProductIDs": [
+            "\"mariadb\":\"server\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -21400,7 +21425,8 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:github/OpenSC/OpenSC"
+            "pkg:github/OpenSC/OpenSC",
+            "pkg:github/open5gs/open5gs"
         ]
     },
     "pkg:deb/debian/open62541": {
@@ -29996,9 +30022,13 @@
         "VendorProductIDs": [
             "\"xerial\":\"snappy-java\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:xerial:snappy-java:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.xerial.snappy/snappy-java"
+        ]
     },
     "pkg:deb/debian/snappymail": {
         "VendorProductIDs": [

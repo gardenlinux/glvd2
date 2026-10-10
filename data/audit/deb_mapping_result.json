@@ -5719,7 +5719,7 @@
             "pkg:deb/debian/google-compute-image-packages": 1
         },
         "\"google\":\"gvisor\"": {
-            "pkg:deb/debian/golang-gvisor-gvisor": 2
+            "pkg:deb/debian/golang-gvisor-gvisor": 6
         },
         "\"google\":\"https://github.com/google/nftables\"": {
             "pkg:deb/debian/golang-github-google-nftables": 1
@@ -7425,7 +7425,7 @@
             "pkg:deb/debian/kitty": 8
         },
         "\"kozea\":\"cairosvg\"": {
-            "pkg:deb/debian/cairosvg": 3
+            "pkg:deb/debian/cairosvg": 4
         },
         "\"kozea\":\"weasyprint\"": {
             "pkg:deb/debian/weasyprint": 5
@@ -7851,7 +7851,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17344,
+            "pkg:deb/debian/linux": 17354,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8069,7 +8069,8 @@
             "pkg:deb/debian/mariadb-10.6": 4
         },
         "\"mariadb\":\"server\"": {
-            "pkg:deb/debian/mariadb": 10
+            "pkg:deb/debian/mariadb": 18,
+            "pkg:deb/debian/mariadb-connector-c": 1
         },
         "\"mariadb-corporation\":\"mariadb-connector-j\"": {
             "pkg:deb/debian/mariadb-connector-java": 1
@@ -8609,6 +8610,9 @@
         "\"moby\":\"spdystream\"": {
             "pkg:deb/debian/golang-github-docker-spdystream": 1
         },
+        "\"moby\":\"sys\"": {
+            "pkg:deb/debian/golang-github-moby-sys": 1
+        },
         "\"mobyproject\":\"buildkit\"": {
             "pkg:deb/debian/golang-github-moby-buildkit": 1
         },
@@ -8731,17 +8735,17 @@
             "pkg:deb/debian/libbson-xs-perl": 1
         },
         "\"mongodb\":\"c driver\"": {
-            "pkg:deb/debian/mongo-c-driver": 9
+            "pkg:deb/debian/mongo-c-driver": 13
         },
         "\"mongodb\":\"c++ driver\"": {
-            "pkg:deb/debian/mongo-cxx-driver": 4
+            "pkg:deb/debian/mongo-cxx-driver": 5
         },
         "\"mongodb\":\"c_driver\"": {
             "pkg:deb/debian/libbson-xs-perl": 1,
             "pkg:deb/debian/mongo-c-driver": 1
         },
         "\"mongodb\":\"go driver\"": {
-            "pkg:deb/debian/golang-mongodb-mongo-driver": 2
+            "pkg:deb/debian/golang-mongodb-mongo-driver": 4
         },
         "\"mongodb\":\"java driver\"": {
             "pkg:deb/debian/mongo-java-driver": 2
@@ -8750,7 +8754,7 @@
             "pkg:deb/debian/mongo-java-driver": 1
         },
         "\"mongodb\":\"libmongocrypt\"": {
-            "pkg:deb/debian/libmongocrypt": 3
+            "pkg:deb/debian/libmongocrypt": 6
         },
         "\"mongodb\":\"mongo-c-driver\"": {
             "pkg:deb/debian/mongo-c-driver": 1,
@@ -8776,7 +8780,7 @@
         },
         "\"mongodb\":\"php driver\"": {
             "pkg:deb/debian/mongo-c-driver": 1,
-            "pkg:deb/debian/php-mongodb": 2
+            "pkg:deb/debian/php-mongodb": 4
         },
         "\"mongodb\":\"python driver\"": {
             "pkg:deb/debian/pymongo": 5
@@ -12720,7 +12724,7 @@
             "pkg:deb/debian/pdns-recursor": 3
         },
         "\"open5gs\":\"open5gs\"": {
-            "pkg:deb/debian/open5gs": 13
+            "pkg:deb/debian/open5gs": 16
         },
         "\"open62541 project / o6 automation gmbh\":\"open62541\"": {
             "pkg:deb/debian/open62541": 2
@@ -14107,7 +14111,7 @@
             "pkg:deb/debian/pyjwt": 1
         },
         "\"pyload\":\"pyload\"": {
-            "pkg:deb/debian/pyload": 38
+            "pkg:deb/debian/pyload": 40
         },
         "\"pyload\":\"pyload/pyload\"": {
             "pkg:deb/debian/pyload": 9
@@ -15386,6 +15390,9 @@
         },
         "\"sangoma\":\"asterisk\"": {
             "pkg:deb/debian/asterisk": 1
+        },
+        "\"savannah\":\"lwip smtp client\"": {
+            "pkg:deb/debian/lwip": 1
         },
         "\"sbabic\":\"swupdate\"": {
             "pkg:deb/debian/swupdate": 2
@@ -17906,7 +17913,7 @@
             "pkg:deb/debian/xen": 132
         },
         "\"xerial\":\"snappy-java\"": {
-            "pkg:deb/debian/snappy-java": 1
+            "pkg:deb/debian/snappy-java": 3
         },
         "\"xerial\":\"sqlite-jdbc\"": {
             "pkg:deb/debian/xerial-sqlite-jdbc": 1
@@ -20677,7 +20684,7 @@
             "pkg:deb/debian/dovecot": 1
         },
         "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/open5gs": 116
+            "pkg:deb/debian/open5gs": 119
         },
         "cpe:2.3:a:open62541:open62541:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/open62541": 5
@@ -22004,6 +22011,9 @@
         "cpe:2.3:a:xapian:xapian-core:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xapian-core": 1
         },
+        "cpe:2.3:a:xerial:snappy-java:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/snappy-java": 2
+        },
         "cpe:2.3:a:xfree86:xfree86:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xfree86": 1
         },
@@ -22268,7 +22278,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17336
+            "pkg:deb/debian/linux": 17346
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -22454,7 +22464,7 @@
             "pkg:deb/debian/crun": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cups\"": {
-            "pkg:deb/debian/cups": 3
+            "pkg:deb/debian/cups": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cups-filters\"": {
             "pkg:deb/debian/cups-filters": 1
@@ -22703,7 +22713,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 63
+            "pkg:deb/debian/gimp": 64
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 12
@@ -22863,6 +22873,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libgepub\"": {
             "pkg:deb/debian/libgepub": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"libhangul\"": {
+            "pkg:deb/debian/libhangul": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libinput\"": {
             "pkg:deb/debian/libinput": 2
@@ -27348,6 +27361,9 @@
         "pkg:github/ollama/ollama": {
             "pkg:deb/debian/ollama": 1
         },
+        "pkg:github/open5gs/open5gs": {
+            "pkg:deb/debian/open5gs": 3
+        },
         "pkg:github/osTicket/osTicket": {
             "pkg:deb/debian/osticket": 1
         },
@@ -27689,6 +27705,9 @@
         },
         "pkg:maven/org.msgpack/msgpack-core": {
             "pkg:deb/debian/msgpack-java": 2
+        },
+        "pkg:maven/org.xerial.snappy/snappy-java": {
+            "pkg:deb/debian/snappy-java": 2
         },
         "pkg:npm/axios": {
             "pkg:deb/debian/node-axios": 10
