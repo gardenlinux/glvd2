@@ -218,6 +218,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/aegisub": {
+        "VendorProductIDs": [
+            "\"typesettingtools\":\"aegisub\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/aerc": {
         "VendorProductIDs": [
             "\"rjarry\":\"aerc\""

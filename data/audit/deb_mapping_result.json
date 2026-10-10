@@ -5713,7 +5713,7 @@
             "pkg:deb/debian/grpc": 6
         },
         "\"google\":\"guava\"": {
-            "pkg:deb/debian/guava-libraries": 1
+            "pkg:deb/debian/guava-libraries": 2
         },
         "\"google\":\"guest-oslogin\"": {
             "pkg:deb/debian/google-compute-image-packages": 1
@@ -16736,7 +16736,7 @@
             "pkg:deb/debian/nodejs": 1
         },
         "\"thephpleague\":\"commonmark\"": {
-            "pkg:deb/debian/php-league-commonmark": 14
+            "pkg:deb/debian/php-league-commonmark": 16
         },
         "\"thephpleague\":\"flysystem\"": {
             "pkg:deb/debian/php-league-flysystem": 2
@@ -17106,6 +17106,9 @@
         },
         "\"typelevel\":\"jawn\"": {
             "pkg:deb/debian/jawn": 3
+        },
+        "\"typesettingtools\":\"aegisub\"": {
+            "pkg:deb/debian/aegisub": 1
         },
         "\"typo3 core\":\"typo3 core\"": {
             "pkg:deb/debian/typo3-src": 1
@@ -21729,7 +21732,7 @@
             "pkg:deb/debian/nodejs": 1
         },
         "cpe:2.3:a:thephpleague:commonmark:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/php-league-commonmark": 9
+            "pkg:deb/debian/php-league-commonmark": 11
         },
         "cpe:2.3:a:theupdateframework:go-tuf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-github-endophage-gotuf": 1,
@@ -22395,7 +22398,7 @@
             "pkg:deb/debian/bubblewrap": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox\"": {
-            "pkg:deb/debian/busybox": 5
+            "pkg:deb/debian/busybox": 6
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox-main\"": {
             "pkg:deb/debian/busybox": 3
@@ -27023,7 +27026,7 @@
             "pkg:deb/debian/php-getid3": 2
         },
         "pkg:composer/league/commonmark": {
-            "pkg:deb/debian/php-league-commonmark": 9
+            "pkg:deb/debian/php-league-commonmark": 11
         },
         "pkg:composer/limesurvey/limesurvey": {
             "pkg:deb/debian/limesurvey": 2
