@@ -6514,7 +6514,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 210
+            "pkg:deb/debian/imagemagick": 211
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -9709,7 +9709,7 @@
             "pkg:deb/debian/gpac": 12
         },
         "\"n/a\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 77
+            "pkg:deb/debian/gpac": 79
         },
         "\"n/a\":\"gpac\\\"\"": {
             "pkg:deb/debian/ccextractor": 1,
@@ -19551,7 +19551,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 72
+            "pkg:deb/debian/gpac": 74
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -19705,7 +19705,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 1,
-            "pkg:deb/debian/imagemagick": 54
+            "pkg:deb/debian/imagemagick": 55
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -27168,6 +27168,9 @@
         },
         "pkg:github/Genymobile/scrcpy": {
             "pkg:deb/debian/scrcpy": 1
+        },
+        "pkg:github/ImageMagick/ImageMagick": {
+            "pkg:deb/debian/imagemagick": 1
         },
         "pkg:github/Konstanty/libmodplug": {
             "pkg:deb/debian/libmodplug": 1

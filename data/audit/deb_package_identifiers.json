@@ -10264,7 +10264,9 @@
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"ImageMagick\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/ImageMagick/ImageMagick"
+        ]
     },
     "pkg:deb/debian/imlib2": {
         "VendorProductIDs": [
