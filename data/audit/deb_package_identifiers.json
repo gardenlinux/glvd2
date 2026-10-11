@@ -13210,6 +13210,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libextutils-typemaps-default-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"ExtUtils-Typemaps-Default\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/ExtUtils-Typemaps-Default"
+        ]
+    },
     "pkg:deb/debian/libfcgi": {
         "VendorProductIDs": [
             "\"fastcgi\":\"fcgi\""
@@ -22044,7 +22054,9 @@
             "cpe:2.3:a:openrefine:openrefine:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.openrefine/openrefine"
+        ]
     },
     "pkg:deb/debian/openrefine-butterfly": {
         "VendorProductIDs": [

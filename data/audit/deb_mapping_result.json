@@ -12867,7 +12867,7 @@
             "pkg:deb/debian/openrazer": 2
         },
         "\"openrefine\":\"openrefine\"": {
-            "pkg:deb/debian/openrefine": 10
+            "pkg:deb/debian/openrefine": 11
         },
         "\"openrefine\":\"simile-butterfly\"": {
             "pkg:deb/debian/openrefine-butterfly": 1
@@ -20752,7 +20752,7 @@
             "pkg:deb/debian/libppd": 1
         },
         "cpe:2.3:a:openrefine:openrefine:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openrefine": 5
+            "pkg:deb/debian/openrefine": 6
         },
         "cpe:2.3:a:openrefine:similie_butterfly:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openrefine-butterfly": 1
@@ -24316,6 +24316,9 @@
         "\"https://cpan.org/modules\":\"Email-Sender\"": {
             "pkg:deb/debian/libemail-sender-perl": 1
         },
+        "\"https://cpan.org/modules\":\"ExtUtils-Typemaps-Default\"": {
+            "pkg:deb/debian/libextutils-typemaps-default-perl": 3
+        },
         "\"https://cpan.org/modules\":\"FCGI\"": {
             "pkg:deb/debian/libfcgi-perl": 1
         },
@@ -27071,6 +27074,9 @@
         "pkg:cpan/Email-Sender": {
             "pkg:deb/debian/libemail-sender-perl": 1
         },
+        "pkg:cpan/ExtUtils-Typemaps-Default": {
+            "pkg:deb/debian/libextutils-typemaps-default-perl": 3
+        },
         "pkg:cpan/HTML-FormFu": {
             "pkg:deb/debian/libhtml-formfu-perl": 1
         },
@@ -27708,6 +27714,9 @@
         },
         "pkg:maven/org.msgpack/msgpack-core": {
             "pkg:deb/debian/msgpack-java": 2
+        },
+        "pkg:maven/org.openrefine/openrefine": {
+            "pkg:deb/debian/openrefine": 1
         },
         "pkg:maven/org.xerial.snappy/snappy-java": {
             "pkg:deb/debian/snappy-java": 2
