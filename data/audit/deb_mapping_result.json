@@ -6513,7 +6513,7 @@
             "pkg:deb/debian/lact": 2
         },
         "\"imagemagick\":\"imagemagick\"": {
-            "pkg:deb/debian/graphicsmagick": 1,
+            "pkg:deb/debian/graphicsmagick": 4,
             "pkg:deb/debian/imagemagick": 211
         },
         "\"immutable-js\":\"immutable-js\"": {
@@ -19704,7 +19704,7 @@
             "pkg:deb/debian/rdiffweb": 1
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/graphicsmagick": 1,
+            "pkg:deb/debian/graphicsmagick": 3,
             "pkg:deb/debian/imagemagick": 55
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
