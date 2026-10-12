@@ -3408,6 +3408,9 @@
             "pkg:deb/debian/libspring-security-2.0-java": 1,
             "pkg:deb/debian/libspring-security-java": 1
         },
+        "\"denji\":\"ngx_cache_purge\"": {
+            "pkg:deb/debian/libnginx-mod-http-cache-purge": 1
+        },
         "\"denx software engineering\":\"das u-boot\"": {
             "pkg:deb/debian/u-boot": 1
         },
@@ -4917,7 +4920,7 @@
             "pkg:deb/debian/elfutils": 6
         },
         "\"gnu\":\"emacs\"": {
-            "pkg:deb/debian/emacs": 8,
+            "pkg:deb/debian/emacs": 9,
             "pkg:deb/debian/org-mode": 1
         },
         "\"gnu\":\"gawk\"": {
@@ -7406,7 +7409,7 @@
             "pkg:deb/debian/koji": 1
         },
         "\"konstanty bialkowski\":\"libmodplug\"": {
-            "pkg:deb/debian/libmodplug": 1
+            "pkg:deb/debian/libmodplug": 2
         },
         "\"kornelski\":\"http-cache-semantics\"": {
             "pkg:deb/debian/node-got": 2
@@ -7851,7 +7854,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17354,
+            "pkg:deb/debian/linux": 17355,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -12660,7 +12663,7 @@
             "pkg:deb/debian/assimp": 1
         },
         "\"open asset import library\":\"assimp\"": {
-            "pkg:deb/debian/assimp": 46
+            "pkg:deb/debian/assimp": 47
         },
         "\"open babel\":\"open babel\"": {
             "pkg:deb/debian/openbabel": 14
@@ -15326,7 +15329,7 @@
             "pkg:deb/debian/cocalc": 1
         },
         "\"sahlberg\":\"libnfs\"": {
-            "pkg:deb/debian/libnfs": 2
+            "pkg:deb/debian/libnfs": 3
         },
         "\"sail image decoding library\":\"sail image decoding library\"": {
             "pkg:deb/debian/sail": 8
@@ -18620,7 +18623,7 @@
             "pkg:deb/debian/asio": 1
         },
         "cpe:2.3:a:assimp:assimp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/assimp": 30
+            "pkg:deb/debian/assimp": 31
         },
         "cpe:2.3:a:asterisk:asterisk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/asterisk": 2
@@ -19379,7 +19382,7 @@
             "pkg:deb/debian/cpio": 3
         },
         "cpe:2.3:a:gnu:emacs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/emacs": 8,
+            "pkg:deb/debian/emacs": 9,
             "pkg:deb/debian/org-mode": 1
         },
         "cpe:2.3:a:gnu:gdb:*:*:*:*:*:*:*:*": {
@@ -19922,7 +19925,7 @@
             "pkg:deb/debian/koha": 5
         },
         "cpe:2.3:a:konstanty_bialkowski:libmodplug:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libmodplug": 1
+            "pkg:deb/debian/libmodplug": 2
         },
         "cpe:2.3:a:kovidgoyal:calibre:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/calibre": 1
@@ -22290,7 +22293,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17346
+            "pkg:deb/debian/linux": 17347
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -22854,7 +22857,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 100
+            "pkg:deb/debian/keycloak": 101
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -24809,6 +24812,9 @@
         },
         "\"https://github.com/containers/crun\":\"crun\"": {
             "pkg:deb/debian/crun": 1
+        },
+        "\"https://github.com/containers/gvisor-tap-vsock\":\"gvisor-tap-vsock\"": {
+            "pkg:deb/debian/golang-github-containers-gvisor-tap-vsocks": 1
         },
         "\"https://github.com/containers/image\":\"image\"": {
             "pkg:deb/debian/golang-github-containers-image": 1

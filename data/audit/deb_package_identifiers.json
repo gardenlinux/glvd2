@@ -7987,6 +7987,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/golang-github-containers-gvisor-tap-vsocks": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://github.com/containers/gvisor-tap-vsock\":\"gvisor-tap-vsock\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/golang-github-containers-image": {
         "VendorProductIDs": [
             "\"n/a\":\"containers/image\""
@@ -14183,6 +14191,14 @@
     "pkg:deb/debian/libnfs": {
         "VendorProductIDs": [
             "\"sahlberg\":\"libnfs\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libnginx-mod-http-cache-purge": {
+        "VendorProductIDs": [
+            "\"denji\":\"ngx_cache_purge\""
         ],
         "CPEs": null,
         "PackageIDs": null,
