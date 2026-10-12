@@ -4745,7 +4745,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "\"glpi-project\":\"glpi\"": {
-            "pkg:deb/debian/glpi": 173
+            "pkg:deb/debian/glpi": 174
         },
         "\"glpi-project\":\"glpi-agent\"": {
             "pkg:deb/debian/glpi": 3
@@ -6441,7 +6441,7 @@
             "pkg:deb/debian/hyprland": 1
         },
         "\"i18next\":\"i18next-http-backend\"": {
-            "pkg:deb/debian/node-i18next-http-backend": 1
+            "pkg:deb/debian/node-i18next-http-backend": 2
         },
         "\"ibm\":\"aix\"": {
             "pkg:deb/debian/linux": 1
@@ -7175,7 +7175,7 @@
             "pkg:deb/debian/jupyter-server": 13
         },
         "\"jupyterhub\":\"jupyterhub\"": {
-            "pkg:deb/debian/jupyterhub": 6
+            "pkg:deb/debian/jupyterhub": 7
         },
         "\"jupyterlab\":\"help-extension\"": {
             "pkg:deb/debian/jupyter-notebook": 1,
@@ -8506,6 +8506,9 @@
         },
         "\"miniaudio\":\"miniaudio\"": {
             "pkg:deb/debian/miniaudio": 1
+        },
+        "\"miniflux\":\"miniflux\"": {
+            "pkg:deb/debian/miniflux": 1
         },
         "\"miniflux\":\"v2\"": {
             "pkg:deb/debian/miniflux": 3
@@ -13602,7 +13605,7 @@
             "pkg:deb/debian/phpbb3": 1
         },
         "\"phpipam\":\"phpipam\"": {
-            "pkg:deb/debian/phpipam": 12
+            "pkg:deb/debian/phpipam": 13
         },
         "\"phpipam\":\"phpipam/phpipam\"": {
             "pkg:deb/debian/phpipam": 19
@@ -19339,7 +19342,7 @@
             "pkg:deb/debian/gleam": 5
         },
         "cpe:2.3:a:glpi-project:glpi:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/glpi": 18
+            "pkg:deb/debian/glpi": 19
         },
         "cpe:2.3:a:glpi-project:glpi_agent:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/glpi": 1
@@ -19860,6 +19863,9 @@
         "cpe:2.3:a:jupyter:jupyter_server:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jupyter-server": 1
         },
+        "cpe:2.3:a:jupyter:jupyterhub:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/jupyterhub": 1
+        },
         "cpe:2.3:a:jupyter:jupyterlab:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jupyterlab": 3
         },
@@ -20203,6 +20209,9 @@
         },
         "cpe:2.3:a:minhquan202:vuln-netbox:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/netbox": 1
+        },
+        "cpe:2.3:a:miniflux_project:miniflux:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/miniflux": 1
         },
         "cpe:2.3:a:minio:minio:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/minio": 3
@@ -21015,7 +21024,7 @@
             "pkg:deb/debian/php8.2": 9
         },
         "cpe:2.3:a:phpipam:phpipam:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/phpipam": 12
+            "pkg:deb/debian/phpipam": 13
         },
         "cpe:2.3:a:phplist:phplist:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/phplist": 1
@@ -27271,6 +27280,9 @@
         "pkg:github/gleam-lang/gleam": {
             "pkg:deb/debian/gleam": 5
         },
+        "pkg:github/glpi-project/glpi": {
+            "pkg:deb/debian/glpi": 1
+        },
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
         },
@@ -27383,7 +27395,7 @@
             "pkg:deb/debian/phplist": 2
         },
         "pkg:github/phpipam/phpipam": {
-            "pkg:deb/debian/phpipam": 1
+            "pkg:deb/debian/phpipam": 2
         },
         "pkg:github/postgis/address_standardizer": {
             "pkg:deb/debian/address-standardizer": 1
@@ -27522,6 +27534,9 @@
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1
+        },
+        "pkg:golang/miniflux.app/v2": {
+            "pkg:deb/debian/miniflux": 1
         },
         "pkg:hex/cowboy": {
             "pkg:deb/debian/erlang-cowboy": 2
@@ -27963,6 +27978,9 @@
         },
         "pkg:pypi/gitpython": {
             "pkg:deb/debian/python-git": 28
+        },
+        "pkg:pypi/jupyterhub": {
+            "pkg:deb/debian/jupyterhub": 1
         },
         "pkg:pypi/jupyterlab": {
             "pkg:deb/debian/jupyterlab": 3

@@ -6695,7 +6695,9 @@
             "cpe:2.3:a:glpi-project:glpi_agent:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/glpi-project/glpi"
+        ]
     },
     "pkg:deb/debian/glslang": {
         "VendorProductIDs": [
@@ -11535,10 +11537,13 @@
             "\"jupyterhub\":\"jupyterhub\""
         ],
         "CPEs": [
+            "cpe:2.3:a:jupyter:jupyterhub:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:jupyterhub:jupyterhub:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/jupyterhub"
+        ]
     },
     "pkg:deb/debian/jupyterlab": {
         "VendorProductIDs": [
@@ -17038,11 +17043,16 @@
     },
     "pkg:deb/debian/miniflux": {
         "VendorProductIDs": [
+            "\"miniflux\":\"miniflux\"",
             "\"miniflux\":\"v2\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:miniflux_project:miniflux:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:golang/miniflux.app/v2"
+        ]
     },
     "pkg:deb/debian/minio": {
         "VendorProductIDs": [
