@@ -253,6 +253,57 @@ func TestNamespaceOf(t *testing.T) {
 	}
 }
 
+func TestNameOf(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		raw     string
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "debian source name",
+			raw:  "pkg:deb/debian/curl",
+			want: "curl",
+		},
+		{
+			name: "gardenlinux source name",
+			raw:  "pkg:deb/gardenlinux/curl",
+			want: "curl",
+		},
+		{
+			name: "version and qualifiers are ignored",
+			raw:  "pkg:deb/debian/openssl@3.0.0?arch=amd64",
+			want: "openssl",
+		},
+		{
+			name: "non-deb name",
+			raw:  "pkg:golang/github.com/foo/bar",
+			want: "bar",
+		},
+		{
+			name:    "invalid purl errors",
+			raw:     "not-a-purl",
+			wantErr: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := purl.NameOf(tc.raw)
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
 // TestConsistency proves that canonicalization is deterministic for the
 // expected join key (pkg:deb/debian/<source-name>), regardless of how the
 // raw PURL arrives (with version, qualifiers, mixed case, etc.).

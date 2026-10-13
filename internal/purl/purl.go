@@ -76,6 +76,17 @@ func NamespaceOf(raw string) (string, error) {
 	return p.Namespace, nil
 }
 
+// NameOf returns the name of the PURL as parsed.
+// It returns an error if the PURL cannot be parsed.
+func NameOf(raw string) (string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return "", err
+	}
+
+	return p.Name, nil
+}
+
 // NamespaceVariants returns the canonical identity PURLs.
 // For deb type with debian or gardenlinux namespaces, it returns both variants.
 // All other PURLs get returned as is.
