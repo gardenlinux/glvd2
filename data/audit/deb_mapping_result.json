@@ -3117,7 +3117,7 @@
             "pkg:deb/debian/consolekit": 1
         },
         "\"containerd\":\"containerd\"": {
-            "pkg:deb/debian/containerd": 24,
+            "pkg:deb/debian/containerd": 26,
             "pkg:deb/debian/docker.io": 2
         },
         "\"containers\":\"aardvark-dns\"": {
@@ -4083,7 +4083,7 @@
             "pkg:deb/debian/soupsieve": 4
         },
         "\"fail2ban\":\"fail2ban\"": {
-            "pkg:deb/debian/fail2ban": 1
+            "pkg:deb/debian/fail2ban": 2
         },
         "\"failure_project\":\"failure\"": {
             "pkg:deb/debian/rust-failure": 1
@@ -4901,7 +4901,7 @@
             "pkg:deb/debian/wget": 1
         },
         "\"gnu\":\"aspell\"": {
-            "pkg:deb/debian/aspell": 3
+            "pkg:deb/debian/aspell": 4
         },
         "\"gnu\":\"binutils\"": {
             "pkg:deb/debian/binutils": 43
@@ -5510,7 +5510,7 @@
             "pkg:deb/debian/hugo": 1
         },
         "\"gohugoio\":\"hugo\"": {
-            "pkg:deb/debian/hugo": 21
+            "pkg:deb/debian/hugo": 25
         },
         "\"golang\":\"crypto\"": {
             "pkg:deb/debian/golang-go.crypto": 1
@@ -8832,6 +8832,9 @@
         },
         "\"moodle\":\"moodle\"": {
             "pkg:deb/debian/moodle": 52
+        },
+        "\"moonlight-stream\":\"moonlight-qt\"": {
+            "pkg:deb/debian/moonlight-qt": 1
         },
         "\"mootools\":\"mootools-core\"": {
             "pkg:deb/debian/mootools": 1
@@ -13867,6 +13870,9 @@
             "pkg:deb/debian/postgresql-9.4": 6,
             "pkg:deb/debian/postgresql-9.6": 6
         },
+        "\"postgresql\":\"psqlodbc\"": {
+            "pkg:deb/debian/psqlodbc": 1
+        },
         "\"postorius project\":\"postorius\"": {
             "pkg:deb/debian/postorius": 1
         },
@@ -15406,7 +15412,7 @@
             "pkg:deb/debian/lwip": 1
         },
         "\"sbabic\":\"swupdate\"": {
-            "pkg:deb/debian/swupdate": 2
+            "pkg:deb/debian/swupdate": 3
         },
         "\"sc\":\"sc\"": {
             "pkg:deb/debian/sc": 1
@@ -19146,6 +19152,9 @@
         "cpe:2.3:a:f5:nginx_plus:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/nginx": 5
         },
+        "cpe:2.3:a:fail2ban:fail2ban:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/fail2ban": 1
+        },
         "cpe:2.3:a:failure_project:failure:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rust-failure": 1
         },
@@ -19484,7 +19493,7 @@
             "pkg:deb/debian/golang-1.22": 1
         },
         "cpe:2.3:a:gohugo:hugo:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/hugo": 11
+            "pkg:deb/debian/hugo": 15
         },
         "cpe:2.3:a:golang:crypto:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-go.crypto": 1
@@ -21667,7 +21676,7 @@
             "pkg:deb/debian/swftools": 1
         },
         "cpe:2.3:a:swupdate:swupdate:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/swupdate": 1
+            "pkg:deb/debian/swupdate": 2
         },
         "cpe:2.3:a:symfony:symfony:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/symfony": 2
@@ -27186,6 +27195,9 @@
         "pkg:github/FFmpeg/FFmpeg": {
             "pkg:deb/debian/ffmpeg": 12
         },
+        "pkg:github/GNUAspell/aspell": {
+            "pkg:deb/debian/aspell": 1
+        },
         "pkg:github/Genivia/ugrep": {
             "pkg:deb/debian/ugrep": 1
         },
@@ -27436,7 +27448,7 @@
             "pkg:deb/debian/serendipity": 1
         },
         "pkg:github/sbabic/swupdate": {
-            "pkg:deb/debian/swupdate": 1
+            "pkg:deb/debian/swupdate": 2
         },
         "pkg:github/seaweedfs/seaweedfs": {
             "pkg:deb/debian/seaweedfs": 1
@@ -27514,7 +27526,7 @@
             "pkg:deb/debian/golang-github-go-chi-chi": 3
         },
         "pkg:golang/github.com/gohugoio/hugo": {
-            "pkg:deb/debian/hugo": 8
+            "pkg:deb/debian/hugo": 12
         },
         "pkg:golang/github.com/henrygd/beszel": {
             "pkg:deb/debian/beszel": 1
