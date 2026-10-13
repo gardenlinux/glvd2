@@ -2188,8 +2188,7 @@
             "pkg:deb/debian/astropy": 1
         },
         "\"asynchttpclient\":\"async-http-client\"": {
-            "pkg:deb/debian/async-http-client": 12,
-            "pkg:deb/debian/sync-http-client": 11
+            "pkg:deb/debian/async-http-client": 23
         },
         "\"asynchttpclient_project\":\"async-http-client\"": {
             "pkg:deb/debian/async-http-client": 1
@@ -4369,8 +4368,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 204,
-            "pkg:deb/debian/freerdp3": 143
+            "pkg:deb/debian/freerdp2": 222,
+            "pkg:deb/debian/freerdp3": 161
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 5
@@ -4710,6 +4709,12 @@
             "pkg:deb/debian/rust-gix-url": 1,
             "pkg:deb/debian/rust-gix-validate": 1,
             "pkg:deb/debian/rust-gix-worktree-state": 2
+        },
+        "\"gitoxidelabs\":\"gix-mailmap\"": {
+            "pkg:deb/debian/rust-gix-mailmap": 1
+        },
+        "\"gitoxidelabs\":\"gix-pack\"": {
+            "pkg:deb/debian/rust-gix-pack": 3
         },
         "\"gitoxidelabs\":\"gix-transport\"": {
             "pkg:deb/debian/rust-gitoxide": 1
@@ -6276,7 +6281,7 @@
             "pkg:deb/debian/eucalyptus": 1
         },
         "\"hexpm\":\"hex\"": {
-            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 1
         },
         "\"hexpm\":\"hex_core\"": {
@@ -6517,7 +6522,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 4,
-            "pkg:deb/debian/imagemagick": 211
+            "pkg:deb/debian/imagemagick": 236
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -8514,7 +8519,7 @@
             "pkg:deb/debian/miniflux": 1
         },
         "\"miniflux\":\"v2\"": {
-            "pkg:deb/debian/miniflux": 3
+            "pkg:deb/debian/miniflux": 6
         },
         "\"minio\":\"console\"": {
             "pkg:deb/debian/minio": 1
@@ -17501,7 +17506,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 95
+            "pkg:deb/debian/vllm": 96
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -19217,8 +19222,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 61,
-            "pkg:deb/debian/freerdp3": 61
+            "pkg:deb/debian/freerdp2": 79,
+            "pkg:deb/debian/freerdp3": 79
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -19661,7 +19666,7 @@
             "pkg:deb/debian/helm-kubernetes": 4
         },
         "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 1
         },
         "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*": {
@@ -19711,7 +19716,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 3,
-            "pkg:deb/debian/imagemagick": 55
+            "pkg:deb/debian/imagemagick": 80
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -21912,7 +21917,7 @@
             "pkg:deb/debian/vllm": 8
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 26
+            "pkg:deb/debian/vllm": 27
         },
         "cpe:2.3:a:vmware:spring:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-java": 1
@@ -22662,7 +22667,7 @@
             "pkg:deb/debian/flatpak-builder": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman\"": {
-            "pkg:deb/debian/foreman": 24
+            "pkg:deb/debian/foreman": 26
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman-installer\"": {
             "pkg:deb/debian/foreman": 2
@@ -24074,13 +24079,13 @@
             "pkg:deb/debian/binutils": 6
         },
         "\"https://catalog.redhat.com/software/containers/\":\"busybox-main\"": {
-            "pkg:deb/debian/busybox": 7
+            "pkg:deb/debian/busybox": 8
         },
         "\"https://catalog.redhat.com/software/containers/\":\"crun-main\"": {
             "pkg:deb/debian/crun": 2
         },
         "\"https://catalog.redhat.com/software/containers/\":\"cups-main\"": {
-            "pkg:deb/debian/cups": 3
+            "pkg:deb/debian/cups": 4
         },
         "\"https://catalog.redhat.com/software/containers/\":\"dracut-main\"": {
             "pkg:deb/debian/dracut": 2
@@ -24666,7 +24671,7 @@
             "pkg:deb/debian/gleam": 5
         },
         "\"https://github.com\":\"hexpm/hex\"": {
-            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 1
         },
         "\"https://github.com\":\"hexpm/hex_core\"": {
@@ -26983,8 +26988,11 @@
         "pkg:cargo/gix-fs": {
             "pkg:deb/debian/rust-gix-fs": 1
         },
+        "pkg:cargo/gix-mailmap": {
+            "pkg:deb/debian/rust-gix-mailmap": 1
+        },
         "pkg:cargo/gix-pack": {
-            "pkg:deb/debian/rust-gix-pack": 1
+            "pkg:deb/debian/rust-gix-pack": 4
         },
         "pkg:cargo/gix-packetline": {
             "pkg:deb/debian/rust-gix-packetline": 1
@@ -27293,7 +27301,7 @@
             "pkg:deb/debian/haproxy": 2
         },
         "pkg:github/hexpm/hex": {
-            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:github/hexpm/hex_core": {
@@ -27905,6 +27913,9 @@
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang-hex": 1
         },
+        "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
+            "pkg:deb/debian/erlang-hex": 2
+        },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
@@ -28037,7 +28048,7 @@
             "pkg:deb/debian/tryton-server": 3
         },
         "pkg:pypi/vllm": {
-            "pkg:deb/debian/vllm": 25
+            "pkg:deb/debian/vllm": 26
         },
         "pkg:software-id/erlang.org/otp": {
             "pkg:deb/debian/erlang": 30

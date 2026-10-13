@@ -4776,6 +4776,7 @@
             "pkg:github/hexpm/hex_core",
             "pkg:hex/hex_core",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
+            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git"
         ]
@@ -28682,9 +28683,20 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/rust-gix-mailmap": {
+        "VendorProductIDs": [
+            "\"gitoxidelabs\":\"gix-mailmap\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/gix-mailmap"
+        ]
+    },
     "pkg:deb/debian/rust-gix-pack": {
         "VendorProductIDs": [
-            "\"gitoxidelabs\":\"gitoxide\""
+            "\"gitoxidelabs\":\"gitoxide\"",
+            "\"gitoxidelabs\":\"gix-pack\""
         ],
         "CPEs": [
             "cpe:2.3:a:gitoxidelabs:gitoxide:*:*:*:*:*:*:*:*"
@@ -30780,14 +30792,6 @@
             "cpe:2.3:a:symfony:symfony:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:symphony_php_framework:symphony_process:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
-        "PackageURLs": null
-    },
-    "pkg:deb/debian/sync-http-client": {
-        "VendorProductIDs": [
-            "\"asynchttpclient\":\"async-http-client\""
-        ],
-        "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
     },
