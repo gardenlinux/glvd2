@@ -15862,7 +15862,7 @@
             "pkg:deb/debian/ruby-sqlite3": 2
         },
         "\"spip\":\"spip\"": {
-            "pkg:deb/debian/spip": 25
+            "pkg:deb/debian/spip": 26
         },
         "\"splitbrain\":\"splitbrain/dokuwiki\"": {
             "pkg:deb/debian/dokuwiki": 1
@@ -21612,7 +21612,7 @@
             "pkg:deb/debian/spip": 2
         },
         "cpe:2.3:a:spip:spip:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/spip": 23
+            "pkg:deb/debian/spip": 24
         },
         "cpe:2.3:a:spring_by_vmware_tanzu:spring_framework:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-java": 1
