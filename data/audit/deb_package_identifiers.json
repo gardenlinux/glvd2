@@ -1278,6 +1278,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/authelia": {
+        "VendorProductIDs": [
+            "\"authelia\":\"authelia\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/autogen": {
         "VendorProductIDs": [
             "\"gnu\":\"libopts\""
@@ -6112,7 +6120,8 @@
             "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"gdb-main\""
         ],
         "PackageURLs": null
     },
@@ -8742,6 +8751,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/golang-github-tink-crypto-tink-go": {
+        "VendorProductIDs": [
+            "\"tink-crypto\":\"tink-go\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/tink-crypto/tink-go"
+        ]
+    },
     "pkg:deb/debian/golang-github-ulikunitz-xz": {
         "VendorProductIDs": [
             "\"ulikunitz\":\"xz\""
@@ -10947,9 +10966,12 @@
     },
     "pkg:deb/debian/janus": {
         "VendorProductIDs": [
+            "\"meetecho\":\"janus-gateway\"",
             "\"meetecho\":\"meetecho/janus-gateway\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:meetecho:janus-gateway:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -11743,7 +11765,8 @@
     },
     "pkg:deb/debian/keepassxc": {
         "VendorProductIDs": [
-            "\"keepassxc\":\"keepassxc\""
+            "\"keepassxc\":\"keepassxc\"",
+            "\"keepassxreboot\":\"keepassxc\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -17752,6 +17775,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/mutter": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"mutter\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/mxml": {
         "VendorProductIDs": [
             "\"n/a\":\"mxml\""
@@ -19571,6 +19602,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/node-n3": {
+        "VendorProductIDs": [
+            "\"rdfjs\":\"n3.js\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:npm/n3"
+        ]
+    },
     "pkg:deb/debian/node-negotiator": {
         "VendorProductIDs": [
             "\"hackerone\":\"negotiator node module\""
@@ -21213,7 +21254,6 @@
     "pkg:deb/debian/octoprint": {
         "VendorProductIDs": [
             "\"gitlab\":\"gitlab\"",
-            "\"n/a\":\"octoprint\"",
             "\"octoprint\":\"octoprint\"",
             "\"octoprint\":\"octoprint/octoprint\""
         ],

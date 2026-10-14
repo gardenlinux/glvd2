@@ -2188,7 +2188,7 @@
             "pkg:deb/debian/astropy": 1
         },
         "\"asynchttpclient\":\"async-http-client\"": {
-            "pkg:deb/debian/async-http-client": 23
+            "pkg:deb/debian/async-http-client": 24
         },
         "\"asynchttpclient_project\":\"async-http-client\"": {
             "pkg:deb/debian/async-http-client": 1
@@ -2210,6 +2210,9 @@
         },
         "\"auth0\":\"omniauth-auth0\"": {
             "pkg:deb/debian/ruby-omniauth-auth0": 1
+        },
+        "\"authelia\":\"authelia\"": {
+            "pkg:deb/debian/authelia": 6
         },
         "\"authlib\":\"authlib\"": {
             "pkg:deb/debian/python-authlib": 13
@@ -3216,7 +3219,7 @@
         },
         "\"cure53\":\"dompurify\"": {
             "pkg:deb/debian/cacti": 2,
-            "pkg:deb/debian/node-dompurify": 27
+            "pkg:deb/debian/node-dompurify": 29
         },
         "\"curl\":\"curl\"": {
             "pkg:deb/debian/curl": 74
@@ -3643,7 +3646,7 @@
             "pkg:deb/debian/flask-appbuilder": 13
         },
         "\"drakkan\":\"sftpgo\"": {
-            "pkg:deb/debian/sftpgo": 11
+            "pkg:deb/debian/sftpgo": 13
         },
         "\"drbd8\":\"drbd8\"": {
             "pkg:deb/debian/drbd8": 1,
@@ -4368,8 +4371,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 222,
-            "pkg:deb/debian/freerdp3": 161
+            "pkg:deb/debian/freerdp2": 241,
+            "pkg:deb/debian/freerdp3": 180
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 5
@@ -4394,7 +4397,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "\"froxlor\":\"froxlor\"": {
-            "pkg:deb/debian/froxlor": 43
+            "pkg:deb/debian/froxlor": 47
         },
         "\"froxlor\":\"froxlor/froxlor\"": {
             "pkg:deb/debian/froxlor": 26
@@ -6522,7 +6525,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 4,
-            "pkg:deb/debian/imagemagick": 236
+            "pkg:deb/debian/imagemagick": 237
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -7321,6 +7324,9 @@
             "pkg:deb/debian/rust-jsonwebtoken": 1
         },
         "\"keepassxc\":\"keepassxc\"": {
+            "pkg:deb/debian/keepassxc": 1
+        },
+        "\"keepassxreboot\":\"keepassxc\"": {
             "pkg:deb/debian/keepassxc": 1
         },
         "\"kenneth reitz\":\"tablib\"": {
@@ -8235,6 +8241,9 @@
         "\"medinria\":\"medinria\"": {
             "pkg:deb/debian/gdcm": 1
         },
+        "\"meetecho\":\"janus-gateway\"": {
+            "pkg:deb/debian/janus": 2
+        },
         "\"meetecho\":\"meetecho/janus-gateway\"": {
             "pkg:deb/debian/janus": 2
         },
@@ -8775,7 +8784,7 @@
             "pkg:deb/debian/mongodb": 1
         },
         "\"mongodb\":\"mongodb server\"": {
-            "pkg:deb/debian/mongodb": 90
+            "pkg:deb/debian/mongodb": 92
         },
         "\"mongodb\":\"mongodb\"": {
             "pkg:deb/debian/mongodb": 8
@@ -9723,7 +9732,7 @@
             "pkg:deb/debian/gpac": 12
         },
         "\"n/a\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 79
+            "pkg:deb/debian/gpac": 80
         },
         "\"n/a\":\"gpac\\\"\"": {
             "pkg:deb/debian/ccextractor": 1,
@@ -10133,7 +10142,7 @@
             "pkg:deb/debian/node-jszip": 1
         },
         "\"n/a\":\"kamailio\"": {
-            "pkg:deb/debian/kamailio": 6
+            "pkg:deb/debian/kamailio": 7
         },
         "\"n/a\":\"karma\"": {
             "pkg:deb/debian/karma": 1
@@ -10634,14 +10643,11 @@
         "\"n/a\":\"object-path\"": {
             "pkg:deb/debian/node-object-path": 1
         },
-        "\"n/a\":\"octoprint\"": {
-            "pkg:deb/debian/octoprint": 2
-        },
         "\"n/a\":\"ofono\"": {
             "pkg:deb/debian/ofono": 4
         },
         "\"n/a\":\"ollama\"": {
-            "pkg:deb/debian/ollama": 3
+            "pkg:deb/debian/ollama": 4
         },
         "\"n/a\":\"omniauth ruby gem\"": {
             "pkg:deb/debian/ruby-omniauth": 1
@@ -13062,7 +13068,7 @@
             "pkg:deb/debian/openvpn": 1
         },
         "\"openvpn\":\"openvpn\"": {
-            "pkg:deb/debian/openvpn": 29
+            "pkg:deb/debian/openvpn": 31
         },
         "\"openvpn\":\"openvpn2\"": {
             "pkg:deb/debian/openvpn": 1
@@ -13788,7 +13794,7 @@
             "pkg:deb/debian/libpod": 1
         },
         "\"podman-container-tools\":\"podman\"": {
-            "pkg:deb/debian/podman": 2
+            "pkg:deb/debian/podman": 3
         },
         "\"podman-desktop\":\"podman-desktop\"": {
             "pkg:deb/debian/podman-desktop": 1
@@ -14339,7 +14345,7 @@
             "pkg:deb/debian/qemu": 1
         },
         "\"qgis\":\"qgis\"": {
-            "pkg:deb/debian/qgis": 1
+            "pkg:deb/debian/qgis": 2
         },
         "\"qos.ch sarl\":\"logback\"": {
             "pkg:deb/debian/logback": 5
@@ -14570,6 +14576,9 @@
         },
         "\"rdesktop\":\"rdesktop\"": {
             "pkg:deb/debian/rdesktop": 1
+        },
+        "\"rdfjs\":\"n3.js\"": {
+            "pkg:deb/debian/node-n3": 1
         },
         "\"rdflib\":\"pyrdfa3\"": {
             "pkg:deb/debian/python-pyrdfa": 1
@@ -15940,7 +15949,7 @@
             "pkg:deb/debian/sqlparse": 1
         },
         "\"squid-cache\":\"squid\"": {
-            "pkg:deb/debian/squid": 18,
+            "pkg:deb/debian/squid": 19,
             "pkg:deb/debian/squid3": 6
         },
         "\"squidfunk\":\"mkdocs-material\"": {
@@ -16905,6 +16914,9 @@
         "\"tinita\":\"yaml::libyaml\"": {
             "pkg:deb/debian/libyaml-libyaml-perl": 1
         },
+        "\"tink-crypto\":\"tink-go\"": {
+            "pkg:deb/debian/golang-github-tink-crypto-tink-go": 1
+        },
         "\"tiny-http\":\"tiny-http\"": {
             "pkg:deb/debian/rust-tiny-http": 2
         },
@@ -17478,7 +17490,7 @@
             "pkg:deb/debian/viewvc": 4
         },
         "\"vifm\":\"vifm\"": {
-            "pkg:deb/debian/vifm": 1
+            "pkg:deb/debian/vifm": 2
         },
         "\"vim\":\"vim\"": {
             "pkg:deb/debian/vim": 73
@@ -17569,7 +17581,7 @@
             "pkg:deb/debian/node-vite": 1
         },
         "\"vrana\":\"adminer\"": {
-            "pkg:deb/debian/adminer": 18
+            "pkg:deb/debian/adminer": 19
         },
         "\"vsftpd\":\"vsftpd\"": {
             "pkg:deb/debian/vsftpd": 1
@@ -17930,7 +17942,7 @@
         },
         "\"xen\":\"xen\"": {
             "pkg:deb/debian/linux": 6,
-            "pkg:deb/debian/xen": 132
+            "pkg:deb/debian/xen": 140
         },
         "\"xerial\":\"snappy-java\"": {
             "pkg:deb/debian/snappy-java": 3
@@ -18304,7 +18316,7 @@
             "pkg:deb/debian/rust-actix-http": 1
         },
         "cpe:2.3:a:adminer:adminer:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/adminer": 17
+            "pkg:deb/debian/adminer": 18
         },
         "cpe:2.3:a:adminerevo:adminerevo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/adminer": 2
@@ -18927,7 +18939,7 @@
         },
         "cpe:2.3:a:cure53:dompurify:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cacti": 1,
-            "pkg:deb/debian/node-dompurify": 18
+            "pkg:deb/debian/node-dompurify": 20
         },
         "cpe:2.3:a:curl:curl:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/curl": 4
@@ -19231,8 +19243,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 79,
-            "pkg:deb/debian/freerdp3": 79
+            "pkg:deb/debian/freerdp2": 98,
+            "pkg:deb/debian/freerdp3": 98
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -19245,7 +19257,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "cpe:2.3:a:froxlor:froxlor:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/froxlor": 22
+            "pkg:deb/debian/froxlor": 26
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frr": 10
@@ -19571,7 +19583,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 74
+            "pkg:deb/debian/gpac": 75
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -19725,7 +19737,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 3,
-            "pkg:deb/debian/imagemagick": 80
+            "pkg:deb/debian/imagemagick": 81
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -19893,7 +19905,7 @@
             "pkg:deb/debian/tsmuxer": 8
         },
         "cpe:2.3:a:kamailio:kamailio:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/kamailio": 6
+            "pkg:deb/debian/kamailio": 7
         },
         "cpe:2.3:a:kaminari_project:kaminari:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-kaminari": 1
@@ -20177,6 +20189,9 @@
         },
         "cpe:2.3:a:mediawiki:vector_skin:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mediawiki": 1
+        },
+        "cpe:2.3:a:meetecho:janus-gateway:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/janus": 2
         },
         "cpe:2.3:a:memcached:memcached:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/memcached": 5
@@ -20671,7 +20686,7 @@
             "pkg:deb/debian/ocsinventory-server": 1
         },
         "cpe:2.3:a:octoprint:octoprint:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/octoprint": 5
+            "pkg:deb/debian/octoprint": 3
         },
         "cpe:2.3:a:odoo:odoo_community:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/odoo": 3
@@ -20698,7 +20713,7 @@
             "pkg:deb/debian/suricata": 13
         },
         "cpe:2.3:a:ollama:ollama:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ollama": 12
+            "pkg:deb/debian/ollama": 13
         },
         "cpe:2.3:a:omniauth:omniauth-saml:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-saml": 1
@@ -22424,7 +22439,7 @@
             "pkg:deb/debian/bubblewrap": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox\"": {
-            "pkg:deb/debian/busybox": 6
+            "pkg:deb/debian/busybox": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox-main\"": {
             "pkg:deb/debian/busybox": 3
@@ -23074,6 +23089,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"mutt\"": {
             "pkg:deb/debian/mutt": 3
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"mutter\"": {
+            "pkg:deb/debian/mutter": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"nano\"": {
             "pkg:deb/debian/nano": 4
@@ -24085,7 +24103,7 @@
             "pkg:deb/debian/aom": 4
         },
         "\"https://catalog.redhat.com/software/containers/\":\"binutils-main\"": {
-            "pkg:deb/debian/binutils": 6
+            "pkg:deb/debian/binutils": 7
         },
         "\"https://catalog.redhat.com/software/containers/\":\"busybox-main\"": {
             "pkg:deb/debian/busybox": 8
@@ -24110,6 +24128,9 @@
         },
         "\"https://catalog.redhat.com/software/containers/\":\"freetype-main\"": {
             "pkg:deb/debian/freetype": 1
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"gdb-main\"": {
+            "pkg:deb/debian/gdb": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"kbd-main\"": {
             "pkg:deb/debian/kbd": 1
@@ -24175,7 +24196,7 @@
             "pkg:deb/debian/python-urllib3": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"rpm-main\"": {
-            "pkg:deb/debian/rpm": 3
+            "pkg:deb/debian/rpm": 6
         },
         "\"https://catalog.redhat.com/software/containers/\":\"runc\"": {
             "pkg:deb/debian/runc": 1
@@ -27465,6 +27486,9 @@
         "pkg:github/telegramdesktop/tdesktop": {
             "pkg:deb/debian/telegram-desktop": 1
         },
+        "pkg:github/tink-crypto/tink-go": {
+            "pkg:deb/debian/golang-github-tink-crypto-tink-go": 1
+        },
         "pkg:github/tiny-http/tiny-http": {
             "pkg:deb/debian/rust-tiny-http": 2
         },
@@ -27784,7 +27808,7 @@
             "pkg:deb/debian/node-deepmerge": 1
         },
         "pkg:npm/dompurify": {
-            "pkg:deb/debian/node-dompurify": 14
+            "pkg:deb/debian/node-dompurify": 16
         },
         "pkg:npm/extract-zip": {
             "pkg:deb/debian/node-extract-zip": 1
@@ -27821,6 +27845,9 @@
         },
         "pkg:npm/multiparty": {
             "pkg:deb/debian/node-multiparty": 4
+        },
+        "pkg:npm/n3": {
+            "pkg:deb/debian/node-n3": 1
         },
         "pkg:npm/nanoid": {
             "pkg:deb/debian/node-mocha": 2,
