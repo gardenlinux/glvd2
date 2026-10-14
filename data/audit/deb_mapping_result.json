@@ -35,6 +35,9 @@
         "\"@babel\":\"plugin-transform-modules-systemjs\"": {
             "pkg:deb/debian/node-babel7": 1
         },
+        "\"@builder.io\":\"qwik\"": {
+            "pkg:deb/debian/qwik": 1
+        },
         "\"@xmldom\":\"xmldom\"": {
             "pkg:deb/debian/node-xmldom": 15
         },
@@ -2248,7 +2251,7 @@
             "pkg:deb/debian/fio": 2
         },
         "\"axios\":\"axios\"": {
-            "pkg:deb/debian/node-axios": 52
+            "pkg:deb/debian/node-axios": 53
         },
         "\"axios\":\"axios/axios\"": {
             "pkg:deb/debian/node-axios": 1
@@ -3222,7 +3225,7 @@
             "pkg:deb/debian/node-dompurify": 29
         },
         "\"curl\":\"curl\"": {
-            "pkg:deb/debian/curl": 74
+            "pkg:deb/debian/curl": 75
         },
         "\"curl\":\"libcurl\"": {
             "pkg:deb/debian/curl": 2
@@ -4738,7 +4741,7 @@
             "pkg:deb/debian/glpi": 1
         },
         "\"gleam\":\"gleam\"": {
-            "pkg:deb/debian/gleam": 4
+            "pkg:deb/debian/gleam": 5
         },
         "\"gleam-lang\":\"gleam\"": {
             "pkg:deb/debian/gleam": 1
@@ -14451,7 +14454,7 @@
             "pkg:deb/debian/qutebrowser": 2
         },
         "\"qwikdev\":\"qwik\"": {
-            "pkg:deb/debian/qwik": 8
+            "pkg:deb/debian/qwik": 9
         },
         "\"r-lib\":\"gh\"": {
             "pkg:deb/debian/r-cran-gh": 1
@@ -15288,6 +15291,9 @@
         },
         "\"rust\":\"pageant\"": {
             "pkg:deb/debian/rust-russh": 1
+        },
+        "\"rust-ammonia\":\"ammonia\"": {
+            "pkg:deb/debian/rust-ammonia": 1
         },
         "\"rust-lang\":\"cargo\"": {
             "pkg:deb/debian/cargo": 5,
@@ -16555,7 +16561,7 @@
         },
         "\"the libreswan project\":\"libreswan\"": {
             "pkg:deb/debian/freeswan": 1,
-            "pkg:deb/debian/libreswan": 6,
+            "pkg:deb/debian/libreswan": 10,
             "pkg:deb/debian/openswan": 1,
             "pkg:deb/debian/strongswan": 1
         },
@@ -19368,7 +19374,7 @@
             "pkg:deb/debian/glpi": 1
         },
         "cpe:2.3:a:gleam-lang:gleam:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gleam": 5
+            "pkg:deb/debian/gleam": 6
         },
         "cpe:2.3:a:glpi-project:glpi:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/glpi": 19
@@ -22430,7 +22436,7 @@
             "pkg:deb/debian/binutils": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"bluez\"": {
-            "pkg:deb/debian/bluez": 3
+            "pkg:deb/debian/bluez": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"booth\"": {
             "pkg:deb/debian/booth": 1
@@ -24598,7 +24604,7 @@
             "pkg:deb/debian/indent": 1
         },
         "\"https://ghcr.io\":\"gleam-lang/gleam\"": {
-            "pkg:deb/debian/gleam": 5
+            "pkg:deb/debian/gleam": 6
         },
         "\"https://git.dpdk.org/dpdk-stable/\":\"dpdk\"": {
             "pkg:deb/debian/dpdk": 1
@@ -24698,7 +24704,7 @@
             "pkg:deb/debian/rebar3": 1
         },
         "\"https://github.com\":\"gleam-lang/gleam\"": {
-            "pkg:deb/debian/gleam": 5
+            "pkg:deb/debian/gleam": 6
         },
         "\"https://github.com\":\"hexpm/hex\"": {
             "pkg:deb/debian/erlang-hex": 4,
@@ -24955,7 +24961,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "\"https://github.com/libreswan/libreswan\":\"libreswan\"": {
-            "pkg:deb/debian/libreswan": 3
+            "pkg:deb/debian/libreswan": 7
         },
         "\"https://github.com/linux-pam/linux-pam\":\"linux-pam\"": {
             "pkg:deb/debian/pam": 2
@@ -27325,7 +27331,7 @@
             "pkg:deb/debian/llama.cpp": 1
         },
         "pkg:github/gleam-lang/gleam": {
-            "pkg:deb/debian/gleam": 5
+            "pkg:deb/debian/gleam": 6
         },
         "pkg:github/glpi-project/glpi": {
             "pkg:deb/debian/glpi": 1
@@ -27898,6 +27904,9 @@
         "pkg:nuget/log4net": {
             "pkg:deb/debian/log4net": 7
         },
+        "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang": {
+            "pkg:deb/debian/gleam": 1
+        },
         "pkg:oci/gleam?repository_url=ghcr.io/gleam-lang": {
             "pkg:deb/debian/gleam": 5
         },
@@ -28093,7 +28102,7 @@
             "pkg:deb/debian/erlang": 30
         },
         "pkg:software-id/gleam.run/gleam": {
-            "pkg:deb/debian/gleam": 5
+            "pkg:deb/debian/gleam": 6
         }
     }
 }

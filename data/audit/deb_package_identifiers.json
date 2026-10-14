@@ -6616,6 +6616,7 @@
         ],
         "PackageURLs": [
             "pkg:github/gleam-lang/gleam",
+            "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang",
             "pkg:oci/gleam?repository_url=ghcr.io/gleam-lang",
             "pkg:software-id/gleam.run/gleam"
         ]
@@ -26647,6 +26648,7 @@
     },
     "pkg:deb/debian/qwik": {
         "VendorProductIDs": [
+            "\"@builder.io\":\"qwik\"",
             "\"builderio\":\"builderio/qwik\"",
             "\"qwikdev\":\"qwik\""
         ],
@@ -28469,6 +28471,14 @@
     "pkg:deb/debian/rust-aes-gcm": {
         "VendorProductIDs": [
             "\"rustcrypto\":\"aeads\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/rust-ammonia": {
+        "VendorProductIDs": [
+            "\"rust-ammonia\":\"ammonia\""
         ],
         "CPEs": null,
         "PackageIDs": null,
