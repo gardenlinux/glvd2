@@ -3944,8 +3944,8 @@
             "pkg:deb/debian/erlang": 60
         },
         "\"erlang\":\"rebar3\"": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"es\":\"iperf3\"": {
             "pkg:deb/debian/iperf3": 3
@@ -6287,12 +6287,12 @@
             "pkg:deb/debian/eucalyptus": 1
         },
         "\"hexpm\":\"hex\"": {
-            "pkg:deb/debian/erlang-hex": 4,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 5,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"hexpm\":\"hex_core\"": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"hiawatha\":\"hiawatha web server\"": {
             "pkg:deb/debian/hiawatha": 3
@@ -6528,7 +6528,7 @@
         },
         "\"imagemagick\":\"imagemagick\"": {
             "pkg:deb/debian/graphicsmagick": 4,
-            "pkg:deb/debian/imagemagick": 237
+            "pkg:deb/debian/imagemagick": 238
         },
         "\"immutable-js\":\"immutable-js\"": {
             "pkg:deb/debian/node-immutable": 3
@@ -6895,6 +6895,9 @@
         "\"jazzband\":\"tablib\"": {
             "pkg:deb/debian/python-tablib": 1
         },
+        "\"jbardin\":\"scp.py\"": {
+            "pkg:deb/debian/python-scp": 1
+        },
         "\"jberger\":\"mojo::jwt\"": {
             "pkg:deb/debian/libmojo-jwt-perl": 1
         },
@@ -7197,15 +7200,15 @@
         },
         "\"jupyterlab\":\"jupyterlab\"": {
             "pkg:deb/debian/jupyter-notebook": 3,
-            "pkg:deb/debian/jupyterlab": 17
+            "pkg:deb/debian/jupyterlab": 18
         },
         "\"jupyterlab\":\"jupyterlite-core\"": {
             "pkg:deb/debian/jupyter-notebook": 1,
-            "pkg:deb/debian/jupyterlab": 2
+            "pkg:deb/debian/jupyterlab": 3
         },
         "\"jupyterlab\":\"notebook\"": {
             "pkg:deb/debian/jupyter-notebook": 1,
-            "pkg:deb/debian/jupyterlab": 1
+            "pkg:deb/debian/jupyterlab": 2
         },
         "\"justdan96\":\"tsmuxer\"": {
             "pkg:deb/debian/tsmuxer": 8
@@ -7950,7 +7953,7 @@
             "pkg:deb/debian/llvm-toolchain-22": 2
         },
         "\"lmfit\":\"asteval\"": {
-            "pkg:deb/debian/python-asteval": 2
+            "pkg:deb/debian/python-asteval": 3
         },
         "\"lodash\":\"lodash\"": {
             "pkg:deb/debian/node-lodash": 4
@@ -8787,7 +8790,7 @@
             "pkg:deb/debian/mongodb": 1
         },
         "\"mongodb\":\"mongodb server\"": {
-            "pkg:deb/debian/mongodb": 92
+            "pkg:deb/debian/mongodb": 95
         },
         "\"mongodb\":\"mongodb\"": {
             "pkg:deb/debian/mongodb": 8
@@ -10281,7 +10284,7 @@
             "pkg:deb/debian/hsqldb1.8.0": 1
         },
         "\"n/a\":\"libsndfile\"": {
-            "pkg:deb/debian/libsndfile": 1
+            "pkg:deb/debian/libsndfile": 2
         },
         "\"n/a\":\"libspf2\"": {
             "pkg:deb/debian/libspf2": 1
@@ -11854,7 +11857,7 @@
             "pkg:deb/debian/unbound": 2
         },
         "\"nltk\":\"nltk\"": {
-            "pkg:deb/debian/nltk": 34
+            "pkg:deb/debian/nltk": 35
         },
         "\"nltk\":\"nltk/nltk\"": {
             "pkg:deb/debian/nltk": 11
@@ -12544,7 +12547,7 @@
             "pkg:deb/debian/oauth2-proxy": 10
         },
         "\"oauthlib\":\"oauthlib\"": {
-            "pkg:deb/debian/python-oauthlib": 1
+            "pkg:deb/debian/python-oauthlib": 3
         },
         "\"obgm\":\"libcoap\"": {
             "pkg:deb/debian/libcoap": 1,
@@ -19125,8 +19128,8 @@
             "pkg:deb/debian/erlang": 1
         },
         "cpe:2.3:a:erlang:rebar3:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "cpe:2.3:a:es:iperf3:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/iperf3": 4
@@ -19693,12 +19696,12 @@
             "pkg:deb/debian/helm-kubernetes": 4
         },
         "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/erlang-hex": 4,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 5,
+            "pkg:deb/debian/rebar3": 2
         },
         "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "cpe:2.3:a:horde:horde_imp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-horde-imp": 1
@@ -19743,7 +19746,7 @@
         },
         "cpe:2.3:a:imagemagick:imagemagick:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphicsmagick": 3,
-            "pkg:deb/debian/imagemagick": 81
+            "pkg:deb/debian/imagemagick": 82
         },
         "cpe:2.3:a:influxdata:influxdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/influxdb": 1
@@ -19798,6 +19801,9 @@
         },
         "cpe:2.3:a:jasper_project:jasper:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jasper": 1
+        },
+        "cpe:2.3:a:jbardin:scp.py:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/python-scp": 1
         },
         "cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jenkins": 2
@@ -20061,6 +20067,9 @@
         },
         "cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libreoffice": 1
+        },
+        "cpe:2.3:a:libsndfile:libsndfile:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libsndfile": 1
         },
         "cpe:2.3:a:libsndfile_project:libsndfile:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libsndfile": 2
@@ -20530,7 +20539,7 @@
             "pkg:deb/debian/unbound": 2
         },
         "cpe:2.3:a:nltk:nltk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/nltk": 29
+            "pkg:deb/debian/nltk": 30
         },
         "cpe:2.3:a:nmap:nmap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/nmap": 2
@@ -22459,6 +22468,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cifs-utils\"": {
             "pkg:deb/debian/cifs-utils": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"clevis\"": {
+            "pkg:deb/debian/clevis": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit\"": {
             "pkg:deb/debian/cockpit": 8
         },
@@ -22775,7 +22787,7 @@
             "pkg:deb/debian/glibc": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gnome-remote-desktop\"": {
-            "pkg:deb/debian/gnome-remote-desktop": 4
+            "pkg:deb/debian/gnome-remote-desktop": 6
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gnome-shell\"": {
             "pkg:deb/debian/gnome-shell": 1
@@ -23013,7 +23025,7 @@
             "pkg:deb/debian/lvm2": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"m17n-lib\"": {
-            "pkg:deb/debian/m17n-lib": 4
+            "pkg:deb/debian/m17n-lib": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"m2crypto\"": {
             "pkg:deb/debian/m2crypto": 1
@@ -24700,19 +24712,19 @@
             "pkg:deb/debian/erlang": 55
         },
         "\"https://github.com\":\"erlang/rebar3\"": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"https://github.com\":\"gleam-lang/gleam\"": {
             "pkg:deb/debian/gleam": 6
         },
         "\"https://github.com\":\"hexpm/hex\"": {
-            "pkg:deb/debian/erlang-hex": 4,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 5,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"https://github.com\":\"hexpm/hex_core\"": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"https://github.com\":\"ninenines/cowboy\"": {
             "pkg:deb/debian/erlang-cowboy": 2
@@ -26257,8 +26269,8 @@
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "\"https://repo.hex.pm\":\"hex_core\"": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "\"https://repo.hex.pm\":\"tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -27232,7 +27244,7 @@
             "pkg:deb/debian/scrcpy": 1
         },
         "pkg:github/ImageMagick/ImageMagick": {
-            "pkg:deb/debian/imagemagick": 1
+            "pkg:deb/debian/imagemagick": 2
         },
         "pkg:github/Konstanty/libmodplug": {
             "pkg:deb/debian/libmodplug": 1
@@ -27312,8 +27324,8 @@
             "pkg:deb/debian/erlang": 55
         },
         "pkg:github/erlang/rebar3": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "pkg:github/esnet/iperf": {
             "pkg:deb/debian/iperf3": 1
@@ -27340,12 +27352,12 @@
             "pkg:deb/debian/haproxy": 2
         },
         "pkg:github/hexpm/hex": {
-            "pkg:deb/debian/erlang-hex": 4,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 5,
+            "pkg:deb/debian/rebar3": 2
         },
         "pkg:github/hexpm/hex_core": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "pkg:github/horde/Vfs": {
             "pkg:deb/debian/php-horde-vfs": 1
@@ -27603,8 +27615,8 @@
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "pkg:hex/hex_core": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 2
         },
         "pkg:hex/tesla": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -27962,7 +27974,8 @@
             "pkg:deb/debian/erlang-hex": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 2
+            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang-hex": 1,
@@ -27988,6 +28001,10 @@
         },
         "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
+        },
+        "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
+            "pkg:deb/debian/erlang-hex": 1,
+            "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
             "pkg:deb/debian/erlang-hex": 1,
@@ -28060,7 +28077,7 @@
             "pkg:deb/debian/python-libais": 1
         },
         "pkg:pypi/nltk": {
-            "pkg:deb/debian/nltk": 29
+            "pkg:deb/debian/nltk": 30
         },
         "pkg:pypi/offlineimap": {
             "pkg:deb/debian/offlineimap3": 1
