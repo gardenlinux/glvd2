@@ -1,0 +1,24 @@
+{
+  "input": {
+    "source_pkg_name": "foo",
+    "version": "1gl0"
+  },
+  "tags": {
+    "package-foo@1gl0": "sha-foo"
+  },
+  "expected": {
+    "pkg_name": "foo",
+    "version": "1gl0",
+    "purl": "pkg:deb/gardenlinux/foo",
+    "provenance": "unknown",
+    "signals": {
+      "built_by_gl": true,
+      "apt_src": false,
+      "salsa_src": false,
+      "upstream_src": true,
+      "has_patches": false
+    },
+    "repo": "package-foo",
+    "commit": "sha-foo"
+  }
+}

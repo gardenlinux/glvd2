@@ -64,6 +64,14 @@ func CanonicalizeVersioned(raw string) (string, error) {
 	return canon.ToString(), nil
 }
 
+// GardenLinuxIdentity returns the canonical, version-free gardenlinux identity PURL
+// for a source package name.
+func GardenLinuxIdentity(name string) string {
+	return packageurl.NewPackageURL(
+		packageurl.TypeDebian, NamespaceGardenLinux, name, "", nil, "",
+	).ToString()
+}
+
 // NamespaceOf returns the namespace of the PURL as parsed, applying the
 // deb convention that an empty namespace means debian if type is debian.
 // It returns an error if the PURL cannot be parsed.

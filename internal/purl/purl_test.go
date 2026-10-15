@@ -372,3 +372,9 @@ func TestNamespaceVariants(t *testing.T) {
 		})
 	}
 }
+
+func TestGardenLinuxIdentity(t *testing.T) {
+	t.Parallel()
+
+	assert.Equal(t, "pkg:deb/gardenlinux/gnutls", purl.GardenLinuxIdentity("gnutls"))
+}

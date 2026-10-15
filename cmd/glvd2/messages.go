@@ -33,3 +33,7 @@ func buildAuditUpdateMessage(artifacts []string) string {
 func buildSubmoduleUpdateMessage(scope string) string {
 	return fmt.Sprintf("data(%s): update\n", scope)
 }
+
+func buildPkgBuildUpdateMessage() string {
+	return "data(pkgbuild): update\n"
+}
