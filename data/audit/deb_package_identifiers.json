@@ -3390,6 +3390,8 @@
             "\"n/a\":\"https://github.com/curl/curl\"",
             "\"red hat, inc.\":\"curl\"",
             "\"redhat\":\"curl\"",
+            "\"siemens\":\"comos v10.4.5\"",
+            "\"siemens\":\"comos v10.6\"",
             "\"the curl project\":\"curl\"",
             "\"the curl project\":\"curl:\"",
             "\"unspecified\":\"curl\""
@@ -29774,10 +29776,13 @@
             "\"shaarli\":\"shaarli\""
         ],
         "CPEs": [
-            "cpe:2.3:a:shaarli:shaarli:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:shaarli:shaarli:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:shaarli_project:shaarli:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/shaarli/Shaarli"
+        ]
     },
     "pkg:deb/debian/shadow": {
         "VendorProductIDs": [

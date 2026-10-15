@@ -2781,7 +2781,7 @@
             "pkg:deb/debian/python-certifi": 3
         },
         "\"cesanta\":\"mongoose\"": {
-            "pkg:deb/debian/mongoose": 19,
+            "pkg:deb/debian/mongoose": 23,
             "pkg:deb/debian/smplayer": 8,
             "pkg:deb/debian/swupdate": 9
         },
@@ -3466,7 +3466,7 @@
             "pkg:deb/debian/dirmngr": 1
         },
         "\"distribution\":\"distribution\"": {
-            "pkg:deb/debian/docker-registry": 4
+            "pkg:deb/debian/docker-registry": 5
         },
         "\"distrobox\":\"distrobox\"": {
             "pkg:deb/debian/distrobox": 1
@@ -4050,16 +4050,16 @@
             "pkg:deb/debian/rust-eza": 1
         },
         "\"f5\":\"nginx javascript\"": {
-            "pkg:deb/debian/libnginx-mod-js": 4
+            "pkg:deb/debian/libnginx-mod-js": 6
         },
         "\"f5\":\"nginx open source subscription\"": {
             "pkg:deb/debian/nginx": 2
         },
         "\"f5\":\"nginx open source\"": {
-            "pkg:deb/debian/nginx": 30
+            "pkg:deb/debian/nginx": 35
         },
         "\"f5\":\"nginx plus\"": {
-            "pkg:deb/debian/nginx": 30
+            "pkg:deb/debian/nginx": 35
         },
         "\"f5\":\"nginx\"": {
             "pkg:deb/debian/nginx": 6
@@ -4374,8 +4374,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 241,
-            "pkg:deb/debian/freerdp3": 180
+            "pkg:deb/debian/freerdp2": 243,
+            "pkg:deb/debian/freerdp3": 182
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 5
@@ -7270,7 +7270,7 @@
             "pkg:deb/debian/ark": 1
         },
         "\"kde\":\"dolphin\"": {
-            "pkg:deb/debian/dolphin": 1
+            "pkg:deb/debian/dolphin": 2
         },
         "\"kde\":\"kcoreaddons\"": {
             "pkg:deb/debian/kcoreaddons": 1,
@@ -7871,7 +7871,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17355,
+            "pkg:deb/debian/linux": 17401,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -10852,7 +10852,7 @@
             "pkg:deb/debian/pgagent": 1
         },
         "\"n/a\":\"pgbouncer\"": {
-            "pkg:deb/debian/pgbouncer": 10
+            "pkg:deb/debian/pgbouncer": 13
         },
         "\"n/a\":\"pglogical\"": {
             "pkg:deb/debian/pglogical": 1
@@ -11825,7 +11825,7 @@
         },
         "\"nixos\":\"nix\"": {
             "pkg:deb/debian/guix": 6,
-            "pkg:deb/debian/nix": 10
+            "pkg:deb/debian/nix": 13
         },
         "\"nixos\":\"nixpkgs\"": {
             "pkg:deb/debian/odoo": 1
@@ -11837,7 +11837,7 @@
             "pkg:deb/debian/ldns": 1
         },
         "\"nlnet labs\":\"nsd\"": {
-            "pkg:deb/debian/nsd": 9,
+            "pkg:deb/debian/nsd": 13,
             "pkg:deb/debian/unbound": 1
         },
         "\"nlnet labs\":\"routinator\"": {
@@ -13074,7 +13074,7 @@
             "pkg:deb/debian/openvpn": 1
         },
         "\"openvpn\":\"openvpn\"": {
-            "pkg:deb/debian/openvpn": 31
+            "pkg:deb/debian/openvpn": 32
         },
         "\"openvpn\":\"openvpn2\"": {
             "pkg:deb/debian/openvpn": 1
@@ -15539,7 +15539,7 @@
             "pkg:deb/debian/sftpgo": 1
         },
         "\"shaarli\":\"shaarli\"": {
-            "pkg:deb/debian/shaarli": 7
+            "pkg:deb/debian/shaarli": 8
         },
         "\"shadow\":\"shadow\"": {
             "pkg:deb/debian/shadow": 1
@@ -15589,6 +15589,12 @@
         },
         "\"sidekiq\":\"sidekiq/sidekiq\"": {
             "pkg:deb/debian/ruby-sidekiq": 1
+        },
+        "\"siemens\":\"comos v10.4.5\"": {
+            "pkg:deb/debian/curl": 1
+        },
+        "\"siemens\":\"comos v10.6\"": {
+            "pkg:deb/debian/curl": 1
         },
         "\"siemens\":\"efibootguard\"": {
             "pkg:deb/debian/efibootguard": 1
@@ -17406,7 +17412,7 @@
             "pkg:deb/debian/usermin": 1
         },
         "\"util-linux\":\"util-linux\"": {
-            "pkg:deb/debian/util-linux": 3
+            "pkg:deb/debian/util-linux": 7
         },
         "\"uuidjs\":\"uuid\"": {
             "pkg:deb/debian/node-uuid": 2
@@ -19252,8 +19258,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 98,
-            "pkg:deb/debian/freerdp3": 98
+            "pkg:deb/debian/freerdp2": 100,
+            "pkg:deb/debian/freerdp3": 100
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -20533,7 +20539,7 @@
         },
         "cpe:2.3:a:nixos:nix:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/guix": 5,
-            "pkg:deb/debian/nix": 1
+            "pkg:deb/debian/nix": 4
         },
         "cpe:2.3:a:nlnetlabs:unbound:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/unbound": 2
@@ -21026,7 +21032,7 @@
             "pkg:deb/debian/ippsample": 1
         },
         "cpe:2.3:a:peazip:peazip:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/peazip": 2
+            "pkg:deb/debian/peazip": 3
         },
         "cpe:2.3:a:pengutronix:barebox:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/barebox": 6
@@ -21592,6 +21598,9 @@
             "pkg:deb/debian/sftpgo": 2
         },
         "cpe:2.3:a:shaarli:shaarli:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/shaarli": 1
+        },
+        "cpe:2.3:a:shaarli_project:shaarli:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/shaarli": 1
         },
         "cpe:2.3:a:shadow-maint:shadow-utils:*:*:*:*:*:*:*:*": {
@@ -22337,7 +22346,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17347
+            "pkg:deb/debian/linux": 17393
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -22550,7 +22559,7 @@
             "pkg:deb/debian/dovecot": 7
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dpdk\"": {
-            "pkg:deb/debian/dpdk": 2
+            "pkg:deb/debian/dpdk": 15
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dracut\"": {
             "pkg:deb/debian/dracut": 3
@@ -27494,6 +27503,9 @@
         },
         "pkg:github/sezero/mikmod": {
             "pkg:deb/debian/libmikmod": 3
+        },
+        "pkg:github/shaarli/Shaarli": {
+            "pkg:deb/debian/shaarli": 1
         },
         "pkg:github/strongswan/strongswan": {
             "pkg:deb/debian/strongswan": 1
