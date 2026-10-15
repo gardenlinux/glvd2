@@ -4694,19 +4694,33 @@
     "pkg:deb/debian/erlang": {
         "VendorProductIDs": [
             "\"erlang project\":\"erlang/otp\"",
-            "\"erlang\":\"otp\""
+            "\"erlang\":\"otp\"",
+            "\"erlang\":\"rebar3\"",
+            "\"hexpm\":\"hex\"",
+            "\"hexpm\":\"hex_core\""
         ],
         "CPEs": [
             "cpe:2.3:a:erlang:erlang\\/otp:*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:erlang:otp:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:erlang:otp:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:erlang:rebar3:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"erlang\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"erlang27\"",
-            "\"https://github.com\":\"erlang/otp\""
+            "\"https://github.com\":\"erlang/otp\"",
+            "\"https://github.com\":\"erlang/rebar3\"",
+            "\"https://github.com\":\"hexpm/hex\"",
+            "\"https://github.com\":\"hexpm/hex_core\"",
+            "\"https://repo.hex.pm\":\"hex_core\""
         ],
         "PackageURLs": [
             "pkg:github/erlang/otp",
+            "pkg:github/erlang/rebar3",
+            "pkg:github/hexpm/hex",
+            "pkg:github/hexpm/hex_core",
+            "pkg:hex/hex_core",
             "pkg:otp/asn1",
             "pkg:otp/eldap",
             "pkg:otp/erl_interface?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
@@ -4714,6 +4728,7 @@
             "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/ftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/inets",
             "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
@@ -4721,6 +4736,7 @@
             "pkg:otp/megaco?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/snmp",
             "pkg:otp/ssh",
             "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
@@ -4774,16 +4790,19 @@
     },
     "pkg:deb/debian/erlang-hex": {
         "VendorProductIDs": [
+            "\"erlang\":\"otp\"",
             "\"erlang\":\"rebar3\"",
             "\"hexpm\":\"hex\"",
             "\"hexpm\":\"hex_core\""
         ],
         "CPEs": [
+            "cpe:2.3:a:erlang:erlang\\/otp:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:erlang:rebar3:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://github.com\":\"erlang/otp\"",
             "\"https://github.com\":\"erlang/rebar3\"",
             "\"https://github.com\":\"hexpm/hex\"",
             "\"https://github.com\":\"hexpm/hex_core\"",
@@ -4791,15 +4810,20 @@
             "\"https://repo.hex.pm\":\"hex_core\""
         ],
         "PackageURLs": [
+            "pkg:github/erlang/otp",
             "pkg:github/erlang/rebar3",
             "pkg:github/hexpm/hex",
             "pkg:github/hexpm/hex_core",
             "pkg:hex/hex_core",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
+            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
+            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
-            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git"
+            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
+            "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:software-id/erlang.org/otp"
         ]
     },
     "pkg:deb/debian/erlang-jose": {
@@ -19396,11 +19420,9 @@
             "\"lodash\":\"lodash\"",
             "\"lodash\":\"lodash-amd\"",
             "\"lodash\":\"lodash-es\"",
+            "\"lodash\":\"lodash.omit\"",
             "\"lodash\":\"lodash.template\"",
             "\"lodash\":\"lodash.unset\"",
-            "\"lodash-amd\":\"lodash-amd\"",
-            "\"lodash-es\":\"lodash-es\"",
-            "\"lodash.unset\":\"lodash.unset\"",
             "\"n/a\":\"lodash\"",
             "\"snyk\":\"lodash\""
         ],
@@ -19410,6 +19432,7 @@
             "pkg:npm/lodash",
             "pkg:npm/lodash-amd",
             "pkg:npm/lodash-es",
+            "pkg:npm/lodash.omit",
             "pkg:npm/lodash.template",
             "pkg:npm/lodash.unset"
         ]
@@ -25348,6 +25371,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:pypi/GitPython",
             "pkg:pypi/gitpython"
         ]
     },
@@ -26992,16 +27016,19 @@
     },
     "pkg:deb/debian/rebar3": {
         "VendorProductIDs": [
+            "\"erlang\":\"otp\"",
             "\"erlang\":\"rebar3\"",
             "\"hexpm\":\"hex\"",
             "\"hexpm\":\"hex_core\""
         ],
         "CPEs": [
+            "cpe:2.3:a:erlang:erlang\\/otp:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:erlang:rebar3:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://github.com\":\"erlang/otp\"",
             "\"https://github.com\":\"erlang/rebar3\"",
             "\"https://github.com\":\"hexpm/hex\"",
             "\"https://github.com\":\"hexpm/hex_core\"",
@@ -27009,14 +27036,19 @@
             "\"https://repo.hex.pm\":\"hex_core\""
         ],
         "PackageURLs": [
+            "pkg:github/erlang/otp",
             "pkg:github/erlang/rebar3",
             "pkg:github/hexpm/hex",
             "pkg:github/hexpm/hex_core",
             "pkg:hex/hex_core",
+            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
+            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
-            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git"
+            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
+            "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:software-id/erlang.org/otp"
         ]
     },
     "pkg:deb/debian/redict": {
