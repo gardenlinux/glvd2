@@ -4521,7 +4521,7 @@
             "pkg:deb/debian/composer": 2
         },
         "\"getkin\":\"kin-openapi\"": {
-            "pkg:deb/debian/golang-github-getkin-kin-openapi": 5
+            "pkg:deb/debian/golang-github-getkin-kin-openapi": 14
         },
         "\"getmonero\":\"monero\"": {
             "pkg:deb/debian/monero": 1
@@ -7507,6 +7507,9 @@
         "\"kubernetes\":\"kubernetes\"": {
             "pkg:deb/debian/kubernetes": 52
         },
+        "\"kyz\":\"libmspack\"": {
+            "pkg:deb/debian/libmspack": 1
+        },
         "\"l2c2technologies\":\"koha\"": {
             "pkg:deb/debian/koha": 1
         },
@@ -8701,6 +8704,9 @@
         },
         "\"mod_wsgi\":\"mod_wsgi\"": {
             "pkg:deb/debian/mod-wsgi": 1
+        },
+        "\"modelcontextprotocol\":\"python-sdk\"": {
+            "pkg:deb/debian/python-mcp": 8
         },
         "\"module::scandeps\":\"module::scandeps\"": {
             "pkg:deb/debian/libmodule-scandeps-perl": 1
@@ -17214,6 +17220,9 @@
         "\"twitter\":\"secure_headers\"": {
             "pkg:deb/debian/ruby-secure-headers": 2
         },
+        "\"twogood\":\"unshield\"": {
+            "pkg:deb/debian/unshield": 1
+        },
         "\"typelevel\":\"jawn\"": {
             "pkg:deb/debian/jawn": 3
         },
@@ -18023,7 +18032,7 @@
         },
         "\"xen\":\"xen\"": {
             "pkg:deb/debian/linux": 6,
-            "pkg:deb/debian/xen": 140
+            "pkg:deb/debian/xen": 139
         },
         "\"xerial\":\"snappy-java\"": {
             "pkg:deb/debian/snappy-java": 3
@@ -20161,6 +20170,9 @@
         "cpe:2.3:a:libmodbus:libmodbus:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libmodbus": 3
         },
+        "cpe:2.3:a:libmspack_project:libmspack:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libmspack": 1
+        },
         "cpe:2.3:a:libpng:libpng:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libpng1.6": 1
         },
@@ -22021,6 +22033,9 @@
         "cpe:2.3:a:unrealircd:unrealircd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/unrealircd": 1
         },
+        "cpe:2.3:a:unshield_project:unshield:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/unshield": 1
+        },
         "cpe:2.3:a:uriparser_project:uriparser:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/uriparser": 3
         },
@@ -22589,7 +22604,7 @@
             "pkg:deb/debian/cifs-utils": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"clevis\"": {
-            "pkg:deb/debian/clevis": 1
+            "pkg:deb/debian/clevis": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit\"": {
             "pkg:deb/debian/cockpit": 8
@@ -27852,6 +27867,9 @@
         "pkg:github/krb5/krb5": {
             "pkg:deb/debian/krb5": 2
         },
+        "pkg:github/kyz/libmspack": {
+            "pkg:deb/debian/libmspack": 1
+        },
         "pkg:github/libexpat/libexpat": {
             "pkg:deb/debian/expat": 4
         },
@@ -28022,6 +28040,9 @@
         },
         "pkg:github/tomojitakasu/RTKLIB": {
             "pkg:deb/debian/rtklib": 4
+        },
+        "pkg:github/twogood/unshield": {
+            "pkg:deb/debian/unshield": 1
         },
         "pkg:github/u-boot/u-boot": {
             "pkg:deb/debian/u-boot": 11

@@ -14239,11 +14239,16 @@
     },
     "pkg:deb/debian/libmspack": {
         "VendorProductIDs": [
+            "\"kyz\":\"libmspack\"",
             "\"libmspack\":\"libmspack\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libmspack_project:libmspack:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/kyz/libmspack"
+        ]
     },
     "pkg:deb/debian/libmysofa": {
         "VendorProductIDs": [
@@ -25783,6 +25788,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-mcp": {
+        "VendorProductIDs": [
+            "\"modelcontextprotocol\":\"python-sdk\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/python-mechanicalsoup": {
         "VendorProductIDs": [
             "\"mechanicalsoup\":\"mechanicalsoup\"",
@@ -32402,6 +32415,18 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/unshield": {
+        "VendorProductIDs": [
+            "\"twogood\":\"unshield\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:unshield_project:unshield:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/twogood/unshield"
+        ]
     },
     "pkg:deb/debian/unzip": {
         "VendorProductIDs": [
