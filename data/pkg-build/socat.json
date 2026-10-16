@@ -1,0 +1,35 @@
+{
+  "versions": {
+    "1.8.1.3-2gl0~bp1877": {
+      "pkg_name": "socat",
+      "version": "1.8.1.3-2gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/socat",
+      "repo": "package-socat",
+      "commit": "82e53d985605265660c05e026c6264aaee53fb7c",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.8.1.3-2"
+      }
+    },
+    "1.8.1.3-2gl0~bp2150": {
+      "pkg_name": "socat",
+      "version": "1.8.1.3-2gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/socat",
+      "repo": "package-socat",
+      "commit": "17ec4e62a171dc97719dd70b57916ca88a462ff4",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

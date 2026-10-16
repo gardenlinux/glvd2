@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "1.3.17+ds-2": {
+      "pkg_name": "freetds",
+      "version": "1.3.17+ds-2",
+      "purl": "pkg:deb/gardenlinux/freetds",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

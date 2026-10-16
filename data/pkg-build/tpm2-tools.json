@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "5.7-1": {
+      "pkg_name": "tpm2-tools",
+      "version": "5.7-1",
+      "purl": "pkg:deb/gardenlinux/tpm2-tools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

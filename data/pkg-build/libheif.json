@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.19.8-1": {
+      "pkg_name": "libheif",
+      "version": "1.19.8-1",
+      "purl": "pkg:deb/gardenlinux/libheif",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.21.2-2": {
+      "pkg_name": "libheif",
+      "version": "1.21.2-2",
+      "purl": "pkg:deb/gardenlinux/libheif",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

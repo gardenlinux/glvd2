@@ -1,0 +1,19 @@
+{
+  "versions": {
+    "2.0207+dfsg+really+2.0134-7gl0~bp2150": {
+      "pkg_name": "libxml-libxml-perl",
+      "version": "2.0207+dfsg+really+2.0134-7gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/libxml-libxml-perl",
+      "repo": "package-libxml-libxml-perl",
+      "commit": "b87ccdfd4599a7629d35062a1bf76e032d66d982",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

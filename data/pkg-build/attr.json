@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "1:2.5.2-3": {
+      "pkg_name": "attr",
+      "version": "1:2.5.2-3",
+      "purl": "pkg:deb/gardenlinux/attr",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

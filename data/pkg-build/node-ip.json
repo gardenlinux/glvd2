@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "2.0.1+~1.1.3-3": {
+      "pkg_name": "node-ip",
+      "version": "2.0.1+~1.1.3-3",
+      "purl": "pkg:deb/gardenlinux/node-ip",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

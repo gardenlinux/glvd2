@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "2:9.2.0858-1gl0~bp1877": {
+      "pkg_name": "vim",
+      "version": "2:9.2.0858-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/vim",
+      "repo": "bp-package-vim",
+      "commit": "ad2aa7a45065e44077cfd9ec058e7b58c74fc6a8",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2:9.2.0858-1gl0~bp2150": {
+      "pkg_name": "vim",
+      "version": "2:9.2.0858-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/vim",
+      "repo": "bp-package-vim",
+      "commit": "75fe036a484aa22a57b742445fd293f98b27fff6",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

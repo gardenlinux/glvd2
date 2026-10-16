@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "2.10.1-2": {
+      "pkg_name": "sssd",
+      "version": "2.10.1-2",
+      "purl": "pkg:deb/gardenlinux/sssd",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.10.1-2gl0": {
+      "pkg_name": "sssd",
+      "version": "2.10.1-2gl0",
+      "purl": "pkg:deb/gardenlinux/sssd",
+      "repo": "package-sssd",
+      "commit": "c709e26c9964c54be5c83533d8a14f734a3ff5b1",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "versions": {
+    "0.48-2gl0~bp1877": {
+      "pkg_name": "libxs-parse-keyword-perl",
+      "version": "0.48-2gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libxs-parse-keyword-perl",
+      "repo": "package-libxs-parse-keyword-perl",
+      "commit": "9dbcc2ce110ee1a7e8c38dfa48de31d2c7371628",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

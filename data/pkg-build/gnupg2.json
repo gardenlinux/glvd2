@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "2.4.7-17gl0~bp1877": {
+      "pkg_name": "gnupg2",
+      "version": "2.4.7-17gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/gnupg2",
+      "repo": "package-gnupg2",
+      "commit": "c05e6c2b5823864c9b435737ef09b0d5dbecba07",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "2.4.8-5": {
+      "pkg_name": "gnupg2",
+      "version": "2.4.8-5",
+      "purl": "pkg:deb/gardenlinux/gnupg2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "1.49.0-2": {
+      "pkg_name": "golang-github-aws-aws-sdk-go",
+      "version": "1.49.0-2",
+      "purl": "pkg:deb/gardenlinux/golang-github-aws-aws-sdk-go",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

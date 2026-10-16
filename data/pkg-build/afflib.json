@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.7.21-1": {
+      "pkg_name": "afflib",
+      "version": "3.7.21-1",
+      "purl": "pkg:deb/gardenlinux/afflib",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.7.22-1": {
+      "pkg_name": "afflib",
+      "version": "3.7.22-1",
+      "purl": "pkg:deb/gardenlinux/afflib",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

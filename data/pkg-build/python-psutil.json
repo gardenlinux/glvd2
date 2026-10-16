@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "7.0.0-2": {
+      "pkg_name": "python-psutil",
+      "version": "7.0.0-2",
+      "purl": "pkg:deb/gardenlinux/python-psutil",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "7.1.0-1": {
+      "pkg_name": "python-psutil",
+      "version": "7.1.0-1",
+      "purl": "pkg:deb/gardenlinux/python-psutil",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

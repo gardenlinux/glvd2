@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.9.27+git20200814.62c30a4a-2": {
+      "pkg_name": "tcc",
+      "version": "0.9.27+git20200814.62c30a4a-2",
+      "purl": "pkg:deb/gardenlinux/tcc",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

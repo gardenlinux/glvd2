@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "5.3.0-1": {
+      "pkg_name": "golang-github-golang-jwt-jwt-v5",
+      "version": "5.3.0-1",
+      "purl": "pkg:deb/gardenlinux/golang-github-golang-jwt-jwt-v5",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

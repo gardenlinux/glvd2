@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.16.3+~1.2.3+~1.10.4-1": {
+      "pkg_name": "node-n3",
+      "version": "1.16.3+~1.2.3+~1.10.4-1",
+      "purl": "pkg:deb/gardenlinux/node-n3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.16.3+~1.2.3+~1.10.4-3": {
+      "pkg_name": "node-n3",
+      "version": "1.16.3+~1.2.3+~1.10.4-3",
+      "purl": "pkg:deb/gardenlinux/node-n3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

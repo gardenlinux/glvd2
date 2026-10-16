@@ -1,0 +1,20 @@
+{
+  "versions": {
+    "3.3.0+ds1-4gl0": {
+      "pkg_name": "rsync",
+      "version": "3.3.0+ds1-4gl0",
+      "purl": "pkg:deb/gardenlinux/rsync",
+      "repo": "package-rsync",
+      "commit": "e47a86f7cd8ba061abad8d3860131f699a4c5862",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "3.3.0"
+      }
+    }
+  }
+}

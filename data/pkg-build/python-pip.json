@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "25.1.1+dfsg-1": {
+      "pkg_name": "python-pip",
+      "version": "25.1.1+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/python-pip",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "26.0.1+dfsg-1": {
+      "pkg_name": "python-pip",
+      "version": "26.0.1+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/python-pip",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "2.1.3+~cs0.7.31-3": {
+      "pkg_name": "node-ms",
+      "version": "2.1.3+~cs0.7.31-3",
+      "purl": "pkg:deb/gardenlinux/node-ms",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

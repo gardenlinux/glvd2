@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "6.1.1-2": {
+      "pkg_name": "node-hosted-git-info",
+      "version": "6.1.1-2",
+      "purl": "pkg:deb/gardenlinux/node-hosted-git-info",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

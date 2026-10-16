@@ -1,0 +1,19 @@
+{
+  "versions": {
+    "1.7.0-5gl0": {
+      "pkg_name": "pam",
+      "version": "1.7.0-5gl0",
+      "purl": "pkg:deb/gardenlinux/pam",
+      "repo": "package-pam",
+      "commit": "3dcd4e9f0a58d27a0d2cbbf986ea0c7c8e5fddef",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

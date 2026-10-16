@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "1.34.8-1gl0~bp1877": {
+      "pkg_name": "c-ares",
+      "version": "1.34.8-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/c-ares",
+      "repo": "package-c-ares",
+      "commit": "eb2657efabf2c638d2cee35a6c389ef2ae076d76",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.34.8"
+      }
+    },
+    "1.34.8-1gl0~bp2150": {
+      "pkg_name": "c-ares",
+      "version": "1.34.8-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/c-ares",
+      "repo": "package-c-ares",
+      "commit": "45b54008ec5c94c5aba7e4c29ed7037b57f26200",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.34.8"
+      }
+    }
+  }
+}

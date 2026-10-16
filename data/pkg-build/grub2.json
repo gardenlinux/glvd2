@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.12-7": {
+      "pkg_name": "grub2",
+      "version": "2.12-7",
+      "purl": "pkg:deb/gardenlinux/grub2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.14~git20250718.0e36779-2": {
+      "pkg_name": "grub2",
+      "version": "2.14~git20250718.0e36779-2",
+      "purl": "pkg:deb/gardenlinux/grub2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "1.4.3-1gl0+bp1877": {
+      "pkg_name": "runc",
+      "version": "1.4.3-1gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/runc",
+      "repo": "package-runc",
+      "commit": "ef2c107787569afdce2968b0d588fc7385695343",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true,
+        "upstream_version": "1.4.3"
+      }
+    },
+    "1.4.3-1gl8~bp2150": {
+      "pkg_name": "runc",
+      "version": "1.4.3-1gl8~bp2150",
+      "purl": "pkg:deb/gardenlinux/runc",
+      "repo": "package-runc",
+      "commit": "43b2954cf6b6c6db8b02eb4d0f0d9aea241ce1c3",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true,
+        "upstream_version": "1.4.3"
+      }
+    }
+  }
+}

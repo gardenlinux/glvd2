@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.3.4+~cs4.1.7-1": {
+      "pkg_name": "node-debug",
+      "version": "4.3.4+~cs4.1.7-1",
+      "purl": "pkg:deb/gardenlinux/node-debug",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.4.1+~4.1.12-1": {
+      "pkg_name": "node-debug",
+      "version": "4.4.1+~4.1.12-1",
+      "purl": "pkg:deb/gardenlinux/node-debug",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

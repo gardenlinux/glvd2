@@ -1,0 +1,33 @@
+{
+  "versions": {
+    "2:13.0.10-1": {
+      "pkg_name": "open-vm-tools",
+      "version": "2:13.0.10-1",
+      "purl": "pkg:deb/gardenlinux/open-vm-tools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2:13.0.5-1gl0+bp1877": {
+      "pkg_name": "open-vm-tools",
+      "version": "2:13.0.5-1gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/open-vm-tools",
+      "repo": "package-open-vm-tools",
+      "commit": "14aa93a91612c8f35aec09cc69b3e1f726963516",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "13.0.5-1"
+      }
+    }
+  }
+}

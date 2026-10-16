@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.0.0+dfsg+~cs6.97.2-2": {
+      "pkg_name": "node-mime",
+      "version": "3.0.0+dfsg+~cs6.97.2-2",
+      "purl": "pkg:deb/gardenlinux/node-mime",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.1.0+dfsg+~cs8.97.10-6": {
+      "pkg_name": "node-mime",
+      "version": "4.1.0+dfsg+~cs8.97.10-6",
+      "purl": "pkg:deb/gardenlinux/node-mime",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.6.7-2": {
+      "pkg_name": "rubygems",
+      "version": "3.6.7-2",
+      "purl": "pkg:deb/gardenlinux/rubygems",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

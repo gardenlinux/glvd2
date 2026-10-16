@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "1:9.20.26-1gl0+bp1877": {
+      "pkg_name": "bind9",
+      "version": "1:9.20.26-1gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/bind9",
+      "repo": "package-bind9",
+      "commit": "24fb0e5c7ca2e8512546fb45a54baa72c7b0af0c",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "9.20.26-1"
+      }
+    },
+    "1:9.20.29-1gl0+bp2150": {
+      "pkg_name": "bind9",
+      "version": "1:9.20.29-1gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/bind9",
+      "repo": "package-bind9",
+      "commit": "cb9721e2707b8345060a4d871da769c9e9b31b90",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "9.20.29-1"
+      }
+    }
+  }
+}

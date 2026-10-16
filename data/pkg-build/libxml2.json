@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "2.12.7+dfsg+really2.9.14-2.1+deb13u2gl0~bp1877": {
+      "pkg_name": "libxml2",
+      "version": "2.12.7+dfsg+really2.9.14-2.1+deb13u2gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libxml2",
+      "repo": "package-libxml2",
+      "commit": "5e6e5f321b0b8f15c4cd675fe535e2ead30bca3d",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.15.4+dfsg-1gl0~bp2150": {
+      "pkg_name": "libxml2",
+      "version": "2.15.4+dfsg-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/libxml2",
+      "repo": "package-libxml2",
+      "commit": "b0e192a7c0b6347350f33854b75c357df2091010",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "2.47-1gl0~bp1877": {
+      "pkg_name": "libxml-parser-perl",
+      "version": "2.47-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libxml-parser-perl",
+      "repo": "package-libxml-parser-perl",
+      "commit": "398e27959329dc32bcef6f87d1f5d3095c8b2a50",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.47-1gl0~bp2150": {
+      "pkg_name": "libxml-parser-perl",
+      "version": "2.47-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/libxml-parser-perl",
+      "repo": "package-libxml-parser-perl",
+      "commit": "2948ab380fcfeaf83caf4159248c9a6f3db05119",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

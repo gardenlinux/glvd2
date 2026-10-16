@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "43.0.0-3": {
+      "pkg_name": "python-cryptography",
+      "version": "43.0.0-3",
+      "purl": "pkg:deb/gardenlinux/python-cryptography",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "46.0.1-1": {
+      "pkg_name": "python-cryptography",
+      "version": "46.0.1-1",
+      "purl": "pkg:deb/gardenlinux/python-cryptography",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

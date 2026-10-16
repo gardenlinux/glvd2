@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.7.4-3": {
+      "pkg_name": "libarchive",
+      "version": "3.7.4-3",
+      "purl": "pkg:deb/gardenlinux/libarchive",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.8.5-1": {
+      "pkg_name": "libarchive",
+      "version": "3.8.5-1",
+      "purl": "pkg:deb/gardenlinux/libarchive",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

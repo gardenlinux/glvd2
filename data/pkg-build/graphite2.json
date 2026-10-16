@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.3.14-11": {
+      "pkg_name": "graphite2",
+      "version": "1.3.14-11",
+      "purl": "pkg:deb/gardenlinux/graphite2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.3.14-2": {
+      "pkg_name": "graphite2",
+      "version": "1.3.14-2",
+      "purl": "pkg:deb/gardenlinux/graphite2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

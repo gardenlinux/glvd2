@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.124.0-1": {
+      "pkg_name": "golang-github-getkin-kin-openapi",
+      "version": "0.124.0-1",
+      "purl": "pkg:deb/gardenlinux/golang-github-getkin-kin-openapi",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

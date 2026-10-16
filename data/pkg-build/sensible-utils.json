@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.0.25": {
+      "pkg_name": "sensible-utils",
+      "version": "0.0.25",
+      "purl": "pkg:deb/gardenlinux/sensible-utils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.0.26": {
+      "pkg_name": "sensible-utils",
+      "version": "0.0.26",
+      "purl": "pkg:deb/gardenlinux/sensible-utils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

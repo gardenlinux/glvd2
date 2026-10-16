@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.24.4+~cs6.3.22-1": {
+      "pkg_name": "node-browserslist",
+      "version": "4.24.4+~cs6.3.22-1",
+      "purl": "pkg:deb/gardenlinux/node-browserslist",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.27.0+~cs8.11.53-2": {
+      "pkg_name": "node-browserslist",
+      "version": "4.27.0+~cs8.11.53-2",
+      "purl": "pkg:deb/gardenlinux/node-browserslist",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

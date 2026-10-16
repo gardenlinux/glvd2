@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "6.5+20251123-1gl0~bp1877": {
+      "pkg_name": "ncurses",
+      "version": "6.5+20251123-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/ncurses",
+      "repo": "bp-package-ncurses",
+      "commit": "b17cf161b8ec9f977d385c3bf8e82ff84d66a337",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "6.6+20251231-1": {
+      "pkg_name": "ncurses",
+      "version": "6.6+20251231-1",
+      "purl": "pkg:deb/gardenlinux/ncurses",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

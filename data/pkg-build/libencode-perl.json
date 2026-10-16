@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "3.21-1": {
+      "pkg_name": "libencode-perl",
+      "version": "3.21-1",
+      "purl": "pkg:deb/gardenlinux/libencode-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.21-1gl0~bp1877": {
+      "pkg_name": "libencode-perl",
+      "version": "3.21-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libencode-perl",
+      "repo": "package-libencode-perl",
+      "commit": "76c06c8410b055ffd2a881b3cfa3d34e8611d545",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

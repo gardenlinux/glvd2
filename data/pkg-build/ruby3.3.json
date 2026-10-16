@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.3.8-2": {
+      "pkg_name": "ruby3.3",
+      "version": "3.3.8-2",
+      "purl": "pkg:deb/gardenlinux/ruby3.3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

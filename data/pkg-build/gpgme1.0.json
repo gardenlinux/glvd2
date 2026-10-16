@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.24.2-3": {
+      "pkg_name": "gpgme1.0",
+      "version": "1.24.2-3",
+      "purl": "pkg:deb/gardenlinux/gpgme1.0",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.0.1-2": {
+      "pkg_name": "gpgme1.0",
+      "version": "2.0.1-2",
+      "purl": "pkg:deb/gardenlinux/gpgme1.0",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

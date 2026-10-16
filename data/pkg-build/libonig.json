@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "6.9.10-1": {
+      "pkg_name": "libonig",
+      "version": "6.9.10-1",
+      "purl": "pkg:deb/gardenlinux/libonig",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "6.9.9-1": {
+      "pkg_name": "libonig",
+      "version": "6.9.9-1",
+      "purl": "pkg:deb/gardenlinux/libonig",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

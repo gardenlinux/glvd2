@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2:4.0.4-8": {
+      "pkg_name": "procps",
+      "version": "2:4.0.4-8",
+      "purl": "pkg:deb/gardenlinux/procps",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2:4.0.4-9": {
+      "pkg_name": "procps",
+      "version": "2:4.0.4-9",
+      "purl": "pkg:deb/gardenlinux/procps",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

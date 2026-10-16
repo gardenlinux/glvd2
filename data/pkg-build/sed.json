@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "4.9-2": {
+      "pkg_name": "sed",
+      "version": "4.9-2",
+      "purl": "pkg:deb/gardenlinux/sed",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

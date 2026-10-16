@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.62.2+ds1-2": {
+      "pkg_name": "golang-github-containers-common",
+      "version": "0.62.2+ds1-2",
+      "purl": "pkg:deb/gardenlinux/golang-github-containers-common",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.66.0+ds2-3": {
+      "pkg_name": "golang-github-containers-common",
+      "version": "0.66.0+ds2-3",
+      "purl": "pkg:deb/gardenlinux/golang-github-containers-common",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "2.12.2-1": {
+      "pkg_name": "hwloc",
+      "version": "2.12.2-1",
+      "purl": "pkg:deb/gardenlinux/hwloc",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

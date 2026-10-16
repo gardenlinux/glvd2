@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "6.97-1": {
+      "pkg_name": "libdate-manip-perl",
+      "version": "6.97-1",
+      "purl": "pkg:deb/gardenlinux/libdate-manip-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "6.98-1": {
+      "pkg_name": "libdate-manip-perl",
+      "version": "6.98-1",
+      "purl": "pkg:deb/gardenlinux/libdate-manip-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

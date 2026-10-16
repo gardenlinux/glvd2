@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "25.0.0-1": {
+      "pkg_name": "pyopenssl",
+      "version": "25.0.0-1",
+      "purl": "pkg:deb/gardenlinux/pyopenssl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "25.3.0-1": {
+      "pkg_name": "pyopenssl",
+      "version": "25.3.0-1",
+      "purl": "pkg:deb/gardenlinux/pyopenssl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

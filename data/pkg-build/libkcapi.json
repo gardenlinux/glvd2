@@ -1,0 +1,20 @@
+{
+  "versions": {
+    "1.5.1-2gl4~bp1877": {
+      "pkg_name": "libkcapi",
+      "version": "1.5.1-2gl4~bp1877",
+      "purl": "pkg:deb/gardenlinux/libkcapi",
+      "repo": "package-libkcapi",
+      "commit": "f0936f02390bff9574d39c52161586aa81d20610",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": true,
+        "upstream_version": "1.5.1"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.4.8-2": {
+      "pkg_name": "libffi",
+      "version": "3.4.8-2",
+      "purl": "pkg:deb/gardenlinux/libffi",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.5.2-3": {
+      "pkg_name": "libffi",
+      "version": "3.5.2-3",
+      "purl": "pkg:deb/gardenlinux/libffi",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.14.3-1": {
+      "pkg_name": "python3.14",
+      "version": "3.14.3-1",
+      "purl": "pkg:deb/gardenlinux/python3.14",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

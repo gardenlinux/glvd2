@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "20.19.0+dfsg1-1": {
+      "pkg_name": "nodejs",
+      "version": "20.19.0+dfsg1-1",
+      "purl": "pkg:deb/gardenlinux/nodejs",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "22.22.0+dfsg+~cs22.19.6-1": {
+      "pkg_name": "nodejs",
+      "version": "22.22.0+dfsg+~cs22.19.6-1",
+      "purl": "pkg:deb/gardenlinux/nodejs",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

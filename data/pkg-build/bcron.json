@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.11-23": {
+      "pkg_name": "bcron",
+      "version": "0.11-23",
+      "purl": "pkg:deb/gardenlinux/bcron",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.11-24": {
+      "pkg_name": "bcron",
+      "version": "0.11-24",
+      "purl": "pkg:deb/gardenlinux/bcron",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

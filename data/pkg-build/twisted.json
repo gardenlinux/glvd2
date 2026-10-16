@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "24.11.0-1": {
+      "pkg_name": "twisted",
+      "version": "24.11.0-1",
+      "purl": "pkg:deb/gardenlinux/twisted",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "25.5.0-5": {
+      "pkg_name": "twisted",
+      "version": "25.5.0-5",
+      "purl": "pkg:deb/gardenlinux/twisted",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "3.83-1": {
+      "pkg_name": "libhtml-parser-perl",
+      "version": "3.83-1",
+      "purl": "pkg:deb/gardenlinux/libhtml-parser-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.83-1gl0~bp1877": {
+      "pkg_name": "libhtml-parser-perl",
+      "version": "3.83-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libhtml-parser-perl",
+      "repo": "package-libhtml-parser-perl",
+      "commit": "30f2334a08bdd29e348cf2f9b3d35ab310f8bf84",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "5.4.2+ds1-1": {
+      "pkg_name": "podman",
+      "version": "5.4.2+ds1-1",
+      "purl": "pkg:deb/gardenlinux/podman",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "5.7.0+ds2-3": {
+      "pkg_name": "podman",
+      "version": "5.7.0+ds2-3",
+      "purl": "pkg:deb/gardenlinux/podman",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

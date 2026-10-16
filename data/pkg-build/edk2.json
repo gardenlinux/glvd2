@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2025.02-6": {
+      "pkg_name": "edk2",
+      "version": "2025.02-6",
+      "purl": "pkg:deb/gardenlinux/edk2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2025.02-9": {
+      "pkg_name": "edk2",
+      "version": "2025.02-9",
+      "purl": "pkg:deb/gardenlinux/edk2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "11.1-5": {
+      "pkg_name": "glusterfs",
+      "version": "11.1-5",
+      "purl": "pkg:deb/gardenlinux/glusterfs",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "11.2-2": {
+      "pkg_name": "glusterfs",
+      "version": "11.2-2",
+      "purl": "pkg:deb/gardenlinux/glusterfs",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

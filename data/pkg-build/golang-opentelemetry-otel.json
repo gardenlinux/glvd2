@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.31.0-4": {
+      "pkg_name": "golang-opentelemetry-otel",
+      "version": "1.31.0-4",
+      "purl": "pkg:deb/gardenlinux/golang-opentelemetry-otel",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.31.0-6": {
+      "pkg_name": "golang-opentelemetry-otel",
+      "version": "1.31.0-6",
+      "purl": "pkg:deb/gardenlinux/golang-opentelemetry-otel",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

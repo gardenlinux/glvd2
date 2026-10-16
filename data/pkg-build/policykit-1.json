@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "127-1": {
+      "pkg_name": "policykit-1",
+      "version": "127-1",
+      "purl": "pkg:deb/gardenlinux/policykit-1",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "127-1gl0~bp1877": {
+      "pkg_name": "policykit-1",
+      "version": "127-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/policykit-1",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

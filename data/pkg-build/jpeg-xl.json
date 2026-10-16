@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.11.1-6": {
+      "pkg_name": "jpeg-xl",
+      "version": "0.11.1-6",
+      "purl": "pkg:deb/gardenlinux/jpeg-xl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

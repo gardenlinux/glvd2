@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "5.9.4+dfsg-2gl0": {
+      "pkg_name": "net-snmp",
+      "version": "5.9.4+dfsg-2gl0",
+      "purl": "pkg:deb/gardenlinux/net-snmp",
+      "repo": "package-net-snmp",
+      "commit": "b8b3736f403dcb4d1955c9d280efd26ea2cf24e5",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "5.9.5.2+dfsg-2.1": {
+      "pkg_name": "net-snmp",
+      "version": "5.9.5.2+dfsg-2.1",
+      "purl": "pkg:deb/gardenlinux/net-snmp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

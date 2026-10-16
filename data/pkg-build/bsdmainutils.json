@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "12.1.8": {
+      "pkg_name": "bsdmainutils",
+      "version": "12.1.8",
+      "purl": "pkg:deb/gardenlinux/bsdmainutils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

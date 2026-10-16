@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.10.0-1": {
+      "pkg_name": "rust-rpm-sequoia",
+      "version": "1.10.0-1",
+      "purl": "pkg:deb/gardenlinux/rust-rpm-sequoia",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.8.0-2": {
+      "pkg_name": "rust-rpm-sequoia",
+      "version": "1.8.0-2",
+      "purl": "pkg:deb/gardenlinux/rust-rpm-sequoia",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

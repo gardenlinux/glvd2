@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.6.1+dfsg+~3.5.14-1": {
+      "pkg_name": "node-jquery",
+      "version": "3.6.1+dfsg+~3.5.14-1",
+      "purl": "pkg:deb/gardenlinux/node-jquery",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.7.1+dfsg+~3.5.33-1": {
+      "pkg_name": "node-jquery",
+      "version": "3.7.1+dfsg+~3.5.33-1",
+      "purl": "pkg:deb/gardenlinux/node-jquery",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

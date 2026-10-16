@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "277": {
+      "pkg_name": "postgresql-common",
+      "version": "277",
+      "purl": "pkg:deb/gardenlinux/postgresql-common",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "288": {
+      "pkg_name": "postgresql-common",
+      "version": "288",
+      "purl": "pkg:deb/gardenlinux/postgresql-common",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

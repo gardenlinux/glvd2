@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.5.0-1": {
+      "pkg_name": "golang-github-docker-spdystream",
+      "version": "0.5.0-1",
+      "purl": "pkg:deb/gardenlinux/golang-github-docker-spdystream",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

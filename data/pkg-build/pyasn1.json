@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.6.1-1": {
+      "pkg_name": "pyasn1",
+      "version": "0.6.1-1",
+      "purl": "pkg:deb/gardenlinux/pyasn1",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.6.2-1": {
+      "pkg_name": "pyasn1",
+      "version": "0.6.2-1",
+      "purl": "pkg:deb/gardenlinux/pyasn1",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

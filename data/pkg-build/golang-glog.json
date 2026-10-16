@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "1.2.4-1": {
+      "pkg_name": "golang-glog",
+      "version": "1.2.4-1",
+      "purl": "pkg:deb/gardenlinux/golang-glog",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

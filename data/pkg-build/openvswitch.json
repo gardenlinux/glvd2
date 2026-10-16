@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.5.0-1": {
+      "pkg_name": "openvswitch",
+      "version": "3.5.0-1",
+      "purl": "pkg:deb/gardenlinux/openvswitch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.6.0-7": {
+      "pkg_name": "openvswitch",
+      "version": "3.6.0-7",
+      "purl": "pkg:deb/gardenlinux/openvswitch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

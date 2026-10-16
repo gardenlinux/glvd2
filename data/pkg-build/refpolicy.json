@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "2:2.20250213-11gl0": {
+      "pkg_name": "refpolicy",
+      "version": "2:2.20250213-11gl0",
+      "purl": "pkg:deb/gardenlinux/refpolicy",
+      "repo": "package-refpolicy",
+      "commit": "90ae86f131d0bb74a75c866c91fc7c477183e41c",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "2:2.20250213-5gl0": {
+      "pkg_name": "refpolicy",
+      "version": "2:2.20250213-5gl0",
+      "purl": "pkg:deb/gardenlinux/refpolicy",
+      "repo": "package-refpolicy",
+      "commit": "8d393d202881102de6956df245df955d018456d1",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

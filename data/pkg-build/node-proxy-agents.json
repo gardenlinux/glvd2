@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0~2024040606-5": {
+      "pkg_name": "node-proxy-agents",
+      "version": "0~2024040606-5",
+      "purl": "pkg:deb/gardenlinux/node-proxy-agents",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0~2025070717-6": {
+      "pkg_name": "node-proxy-agents",
+      "version": "0~2025070717-6",
+      "purl": "pkg:deb/gardenlinux/node-proxy-agents",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

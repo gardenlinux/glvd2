@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.0.3+~3.0.5-1": {
+      "pkg_name": "node-braces",
+      "version": "3.0.3+~3.0.5-1",
+      "purl": "pkg:deb/gardenlinux/node-braces",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

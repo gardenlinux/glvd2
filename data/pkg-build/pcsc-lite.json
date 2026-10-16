@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.3.3-1": {
+      "pkg_name": "pcsc-lite",
+      "version": "2.3.3-1",
+      "purl": "pkg:deb/gardenlinux/pcsc-lite",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.4.1-1": {
+      "pkg_name": "pcsc-lite",
+      "version": "2.4.1-1",
+      "purl": "pkg:deb/gardenlinux/pcsc-lite",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

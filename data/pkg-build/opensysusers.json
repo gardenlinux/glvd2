@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.7.3-4.1": {
+      "pkg_name": "opensysusers",
+      "version": "0.7.3-4.1",
+      "purl": "pkg:deb/gardenlinux/opensysusers",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.7.3-5.1": {
+      "pkg_name": "opensysusers",
+      "version": "0.7.3-5.1",
+      "purl": "pkg:deb/gardenlinux/opensysusers",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

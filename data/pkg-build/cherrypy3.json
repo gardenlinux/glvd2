@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "18.10.0-1": {
+      "pkg_name": "cherrypy3",
+      "version": "18.10.0-1",
+      "purl": "pkg:deb/gardenlinux/cherrypy3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "18.10.0-2": {
+      "pkg_name": "cherrypy3",
+      "version": "18.10.0-2",
+      "purl": "pkg:deb/gardenlinux/cherrypy3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

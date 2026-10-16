@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "16.3-1": {
+      "pkg_name": "gdb",
+      "version": "16.3-1",
+      "purl": "pkg:deb/gardenlinux/gdb",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "17.1-3": {
+      "pkg_name": "gdb",
+      "version": "17.1-3",
+      "purl": "pkg:deb/gardenlinux/gdb",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

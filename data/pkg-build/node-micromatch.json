@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.0.7+~4.0.9-1": {
+      "pkg_name": "node-micromatch",
+      "version": "4.0.7+~4.0.9-1",
+      "purl": "pkg:deb/gardenlinux/node-micromatch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.0.8+~4.0.10-1": {
+      "pkg_name": "node-micromatch",
+      "version": "4.0.8+~4.0.10-1",
+      "purl": "pkg:deb/gardenlinux/node-micromatch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

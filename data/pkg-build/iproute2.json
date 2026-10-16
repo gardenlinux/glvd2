@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "6.14.0-3gl0": {
+      "pkg_name": "iproute2",
+      "version": "6.14.0-3gl0",
+      "purl": "pkg:deb/gardenlinux/iproute2",
+      "repo": "package-iproute2",
+      "commit": "173356f4ac8e459b72ddf8955d8b95640cc43a85",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "6.18.0-1gl0": {
+      "pkg_name": "iproute2",
+      "version": "6.18.0-1gl0",
+      "purl": "pkg:deb/gardenlinux/iproute2",
+      "repo": "package-iproute2",
+      "commit": "c93b6bbb93272c84f373c6a69b06a21da2ebc5a9",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

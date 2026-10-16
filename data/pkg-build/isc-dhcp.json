@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "4.4.3-P1-7": {
+      "pkg_name": "isc-dhcp",
+      "version": "4.4.3-P1-7",
+      "purl": "pkg:deb/gardenlinux/isc-dhcp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

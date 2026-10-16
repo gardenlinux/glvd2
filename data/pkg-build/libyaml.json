@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.2.5-2": {
+      "pkg_name": "libyaml",
+      "version": "0.2.5-2",
+      "purl": "pkg:deb/gardenlinux/libyaml",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

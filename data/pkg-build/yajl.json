@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.1.0-5": {
+      "pkg_name": "yajl",
+      "version": "2.1.0-5",
+      "purl": "pkg:deb/gardenlinux/yajl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.1.0-5.1": {
+      "pkg_name": "yajl",
+      "version": "2.1.0-5.1",
+      "purl": "pkg:deb/gardenlinux/yajl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

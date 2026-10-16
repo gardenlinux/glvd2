@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "25.1.4-1gl1~bp1877": {
+      "pkg_name": "cloud-init",
+      "version": "25.1.4-1gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/cloud-init",
+      "repo": "package-cloud-init",
+      "commit": "0abe65eeabbea035603f740d7790c24f16b7b813",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "25.1.4"
+      }
+    },
+    "26.1-1gl0~bp2150": {
+      "pkg_name": "cloud-init",
+      "version": "26.1-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/cloud-init",
+      "repo": "package-cloud-init",
+      "commit": "f86bad5131de04081e4619cba1cc263e56ff632a",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "26.1"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "5.0.8+~5.0.0-3": {
+      "pkg_name": "node-y18n",
+      "version": "5.0.8+~5.0.0-3",
+      "purl": "pkg:deb/gardenlinux/node-y18n",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

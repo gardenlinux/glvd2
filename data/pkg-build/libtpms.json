@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.10.2-2": {
+      "pkg_name": "libtpms",
+      "version": "0.10.2-2",
+      "purl": "pkg:deb/gardenlinux/libtpms",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.9.2-3.1": {
+      "pkg_name": "libtpms",
+      "version": "0.9.2-3.1",
+      "purl": "pkg:deb/gardenlinux/libtpms",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

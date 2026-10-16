@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.8.1-1gl0": {
+      "pkg_name": "libsepol",
+      "version": "3.8.1-1gl0",
+      "purl": "pkg:deb/gardenlinux/libsepol",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.9-2gl0": {
+      "pkg_name": "libsepol",
+      "version": "3.9-2gl0",
+      "purl": "pkg:deb/gardenlinux/libsepol",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

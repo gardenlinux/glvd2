@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "20240722.0-3": {
+      "pkg_name": "abseil",
+      "version": "20240722.0-3",
+      "purl": "pkg:deb/gardenlinux/abseil",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "20240722.0-4": {
+      "pkg_name": "abseil",
+      "version": "20240722.0-4",
+      "purl": "pkg:deb/gardenlinux/abseil",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

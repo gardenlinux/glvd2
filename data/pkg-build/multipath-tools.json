@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.11.1-2": {
+      "pkg_name": "multipath-tools",
+      "version": "0.11.1-2",
+      "purl": "pkg:deb/gardenlinux/multipath-tools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.13.0-1": {
+      "pkg_name": "multipath-tools",
+      "version": "0.13.0-1",
+      "purl": "pkg:deb/gardenlinux/multipath-tools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

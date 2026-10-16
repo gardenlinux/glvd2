@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.2.3+dfsg-1": {
+      "pkg_name": "node-json5",
+      "version": "2.2.3+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/node-json5",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.2.3+dfsg-3": {
+      "pkg_name": "node-json5",
+      "version": "2.2.3+dfsg-3",
+      "purl": "pkg:deb/gardenlinux/node-json5",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

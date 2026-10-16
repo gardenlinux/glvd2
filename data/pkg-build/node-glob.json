@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "10.3.6+~cs0.4.15-8": {
+      "pkg_name": "node-glob",
+      "version": "10.3.6+~cs0.4.15-8",
+      "purl": "pkg:deb/gardenlinux/node-glob",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "8.1.0+~cs8.5.15-1": {
+      "pkg_name": "node-glob",
+      "version": "8.1.0+~cs8.5.15-1",
+      "purl": "pkg:deb/gardenlinux/node-glob",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

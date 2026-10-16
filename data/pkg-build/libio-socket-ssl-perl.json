@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.089-1": {
+      "pkg_name": "libio-socket-ssl-perl",
+      "version": "2.089-1",
+      "purl": "pkg:deb/gardenlinux/libio-socket-ssl-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.098-1": {
+      "pkg_name": "libio-socket-ssl-perl",
+      "version": "2.098-1",
+      "purl": "pkg:deb/gardenlinux/libio-socket-ssl-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.20.0+68-g35cb38b222-1": {
+      "pkg_name": "xen",
+      "version": "4.20.0+68-g35cb38b222-1",
+      "purl": "pkg:deb/gardenlinux/xen",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.20.2+7-g1badcf5035-2": {
+      "pkg_name": "xen",
+      "version": "4.20.2+7-g1badcf5035-2",
+      "purl": "pkg:deb/gardenlinux/xen",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

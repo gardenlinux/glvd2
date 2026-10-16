@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "9.0.1-3": {
+      "pkg_name": "node-ssri",
+      "version": "9.0.1-3",
+      "purl": "pkg:deb/gardenlinux/node-ssri",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

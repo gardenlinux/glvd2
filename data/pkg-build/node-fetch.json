@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.3.2+~cs11.4.11-3": {
+      "pkg_name": "node-fetch",
+      "version": "3.3.2+~cs11.4.11-3",
+      "purl": "pkg:deb/gardenlinux/node-fetch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

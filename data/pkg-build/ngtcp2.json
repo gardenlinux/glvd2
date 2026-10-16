@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "1.16.0-1gl0~bp1877": {
+      "pkg_name": "ngtcp2",
+      "version": "1.16.0-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/ngtcp2",
+      "repo": "bp-package-ngtcp2",
+      "commit": "fc93b9df434084c558dc19d5c420979be0455f9d",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.16.0"
+      }
+    },
+    "1.22.1-1gl0~bp2150": {
+      "pkg_name": "ngtcp2",
+      "version": "1.22.1-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/ngtcp2",
+      "repo": "bp-package-ngtcp2",
+      "commit": "0d428f7707a9a92b81eb859a94ee332d0e6e36be",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.22.1"
+      }
+    }
+  }
+}

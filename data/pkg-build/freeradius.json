@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.2.8+dfsg-1gl1+bp1877": {
+      "pkg_name": "freeradius",
+      "version": "3.2.8+dfsg-1gl1+bp1877",
+      "purl": "pkg:deb/gardenlinux/freeradius",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

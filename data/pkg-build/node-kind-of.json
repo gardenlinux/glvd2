@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "6.0.3+dfsg-2": {
+      "pkg_name": "node-kind-of",
+      "version": "6.0.3+dfsg-2",
+      "purl": "pkg:deb/gardenlinux/node-kind-of",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "9.0.3-5": {
+      "pkg_name": "node-minimatch",
+      "version": "9.0.3-5",
+      "purl": "pkg:deb/gardenlinux/node-minimatch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "9.0.3-6": {
+      "pkg_name": "node-minimatch",
+      "version": "9.0.3-6",
+      "purl": "pkg:deb/gardenlinux/node-minimatch",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "versions": {
+    "1.11.1-4gl1~bp1877": {
+      "pkg_name": "libssh2",
+      "version": "1.11.1-4gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/libssh2",
+      "repo": "bp-package-libssh2",
+      "commit": "213140321cdd8e75974b6d9d5c0a5a791b88fe20",
+      "provenance": "patched-from-debian",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-66032",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-66033",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-66034",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-66035",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "1.11.1"
+      }
+    },
+    "1.11.1-5gl0~bp2150": {
+      "pkg_name": "libssh2",
+      "version": "1.11.1-5gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/libssh2",
+      "repo": "bp-package-libssh2",
+      "commit": "2168acce9757e65b24f7173b14d80060d6d2f2f4",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "1.11.1"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "versions": {
+    "1:1.3.dfsg+really1.3.2-3gl0~bp2150": {
+      "pkg_name": "zlib",
+      "version": "1:1.3.dfsg+really1.3.2-3gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/zlib",
+      "repo": "package-zlib",
+      "commit": "540f992a45fadb523a479fa2b281240ff0c93270",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.3.dfsg"
+      }
+    },
+    "1:1.3.dfsg+really1.3.2-3gl1~bp1877": {
+      "pkg_name": "zlib",
+      "version": "1:1.3.dfsg+really1.3.2-3gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/zlib",
+      "repo": "package-zlib",
+      "commit": "9c9d41a90a644428589707a13e32f79cb93078b6",
+      "provenance": "unknown",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-85091",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

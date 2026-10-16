@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.17.21+dfsg+~cs8.31.198.20210220-9": {
+      "pkg_name": "node-lodash",
+      "version": "4.17.21+dfsg+~cs8.31.198.20210220-9",
+      "purl": "pkg:deb/gardenlinux/node-lodash",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.17.23+dfsg-1": {
+      "pkg_name": "node-lodash",
+      "version": "4.17.23+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/node-lodash",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

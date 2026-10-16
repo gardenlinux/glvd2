@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "11.8.5+~cs58.13.36-5": {
+      "pkg_name": "node-got",
+      "version": "11.8.5+~cs58.13.36-5",
+      "purl": "pkg:deb/gardenlinux/node-got",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "11.8.5+~cs58.13.36-6": {
+      "pkg_name": "node-got",
+      "version": "11.8.5+~cs58.13.36-6",
+      "purl": "pkg:deb/gardenlinux/node-got",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

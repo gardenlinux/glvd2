@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "6.13.0-2": {
+      "pkg_name": "xfsprogs",
+      "version": "6.13.0-2",
+      "purl": "pkg:deb/gardenlinux/xfsprogs",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "6.18.0-3": {
+      "pkg_name": "xfsprogs",
+      "version": "6.18.0-3",
+      "purl": "pkg:deb/gardenlinux/xfsprogs",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

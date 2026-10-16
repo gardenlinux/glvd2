@@ -1,0 +1,33 @@
+{
+  "versions": {
+    "3:20250605-1": {
+      "pkg_name": "iputils",
+      "version": "3:20250605-1",
+      "purl": "pkg:deb/gardenlinux/iputils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3:20250605-1gl1~bp1877": {
+      "pkg_name": "iputils",
+      "version": "3:20250605-1gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/iputils",
+      "repo": "bp-package-iputils",
+      "commit": "601c5fb2679f26196e32093eab8a8a5a6f32c5d6",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "20250605"
+      }
+    }
+  }
+}

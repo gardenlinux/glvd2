@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.0~git20241107.638aa7c-2": {
+      "pkg_name": "golang-github-moby-sys",
+      "version": "0.0~git20241107.638aa7c-2",
+      "purl": "pkg:deb/gardenlinux/golang-github-moby-sys",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.0~git20250819.9dc3a90-1": {
+      "pkg_name": "golang-github-moby-sys",
+      "version": "0.0~git20250819.9dc3a90-1",
+      "purl": "pkg:deb/gardenlinux/golang-github-moby-sys",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

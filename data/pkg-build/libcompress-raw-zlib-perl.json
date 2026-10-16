@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "2.213-1gl0~bp1877": {
+      "pkg_name": "libcompress-raw-zlib-perl",
+      "version": "2.213-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libcompress-raw-zlib-perl",
+      "repo": "package-libcompress-raw-zlib-perl",
+      "commit": "6fe5a76326a3d13d9e5b930e5bc68b62780fb813",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.218-1": {
+      "pkg_name": "libcompress-raw-zlib-perl",
+      "version": "2.218-1",
+      "purl": "pkg:deb/gardenlinux/libcompress-raw-zlib-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

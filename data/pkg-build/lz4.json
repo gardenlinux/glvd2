@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.10.0-4": {
+      "pkg_name": "lz4",
+      "version": "1.10.0-4",
+      "purl": "pkg:deb/gardenlinux/lz4",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.10.0-6": {
+      "pkg_name": "lz4",
+      "version": "1.10.0-6",
+      "purl": "pkg:deb/gardenlinux/lz4",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

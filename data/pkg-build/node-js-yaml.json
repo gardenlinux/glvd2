@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "4.1.0+dfsg+~4.0.5-7": {
+      "pkg_name": "node-js-yaml",
+      "version": "4.1.0+dfsg+~4.0.5-7",
+      "purl": "pkg:deb/gardenlinux/node-js-yaml",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

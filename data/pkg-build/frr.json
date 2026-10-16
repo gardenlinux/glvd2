@@ -1,0 +1,19 @@
+{
+  "versions": {
+    "10.3-0gl1": {
+      "pkg_name": "frr",
+      "version": "10.3-0gl1",
+      "purl": "pkg:deb/gardenlinux/frr",
+      "repo": "package-frr",
+      "commit": "eca59b15943bf56df6736119b0e7cc0376c3895c",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    }
+  }
+}

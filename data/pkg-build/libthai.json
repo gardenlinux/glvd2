@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.1.29-2": {
+      "pkg_name": "libthai",
+      "version": "0.1.29-2",
+      "purl": "pkg:deb/gardenlinux/libthai",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.1.30-1": {
+      "pkg_name": "libthai",
+      "version": "0.1.30-1",
+      "purl": "pkg:deb/gardenlinux/libthai",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

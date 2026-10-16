@@ -1,0 +1,247 @@
+{
+  "versions": {
+    "3.5.5-1gl57~bp1877": {
+      "pkg_name": "openssl",
+      "version": "3.5.5-1gl57~bp1877",
+      "purl": "pkg:deb/gardenlinux/openssl",
+      "repo": "package-openssl",
+      "commit": "d8c2ef35e41402c5c734e7172c82b36d1b640003",
+      "provenance": "patched-from-debian",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-28388",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34180",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34181",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34182",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34183",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42764",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42766",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42767",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42768",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42769",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42770",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-45445",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-45446",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-45447",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-7383",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-9076",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-14457",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-14456",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63072",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63073",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63074",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63075",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63076",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-54874",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-75803",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-18798",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "3.5.5"
+      }
+    },
+    "3.5.5-1gl57~bp2150": {
+      "pkg_name": "openssl",
+      "version": "3.5.5-1gl57~bp2150",
+      "purl": "pkg:deb/gardenlinux/openssl",
+      "repo": "package-openssl",
+      "commit": "c8db5727e664255ffa3860039159e8d0196f526d",
+      "provenance": "patched-from-debian",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-28388",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34180",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34181",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34182",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-34183",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42764",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42766",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42767",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42768",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42769",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-42770",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-45445",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-45446",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-45447",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-7383",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-9076",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-14457",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-14456",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63072",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63073",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63074",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63075",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-63076",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-54874",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-75803",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-18798",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

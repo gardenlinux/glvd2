@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.192-4": {
+      "pkg_name": "elfutils",
+      "version": "0.192-4",
+      "purl": "pkg:deb/gardenlinux/elfutils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.194-1": {
+      "pkg_name": "elfutils",
+      "version": "0.194-1",
+      "purl": "pkg:deb/gardenlinux/elfutils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

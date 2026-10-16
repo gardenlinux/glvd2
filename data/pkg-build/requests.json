@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "2.32.5+dfsg-1": {
+      "pkg_name": "requests",
+      "version": "2.32.5+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/requests",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.32.5+dfsg-1gl0~bp1877": {
+      "pkg_name": "requests",
+      "version": "2.32.5+dfsg-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/requests",
+      "repo": "bp-package-requests",
+      "commit": "c937a6bb9ac8ecb66af9751c6507c71471884eb4",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

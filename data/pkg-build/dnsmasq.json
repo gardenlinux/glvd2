@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.91-1": {
+      "pkg_name": "dnsmasq",
+      "version": "2.91-1",
+      "purl": "pkg:deb/gardenlinux/dnsmasq",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.92-1": {
+      "pkg_name": "dnsmasq",
+      "version": "2.92-1",
+      "purl": "pkg:deb/gardenlinux/dnsmasq",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

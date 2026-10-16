@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2:4.36-1": {
+      "pkg_name": "nspr",
+      "version": "2:4.36-1",
+      "purl": "pkg:deb/gardenlinux/nspr",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2:4.38.2-1": {
+      "pkg_name": "nspr",
+      "version": "2:4.38.2-1",
+      "purl": "pkg:deb/gardenlinux/nspr",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

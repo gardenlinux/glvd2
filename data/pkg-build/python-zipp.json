@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.21.0-1": {
+      "pkg_name": "python-zipp",
+      "version": "3.21.0-1",
+      "purl": "pkg:deb/gardenlinux/python-zipp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.23.0-1": {
+      "pkg_name": "python-zipp",
+      "version": "3.23.0-1",
+      "purl": "pkg:deb/gardenlinux/python-zipp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

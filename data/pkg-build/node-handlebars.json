@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3:4.7.7+~4.1.0-1": {
+      "pkg_name": "node-handlebars",
+      "version": "3:4.7.7+~4.1.0-1",
+      "purl": "pkg:deb/gardenlinux/node-handlebars",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

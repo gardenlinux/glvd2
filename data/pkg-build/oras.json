@@ -1,0 +1,35 @@
+{
+  "versions": {
+    "1.2.0-0gardenlinux0": {
+      "pkg_name": "oras",
+      "version": "1.2.0-0gardenlinux0",
+      "purl": "pkg:deb/gardenlinux/oras",
+      "repo": "package-oras",
+      "commit": "af901abdf9a9dcd97784c8c4d2b35b1c92ca88a5",
+      "provenance": "built-from-upstream",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": false,
+        "upstream_version": "1.2.0"
+      }
+    },
+    "1.3.0-1gl0": {
+      "pkg_name": "oras",
+      "version": "1.3.0-1gl0",
+      "purl": "pkg:deb/gardenlinux/oras",
+      "repo": "package-oras",
+      "commit": "2f2fc2443f76438d7227bf5c31d131f71b2bd28c",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

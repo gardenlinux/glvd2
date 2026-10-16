@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "12.4.0-5": {
+      "pkg_name": "gcc-12",
+      "version": "12.4.0-5",
+      "purl": "pkg:deb/gardenlinux/gcc-12",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "12.5.0-7": {
+      "pkg_name": "gcc-12",
+      "version": "12.5.0-7",
+      "purl": "pkg:deb/gardenlinux/gcc-12",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

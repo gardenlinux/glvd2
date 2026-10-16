@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "11.10.0-2gl6": {
+      "pkg_name": "libvirt",
+      "version": "11.10.0-2gl6",
+      "purl": "pkg:deb/gardenlinux/libvirt",
+      "repo": "package-libvirt",
+      "commit": "81cb6a4a0952e84f48818665e30d088bea26092a",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    },
+    "11.3.0-1": {
+      "pkg_name": "libvirt",
+      "version": "11.3.0-1",
+      "purl": "pkg:deb/gardenlinux/libvirt",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

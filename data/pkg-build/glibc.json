@@ -1,0 +1,43 @@
+{
+  "versions": {
+    "2.41-12+deb13u4gl0~bp1877": {
+      "pkg_name": "glibc",
+      "version": "2.41-12+deb13u4gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/glibc",
+      "repo": "bp-package-glibc",
+      "commit": "7e06346929035e2251c09557d112cfe6306f2260",
+      "provenance": "patched-from-debian",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-18374",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-19542",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "2.41-7"
+      }
+    },
+    "2.42-17gl1+bp2150": {
+      "pkg_name": "glibc",
+      "version": "2.42-17gl1+bp2150",
+      "purl": "pkg:deb/gardenlinux/glibc",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "8.2608.0-4gl0~bp1877": {
+      "pkg_name": "rsyslog",
+      "version": "8.2608.0-4gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/rsyslog",
+      "repo": "bp-package-rsyslog",
+      "commit": "85c6368fc1cb8c59193db81cb8bb31c8c36e0dc1",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "8.2608.0-4gl0~bp2150": {
+      "pkg_name": "rsyslog",
+      "version": "8.2608.0-4gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/rsyslog",
+      "repo": "bp-package-rsyslog",
+      "commit": "ec298f82d936ab96525f1d94d845a6a9e939ba0c",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

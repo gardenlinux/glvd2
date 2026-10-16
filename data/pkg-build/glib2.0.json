@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "2.87.2-3": {
+      "pkg_name": "glib2.0",
+      "version": "2.87.2-3",
+      "purl": "pkg:deb/gardenlinux/glib2.0",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.87.2-3gl0~bp1877": {
+      "pkg_name": "glib2.0",
+      "version": "2.87.2-3gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/glib2.0",
+      "repo": "bp-package-glib2.0",
+      "commit": "2721d659173badd4255d42482d1de4aa0ee975d4",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

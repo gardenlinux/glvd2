@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.22.0-1": {
+      "pkg_name": "golang-golang-x-sys",
+      "version": "0.22.0-1",
+      "purl": "pkg:deb/gardenlinux/golang-golang-x-sys",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.38.0-1": {
+      "pkg_name": "golang-golang-x-sys",
+      "version": "0.38.0-1",
+      "purl": "pkg:deb/gardenlinux/golang-golang-x-sys",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

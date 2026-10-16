@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "5.4.7-1": {
+      "pkg_name": "lua5.4",
+      "version": "5.4.7-1",
+      "purl": "pkg:deb/gardenlinux/lua5.4",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "5.4.8-1": {
+      "pkg_name": "lua5.4",
+      "version": "5.4.8-1",
+      "purl": "pkg:deb/gardenlinux/lua5.4",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "257.13-1~deb13u1gl0~bp1877": {
+      "pkg_name": "systemd",
+      "version": "257.13-1~deb13u1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/systemd",
+      "repo": "package-systemd",
+      "commit": "f59a243b17af344ebcc3533e8643df820b9c3e55",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "259.9-1gl0+bp2150": {
+      "pkg_name": "systemd",
+      "version": "259.9-1gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/systemd",
+      "repo": "package-systemd",
+      "commit": "6580182c0a8c534d48c268e9a0eb80ae3b3dea3b",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    }
+  }
+}

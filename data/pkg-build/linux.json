@@ -1,0 +1,42 @@
+{
+  "versions": {
+    "6.12.112-1gl14~bp1877": {
+      "pkg_name": "linux",
+      "version": "6.12.112-1gl14~bp1877",
+      "purl": "pkg:deb/gardenlinux/linux",
+      "repo": "package-linux",
+      "commit": "a8bb46bbb7e334f85c91f01efd034cd038ffc397",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "6.12.112"
+      }
+    },
+    "6.18.56-1gl0~bp2150": {
+      "pkg_name": "linux",
+      "version": "6.18.56-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/linux",
+      "repo": "package-linux",
+      "commit": "e0b5eb8f288f4df51f5f8dbccbd883c4edf9c2ee",
+      "provenance": "unknown",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-31688",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "6.18.56"
+      }
+    }
+  }
+}

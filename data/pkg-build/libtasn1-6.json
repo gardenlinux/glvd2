@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.20.0-2": {
+      "pkg_name": "libtasn1-6",
+      "version": "4.20.0-2",
+      "purl": "pkg:deb/gardenlinux/libtasn1-6",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.21.0-2": {
+      "pkg_name": "libtasn1-6",
+      "version": "4.21.0-2",
+      "purl": "pkg:deb/gardenlinux/libtasn1-6",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

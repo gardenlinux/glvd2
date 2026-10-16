@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.46.1-9": {
+      "pkg_name": "sqlite3",
+      "version": "3.46.1-9",
+      "purl": "pkg:deb/gardenlinux/sqlite3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.46.1-9gl0+bp1877": {
+      "pkg_name": "sqlite3",
+      "version": "3.46.1-9gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/sqlite3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

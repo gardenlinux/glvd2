@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.4+20151223.gitfa8646d.1-2": {
+      "pkg_name": "rtmpdump",
+      "version": "2.4+20151223.gitfa8646d.1-2",
+      "purl": "pkg:deb/gardenlinux/rtmpdump",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.4+20151223.gitfa8646d.1-3": {
+      "pkg_name": "rtmpdump",
+      "version": "2.4+20151223.gitfa8646d.1-3",
+      "purl": "pkg:deb/gardenlinux/rtmpdump",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

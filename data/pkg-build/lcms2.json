@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.16-2": {
+      "pkg_name": "lcms2",
+      "version": "2.16-2",
+      "purl": "pkg:deb/gardenlinux/lcms2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.17-1": {
+      "pkg_name": "lcms2",
+      "version": "2.17-1",
+      "purl": "pkg:deb/gardenlinux/lcms2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

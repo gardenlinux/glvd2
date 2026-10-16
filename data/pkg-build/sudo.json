@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.9.17p2-7gl0+bp1877": {
+      "pkg_name": "sudo",
+      "version": "1.9.17p2-7gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/sudo",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.9.17p2-9gl0+bp2150": {
+      "pkg_name": "sudo",
+      "version": "1.9.17p2-9gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/sudo",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

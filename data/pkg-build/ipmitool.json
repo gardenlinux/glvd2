@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "1.8.19-10": {
+      "pkg_name": "ipmitool",
+      "version": "1.8.19-10",
+      "purl": "pkg:deb/gardenlinux/ipmitool",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "1.8.19-9": {
+      "pkg_name": "ipmitool",
+      "version": "1.8.19-9",
+      "purl": "pkg:deb/gardenlinux/ipmitool",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

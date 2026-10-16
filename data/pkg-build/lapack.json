@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.12.1-7": {
+      "pkg_name": "lapack",
+      "version": "3.12.1-7",
+      "purl": "pkg:deb/gardenlinux/lapack",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

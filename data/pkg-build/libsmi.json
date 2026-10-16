@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.4.8+dfsg2-18": {
+      "pkg_name": "libsmi",
+      "version": "0.4.8+dfsg2-18",
+      "purl": "pkg:deb/gardenlinux/libsmi",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

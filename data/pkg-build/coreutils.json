@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "9.7-2gl0~bp1877": {
+      "pkg_name": "coreutils",
+      "version": "9.7-2gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/coreutils",
+      "repo": "package-coreutils",
+      "commit": "4935734935900b38fa42c129cc9a3c605e7cd28d",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "9.7-3": {
+      "pkg_name": "coreutils",
+      "version": "9.7-3",
+      "purl": "pkg:deb/gardenlinux/coreutils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

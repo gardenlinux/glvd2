@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.8.0-1": {
+      "pkg_name": "libslirp",
+      "version": "4.8.0-1",
+      "purl": "pkg:deb/gardenlinux/libslirp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.9.1-1": {
+      "pkg_name": "libslirp",
+      "version": "4.9.1-1",
+      "purl": "pkg:deb/gardenlinux/libslirp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

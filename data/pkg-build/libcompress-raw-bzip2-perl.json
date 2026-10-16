@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "2.213-2gl0~bp1877": {
+      "pkg_name": "libcompress-raw-bzip2-perl",
+      "version": "2.213-2gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libcompress-raw-bzip2-perl",
+      "repo": "package-libcompress-raw-bzip2-perl",
+      "commit": "d51a448cc9ba4876b1279be9198564ed1670d4ac",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.217-1": {
+      "pkg_name": "libcompress-raw-bzip2-perl",
+      "version": "2.217-1",
+      "purl": "pkg:deb/gardenlinux/libcompress-raw-bzip2-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "3.1.6-3gl0": {
+      "pkg_name": "jinja2",
+      "version": "3.1.6-3gl0",
+      "purl": "pkg:deb/gardenlinux/jinja2",
+      "repo": "package-jinja2",
+      "commit": "42c5a27b26b11dce6c68455b2d3ca05152843a23",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": false,
+        "upstream_version": "3.1.6"
+      }
+    },
+    "3.1.6-3gl0~bp1877": {
+      "pkg_name": "jinja2",
+      "version": "3.1.6-3gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/jinja2",
+      "repo": "package-jinja2",
+      "commit": "c31efa840178cf5adaeaa3dccc3aa1b1d9707049",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": false,
+        "upstream_version": "3.1.6"
+      }
+    }
+  }
+}

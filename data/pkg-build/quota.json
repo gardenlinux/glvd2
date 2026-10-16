@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "4.09-1": {
+      "pkg_name": "quota",
+      "version": "4.09-1",
+      "purl": "pkg:deb/gardenlinux/quota",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

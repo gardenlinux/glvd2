@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "6.8.2+dfsg-6": {
+      "pkg_name": "qt6-base",
+      "version": "6.8.2+dfsg-6",
+      "purl": "pkg:deb/gardenlinux/qt6-base",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "6.9.2+dfsg-4": {
+      "pkg_name": "qt6-base",
+      "version": "6.9.2+dfsg-4",
+      "purl": "pkg:deb/gardenlinux/qt6-base",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

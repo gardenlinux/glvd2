@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "6.2.1+ds1+~cs6.1.13-7": {
+      "pkg_name": "node-tar",
+      "version": "6.2.1+ds1+~cs6.1.13-7",
+      "purl": "pkg:deb/gardenlinux/node-tar",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "6.2.1+~cs7.0.8-1": {
+      "pkg_name": "node-tar",
+      "version": "6.2.1+~cs7.0.8-1",
+      "purl": "pkg:deb/gardenlinux/node-tar",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

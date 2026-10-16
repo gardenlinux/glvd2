@@ -1,0 +1,32 @@
+{
+  "versions": {
+    "0.25.5-3": {
+      "pkg_name": "p11-kit",
+      "version": "0.25.5-3",
+      "purl": "pkg:deb/gardenlinux/p11-kit",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.26.5-1gl1+bp2150": {
+      "pkg_name": "p11-kit",
+      "version": "0.26.5-1gl1+bp2150",
+      "purl": "pkg:deb/gardenlinux/p11-kit",
+      "repo": "package-p11-kit",
+      "commit": "2074ae3222ef45f0937ce5b8520d4c094e7097a0",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    }
+  }
+}

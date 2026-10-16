@@ -1,0 +1,36 @@
+{
+  "versions": {
+    "8.22.0-1gl0+bp1877": {
+      "pkg_name": "curl",
+      "version": "8.22.0-1gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/curl",
+      "repo": "package-curl",
+      "commit": "aa0abf5cdc3ee756db14dd138fd717e50379cca5",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "8.22.0-1"
+      }
+    },
+    "8.22.0-1gl0~bp2150": {
+      "pkg_name": "curl",
+      "version": "8.22.0-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/curl",
+      "repo": "package-curl",
+      "commit": "099f44db29c33d673d5eab8174dea5f485f54d7a",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "8.22.0"
+      }
+    }
+  }
+}

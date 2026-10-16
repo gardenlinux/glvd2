@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "10.2.0-1": {
+      "pkg_name": "harfbuzz",
+      "version": "10.2.0-1",
+      "purl": "pkg:deb/gardenlinux/harfbuzz",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "12.3.2-1": {
+      "pkg_name": "harfbuzz",
+      "version": "12.3.2-1",
+      "purl": "pkg:deb/gardenlinux/harfbuzz",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

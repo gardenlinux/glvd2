@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "17.5-1": {
+      "pkg_name": "postgresql-17",
+      "version": "17.5-1",
+      "purl": "pkg:deb/gardenlinux/postgresql-17",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

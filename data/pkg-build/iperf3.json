@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.20-2": {
+      "pkg_name": "iperf3",
+      "version": "3.20-2",
+      "purl": "pkg:deb/gardenlinux/iperf3",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

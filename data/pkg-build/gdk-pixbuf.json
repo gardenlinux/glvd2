@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.42.12+dfsg-2": {
+      "pkg_name": "gdk-pixbuf",
+      "version": "2.42.12+dfsg-2",
+      "purl": "pkg:deb/gardenlinux/gdk-pixbuf",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.44.5+dfsg-3": {
+      "pkg_name": "gdk-pixbuf",
+      "version": "2.44.5+dfsg-3",
+      "purl": "pkg:deb/gardenlinux/gdk-pixbuf",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

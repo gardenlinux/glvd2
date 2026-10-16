@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "4.0.48-1": {
+      "pkg_name": "mtools",
+      "version": "4.0.48-1",
+      "purl": "pkg:deb/gardenlinux/mtools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "4.0.49-1": {
+      "pkg_name": "mtools",
+      "version": "4.0.49-1",
+      "purl": "pkg:deb/gardenlinux/mtools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

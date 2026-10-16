@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.21.2+dfsg-2": {
+      "pkg_name": "python-docutils",
+      "version": "0.21.2+dfsg-2",
+      "purl": "pkg:deb/gardenlinux/python-docutils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.22.4+dfsg-1": {
+      "pkg_name": "python-docutils",
+      "version": "0.22.4+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/python-docutils",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

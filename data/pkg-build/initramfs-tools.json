@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "0.147": {
+      "pkg_name": "initramfs-tools",
+      "version": "0.147",
+      "purl": "pkg:deb/gardenlinux/initramfs-tools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "0.150": {
+      "pkg_name": "initramfs-tools",
+      "version": "0.150",
+      "purl": "pkg:deb/gardenlinux/initramfs-tools",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

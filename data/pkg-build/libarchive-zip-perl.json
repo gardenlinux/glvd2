@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "1.68-1": {
+      "pkg_name": "libarchive-zip-perl",
+      "version": "1.68-1",
+      "purl": "pkg:deb/gardenlinux/libarchive-zip-perl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

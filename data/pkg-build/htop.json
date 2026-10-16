@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "3.4.1-4gl0": {
+      "pkg_name": "htop",
+      "version": "3.4.1-4gl0",
+      "purl": "pkg:deb/gardenlinux/htop",
+      "repo": "package-htop",
+      "commit": "be0b4929934a3514ad9bd84e16e8a6e089d0b1de",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.4.1-5gl0": {
+      "pkg_name": "htop",
+      "version": "3.4.1-5gl0",
+      "purl": "pkg:deb/gardenlinux/htop",
+      "repo": "package-htop",
+      "commit": "8762d71d15ca7183a2c9365a3437c05288839c1c",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

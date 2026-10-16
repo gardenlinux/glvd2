@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.41-2": {
+      "pkg_name": "fio",
+      "version": "3.41-2",
+      "purl": "pkg:deb/gardenlinux/fio",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

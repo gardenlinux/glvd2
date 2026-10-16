@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "10.1.1+ds1-4": {
+      "pkg_name": "fmtlib",
+      "version": "10.1.1+ds1-4",
+      "purl": "pkg:deb/gardenlinux/fmtlib",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

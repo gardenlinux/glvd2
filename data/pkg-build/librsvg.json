@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.60.0+dfsg-1": {
+      "pkg_name": "librsvg",
+      "version": "2.60.0+dfsg-1",
+      "purl": "pkg:deb/gardenlinux/librsvg",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.61.3+dfsg-3": {
+      "pkg_name": "librsvg",
+      "version": "2.61.3+dfsg-3",
+      "purl": "pkg:deb/gardenlinux/librsvg",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

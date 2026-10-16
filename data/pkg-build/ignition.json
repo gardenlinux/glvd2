@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "2.26.0-0gl2~bp1877": {
+      "pkg_name": "ignition",
+      "version": "2.26.0-0gl2~bp1877",
+      "purl": "pkg:deb/gardenlinux/ignition",
+      "repo": "package-ignition",
+      "commit": "b71378fbe51bae41c41aaa448e651b56f9485834",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    },
+    "2.26.0-1gl3~bp2150": {
+      "pkg_name": "ignition",
+      "version": "2.26.0-1gl3~bp2150",
+      "purl": "pkg:deb/gardenlinux/ignition",
+      "repo": "package-ignition",
+      "commit": "d37a35a7348d58d5ff3fda15731758cf77ac7a8a",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    }
+  }
+}

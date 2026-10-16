@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2:6.3.0+dfsg-3": {
+      "pkg_name": "gmp",
+      "version": "2:6.3.0+dfsg-3",
+      "purl": "pkg:deb/gardenlinux/gmp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2:6.3.0+dfsg-5": {
+      "pkg_name": "gmp",
+      "version": "2:6.3.0+dfsg-5",
+      "purl": "pkg:deb/gardenlinux/gmp",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

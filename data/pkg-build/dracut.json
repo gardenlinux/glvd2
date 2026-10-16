@@ -1,0 +1,34 @@
+{
+  "versions": {
+    "106-6gl3~bp1877": {
+      "pkg_name": "dracut",
+      "version": "106-6gl3~bp1877",
+      "purl": "pkg:deb/gardenlinux/dracut",
+      "repo": "package-dracut",
+      "commit": "5372168401ed6d59e2761148072430270a6cb5ab",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
+    "110-1gl0": {
+      "pkg_name": "dracut",
+      "version": "110-1gl0",
+      "purl": "pkg:deb/gardenlinux/dracut",
+      "repo": "package-dracut",
+      "commit": "c85f208e8c6bc160ac1064b72f05fe5cccbaf5f0",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    }
+  }
+}

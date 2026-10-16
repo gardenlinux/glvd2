@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "2.24.33-10": {
+      "pkg_name": "gtk+2.0",
+      "version": "2.24.33-10",
+      "purl": "pkg:deb/gardenlinux/gtk%2B2.0",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "2.24.33-7": {
+      "pkg_name": "gtk+2.0",
+      "version": "2.24.33-7",
+      "purl": "pkg:deb/gardenlinux/gtk%2B2.0",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

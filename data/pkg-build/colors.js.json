@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "1.4.0-4": {
+      "pkg_name": "colors.js",
+      "version": "1.4.0-4",
+      "purl": "pkg:deb/gardenlinux/colors.js",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

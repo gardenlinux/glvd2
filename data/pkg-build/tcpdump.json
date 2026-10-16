@@ -1,0 +1,19 @@
+{
+  "versions": {
+    "4.99.5-2gl0": {
+      "pkg_name": "tcpdump",
+      "version": "4.99.5-2gl0",
+      "purl": "pkg:deb/gardenlinux/tcpdump",
+      "repo": "package-tcpdump",
+      "commit": "90eb47706f0556f3a3d2f82fadc079a7207cb415",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

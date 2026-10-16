@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.0.3+git20251212.7f6d61a-2": {
+      "pkg_name": "libengine-gost-openssl",
+      "version": "3.0.3+git20251212.7f6d61a-2",
+      "purl": "pkg:deb/gardenlinux/libengine-gost-openssl",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

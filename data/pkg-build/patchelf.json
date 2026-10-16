@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.18.0-1.4": {
+      "pkg_name": "patchelf",
+      "version": "0.18.0-1.4",
+      "purl": "pkg:deb/gardenlinux/patchelf",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

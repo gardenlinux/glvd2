@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "3.10-1": {
+      "pkg_name": "python-idna",
+      "version": "3.10-1",
+      "purl": "pkg:deb/gardenlinux/python-idna",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

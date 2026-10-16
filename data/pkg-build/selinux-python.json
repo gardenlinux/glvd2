@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.8.1-2": {
+      "pkg_name": "selinux-python",
+      "version": "3.8.1-2",
+      "purl": "pkg:deb/gardenlinux/selinux-python",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.9-2": {
+      "pkg_name": "selinux-python",
+      "version": "3.9-2",
+      "purl": "pkg:deb/gardenlinux/selinux-python",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

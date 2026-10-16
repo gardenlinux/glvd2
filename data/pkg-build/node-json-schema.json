@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "0.4.0+~7.0.11-1": {
+      "pkg_name": "node-json-schema",
+      "version": "0.4.0+~7.0.11-1",
+      "purl": "pkg:deb/gardenlinux/node-json-schema",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}
