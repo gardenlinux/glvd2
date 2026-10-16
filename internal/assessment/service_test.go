@@ -157,9 +157,9 @@ func TestServiceProcess_NewRecord(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "ships bar 2.0",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/bar": {Reason: assessment.ReleaseReasonVersionVulnerable, ShippedVersion: "2.0"},
+				}},
 			},
 		},
 	}
@@ -199,12 +199,12 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "old",
-				},
-				ManualTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactNotAffected, Justification: "DTLS disabled",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable, ShippedVersion: "old"},
+				}},
+				Manual: assessment.ManualReleaseStatus{Packages: map[string]assessment.PackageOverride{
+					"pkg:deb/debian/foo": {Status: assessment.ReleaseStatusNotAffected, Justification: "DTLS disabled"},
+				}},
 			},
 		},
 	}
@@ -221,9 +221,9 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "still affected",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable, ShippedVersion: "still"},
+				}},
 			},
 		},
 	}
@@ -240,12 +240,15 @@ func TestServiceProcess_PreservesManual(t *testing.T) {
 	assert.Equal(t, "human says no", merged.Manual.ManualTriage.Justification)
 	assert.Equal(t, "reviewed in sprint 42", merged.Manual.Notes)
 	assert.Equal(t, 42, merged.Meta.IssueNumber)
-	// Per-release overwrite: overwritten.
-	assert.Equal(t, assessment.ImpactAffected, merged.Releases["2150.8.0"].AutoTriage.Status)
-	assert.Equal(t, "still affected", merged.Releases["2150.8.0"].AutoTriage.Justification)
-	// Per-release preserve: preserved.
-	assert.Equal(t, assessment.ImpactNotAffected, merged.Releases["2150.8.0"].ManualTriage.Status)
-	assert.Equal(t, "DTLS disabled", merged.Releases["2150.8.0"].ManualTriage.Justification)
+	// Per-release auto overwrite: overwritten.
+	auto := merged.Releases["2150.8.0"].Auto.Packages["pkg:deb/debian/foo"]
+	assert.Equal(t, "still", auto.ShippedVersion)
+	// Per-release manual override: preserved.
+	override := merged.Releases["2150.8.0"].Manual.Packages["pkg:deb/debian/foo"]
+	assert.Equal(t, assessment.ReleaseStatusNotAffected, override.Status)
+	assert.Equal(t, "DTLS disabled", override.Justification)
+	// Composite reflects the manual override.
+	assert.Equal(t, assessment.ReleaseStatusNotAffected, merged.GetReleaseStatus("2150.8.0"))
 
 	// ChangeSet reflects updates.
 	assert.Equal(t, assessment.Updated, cs.Type)
@@ -268,14 +271,14 @@ func TestServiceProcess_PreservesEOLReleases(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"1592.2": { // older releases had a different format
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "EOL release",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+				}},
 			},
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "current",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+				}},
 			},
 		},
 	}
@@ -289,9 +292,9 @@ func TestServiceProcess_PreservesEOLReleases(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactFixed, Justification: "patched",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionFixed},
+				}},
 			},
 		},
 	}
@@ -301,9 +304,9 @@ func TestServiceProcess_PreservesEOLReleases(t *testing.T) {
 	require.NoError(t, err)
 
 	// EOL release preserved (map,preserve semantics).
-	assert.Equal(t, assessment.ImpactAffected, merged.Releases["1592.2"].AutoTriage.Status)
+	assert.Equal(t, assessment.ReleaseStatusAffected, merged.GetReleaseStatus("1592.2"))
 	// Active release updated.
-	assert.Equal(t, assessment.ImpactFixed, merged.Releases["2150.8.0"].AutoTriage.Status)
+	assert.Equal(t, assessment.ReleaseStatusFixed, merged.GetReleaseStatus("2150.8.0"))
 
 	assert.Equal(t, assessment.Updated, cs.Type)
 	assert.True(t, cs.HasChanges())
@@ -311,9 +314,10 @@ func TestServiceProcess_PreservesEOLReleases(t *testing.T) {
 	for _, c := range cs.Changes {
 		changeMap[c.Field.String()] = c
 	}
-	assert.Contains(t, changeMap, "releases.2150.8.0.auto_triage.status")
-	assert.Equal(t, "affected", changeMap["releases.2150.8.0.auto_triage.status"].OldValue)
-	assert.Equal(t, "fixed", changeMap["releases.2150.8.0.auto_triage.status"].NewValue)
+	change, ok := changeMap["releases.2150.8.0.auto.packages"]
+	require.True(t, ok)
+	assert.Contains(t, change.OldValue, "version-vulnerable")
+	assert.Contains(t, change.NewValue, "version-fixed")
 }
 
 // TestDiff_BotEditDetected_Integration tests the full pipeline scenario where
@@ -332,9 +336,9 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "ships it",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+				}},
 			},
 		},
 	}
@@ -352,12 +356,12 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "ships it",
-				},
-				ManualTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactNotAffected, Justification: "disabled",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+				}},
+				Manual: assessment.ManualReleaseStatus{Packages: map[string]assessment.PackageOverride{
+					"pkg:deb/debian/foo": {Status: assessment.ReleaseStatusNotAffected, Justification: "disabled"},
+				}},
 			},
 		},
 	}
@@ -371,9 +375,9 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "ships it",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+				}},
 			},
 		},
 	}
@@ -394,15 +398,17 @@ func TestDiff_BotEditDetected_Integration(t *testing.T) {
 	assert.Empty(t, changeMap["manual.manual_triage.status"].OldValue)
 	assert.Equal(t, "not-relevant", changeMap["manual.manual_triage.status"].NewValue)
 
-	assert.Contains(t, changeMap, "releases.2150.8.0.manual_triage.status")
-	assert.Empty(t, changeMap["releases.2150.8.0.manual_triage.status"].OldValue)
-	assert.Equal(t, "not-affected", changeMap["releases.2150.8.0.manual_triage.status"].NewValue)
+	manualChange, ok := changeMap["releases.2150.8.0.manual.packages"]
+	require.True(t, ok)
+	assert.Equal(t, "null", manualChange.OldValue)
+	assert.Contains(t, manualChange.NewValue, "not-affected")
 
 	// Bot edits must be preserved in the final merged result.
 	assert.Equal(t, assessment.StatusNotRelevant, merged.Manual.ManualTriage.Status)
 	assert.Equal(t, "human decided", merged.Manual.ManualTriage.Justification)
-	assert.Equal(t, assessment.ImpactNotAffected, merged.Releases["2150.8.0"].ManualTriage.Status)
-	assert.Equal(t, "disabled", merged.Releases["2150.8.0"].ManualTriage.Justification)
+	override := merged.Releases["2150.8.0"].Manual.Packages["pkg:deb/debian/foo"]
+	assert.Equal(t, assessment.ReleaseStatusNotAffected, override.Status)
+	assert.Equal(t, "disabled", override.Justification)
 }
 
 // TestServiceProcess_CommittedOverwriteBotEdit checks that external edits to program-owned (overwrite)
@@ -525,9 +531,9 @@ func TestServiceProcess_Unchanged(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "ships it",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+				}},
 			},
 		},
 	}

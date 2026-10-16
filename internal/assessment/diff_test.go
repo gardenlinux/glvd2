@@ -121,7 +121,9 @@ func TestDetectExternalOverwriteEdits(t *testing.T) {
 				ID: "CVE-2025-9004",
 				Releases: map[string]ReleaseDecision{
 					"2150.8.0": {
-						AutoTriage: ReleaseTriage{Status: ImpactAffected, Justification: "ships it"},
+						Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+							"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionVulnerable},
+						}},
 					},
 				},
 			},
@@ -129,11 +131,13 @@ func TestDetectExternalOverwriteEdits(t *testing.T) {
 				ID: "CVE-2025-9004",
 				Releases: map[string]ReleaseDecision{
 					"2150.8.0": {
-						AutoTriage: ReleaseTriage{Status: ImpactFixed, Justification: "bot patched it"},
+						Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+							"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionFixed},
+						}},
 					},
 				},
 			},
-			wantFields: []string{"releases.2150.8.0.auto_triage.status", "releases.2150.8.0.auto_triage.justification"},
+			wantFields: []string{"releases.2150.8.0.auto.packages"},
 		},
 		{
 			name: "map preserve subfield edited externally - ignored",
@@ -141,7 +145,9 @@ func TestDetectExternalOverwriteEdits(t *testing.T) {
 				ID: "CVE-2025-9005",
 				Releases: map[string]ReleaseDecision{
 					"2150.8.0": {
-						ManualTriage: ReleaseTriage{Status: ImpactAffected},
+						Manual: ManualReleaseStatus{Packages: map[string]PackageOverride{
+							"pkg:deb/debian/foo": {Status: ReleaseStatusAffected},
+						}},
 					},
 				},
 			},
@@ -149,7 +155,9 @@ func TestDetectExternalOverwriteEdits(t *testing.T) {
 				ID: "CVE-2025-9005",
 				Releases: map[string]ReleaseDecision{
 					"2150.8.0": {
-						ManualTriage: ReleaseTriage{Status: ImpactNotAffected},
+						Manual: ManualReleaseStatus{Packages: map[string]PackageOverride{
+							"pkg:deb/debian/foo": {Status: ReleaseStatusNotAffected},
+						}},
 					},
 				},
 			},
@@ -320,9 +328,9 @@ func TestDiffRecords_Updated_ReleaseAutoStatus(t *testing.T) {
 		ID: "CVE-2025-4001",
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: ReleaseTriage{
-					Status: ImpactAffected, Justification: "ships 1.0",
-				},
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionVulnerable, ShippedVersion: "1.0"},
+				}},
 			},
 		},
 	}
@@ -331,9 +339,9 @@ func TestDiffRecords_Updated_ReleaseAutoStatus(t *testing.T) {
 		ID: "CVE-2025-4001",
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: ReleaseTriage{
-					Status: ImpactFixed, Justification: "ships 1.1",
-				},
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionFixed, ShippedVersion: "1.1"},
+				}},
 			},
 		},
 	}
@@ -347,8 +355,11 @@ func TestDiffRecords_Updated_ReleaseAutoStatus(t *testing.T) {
 		changeMap[c.Field.String()] = c
 	}
 
-	assert.Equal(t, "affected", changeMap["releases.2150.8.0.auto_triage.status"].OldValue)
-	assert.Equal(t, "fixed", changeMap["releases.2150.8.0.auto_triage.status"].NewValue)
+	// The per-pkg map diffs as a whole; the stored reason is reflected in the JSON blob.
+	change, ok := changeMap["releases.2150.8.0.auto.packages"]
+	require.True(t, ok, "expected a change on the per-pkg map")
+	assert.Contains(t, change.OldValue, "version-vulnerable")
+	assert.Contains(t, change.NewValue, "version-fixed")
 }
 
 func TestDiffRecords_Unchanged(t *testing.T) {
@@ -386,9 +397,9 @@ func TestDiffRecords_BotEditDetected(t *testing.T) {
 		},
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: ReleaseTriage{
-					Status: ImpactAffected, Justification: "ships it",
-				},
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionVulnerable},
+				}},
 			},
 		},
 	}
@@ -406,12 +417,12 @@ func TestDiffRecords_BotEditDetected(t *testing.T) {
 		},
 		Releases: map[string]ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: ReleaseTriage{
-					Status: ImpactAffected, Justification: "ships it",
-				},
-				ManualTriage: ReleaseTriage{
-					Status: ImpactNotAffected, Justification: "disabled",
-				},
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionVulnerable},
+				}},
+				Manual: ManualReleaseStatus{Packages: map[string]PackageOverride{
+					"pkg:deb/debian/foo": {Status: ReleaseStatusNotAffected, Justification: "disabled"},
+				}},
 			},
 		},
 	}
@@ -430,9 +441,11 @@ func TestDiffRecords_BotEditDetected(t *testing.T) {
 	assert.Empty(t, changeMap["manual.manual_triage.status"].OldValue)
 	assert.Equal(t, "not-relevant", changeMap["manual.manual_triage.status"].NewValue)
 
-	assert.Contains(t, changeMap, "releases.2150.8.0.manual_triage.status")
-	assert.Empty(t, changeMap["releases.2150.8.0.manual_triage.status"].OldValue)
-	assert.Equal(t, "not-affected", changeMap["releases.2150.8.0.manual_triage.status"].NewValue)
+	// The per-pkg manual override map diffs as a whole.
+	manualChange, ok := changeMap["releases.2150.8.0.manual.packages"]
+	require.True(t, ok, "expected a change on the per-pkg manual map")
+	assert.Equal(t, "null", manualChange.OldValue)
+	assert.Contains(t, manualChange.NewValue, "not-affected")
 }
 
 func TestDiffRecords_NewReleaseAdded(t *testing.T) {
@@ -446,7 +459,9 @@ func TestDiffRecords_NewReleaseAdded(t *testing.T) {
 			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]ReleaseDecision{
-			"2150.8.0": {AutoTriage: ReleaseTriage{Status: ImpactAffected}},
+			"2150.8.0": {Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+				"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionVulnerable},
+			}}},
 		},
 	}
 
@@ -456,12 +471,12 @@ func TestDiffRecords_NewReleaseAdded(t *testing.T) {
 			AutoTriage: AutoTriage{Reason: TriageReasonAffectsDebianPackage},
 		},
 		Releases: map[string]ReleaseDecision{
-			"2150.8.0": {AutoTriage: ReleaseTriage{Status: ImpactAffected}},
-			"1596.0": {
-				AutoTriage: ReleaseTriage{
-					Status: ImpactFixed, Justification: "patched",
-				},
-			},
+			"2150.8.0": {Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+				"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionVulnerable},
+			}}},
+			"1596.0": {Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+				"pkg:deb/debian/foo": {Reason: ReleaseReasonVersionFixed},
+			}}},
 		},
 	}
 
@@ -474,9 +489,10 @@ func TestDiffRecords_NewReleaseAdded(t *testing.T) {
 		changeMap[c.Field.String()] = c
 	}
 
-	assert.Contains(t, changeMap, "releases.1596.0.auto_triage.status")
-	assert.Empty(t, changeMap["releases.1596.0.auto_triage.status"].OldValue)
-	assert.Equal(t, "fixed", changeMap["releases.1596.0.auto_triage.status"].NewValue)
+	change, ok := changeMap["releases.1596.0.auto.packages"]
+	require.True(t, ok, "expected the new release's per-pkg map in the diff")
+	assert.Equal(t, "null", change.OldValue)
+	assert.Contains(t, change.NewValue, "version-fixed")
 }
 
 func TestDiffRecords_Updated_CVSSScore(t *testing.T) {

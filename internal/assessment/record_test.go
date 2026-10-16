@@ -85,50 +85,84 @@ func TestRecord_GetGlobalStatus(t *testing.T) {
 func TestRecord_GetReleaseStatus(t *testing.T) {
 	t.Parallel()
 
+	vulnerable := assessment.PackageStatus{Reason: assessment.ReleaseReasonVersionVulnerable}
+	fixed := assessment.PackageStatus{Reason: assessment.ReleaseReasonVersionFixed}
+
 	tests := []struct {
 		name    string
 		rec     assessment.Record
 		release string
-		want    assessment.ImpactStatus
+		want    assessment.ReleaseStatus
 	}{
 		{
 			name: "auto only for release",
 			rec: assessment.Record{
 				Releases: map[string]assessment.ReleaseDecision{
-					"2150.8.0": {AutoTriage: assessment.ReleaseTriage{Status: assessment.ImpactAffected}},
+					"2150.8.0": {Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+						"pkg:deb/debian/foo": vulnerable,
+					}}},
 				},
 			},
 			release: "2150.8.0",
-			want:    assessment.ImpactAffected,
+			want:    assessment.ReleaseStatusAffected,
 		},
 		{
-			name: "manual overrides auto for release",
+			name: "manual override flips composite for release",
 			rec: assessment.Record{
 				Releases: map[string]assessment.ReleaseDecision{
 					"2150.8.0": {
-						AutoTriage:   assessment.ReleaseTriage{Status: assessment.ImpactAffected},
-						ManualTriage: assessment.ReleaseTriage{Status: assessment.ImpactNotAffected},
+						Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+							"pkg:deb/debian/foo": vulnerable,
+						}},
+						Manual: assessment.ManualReleaseStatus{Packages: map[string]assessment.PackageOverride{
+							"pkg:deb/debian/foo": {Status: assessment.ReleaseStatusNotAffected},
+						}},
 					},
 				},
 			},
 			release: "2150.8.0",
-			want:    assessment.ImpactNotAffected,
+			want:    assessment.ReleaseStatusNotAffected,
+		},
+		{
+			name: "one vulnerable source keeps release affected",
+			rec: assessment.Record{
+				Releases: map[string]assessment.ReleaseDecision{
+					"2150.8.0": {Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+						"pkg:deb/debian/foo": fixed,
+						"pkg:deb/debian/bar": vulnerable,
+					}}},
+				},
+			},
+			release: "2150.8.0",
+			want:    assessment.ReleaseStatusAffected,
+		},
+		{
+			name: "empty decision rolls up to not-affected (package-not-shipped)",
+			rec: assessment.Record{
+				Releases: map[string]assessment.ReleaseDecision{
+					"2150.8.0": {},
+				},
+			},
+			release: "2150.8.0",
+			want:    assessment.ReleaseStatusNotAffected,
 		},
 		{
 			name: "release not present",
 			rec: assessment.Record{
 				Releases: map[string]assessment.ReleaseDecision{
-					"2150.8.0": {AutoTriage: assessment.ReleaseTriage{Status: assessment.ImpactAffected}},
+					"2150.8.0": {Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+						"pkg:deb/debian/foo": vulnerable,
+					}}},
 				},
 			},
 			release: "1596.0",
-			want:    assessment.ImpactUnknown,
+			want:    assessment.ReleaseStatusUnknown,
 		},
 		{
 			name:    "nil releases map",
 			rec:     assessment.Record{},
 			release: "2150.8.0",
-			want:    assessment.ImpactUnknown,
+			want:    assessment.ReleaseStatusUnknown,
 		},
 	}
 
@@ -139,6 +173,184 @@ func TestRecord_GetReleaseStatus(t *testing.T) {
 			assert.Equal(t, tt.want, tt.rec.GetReleaseStatus(tt.release))
 		})
 	}
+}
+
+func TestReleaseStatusReason_NeedsEscalation(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		reason        assessment.ReleaseStatusReason
+		wantStatus    assessment.ReleaseStatus
+		wantEscalates bool
+	}{
+		{assessment.ReleaseReasonPackageNotShipped, assessment.ReleaseStatusNotAffected, false},
+		{assessment.ReleaseReasonDeclaredNotAffected, assessment.ReleaseStatusNotAffected, false},
+		{assessment.ReleaseReasonVersionFixed, assessment.ReleaseStatusFixed, false},
+		{assessment.ReleaseReasonVersionVulnerable, assessment.ReleaseStatusAffected, false},
+		{assessment.ReleaseReasonAffectedEscalated, assessment.ReleaseStatusAffected, true},
+		{assessment.ReleaseReasonUnknownEscalated, assessment.ReleaseStatusUnknown, true},
+	}
+
+	for _, tt := range tests {
+		t.Run(string(tt.reason), func(t *testing.T) {
+			t.Parallel()
+
+			assert.Equal(t, tt.wantStatus, tt.reason.Status())
+			assert.Equal(t, tt.wantEscalates, tt.reason.NeedsEscalation())
+		})
+	}
+}
+
+func TestReleaseDecision_CompositePrecedence(t *testing.T) {
+	t.Parallel()
+
+	src := func(r assessment.ReleaseStatusReason) assessment.PackageStatus {
+		return assessment.PackageStatus{Reason: r}
+	}
+
+	tests := []struct {
+		name          string
+		packages      map[string]assessment.PackageStatus
+		wantReason    assessment.ReleaseStatusReason
+		wantStatus    assessment.ReleaseStatus
+		wantEscalates bool
+	}{
+		{
+			name: "version-vulnerable dominates unknown-escalated without escalation",
+			packages: map[string]assessment.PackageStatus{
+				"a": src(assessment.ReleaseReasonVersionVulnerable),
+				"b": src(assessment.ReleaseReasonUnknownEscalated),
+			},
+			wantReason:    assessment.ReleaseReasonVersionVulnerable,
+			wantStatus:    assessment.ReleaseStatusAffected,
+			wantEscalates: false,
+		},
+		{
+			name: "affected-escalated dominates version-fixed",
+			packages: map[string]assessment.PackageStatus{
+				"a": src(assessment.ReleaseReasonAffectedEscalated),
+				"b": src(assessment.ReleaseReasonVersionFixed),
+			},
+			wantReason:    assessment.ReleaseReasonAffectedEscalated,
+			wantStatus:    assessment.ReleaseStatusAffected,
+			wantEscalates: true,
+		},
+		{
+			name: "unknown-escalated dominates version-fixed and escalates",
+			packages: map[string]assessment.PackageStatus{
+				"a": src(assessment.ReleaseReasonUnknownEscalated),
+				"b": src(assessment.ReleaseReasonVersionFixed),
+			},
+			wantReason:    assessment.ReleaseReasonUnknownEscalated,
+			wantStatus:    assessment.ReleaseStatusUnknown,
+			wantEscalates: true,
+		},
+		{
+			name: "version-fixed dominates declared-not-affected",
+			packages: map[string]assessment.PackageStatus{
+				"a": src(assessment.ReleaseReasonVersionFixed),
+				"b": src(assessment.ReleaseReasonDeclaredNotAffected),
+			},
+			wantReason:    assessment.ReleaseReasonVersionFixed,
+			wantStatus:    assessment.ReleaseStatusFixed,
+			wantEscalates: false,
+		},
+		{
+			name:          "no packages rolls up to package-not-shipped",
+			packages:      nil,
+			wantReason:    assessment.ReleaseReasonPackageNotShipped,
+			wantStatus:    assessment.ReleaseStatusNotAffected,
+			wantEscalates: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+
+			d := assessment.ReleaseDecision{Auto: assessment.AutoReleaseStatus{Packages: tt.packages}}
+			assert.Equal(t, tt.wantReason, d.CompositeReason())
+			assert.Equal(t, tt.wantStatus, d.CompositeStatus())
+			assert.Equal(t, tt.wantEscalates, d.NeedsEscalation())
+		})
+	}
+}
+
+func TestReleaseDecision_ManualOverrideRecomputesComposite(t *testing.T) {
+	t.Parallel()
+
+	// A single affected package, overridden to not-affected, flips the headline.
+	d := assessment.ReleaseDecision{
+		Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+			"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonVersionVulnerable},
+		}},
+		Manual: assessment.ManualReleaseStatus{Packages: map[string]assessment.PackageOverride{
+			"pkg:deb/debian/foo": {
+				Status:        assessment.ReleaseStatusNotAffected,
+				Justification: "vulnerable path not present",
+			},
+		}},
+	}
+
+	assert.Equal(t, assessment.ReleaseReasonDeclaredNotAffected, d.CompositeReason())
+	assert.Equal(t, assessment.ReleaseStatusNotAffected, d.CompositeStatus())
+	assert.False(t, d.NeedsEscalation())
+}
+
+func TestPackageStatus_MarshalJSON(t *testing.T) {
+	t.Parallel()
+
+	data, err := json.Marshal(assessment.PackageStatus{
+		Reason:         assessment.ReleaseReasonVersionVulnerable,
+		ShippedVersion: "1.0-1",
+	})
+	require.NoError(t, err)
+
+	var m map[string]any
+	require.NoError(t, json.Unmarshal(data, &m))
+
+	assert.Equal(t, "affected", m["status"], "derived status emitted")
+	assert.Equal(t, "version-vulnerable", m["reason"])
+	assert.Equal(t, "1.0-1", m["shipped_version"])
+}
+
+func TestReleaseDecision_MarshalJSON_Composite(t *testing.T) {
+	t.Parallel()
+
+	d := assessment.ReleaseDecision{
+		Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+			"pkg:deb/debian/foo": {Reason: assessment.ReleaseReasonUnknownEscalated},
+		}},
+	}
+
+	data, err := json.Marshal(d)
+	require.NoError(t, err)
+
+	var m map[string]any
+	require.NoError(t, json.Unmarshal(data, &m))
+
+	composite, ok := m["composite"].(map[string]any)
+	require.True(t, ok, "composite object emitted")
+	assert.Equal(t, "unknown", composite["status"])
+	assert.Equal(t, "unknown-escalated", composite["reason"])
+	assert.Equal(t, true, composite["escalates"])
+}
+
+// TestReleaseDecision_UnmarshalJSON_DerivedIgnored verifies the derived composite/status
+// keys are ignored on read, so a round-trip restores only the stored reasons.
+func TestReleaseDecision_UnmarshalJSON_DerivedIgnored(t *testing.T) {
+	t.Parallel()
+
+	raw := `{"composite":{"status":"fixed","reason":"version-fixed"},` +
+		`"auto":{"packages":{"pkg:deb/debian/foo":{"status":"fixed","reason":"version-vulnerable"}}}}`
+
+	var d assessment.ReleaseDecision
+	require.NoError(t, json.Unmarshal([]byte(raw), &d))
+
+	got := d.Auto.Packages["pkg:deb/debian/foo"]
+	assert.Equal(t, assessment.ReleaseReasonVersionVulnerable, got.Reason)
+	// Composite derives from the stored reason, not the JSON composite field.
+	assert.Equal(t, assessment.ReleaseReasonVersionVulnerable, d.CompositeReason())
 }
 
 func TestAutoTriage_Status(t *testing.T) {
@@ -257,12 +469,12 @@ func TestManualTriage_IsEmpty(t *testing.T) {
 	assert.False(t, assessment.ManualTriage{Status: assessment.StatusRelevant}.IsEmpty())
 }
 
-func TestReleaseTriage_IsEmpty(t *testing.T) {
+func TestPackageOverride_IsEmpty(t *testing.T) {
 	t.Parallel()
 
-	assert.True(t, assessment.ReleaseTriage{}.IsEmpty())
-	assert.True(t, assessment.ReleaseTriage{Justification: "has reason but no status"}.IsEmpty())
-	assert.False(t, assessment.ReleaseTriage{Status: assessment.ImpactFixed}.IsEmpty())
+	assert.True(t, assessment.PackageOverride{}.IsEmpty())
+	assert.True(t, assessment.PackageOverride{Justification: "reason but no status"}.IsEmpty())
+	assert.False(t, assessment.PackageOverride{Status: assessment.ReleaseStatusFixed}.IsEmpty())
 }
 
 func TestRecord_HasMergeTags(t *testing.T) {
@@ -296,11 +508,8 @@ func TestReleaseDecision_HasMergeTags(t *testing.T) {
 	rt := reflect.TypeFor[assessment.ReleaseDecision]()
 
 	expectedTags := map[string]string{
-		"AutoTriage":     "overwrite",
-		"PackageVersion": "overwrite",
-		"FixAvailable":   "overwrite",
-		"DebianStatus":   "overwrite",
-		"ManualTriage":   "preserve",
+		"Auto":   "overwrite",
+		"Manual": "preserve",
 	}
 
 	for fieldName, expectedTag := range expectedTags {

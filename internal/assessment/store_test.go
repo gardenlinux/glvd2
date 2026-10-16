@@ -27,9 +27,12 @@ func TestStore_RoundTrip(t *testing.T) {
 		},
 		Releases: map[string]assessment.ReleaseDecision{
 			"2150.8.0": {
-				AutoTriage: assessment.ReleaseTriage{
-					Status: assessment.ImpactAffected, Justification: "ships foo 1.0",
-				},
+				Auto: assessment.AutoReleaseStatus{Packages: map[string]assessment.PackageStatus{
+					"pkg:deb/debian/foo": {
+						Reason:         assessment.ReleaseReasonVersionVulnerable,
+						ShippedVersion: "1.0-1",
+					},
+				}},
 			},
 		},
 	}

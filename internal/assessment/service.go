@@ -1,6 +1,6 @@
 // Package assessment manages CVE assessment records as JSON files.
 //
-// It provides the core types ([Record], [Triage], [ReleaseTriage], [ReleaseDecision]),
+// It provides the core types ([Record], [AutoTriage], [ReleaseDecision], [PackageStatus]),
 // file I/O with CVEListV5-compatible bucketing ([Store]), git-based baseline tracking
 // ([Baseline]), strategy-driven merge logic, field-level diffing, and a [Reactor]
 // interface for side effects on changes.
