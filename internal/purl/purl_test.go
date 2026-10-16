@@ -111,6 +111,57 @@ func TestCanonicalize(t *testing.T) {
 	}
 }
 
+func TestCanonicalizeVersioned(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		raw     string
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "keeps version, strips qualifiers",
+			raw:  "pkg:deb/debian/curl@7.88.1?arch=amd64",
+			want: "pkg:deb/debian/curl@7.88.1",
+		},
+		{
+			name: "keeps version, strips subpath",
+			raw:  "pkg:deb/gardenlinux/curl@1.2.3#usr/bin/curl",
+			want: "pkg:deb/gardenlinux/curl@1.2.3",
+		},
+		{
+			name: "defaults namespace to debian",
+			raw:  "pkg:deb/curl@7.88.1",
+			want: "pkg:deb/debian/curl@7.88.1",
+		},
+		{
+			name:    "missing version is an error",
+			raw:     "pkg:deb/debian/curl",
+			wantErr: true,
+		},
+		{
+			name:    "unparseable PURL is an error",
+			raw:     "not-a-purl",
+			wantErr: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := purl.CanonicalizeVersioned(tc.raw)
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
 func TestCanonicalize_Idempotent(t *testing.T) {
 	t.Parallel()
 
@@ -202,6 +253,103 @@ func TestNamespaceOf(t *testing.T) {
 	}
 }
 
+func TestNameOf(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		raw     string
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "debian source name",
+			raw:  "pkg:deb/debian/curl",
+			want: "curl",
+		},
+		{
+			name: "gardenlinux source name",
+			raw:  "pkg:deb/gardenlinux/curl",
+			want: "curl",
+		},
+		{
+			name: "version and qualifiers are ignored",
+			raw:  "pkg:deb/debian/openssl@3.0.0?arch=amd64",
+			want: "openssl",
+		},
+		{
+			name: "non-deb name",
+			raw:  "pkg:golang/github.com/foo/bar",
+			want: "bar",
+		},
+		{
+			name:    "invalid purl errors",
+			raw:     "not-a-purl",
+			wantErr: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := purl.NameOf(tc.raw)
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
+func TestVersionOf(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		raw     string
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "debian version",
+			raw:  "pkg:deb/debian/curl@7.88.1",
+			want: "7.88.1",
+		},
+		{
+			name: "version with qualifiers",
+			raw:  "pkg:deb/debian/openssl@3.0.0?arch=amd64",
+			want: "3.0.0",
+		},
+		{
+			name:    "no version errors",
+			raw:     "pkg:deb/debian/curl",
+			wantErr: true,
+		},
+		{
+			name:    "invalid purl errors",
+			raw:     "not-a-purl",
+			wantErr: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := purl.VersionOf(tc.raw)
+			if tc.wantErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
 // TestConsistency proves that canonicalization is deterministic for the
 // expected join key (pkg:deb/debian/<source-name>), regardless of how the
 // raw PURL arrives (with version, qualifiers, mixed case, etc.).
@@ -269,4 +417,10 @@ func TestNamespaceVariants(t *testing.T) {
 			assert.ElementsMatch(t, tc.want, got)
 		})
 	}
+}
+
+func TestGardenLinuxIdentity(t *testing.T) {
+	t.Parallel()
+
+	assert.Equal(t, "pkg:deb/gardenlinux/gnutls", purl.GardenLinuxIdentity("gnutls"))
 }

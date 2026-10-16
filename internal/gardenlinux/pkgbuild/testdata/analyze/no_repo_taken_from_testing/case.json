@@ -1,0 +1,20 @@
+{
+  "input": {
+    "source_pkg_name": "bash",
+    "version": "5.2-1"
+  },
+  "tags": {},
+  "expected": {
+    "pkg_name": "bash",
+    "version": "5.2-1",
+    "purl": "pkg:deb/gardenlinux/bash",
+    "provenance": "taken-from-testing",
+    "signals": {
+      "built_by_gl": false,
+      "apt_src": false,
+      "salsa_src": false,
+      "upstream_src": false,
+      "has_patches": false
+    }
+  }
+}

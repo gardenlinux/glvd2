@@ -1,0 +1,2 @@
+git clone https://github.com/foo/foo.git x
+import_src x

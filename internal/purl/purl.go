@@ -48,6 +48,30 @@ func Canonicalize(raw string) (string, error) {
 	return canon.ToString(), nil
 }
 
+// CanonicalizeVersioned behaves like [Canonicalize] but keeps the version:
+// it returns the normalized type, namespace, name and version with qualifiers and subpath stripped.
+func CanonicalizeVersioned(raw string) (string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return "", err
+	}
+
+	if p.Version == "" {
+		return "", fmt.Errorf("versioned PURL %q has no version", raw)
+	}
+
+	canon := packageurl.NewPackageURL(p.Type, p.Namespace, p.Name, p.Version, nil, "")
+	return canon.ToString(), nil
+}
+
+// GardenLinuxIdentity returns the canonical, version-free gardenlinux identity PURL
+// for a source package name.
+func GardenLinuxIdentity(name string) string {
+	return packageurl.NewPackageURL(
+		packageurl.TypeDebian, NamespaceGardenLinux, name, "", nil, "",
+	).ToString()
+}
+
 // NamespaceOf returns the namespace of the PURL as parsed, applying the
 // deb convention that an empty namespace means debian if type is debian.
 // It returns an error if the PURL cannot be parsed.
@@ -58,6 +82,31 @@ func NamespaceOf(raw string) (string, error) {
 	}
 
 	return p.Namespace, nil
+}
+
+// NameOf returns the name of the PURL as parsed.
+// It returns an error if the PURL cannot be parsed.
+func NameOf(raw string) (string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return "", err
+	}
+
+	return p.Name, nil
+}
+
+// VersionOf returns the version of the PURL as parsed.
+// It returns an error if the PURL cannot be parsed or carries no version.
+func VersionOf(raw string) (string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return "", err
+	}
+	if p.Version == "" {
+		return "", fmt.Errorf("PURL %q has no version", raw)
+	}
+
+	return p.Version, nil
 }
 
 // NamespaceVariants returns the canonical identity PURLs.

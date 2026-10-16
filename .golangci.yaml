@@ -37,6 +37,8 @@ linters:
       linters:
         - goconst
   settings:
+    exhaustive:
+      default-signifies-exhaustive: true
     gosec:
       config:
         G301: "0755"

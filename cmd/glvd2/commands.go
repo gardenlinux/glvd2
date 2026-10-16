@@ -8,7 +8,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glcve"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/repos"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/pkgbuild"
 	"github.com/gardenlinux/glvd2/internal/logging"
 	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/spf13/cobra"
@@ -75,9 +75,7 @@ func registerSubcommands(root *cobra.Command, cfg *config.AppConfig) {
 		packages.Cmd,
 		glcve.ReleasePageCmd,
 		glcve.MentionedCVEsCmd,
-		repos.PackagerepoCmd,
-		repos.BranchCmd,
-		func() *cobra.Command { return repos.MetaCmd(cfg) },
+		func() *cobra.Command { return pkgbuild.Cmd(cfg) },
 		func() *cobra.Command { return database.RegenerateCmd(cfg) },
 	}
 	for _, f := range factories {

@@ -1,0 +1,38 @@
+{
+  "input": {
+    "source_pkg_name": "openssl",
+    "version": "3.5.5-1gl1"
+  },
+  "tags": {
+    "package-openssl@3.5.5-1gl1": "sha-openssl"
+  },
+  "expected": {
+    "pkg_name": "openssl",
+    "version": "3.5.5-1gl1",
+    "purl": "pkg:deb/gardenlinux/openssl",
+    "provenance": "patched-from-debian",
+    "fixed_cves": [
+      {
+        "id": "CVE-2026-34180",
+        "kind": "patch-filename"
+      },
+      {
+        "id": "CVE-2026-34181",
+        "kind": "patch-filename"
+      },
+      {
+        "id": "CVE-2024-1234",
+        "kind": "patch-filename"
+      }
+    ],
+    "signals": {
+      "built_by_gl": true,
+      "apt_src": false,
+      "salsa_src": true,
+      "upstream_src": false,
+      "has_patches": true
+    },
+    "repo": "package-openssl",
+    "commit": "sha-openssl"
+  }
+}

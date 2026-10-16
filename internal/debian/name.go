@@ -1,4 +1,4 @@
-// Package debian provides validation helpers for Debian policies like naming packages.
+// Package debian provides helpers for Debian policies like package naming.
 package debian
 
 import (

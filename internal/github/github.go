@@ -11,14 +11,14 @@ import (
 func NewClient() (*httpclient.HTTPClient, error) {
 	token := os.Getenv("GH_TOKEN")
 	if token == "" {
-		slog.Error("GH_TOKEN is missing")
 		return nil, errors.New("env GH_TOKEN is missing")
 	}
 
 	client := httpclient.NewClient()
-	client.Headers = append(client.Headers, httpclient.MakeHeader("Accept", "application/vnd.github+json"))
-	client.Headers = append(client.Headers, httpclient.MakeHeader("Authorization", "Bearer "+token))
-	client.Headers = append(client.Headers, httpclient.MakeHeader("X-GitHub-Api-Version", "2026-03-10"))
-	slog.Debug("new github http client with auth token")
+	client.Headers.Set("Accept", "application/vnd.github+json")
+	client.Headers.Set("Authorization", "Bearer "+token)
+	client.Headers.Set("X-GitHub-Api-Version", "2026-03-10")
+	slog.Debug("created new github http client with auth token")
+
 	return client, nil
 }

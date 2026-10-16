@@ -16,7 +16,11 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/whttp"
+	"github.com/git-pkgs/vers"
 )
+
+// debVersionScheme orders Debian package versions for the VERS engine.
+const debVersionScheme = "deb"
 
 type Component int
 
@@ -37,6 +41,7 @@ var (
 	componentRegex    = regexp.MustCompile("Components: (.*)")
 	architectureRegex = regexp.MustCompile("Architectures: (.*)")
 	packagesGzRegex   = regexp.MustCompile(`(?m) ([a-zA-Z0-9]{64}) (\d+) (.*/Packages.gz)$`)
+	sourceFieldRegex  = regexp.MustCompile(`^([^\s(]+)(?:\s*\(([^)]*)\))?`)
 )
 
 func (a Architecture) String() string {
@@ -219,7 +224,57 @@ func GetPackageListsFromInRelease(ctx context.Context, release version.GardenLin
 		result = append(result, packages...)
 	}
 
-	return result, nil
+	return selectInstalledVersions(result), nil
+}
+
+// selectInstalledVersions reduces a pool listing to the versions apt would install.
+// A single pool can list a source at several versions, for example when a backport
+// coexists with the base version, and the two versions may even contribute different
+// binary package names. apt installs the newer source, so for each source only the
+// binaries carrying its highest source version are kept. Architectures ship the same
+// source version, so a binary is further collapsed to one entry per name.
+func selectInstalledVersions(pkgs []Package) []Package {
+	highestSrc := make(map[string]string, len(pkgs))
+	for _, pkg := range pkgs {
+		if cur, ok := highestSrc[pkg.Source]; !ok || higherDebVersion(pkg.SourceVersion, cur) {
+			highestSrc[pkg.Source] = pkg.SourceVersion
+		}
+	}
+
+	chosen := make(map[string]int, len(pkgs))
+	result := make([]Package, 0, len(pkgs))
+
+	for _, pkg := range pkgs {
+		if pkg.SourceVersion != highestSrc[pkg.Source] {
+			continue
+		}
+
+		idx, ok := chosen[pkg.Name]
+		if !ok {
+			chosen[pkg.Name] = len(result)
+			result = append(result, pkg)
+
+			continue
+		}
+		if higherDebVersion(pkg.Version, result[idx].Version) {
+			result[idx] = pkg
+		}
+	}
+
+	return result
+}
+
+// higherDebVersion reports whether a is a strictly higher installable Debian version than b.
+// An unorderable candidate never displaces an existing choice.
+func higherDebVersion(a, b string) bool {
+	if !vers.ValidWithScheme(a, debVersionScheme) {
+		return false
+	}
+	if !vers.ValidWithScheme(b, debVersionScheme) {
+		return true
+	}
+
+	return vers.CompareWithScheme(a, b, debVersionScheme) > 0
 }
 
 func GetPackageList(
@@ -263,12 +318,14 @@ func GetPackageList(
 	return ParsePackageListInRelease(string(rawPackages))
 }
 
-// parseSourceField extracts the bare source name from a Debian "Source:" value,
-// dropping an optional "(version)" suffix.
-func parseSourceField(value string) string {
-	name, _, _ := strings.Cut(value, "(")
+// parseSourceField extracts the source name and optional source version from a Debian "Source:" value.
+func parseSourceField(value string) (string, string, error) {
+	match := sourceFieldRegex.FindStringSubmatch(strings.TrimSpace(value))
+	if match == nil {
+		return "", "", fmt.Errorf("invalid source field %q", value)
+	}
 
-	return strings.TrimSpace(name)
+	return match[1], match[2], nil
 }
 
 // parseParagraph parses one deb822 paragraph into a Package. Every line must be
@@ -308,7 +365,11 @@ func parseParagraph(item string) (Package, error) {
 		case "package":
 			pkg.Name = value
 		case "source":
-			pkg.Source = parseSourceField(value)
+			source, sourceVersion, err := parseSourceField(value)
+			if err != nil {
+				return Package{}, err
+			}
+			pkg.Source, pkg.SourceVersion = source, sourceVersion
 		case "version":
 			pkg.Version = value
 		case "architecture":
@@ -334,6 +395,12 @@ func validatePackage(pkg *Package) error {
 
 	if pkg.Architecture == "" {
 		return fmt.Errorf("package %q is missing an Architecture field", pkg.Name)
+	}
+
+	// An explicit source version appears only when it differs from the binary version.
+	// Absent means by definition that they are equal.
+	if pkg.SourceVersion == "" {
+		pkg.SourceVersion = pkg.Version
 	}
 
 	// An absent Source field means the source name equals the binary name.

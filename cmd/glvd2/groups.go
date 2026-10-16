@@ -15,6 +15,7 @@ const (
 	commitGroupCVEList       commitGroupName = "submodule-cvelistv5"
 	commitGroupDebSecTracker commitGroupName = "submodule-debian-security-tracker"
 	commitGroupAssessments   commitGroupName = "assessments"
+	commitGroupPkgBuild      commitGroupName = "pkgbuild"
 	commitGroupAudit         commitGroupName = "audit"
 )
 
@@ -26,6 +27,7 @@ func createCommitGroups(cfg *config.AppConfig) []publish.CommitGroup {
 		{Name: string(commitGroupCVEList), Paths: []string{cfg.CVEListV5SubRepoPath}},
 		{Name: string(commitGroupDebSecTracker), Paths: []string{cfg.DebSecTrackerSubRepoPath}},
 		{Name: string(commitGroupAssessments), Paths: []string{cfg.AssessmentsDir}},
+		{Name: string(commitGroupPkgBuild), Paths: []string{cfg.PkgBuildStoreDir}},
 		{Name: string(commitGroupAudit), Paths: []string{cfg.AuditDir}},
 	}
 }
@@ -45,6 +47,8 @@ func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummar
 			summary.Unchanged,
 			cfg.BaselineCommitAnchor,
 		)
+	case commitGroupPkgBuild:
+		return buildPkgBuildUpdateMessage()
 	case commitGroupAudit:
 		return buildAuditUpdateMessage([]string{
 			"deb_mapping_result.json",
@@ -52,6 +56,7 @@ func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummar
 			"gl_specific_mapping.json",
 			"gl_package_inventory.json",
 			"vendored_inclusion.json",
+			"shipped_versions_index.json",
 		})
 	default:
 		panic(fmt.Sprintf("no commit message builder for group %q", name))

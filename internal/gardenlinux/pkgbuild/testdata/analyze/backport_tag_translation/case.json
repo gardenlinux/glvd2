@@ -1,0 +1,24 @@
+{
+  "input": {
+    "source_pkg_name": "gnutls",
+    "version": "3.8.12-3gl1~bp1877"
+  },
+  "tags": {
+    "bp-package-gnutls@3.8.12-3gl1+bp1877": "sha-gnutls"
+  },
+  "expected": {
+    "pkg_name": "gnutls",
+    "version": "3.8.12-3gl1~bp1877",
+    "purl": "pkg:deb/gardenlinux/gnutls",
+    "provenance": "patched-from-debian",
+    "signals": {
+      "built_by_gl": true,
+      "apt_src": false,
+      "salsa_src": true,
+      "upstream_src": true,
+      "has_patches": true
+    },
+    "repo": "bp-package-gnutls",
+    "commit": "sha-gnutls"
+  }
+}

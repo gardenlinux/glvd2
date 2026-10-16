@@ -165,7 +165,7 @@ func debPackageOf(cc classifiedComponent) (Package, error) {
 		return Package{}, fmt.Errorf("invalid package name %q: %w", pkgURL.Name, err)
 	}
 
-	source, err := extractSource(component, pkgURL)
+	source, sourceVersion, err := extractSource(component, pkgURL)
 	if err != nil {
 		return Package{}, fmt.Errorf("extracting source for package %q: %w", pkgURL.Name, err)
 	}
@@ -175,25 +175,32 @@ func debPackageOf(cc classifiedComponent) (Package, error) {
 		return Package{}, fmt.Errorf("resolving namespace for package %q: %w", pkgURL.Name, err)
 	}
 
+	// An explicit source version appears only when it differs from the binary version.
+	// Absent means by definition that they are equal.
+	if sourceVersion == "" {
+		sourceVersion = pkgURL.Version
+	}
+
 	return Package{
-		Name:         pkgURL.Name,
-		Source:       source,
-		Version:      pkgURL.Version,
-		Architecture: pkgURL.Qualifiers.Map()["arch"],
-		Namespace:    namespace,
+		Name:          pkgURL.Name,
+		Source:        source,
+		Version:       pkgURL.Version,
+		SourceVersion: sourceVersion,
+		Architecture:  pkgURL.Qualifiers.Map()["arch"],
+		Namespace:     namespace,
 	}, nil
 }
 
-// extractSource returns the Debian source package name for a dpkg component.
-func extractSource(component cdx.Component, pkgURL packageurl.PackageURL) (string, error) {
-	// First check, if there is an "upstream" qualifier in the PURL.
+// extractSource returns the Debian source package name for a dpkg component and when available the source version.
+func extractSource(component cdx.Component, pkgURL packageurl.PackageURL) (string, string, error) {
 	if upstream := pkgURL.Qualifiers.Map()["upstream"]; upstream != "" {
-		name, _, _ := strings.Cut(upstream, "@")
+		// The upstream qualifier is "source" or "source@sourceversion".
+		name, sourceVersion, _ := strings.Cut(upstream, "@")
 		if err := debian.ValidatePackageName(name); err != nil {
-			return "", fmt.Errorf("invalid upstream source name %q in qualifier %q: %w", name, upstream, err)
+			return "", "", fmt.Errorf("invalid upstream source name %q in qualifier %q: %w", name, upstream, err)
 		}
 
-		return name, nil
+		return name, sourceVersion, nil
 	}
 
 	// Second option is the "syft:metadata:source" property.
@@ -201,19 +208,19 @@ func extractSource(component cdx.Component, pkgURL packageurl.PackageURL) (strin
 		for _, prop := range *component.Properties {
 			if prop.Name == syftSourceProperty && prop.Value != "" {
 				if err := debian.ValidatePackageName(prop.Value); err != nil {
-					return "", fmt.Errorf("invalid source name %q in %s property: %w",
+					return "", "", fmt.Errorf("invalid source name %q in %s property: %w",
 						prop.Value, syftSourceProperty, err)
 				}
 
-				return prop.Value, nil
+				return prop.Value, "", nil
 			}
 		}
 	}
 
 	// Fallback: binary name, which dpkg uses as the source name when they are equal.
 	if err := debian.ValidatePackageName(pkgURL.Name); err != nil {
-		return "", fmt.Errorf("invalid source name fallback %q: %w", pkgURL.Name, err)
+		return "", "", fmt.Errorf("invalid source name fallback %q: %w", pkgURL.Name, err)
 	}
 
-	return pkgURL.Name, nil
+	return pkgURL.Name, "", nil
 }

@@ -124,6 +124,80 @@ func TestPackageListFromSBOMSource(t *testing.T) {
 	}
 }
 
+func TestPackageListFromSBOMSourceVersion(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name       string
+		pkgName    string
+		version    string
+		purl       string
+		properties []cdx.Property
+		wantSource string
+		wantSrcVer string
+	}{
+		{
+			name:       "explicit source version from upstream qualifier",
+			pkgName:    "libc6",
+			version:    "2.31-13+b1",
+			purl:       "pkg:deb/debian/libc6@2.31-13+b1?upstream=glibc@2.31-13&arch=amd64",
+			wantSource: "glibc",
+			wantSrcVer: "2.31-13",
+		},
+		{
+			name:       "explicit source version from upstream qualifier with epoch",
+			pkgName:    "libc6",
+			version:    "7:2.31-13+b1",
+			purl:       "pkg:deb/debian/libc6@7:2.31-13+b1?upstream=glibc@2.31-13&arch=amd64",
+			wantSource: "glibc",
+			wantSrcVer: "2.31-13",
+		},
+		{
+			name:       "binary version when upstream carries no version",
+			pkgName:    "libc6",
+			version:    "2.31-13",
+			purl:       "pkg:deb/debian/libc6@2.31-13?upstream=glibc&arch=amd64",
+			wantSource: "glibc",
+			wantSrcVer: "2.31-13",
+		},
+		{
+			name:       "binary version with property source",
+			pkgName:    "libsystemd0",
+			version:    "247.3-7",
+			purl:       "pkg:deb/debian/libsystemd0@247.3-7?arch=amd64",
+			properties: []cdx.Property{{Name: "syft:metadata:source", Value: "systemd-test"}},
+			wantSource: "systemd-test",
+			wantSrcVer: "247.3-7",
+		},
+		{
+			name:       "binary version with binary-name fallback",
+			pkgName:    "openssl",
+			version:    "3.0.11-1",
+			purl:       "pkg:deb/debian/openssl@3.0.11-1?arch=amd64",
+			wantSource: "openssl",
+			wantSrcVer: "3.0.11-1",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+
+			bom := &cdx.BOM{
+				Components: &[]cdx.Component{
+					debComponentWithProps(tt.pkgName, tt.version, tt.purl, tt.properties),
+				},
+			}
+
+			pkgs, err := packages.PackageListFromSBOM(bom)
+			require.NoError(t, err)
+			require.Len(t, pkgs, 1)
+			assert.Equal(t, tt.wantSource, pkgs[0].Source)
+			assert.Equal(t, tt.wantSrcVer, pkgs[0].SourceVersion)
+		})
+	}
+}
+
 func TestPackageListFromSBOMMultipleComponents(t *testing.T) {
 	t.Parallel()
 

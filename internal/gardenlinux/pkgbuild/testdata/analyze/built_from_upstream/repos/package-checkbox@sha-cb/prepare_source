@@ -1,0 +1,4 @@
+UPSTREAM_VERSION="v7.2.0"
+git clone -b "$UPSTREAM_VERSION" https://github.com/canonical/checkbox.git x
+import_src x
+apply_patches

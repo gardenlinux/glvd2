@@ -172,3 +172,56 @@ func TestMerge_KeyFromIncoming(t *testing.T) {
 	assert.Equal(t, "new-item", merged.ID)
 	assert.Equal(t, "New", merged.Name)
 }
+
+// TestMerge_Releases_PreservesManualAndEOL mirrors a release-status run: a relevant
+// CVE rewrites the auto per-pkg breakdown for a maintained release while the human
+// per-pkg override and an EOL release absent from the incoming record survive.
+func TestMerge_Releases_PreservesManualAndEOL(t *testing.T) {
+	t.Parallel()
+
+	const (
+		maintained = "2150.8.0"
+		eol        = "934.0"
+		purl       = "pkg:deb/debian/foo"
+	)
+
+	existing := Record{
+		ID: "CVE-2024-1234",
+		Releases: map[string]ReleaseDecision{
+			maintained: {
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					purl: {Reason: ReleaseReasonVersionVulnerable, ShippedVersion: "1.0-1"},
+				}},
+				Manual: ManualReleaseStatus{Packages: map[string]PackageOverride{
+					purl: {Status: ReleaseStatusNotAffected, Justification: "backported"},
+				}},
+			},
+			eol: {
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					purl: {Reason: ReleaseReasonVersionFixed, ShippedVersion: "0.9-1"},
+				}},
+			},
+		},
+	}
+	incoming := Record{
+		ID: "CVE-2024-1234",
+		Releases: map[string]ReleaseDecision{
+			maintained: {
+				Auto: AutoReleaseStatus{Packages: map[string]PackageStatus{
+					purl: {Reason: ReleaseReasonVersionFixed, ShippedVersion: "2.0-1"},
+				}},
+			},
+		},
+	}
+
+	merged := merge(existing, incoming)
+
+	// The auto breakdown is overwritten by the incoming run.
+	assert.Equal(t, "2.0-1", merged.Releases[maintained].Auto.Packages[purl].ShippedVersion)
+	assert.Equal(t, ReleaseReasonVersionFixed, merged.Releases[maintained].Auto.Packages[purl].Reason)
+	// The human per-pkg override is preserved and still drives the composite.
+	assert.Equal(t, ReleaseStatusNotAffected, merged.Releases[maintained].Manual.Packages[purl].Status)
+	assert.Equal(t, ReleaseStatusNotAffected, merged.Releases[maintained].CompositeStatus())
+	// The EOL release, absent from the incoming record, survives untouched.
+	assert.Equal(t, "0.9-1", merged.Releases[eol].Auto.Packages[purl].ShippedVersion)
+}

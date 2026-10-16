@@ -24,8 +24,9 @@ type ReleaseSource func(ctx context.Context) ([]glrd.Release, error)
 
 // Consumer receives via [Feed] either [AddSBOM] or [MissingSBOMSet] for each release-flavor.
 type Consumer interface {
-	// AddSBOM folds one release-flavor SBOM into the consumer.
-	AddSBOM(bom *cdx.BOM) error
+	// AddSBOM folds one release-flavor SBOM into the consumer. release and flavor identify the SBOM's origin.
+	// Consumers that do not need them can ignore them.
+	AddSBOM(release glrd.Release, flavor string, bom *cdx.BOM) error
 	// MissingSBOMSet reports a maintained release that lacks a complete SBOM set.
 	// The consumer then decides how to react to this.
 	MissingSBOMSet(ctx context.Context, release glrd.Release) error
@@ -48,7 +49,7 @@ func Feed(
 	}
 
 	for _, release := range releases {
-		sbomURLs, complete, locErr := locateFlavors(release, locate)
+		flavorURLs, complete, locErr := locateFlavors(release, locate)
 		if locErr != nil {
 			return locErr
 		}
@@ -61,7 +62,7 @@ func Feed(
 			continue
 		}
 
-		if fetchErr := feedRelease(ctx, release, sbomURLs, fetch, consumers); fetchErr != nil {
+		if fetchErr := feedRelease(ctx, release, flavorURLs, fetch, consumers); fetchErr != nil {
 			return fetchErr
 		}
 	}
@@ -69,15 +70,20 @@ func Feed(
 	return nil
 }
 
-// locateFlavors resolves the SBOM URL for every flavor of the release. complete
-// is false when any flavor lacks an SBOM (or the release has no flavors); in
-// that case nothing is fetched. It resolves URLs only - it never downloads a
-// body - so completeness is known before any fetch and without holding anything.
-func locateFlavors(release glrd.Release, locate LocatorFunc) ([]*url.URL, bool, error) {
-	sbomURLs := make([]*url.URL, 0, len(release.Flavors))
+// flavorURL pairs a release flavor with its resolved SBOM URL.
+type flavorURL struct {
+	flavor string
+	url    *url.URL
+}
+
+// locateFlavors resolves the SBOM URL for every flavor of the release, keeping each flavor paired with its URL.
+// complete is false when any flavor lacks an SBOM or the release has no flavors.
+func locateFlavors(release glrd.Release, locate LocatorFunc) ([]flavorURL, bool, error) {
+	flavorURLs := make([]flavorURL, 0, len(release.Flavors))
 
 	for _, flavor := range release.Flavors {
 		sbomURL, err := locate(release, flavor)
+		// an error with getting an SBOM for any flavor returns a hard error
 		if errors.Is(err, glrd.ErrNoSBOM) {
 			return nil, false, nil
 		}
@@ -85,12 +91,12 @@ func locateFlavors(release glrd.Release, locate LocatorFunc) ([]*url.URL, bool, 
 			return nil, false, fmt.Errorf("resolving SBOM URL for flavor %q: %w", flavor, err)
 		}
 
-		sbomURLs = append(sbomURLs, sbomURL)
+		flavorURLs = append(flavorURLs, flavorURL{flavor: flavor, url: sbomURL})
 	}
 
-	complete := len(release.Flavors) > 0 // no flavors means no SBOMs
+	complete := len(release.Flavors) > 0 // special case: release with no flavors
 
-	return sbomURLs, complete, nil
+	return flavorURLs, complete, nil
 }
 
 // feedRelease fetches each flavor's SBOM once, delivers the parsed form to every
@@ -98,18 +104,18 @@ func locateFlavors(release glrd.Release, locate LocatorFunc) ([]*url.URL, bool, 
 func feedRelease(
 	ctx context.Context,
 	release glrd.Release,
-	sbomURLs []*url.URL,
+	flavorURLs []flavorURL,
 	fetch FetchFunc,
 	consumers []Consumer,
 ) error {
-	for _, sbomURL := range sbomURLs {
-		bom, err := fetch(ctx, sbomURL)
+	for _, fURLs := range flavorURLs {
+		bom, err := fetch(ctx, fURLs.url)
 		if err != nil {
 			return fmt.Errorf("fetching SBOM: %w", err)
 		}
 
 		for _, p := range consumers {
-			if addErr := p.AddSBOM(bom); addErr != nil {
+			if addErr := p.AddSBOM(release, fURLs.flavor, bom); addErr != nil {
 				return fmt.Errorf("release %s: %w", release.Name, addErr)
 			}
 		}

@@ -16,12 +16,12 @@ func TestValidate_AcceptsValidConfig(t *testing.T) {
 		CVEListV5SubRepoPath:     "./submodules/cvelistV5",
 		DebSecTrackerSubRepoPath: "./submodules/debian-security-tracker",
 		InternalSqliteDBPath:     "./data/tmp/internal.sqlite",
+		PkgBuildStoreDir:         "./data/pkg-build",
 		AuditDir:                 "./data/audit",
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
 		Screening:                config.Screening{EscalationWindow: 24 * time.Hour},
-		// RepoMetadataCachePath intentionally empty - it is optional.
 	}
 	require.NoError(t, config.Validate(cfg))
 }
@@ -33,6 +33,7 @@ func TestValidate_ValidationErrors(t *testing.T) {
 		CVEListV5SubRepoPath:     "./submodules/cvelistV5",
 		DebSecTrackerSubRepoPath: "./submodules/debian-security-tracker",
 		InternalSqliteDBPath:     "./data/tmp/internal.sqlite",
+		PkgBuildStoreDir:         "./data/pkg-build",
 		AuditDir:                 "./data/audit",
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
@@ -47,6 +48,7 @@ func TestValidate_ValidationErrors(t *testing.T) {
 		{"missing CVEListV5SubRepoPath", func(c *config.AppConfig) { c.CVEListV5SubRepoPath = "" }},
 		{"missing DebSecTrackerSubRepoPath", func(c *config.AppConfig) { c.DebSecTrackerSubRepoPath = "" }},
 		{"missing InternalSqliteDBPath", func(c *config.AppConfig) { c.InternalSqliteDBPath = "" }},
+		{"missing PkgBuildStoreDir", func(c *config.AppConfig) { c.PkgBuildStoreDir = "" }},
 		{"missing AuditDir", func(c *config.AppConfig) { c.AuditDir = "" }},
 		{"missing AssessmentDataDir", func(c *config.AppConfig) { c.AssessmentsDir = "" }},
 		{"missing BaselineCommitAnchor", func(c *config.AppConfig) { c.BaselineCommitAnchor = "" }},

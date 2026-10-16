@@ -1,0 +1,15 @@
+CVE-2025-0001
+	- foo 1.2.3-4
+	[bookworm] - foo 1.2.3-2+deb12u1
+CVE-2025-0002
+	- bar <unfixed> (unimportant)
+CVE-2025-0003
+	- baz <not-affected>
+CVE-2025-0004
+	- qux <end-of-life>
+CVE-2025-0005
+	- removedpkg <removed>
+	- itppkg <itp>
+	- undetpkg <undetermined>
+CVE-2025-0006
+	- quux 3:2.2.3-2+deb12u1 (low)

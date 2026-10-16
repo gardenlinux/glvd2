@@ -1,6 +1,6 @@
 // Package assessment manages CVE assessment records as JSON files.
 //
-// It provides the core types ([Record], [Triage], [ReleaseTriage], [ReleaseDecision]),
+// It provides the core types ([Record], [AutoTriage], [ReleaseDecision], [PackageStatus]),
 // file I/O with CVEListV5-compatible bucketing ([Store]), git-based baseline tracking
 // ([Baseline]), strategy-driven merge logic, field-level diffing, and a [Reactor]
 // interface for side effects on changes.
@@ -94,6 +94,18 @@ func loadExternallyModifiedCVEs(ctx context.Context, baseline *Baseline) map[str
 	}
 
 	return extModifiedCVEs
+}
+
+// GlobalStatus returns the effective global triage status an incoming record will have after merge.
+// The stored manual override (preserved across runs) wins over the incoming screening verdict.
+func (s *Service) GlobalStatus(incoming Record) (TriageStatus, error) {
+	existing, err := s.store.Get(incoming.ID)
+	if err != nil && !errors.Is(err, ErrRecordNotFound) {
+		return "", fmt.Errorf("loading existing assessment record: %w", err)
+	}
+	incoming.Manual = existing.Manual
+
+	return incoming.GetGlobalStatus(), nil
 }
 
 // Process handles a single incoming assessment record through the full pipeline:
