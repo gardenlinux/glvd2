@@ -209,6 +209,18 @@
             "pkg:composer/vrana/adminer"
         ]
     },
+    "pkg:deb/debian/adplug": {
+        "VendorProductIDs": [
+            "\"adplug\":\"adplug\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:adplug_project:adplug:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/adplug/adplug"
+        ]
+    },
     "pkg:deb/debian/advancecomp": {
         "VendorProductIDs": [
             "\"amadvance\":\"advancecomp:\"",
@@ -1159,7 +1171,9 @@
             "cpe:2.3:a:open_asset_import_library:open_asset_import_library:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/assimp/assimp"
+        ]
     },
     "pkg:deb/debian/asterisk": {
         "VendorProductIDs": [
@@ -2347,9 +2361,13 @@
             "\"catdoc\":\"catdoc\"",
             "\"xls2csv\":\"xls2csv\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:fossies:catdoc:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/vbwagner/catdoc"
+        ]
     },
     "pkg:deb/debian/cbor2": {
         "VendorProductIDs": [
@@ -2412,6 +2430,7 @@
     },
     "pkg:deb/debian/cfitsio": {
         "VendorProductIDs": [
+            "\"heasarc\":\"cfitsio\"",
             "\"nasa\":\"cfitsio\"",
             "\"talos\":\"nasa cfitsio\""
         ],
@@ -4925,11 +4944,13 @@
     },
     "pkg:deb/debian/evolution-data-server": {
         "VendorProductIDs": [
-            "\"gnome\":\"evolution data server\""
+            "\"gnome\":\"evolution data server\"",
+            "\"gnome\":\"evolution-data-server\""
         ],
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"evolution-data-server\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"evolution-data-server\"",
+            "\"https://gitlab.gnome.org/GNOME/evolution-data-server\":\"evolution-data-server\""
         ],
         "PackageURLs": null
     },
@@ -5503,9 +5524,13 @@
         "VendorProductIDs": [
             "\"fluidsynth\":\"fluidsynth\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:fluidsynth:fluidsynth:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/FluidSynth/fluidsynth"
+        ]
     },
     "pkg:deb/debian/flvmeta": {
         "VendorProductIDs": [
@@ -5994,6 +6019,18 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/game-music-emu": {
+        "VendorProductIDs": [
+            "\"libgme\":\"game-music-emu\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:game-music-emu_project:game-music-emu:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libgme/game-music-emu"
+        ]
     },
     "pkg:deb/debian/gatsby": {
         "VendorProductIDs": [
@@ -6978,6 +7015,26 @@
             "\"n/a\":\"gocr\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/godot": {
+        "VendorProductIDs": [
+            "\"godotengine\":\"godot engine\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:godotengine:godot_engine:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/godot3": {
+        "VendorProductIDs": [
+            "\"godotengine\":\"godot engine\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:godotengine:godot_engine:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -11006,10 +11063,13 @@
             "\"meetecho\":\"meetecho/janus-gateway\""
         ],
         "CPEs": [
-            "cpe:2.3:a:meetecho:janus-gateway:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:meetecho:janus-gateway:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:meetecho:janus:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/meetecho/janus-gateway"
+        ]
     },
     "pkg:deb/debian/jaraco.context": {
         "VendorProductIDs": [
@@ -11230,7 +11290,10 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"",
-            "\"https://repo.maven.apache.org/maven2\":\"pkg:maven/org.eclipse.jetty.http2/http2-common\""
+            "\"https://repo.maven.apache.org/maven2\":\"pkg:maven/org.eclipse.jetty.http2/http2-common\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-proxy\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-security\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-server\""
         ],
         "PackageURLs": null
     },
@@ -11266,6 +11329,8 @@
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee8-servlets\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee9-servlets\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-http\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-proxy\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-security\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-server\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-servlets\""
         ],
@@ -12396,6 +12461,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libansilove": {
+        "VendorProductIDs": [
+            "\"ansilove\":\"libansilove\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:ansilove:libansilove:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/ansilove/libansilove"
+        ]
+    },
     "pkg:deb/debian/libapache-mod-jk": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache tomcat connectors\"",
@@ -13250,6 +13327,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libesedb": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libesedb\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libetpan": {
         "VendorProductIDs": [
             "\"n/a\":\"libetpan\""
@@ -13261,6 +13346,14 @@
     "pkg:deb/debian/libevent": {
         "VendorProductIDs": [
             "\"libevent\":\"libevent\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libewf": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libewf\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -13353,6 +13446,16 @@
             "pkg:maven/org.freemarker/freemarker-gae"
         ]
     },
+    "pkg:deb/debian/libfsapfs": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libfsapfs\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libyal/libfsapfs"
+        ]
+    },
     "pkg:deb/debian/libfsntfs": {
         "VendorProductIDs": [
             "\"libfsntfs_project\":\"libfsntfs\""
@@ -13362,6 +13465,16 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libfwsi": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libfwsi\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libyal/libfwsi"
+        ]
     },
     "pkg:deb/debian/libgcrypt11": {
         "VendorProductIDs": [
@@ -13494,6 +13607,16 @@
             "\"libgwenhywfar\":\"libgwenhywfar\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libgxps": {
+        "VendorProductIDs": [
+            "\"gnome\":\"libgxps\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:gnome:libgxps:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -13705,6 +13828,16 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libinput\""
         ],
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libinstpatch": {
+        "VendorProductIDs": [
+            "\"swami\":\"libinstpatch\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/swami/libinstpatch"
+        ]
     },
     "pkg:deb/debian/libio-compress-brotli-perl": {
         "VendorProductIDs": [
@@ -14096,6 +14229,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libmseed": {
+        "VendorProductIDs": [
+            "\"earthscope\":\"libmseed\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libmspack": {
         "VendorProductIDs": [
             "\"libmspack\":\"libmspack\""
@@ -14286,11 +14427,16 @@
     },
     "pkg:deb/debian/libnsbmp": {
         "VendorProductIDs": [
-            "\"n/a\":\"libnsbmp\""
+            "\"n/a\":\"libnsbmp\"",
+            "\"netsurf\":\"libnsbmp\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:netsurf-browser:libnsbmp:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/netsurf-browser/libnsbmp"
+        ]
     },
     "pkg:deb/debian/libnsgif": {
         "VendorProductIDs": [
@@ -14623,6 +14769,16 @@
             "cpe:2.3:a:gnu:libredwg:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/LibreDWG/libredwg"
+        ]
+    },
+    "pkg:deb/debian/libregf": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libregf\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/libreoffice": {
@@ -14771,6 +14927,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libsidplayfp": {
+        "VendorProductIDs": [
+            "\"libsidplayfp\":\"libsidplayfp\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libsixel": {
         "VendorProductIDs": [
             "\"saitoha\":\"libsixel\""
@@ -14790,6 +14954,14 @@
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libslirp\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libsmi": {
+        "VendorProductIDs": [
+            "\"amartin755\":\"libsmi\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/libsmpp34": {
@@ -15527,7 +15699,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/libxmp/libxmp"
+        ]
     },
     "pkg:deb/debian/libxpm": {
         "VendorProductIDs": [
@@ -15664,11 +15838,16 @@
     },
     "pkg:deb/debian/libytnef": {
         "VendorProductIDs": [
-            "\"n/a\":\"ytnef\""
+            "\"n/a\":\"ytnef\"",
+            "\"yeraze\":\"ytnef\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:ytnef_project:ytnef:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/Yeraze/ytnef"
+        ]
     },
     "pkg:deb/debian/libzen": {
         "VendorProductIDs": [
@@ -22095,6 +22274,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/openjph": {
+        "VendorProductIDs": [
+            "\"aous72\":\"openjph\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/openldap": {
         "VendorProductIDs": [
             "\"n/a\":\"openldap\"",
@@ -22257,7 +22444,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/openslide/openslide"
+        ]
     },
     "pkg:deb/debian/openslp-dfsg": {
         "VendorProductIDs": [
@@ -27215,6 +27404,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk11-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.resteasy/resteasy-core\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"resteasy-core\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"resteasy-jaxrs\"",
             "\"https://github.com/resteasy/resteasy\":\"RESTEasy\""
@@ -27233,6 +27423,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk11-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.resteasy/resteasy-core\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"resteasy-core\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"resteasy-jaxrs\"",
             "\"https://github.com/resteasy/resteasy\":\"RESTEasy\""
@@ -30392,7 +30583,8 @@
             "\"n/a\":\"sox (sound exchange)\"",
             "\"n/a\":\"sox\"",
             "\"sound exchange\":\"libsox\"",
-            "\"sourceforge\":\"sox - sound exchange\""
+            "\"sourceforge\":\"sox - sound exchange\"",
+            "\"sox\":\"sox\""
         ],
         "CPEs": null,
         "PackageIDs": [
@@ -31475,6 +31667,14 @@
     "pkg:deb/debian/tiles": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache tiles\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/timidity": {
+        "VendorProductIDs": [
+            "\"sezero\":\"libtimidity\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -33096,6 +33296,9 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"hal-console\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7-eap74-els-openjdk17-openshift-rhel8/jboss-eap-7-eap74-els-openjdk17-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7-eap74-els-openjdk8-openshift-rhel8/jboss-eap-7-eap74-els-openjdk8-openshift-rhel8\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk11-openshift-rhel8\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.hal/hal-console\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-management-subsystem\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-security\"",
@@ -33108,6 +33311,18 @@
             "\"https://github.com/wildfly/wildfly-core\":\"wildfly-core\""
         ],
         "PackageURLs": null
+    },
+    "pkg:deb/debian/wildmidi": {
+        "VendorProductIDs": [
+            "\"mindwerks\":\"wildmidi\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:mindwerks:wildmidi:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/Mindwerks/wildmidi"
+        ]
     },
     "pkg:deb/debian/wine": {
         "VendorProductIDs": [
@@ -34301,14 +34516,18 @@
     },
     "pkg:deb/debian/zziplib": {
         "VendorProductIDs": [
+            "\"gdraheim\":\"zziplib\"",
             "\"zziplib\":\"zziplib\"",
             "\"zziplib_project\":\"zziplib\""
         ],
         "CPEs": [
+            "cpe:2.3:a:gdraheim:zziplib:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:zziplib:zziplib:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:zziplib_project:zziplib:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/gdraheim/zziplib"
+        ]
     }
 }
