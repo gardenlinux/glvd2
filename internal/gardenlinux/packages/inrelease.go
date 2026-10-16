@@ -16,7 +16,11 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/whttp"
+	"github.com/git-pkgs/vers"
 )
+
+// debVersionScheme orders Debian package versions for the VERS engine.
+const debVersionScheme = "deb"
 
 type Component int
 
@@ -220,7 +224,57 @@ func GetPackageListsFromInRelease(ctx context.Context, release version.GardenLin
 		result = append(result, packages...)
 	}
 
-	return result, nil
+	return selectInstalledVersions(result), nil
+}
+
+// selectInstalledVersions reduces a pool listing to the versions apt would install.
+// A single pool can list a source at several versions, for example when a backport
+// coexists with the base version, and the two versions may even contribute different
+// binary package names. apt installs the newer source, so for each source only the
+// binaries carrying its highest source version are kept. Architectures ship the same
+// source version, so a binary is further collapsed to one entry per name.
+func selectInstalledVersions(pkgs []Package) []Package {
+	highestSrc := make(map[string]string, len(pkgs))
+	for _, pkg := range pkgs {
+		if cur, ok := highestSrc[pkg.Source]; !ok || higherDebVersion(pkg.SourceVersion, cur) {
+			highestSrc[pkg.Source] = pkg.SourceVersion
+		}
+	}
+
+	chosen := make(map[string]int, len(pkgs))
+	result := make([]Package, 0, len(pkgs))
+
+	for _, pkg := range pkgs {
+		if pkg.SourceVersion != highestSrc[pkg.Source] {
+			continue
+		}
+
+		idx, ok := chosen[pkg.Name]
+		if !ok {
+			chosen[pkg.Name] = len(result)
+			result = append(result, pkg)
+
+			continue
+		}
+		if higherDebVersion(pkg.Version, result[idx].Version) {
+			result[idx] = pkg
+		}
+	}
+
+	return result
+}
+
+// higherDebVersion reports whether a is a strictly higher installable Debian version than b.
+// An unorderable candidate never displaces an existing choice.
+func higherDebVersion(a, b string) bool {
+	if !vers.ValidWithScheme(a, debVersionScheme) {
+		return false
+	}
+	if !vers.ValidWithScheme(b, debVersionScheme) {
+		return true
+	}
+
+	return vers.CompareWithScheme(a, b, debVersionScheme) > 0
 }
 
 func GetPackageList(
