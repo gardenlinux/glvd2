@@ -95,6 +95,20 @@ func NameOf(raw string) (string, error) {
 	return p.Name, nil
 }
 
+// VersionOf returns the version of the PURL as parsed.
+// It returns an error if the PURL cannot be parsed or carries no version.
+func VersionOf(raw string) (string, error) {
+	p, err := normalize(raw)
+	if err != nil {
+		return "", err
+	}
+	if p.Version == "" {
+		return "", fmt.Errorf("PURL %q has no version", raw)
+	}
+
+	return p.Version, nil
+}
+
 // NamespaceVariants returns the canonical identity PURLs.
 // For deb type with debian or gardenlinux namespaces, it returns both variants.
 // All other PURLs get returned as is.

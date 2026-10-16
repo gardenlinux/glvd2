@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"net/url"
 
+	"github.com/gardenlinux/glvd2/internal/affectedness"
 	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/audit"
 	"github.com/gardenlinux/glvd2/internal/config"
@@ -17,13 +18,16 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/pkgbuild"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/shippedversions"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/vendormap"
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/glmap"
 	"github.com/gardenlinux/glvd2/internal/pkgsuggest"
 	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/gardenlinux/glvd2/internal/reactor"
+	"github.com/gardenlinux/glvd2/internal/releasestatus"
 	"github.com/gardenlinux/glvd2/internal/repository"
 	"github.com/gardenlinux/glvd2/internal/screening"
 )
@@ -128,7 +132,18 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	screener, err := buildScreener(ctx, cfg, auditService, debSecTrackerIngestion, idsForCVEs)
+	curated, vendored, inv, shippedIndex, err := buildSBOMProjections(ctx, cfg)
+	if err != nil {
+		return err
+	}
+
+	if err = recordAudits(auditService, curated, inv, vendored, shippedIndex); err != nil {
+		return err
+	}
+
+	screener := screening.NewService(curated, vendored, inv, debSecTrackerIngestion, idsForCVEs)
+
+	assessor, err := buildReleaseStatusAssessor(ctx, cfg, debSecTrackerIngestion, shippedIndex)
 	if err != nil {
 		return err
 	}
@@ -140,7 +155,7 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	summary, err := processCVEs(ctx, cveV5Service, screener, assessmentService)
+	summary, err := processCVEs(ctx, cveV5Service, screener, assessmentService, assessor)
 	if err != nil {
 		return err
 	}
@@ -189,23 +204,26 @@ func buildDebMapping(
 	return debMapping, nil
 }
 
-func buildScreener(
+func buildReleaseStatusAssessor(
 	ctx context.Context,
 	cfg *config.AppConfig,
-	auditService *audit.Service,
-	debian screening.DebianVerdictLookup,
-	idsForCVEs cvelistv5.IDsForCVEs,
-) (*screening.Service, error) {
-	curated, vendored, inv, err := buildScreeningResolvers(ctx, cfg)
+	dst *debsectracker.Service,
+	shippedIndex shippedversions.Index,
+) (*releasestatus.Service, error) {
+	fetcher, err := pkgbuild.NewGitHubFetcher()
 	if err != nil {
-		return nil, fmt.Errorf("building screening resolvers: %w", err)
+		return nil, fmt.Errorf("building GitHub fetcher: %w", err)
+	}
+	analyzer := pkgbuild.NewAnalyzer(pkgbuild.NewStore(cfg), fetcher)
+
+	verdicts, err := dst.NewVerdictIndex(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("building Debian verdict index: %w", err)
 	}
 
-	if err = recordScreeningAudit(auditService, curated, inv, vendored); err != nil {
-		return nil, err
-	}
+	resolver := affectedness.NewResolver(analyzer, verdicts)
 
-	return screening.NewService(curated, vendored, inv, debian, idsForCVEs), nil
+	return releasestatus.NewService(resolver, shippedIndex), nil
 }
 
 func buildAssessmentService(
@@ -239,13 +257,14 @@ func buildAssessmentService(
 	return assessmentService, nil
 }
 
-func buildScreeningResolvers(
+func buildSBOMProjections(
 	ctx context.Context,
 	cfg *config.AppConfig,
-) (glmap.Rules, glmap.Rules, inventory.Set, error) {
+) (glmap.Rules, glmap.Rules, inventory.Set, shippedversions.Index, error) {
 	curated, err := glmap.New(configpath.DefaultGLSpecificMappingConfigPath)
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf("loading curated GL-specific mapping: %w", err)
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{},
+			fmt.Errorf("loading curated GL-specific mapping: %w", err)
 	}
 
 	releaseSource := func(ctx context.Context) ([]glrd.Release, error) {
@@ -253,36 +272,48 @@ func buildScreeningResolvers(
 	}
 	invAcc := inventory.NewAccumulator()
 	vmAcc := vendormap.NewAccumulator()
+	svAcc := shippedversions.NewAccumulator()
 
 	locate := func(release glrd.Release, flavor string) (*url.URL, error) {
 		return release.LocateSBOM(flavor)
 	}
 
-	if err = sbom.Feed(ctx, releaseSource, locate, packages.GetCycloneDx, invAcc, vmAcc); err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf("feeding SBOMs: %w", err)
+	if err = sbom.Feed(ctx, releaseSource, locate, packages.GetCycloneDx, invAcc, vmAcc, svAcc); err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, fmt.Errorf(
+			"feeding SBOMs: %w",
+			err,
+		)
 	}
 
 	inv, err := invAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf("building GL package inventory: %w", err)
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{},
+			fmt.Errorf("building GL package inventory: %w", err)
 	}
 
 	vendored, err := vmAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, fmt.Errorf(
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, fmt.Errorf(
 			"building vendored-inclusion resolver: %w",
 			err,
 		)
 	}
 
-	return curated, vendored, inv, nil
+	shippedIndex, err := svAcc.Result()
+	if err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{},
+			fmt.Errorf("building per-release versioned index: %w", err)
+	}
+
+	return curated, vendored, inv, shippedIndex, nil
 }
 
-func recordScreeningAudit(
+func recordAudits(
 	auditService *audit.Service,
 	curated glmap.Rules,
 	inv inventory.Set,
 	vendored glmap.Rules,
+	shippedIndex shippedversions.Index,
 ) error {
 	artifacts := []struct {
 		label    string
@@ -292,6 +323,7 @@ func recordScreeningAudit(
 		{"GL-specific mapping", "gl_specific_mapping.json", curated.AuditEntries()},
 		{"GL package inventory", "gl_package_inventory.json", inv.AuditEntries()},
 		{"vendored inclusion", "vendored_inclusion.json", vendored.AuditEntries()},
+		{"shipped version index", "shipped_versions_index.json", shippedIndex.AuditEntries()},
 	}
 
 	for _, a := range artifacts {
@@ -309,6 +341,7 @@ func processCVEs(
 	cveV5Service *cvelistv5.Service,
 	screener *screening.Service,
 	assessmentService *assessment.Service,
+	assessor *releasestatus.Service,
 ) (runSummary, error) {
 	resCh, errCh := cveV5Service.ReceiveCVEs(ctx)
 	var summary runSummary
@@ -328,6 +361,18 @@ func processCVEs(
 				return summary, fmt.Errorf("screening %s: %w", incoming.ID, err)
 			}
 			incoming.Screening = screened
+
+			status, statusErr := assessmentService.GlobalStatus(incoming)
+			if statusErr != nil {
+				return summary, fmt.Errorf("resolving global status for %s: %w", incoming.ID, statusErr)
+			}
+			if status == assessment.StatusRelevant {
+				releases, assessErr := assessor.Assess(ctx, incoming, cve)
+				if assessErr != nil {
+					return summary, fmt.Errorf("assessing release status for %s: %w", incoming.ID, assessErr)
+				}
+				incoming.Releases = releases
+			}
 
 			_, cs, procErr := assessmentService.Process(ctx, incoming)
 			if procErr != nil {

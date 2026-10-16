@@ -137,6 +137,46 @@ func TestServiceProcess_Overwrites(t *testing.T) {
 	assert.Equal(t, "Updated description.", got.Upstream.Description)
 }
 
+func TestService_GlobalStatus_ManualOverridesScreening(t *testing.T) {
+	t.Parallel()
+
+	dir := t.TempDir()
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
+	ctx := t.Context()
+
+	// A stored record a human marked not-relevant, overriding a relevant screening verdict.
+	stored := assessment.Record{
+		ID:     "CVE-2025-2000",
+		Manual: assessment.ManualOverride{ManualTriage: assessment.ManualTriage{Status: assessment.StatusNotRelevant}},
+	}
+	require.NoError(t, store.Save(stored))
+
+	s := newTestService(ctx, t, store, dir, stored)
+
+	relevantByScreening := assessment.Record{
+		ID: "CVE-2025-2000",
+		Screening: assessment.ScreeningResult{
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
+		},
+	}
+
+	// The preserved manual not-relevant wins over the incoming relevant screening verdict.
+	status, err := s.GlobalStatus(relevantByScreening)
+	require.NoError(t, err)
+	assert.Equal(t, assessment.StatusNotRelevant, status)
+
+	// With no stored record, the screening verdict stands.
+	notStored := assessment.Record{
+		ID: "CVE-2025-9999",
+		Screening: assessment.ScreeningResult{
+			AutoTriage: assessment.AutoTriage{Reason: assessment.TriageReasonAffectsDebianPackage},
+		},
+	}
+	status, err = s.GlobalStatus(notStored)
+	require.NoError(t, err)
+	assert.Equal(t, assessment.StatusRelevant, status)
+}
+
 func TestServiceProcess_NewRecord(t *testing.T) {
 	t.Parallel()
 

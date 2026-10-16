@@ -284,7 +284,7 @@ func diffStructField(prefix FieldPath, old, updated reflect.Value) []FieldChange
 
 // diffValue compares two reflect.Values and returns field changes.
 func diffValue(fieldPath FieldPath, old, updated reflect.Value) []FieldChange {
-	switch old.Kind() { //nolint:exhaustive // only relevant kinds handled
+	switch old.Kind() {
 	case reflect.String:
 		oldStr := old.String()
 		updatedStr := updated.String()

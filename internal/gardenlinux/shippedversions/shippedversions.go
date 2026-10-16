@@ -62,6 +62,22 @@ func (i Index) Lookup(releaseKey, canonicalSourcePURL string) (string, bool, err
 	return versioned, ok, nil
 }
 
+// AuditEntries returns the index as a map of release key to its shipped versioned source PURLs,
+// sorted, for audit output.
+func (i Index) AuditEntries() map[string][]string {
+	out := make(map[string][]string, len(i.byRelease))
+	for rel, sources := range i.byRelease {
+		versioned := make([]string, 0, len(sources))
+		for _, v := range sources {
+			versioned = append(versioned, v)
+		}
+		slices.Sort(versioned)
+		out[rel] = versioned
+	}
+
+	return out
+}
+
 // Releases returns the release keys in the index, sorted.
 func (i Index) Releases() []string {
 	out := make([]string, 0, len(i.byRelease))

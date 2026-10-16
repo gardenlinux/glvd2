@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	purl  = "pkg:deb/debian/foo"
+	purl    = "pkg:deb/debian/foo"
 	release = "2150.8.0"
 )
 

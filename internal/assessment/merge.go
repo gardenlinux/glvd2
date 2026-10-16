@@ -120,7 +120,7 @@ func mergeMap(cache *mergeSpec, s strategy, existing, incoming reflect.Value) re
 			mergedVal := reflect.New(valueType).Elem()
 
 			for _, fm := range fields {
-				switch fm.Strategy { //nolint:exhaustive // only overwrite/preserve are valid in map values
+				switch fm.Strategy {
 				case strategyOverwrite:
 					mergedVal.Field(fm.Index).Set(incomingVal.Field(fm.Index))
 				case strategyPreserve:

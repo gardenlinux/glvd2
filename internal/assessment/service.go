@@ -96,6 +96,18 @@ func loadExternallyModifiedCVEs(ctx context.Context, baseline *Baseline) map[str
 	return extModifiedCVEs
 }
 
+// GlobalStatus returns the effective global triage status an incoming record will have after merge.
+// The stored manual override (preserved across runs) wins over the incoming screening verdict.
+func (s *Service) GlobalStatus(incoming Record) (TriageStatus, error) {
+	existing, err := s.store.Get(incoming.ID)
+	if err != nil && !errors.Is(err, ErrRecordNotFound) {
+		return "", fmt.Errorf("loading existing assessment record: %w", err)
+	}
+	incoming.Manual = existing.Manual
+
+	return incoming.GetGlobalStatus(), nil
+}
+
 // Process handles a single incoming assessment record through the full pipeline:
 // load existing from disk, merge, diff against baseline, run reactors, save if changed.
 func (s *Service) Process(ctx context.Context, incoming Record) (Record, ChangeSet, error) {

@@ -56,6 +56,7 @@ func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummar
 			"gl_specific_mapping.json",
 			"gl_package_inventory.json",
 			"vendored_inclusion.json",
+			"shipped_versions_index.json",
 		})
 	default:
 		panic(fmt.Sprintf("no commit message builder for group %q", name))

@@ -82,7 +82,7 @@ func packageStatus(pkg PackageInput) assessment.PackageStatus {
 		BasisWhy:       a.Why,
 	}
 
-	switch a.Outcome { //nolint:exhaustive // OutcomeUndecided is handled by the default case
+	switch a.Outcome {
 	case affectedness.OutcomeFixed:
 		ps.Reason = assessment.ReleaseReasonVersionFixed
 	case affectedness.OutcomeNotAffected:
