@@ -6322,12 +6322,12 @@
         },
         "\"hexpm\":\"hex\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 6,
+            "pkg:deb/debian/erlang-hex": 7,
             "pkg:deb/debian/rebar3": 3
         },
         "\"hexpm\":\"hex_core\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
         "\"hiawatha\":\"hiawatha web server\"": {
@@ -7462,7 +7462,7 @@
             "pkg:deb/debian/koji": 1
         },
         "\"konstanty bialkowski\":\"libmodplug\"": {
-            "pkg:deb/debian/libmodplug": 2
+            "pkg:deb/debian/libmodplug": 4
         },
         "\"kornelski\":\"http-cache-semantics\"": {
             "pkg:deb/debian/node-got": 2
@@ -7755,7 +7755,7 @@
             "pkg:deb/debian/libpoe-component-irc-perl": 1
         },
         "\"libraw\":\"libraw\"": {
-            "pkg:deb/debian/libraw": 12
+            "pkg:deb/debian/libraw": 13
         },
         "\"librdf\":\"raptor rdf syntax library\"": {
             "pkg:deb/debian/raptor2": 2
@@ -15565,6 +15565,9 @@
             "pkg:deb/debian/policycoreutils": 2,
             "pkg:deb/debian/selinux-python": 2
         },
+        "\"selmf\":\"unarr\"": {
+            "pkg:deb/debian/unarr": 2
+        },
         "\"sensiolabs\":\"symfony\"": {
             "pkg:deb/debian/symfony": 1
         },
@@ -17015,6 +17018,9 @@
         },
         "\"tinyproxy\":\"tinyproxy\"": {
             "pkg:deb/debian/tinyproxy": 5
+        },
+        "\"tinytag\":\"tinytag\"": {
+            "pkg:deb/debian/python-tinytag": 1
         },
         "\"tinyxml2_project\":\"tinyxml2\"": {
             "pkg:deb/debian/tinyxml2": 2
@@ -19809,12 +19815,12 @@
         },
         "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 6,
+            "pkg:deb/debian/erlang-hex": 7,
             "pkg:deb/debian/rebar3": 3
         },
         "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
         "cpe:2.3:a:horde:horde_imp:*:*:*:*:*:*:*:*": {
@@ -20077,7 +20083,7 @@
             "pkg:deb/debian/koha": 5
         },
         "cpe:2.3:a:konstanty_bialkowski:libmodplug:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libmodplug": 2
+            "pkg:deb/debian/libmodplug": 4
         },
         "cpe:2.3:a:kovidgoyal:calibre:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/calibre": 1
@@ -20177,7 +20183,7 @@
             "pkg:deb/debian/libpng1.6": 1
         },
         "cpe:2.3:a:libraw:libraw:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libraw": 6
+            "pkg:deb/debian/libraw": 7
         },
         "cpe:2.3:a:librdf:raptor_rdf_syntax_library:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/raptor2": 2
@@ -23394,7 +23400,7 @@
             "pkg:deb/debian/opensc": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssh\"": {
-            "pkg:deb/debian/openssh": 9
+            "pkg:deb/debian/openssh": 10
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssh-main\"": {
             "pkg:deb/debian/openssh": 1
@@ -24632,7 +24638,7 @@
             "pkg:deb/debian/lvm2": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"openssh-main\"": {
-            "pkg:deb/debian/openssh": 3
+            "pkg:deb/debian/openssh": 4
         },
         "\"https://catalog.redhat.com/software/containers/\":\"openstack-nova\"": {
             "pkg:deb/debian/nova": 1
@@ -25168,12 +25174,12 @@
         },
         "\"https://github.com\":\"hexpm/hex\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 6,
+            "pkg:deb/debian/erlang-hex": 7,
             "pkg:deb/debian/rebar3": 3
         },
         "\"https://github.com\":\"hexpm/hex_core\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
         "\"https://github.com\":\"ninenines/cowboy\"": {
@@ -26723,7 +26729,7 @@
         },
         "\"https://repo.hex.pm\":\"hex_core\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
         "\"https://repo.hex.pm\":\"tesla\"": {
@@ -27713,7 +27719,10 @@
             "pkg:deb/debian/imagemagick": 2
         },
         "pkg:github/Konstanty/libmodplug": {
-            "pkg:deb/debian/libmodplug": 1
+            "pkg:deb/debian/libmodplug": 3
+        },
+        "pkg:github/LibRaw/LibRaw": {
+            "pkg:deb/debian/libraw": 1
         },
         "pkg:github/LibVNC/libvncserver": {
             "pkg:deb/debian/libvncserver": 2
@@ -27843,12 +27852,12 @@
         },
         "pkg:github/hexpm/hex": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 6,
+            "pkg:deb/debian/erlang-hex": 7,
             "pkg:deb/debian/rebar3": 3
         },
         "pkg:github/hexpm/hex_core": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
         "pkg:github/horde/Vfs": {
@@ -28008,6 +28017,9 @@
         "pkg:github/seaweedfs/seaweedfs": {
             "pkg:deb/debian/seaweedfs": 1
         },
+        "pkg:github/selmf/unarr": {
+            "pkg:deb/debian/unarr": 2
+        },
         "pkg:github/sezero/mikmod": {
             "pkg:deb/debian/libmikmod": 5
         },
@@ -28144,7 +28156,7 @@
         },
         "pkg:hex/hex_core": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
         "pkg:hex/tesla": {
@@ -28511,7 +28523,7 @@
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
