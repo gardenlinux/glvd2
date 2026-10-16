@@ -51,17 +51,46 @@ func TestGitHubFetcher_CommitForTag_NotFound(t *testing.T) {
 	assert.ErrorIs(t, err, ErrNotFound)
 }
 
-func TestGitHubFetcher_CommitForTag_UnexpectedStatus(t *testing.T) {
+// A 422 ("No commit found for SHA") from the commits API means the tag does not
+// resolve to a commit, which must surface as ErrNotFound.
+func TestGitHubFetcher_CommitForTag_UnprocessableIsNotFound(t *testing.T) {
 	t.Parallel()
 
 	f := newTestFetcher(t, http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusUnprocessableEntity)
+		_, _ = w.Write([]byte(`{"message":"No commit found for SHA: 5.9.5.2+dfsg-2.1"}`))
+	}))
+
+	_, err := f.CommitForTag(t.Context(), "package-openssl", "5.9.5.2+dfsg-2.1")
+	assert.ErrorIs(t, err, ErrNotFound)
+}
+
+// An unrelated 422 must not be masked as ErrNotFound.
+func TestGitHubFetcher_CommitForTag_UnprocessableOther(t *testing.T) {
+	t.Parallel()
+
+	f := newTestFetcher(t, http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		_, _ = w.Write([]byte(`{"message":"Validation Failed"}`))
 	}))
 
 	_, err := f.CommitForTag(t.Context(), "package-openssl", "bad")
 	require.Error(t, err)
 	require.NotErrorIs(t, err, ErrNotFound)
 	assert.Contains(t, err.Error(), "unexpected status 422")
+}
+
+func TestGitHubFetcher_CommitForTag_UnexpectedStatus(t *testing.T) {
+	t.Parallel()
+
+	f := newTestFetcher(t, http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.WriteHeader(http.StatusInternalServerError)
+	}))
+
+	_, err := f.CommitForTag(t.Context(), "package-openssl", "bad")
+	require.Error(t, err)
+	require.NotErrorIs(t, err, ErrNotFound)
+	assert.Contains(t, err.Error(), "unexpected status 500")
 }
 
 // TestGitHubFetcher_CommitForTag_TransportError guards the switch ordering.

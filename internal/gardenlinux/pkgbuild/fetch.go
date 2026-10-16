@@ -47,6 +47,11 @@ func (f *GitHubFetcher) CommitForTag(ctx context.Context, repo, tag string) (str
 	case err != nil:
 		return "", err
 	case resp.HTTPStatusCode == http.StatusNotFound:
+		// 404 means the repo itself is missing.
+		return "", ErrNotFound
+	case resp.HTTPStatusCode == http.StatusUnprocessableEntity && isNoCommitFound(resp.Body):
+		// The commits API returns 422 ("No commit found for SHA") when the tag does not resolve to a commit.
+		// Other 422 validation errors must stay visible.
 		return "", ErrNotFound
 	case resp.HTTPStatusCode != http.StatusOK:
 		return "", fmt.Errorf("resolving %s@%s: unexpected status %d", repo, tag, resp.HTTPStatusCode)
@@ -58,6 +63,19 @@ func (f *GitHubFetcher) CommitForTag(ctx context.Context, repo, tag string) (str
 	}
 
 	return ref.SHA, nil
+}
+
+// isNoCommitFound reports whether a 422 body is GitHub's "No commit found for SHA" error,
+// which the commits API returns for a tag that does not resolve to a commit.
+func isNoCommitFound(body []byte) bool {
+	var e struct {
+		Message string `json:"message"`
+	}
+	if err := json.Unmarshal(body, &e); err != nil {
+		return false
+	}
+
+	return strings.Contains(e.Message, "No commit found")
 }
 
 type contentFile struct {
