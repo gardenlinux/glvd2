@@ -4392,8 +4392,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 254,
-            "pkg:deb/debian/freerdp3": 193
+            "pkg:deb/debian/freerdp2": 264,
+            "pkg:deb/debian/freerdp3": 203
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 5
@@ -7928,7 +7928,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17403,
+            "pkg:deb/debian/linux": 17402,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8220,7 +8220,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 401
+            "pkg:deb/debian/mattermost-server": 407
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -19342,8 +19342,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 111,
-            "pkg:deb/debian/freerdp3": 111
+            "pkg:deb/debian/freerdp2": 121,
+            "pkg:deb/debian/freerdp3": 121
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -22457,7 +22457,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17395
+            "pkg:deb/debian/linux": 17394
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -22586,7 +22586,7 @@
             "pkg:deb/debian/caddy": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cifs-utils\"": {
-            "pkg:deb/debian/cifs-utils": 1
+            "pkg:deb/debian/cifs-utils": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"clevis\"": {
             "pkg:deb/debian/clevis": 1
@@ -23940,26 +23940,128 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"webkit2gtk3\"": {
             "pkg:deb/debian/webkit2gtk": 37
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-cli\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-controller-client\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-feature-pack\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-galleon-pack\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-management-client\"": {
-            "pkg:deb/debian/wildfly": 1
-        },
-        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-management-subsystem\"": {
-            "pkg:deb/debian/wildfly": 1
-        },
-        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-security\"": {
             "pkg:deb/debian/wildfly": 2
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-management-subsystem\"": {
+            "pkg:deb/debian/wildfly": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-security\"": {
+            "pkg:deb/debian/wildfly": 3
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-core-security-api\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-deployment-repository\"": {
+            "pkg:deb/debian/wildfly": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-deployment-scanner\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-discovery\"": {
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-domain-http\"": {
             "pkg:deb/debian/wildfly": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-domain-http-error-context\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-domain-http-interface\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-domain-management\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-elytron-integration\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-elytron-tool-wrapper\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-embedded\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-event-logger\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-host-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-iiop-openjdk\"": {
             "pkg:deb/debian/wildfly": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-io\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-jmx\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-launcher\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-logging\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-management-client-content\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-model-test\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-network\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-patching\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-platform-mbean\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-process-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-protocol\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-remoting\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-request-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-security-manager\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-self-contained\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-server\"": {
-            "pkg:deb/debian/wildfly": 2
+            "pkg:deb/debian/wildfly": 3
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-subsystem-test-framework\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-threads\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-version\"": {
+            "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wireshark\"": {
             "pkg:deb/debian/wireshark": 4
@@ -24021,21 +24123,21 @@
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
             "pkg:deb/debian/undertow": 2,
-            "pkg:deb/debian/wildfly": 1
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"": {
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
             "pkg:deb/debian/undertow": 3,
-            "pkg:deb/debian/wildfly": 1
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"": {
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
             "pkg:deb/debian/undertow": 3,
-            "pkg:deb/debian/wildfly": 1
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jws5-tomcat\"": {
             "pkg:deb/debian/jss": 1
@@ -24181,23 +24283,224 @@
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-websockets-jsr\"": {
             "pkg:deb/debian/undertow": 2
         },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-cli\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-controller-client\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-build\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-build-legacy\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-component-matrix-builder\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-dist\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-dist-legacy\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-feature-pack\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-feature-pack-common\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-feature-pack-ee-8-api\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-feature-pack-galleon-common\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-feature-pack-galleon-pruned\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-feature-pack-parent\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-galleon-pack\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-management\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-management-client\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-management-subsystem\"": {
+            "pkg:deb/debian/wildfly": 2
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-model-test\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-model-test-controller-optional\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-model-test-framework\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-model-test-tests\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-parent\"": {
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-security\"": {
-            "pkg:deb/debian/wildfly": 2
+            "pkg:deb/debian/wildfly": 3
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-security-api\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-security-parent\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-test-runner\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-testbom\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-core-testsuite-shared\"": {
+            "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-deployment-repository\"": {
+            "pkg:deb/debian/wildfly": 2
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-deployment-scanner\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-discovery\"": {
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http\"": {
+            "pkg:deb/debian/wildfly": 2
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http-error-context\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http-interface\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-management\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-integration\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-tool-wrapper\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-embedded\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-event-logger\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-host-controller\"": {
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-iiop-openjdk\"": {
             "pkg:deb/debian/wildfly": 1
         },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-installation-manager\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-io\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-io-bom\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-io-spi\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-io-tests\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-jar-boot\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-jar-runtime\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-jmx\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-launcher\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-logging\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-management-client-content\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-model-test\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-network\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-patching\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-platform-mbean\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-process-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-protocol\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-remoting\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-remoting-parent\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-remoting-test\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-request-controller\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-security-manager\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-server\"": {
-            "pkg:deb/debian/wildfly": 2
+            "pkg:deb/debian/wildfly": 3
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-service\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-subsystem\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-subsystem-test\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-subsystem-test-framework\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-subsystem-test-parent\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-subsystem-test-tests\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-threads\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-version\"": {
+            "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"xnio\"": {
             "pkg:deb/debian/jboss-xnio": 1
