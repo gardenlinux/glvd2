@@ -15346,7 +15346,9 @@
             "\"[unknown]\":\"libtirpc\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtirpc\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/libtomcrypt": {
@@ -32160,6 +32162,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/tuxguitar": {
+        "VendorProductIDs": [
+            "\"helge17\":\"tuxguitar\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/twig": {
         "VendorProductIDs": [
             "\"symfony\":\"twig\"",
@@ -33615,7 +33625,8 @@
             "cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://wordpress.org/plugins\":\"gutenberg\""
+            "\"https://wordpress.org/plugins\":\"gutenberg\"",
+            "\"https://wordpress.org/plugins\":\"wordpress\""
         ],
         "PackageURLs": null
     },

@@ -4131,7 +4131,7 @@
             "pkg:deb/debian/jackson-databind": 1
         },
         "\"fasterxml\":\"jackson-core\"": {
-            "pkg:deb/debian/jackson-core": 7
+            "pkg:deb/debian/jackson-core": 8
         },
         "\"fasterxml\":\"jackson-databind\"": {
             "pkg:deb/debian/jackson-databind": 29,
@@ -6311,6 +6311,9 @@
         "\"heketi\":\"heketi\"": {
             "pkg:deb/debian/heketi": 2
         },
+        "\"helge17\":\"tuxguitar\"": {
+            "pkg:deb/debian/tuxguitar": 1
+        },
         "\"helm\":\"helm\"": {
             "pkg:deb/debian/helm-kubernetes": 25
         },
@@ -8146,7 +8149,7 @@
             "pkg:deb/debian/mariadb-10.6": 4
         },
         "\"mariadb\":\"server\"": {
-            "pkg:deb/debian/mariadb": 18,
+            "pkg:deb/debian/mariadb": 25,
             "pkg:deb/debian/mariadb-connector-c": 1
         },
         "\"mariadb-corporation\":\"mariadb-connector-j\"": {
@@ -22926,7 +22929,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 65
+            "pkg:deb/debian/gimp": 66
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 12
@@ -23148,6 +23151,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtiff-main\"": {
             "pkg:deb/debian/tiff": 2
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtirpc\"": {
+            "pkg:deb/debian/libtirpc": 2
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtpms\"": {
             "pkg:deb/debian/libtpms": 1
         },
@@ -23338,7 +23344,7 @@
             "pkg:deb/debian/netty": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"nfs-utils\"": {
-            "pkg:deb/debian/nfs-utils": 1
+            "pkg:deb/debian/nfs-utils": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"nfs-utils-lib\"": {
             "pkg:deb/debian/nfs-utils": 1
@@ -26749,7 +26755,7 @@
             "pkg:deb/debian/elixir-tesla": 5
         },
         "\"https://repo.maven.apache.org/maven2\":\"com.fasterxml.jackson.core:jackson-core\"": {
-            "pkg:deb/debian/jackson-core": 2
+            "pkg:deb/debian/jackson-core": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"com.fasterxml.jackson.core:jackson-databind\"": {
             "pkg:deb/debian/jackson-databind": 3
@@ -27070,7 +27076,7 @@
             "pkg:deb/debian/jgit": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"tools.jackson.core:jackson-core\"": {
-            "pkg:deb/debian/jackson-core": 2
+            "pkg:deb/debian/jackson-core": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"tools.jackson.core:jackson-databind\"": {
             "pkg:deb/debian/jackson-databind": 3
@@ -27288,6 +27294,9 @@
             "pkg:deb/debian/wpewebkit": 2
         },
         "\"https://wordpress.org/plugins\":\"gutenberg\"": {
+            "pkg:deb/debian/wordpress": 1
+        },
+        "\"https://wordpress.org/plugins\":\"wordpress\"": {
             "pkg:deb/debian/wordpress": 1
         },
         "\"https://www.ansible.com/\":\"ansible\"": {
