@@ -1,0 +1,30 @@
+{
+  "versions": {
+    "3.6-5": {
+      "pkg_name": "parted",
+      "version": "3.6-5",
+      "purl": "pkg:deb/gardenlinux/parted",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
+    "3.6-6": {
+      "pkg_name": "parted",
+      "version": "3.6-6",
+      "purl": "pkg:deb/gardenlinux/parted",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}
