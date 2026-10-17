@@ -3937,6 +3937,9 @@
         "\"envoyproxy\":\"gateway\"": {
             "pkg:deb/debian/envoyproxy": 7
         },
+        "\"enzo1982\":\"mp4v2\"": {
+            "pkg:deb/debian/mp4v2": 1
+        },
         "\"eprosima\":\"dds\"": {
             "pkg:deb/debian/fastdds": 1
         },
@@ -6322,7 +6325,7 @@
         },
         "\"hexpm\":\"hex\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 7,
+            "pkg:deb/debian/erlang-hex": 10,
             "pkg:deb/debian/rebar3": 3
         },
         "\"hexpm\":\"hex_core\"": {
@@ -6551,7 +6554,7 @@
             "pkg:deb/debian/ikiwiki": 4
         },
         "\"ikus-soft\":\"rdiffweb\"": {
-            "pkg:deb/debian/rdiffweb": 1
+            "pkg:deb/debian/rdiffweb": 3
         },
         "\"ikus060\":\"ikus060/rdiffweb\"": {
             "pkg:deb/debian/rdiffweb": 42
@@ -8223,7 +8226,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 407
+            "pkg:deb/debian/mattermost-server": 416
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -14067,7 +14070,7 @@
         },
         "\"pupnp\":\"pupnp\"": {
             "pkg:deb/debian/libupnp": 1,
-            "pkg:deb/debian/pupnp": 2,
+            "pkg:deb/debian/pupnp": 7,
             "pkg:deb/debian/pupnp-1.8": 1
         },
         "\"puppet\":\"firewall module\"": {
@@ -17259,6 +17262,10 @@
         "\"uboot\":\"uboot\"": {
             "pkg:deb/debian/u-boot": 1
         },
+        "\"ubports\":\"lomiri-download-manager\"": {
+            "pkg:deb/debian/lomiri-download-manager": 1,
+            "pkg:deb/debian/lomiri-upload-manager": 1
+        },
         "\"ubuntu budgie\":\"budgie extras\"": {
             "pkg:deb/debian/budgie-extras": 6
         },
@@ -18053,7 +18060,7 @@
             "pkg:deb/debian/xfree86": 1
         },
         "\"xhtml2pdf\":\"xhtml2pdf\"": {
-            "pkg:deb/debian/xhtml2pdf": 1
+            "pkg:deb/debian/xhtml2pdf": 2
         },
         "\"xlockmore\":\"xlockmore\"": {
             "pkg:deb/debian/xlockmore": 1
@@ -19815,7 +19822,7 @@
         },
         "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 7,
+            "pkg:deb/debian/erlang-hex": 10,
             "pkg:deb/debian/rebar3": 3
         },
         "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*": {
@@ -20504,6 +20511,9 @@
             "pkg:deb/debian/thunderbird": 54,
             "pkg:deb/debian/webkit2gtk": 1,
             "pkg:deb/debian/wpewebkit": 1
+        },
+        "cpe:2.3:a:mp4v2:mp4v2:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mp4v2": 1
         },
         "cpe:2.3:a:mruby:mruby:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mruby": 3
@@ -22916,7 +22926,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 64
+            "pkg:deb/debian/gimp": 65
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 12
@@ -23530,6 +23540,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"pam\"": {
             "pkg:deb/debian/pam": 5
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"parted\"": {
+            "pkg:deb/debian/parted": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"pcp\"": {
             "pkg:deb/debian/pcp": 10
@@ -24982,7 +24995,7 @@
             "pkg:deb/debian/libtemplate-perl": 1
         },
         "\"https://cpan.org/modules\":\"Text-CSV_XS\"": {
-            "pkg:deb/debian/libtext-csv-xs-perl": 1
+            "pkg:deb/debian/libtext-csv-xs-perl": 9
         },
         "\"https://cpan.org/modules\":\"Thrift\"": {
             "pkg:deb/debian/thrift": 5
@@ -25174,7 +25187,7 @@
         },
         "\"https://github.com\":\"hexpm/hex\"": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 7,
+            "pkg:deb/debian/erlang-hex": 10,
             "pkg:deb/debian/rebar3": 3
         },
         "\"https://github.com\":\"hexpm/hex_core\"": {
@@ -27653,6 +27666,9 @@
         "pkg:cpan/Template-Toolkit": {
             "pkg:deb/debian/libtemplate-perl": 1
         },
+        "pkg:cpan/Text-CSV_XS": {
+            "pkg:deb/debian/libtext-csv-xs-perl": 8
+        },
         "pkg:cpan/Thrift": {
             "pkg:deb/debian/thrift": 5
         },
@@ -27813,6 +27829,9 @@
         "pkg:github/emacs-mirror/emacs": {
             "pkg:deb/debian/emacs": 1
         },
+        "pkg:github/enzo1982/mp4v2": {
+            "pkg:deb/debian/mp4v2": 1
+        },
         "pkg:github/erlang/otp": {
             "pkg:deb/debian/erlang": 57,
             "pkg:deb/debian/erlang-hex": 1,
@@ -27852,7 +27871,7 @@
         },
         "pkg:github/hexpm/hex": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 7,
+            "pkg:deb/debian/erlang-hex": 10,
             "pkg:deb/debian/rebar3": 3
         },
         "pkg:github/hexpm/hex_core": {
@@ -28523,7 +28542,7 @@
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 4,
+            "pkg:deb/debian/erlang-hex": 7,
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
@@ -28673,6 +28692,9 @@
         },
         "pkg:pypi/vllm": {
             "pkg:deb/debian/vllm": 26
+        },
+        "pkg:pypi/xhtml2pdf": {
+            "pkg:deb/debian/xhtml2pdf": 1
         },
         "pkg:software-id/erlang.org/otp": {
             "pkg:deb/debian/erlang": 32,
