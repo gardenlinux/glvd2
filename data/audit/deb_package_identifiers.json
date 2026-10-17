@@ -688,6 +688,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/antiword": {
+        "VendorProductIDs": [
+            "\"adri van os\":\"antiword\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/antlr4": {
         "VendorProductIDs": [
             "\"antlr\":\"antlr4\""
@@ -1137,6 +1145,18 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/asm": {
+        "VendorProductIDs": [
+            "\"ow2\":\"asm\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:maven/org.ow2.asm/asm",
+            "pkg:maven/org.ow2.asm/asm-analysis",
+            "pkg:maven/org.ow2.asm/asm-commons"
+        ]
     },
     "pkg:deb/debian/aspell": {
         "VendorProductIDs": [
@@ -1711,9 +1731,12 @@
     },
     "pkg:deb/debian/bitcoinj": {
         "VendorProductIDs": [
-            "\"bitcoinj\":\"bitcoinj\""
+            "\"bitcoinj\":\"bitcoinj\"",
+            "\"n/a\":\"bitcoinj\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:bitcoinj:bitcoinj:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -11289,8 +11312,17 @@
         ],
         "CPEs": null,
         "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee10:jetty-ee10-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee11:jetty-ee11-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee8:jetty-ee8-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee9:jetty-ee9-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty:jetty-annotations\"",
             "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"",
             "\"https://repo.maven.apache.org/maven2\":\"pkg:maven/org.eclipse.jetty.http2/http2-common\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee10:jetty-ee10-servlet\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee11:jetty-ee11-servlet\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee8-security\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee9:jetty-ee9-security\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-proxy\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-security\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-server\""
@@ -11323,11 +11355,20 @@
             "cpe:2.3:a:jetty:jetty.project:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee10:jetty-ee10-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee11:jetty-ee11-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee8:jetty-ee8-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee9:jetty-ee9-annotations\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty:jetty-annotations\"",
             "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"",
             "\"https://repo.maven.apache.org/maven2\":\"pkg:maven/org.eclipse.jetty.http2/http2-common\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee10:jetty-ee10-servlet\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee11:jetty-ee11-servlet\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee10-servlets\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee8-security\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee8-servlets\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee9-servlets\"",
+            "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee9:jetty-ee9-security\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-http\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-proxy\"",
             "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-security\"",
@@ -12298,6 +12339,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/laszip": {
+        "VendorProductIDs": [
+            "\"rapidlasso\":\"laszip\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/LASzip/LASzip"
+        ]
     },
     "pkg:deb/debian/lcms2": {
         "VendorProductIDs": [
@@ -13773,6 +13824,30 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libical": {
+        "VendorProductIDs": [
+            "\"libical\":\"libical\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:libical_project:libical:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libical/libical"
+        ]
+    },
+    "pkg:deb/debian/libical3": {
+        "VendorProductIDs": [
+            "\"libical\":\"libical\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:libical_project:libical:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libical/libical"
+        ]
+    },
     "pkg:deb/debian/libice": {
         "VendorProductIDs": [
             "\"xorg\":\"libice\""
@@ -14585,6 +14660,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libpff": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libpff\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libyal/libpff"
+        ]
+    },
     "pkg:deb/debian/libpgjava": {
         "VendorProductIDs": [
             "\"[unknown]\":\"postgresql\"",
@@ -14760,12 +14845,20 @@
     },
     "pkg:deb/debian/librecad": {
         "VendorProductIDs": [
+            "\"librecad\":\"libdxfrw\"",
+            "\"librecad\":\"librecad\"",
             "\"n/a\":\"librecad\"",
             "\"n/a\":\"ribbonsoft\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:librecad:libdxfrw:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:librecad:librecad:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/LibreCAD/LibreCAD",
+            "pkg:github/LibreCAD/libdxfrw"
+        ]
     },
     "pkg:deb/debian/libredwg": {
         "VendorProductIDs": [
@@ -14946,9 +15039,13 @@
         "VendorProductIDs": [
             "\"saitoha\":\"libsixel\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:saitoha:libsixel:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/saitoha/libsixel"
+        ]
     },
     "pkg:deb/debian/libslirp": {
         "VendorProductIDs": [
@@ -14961,6 +15058,14 @@
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libslirp\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libsmb2": {
+        "VendorProductIDs": [
+            "\"sahlberg\":\"libsmb2\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/libsmi": {
@@ -17361,6 +17466,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/miniupnpc": {
+        "VendorProductIDs": [
+            "\"miniupnp project\":\"miniupnpc\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:miniupnp_project:miniupnpc:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/miniupnp/miniupnp"
+        ]
+    },
     "pkg:deb/debian/miniupnpd": {
         "VendorProductIDs": [
             "\"miniupnp project\":\"miniupnpd\""
@@ -17912,10 +18029,13 @@
     },
     "pkg:deb/debian/mujs": {
         "VendorProductIDs": [
+            "\"artifex software\":\"mujs\"",
             "\"mujs\":\"mujs\"",
             "\"n/a\":\"mujs\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:artifex:mujs:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -18033,11 +18153,16 @@
     },
     "pkg:deb/debian/mxml": {
         "VendorProductIDs": [
+            "\"michael r sweet\":\"mini-xml\"",
             "\"n/a\":\"mxml\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:mini-xml_project:mini-xml:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/michaelrsweet/mxml"
+        ]
     },
     "pkg:deb/debian/mydumper": {
         "VendorProductIDs": [
@@ -18260,6 +18385,14 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/nautilus": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"nautilus\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/nbconvert": {
@@ -22460,6 +22593,7 @@
     },
     "pkg:deb/debian/opensips": {
         "VendorProductIDs": [
+            "\"n/a\":\"opensips\"",
             "\"opensips\":\"opensips\""
         ],
         "CPEs": [
@@ -24650,6 +24784,16 @@
         ],
         "CPEs": [
             "cpe:2.3:a:samba:ppp:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/praat": {
+        "VendorProductIDs": [
+            "\"n/a\":\"praat\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:praat:praat:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -26927,6 +27071,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/quirc": {
+        "VendorProductIDs": [
+            "\"dlbeer\":\"quirc\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/dlbeer/quirc"
+        ]
     },
     "pkg:deb/debian/qutebrowser": {
         "VendorProductIDs": [
@@ -30583,9 +30737,13 @@
         "VendorProductIDs": [
             "\"freeswitch\":\"sofia-sip\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:signalwire:sofia-sip:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/freeswitch/sofia-sip"
+        ]
     },
     "pkg:deb/debian/software-properties": {
         "VendorProductIDs": [
@@ -30675,7 +30833,10 @@
             "\"the spice project\":\"spice\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"spice\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"spice-server\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/spice-gtk": {
@@ -30836,6 +30997,16 @@
             "\"libfuse\":\"sshfs\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/ssldump": {
+        "VendorProductIDs": [
+            "\"adulau\":\"ssldump\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:adulau:ssldump:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -31169,7 +31340,11 @@
             "cpe:2.3:a:symfony:symfony:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:symphony_php_framework:symphony_process:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"",
+            "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"",
+            "\"https://packagist.org/packages/symfony/yaml\":\"symfony/yaml\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/syncthing": {
@@ -31735,6 +31910,18 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/tinyexr": {
+        "VendorProductIDs": [
+            "\"syoyo\":\"tinyexr\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:tinyexr_project:tinyexr:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/syoyo/tinyexr"
+        ]
     },
     "pkg:deb/debian/tinygltf": {
         "VendorProductIDs": [
@@ -34690,7 +34877,8 @@
     },
     "pkg:deb/debian/zvbi": {
         "VendorProductIDs": [
-            "\"n/a\":\"libzvbi\""
+            "\"n/a\":\"libzvbi\"",
+            "\"zapping-vbi\":\"libzvbi\""
         ],
         "CPEs": null,
         "PackageIDs": null,

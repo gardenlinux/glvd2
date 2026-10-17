@@ -341,6 +341,12 @@
         "\"adplug\":\"adplug\"": {
             "pkg:deb/debian/adplug": 3
         },
+        "\"adri van os\":\"antiword\"": {
+            "pkg:deb/debian/antiword": 2
+        },
+        "\"adulau\":\"ssldump\"": {
+            "pkg:deb/debian/ssldump": 1
+        },
         "\"aertherwide\":\"exiftags\"": {
             "pkg:deb/debian/exiftags": 1
         },
@@ -2154,6 +2160,9 @@
         "\"artifex software\":\"ghostscript\"": {
             "pkg:deb/debian/ghostscript": 4
         },
+        "\"artifex software\":\"mujs\"": {
+            "pkg:deb/debian/mujs": 1
+        },
         "\"artifex software\":\"mupdf\"": {
             "pkg:deb/debian/mupdf": 1
         },
@@ -2203,7 +2212,7 @@
             "pkg:deb/debian/astropy": 1
         },
         "\"asynchttpclient\":\"async-http-client\"": {
-            "pkg:deb/debian/async-http-client": 24
+            "pkg:deb/debian/async-http-client": 25
         },
         "\"asynchttpclient_project\":\"async-http-client\"": {
             "pkg:deb/debian/async-http-client": 1
@@ -2233,7 +2242,7 @@
             "pkg:deb/debian/python-authlib": 13
         },
         "\"authlib\":\"joserfc\"": {
-            "pkg:deb/debian/joserfc": 6
+            "pkg:deb/debian/joserfc": 7
         },
         "\"autocaliweb\":\"autocaliweb\"": {
             "pkg:deb/debian/calibre-web": 2
@@ -3502,6 +3511,9 @@
         "\"djvunet\":\"djvulibre\"": {
             "pkg:deb/debian/djvulibre": 1
         },
+        "\"dlbeer\":\"quirc\"": {
+            "pkg:deb/debian/quirc": 1
+        },
         "\"dloebl\":\"cgif\"": {
             "pkg:deb/debian/cgif": 1
         },
@@ -3871,7 +3883,7 @@
             "pkg:deb/debian/packetbeat": 7
         },
         "\"electron\":\"electron\"": {
-            "pkg:deb/debian/electron": 59
+            "pkg:deb/debian/electron": 60
         },
         "\"element-hq\":\"element-web\"": {
             "pkg:deb/debian/element-web": 6
@@ -4399,7 +4411,7 @@
             "pkg:deb/debian/freerdp3": 203
         },
         "\"freeswitch\":\"sofia-sip\"": {
-            "pkg:deb/debian/sofia-sip": 5
+            "pkg:deb/debian/sofia-sip": 6
         },
         "\"freetype\":\"freetype\"": {
             "pkg:deb/debian/freetype": 2
@@ -7714,6 +7726,10 @@
         "\"libheif\":\"libheif\"": {
             "pkg:deb/debian/libheif": 1
         },
+        "\"libical\":\"libical\"": {
+            "pkg:deb/debian/libical": 1,
+            "pkg:deb/debian/libical3": 1
+        },
         "\"libimobiledevice\":\"usbmuxd\"": {
             "pkg:deb/debian/usbmuxd": 1
         },
@@ -7765,6 +7781,12 @@
         },
         "\"librdf\":\"raptor rdf syntax library\"": {
             "pkg:deb/debian/raptor2": 2
+        },
+        "\"librecad\":\"libdxfrw\"": {
+            "pkg:deb/debian/librecad": 1
+        },
+        "\"librecad\":\"librecad\"": {
+            "pkg:deb/debian/librecad": 1
         },
         "\"libreoffice\":\"libreoffice\"": {
             "pkg:deb/debian/libreoffice": 1
@@ -7865,6 +7887,9 @@
         },
         "\"libyal\":\"libfwsi\"": {
             "pkg:deb/debian/libfwsi": 2
+        },
+        "\"libyal\":\"libpff\"": {
+            "pkg:deb/debian/libpff": 1
         },
         "\"libyal\":\"libregf\"": {
             "pkg:deb/debian/libregf": 1
@@ -8343,6 +8368,9 @@
         "\"mhuertos\":\"phpldapadmin\"": {
             "pkg:deb/debian/phpldapadmin": 1
         },
+        "\"michael r sweet\":\"mini-xml\"": {
+            "pkg:deb/debian/mxml": 1
+        },
         "\"michaelrsweet\":\"htmldoc\"": {
             "pkg:deb/debian/htmldoc": 1
         },
@@ -8607,6 +8635,9 @@
         },
         "\"minio\":\"minio-java\"": {
             "pkg:deb/debian/minio": 1
+        },
+        "\"miniupnp project\":\"miniupnpc\"": {
+            "pkg:deb/debian/miniupnpc": 2
         },
         "\"miniupnp project\":\"miniupnpd\"": {
             "pkg:deb/debian/miniupnpd": 2
@@ -9276,6 +9307,9 @@
         },
         "\"n/a\":\"binutils\"": {
             "pkg:deb/debian/binutils": 17
+        },
+        "\"n/a\":\"bitcoinj\"": {
+            "pkg:deb/debian/bitcoinj": 1
         },
         "\"n/a\":\"bl\"": {
             "pkg:deb/debian/node-bl": 1
@@ -10781,6 +10815,9 @@
         "\"n/a\":\"openscad\"": {
             "pkg:deb/debian/openscad": 4
         },
+        "\"n/a\":\"opensips\"": {
+            "pkg:deb/debian/opensips": 1
+        },
         "\"n/a\":\"openstack\"": {
             "pkg:deb/debian/cinder": 1,
             "pkg:deb/debian/horizon": 1,
@@ -11027,6 +11064,9 @@
         },
         "\"n/a\":\"postgresql-related scripts that are specific to debian and ubuntu\"": {
             "pkg:deb/debian/postgresql-common": 1
+        },
+        "\"n/a\":\"praat\"": {
+            "pkg:deb/debian/praat": 1
         },
         "\"n/a\":\"prismjs\"": {
             "pkg:deb/debian/node-prismjs": 1
@@ -13460,6 +13500,9 @@
         "\"ovs\":\"ovs\"": {
             "pkg:deb/debian/openvswitch": 1
         },
+        "\"ow2\":\"asm\"": {
+            "pkg:deb/debian/asm": 9
+        },
         "\"owasp esapi\":\"org.owasp.esapi:esapi\"": {
             "pkg:deb/debian/libowasp-esapi-java": 1
         },
@@ -14614,6 +14657,9 @@
             "pkg:deb/debian/botan1.10": 1,
             "pkg:deb/debian/botan3": 6
         },
+        "\"rapidlasso\":\"laszip\"": {
+            "pkg:deb/debian/laszip": 1
+        },
         "\"rarlab\":\"rar\"": {
             "pkg:deb/debian/rar": 1,
             "pkg:deb/debian/unrar-nonfree": 1
@@ -15429,11 +15475,14 @@
         "\"sahlberg\":\"libnfs\"": {
             "pkg:deb/debian/libnfs": 3
         },
+        "\"sahlberg\":\"libsmb2\"": {
+            "pkg:deb/debian/libsmb2": 3
+        },
         "\"sail image decoding library\":\"sail image decoding library\"": {
             "pkg:deb/debian/sail": 8
         },
         "\"saitoha\":\"libsixel\"": {
-            "pkg:deb/debian/libsixel": 9
+            "pkg:deb/debian/libsixel": 10
         },
         "\"salt project\":\"salt\"": {
             "pkg:deb/debian/salt": 2
@@ -15552,7 +15601,7 @@
             "pkg:deb/debian/libstb": 1
         },
         "\"seaweedfs\":\"seaweedfs\"": {
-            "pkg:deb/debian/seaweedfs": 12
+            "pkg:deb/debian/seaweedfs": 13
         },
         "\"sebastianbergmann\":\"phpunit\"": {
             "pkg:deb/debian/phpunit": 2
@@ -15575,7 +15624,7 @@
             "pkg:deb/debian/unarr": 2
         },
         "\"sensiolabs\":\"symfony\"": {
-            "pkg:deb/debian/symfony": 1
+            "pkg:deb/debian/symfony": 4
         },
         "\"seperman\":\"deepdiff\"": {
             "pkg:deb/debian/deepdiff": 2
@@ -16371,6 +16420,9 @@
         },
         "\"synology\":\"diskstation manager\"": {
             "pkg:deb/debian/netatalk": 1
+        },
+        "\"syoyo\":\"tinyexr\"": {
+            "pkg:deb/debian/tinyexr": 1
         },
         "\"syoyo\":\"tinygltf\"": {
             "pkg:deb/debian/tinygltf": 1
@@ -18290,6 +18342,9 @@
         "\"zammad\":\"zammad\"": {
             "pkg:deb/debian/zammad": 47
         },
+        "\"zapping-vbi\":\"libzvbi\"": {
+            "pkg:deb/debian/zvbi": 1
+        },
         "\"zaproxy\":\"zap-extensions\"": {
             "pkg:deb/debian/zaproxy": 1
         },
@@ -18362,7 +18417,7 @@
             "pkg:deb/debian/znuny": 8
         },
         "\"zoneminder\":\"zoneminder\"": {
-            "pkg:deb/debian/zoneminder": 24
+            "pkg:deb/debian/zoneminder": 25
         },
         "\"zope\":\"restrictedpython\"": {
             "pkg:deb/debian/restrictedpython": 1
@@ -18384,7 +18439,7 @@
             "pkg:deb/debian/zulip-server": 2
         },
         "\"zulip\":\"zulip\"": {
-            "pkg:deb/debian/zulip-server": 33
+            "pkg:deb/debian/zulip-server": 34
         },
         "\"zulip\":\"zulip-mobile\"": {
             "pkg:deb/debian/zulip-server": 1
@@ -18432,6 +18487,9 @@
         },
         "cpe:2.3:a:adplug_project:adplug:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/adplug": 3
+        },
+        "cpe:2.3:a:adulau:ssldump:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/ssldump": 1
         },
         "cpe:2.3:a:aertherwide:exiftags:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/exiftags": 1
@@ -18751,6 +18809,9 @@
         "cpe:2.3:a:artifex:ghostscript:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghostscript": 15
         },
+        "cpe:2.3:a:artifex:mujs:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mujs": 1
+        },
         "cpe:2.3:a:artifex:mupdf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mupdf": 7
         },
@@ -18849,6 +18910,9 @@
         },
         "cpe:2.3:a:bitcoincore:bitcoin_core:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/bitcoin": 1
+        },
+        "cpe:2.3:a:bitcoinj:bitcoinj:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/bitcoinj": 1
         },
         "cpe:2.3:a:bitwarden:server:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/bitwarden": 6
@@ -20174,6 +20238,10 @@
         "cpe:2.3:a:libheif:libheif:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libheif": 1
         },
+        "cpe:2.3:a:libical_project:libical:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libical": 1,
+            "pkg:deb/debian/libical3": 1
+        },
         "cpe:2.3:a:libjxl_project:libjxl:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jpeg-xl": 1
         },
@@ -20197,6 +20265,12 @@
         },
         "cpe:2.3:a:librdf:raptor_rdf_syntax_library:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/raptor2": 2
+        },
+        "cpe:2.3:a:librecad:libdxfrw:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/librecad": 1
+        },
+        "cpe:2.3:a:librecad:librecad:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/librecad": 1
         },
         "cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libreoffice": 1
@@ -20396,11 +20470,17 @@
         "cpe:2.3:a:minhquan202:vuln-netbox:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/netbox": 1
         },
+        "cpe:2.3:a:mini-xml_project:mini-xml:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mxml": 1
+        },
         "cpe:2.3:a:miniflux_project:miniflux:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/miniflux": 1
         },
         "cpe:2.3:a:minio:minio:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/minio": 3
+        },
+        "cpe:2.3:a:miniupnp_project:miniupnpc:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/miniupnpc": 2
         },
         "cpe:2.3:a:miniupnp_project:miniupnpd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/miniupnpd": 2
@@ -20968,7 +21048,7 @@
             "pkg:deb/debian/opensearch": 1
         },
         "cpe:2.3:a:opensips:opensips:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/opensips": 1
+            "pkg:deb/debian/opensips": 2
         },
         "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openssl": 6
@@ -21309,6 +21389,9 @@
         },
         "cpe:2.3:a:powerdns:powerdns:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/pdns-recursor": 1
+        },
+        "cpe:2.3:a:praat:praat:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/praat": 1
         },
         "cpe:2.3:a:prismjs:prism:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-prismjs": 1
@@ -21689,6 +21772,9 @@
         "cpe:2.3:a:sagemath:cocalc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cocalc": 1
         },
+        "cpe:2.3:a:saitoha:libsixel:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libsixel": 1
+        },
         "cpe:2.3:a:salt_project:salt:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/salt": 1
         },
@@ -21731,7 +21817,7 @@
             "pkg:deb/debian/seaweedfs": 2
         },
         "cpe:2.3:a:sensiolabs:symfony:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/symfony": 1
+            "pkg:deb/debian/symfony": 4
         },
         "cpe:2.3:a:sftpgo_project:sftpgo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sftpgo": 2
@@ -21750,6 +21836,9 @@
         },
         "cpe:2.3:a:signal:signal-desktop:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/signal-desktop": 2
+        },
+        "cpe:2.3:a:signalwire:sofia-sip:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/sofia-sip": 1
         },
         "cpe:2.3:a:sigstore:cosign:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cosign": 2
@@ -21965,6 +22054,9 @@
         },
         "cpe:2.3:a:tiny:tinymce:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/tinymce": 3
+        },
+        "cpe:2.3:a:tinyexr_project:tinyexr:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/tinyexr": 1
         },
         "cpe:2.3:a:tinyproxy:tinyproxy:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/tinyproxy": 1
@@ -23073,13 +23165,13 @@
             "pkg:deb/debian/libxpm": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libarchive\"": {
-            "pkg:deb/debian/libarchive": 13
+            "pkg:deb/debian/libarchive": 14
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libarchive-main\"": {
             "pkg:deb/debian/libarchive": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libblockdev\"": {
-            "pkg:deb/debian/libblockdev": 1
+            "pkg:deb/debian/libblockdev": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libcupsfilters\"": {
             "pkg:deb/debian/libcupsfilters": 2
@@ -23176,7 +23268,7 @@
             "pkg:deb/debian/expat": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"luksmeta\"": {
-            "pkg:deb/debian/luksmeta": 2
+            "pkg:deb/debian/luksmeta": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"lvm2\"": {
             "pkg:deb/debian/lvm2": 1
@@ -23270,6 +23362,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"nano\"": {
             "pkg:deb/debian/nano": 4
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"nautilus\"": {
+            "pkg:deb/debian/nautilus": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"nbdkit\"": {
             "pkg:deb/debian/nbdkit": 2
@@ -23858,6 +23953,12 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"sox\"": {
             "pkg:deb/debian/sox": 4
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"spice\"": {
+            "pkg:deb/debian/spice": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"spice-server\"": {
+            "pkg:deb/debian/spice": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"spice-vdagent\"": {
             "pkg:deb/debian/spice-vdagent": 2
@@ -26064,6 +26165,15 @@
         "\"https://packagist.org\":\"apache/thrift\"": {
             "pkg:deb/debian/thrift": 11
         },
+        "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org/packages/symfony/yaml\":\"symfony/yaml\"": {
+            "pkg:deb/debian/symfony": 1
+        },
         "\"https://pagure.io/pagure\":\"pagure\"": {
             "pkg:deb/debian/pagure": 4
         },
@@ -27049,6 +27159,26 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.zookeeper:zookeeper\"": {
             "pkg:deb/debian/zookeeper": 11
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee10:jetty-ee10-annotations\"": {
+            "pkg:deb/debian/jetty12": 1,
+            "pkg:deb/debian/jetty9": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee11:jetty-ee11-annotations\"": {
+            "pkg:deb/debian/jetty12": 1,
+            "pkg:deb/debian/jetty9": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee8:jetty-ee8-annotations\"": {
+            "pkg:deb/debian/jetty12": 1,
+            "pkg:deb/debian/jetty9": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee9:jetty-ee9-annotations\"": {
+            "pkg:deb/debian/jetty12": 1,
+            "pkg:deb/debian/jetty9": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty:jetty-annotations\"": {
+            "pkg:deb/debian/jetty12": 1,
+            "pkg:deb/debian/jetty9": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.freemarker:freemarker\"": {
             "pkg:deb/debian/libfreemarker-java": 1
         },
@@ -27103,9 +27233,21 @@
         "\"https://repo.maven.apache.org/maven2/\":\"org.apache.opennlp:opennlp-tools\"": {
             "pkg:deb/debian/apache-opennlp": 3
         },
+        "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee10:jetty-ee10-servlet\"": {
+            "pkg:deb/debian/jetty12": 2,
+            "pkg:deb/debian/jetty9": 2
+        },
+        "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee11:jetty-ee11-servlet\"": {
+            "pkg:deb/debian/jetty12": 2,
+            "pkg:deb/debian/jetty9": 2
+        },
         "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee10-servlets\"": {
             "pkg:deb/debian/jetty": 1,
             "pkg:deb/debian/jetty9": 1
+        },
+        "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee8-security\"": {
+            "pkg:deb/debian/jetty12": 2,
+            "pkg:deb/debian/jetty9": 2
         },
         "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee8-servlets\"": {
             "pkg:deb/debian/jetty": 1,
@@ -27114,6 +27256,10 @@
         "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee8:jetty-ee9-servlets\"": {
             "pkg:deb/debian/jetty": 1,
             "pkg:deb/debian/jetty9": 1
+        },
+        "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty.ee9:jetty-ee9-security\"": {
+            "pkg:deb/debian/jetty12": 2,
+            "pkg:deb/debian/jetty9": 2
         },
         "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-http\"": {
             "pkg:deb/debian/jetty": 1,
@@ -27124,8 +27270,8 @@
             "pkg:deb/debian/jetty9": 1
         },
         "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-security\"": {
-            "pkg:deb/debian/jetty12": 1,
-            "pkg:deb/debian/jetty9": 1
+            "pkg:deb/debian/jetty12": 3,
+            "pkg:deb/debian/jetty9": 3
         },
         "\"https://repo.maven.apache.org/maven2/\":\"org.eclipse.jetty:jetty-server\"": {
             "pkg:deb/debian/jetty": 1,
@@ -27746,11 +27892,20 @@
         "pkg:github/Konstanty/libmodplug": {
             "pkg:deb/debian/libmodplug": 3
         },
+        "pkg:github/LASzip/LASzip": {
+            "pkg:deb/debian/laszip": 1
+        },
         "pkg:github/LibRaw/LibRaw": {
             "pkg:deb/debian/libraw": 1
         },
         "pkg:github/LibVNC/libvncserver": {
             "pkg:deb/debian/libvncserver": 2
+        },
+        "pkg:github/LibreCAD/LibreCAD": {
+            "pkg:deb/debian/librecad": 1
+        },
+        "pkg:github/LibreCAD/libdxfrw": {
+            "pkg:deb/debian/librecad": 1
         },
         "pkg:github/LibreDWG/libredwg": {
             "pkg:deb/debian/libredwg": 1
@@ -27826,6 +27981,9 @@
         "pkg:github/dani-garcia/vaultwarden": {
             "pkg:deb/debian/vaultwarden": 1
         },
+        "pkg:github/dlbeer/quirc": {
+            "pkg:deb/debian/quirc": 1
+        },
         "pkg:github/domoticz/domoticz": {
             "pkg:deb/debian/domoticz": 1
         },
@@ -27856,6 +28014,9 @@
         },
         "pkg:github/ffmpeg/ffmpeg": {
             "pkg:deb/debian/ffmpeg": 9
+        },
+        "pkg:github/freeswitch/sofia-sip": {
+            "pkg:deb/debian/sofia-sip": 1
         },
         "pkg:github/frostming/unearth": {
             "pkg:deb/debian/unearth": 1
@@ -27913,6 +28074,10 @@
         "pkg:github/libgme/game-music-emu": {
             "pkg:deb/debian/game-music-emu": 2
         },
+        "pkg:github/libical/libical": {
+            "pkg:deb/debian/libical": 1,
+            "pkg:deb/debian/libical3": 1
+        },
         "pkg:github/libjxl/libjxl": {
             "pkg:deb/debian/jpeg-xl": 1
         },
@@ -27930,6 +28095,9 @@
         },
         "pkg:github/libyal/libfwsi": {
             "pkg:deb/debian/libfwsi": 2
+        },
+        "pkg:github/libyal/libpff": {
+            "pkg:deb/debian/libpff": 1
         },
         "pkg:github/mackron/dr_libs": {
             "pkg:deb/debian/libchdr": 1
@@ -27949,9 +28117,15 @@
         "pkg:github/merbanan/rtl_433": {
             "pkg:deb/debian/rtl-433": 1
         },
+        "pkg:github/michaelrsweet/mxml": {
+            "pkg:deb/debian/mxml": 1
+        },
         "pkg:github/michaelrsweet/pdfio": {
             "pkg:deb/debian/ippsample": 1,
             "pkg:deb/debian/pdfio": 1
+        },
+        "pkg:github/miniupnp/miniupnp": {
+            "pkg:deb/debian/miniupnpc": 2
         },
         "pkg:github/nationalsecurityagency/ghidra": {
             "pkg:deb/debian/ghidra": 17
@@ -28039,6 +28213,9 @@
         "pkg:github/s9y/Serendipity": {
             "pkg:deb/debian/serendipity": 1
         },
+        "pkg:github/saitoha/libsixel": {
+            "pkg:deb/debian/libsixel": 1
+        },
         "pkg:github/sbabic/swupdate": {
             "pkg:deb/debian/swupdate": 2
         },
@@ -28062,6 +28239,9 @@
         },
         "pkg:github/swami/libinstpatch": {
             "pkg:deb/debian/libinstpatch": 1
+        },
+        "pkg:github/syoyo/tinyexr": {
+            "pkg:deb/debian/tinyexr": 1
         },
         "pkg:github/telegramdesktop/tdesktop": {
             "pkg:deb/debian/telegram-desktop": 1
@@ -28372,6 +28552,15 @@
         },
         "pkg:maven/org.openrefine/openrefine": {
             "pkg:deb/debian/openrefine": 1
+        },
+        "pkg:maven/org.ow2.asm/asm": {
+            "pkg:deb/debian/asm": 6
+        },
+        "pkg:maven/org.ow2.asm/asm-analysis": {
+            "pkg:deb/debian/asm": 1
+        },
+        "pkg:maven/org.ow2.asm/asm-commons": {
+            "pkg:deb/debian/asm": 2
         },
         "pkg:maven/org.xerial.snappy/snappy-java": {
             "pkg:deb/debian/snappy-java": 2
