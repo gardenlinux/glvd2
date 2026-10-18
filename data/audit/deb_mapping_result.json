@@ -3449,6 +3449,9 @@
         "\"denji\":\"ngx_cache_purge\"": {
             "pkg:deb/debian/libnginx-mod-http-cache-purge": 1
         },
+        "\"dentonw\":\"devil\"": {
+            "pkg:deb/debian/devil": 1
+        },
         "\"denx software engineering\":\"das u-boot\"": {
             "pkg:deb/debian/u-boot": 1
         },
@@ -27903,6 +27906,9 @@
         },
         "pkg:github/ArtifexSoftware/mupdf": {
             "pkg:deb/debian/mupdf": 2
+        },
+        "pkg:github/DentonW/DevIL": {
+            "pkg:deb/debian/devil": 1
         },
         "pkg:github/Dolibarr/dolibarr": {
             "pkg:deb/debian/dolibarr": 1

@@ -3729,6 +3729,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/devil": {
+        "VendorProductIDs": [
+            "\"dentonw\":\"devil\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/DentonW/DevIL"
+        ]
+    },
     "pkg:deb/debian/devscripts": {
         "VendorProductIDs": [
             "\"debian\":\"devscripts\""
