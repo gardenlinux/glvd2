@@ -9,9 +9,12 @@
         "\"389ds\":\"389-ds-base\"": {
             "pkg:deb/debian/389-ds-base": 1
         },
+        "\"3proxy\":\"3proxy\"": {
+            "pkg:deb/debian/3proxy": 1
+        },
         "\"7-zip\":\"7-zip\"": {
-            "pkg:deb/debian/7zip": 12,
-            "pkg:deb/debian/p7zip": 12
+            "pkg:deb/debian/7zip": 13,
+            "pkg:deb/debian/p7zip": 13
         },
         "\"7-zip\":\"7zip\"": {
             "pkg:deb/debian/7zip": 2,
@@ -30,6 +33,12 @@
             "pkg:deb/debian/angular.js": 2
         },
         "\"@angular\":\"platform-server\"": {
+            "pkg:deb/debian/angular.js": 1
+        },
+        "\"@angular\":\"router\"": {
+            "pkg:deb/debian/angular.js": 1
+        },
+        "\"@angular/\":\"platform-server\"": {
             "pkg:deb/debian/angular.js": 1
         },
         "\"@babel\":\"plugin-transform-modules-systemjs\"": {
@@ -1149,7 +1158,10 @@
             "pkg:deb/debian/sqlparse": 7
         },
         "\"angular\":\"angular\"": {
-            "pkg:deb/debian/angular.js": 28
+            "pkg:deb/debian/angular.js": 31
+        },
+        "\"angular\":\"devtools\"": {
+            "pkg:deb/debian/angular.js": 1
         },
         "\"angularjs\":\"angular.js\"": {
             "pkg:deb/debian/angular.js": 2
@@ -3461,6 +3473,18 @@
         "\"dietlibc\":\"dietlibc\"": {
             "pkg:deb/debian/dietlibc": 1
         },
+        "\"digidoc\":\"digidoc android\"": {
+            "pkg:deb/debian/libdigidocpp": 1
+        },
+        "\"digidoc\":\"digidoc ios\"": {
+            "pkg:deb/debian/libdigidocpp": 1
+        },
+        "\"digidoc\":\"digidoc4\"": {
+            "pkg:deb/debian/libdigidocpp": 1
+        },
+        "\"digidoc\":\"libdigidocpp\"": {
+            "pkg:deb/debian/libdigidocpp": 1
+        },
         "\"digint\":\"btrbk\"": {
             "pkg:deb/debian/btrbk": 1
         },
@@ -3971,14 +3995,14 @@
             "pkg:deb/debian/erlang": 1
         },
         "\"erlang\":\"otp\"": {
-            "pkg:deb/debian/erlang": 62,
+            "pkg:deb/debian/erlang": 63,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
         "\"erlang\":\"rebar3\"": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 3,
-            "pkg:deb/debian/rebar3": 3
+            "pkg:deb/debian/rebar3": 4
         },
         "\"es\":\"iperf3\"": {
             "pkg:deb/debian/iperf3": 3
@@ -4407,8 +4431,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 264,
-            "pkg:deb/debian/freerdp3": 203
+            "pkg:deb/debian/freerdp2": 266,
+            "pkg:deb/debian/freerdp3": 205
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -5703,7 +5727,7 @@
             "pkg:deb/debian/gopls": 1
         },
         "\"gomarkdown\":\"markdown\"": {
-            "pkg:deb/debian/golang-github-gomarkdown-markdown": 2
+            "pkg:deb/debian/golang-github-gomarkdown-markdown": 3
         },
         "\"google llc\":\"bazel\"": {
             "pkg:deb/debian/bazel": 1
@@ -7468,7 +7492,7 @@
             "pkg:deb/debian/node-koa": 5
         },
         "\"koha community\":\"koha\"": {
-            "pkg:deb/debian/koha": 13
+            "pkg:deb/debian/koha": 15
         },
         "\"koha\":\"koha\"": {
             "pkg:deb/debian/koha": 5
@@ -13610,7 +13634,7 @@
             "pkg:deb/debian/pdm": 4
         },
         "\"peazip\":\"peazip\"": {
-            "pkg:deb/debian/peazip": 3
+            "pkg:deb/debian/peazip": 5
         },
         "\"pendulum-project\":\"ntpd-rs\"": {
             "pkg:deb/debian/rust-ntp-proto": 1,
@@ -14492,13 +14516,13 @@
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-5compat": 1,
             "pkg:deb/debian/qt6-base": 13,
-            "pkg:deb/debian/qt6-connectivity": 1,
+            "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 3,
             "pkg:deb/debian/qtbase-opensource-src": 12,
             "pkg:deb/debian/qtbase-opensource-src-gles": 6,
-            "pkg:deb/debian/qtconnectivity-opensource-src": 1,
+            "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src-gles": 1,
             "pkg:deb/debian/qtimageformats-opensource-src": 1,
@@ -17774,6 +17798,9 @@
         "\"wb2osz\":\"dire wolf\"": {
             "pkg:deb/debian/direwolf": 2
         },
+        "\"wbond\":\"certvalidator\"": {
+            "pkg:deb/debian/python-certvalidator": 1
+        },
         "\"web2py\":\"web2py\"": {
             "pkg:deb/debian/web2py": 4
         },
@@ -18221,7 +18248,7 @@
             "pkg:deb/debian/libytnef": 2
         },
         "\"yhirose\":\"cpp-httplib\"": {
-            "pkg:deb/debian/cpp-httplib": 22
+            "pkg:deb/debian/cpp-httplib": 24
         },
         "\"yiiframework\":\"yii\"": {
             "pkg:deb/debian/yii": 2
@@ -18417,7 +18444,7 @@
             "pkg:deb/debian/znuny": 8
         },
         "\"zoneminder\":\"zoneminder\"": {
-            "pkg:deb/debian/zoneminder": 25
+            "pkg:deb/debian/zoneminder": 28
         },
         "\"zope\":\"restrictedpython\"": {
             "pkg:deb/debian/restrictedpython": 1
@@ -18439,7 +18466,7 @@
             "pkg:deb/debian/zulip-server": 2
         },
         "\"zulip\":\"zulip\"": {
-            "pkg:deb/debian/zulip-server": 34
+            "pkg:deb/debian/zulip-server": 35
         },
         "\"zulip\":\"zulip-mobile\"": {
             "pkg:deb/debian/zulip-server": 1
@@ -19292,7 +19319,7 @@
             "pkg:deb/debian/fastdds": 6
         },
         "cpe:2.3:a:erlang:erlang\\/otp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/erlang": 57,
+            "pkg:deb/debian/erlang": 58,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
@@ -19302,7 +19329,7 @@
         "cpe:2.3:a:erlang:rebar3:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 3,
-            "pkg:deb/debian/rebar3": 3
+            "pkg:deb/debian/rebar3": 4
         },
         "cpe:2.3:a:es:iperf3:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/iperf3": 4
@@ -19431,8 +19458,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 121,
-            "pkg:deb/debian/freerdp3": 121
+            "pkg:deb/debian/freerdp2": 123,
+            "pkg:deb/debian/freerdp3": 123
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -21512,13 +21539,13 @@
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-5compat": 1,
             "pkg:deb/debian/qt6-base": 12,
-            "pkg:deb/debian/qt6-connectivity": 1,
+            "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 3,
             "pkg:deb/debian/qtbase-opensource-src": 11,
             "pkg:deb/debian/qtbase-opensource-src-gles": 6,
-            "pkg:deb/debian/qtconnectivity-opensource-src": 1,
+            "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src-gles": 1,
             "pkg:deb/debian/qtimageformats-opensource-src": 1,
@@ -22221,6 +22248,9 @@
         },
         "cpe:2.3:a:waveterm:waveterm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/waveterm": 1
+        },
+        "cpe:2.3:a:wbond:certvalidator:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/python-certvalidator": 1
         },
         "cpe:2.3:a:webassembly:binaryen:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/binaryen": 3
@@ -24728,7 +24758,7 @@
             "pkg:deb/debian/krb5": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libarchive-main\"": {
-            "pkg:deb/debian/libarchive": 8
+            "pkg:deb/debian/libarchive": 9
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libkcapi-main\"": {
             "pkg:deb/debian/libkcapi": 3
@@ -24741,6 +24771,9 @@
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libtiff-main\"": {
             "pkg:deb/debian/tiff": 4
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"libtirpc-main\"": {
+            "pkg:deb/debian/libtirpc": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libvpx\"": {
             "pkg:deb/debian/libvpx": 1
@@ -25280,14 +25313,14 @@
             "pkg:deb/debian/elixir-tesla": 5
         },
         "\"https://github.com\":\"erlang/otp\"": {
-            "pkg:deb/debian/erlang": 57,
+            "pkg:deb/debian/erlang": 58,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
         "\"https://github.com\":\"erlang/rebar3\"": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 3,
-            "pkg:deb/debian/rebar3": 3
+            "pkg:deb/debian/rebar3": 4
         },
         "\"https://github.com\":\"gleam-lang/gleam\"": {
             "pkg:deb/debian/gleam": 6
@@ -27862,6 +27895,9 @@
         "pkg:gem/thrift": {
             "pkg:deb/debian/thrift": 3
         },
+        "pkg:github/3proxy/3proxy": {
+            "pkg:deb/debian/3proxy": 1
+        },
         "pkg:github/Alinto/sogo": {
             "pkg:deb/debian/sogo": 1
         },
@@ -28000,14 +28036,14 @@
             "pkg:deb/debian/mp4v2": 1
         },
         "pkg:github/erlang/otp": {
-            "pkg:deb/debian/erlang": 57,
+            "pkg:deb/debian/erlang": 58,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:github/erlang/rebar3": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 3,
-            "pkg:deb/debian/rebar3": 3
+            "pkg:deb/debian/rebar3": 4
         },
         "pkg:github/esnet/iperf": {
             "pkg:deb/debian/iperf3": 1
@@ -28771,7 +28807,7 @@
         "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/rebar3": 2
         },
         "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
             "pkg:deb/debian/erlang-hex": 1,
@@ -28797,7 +28833,7 @@
             "pkg:deb/debian/erlang": 5
         },
         "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 5
+            "pkg:deb/debian/erlang": 6
         },
         "pkg:otp/stdlib": {
             "pkg:deb/debian/erlang": 1
@@ -28895,7 +28931,7 @@
             "pkg:deb/debian/xhtml2pdf": 1
         },
         "pkg:software-id/erlang.org/otp": {
-            "pkg:deb/debian/erlang": 32,
+            "pkg:deb/debian/erlang": 33,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },

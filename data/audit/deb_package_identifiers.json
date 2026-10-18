@@ -29,6 +29,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/3proxy": {
+        "VendorProductIDs": [
+            "\"3proxy\":\"3proxy\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/3proxy/3proxy"
+        ]
+    },
     "pkg:deb/debian/7zip": {
         "VendorProductIDs": [
             "\"7-zip\":\"7-zip\"",
@@ -568,7 +578,10 @@
             "\"@angular\":\"compiler\"",
             "\"@angular\":\"core\"",
             "\"@angular\":\"platform-server\"",
+            "\"@angular\":\"router\"",
+            "\"@angular/\":\"platform-server\"",
             "\"angular\":\"angular\"",
+            "\"angular\":\"devtools\"",
             "\"angularjs\":\"angular.js\"",
             "\"google\":\"angularjs\"",
             "\"n/a\":\"angular\"",
@@ -13303,6 +13316,10 @@
     },
     "pkg:deb/debian/libdigidocpp": {
         "VendorProductIDs": [
+            "\"digidoc\":\"digidoc android\"",
+            "\"digidoc\":\"digidoc ios\"",
+            "\"digidoc\":\"digidoc4\"",
+            "\"digidoc\":\"libdigidocpp\"",
             "\"estonian information system authority (ria)\":\"digidoc4\""
         ],
         "CPEs": null,
@@ -15452,7 +15469,8 @@
         ],
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtirpc\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtirpc\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"libtirpc-main\""
         ],
         "PackageURLs": null
     },
@@ -25543,6 +25561,16 @@
             "\"certifi\":\"python-certifi\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/python-certvalidator": {
+        "VendorProductIDs": [
+            "\"wbond\":\"certvalidator\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:wbond:certvalidator:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
