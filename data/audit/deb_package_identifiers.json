@@ -13344,6 +13344,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libdvdnav": {
+        "VendorProductIDs": [
+            "\"videolan\":\"libdvdnav\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libebml": {
         "VendorProductIDs": [
             "\"n/a\":\"libebml\""
@@ -14141,7 +14149,9 @@
             "cpe:2.3:a:liblas:liblas:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/libLAS/libLAS"
+        ]
     },
     "pkg:deb/debian/liblist-someutils-xs-perl": {
         "VendorProductIDs": [
@@ -14722,6 +14732,14 @@
     "pkg:deb/debian/libphp-phpmailer": {
         "VendorProductIDs": [
             "\"phpmailer\":\"phpmailer\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libphysfs": {
+        "VendorProductIDs": [
+            "\"icculus\":\"physicsfs\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -15369,6 +15387,14 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"String-Util\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libstrophe": {
+        "VendorProductIDs": [
+            "\"strophe\":\"libstrophe\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/libstruts1.2-java": {
@@ -16762,12 +16788,14 @@
     "pkg:deb/debian/lwip": {
         "VendorProductIDs": [
             "\"lwip\":\"lwip api\"",
+            "\"lwip\":\"lwip\"",
             "\"lwip\":\"tcp/ip stack mqtt\"",
             "\"n/a\":\"lwip\"",
             "\"savannah\":\"lwip smtp client\""
         ],
         "CPEs": [
-            "cpe:2.3:a:lwip:lwip:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:lwip:lwip:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:lwip_project:lwip:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -28005,6 +28033,14 @@
             "pkg:github/merbanan/rtl_433"
         ]
     },
+    "pkg:deb/debian/rtmpdump": {
+        "VendorProductIDs": [
+            "\"rtmpdump\":\"librtmp\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/rtpengine": {
         "VendorProductIDs": [
             "\"sipwise\":\"rtpengine\""
@@ -30041,6 +30077,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/schroedinger": {
+        "VendorProductIDs": [
+            "\"schroedinger\":\"schroedinger\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/schroot": {
         "VendorProductIDs": [
             "\"debian\":\"schroot\""
@@ -30596,6 +30640,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/snac2": {
+        "VendorProductIDs": [
+            "\"grunfink\":\"snac2\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/snakeyaml": {
         "VendorProductIDs": [
             "\"n/a\":\"org.yaml:snakeyaml\"",
@@ -30849,6 +30901,14 @@
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache spamassassin\"",
             "\"apache\":\"apache spamassassin\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/spatialite": {
+        "VendorProductIDs": [
+            "\"spatialite\":\"libspatialite\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -33967,6 +34027,14 @@
             "pkg:maven/org.apache.wss4j/wss4j-ws-security-policy-stax",
             "pkg:maven/org.apache.wss4j/wss4j-ws-security-stax"
         ]
+    },
+    "pkg:deb/debian/wv": {
+        "VendorProductIDs": [
+            "\"wvware\":\"wv\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
     },
     "pkg:deb/debian/wxwidgets3.2": {
         "VendorProductIDs": [

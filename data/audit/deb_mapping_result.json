@@ -6024,6 +6024,9 @@
         "\"grpc\":\"grpc-go\"": {
             "pkg:deb/debian/golang-google-grpc": 4
         },
+        "\"grunfink\":\"snac2\"": {
+            "pkg:deb/debian/snac2": 1
+        },
         "\"gruntjs\":\"gruntjs/grunt\"": {
             "pkg:deb/debian/grunt": 2
         },
@@ -6552,6 +6555,9 @@
         },
         "\"icalendar\":\"icalendar\"": {
             "pkg:deb/debian/ruby-icalendar": 1
+        },
+        "\"icculus\":\"physicsfs\"": {
+            "pkg:deb/debian/libphysfs": 1
         },
         "\"icedtea\":\"icedtea-web\"": {
             "pkg:deb/debian/icedtea-web": 3
@@ -7767,7 +7773,7 @@
             "pkg:deb/debian/jpeg-xl": 4
         },
         "\"liblas\":\"liblas\"": {
-            "pkg:deb/debian/liblas": 1
+            "pkg:deb/debian/liblas": 2
         },
         "\"liblouis\":\"liblouis\"": {
             "pkg:deb/debian/liblouis": 2
@@ -7989,7 +7995,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17402,
+            "pkg:deb/debian/linux": 17838,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8119,6 +8125,9 @@
             "pkg:deb/debian/lustre": 1
         },
         "\"lwip\":\"lwip api\"": {
+            "pkg:deb/debian/lwip": 1
+        },
+        "\"lwip\":\"lwip\"": {
             "pkg:deb/debian/lwip": 1
         },
         "\"lwip\":\"tcp/ip stack mqtt\"": {
@@ -13528,7 +13537,7 @@
             "pkg:deb/debian/openvswitch": 1
         },
         "\"ow2\":\"asm\"": {
-            "pkg:deb/debian/asm": 9
+            "pkg:deb/debian/asm": 10
         },
         "\"owasp esapi\":\"org.owasp.esapi:esapi\"": {
             "pkg:deb/debian/libowasp-esapi-java": 1
@@ -15287,6 +15296,9 @@
         "\"rsyslog\":\"rsyslog\"": {
             "pkg:deb/debian/rsyslog": 6
         },
+        "\"rtmpdump\":\"librtmp\"": {
+            "pkg:deb/debian/rtmpdump": 2
+        },
         "\"ruby grape\":\"ruby-grape ruby gem\"": {
             "pkg:deb/debian/ruby-grape": 1
         },
@@ -15583,6 +15595,9 @@
         "\"schedmd\":\"slurm\"": {
             "pkg:deb/debian/slurm-llnl": 1,
             "pkg:deb/debian/slurm-wlm": 2
+        },
+        "\"schroedinger\":\"schroedinger\"": {
+            "pkg:deb/debian/schroedinger": 2
         },
         "\"schwehr\":\"libais\"": {
             "pkg:deb/debian/python-libais": 1
@@ -16039,6 +16054,9 @@
         "\"sparklemotion\":\"sqlite3-ruby\"": {
             "pkg:deb/debian/ruby-sqlite3": 2
         },
+        "\"spatialite\":\"libspatialite\"": {
+            "pkg:deb/debian/spatialite": 2
+        },
         "\"spip\":\"spip\"": {
             "pkg:deb/debian/spip": 26
         },
@@ -16195,6 +16213,9 @@
             "pkg:deb/debian/isakmpd": 1,
             "pkg:deb/debian/libreswan": 1,
             "pkg:deb/debian/strongswan": 17
+        },
+        "\"strophe\":\"libstrophe\"": {
+            "pkg:deb/debian/libstrophe": 1
         },
         "\"struktur\":\"libde265\"": {
             "pkg:deb/debian/libde265": 2
@@ -17659,6 +17680,9 @@
         "\"videolan\":\"dav1d\"": {
             "pkg:deb/debian/dav1d": 1
         },
+        "\"videolan\":\"libdvdnav\"": {
+            "pkg:deb/debian/libdvdnav": 2
+        },
         "\"videolan\":\"vlc media player\"": {
             "pkg:deb/debian/vlc": 3
         },
@@ -18037,6 +18061,9 @@
         },
         "\"wummel\":\"patool\"": {
             "pkg:deb/debian/patool": 1
+        },
+        "\"wvware\":\"wv\"": {
+            "pkg:deb/debian/wv": 2
         },
         "\"www.restlet.org/\":\"restlet\"": {
             "pkg:deb/debian/restlet": 1
@@ -20276,7 +20303,7 @@
             "pkg:deb/debian/jpeg-xl": 1
         },
         "cpe:2.3:a:liblas:liblas:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/liblas": 1
+            "pkg:deb/debian/liblas": 2
         },
         "cpe:2.3:a:libming:libming:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ming": 5
@@ -20388,6 +20415,9 @@
             "pkg:deb/debian/lustre": 1
         },
         "cpe:2.3:a:lwip:lwip:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/lwip": 1
+        },
+        "cpe:2.3:a:lwip_project:lwip:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/lwip": 1
         },
         "cpe:2.3:a:mackron:dr_libs:*:*:*:*:*:*:*:*": {
@@ -22616,7 +22646,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17394
+            "pkg:deb/debian/linux": 17830
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -28110,6 +28140,9 @@
         "pkg:github/kyz/libmspack": {
             "pkg:deb/debian/libmspack": 1
         },
+        "pkg:github/libLAS/libLAS": {
+            "pkg:deb/debian/liblas": 1
+        },
         "pkg:github/libexpat/libexpat": {
             "pkg:deb/debian/expat": 4
         },
@@ -28596,7 +28629,7 @@
             "pkg:deb/debian/openrefine": 1
         },
         "pkg:maven/org.ow2.asm/asm": {
-            "pkg:deb/debian/asm": 6
+            "pkg:deb/debian/asm": 7
         },
         "pkg:maven/org.ow2.asm/asm-analysis": {
             "pkg:deb/debian/asm": 1
