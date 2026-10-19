@@ -11927,8 +11927,8 @@
         },
         "\"nic\":\"bird\"": {
             "pkg:deb/debian/bird": 1,
-            "pkg:deb/debian/bird2": 1,
-            "pkg:deb/debian/bird3": 1
+            "pkg:deb/debian/bird2": 2,
+            "pkg:deb/debian/bird3": 2
         },
         "\"nic\":\"knot resolver\"": {
             "pkg:deb/debian/knot-resolver": 1
@@ -14647,7 +14647,7 @@
             "pkg:deb/debian/radare2": 4
         },
         "\"radareorg\":\"radare2\"": {
-            "pkg:deb/debian/radare2": 26
+            "pkg:deb/debian/radare2": 27
         },
         "\"radareorg\":\"radareorg/radare2\"": {
             "pkg:deb/debian/radare2": 42
@@ -20796,8 +20796,8 @@
         },
         "cpe:2.3:a:nic:bird:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/bird": 1,
-            "pkg:deb/debian/bird2": 1,
-            "pkg:deb/debian/bird3": 1
+            "pkg:deb/debian/bird2": 2,
+            "pkg:deb/debian/bird3": 2
         },
         "cpe:2.3:a:nic:knot_resolver:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/knot-resolver": 2
@@ -21627,7 +21627,7 @@
             "pkg:deb/debian/radare2": 10
         },
         "cpe:2.3:a:radareorg:radare2:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/radare2": 9
+            "pkg:deb/debian/radare2": 10
         },
         "cpe:2.3:a:rails:rails:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rails": 5
