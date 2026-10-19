@@ -2191,7 +2191,7 @@
             "pkg:deb/debian/ghostscript": 1
         },
         "\"artifex\":\"mupdf\"": {
-            "pkg:deb/debian/mupdf": 4
+            "pkg:deb/debian/mupdf": 5
         },
         "\"artifexsoftware\":\"mupdf\"": {
             "pkg:deb/debian/mupdf": 1
@@ -18870,7 +18870,7 @@
             "pkg:deb/debian/mujs": 1
         },
         "cpe:2.3:a:artifex:mupdf:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/mupdf": 7
+            "pkg:deb/debian/mupdf": 8
         },
         "cpe:2.3:a:artifex_software_inc.:ghostscript:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghostscript": 1
@@ -23087,7 +23087,7 @@
             "pkg:deb/debian/gimp": 66
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
-            "pkg:deb/debian/gimp": 12
+            "pkg:deb/debian/gimp": 16
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"glib-networking\"": {
             "pkg:deb/debian/glib-networking": 3
@@ -23685,16 +23685,19 @@
             "pkg:deb/debian/ovn": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ovn24.03\"": {
-            "pkg:deb/debian/ovn": 3
+            "pkg:deb/debian/ovn": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ovn24.09\"": {
-            "pkg:deb/debian/ovn": 3
+            "pkg:deb/debian/ovn": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ovn25.03\"": {
-            "pkg:deb/debian/ovn": 2
+            "pkg:deb/debian/ovn": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ovn25.09\"": {
-            "pkg:deb/debian/ovn": 2
+            "pkg:deb/debian/ovn": 3
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"ovn26.03\"": {
+            "pkg:deb/debian/ovn": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"p11-kit\"": {
             "pkg:deb/debian/p11-kit": 3
