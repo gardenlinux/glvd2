@@ -3476,6 +3476,9 @@
         "\"dietlibc\":\"dietlibc\"": {
             "pkg:deb/debian/dietlibc": 1
         },
+        "\"diffsk\":\"configobj\"": {
+            "pkg:deb/debian/configobj": 1
+        },
         "\"digidoc\":\"digidoc android\"": {
             "pkg:deb/debian/libdigidocpp": 1
         },
@@ -4161,7 +4164,7 @@
             "pkg:deb/debian/falconpl": 1
         },
         "\"fast-uri\":\"fast-uri\"": {
-            "pkg:deb/debian/node-ajv": 13
+            "pkg:deb/debian/node-ajv": 14
         },
         "\"fastcgi\":\"fcgi\"": {
             "pkg:deb/debian/libfcgi": 1
@@ -4965,6 +4968,9 @@
         },
         "\"gnu project\":\"gnu libbmicrohttpd\"": {
             "pkg:deb/debian/libmicrohttpd": 2
+        },
+        "\"gnu project\":\"unrtf\"": {
+            "pkg:deb/debian/unrtf": 1
         },
         "\"gnu project\":\"wget\"": {
             "pkg:deb/debian/wget": 2
@@ -8004,7 +8010,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17834,
+            "pkg:deb/debian/linux": 17833,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8232,7 +8238,7 @@
             "pkg:deb/debian/node-object-path": 1
         },
         "\"markdown-it\":\"markdown-it\"": {
-            "pkg:deb/debian/node-markdown-it": 4
+            "pkg:deb/debian/node-markdown-it": 5
         },
         "\"markdown-to-jsx\":\"markdown-to-jsx\"": {
             "pkg:deb/debian/node-markdown-to-jsx": 1
@@ -11980,6 +11986,9 @@
             "pkg:deb/debian/erlang-cowlib": 6,
             "pkg:deb/debian/rabbitmq-server": 1
         },
+        "\"ning\":\"compress-lzf\"": {
+            "pkg:deb/debian/compress-lzf": 1
+        },
         "\"nip2_project\":\"nip2\"": {
             "pkg:deb/debian/nip2": 1
         },
@@ -14447,7 +14456,7 @@
             "pkg:deb/debian/python-mechanize": 1
         },
         "\"python-pillow\":\"pillow\"": {
-            "pkg:deb/debian/pillow": 37
+            "pkg:deb/debian/pillow": 47
         },
         "\"python-poetry\":\"poetry\"": {
             "pkg:deb/debian/poetry": 2,
@@ -17254,7 +17263,7 @@
             "pkg:deb/debian/trac": 1
         },
         "\"traefik\":\"traefik\"": {
-            "pkg:deb/debian/traefik": 66
+            "pkg:deb/debian/traefik": 67
         },
         "\"trailofbits\":\"rfc3161-client\"": {
             "pkg:deb/debian/python-rfc3161-client": 1
@@ -19245,6 +19254,9 @@
         "cpe:2.3:a:dhcpcd_project:dhcpcd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/dhcpcd": 4,
             "pkg:deb/debian/dhcpcd5": 1
+        },
+        "cpe:2.3:a:diffsk:configobj:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/configobj": 1
         },
         "cpe:2.3:a:digitalbazaar:forge:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-node-forge": 1
@@ -22198,7 +22210,7 @@
             "pkg:deb/debian/tpm2-tss": 1
         },
         "cpe:2.3:a:traefik:traefik:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/traefik": 13
+            "pkg:deb/debian/traefik": 14
         },
         "cpe:2.3:a:traefik:traefik_enterprise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/traefik": 1
@@ -22703,7 +22715,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17826
+            "pkg:deb/debian/linux": 17825
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -23141,7 +23153,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 67
+            "pkg:deb/debian/gimp": 71
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 16
@@ -28493,10 +28505,10 @@
             "pkg:deb/debian/traefik": 1
         },
         "pkg:golang/github.com/traefik/traefik/v2": {
-            "pkg:deb/debian/traefik": 5
+            "pkg:deb/debian/traefik": 6
         },
         "pkg:golang/github.com/traefik/traefik/v3": {
-            "pkg:deb/debian/traefik": 11
+            "pkg:deb/debian/traefik": 12
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1
@@ -28522,6 +28534,9 @@
         },
         "pkg:maven/com.github.luben/zstd-jni": {
             "pkg:deb/debian/zstd-jni-java": 8
+        },
+        "pkg:maven/com.ning/compress-lzf": {
+            "pkg:deb/debian/compress-lzf": 1
         },
         "pkg:maven/io.netty/netty-codec-classes-quic": {
             "pkg:deb/debian/netty": 1
@@ -28740,7 +28755,7 @@
             "pkg:deb/debian/node-extract-zip": 1
         },
         "pkg:npm/fast-uri": {
-            "pkg:deb/debian/node-ajv": 13
+            "pkg:deb/debian/node-ajv": 14
         },
         "pkg:npm/ghost": {
             "pkg:deb/debian/ghost": 34

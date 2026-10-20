@@ -3106,6 +3106,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/compress-lzf": {
+        "VendorProductIDs": [
+            "\"ning\":\"compress-lzf\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:maven/com.ning/compress-lzf"
+        ]
+    },
     "pkg:deb/debian/condor": {
         "VendorProductIDs": [
             "\"condor\":\"condor\"",
@@ -3120,9 +3130,12 @@
     },
     "pkg:deb/debian/configobj": {
         "VendorProductIDs": [
+            "\"diffsk\":\"configobj\"",
             "\"n/a\":\"configobj\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:diffsk:configobj:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -32840,6 +32853,14 @@
         "CPEs": [
             "cpe:2.3:a:unrealircd:unrealircd:*:*:*:*:*:*:*:*"
         ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/unrtf": {
+        "VendorProductIDs": [
+            "\"gnu project\":\"unrtf\""
+        ],
+        "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
     },
