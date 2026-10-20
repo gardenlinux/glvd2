@@ -12019,6 +12019,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-rest-admin-ui-ext\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-services\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak-keycloak-parent\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak/keycloak-policy-enforcer\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"rh-sso7-keycloak\"",
             "\"https://bitbucket.org/b_c/jose4j/src/master/\":\"keycloak-core\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak\"",
@@ -12730,9 +12731,12 @@
     },
     "pkg:deb/debian/libbluray": {
         "VendorProductIDs": [
-            "\"libbluray\":\"libbluray\""
+            "\"libbluray\":\"libbluray\"",
+            "\"videolan\":\"libbluray\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:videolan:libbluray:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -13024,7 +13028,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Cpanel-JSON-XS\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/Cpanel-JSON-XS"
+        ]
     },
     "pkg:deb/debian/libcrypt-argon2-perl": {
         "VendorProductIDs": [
@@ -14258,6 +14264,14 @@
             "pkg:maven/org.apache.sshd/sshd-scp",
             "pkg:maven/org.apache.sshd/sshd-sftp"
         ]
+    },
+    "pkg:deb/debian/libmng": {
+        "VendorProductIDs": [
+            "\"libmng\":\"libmng\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
     },
     "pkg:deb/debian/libmobi": {
         "VendorProductIDs": [
@@ -15499,6 +15513,14 @@
             "pkg:cpan/Tie-Hash-Regex"
         ]
     },
+    "pkg:deb/debian/libtins": {
+        "VendorProductIDs": [
+            "\"libtins\":\"libtins\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libtirpc": {
         "VendorProductIDs": [
             "\"[unknown]\":\"libtirpc\""
@@ -16687,14 +16709,6 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
-    "pkg:deb/debian/lomiri-upload-manager": {
-        "VendorProductIDs": [
-            "\"ubports\":\"lomiri-download-manager\""
-        ],
-        "CPEs": null,
-        "PackageIDs": null,
-        "PackageURLs": null
-    },
     "pkg:deb/debian/lookatme": {
         "VendorProductIDs": [
             "\"d0c-s4vage\":\"lookatme\""
@@ -17566,12 +17580,14 @@
         "VendorProductIDs": [
             "\"misp\":\"misp\"",
             "\"misp\":\"misp-stix\"",
-            "\"misp\":\"sachertortephp\""
+            "\"misp\":\"sachertortephp\"",
+            "\"webkul\":\"aureus erp\""
         ],
         "CPEs": [
             "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:misp:sachertortephp_\\(cakephp-based_misp_application\\):*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:misp:sachertortephp_\\(cakephp-based_misp_application\\):*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:webkul:aureus_erp:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -17917,6 +17933,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/mopidy": {
+        "VendorProductIDs": [
+            "\"mopidy\":\"mopidy\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:mopidy:mopidy:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:pypi/mopidy"
+        ]
+    },
     "pkg:deb/debian/mosquitto": {
         "VendorProductIDs": [
             "\"eclipse foundation\":\"mosquitto\"",
@@ -18210,9 +18238,11 @@
     "pkg:deb/debian/mxml": {
         "VendorProductIDs": [
             "\"michael r sweet\":\"mini-xml\"",
+            "\"michaelrsweet\":\"mxml\"",
             "\"n/a\":\"mxml\""
         ],
         "CPEs": [
+            "cpe:2.3:a:michaelrsweet:mxml:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:mini-xml_project:mini-xml:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
@@ -18695,7 +18725,9 @@
         "VendorProductIDs": [
             "\"netpbm\":\"netpbm\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:netpbm_project:netpbm:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -19141,9 +19173,13 @@
         "VendorProductIDs": [
             "\"micromatch\":\"picomatch\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:jonschlinkert:picomatch:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:npm/picomatch"
+        ]
     },
     "pkg:deb/debian/node-axios": {
         "VendorProductIDs": [
@@ -19709,7 +19745,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:npm/ip-address"
+        ]
     },
     "pkg:deb/debian/node-jison": {
         "VendorProductIDs": [
@@ -26142,6 +26180,18 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-opentelemetry": {
+        "VendorProductIDs": [
+            "\"opentelemetry\":\"opentelemetry-exporter-otlp-proto-http\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:opentelemetry:opentelemetry.exporter.opentelemetryprotocol:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:pypi/opentelemetry-exporter-otlp-proto-http"
+        ]
+    },
     "pkg:deb/debian/python-orjson": {
         "VendorProductIDs": [
             "\"orjson\":\"orjson\""
@@ -26977,7 +27027,8 @@
             "\"qt\":\"qt\""
         ],
         "CPEs": [
-            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:qt:qtsvg:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -27074,7 +27125,8 @@
             "\"qt\":\"qt\""
         ],
         "CPEs": [
-            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:qt:qtsvg:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -27439,9 +27491,13 @@
             "\"check point software technologies ltd.\":\"rdesktop\"",
             "\"rdesktop\":\"rdesktop\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:rdesktop:rdesktop:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/rdesktop/rdesktop"
+        ]
     },
     "pkg:deb/debian/rdf4j": {
         "VendorProductIDs": [
@@ -30078,6 +30134,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/schism": {
+        "VendorProductIDs": [
+            "\"schismtracker\":\"schism tracker\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:schismtracker:schism_tracker:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/schismtracker/schismtracker"
+        ]
+    },
     "pkg:deb/debian/schroedinger": {
         "VendorProductIDs": [
             "\"schroedinger\":\"schroedinger\""
@@ -30633,6 +30701,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/smpeg": {
+        "VendorProductIDs": [
+            "\"icculus\":\"smpeg\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/icculus/smpeg"
+        ]
+    },
     "pkg:deb/debian/smplayer": {
         "VendorProductIDs": [
             "\"cesanta\":\"mongoose\""
@@ -31036,7 +31114,9 @@
         "PackageIDs": [
             "\"https://pypi.org/project/pip\":\"sqlparse\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/sqlparse"
+        ]
     },
     "pkg:deb/debian/squid": {
         "VendorProductIDs": [
