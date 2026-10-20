@@ -376,7 +376,7 @@
             "pkg:deb/debian/pycares": 1
         },
         "\"aio-libs\":\"aiohttp\"": {
-            "pkg:deb/debian/python-aiohttp": 46
+            "pkg:deb/debian/python-aiohttp": 53
         },
         "\"aio-libs\":\"aiomysql\"": {
             "pkg:deb/debian/aiomysql": 1
@@ -4332,7 +4332,7 @@
             "pkg:deb/debian/fluidsynth": 9
         },
         "\"follow-redirects\":\"follow-redirects\"": {
-            "pkg:deb/debian/node-follow-redirects": 2
+            "pkg:deb/debian/node-follow-redirects": 3
         },
         "\"follow-redirects\":\"follow-redirects/follow-redirects\"": {
             "pkg:deb/debian/node-follow-redirects": 2
@@ -14447,7 +14447,7 @@
             "pkg:deb/debian/python-mechanize": 1
         },
         "\"python-pillow\":\"pillow\"": {
-            "pkg:deb/debian/pillow": 20
+            "pkg:deb/debian/pillow": 37
         },
         "\"python-poetry\":\"poetry\"": {
             "pkg:deb/debian/poetry": 2,
@@ -15273,7 +15273,7 @@
             "pkg:deb/debian/roundcube": 1
         },
         "\"roundcube\":\"webmail\"": {
-            "pkg:deb/debian/roundcube": 41
+            "pkg:deb/debian/roundcube": 42
         },
         "\"roundup\":\"roundup\"": {
             "pkg:deb/debian/roundup": 1
@@ -21798,7 +21798,7 @@
             "pkg:deb/debian/roundcube": 2
         },
         "cpe:2.3:a:roundcube:webmail:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/roundcube": 34
+            "pkg:deb/debian/roundcube": 35
         },
         "cpe:2.3:a:roundup-tracker:roundup:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/roundup": 1
