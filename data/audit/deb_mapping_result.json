@@ -1325,7 +1325,7 @@
             "pkg:deb/debian/commons-vfs": 2
         },
         "\"apache software foundation\":\"apache couchdb\"": {
-            "pkg:deb/debian/couchdb": 9
+            "pkg:deb/debian/couchdb": 14
         },
         "\"apache software foundation\":\"apache derby\"": {
             "pkg:deb/debian/derby": 3
@@ -5190,13 +5190,14 @@
         "\"go standard library\":\"crypto/x509\"": {
             "pkg:deb/debian/golang-1.11": 1,
             "pkg:deb/debian/golang-1.15": 14,
-            "pkg:deb/debian/golang-1.19": 14,
+            "pkg:deb/debian/golang-1.19": 15,
             "pkg:deb/debian/golang-1.21": 1,
             "pkg:deb/debian/golang-1.22": 3,
             "pkg:deb/debian/golang-1.23": 5,
-            "pkg:deb/debian/golang-1.24": 13,
-            "pkg:deb/debian/golang-1.25": 10,
-            "pkg:deb/debian/golang-1.26": 6
+            "pkg:deb/debian/golang-1.24": 14,
+            "pkg:deb/debian/golang-1.25": 11,
+            "pkg:deb/debian/golang-1.26": 7,
+            "pkg:deb/debian/golang-1.27": 1
         },
         "\"go standard library\":\"database/sql\"": {
             "pkg:deb/debian/golang-1.15": 1,
@@ -8238,7 +8239,7 @@
             "pkg:deb/debian/node-object-path": 1
         },
         "\"markdown-it\":\"markdown-it\"": {
-            "pkg:deb/debian/node-markdown-it": 5
+            "pkg:deb/debian/node-markdown-it": 6
         },
         "\"markdown-to-jsx\":\"markdown-to-jsx\"": {
             "pkg:deb/debian/node-markdown-to-jsx": 1
@@ -13781,8 +13782,8 @@
             "pkg:deb/debian/php7.4": 75,
             "pkg:deb/debian/php8.0": 7,
             "pkg:deb/debian/php8.1": 9,
-            "pkg:deb/debian/php8.2": 59,
-            "pkg:deb/debian/php8.4": 36
+            "pkg:deb/debian/php8.2": 61,
+            "pkg:deb/debian/php8.4": 38
         },
         "\"php\":\"archive_tar\"": {
             "pkg:deb/debian/php7.3": 1,
@@ -23347,6 +23348,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libkcapi\"": {
             "pkg:deb/debian/libkcapi": 3
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"libmodulemd\"": {
+            "pkg:deb/debian/libmodulemd": 3
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libnbd\"": {
             "pkg:deb/debian/libnbd": 4
         },
@@ -23667,7 +23671,7 @@
             "pkg:deb/debian/opensc": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssh\"": {
-            "pkg:deb/debian/openssh": 10
+            "pkg:deb/debian/openssh": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssh-main\"": {
             "pkg:deb/debian/openssh": 1
@@ -24923,7 +24927,7 @@
             "pkg:deb/debian/lvm2": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"openssh-main\"": {
-            "pkg:deb/debian/openssh": 4
+            "pkg:deb/debian/openssh": 3
         },
         "\"https://catalog.redhat.com/software/containers/\":\"openstack-nova\"": {
             "pkg:deb/debian/nova": 1
@@ -26443,13 +26447,14 @@
         "\"https://pkg.go.dev\":\"crypto/x509\"": {
             "pkg:deb/debian/golang-1.11": 1,
             "pkg:deb/debian/golang-1.15": 14,
-            "pkg:deb/debian/golang-1.19": 14,
+            "pkg:deb/debian/golang-1.19": 15,
             "pkg:deb/debian/golang-1.21": 1,
             "pkg:deb/debian/golang-1.22": 3,
             "pkg:deb/debian/golang-1.23": 5,
-            "pkg:deb/debian/golang-1.24": 13,
-            "pkg:deb/debian/golang-1.25": 10,
-            "pkg:deb/debian/golang-1.26": 6
+            "pkg:deb/debian/golang-1.24": 14,
+            "pkg:deb/debian/golang-1.25": 11,
+            "pkg:deb/debian/golang-1.26": 7,
+            "pkg:deb/debian/golang-1.27": 1
         },
         "\"https://pkg.go.dev\":\"database/sql\"": {
             "pkg:deb/debian/golang-1.15": 1,

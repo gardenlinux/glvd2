@@ -7921,6 +7921,7 @@
     "pkg:deb/debian/golang-1.27": {
         "VendorProductIDs": [
             "\"go standard library\":\"crypto/tls\"",
+            "\"go standard library\":\"crypto/x509\"",
             "\"go standard library\":\"encoding/asn1\"",
             "\"go standard library\":\"encoding/xml\"",
             "\"go standard library\":\"html/template\"",
@@ -7941,6 +7942,7 @@
         "PackageIDs": [
             "\"https://pkg.go.dev\":\"cmd/go\"",
             "\"https://pkg.go.dev\":\"crypto/tls\"",
+            "\"https://pkg.go.dev\":\"crypto/x509\"",
             "\"https://pkg.go.dev\":\"encoding/asn1\"",
             "\"https://pkg.go.dev\":\"encoding/xml\"",
             "\"https://pkg.go.dev\":\"golang.org/x/mod/sumdb\"",
@@ -14339,6 +14341,14 @@
             "cpe:2.3:a:module_scandeps:needrestart:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libmodulemd": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libmodulemd\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/libmojo-jwt-perl": {
