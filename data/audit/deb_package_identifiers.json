@@ -2675,9 +2675,12 @@
         "VendorProductIDs": [
             "\"n/a\":\"openstack\"",
             "\"openstack foundation\":\"openstack-cinder\"",
+            "\"openstack\":\"cinder\"",
             "\"red hat\":\"openstack-cinder\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:openstack:cinder:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -13937,11 +13940,13 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Imager\"",
+            "\"https://cpan.org/modules\":\"Imager-File-GIF\"",
             "\"https://cpan.org/modules\":\"Imager-File-JPEG\"",
             "\"https://cpan.org/modules\":\"Imager-File-PNG\""
         ],
         "PackageURLs": [
             "pkg:cpan/Imager",
+            "pkg:cpan/Imager-File-GIF",
             "pkg:cpan/Imager-File-PNG"
         ]
     },
@@ -14367,6 +14372,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libmozilla-ca-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Mozilla-CA\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Mozilla-CA"
+        ]
     },
     "pkg:deb/debian/libmseed": {
         "VendorProductIDs": [
@@ -16970,6 +16985,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/manila": {
+        "VendorProductIDs": [
+            "\"openstack\":\"manila\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:openstack:manila:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/mantis": {
         "VendorProductIDs": [
             "\"mantis\":\"mantis\"",
@@ -17029,7 +17054,11 @@
             "\"oracle corporation\":\"mysql server\""
         ],
         "CPEs": [
+            "cpe:2.3:a:amazon:aurora_mysql:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:amazon:rds_for_mariadb:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:amazon:rds_for_mysql:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:mariadb_foundation:mariadb_server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:mysql_client:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*"

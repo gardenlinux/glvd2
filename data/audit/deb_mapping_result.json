@@ -1588,13 +1588,13 @@
         },
         "\"apache software foundation\":\"apache tomcat\"": {
             "pkg:deb/debian/libcommons-fileupload-java": 1,
-            "pkg:deb/debian/tomcat10": 85,
-            "pkg:deb/debian/tomcat11": 65,
+            "pkg:deb/debian/tomcat10": 91,
+            "pkg:deb/debian/tomcat11": 72,
             "pkg:deb/debian/tomcat6": 13,
             "pkg:deb/debian/tomcat7": 29,
             "pkg:deb/debian/tomcat8": 50,
             "pkg:deb/debian/tomcat8.0": 9,
-            "pkg:deb/debian/tomcat9": 124
+            "pkg:deb/debian/tomcat9": 131
         },
         "\"apache software foundation\":\"apache traffic server\"": {
             "pkg:deb/debian/trafficserver": 96
@@ -3258,7 +3258,7 @@
             "pkg:deb/debian/node-dompurify": 29
         },
         "\"curl\":\"curl\"": {
-            "pkg:deb/debian/curl": 75
+            "pkg:deb/debian/curl": 98
         },
         "\"curl\":\"libcurl\"": {
             "pkg:deb/debian/curl": 2
@@ -4053,7 +4053,7 @@
             "pkg:deb/debian/ettercap": 1
         },
         "\"eugeny\":\"russh\"": {
-            "pkg:deb/debian/rust-russh": 19,
+            "pkg:deb/debian/rust-russh": 20,
             "pkg:deb/debian/rust-russh-cryptovec": 1
         },
         "\"eventlet\":\"eventlet\"": {
@@ -4285,7 +4285,7 @@
             "pkg:deb/debian/flask-security": 1
         },
         "\"flatpak\":\"flatpak\"": {
-            "pkg:deb/debian/flatpak": 14
+            "pkg:deb/debian/flatpak": 15
         },
         "\"flatpak\":\"flatpak-builder\"": {
             "pkg:deb/debian/flatpak-builder": 1
@@ -13127,6 +13127,9 @@
         "\"openstack\":\"blazar\"": {
             "pkg:deb/debian/blazar": 2
         },
+        "\"openstack\":\"cinder\"": {
+            "pkg:deb/debian/cinder": 1
+        },
         "\"openstack\":\"compute\"": {
             "pkg:deb/debian/keystone": 1,
             "pkg:deb/debian/swift": 1
@@ -13159,6 +13162,9 @@
         },
         "\"openstack\":\"keystonemiddleware\"": {
             "pkg:deb/debian/python-keystonemiddleware": 1
+        },
+        "\"openstack\":\"manila\"": {
+            "pkg:deb/debian/manila": 1
         },
         "\"openstack\":\"mistral\"": {
             "pkg:deb/debian/mistral": 5
@@ -17239,7 +17245,7 @@
             "pkg:deb/debian/yasm": 2
         },
         "\"tox-dev\":\"filelock\"": {
-            "pkg:deb/debian/python-filelock": 2
+            "pkg:deb/debian/python-filelock": 15
         },
         "\"tpm 2.0 tools\":\"tpm2-tools\"": {
             "pkg:deb/debian/tpm2-tools": 1
@@ -18615,6 +18621,15 @@
         },
         "cpe:2.3:a:alsa-project:alsa-lib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/alsa-lib": 5
+        },
+        "cpe:2.3:a:amazon:aurora_mysql:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mariadb": 1
+        },
+        "cpe:2.3:a:amazon:rds_for_mariadb:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mariadb": 1
+        },
+        "cpe:2.3:a:amazon:rds_for_mysql:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mariadb": 1
         },
         "cpe:2.3:a:amd:athlon_3000_series_mobile_processors_with_radeon_graphics:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -20474,6 +20489,9 @@
             "pkg:deb/debian/mariadb": 1,
             "pkg:deb/debian/mariadb-10.5": 1
         },
+        "cpe:2.3:a:mariadb_foundation:mariadb_server:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mariadb": 1
+        },
         "cpe:2.3:a:markdown-it:markdown-it:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-markdown-it": 1
         },
@@ -21163,6 +21181,9 @@
         "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openssl": 6
         },
+        "cpe:2.3:a:openstack:cinder:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/cinder": 1
+        },
         "cpe:2.3:a:openstack:designate:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/designate": 2
         },
@@ -21183,6 +21204,9 @@
         },
         "cpe:2.3:a:openstack:keystonemiddleware:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/python-keystonemiddleware": 1
+        },
+        "cpe:2.3:a:openstack:manila:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/manila": 1
         },
         "cpe:2.3:a:openstack:neutron:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/neutron": 4
@@ -25073,7 +25097,7 @@
             "pkg:deb/debian/libdbd-pg-perl": 1
         },
         "\"https://cpan.org/modules\":\"DBI\"": {
-            "pkg:deb/debian/libdbi-perl": 14
+            "pkg:deb/debian/libdbi-perl": 16
         },
         "\"https://cpan.org/modules\":\"DBIx-Class-EncodedColumn\"": {
             "pkg:deb/debian/libdbix-class-encodedcolumn-perl": 2
@@ -25141,7 +25165,10 @@
             "pkg:deb/debian/libio-compress-brotli-perl": 1
         },
         "\"https://cpan.org/modules\":\"Imager\"": {
-            "pkg:deb/debian/libimager-perl": 10
+            "pkg:deb/debian/libimager-perl": 11
+        },
+        "\"https://cpan.org/modules\":\"Imager-File-GIF\"": {
+            "pkg:deb/debian/libimager-perl": 1
         },
         "\"https://cpan.org/modules\":\"Imager-File-JPEG\"": {
             "pkg:deb/debian/libimager-perl": 1
@@ -25172,6 +25199,9 @@
         },
         "\"https://cpan.org/modules\":\"Mojolicious\"": {
             "pkg:deb/debian/libmojolicious-perl": 4
+        },
+        "\"https://cpan.org/modules\":\"Mozilla-CA\"": {
+            "pkg:deb/debian/libmozilla-ca-perl": 1
         },
         "\"https://cpan.org/modules\":\"Net-CIDR\"": {
             "pkg:deb/debian/libnet-cidr-perl": 1
@@ -27915,7 +27945,7 @@
             "pkg:deb/debian/libdbd-pg-perl": 1
         },
         "pkg:cpan/DBI": {
-            "pkg:deb/debian/libdbi-perl": 6
+            "pkg:deb/debian/libdbi-perl": 8
         },
         "pkg:cpan/Dancer2": {
             "pkg:deb/debian/libdancer2-perl": 5
@@ -27936,7 +27966,10 @@
             "pkg:deb/debian/libhtml-formhandler-perl": 5
         },
         "pkg:cpan/Imager": {
-            "pkg:deb/debian/libimager-perl": 6
+            "pkg:deb/debian/libimager-perl": 7
+        },
+        "pkg:cpan/Imager-File-GIF": {
+            "pkg:deb/debian/libimager-perl": 1
         },
         "pkg:cpan/Imager-File-PNG": {
             "pkg:deb/debian/libimager-perl": 1
@@ -27946,6 +27979,9 @@
         },
         "pkg:cpan/Lemonldap-NG-Portal": {
             "pkg:deb/debian/lemonldap-ng": 3
+        },
+        "pkg:cpan/Mozilla-CA": {
+            "pkg:deb/debian/libmozilla-ca-perl": 1
         },
         "pkg:cpan/Net-DNS": {
             "pkg:deb/debian/libnet-dns-perl": 1
