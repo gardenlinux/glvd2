@@ -22256,6 +22256,7 @@
             "\"oracle corporation\":\"oracle graalvm for jdk\"",
             "\"oracle corporation\":\"oracle java se\"",
             "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle javafx\"",
             "\"oracle\":\"graalvm\"",
             "\"oracle\":\"graalvm_enterprise_edition\"",
             "\"oracle\":\"graalvm_for_jdk\"",
@@ -22273,6 +22274,7 @@
             "cpe:2.3:a:oracle:graalvm_enterprise_edition:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jre:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:openjdk:*:*:*:*:*:*:*:*",
@@ -22325,6 +22327,7 @@
             "\"oracle corporation\":\"oracle graalvm for jdk\"",
             "\"oracle corporation\":\"oracle java se\"",
             "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle javafx\"",
             "\"oracle\":\"graalvm\"",
             "\"oracle\":\"graalvm_enterprise_edition\"",
             "\"oracle\":\"graalvm_for_jdk\"",
@@ -22342,6 +22345,7 @@
             "cpe:2.3:a:oracle:graalvm_enterprise_edition:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jre:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:openjdk:*:*:*:*:*:*:*:*",
@@ -22383,6 +22387,7 @@
             "\"oracle corporation\":\"oracle graalvm for jdk\"",
             "\"oracle corporation\":\"oracle java se\"",
             "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle javafx\"",
             "\"oracle\":\"graalvm_enterprise_edition\"",
             "\"oracle\":\"graalvm_for_jdk\"",
             "\"oracle\":\"java_se\"",
@@ -22398,6 +22403,7 @@
             "cpe:2.3:a:oracle:graalvm_enterprise_edition:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jre:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:openjdk:*:*:*:*:*:*:*:*",
@@ -22441,6 +22447,7 @@
             "\"oracle corporation\":\"oracle graalvm for jdk\"",
             "\"oracle corporation\":\"oracle java se\"",
             "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle javafx\"",
             "\"red hat\":\"openjdk els 11.0.30\"",
             "\"red hat\":\"temurin build of openjdk 25.0.2\"",
             "\"red hat\":\"temurin build of openjdk 25.0.3\""
@@ -22450,6 +22457,7 @@
             "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:openjdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:openjdk_els:*:*:*:*:*:*:*:*"
         ],
@@ -22469,6 +22477,16 @@
             "cpe:2.3:a:littlecms:little_cms_color_engine:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/openjdk-27": {
+        "VendorProductIDs": [
+            "\"oracle corporation\":\"oracle java se\""
+        ],
+        "CPEs": [
             "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
@@ -22515,6 +22533,7 @@
             "\"oracle corporation\":\"oracle graalvm for jdk\"",
             "\"oracle corporation\":\"oracle java se\"",
             "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle javafx\"",
             "\"oracle\":\"graalvm\"",
             "\"oracle\":\"graalvm_enterprise_edition\"",
             "\"oracle\":\"graalvm_for_jdk\"",
@@ -22536,6 +22555,7 @@
             "cpe:2.3:a:oracle:graalvm_enterprise_edition:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:jre:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:oracle:openjdk:*:*:*:*:*:*:*:*",
@@ -22557,11 +22577,14 @@
         "VendorProductIDs": [
             "\"oracle corporation\":\"java se jdk and jre\"",
             "\"oracle corporation\":\"java\"",
-            "\"oracle corporation\":\"oracle java se\""
+            "\"oracle corporation\":\"oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle java se\"",
+            "\"oracle corporation\":\"oracle javafx\""
         ],
         "CPEs": [
             "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -27868,6 +27891,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/rex": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Rex\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Rex"
+        ]
     },
     "pkg:deb/debian/rexical": {
         "VendorProductIDs": [

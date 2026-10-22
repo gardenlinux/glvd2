@@ -1597,7 +1597,7 @@
             "pkg:deb/debian/tomcat9": 131
         },
         "\"apache software foundation\":\"apache traffic server\"": {
-            "pkg:deb/debian/trafficserver": 96
+            "pkg:deb/debian/trafficserver": 111
         },
         "\"apache software foundation\":\"apache uima\"": {
             "pkg:deb/debian/uimaj": 1
@@ -4437,8 +4437,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 266,
-            "pkg:deb/debian/freerdp3": 205
+            "pkg:deb/debian/freerdp2": 273,
+            "pkg:deb/debian/freerdp3": 212
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -6017,7 +6017,7 @@
             "pkg:deb/debian/grocy": 2
         },
         "\"grokability\":\"snipe-it\"": {
-            "pkg:deb/debian/snipe-it": 85
+            "pkg:deb/debian/snipe-it": 86
         },
         "\"grokability, inc.\":\"snipe-it\"": {
             "pkg:deb/debian/snipe-it": 1
@@ -6871,7 +6871,7 @@
             "pkg:deb/debian/bind9": 2
         },
         "\"isc\":\"bind 9\"": {
-            "pkg:deb/debian/bind9": 83
+            "pkg:deb/debian/bind9": 87
         },
         "\"isc\":\"bind\"": {
             "pkg:deb/debian/bind9": 11
@@ -8011,7 +8011,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17833,
+            "pkg:deb/debian/linux": 17835,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -12018,7 +12018,7 @@
         },
         "\"nlnet labs\":\"unbound\"": {
             "pkg:deb/debian/nsd": 1,
-            "pkg:deb/debian/unbound": 53
+            "pkg:deb/debian/unbound": 58
         },
         "\"nlnetlabs\":\"net::dns\"": {
             "pkg:deb/debian/libnet-dns-perl": 2
@@ -13309,7 +13309,7 @@
             "pkg:deb/debian/mariadb": 8,
             "pkg:deb/debian/mariadb-10.5": 2,
             "pkg:deb/debian/mysql-8.0": 29,
-            "pkg:deb/debian/mysql-9.7": 41,
+            "pkg:deb/debian/mysql-9.7": 119,
             "pkg:deb/debian/mysql-cluster": 5
         },
         "\"oracle corporation\":\"mysql connectors\"": {
@@ -13333,7 +13333,7 @@
             "pkg:deb/debian/mysql-5.6": 1,
             "pkg:deb/debian/mysql-5.7": 434,
             "pkg:deb/debian/mysql-8.0": 607,
-            "pkg:deb/debian/mysql-9.7": 41
+            "pkg:deb/debian/mysql-9.7": 119
         },
         "\"oracle corporation\":\"mysql shell\"": {
             "pkg:deb/debian/mysql-8.0": 4
@@ -13342,33 +13342,35 @@
             "pkg:deb/debian/mysql-workbench": 2
         },
         "\"oracle corporation\":\"oracle graalvm enterprise edition\"": {
-            "pkg:deb/debian/openjdk-11": 26,
-            "pkg:deb/debian/openjdk-17": 25,
-            "pkg:deb/debian/openjdk-21": 26,
+            "pkg:deb/debian/openjdk-11": 57,
+            "pkg:deb/debian/openjdk-17": 56,
+            "pkg:deb/debian/openjdk-21": 57,
             "pkg:deb/debian/openjdk-24": 6,
-            "pkg:deb/debian/openjdk-25": 20,
+            "pkg:deb/debian/openjdk-25": 47,
             "pkg:deb/debian/openjdk-26": 6,
-            "pkg:deb/debian/openjdk-8": 25
+            "pkg:deb/debian/openjdk-8": 58,
+            "pkg:deb/debian/openjfx": 2
         },
         "\"oracle corporation\":\"oracle graalvm for jdk\"": {
-            "pkg:deb/debian/openjdk-11": 25,
-            "pkg:deb/debian/openjdk-17": 25,
-            "pkg:deb/debian/openjdk-21": 26,
+            "pkg:deb/debian/openjdk-11": 57,
+            "pkg:deb/debian/openjdk-17": 57,
+            "pkg:deb/debian/openjdk-21": 58,
             "pkg:deb/debian/openjdk-24": 7,
-            "pkg:deb/debian/openjdk-25": 20,
+            "pkg:deb/debian/openjdk-25": 48,
             "pkg:deb/debian/openjdk-26": 6,
-            "pkg:deb/debian/openjdk-8": 23
+            "pkg:deb/debian/openjdk-8": 54
         },
         "\"oracle corporation\":\"oracle java se\"": {
-            "pkg:deb/debian/openjdk-11": 37,
-            "pkg:deb/debian/openjdk-17": 34,
-            "pkg:deb/debian/openjdk-21": 35,
+            "pkg:deb/debian/openjdk-11": 76,
+            "pkg:deb/debian/openjdk-17": 73,
+            "pkg:deb/debian/openjdk-21": 77,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
-            "pkg:deb/debian/openjdk-25": 24,
-            "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-8": 37,
-            "pkg:deb/debian/openjfx": 1
+            "pkg:deb/debian/openjdk-25": 63,
+            "pkg:deb/debian/openjdk-26": 10,
+            "pkg:deb/debian/openjdk-27": 1,
+            "pkg:deb/debian/openjdk-8": 79,
+            "pkg:deb/debian/openjfx": 3
         },
         "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"": {
             "pkg:deb/debian/openjdk-11": 3,
@@ -13378,8 +13380,16 @@
             "pkg:deb/debian/openjdk-26": 3,
             "pkg:deb/debian/openjdk-8": 3
         },
+        "\"oracle corporation\":\"oracle javafx\"": {
+            "pkg:deb/debian/openjdk-11": 1,
+            "pkg:deb/debian/openjdk-17": 1,
+            "pkg:deb/debian/openjdk-21": 1,
+            "pkg:deb/debian/openjdk-25": 1,
+            "pkg:deb/debian/openjdk-8": 1,
+            "pkg:deb/debian/openjfx": 3
+        },
         "\"oracle corporation\":\"oracle vm virtualbox\"": {
-            "pkg:deb/debian/virtualbox": 138
+            "pkg:deb/debian/virtualbox": 144
         },
         "\"oracle corporation\":\"vm virtualbox\"": {
             "pkg:deb/debian/virtualbox": 279,
@@ -17772,7 +17782,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 96
+            "pkg:deb/debian/vllm": 103
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -19542,8 +19552,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 123,
-            "pkg:deb/debian/freerdp3": 123
+            "pkg:deb/debian/freerdp2": 130,
+            "pkg:deb/debian/freerdp3": 130
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -20089,7 +20099,7 @@
             "pkg:deb/debian/sngrep": 4
         },
         "cpe:2.3:a:isc:bind:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/bind9": 41
+            "pkg:deb/debian/bind9": 45
         },
         "cpe:2.3:a:isc:bind_9:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/bind9": 1
@@ -21237,16 +21247,16 @@
             "pkg:deb/debian/zfs-linux": 1
         },
         "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 40,
-            "pkg:deb/debian/openjdk-17": 38,
+            "pkg:deb/debian/openjdk-11": 71,
+            "pkg:deb/debian/openjdk-17": 69,
             "pkg:deb/debian/openjdk-20": 1,
-            "pkg:deb/debian/openjdk-21": 37,
+            "pkg:deb/debian/openjdk-21": 68,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 6,
-            "pkg:deb/debian/openjdk-25": 23,
+            "pkg:deb/debian/openjdk-25": 50,
             "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-8": 38,
-            "pkg:deb/debian/openjfx": 4,
+            "pkg:deb/debian/openjdk-8": 71,
+            "pkg:deb/debian/openjfx": 6,
             "pkg:deb/debian/webkit2gtk": 1,
             "pkg:deb/debian/wpewebkit": 1
         },
@@ -21257,25 +21267,34 @@
             "pkg:deb/debian/openjdk-8": 2
         },
         "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 37,
-            "pkg:deb/debian/openjdk-17": 37,
-            "pkg:deb/debian/openjdk-21": 38,
+            "pkg:deb/debian/openjdk-11": 69,
+            "pkg:deb/debian/openjdk-17": 69,
+            "pkg:deb/debian/openjdk-21": 70,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 7,
-            "pkg:deb/debian/openjdk-25": 23,
+            "pkg:deb/debian/openjdk-25": 51,
             "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-8": 34
+            "pkg:deb/debian/openjdk-8": 65
         },
         "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 49,
-            "pkg:deb/debian/openjdk-17": 45,
-            "pkg:deb/debian/openjdk-21": 44,
+            "pkg:deb/debian/openjdk-11": 88,
+            "pkg:deb/debian/openjdk-17": 84,
+            "pkg:deb/debian/openjdk-21": 86,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
-            "pkg:deb/debian/openjdk-25": 27,
-            "pkg:deb/debian/openjdk-26": 12,
-            "pkg:deb/debian/openjdk-8": 49,
-            "pkg:deb/debian/openjfx": 5
+            "pkg:deb/debian/openjdk-25": 66,
+            "pkg:deb/debian/openjdk-26": 13,
+            "pkg:deb/debian/openjdk-27": 1,
+            "pkg:deb/debian/openjdk-8": 91,
+            "pkg:deb/debian/openjfx": 7
+        },
+        "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/openjdk-11": 1,
+            "pkg:deb/debian/openjdk-17": 1,
+            "pkg:deb/debian/openjdk-21": 1,
+            "pkg:deb/debian/openjdk-25": 1,
+            "pkg:deb/debian/openjdk-8": 1,
+            "pkg:deb/debian/openjfx": 3
         },
         "cpe:2.3:a:oracle:jdk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openjdk-11": 3,
@@ -21307,7 +21326,7 @@
             "pkg:deb/debian/mariadb": 8,
             "pkg:deb/debian/mariadb-10.5": 2,
             "pkg:deb/debian/mysql-8.0": 20,
-            "pkg:deb/debian/mysql-9.7": 41
+            "pkg:deb/debian/mysql-9.7": 119
         },
         "cpe:2.3:a:oracle:mysql_connector\\/j:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mysql-connector-java": 5
@@ -21332,7 +21351,7 @@
             "pkg:deb/debian/mariadb-10.3": 1,
             "pkg:deb/debian/mariadb-10.5": 3,
             "pkg:deb/debian/mysql-8.0": 183,
-            "pkg:deb/debian/mysql-9.7": 41
+            "pkg:deb/debian/mysql-9.7": 119
         },
         "cpe:2.3:a:oracle:mysql_shell:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mysql-8.0": 4
@@ -21343,7 +21362,7 @@
             "pkg:deb/debian/openjdk-8": 1
         },
         "cpe:2.3:a:oracle:vm_virtualbox:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/virtualbox": 129
+            "pkg:deb/debian/virtualbox": 135
         },
         "cpe:2.3:a:orangehrm:orangehrm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/orangehrm": 1
@@ -22018,7 +22037,7 @@
             "pkg:deb/debian/snakeyaml": 1
         },
         "cpe:2.3:a:snipeitapp:snipe-it:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/snipe-it": 55
+            "pkg:deb/debian/snipe-it": 56
         },
         "cpe:2.3:a:socketry:protocol-http1:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-protocol-http1": 1
@@ -22350,7 +22369,7 @@
             "pkg:deb/debian/vllm": 8
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 27
+            "pkg:deb/debian/vllm": 34
         },
         "cpe:2.3:a:vmware:spring:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-java": 1
@@ -22740,7 +22759,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17825
+            "pkg:deb/debian/linux": 17827
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -23307,7 +23326,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 101
+            "pkg:deb/debian/keycloak": 100
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -24414,7 +24433,7 @@
             "pkg:deb/debian/undertow": 3
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jbcs-httpd24-mod_proxy_cluster\"": {
-            "pkg:deb/debian/libapache2-mod-cluster": 1
+            "pkg:deb/debian/libapache2-mod-cluster": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7-eap74-els-openjdk17-openshift-rhel8/jboss-eap-7-eap74-els-openjdk17-openshift-rhel8\"": {
             "pkg:deb/debian/wildfly": 1
@@ -25242,6 +25261,9 @@
         },
         "\"https://cpan.org/modules\":\"Protocol-HTTP2\"": {
             "pkg:deb/debian/libprotocol-http2-perl": 2
+        },
+        "\"https://cpan.org/modules\":\"Rex\"": {
+            "pkg:deb/debian/rex": 1
         },
         "\"https://cpan.org/modules\":\"Sereal-Decoder\"": {
             "pkg:deb/debian/libsereal-decoder-perl": 1,
@@ -28003,6 +28025,9 @@
         "pkg:cpan/Protocol-HTTP2": {
             "pkg:deb/debian/libprotocol-http2-perl": 1
         },
+        "pkg:cpan/Rex": {
+            "pkg:deb/debian/rex": 1
+        },
         "pkg:cpan/Template-Toolkit": {
             "pkg:deb/debian/libtemplate-perl": 1
         },
@@ -29110,7 +29135,7 @@
             "pkg:deb/debian/tryton-server": 3
         },
         "pkg:pypi/vllm": {
-            "pkg:deb/debian/vllm": 26
+            "pkg:deb/debian/vllm": 33
         },
         "pkg:pypi/xhtml2pdf": {
             "pkg:deb/debian/xhtml2pdf": 1
