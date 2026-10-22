@@ -2051,8 +2051,12 @@
         "CPEs": [
             "cpe:2.3:a:apache:brpc:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://github.com\":\"apache/brpc\""
+        ],
+        "PackageURLs": [
+            "pkg:github/apache/brpc"
+        ]
     },
     "pkg:deb/debian/bsd-mailx": {
         "VendorProductIDs": [

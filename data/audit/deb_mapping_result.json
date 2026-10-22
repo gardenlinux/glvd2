@@ -1269,7 +1269,7 @@
             "pkg:deb/debian/bookkeeper": 1
         },
         "\"apache software foundation\":\"apache brpc\"": {
-            "pkg:deb/debian/brpc": 6
+            "pkg:deb/debian/brpc": 25
         },
         "\"apache software foundation\":\"apache buildstream\"": {
             "pkg:deb/debian/buildstream": 1
@@ -4613,7 +4613,7 @@
         },
         "\"gimp\":\"gimp\"": {
             "pkg:deb/debian/gegl": 4,
-            "pkg:deb/debian/gimp": 37,
+            "pkg:deb/debian/gimp": 38,
             "pkg:deb/debian/gimp-dds": 1
         },
         "\"gin-contrib\":\"cors\"": {
@@ -12186,7 +12186,7 @@
             "pkg:deb/debian/gpsd": 1
         },
         "\"ntpsec\":\"ntpsec\"": {
-            "pkg:deb/debian/ntpsec": 3
+            "pkg:deb/debian/ntpsec": 7
         },
         "\"nuitka\":\"nuitka/nuitka\"": {
             "pkg:deb/debian/nuitka": 1
@@ -13342,34 +13342,34 @@
             "pkg:deb/debian/mysql-workbench": 2
         },
         "\"oracle corporation\":\"oracle graalvm enterprise edition\"": {
-            "pkg:deb/debian/openjdk-11": 57,
-            "pkg:deb/debian/openjdk-17": 56,
-            "pkg:deb/debian/openjdk-21": 57,
+            "pkg:deb/debian/openjdk-11": 58,
+            "pkg:deb/debian/openjdk-17": 57,
+            "pkg:deb/debian/openjdk-21": 58,
             "pkg:deb/debian/openjdk-24": 6,
-            "pkg:deb/debian/openjdk-25": 47,
+            "pkg:deb/debian/openjdk-25": 48,
             "pkg:deb/debian/openjdk-26": 6,
-            "pkg:deb/debian/openjdk-8": 58,
+            "pkg:deb/debian/openjdk-8": 59,
             "pkg:deb/debian/openjfx": 2
         },
         "\"oracle corporation\":\"oracle graalvm for jdk\"": {
-            "pkg:deb/debian/openjdk-11": 57,
-            "pkg:deb/debian/openjdk-17": 57,
-            "pkg:deb/debian/openjdk-21": 58,
+            "pkg:deb/debian/openjdk-11": 58,
+            "pkg:deb/debian/openjdk-17": 58,
+            "pkg:deb/debian/openjdk-21": 59,
             "pkg:deb/debian/openjdk-24": 7,
-            "pkg:deb/debian/openjdk-25": 48,
+            "pkg:deb/debian/openjdk-25": 49,
             "pkg:deb/debian/openjdk-26": 6,
-            "pkg:deb/debian/openjdk-8": 54
+            "pkg:deb/debian/openjdk-8": 55
         },
         "\"oracle corporation\":\"oracle java se\"": {
-            "pkg:deb/debian/openjdk-11": 76,
-            "pkg:deb/debian/openjdk-17": 73,
-            "pkg:deb/debian/openjdk-21": 77,
+            "pkg:deb/debian/openjdk-11": 77,
+            "pkg:deb/debian/openjdk-17": 74,
+            "pkg:deb/debian/openjdk-21": 78,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
-            "pkg:deb/debian/openjdk-25": 63,
+            "pkg:deb/debian/openjdk-25": 64,
             "pkg:deb/debian/openjdk-26": 10,
             "pkg:deb/debian/openjdk-27": 1,
-            "pkg:deb/debian/openjdk-8": 79,
+            "pkg:deb/debian/openjdk-8": 80,
             "pkg:deb/debian/openjfx": 3
         },
         "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"": {
@@ -14473,7 +14473,7 @@
             "pkg:deb/debian/python-mechanize": 1
         },
         "\"python-pillow\":\"pillow\"": {
-            "pkg:deb/debian/pillow": 47
+            "pkg:deb/debian/pillow": 57
         },
         "\"python-poetry\":\"poetry\"": {
             "pkg:deb/debian/poetry": 2,
@@ -15299,7 +15299,7 @@
             "pkg:deb/debian/roundcube": 1
         },
         "\"roundcube\":\"webmail\"": {
-            "pkg:deb/debian/roundcube": 42
+            "pkg:deb/debian/roundcube": 61
         },
         "\"roundup\":\"roundup\"": {
             "pkg:deb/debian/roundup": 1
@@ -17280,7 +17280,7 @@
             "pkg:deb/debian/trac": 1
         },
         "\"traefik\":\"traefik\"": {
-            "pkg:deb/debian/traefik": 67
+            "pkg:deb/debian/traefik": 76
         },
         "\"trailofbits\":\"rfc3161-client\"": {
             "pkg:deb/debian/python-rfc3161-client": 1
@@ -21247,15 +21247,15 @@
             "pkg:deb/debian/zfs-linux": 1
         },
         "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 71,
-            "pkg:deb/debian/openjdk-17": 69,
+            "pkg:deb/debian/openjdk-11": 72,
+            "pkg:deb/debian/openjdk-17": 70,
             "pkg:deb/debian/openjdk-20": 1,
-            "pkg:deb/debian/openjdk-21": 68,
+            "pkg:deb/debian/openjdk-21": 69,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 6,
-            "pkg:deb/debian/openjdk-25": 50,
+            "pkg:deb/debian/openjdk-25": 51,
             "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-8": 71,
+            "pkg:deb/debian/openjdk-8": 72,
             "pkg:deb/debian/openjfx": 6,
             "pkg:deb/debian/webkit2gtk": 1,
             "pkg:deb/debian/wpewebkit": 1
@@ -21267,25 +21267,25 @@
             "pkg:deb/debian/openjdk-8": 2
         },
         "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 69,
-            "pkg:deb/debian/openjdk-17": 69,
-            "pkg:deb/debian/openjdk-21": 70,
+            "pkg:deb/debian/openjdk-11": 70,
+            "pkg:deb/debian/openjdk-17": 70,
+            "pkg:deb/debian/openjdk-21": 71,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 7,
-            "pkg:deb/debian/openjdk-25": 51,
+            "pkg:deb/debian/openjdk-25": 52,
             "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-8": 65
+            "pkg:deb/debian/openjdk-8": 66
         },
         "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 88,
-            "pkg:deb/debian/openjdk-17": 84,
-            "pkg:deb/debian/openjdk-21": 86,
+            "pkg:deb/debian/openjdk-11": 89,
+            "pkg:deb/debian/openjdk-17": 85,
+            "pkg:deb/debian/openjdk-21": 87,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
-            "pkg:deb/debian/openjdk-25": 66,
+            "pkg:deb/debian/openjdk-25": 67,
             "pkg:deb/debian/openjdk-26": 13,
             "pkg:deb/debian/openjdk-27": 1,
-            "pkg:deb/debian/openjdk-8": 91,
+            "pkg:deb/debian/openjdk-8": 92,
             "pkg:deb/debian/openjfx": 7
         },
         "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*": {
@@ -21854,7 +21854,7 @@
             "pkg:deb/debian/roundcube": 2
         },
         "cpe:2.3:a:roundcube:webmail:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/roundcube": 35
+            "pkg:deb/debian/roundcube": 54
         },
         "cpe:2.3:a:roundup-tracker:roundup:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/roundup": 1
@@ -22254,7 +22254,7 @@
             "pkg:deb/debian/tpm2-tss": 1
         },
         "cpe:2.3:a:traefik:traefik:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/traefik": 14
+            "pkg:deb/debian/traefik": 23
         },
         "cpe:2.3:a:traefik:traefik_enterprise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/traefik": 1
@@ -25470,6 +25470,9 @@
         "\"https://github.com\":\"Chocobozzz/PeerTube\"": {
             "pkg:deb/debian/peertube": 7
         },
+        "\"https://github.com\":\"apache/brpc\"": {
+            "pkg:deb/debian/brpc": 19
+        },
         "\"https://github.com\":\"elixir-lang/elixir\"": {
             "pkg:deb/debian/elixir-lang": 2
         },
@@ -28176,6 +28179,9 @@
         "pkg:github/ansilove/libansilove": {
             "pkg:deb/debian/libansilove": 2
         },
+        "pkg:github/apache/brpc": {
+            "pkg:deb/debian/brpc": 19
+        },
         "pkg:github/arkq/bluez-alsa": {
             "pkg:deb/debian/bluez-alsa": 1
         },
@@ -28571,10 +28577,10 @@
             "pkg:deb/debian/traefik": 1
         },
         "pkg:golang/github.com/traefik/traefik/v2": {
-            "pkg:deb/debian/traefik": 6
+            "pkg:deb/debian/traefik": 11
         },
         "pkg:golang/github.com/traefik/traefik/v3": {
-            "pkg:deb/debian/traefik": 12
+            "pkg:deb/debian/traefik": 21
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1
