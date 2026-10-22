@@ -1269,7 +1269,7 @@
             "pkg:deb/debian/bookkeeper": 1
         },
         "\"apache software foundation\":\"apache brpc\"": {
-            "pkg:deb/debian/brpc": 25
+            "pkg:deb/debian/brpc": 41
         },
         "\"apache software foundation\":\"apache buildstream\"": {
             "pkg:deb/debian/buildstream": 1
@@ -2583,7 +2583,7 @@
             "pkg:deb/debian/libgd-securityimage-perl": 1
         },
         "\"busybox\":\"busybox\"": {
-            "pkg:deb/debian/busybox": 20
+            "pkg:deb/debian/busybox": 21
         },
         "\"byron\":\"gitoxide\"": {
             "pkg:deb/debian/rust-gitoxide": 4,
@@ -3913,7 +3913,7 @@
             "pkg:deb/debian/packetbeat": 7
         },
         "\"electron\":\"electron\"": {
-            "pkg:deb/debian/electron": 60
+            "pkg:deb/debian/electron": 67
         },
         "\"element-hq\":\"element-web\"": {
             "pkg:deb/debian/element-web": 6
@@ -5792,6 +5792,10 @@
         },
         "\"google\":\"bazel\"": {
             "pkg:deb/debian/bazel": 1
+        },
+        "\"google\":\"brotli\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1
         },
         "\"google\":\"cel-go\"": {
             "pkg:deb/debian/golang-cel-cel-go": 1,
@@ -13316,7 +13320,7 @@
             "pkg:deb/debian/mysql-5.7": 1,
             "pkg:deb/debian/mysql-connector-java": 19,
             "pkg:deb/debian/mysql-connector-net": 6,
-            "pkg:deb/debian/mysql-connector-python": 7,
+            "pkg:deb/debian/mysql-connector-python": 8,
             "pkg:deb/debian/mysql-connnector-java": 1
         },
         "\"oracle corporation\":\"mysql ndb cluster\"": {
@@ -15338,7 +15342,7 @@
             "pkg:deb/debian/rsync": 39
         },
         "\"rsyslog\":\"rsyslog\"": {
-            "pkg:deb/debian/rsyslog": 6
+            "pkg:deb/debian/rsyslog": 7
         },
         "\"rtmpdump\":\"librtmp\"": {
             "pkg:deb/debian/rtmpdump": 2
@@ -21338,7 +21342,7 @@
             "pkg:deb/debian/mysql-connector-java": 4
         },
         "cpe:2.3:a:oracle:mysql_connector\\/python:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/mysql-connector-python": 3
+            "pkg:deb/debian/mysql-connector-python": 4
         },
         "cpe:2.3:a:oracle:mysql_connectors:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mysql-connector-python": 1
@@ -25471,7 +25475,7 @@
             "pkg:deb/debian/peertube": 7
         },
         "\"https://github.com\":\"apache/brpc\"": {
-            "pkg:deb/debian/brpc": 19
+            "pkg:deb/debian/brpc": 35
         },
         "\"https://github.com\":\"elixir-lang/elixir\"": {
             "pkg:deb/debian/elixir-lang": 2
@@ -28180,7 +28184,7 @@
             "pkg:deb/debian/libansilove": 2
         },
         "pkg:github/apache/brpc": {
-            "pkg:deb/debian/brpc": 19
+            "pkg:deb/debian/brpc": 35
         },
         "pkg:github/arkq/bluez-alsa": {
             "pkg:deb/debian/bluez-alsa": 1

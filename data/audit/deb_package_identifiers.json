@@ -2037,7 +2037,8 @@
     },
     "pkg:deb/debian/brotli": {
         "VendorProductIDs": [
-            "\"google llc\":\"brotli\""
+            "\"google llc\":\"brotli\"",
+            "\"google\":\"brotli\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -20857,6 +20858,7 @@
         "VendorProductIDs": [
             "\"debian\":\"trixie\"",
             "\"go programming language\":\"golang\"",
+            "\"google\":\"brotli\"",
             "\"haskell programming language\":\"haskel\"",
             "\"haskell\":\"process_library\"",
             "\"n/a\":\"https://github.com/nodejs/node\"",
