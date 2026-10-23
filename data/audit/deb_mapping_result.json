@@ -2604,7 +2604,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "\"bytecodealliance\":\"wasmtime\"": {
-            "pkg:deb/debian/rust-wasmtime": 44
+            "pkg:deb/debian/rust-wasmtime": 58
         },
         "\"byvoid\":\"opencc\"": {
             "pkg:deb/debian/opencc": 1
@@ -3636,7 +3636,7 @@
             "pkg:deb/debian/dojo": 1
         },
         "\"dokuwiki\":\"dokuwiki\"": {
-            "pkg:deb/debian/dokuwiki": 2
+            "pkg:deb/debian/dokuwiki": 3
         },
         "\"dolibarr erp \u0026 crm\":\"dolibarr\"": {
             "pkg:deb/debian/dolibarr": 2
@@ -7238,7 +7238,7 @@
             "pkg:deb/debian/node-on-headers": 1
         },
         "\"json-smart\":\"json-smart\"": {
-            "pkg:deb/debian/json-smart": 1
+            "pkg:deb/debian/json-smart": 2
         },
         "\"json5\":\"json5\"": {
             "pkg:deb/debian/node-json5": 1
@@ -7752,7 +7752,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "\"libexpat\":\"libexpat\"": {
-            "pkg:deb/debian/expat": 5
+            "pkg:deb/debian/expat": 6
         },
         "\"libexpat_project\":\"libexpat\"": {
             "pkg:deb/debian/expat": 3,
@@ -8923,7 +8923,7 @@
             "pkg:deb/debian/libbson-xs-perl": 1
         },
         "\"mongodb\":\"c driver\"": {
-            "pkg:deb/debian/mongo-c-driver": 13
+            "pkg:deb/debian/mongo-c-driver": 14
         },
         "\"mongodb\":\"c++ driver\"": {
             "pkg:deb/debian/mongo-cxx-driver": 5
@@ -8942,7 +8942,7 @@
             "pkg:deb/debian/mongo-java-driver": 1
         },
         "\"mongodb\":\"libmongocrypt\"": {
-            "pkg:deb/debian/libmongocrypt": 6
+            "pkg:deb/debian/libmongocrypt": 7
         },
         "\"mongodb\":\"mongo-c-driver\"": {
             "pkg:deb/debian/mongo-c-driver": 1,
@@ -9108,7 +9108,7 @@
             "pkg:deb/debian/msgpack-java": 3
         },
         "\"msgpack\":\"msgpack-python\"": {
-            "pkg:deb/debian/python-msgpack": 1
+            "pkg:deb/debian/python-msgpack": 2
         },
         "\"msgpack\":\"msgpack-ruby\"": {
             "pkg:deb/debian/ruby-msgpack": 1
@@ -17789,10 +17789,10 @@
             "pkg:deb/debian/webmin": 1
         },
         "\"vitejs\":\"vite\"": {
-            "pkg:deb/debian/node-vite": 18
+            "pkg:deb/debian/node-vite": 21
         },
         "\"vitejs\":\"vite-plus\"": {
-            "pkg:deb/debian/node-vite": 3
+            "pkg:deb/debian/node-vite": 6
         },
         "\"vixie\":\"cron\"": {
             "pkg:deb/debian/cron": 1
@@ -19111,6 +19111,9 @@
         "cpe:2.3:a:bytecodealliance:rustix:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rust-rustix": 1
         },
+        "cpe:2.3:a:bytecodealliance:wasmtime:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/rust-wasmtime": 14
+        },
         "cpe:2.3:a:c-ares:c-ares:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/c-ares": 1
         },
@@ -19347,7 +19350,7 @@
             "pkg:deb/debian/docker.io": 1
         },
         "cpe:2.3:a:dokuwiki:dokuwiki:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/dokuwiki": 2
+            "pkg:deb/debian/dokuwiki": 3
         },
         "cpe:2.3:a:dolibarr:dolibarr:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/dolibarr": 6
@@ -20238,6 +20241,9 @@
         "cpe:2.3:a:jrburke:requirejs:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/requirejs": 1
         },
+        "cpe:2.3:a:json-smart_project:json-smart:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/json-smart": 1
+        },
         "cpe:2.3:a:jszip_project:jszip:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-jszip": 1
         },
@@ -20372,7 +20378,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "cpe:2.3:a:libexpat_project:libexpat:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/expat": 31,
+            "pkg:deb/debian/expat": 32,
             "pkg:deb/debian/firefox": 1,
             "pkg:deb/debian/firefox-esr": 1,
             "pkg:deb/debian/libxmltok": 3,
@@ -22937,7 +22943,7 @@
             "pkg:deb/debian/cockpit-files": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit-machines\"": {
-            "pkg:deb/debian/cockpit-machines": 3
+            "pkg:deb/debian/cockpit-machines": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"compact-libtiff\"": {
             "pkg:deb/debian/tiff": 2
@@ -27978,6 +27984,15 @@
         "pkg:cargo/uv": {
             "pkg:deb/debian/uv": 1
         },
+        "pkg:cargo/wasmtime": {
+            "pkg:deb/debian/rust-wasmtime": 8
+        },
+        "pkg:cargo/wasmtime-wasi": {
+            "pkg:deb/debian/rust-wasmtime": 5
+        },
+        "pkg:cargo/wasmtime-wasi-http": {
+            "pkg:deb/debian/rust-wasmtime": 1
+        },
         "pkg:composer/apache/thrift": {
             "pkg:deb/debian/thrift": 10
         },
@@ -28262,6 +28277,9 @@
         "pkg:github/dlbeer/quirc": {
             "pkg:deb/debian/quirc": 1
         },
+        "pkg:github/dokuwiki/dokuwiki": {
+            "pkg:deb/debian/dokuwiki": 1
+        },
         "pkg:github/domoticz/domoticz": {
             "pkg:deb/debian/domoticz": 1
         },
@@ -28353,7 +28371,7 @@
             "pkg:deb/debian/liblas": 1
         },
         "pkg:github/libexpat/libexpat": {
-            "pkg:deb/debian/expat": 5
+            "pkg:deb/debian/expat": 6
         },
         "pkg:github/libgme/game-music-emu": {
             "pkg:deb/debian/game-music-emu": 2
@@ -28695,6 +28713,9 @@
         },
         "pkg:maven/io.netty/netty-handler": {
             "pkg:deb/debian/netty": 1
+        },
+        "pkg:maven/net.minidev/json-smart": {
+            "pkg:deb/debian/json-smart": 1
         },
         "pkg:maven/org.apache.bcel/bcel": {
             "pkg:deb/debian/bcel": 2

@@ -4155,7 +4155,9 @@
             "cpe:2.3:a:dokuwiki:dokuwiki:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/dokuwiki/dokuwiki"
+        ]
     },
     "pkg:deb/debian/dolibarr": {
         "VendorProductIDs": [
@@ -11638,11 +11640,15 @@
         "VendorProductIDs": [
             "\"json-smart\":\"json-smart\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:json-smart_project:json-smart:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://mvnrepository.com\":\"net.minidev:json-smart\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/net.minidev/json-smart"
+        ]
     },
     "pkg:deb/debian/jsoup": {
         "VendorProductIDs": [
@@ -30092,9 +30098,15 @@
         "VendorProductIDs": [
             "\"bytecodealliance\":\"wasmtime\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:bytecodealliance:wasmtime:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cargo/wasmtime",
+            "pkg:cargo/wasmtime-wasi",
+            "pkg:cargo/wasmtime-wasi-http"
+        ]
     },
     "pkg:deb/debian/rust-yaml-rust": {
         "VendorProductIDs": [
