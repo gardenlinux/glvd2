@@ -4416,9 +4416,13 @@
         "VendorProductIDs": [
             "\"jelmer\":\"dulwich\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:dulwich_project:dulwich:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/dulwich"
+        ]
     },
     "pkg:deb/debian/duplicati": {
         "VendorProductIDs": [
@@ -8285,7 +8289,9 @@
             "\"go-chi\":\"chi\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://pkg.go.dev\":\"github.com/go-chi/chi/v5\""
+        ],
         "PackageURLs": [
             "pkg:golang/github.com/go-chi/chi",
             "pkg:golang/github.com/go-chi/chi/v5"
@@ -17713,6 +17719,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/mod-qos": {
+        "VendorProductIDs": [
+            "\"pbuchbinder\":\"mod_qos\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://svn.code.sf.net/p/mod-qos/source/\":\"mod_qos\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/mod-wsgi": {
         "VendorProductIDs": [
             "\"mod_wsgi\":\"mod_wsgi\"",
@@ -21861,7 +21877,8 @@
     },
     "pkg:deb/debian/ognl": {
         "VendorProductIDs": [
-            "\"apache software foundation\":\"apache commons ognl\""
+            "\"apache software foundation\":\"apache commons ognl\"",
+            "\"orphan-oss\":\"ognl\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -22490,10 +22507,16 @@
     },
     "pkg:deb/debian/openjdk-27": {
         "VendorProductIDs": [
-            "\"oracle corporation\":\"oracle java se\""
+            "\"oracle corporation\":\"oracle graalvm enterprise edition\"",
+            "\"oracle corporation\":\"oracle graalvm for jdk\"",
+            "\"oracle corporation\":\"oracle java se\"",
+            "\"oracle corporation\":\"oracle javafx\""
         ],
         "CPEs": [
-            "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -33051,7 +33074,10 @@
         "PackageIDs": [
             "\"https://github.com/astral-sh/uv\":\"uv\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cargo/uv",
+            "pkg:pypi/uv"
+        ]
     },
     "pkg:deb/debian/uwsgi": {
         "VendorProductIDs": [

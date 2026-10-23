@@ -2215,7 +2215,7 @@
             "pkg:deb/debian/rust-astral-tokio-tar": 3
         },
         "\"astral-sh\":\"uv\"": {
-            "pkg:deb/debian/uv": 3
+            "pkg:deb/debian/uv": 5
         },
         "\"astropy\":\"astropy\"": {
             "pkg:deb/debian/astropy": 1
@@ -3949,7 +3949,7 @@
             "pkg:deb/debian/golang-github-emicklei-go-restful": 1
         },
         "\"encode\":\"django-rest-framework\"": {
-            "pkg:deb/debian/djangorestframework": 2
+            "pkg:deb/debian/djangorestframework": 5
         },
         "\"encode\":\"starlette\"": {
             "pkg:deb/debian/python-multipart": 1,
@@ -4463,7 +4463,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "\"froxlor\":\"froxlor\"": {
-            "pkg:deb/debian/froxlor": 47
+            "pkg:deb/debian/froxlor": 50
         },
         "\"froxlor\":\"froxlor/froxlor\"": {
             "pkg:deb/debian/froxlor": 26
@@ -4792,7 +4792,7 @@
             "pkg:deb/debian/rust-gitoxide": 1
         },
         "\"gitpython-developers\":\"gitpython\"": {
-            "pkg:deb/debian/python-git": 41
+            "pkg:deb/debian/python-git": 42
         },
         "\"gittuf\":\"gittuf\"": {
             "pkg:deb/debian/gittuf": 1
@@ -5530,7 +5530,7 @@
             "pkg:deb/debian/golang-github-xenolf-lego": 2
         },
         "\"go-chi\":\"chi\"": {
-            "pkg:deb/debian/golang-github-go-chi-chi": 4
+            "pkg:deb/debian/golang-github-go-chi-chi": 5
         },
         "\"go-git\":\"go-billy\"": {
             "pkg:deb/debian/golang-github-go-git-go-billy": 2,
@@ -6059,7 +6059,7 @@
             "pkg:deb/debian/gst-plugins-base0.10": 9,
             "pkg:deb/debian/gst-plugins-base1.0": 11,
             "pkg:deb/debian/gst-plugins-good0.10": 23,
-            "pkg:deb/debian/gst-plugins-good1.0": 30,
+            "pkg:deb/debian/gst-plugins-good1.0": 31,
             "pkg:deb/debian/gst-plugins-ugly0.10": 2,
             "pkg:deb/debian/gst-plugins-ugly1.0": 4,
             "pkg:deb/debian/gstreamer0.10": 1,
@@ -7024,7 +7024,7 @@
             "pkg:deb/debian/jellyfin-server": 16
         },
         "\"jelmer\":\"dulwich\"": {
-            "pkg:deb/debian/dulwich": 5
+            "pkg:deb/debian/dulwich": 10
         },
         "\"jenkins project\":\"jenkins cloud foundry plugin\"": {
             "pkg:deb/debian/jenkins": 1
@@ -7276,7 +7276,7 @@
             "pkg:deb/debian/jupyter-server": 2
         },
         "\"jupyter\":\"nbconvert\"": {
-            "pkg:deb/debian/nbconvert": 4
+            "pkg:deb/debian/nbconvert": 5
         },
         "\"jupyter\":\"nbdime\"": {
             "pkg:deb/debian/nbdime": 1
@@ -7290,7 +7290,7 @@
             "pkg:deb/debian/jupyterlab": 1
         },
         "\"jupyter-server\":\"jupyter_server\"": {
-            "pkg:deb/debian/jupyter-server": 13
+            "pkg:deb/debian/jupyter-server": 14
         },
         "\"jupyterhub\":\"jupyterhub\"": {
             "pkg:deb/debian/jupyterhub": 7
@@ -11798,7 +11798,7 @@
             "pkg:deb/debian/ghidra": 1
         },
         "\"nationalsecurityagency\":\"ghidra\"": {
-            "pkg:deb/debian/ghidra": 19
+            "pkg:deb/debian/ghidra": 20
         },
         "\"nats-io\":\"nats-server\"": {
             "pkg:deb/debian/nats-server": 27
@@ -13155,7 +13155,7 @@
             "pkg:deb/debian/ironic-python-agent": 2
         },
         "\"openstack\":\"ironic\"": {
-            "pkg:deb/debian/ironic": 15
+            "pkg:deb/debian/ironic": 17
         },
         "\"openstack\":\"ironic-python-agent\"": {
             "pkg:deb/debian/ironic": 1,
@@ -13347,32 +13347,34 @@
         },
         "\"oracle corporation\":\"oracle graalvm enterprise edition\"": {
             "pkg:deb/debian/openjdk-11": 58,
-            "pkg:deb/debian/openjdk-17": 57,
-            "pkg:deb/debian/openjdk-21": 58,
+            "pkg:deb/debian/openjdk-17": 55,
+            "pkg:deb/debian/openjdk-21": 56,
             "pkg:deb/debian/openjdk-24": 6,
             "pkg:deb/debian/openjdk-25": 48,
             "pkg:deb/debian/openjdk-26": 6,
+            "pkg:deb/debian/openjdk-27": 27,
             "pkg:deb/debian/openjdk-8": 59,
             "pkg:deb/debian/openjfx": 2
         },
         "\"oracle corporation\":\"oracle graalvm for jdk\"": {
             "pkg:deb/debian/openjdk-11": 58,
-            "pkg:deb/debian/openjdk-17": 58,
-            "pkg:deb/debian/openjdk-21": 59,
+            "pkg:deb/debian/openjdk-17": 56,
+            "pkg:deb/debian/openjdk-21": 57,
             "pkg:deb/debian/openjdk-24": 7,
             "pkg:deb/debian/openjdk-25": 49,
             "pkg:deb/debian/openjdk-26": 6,
+            "pkg:deb/debian/openjdk-27": 28,
             "pkg:deb/debian/openjdk-8": 55
         },
         "\"oracle corporation\":\"oracle java se\"": {
             "pkg:deb/debian/openjdk-11": 77,
-            "pkg:deb/debian/openjdk-17": 74,
-            "pkg:deb/debian/openjdk-21": 78,
+            "pkg:deb/debian/openjdk-17": 72,
+            "pkg:deb/debian/openjdk-21": 76,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
             "pkg:deb/debian/openjdk-25": 64,
             "pkg:deb/debian/openjdk-26": 10,
-            "pkg:deb/debian/openjdk-27": 1,
+            "pkg:deb/debian/openjdk-27": 40,
             "pkg:deb/debian/openjdk-8": 80,
             "pkg:deb/debian/openjfx": 3
         },
@@ -13389,6 +13391,7 @@
             "pkg:deb/debian/openjdk-17": 1,
             "pkg:deb/debian/openjdk-21": 1,
             "pkg:deb/debian/openjdk-25": 1,
+            "pkg:deb/debian/openjdk-27": 1,
             "pkg:deb/debian/openjdk-8": 1,
             "pkg:deb/debian/openjfx": 3
         },
@@ -13521,6 +13524,9 @@
         },
         "\"ormar-orm\":\"ormar\"": {
             "pkg:deb/debian/ormar": 1
+        },
+        "\"orphan-oss\":\"ognl\"": {
+            "pkg:deb/debian/ognl": 1
         },
         "\"orthanc\":\"dicom server\"": {
             "pkg:deb/debian/orthanc": 11
@@ -13668,6 +13674,9 @@
         },
         "\"payload\":\"payload\"": {
             "pkg:deb/debian/pyload": 1
+        },
+        "\"pbuchbinder\":\"mod_qos\"": {
+            "pkg:deb/debian/mod-qos": 4
         },
         "\"pcre\":\"pcre\"": {
             "pkg:deb/debian/pcre3": 1
@@ -14290,8 +14299,8 @@
             "pkg:deb/debian/python-bcrypt": 1
         },
         "\"py-pdf\":\"pypdf\"": {
-            "pkg:deb/debian/pypdf": 51,
-            "pkg:deb/debian/pypdf2": 50
+            "pkg:deb/debian/pypdf": 59,
+            "pkg:deb/debian/pypdf2": 58
         },
         "\"py-pdf\":\"pypdf2\"": {
             "pkg:deb/debian/pypdf2": 1
@@ -14369,7 +14378,7 @@
             "pkg:deb/debian/setuptools": 2
         },
         "\"pypa\":\"virtualenv\"": {
-            "pkg:deb/debian/python-virtualenv": 5
+            "pkg:deb/debian/python-virtualenv": 21
         },
         "\"pypa\":\"wheel\"": {
             "pkg:deb/debian/wheel": 1
@@ -14477,7 +14486,7 @@
             "pkg:deb/debian/python-mechanize": 1
         },
         "\"python-pillow\":\"pillow\"": {
-            "pkg:deb/debian/pillow": 57
+            "pkg:deb/debian/pillow": 58
         },
         "\"python-poetry\":\"poetry\"": {
             "pkg:deb/debian/poetry": 2,
@@ -19370,6 +19379,9 @@
         "cpe:2.3:a:duckdb:duckdb:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/duckdb": 1
         },
+        "cpe:2.3:a:dulwich_project:dulwich:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/dulwich": 5
+        },
         "cpe:2.3:a:eclipse:jetty:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jetty": 2,
             "pkg:deb/debian/jetty9": 2
@@ -19570,7 +19582,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "cpe:2.3:a:froxlor:froxlor:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/froxlor": 26
+            "pkg:deb/debian/froxlor": 29
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frr": 10
@@ -20955,7 +20967,7 @@
             "pkg:deb/debian/npgsql": 1
         },
         "cpe:2.3:a:nsa:ghidra:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ghidra": 21
+            "pkg:deb/debian/ghidra": 22
         },
         "cpe:2.3:a:ntop:ndpi:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ndpi": 2
@@ -21209,7 +21221,7 @@
             "pkg:deb/debian/horizon": 2
         },
         "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ironic": 14
+            "pkg:deb/debian/ironic": 16
         },
         "cpe:2.3:a:openstack:ironic_python_agent:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ironic-python-agent": 2
@@ -21252,13 +21264,14 @@
         },
         "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openjdk-11": 72,
-            "pkg:deb/debian/openjdk-17": 70,
+            "pkg:deb/debian/openjdk-17": 68,
             "pkg:deb/debian/openjdk-20": 1,
-            "pkg:deb/debian/openjdk-21": 69,
+            "pkg:deb/debian/openjdk-21": 67,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 6,
             "pkg:deb/debian/openjdk-25": 51,
             "pkg:deb/debian/openjdk-26": 9,
+            "pkg:deb/debian/openjdk-27": 27,
             "pkg:deb/debian/openjdk-8": 72,
             "pkg:deb/debian/openjfx": 6,
             "pkg:deb/debian/webkit2gtk": 1,
@@ -21272,23 +21285,24 @@
         },
         "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openjdk-11": 70,
-            "pkg:deb/debian/openjdk-17": 70,
-            "pkg:deb/debian/openjdk-21": 71,
+            "pkg:deb/debian/openjdk-17": 68,
+            "pkg:deb/debian/openjdk-21": 69,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 7,
             "pkg:deb/debian/openjdk-25": 52,
             "pkg:deb/debian/openjdk-26": 9,
+            "pkg:deb/debian/openjdk-27": 28,
             "pkg:deb/debian/openjdk-8": 66
         },
         "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openjdk-11": 89,
-            "pkg:deb/debian/openjdk-17": 85,
-            "pkg:deb/debian/openjdk-21": 87,
+            "pkg:deb/debian/openjdk-17": 83,
+            "pkg:deb/debian/openjdk-21": 85,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
             "pkg:deb/debian/openjdk-25": 67,
             "pkg:deb/debian/openjdk-26": 13,
-            "pkg:deb/debian/openjdk-27": 1,
+            "pkg:deb/debian/openjdk-27": 40,
             "pkg:deb/debian/openjdk-8": 92,
             "pkg:deb/debian/openjfx": 7
         },
@@ -21297,6 +21311,7 @@
             "pkg:deb/debian/openjdk-17": 1,
             "pkg:deb/debian/openjdk-21": 1,
             "pkg:deb/debian/openjdk-25": 1,
+            "pkg:deb/debian/openjdk-27": 1,
             "pkg:deb/debian/openjdk-8": 1,
             "pkg:deb/debian/openjfx": 3
         },
@@ -23189,7 +23204,7 @@
             "pkg:deb/debian/gfs2-utils": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript\"": {
-            "pkg:deb/debian/ghostscript": 5
+            "pkg:deb/debian/ghostscript": 6
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript-chinese\"": {
             "pkg:deb/debian/ghostscript": 1
@@ -23330,7 +23345,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 100
+            "pkg:deb/debian/keycloak": 101
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -24220,13 +24235,13 @@
             "pkg:deb/debian/undertow": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-core\"": {
-            "pkg:deb/debian/undertow": 13
+            "pkg:deb/debian/undertow": 12
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-parent\"": {
             "pkg:deb/debian/undertow": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-servlet\"": {
-            "pkg:deb/debian/undertow": 1
+            "pkg:deb/debian/undertow": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-websockets-jsr\"": {
             "pkg:deb/debian/undertow": 2
@@ -24449,21 +24464,21 @@
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
-            "pkg:deb/debian/undertow": 2,
+            "pkg:deb/debian/undertow": 3,
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"": {
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
-            "pkg:deb/debian/undertow": 3,
+            "pkg:deb/debian/undertow": 4,
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"": {
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
-            "pkg:deb/debian/undertow": 3,
+            "pkg:deb/debian/undertow": 4,
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jws5-tomcat\"": {
@@ -24608,7 +24623,7 @@
             "pkg:deb/debian/undertow": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-servlet\"": {
-            "pkg:deb/debian/undertow": 1
+            "pkg:deb/debian/undertow": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-websockets-jsr\"": {
             "pkg:deb/debian/undertow": 2
@@ -26546,6 +26561,9 @@
         "\"https://pkg.go.dev\":\"github.com/gin-gonic/gin\"": {
             "pkg:deb/debian/golang-github-gin-gonic-gin": 2
         },
+        "\"https://pkg.go.dev\":\"github.com/go-chi/chi/v5\"": {
+            "pkg:deb/debian/golang-github-go-chi-chi": 1
+        },
         "\"https://pkg.go.dev\":\"github.com/go-resty/resty/v2\"": {
             "pkg:deb/debian/golang-github-go-resty-resty": 1
         },
@@ -27624,6 +27642,9 @@
         "\"https://sssd.io/\":\"sssd\"": {
             "pkg:deb/debian/sssd": 2
         },
+        "\"https://svn.code.sf.net/p/mod-qos/source/\":\"mod_qos\"": {
+            "pkg:deb/debian/mod-qos": 4
+        },
         "\"https://theforeman.org/\":\"foreman\"": {
             "pkg:deb/debian/foreman": 1
         },
@@ -27926,6 +27947,9 @@
         "pkg:cargo/thrift": {
             "pkg:deb/debian/thrift": 1
         },
+        "pkg:cargo/uv": {
+            "pkg:deb/debian/uv": 1
+        },
         "pkg:composer/apache/thrift": {
             "pkg:deb/debian/thrift": 10
         },
@@ -27933,7 +27957,7 @@
             "pkg:deb/debian/dolibarr": 2
         },
         "pkg:composer/froxlor/froxlor": {
-            "pkg:deb/debian/froxlor": 3
+            "pkg:deb/debian/froxlor": 6
         },
         "pkg:composer/guzzlehttp/guzzle": {
             "pkg:deb/debian/guzzle": 4
@@ -28360,7 +28384,7 @@
             "pkg:deb/debian/miniupnpc": 2
         },
         "pkg:github/nationalsecurityagency/ghidra": {
-            "pkg:deb/debian/ghidra": 17
+            "pkg:deb/debian/ghidra": 18
         },
         "pkg:github/net-snmp/net-snmp": {
             "pkg:deb/debian/net-snmp": 1
@@ -29081,6 +29105,9 @@
         "pkg:pypi/django-allauth": {
             "pkg:deb/debian/django-allauth": 1
         },
+        "pkg:pypi/dulwich": {
+            "pkg:deb/debian/dulwich": 5
+        },
         "pkg:pypi/gitpython": {
             "pkg:deb/debian/python-git": 28
         },
@@ -29143,6 +29170,9 @@
         },
         "pkg:pypi/trytond": {
             "pkg:deb/debian/tryton-server": 3
+        },
+        "pkg:pypi/uv": {
+            "pkg:deb/debian/uv": 2
         },
         "pkg:pypi/vllm": {
             "pkg:deb/debian/vllm": 33
