@@ -751,15 +751,19 @@
     },
     "pkg:deb/debian/apache-arrow": {
         "VendorProductIDs": [
+            "\"apache software foundation\":\"apache arrow c++\"",
             "\"apache software foundation\":\"apache arrow\"",
             "\"apache software foundation\":\"pyarrow\""
         ],
         "CPEs": null,
         "PackageIDs": [
             "\"https://conda-forge.org/\":\"pyarrow\"",
-            "\"https://pypi.org/\":\"pyarrow\""
+            "\"https://pypi.org/\":\"pyarrow\"",
+            "\"https://pypi.python.org\":\"pyarrow\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/pyarrow"
+        ]
     },
     "pkg:deb/debian/apache-directory-api": {
         "VendorProductIDs": [
@@ -4027,7 +4031,8 @@
     },
     "pkg:deb/debian/dnspython": {
         "VendorProductIDs": [
-            "\"eventlet\":\"eventlet\""
+            "\"eventlet\":\"eventlet\"",
+            "\"rthalley\":\"dnspython\""
         ],
         "CPEs": [
             "cpe:2.3:a:eventlet:eventlet:*:*:*:*:*:*:*:*"
@@ -9388,6 +9393,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/graphql-core": {
+        "VendorProductIDs": [
+            "\"graphql-python\":\"graphql-core\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/graylog2": {
         "VendorProductIDs": [
             "\"graylog\":\"graylog web interface\"",
@@ -10505,13 +10518,17 @@
             "\"lxc\":\"incus\""
         ],
         "CPEs": [
-            "cpe:2.3:a:canonical:lxd:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:canonical:lxd:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:linuxcontainers:incus:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://github.com/canonical\":\"lxd\"",
             "\"https://github.com/canonical/lxd\":\"lxd\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:golang/github.com/lxc/incus/v7/cmd/incus",
+            "pkg:golang/github.com/lxc/incus/v7/cmd/incusd"
+        ]
     },
     "pkg:deb/debian/indent": {
         "VendorProductIDs": null,
@@ -11707,6 +11724,7 @@
             "cpe:2.3:a:canonical:juju:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://canonical.com/juju\":\"juju\"",
             "\"https://github.com/juju/\":\"juju\"",
             "\"https://juju.is/\":\"juju\""
         ],
@@ -15238,6 +15256,15 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libsoup": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libsoup\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libsoup3\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libsoup2.4": {
         "VendorProductIDs": [
             "\"gnome\":\"libsoup\""
@@ -17669,11 +17696,15 @@
         "VendorProductIDs": [
             "\"lepture\":\"mistune\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:mistune_project:mistune:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"python-mistune\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/mistune"
+        ]
     },
     "pkg:deb/debian/mitmproxy": {
         "VendorProductIDs": [
@@ -22121,9 +22152,15 @@
         "VendorProductIDs": [
             "\"openbao\":\"openbao\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:openbao:openbao:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:golang/github.com/openbao/openbao",
+            "pkg:golang/github.com/openbao/openbao/sdk/v2",
+            "pkg:golang/github.com/openbao/openbao/v2"
+        ]
     },
     "pkg:deb/debian/openbgpd": {
         "VendorProductIDs": [
