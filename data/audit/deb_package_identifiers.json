@@ -5581,6 +5581,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/flexget": {
+        "VendorProductIDs": [
+            "\"flexget\":\"flexget\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:pypi/flexget"
+        ]
+    },
     "pkg:deb/debian/flightgear": {
         "VendorProductIDs": [
             "\"flightgear\":\"simgear\""
@@ -5746,6 +5756,14 @@
     "pkg:deb/debian/foswiki": {
         "VendorProductIDs": [
             "\"n/a\":\"foswiki\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/fpdf2": {
+        "VendorProductIDs": [
+            "\"py-pdf\":\"fpdf2\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -6066,11 +6084,16 @@
     },
     "pkg:deb/debian/fzf": {
         "VendorProductIDs": [
-            "\"fzf\":\"fzf\""
+            "\"fzf\":\"fzf\"",
+            "\"junegunn\":\"fzf\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:junegunn:fzf:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:golang/github.com/junegunn/fzf"
+        ]
     },
     "pkg:deb/debian/galette": {
         "VendorProductIDs": [
@@ -9930,9 +9953,13 @@
         "VendorProductIDs": [
             "\"harfbuzz\":\"harfbuzz\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:harfbuzz_project:harfbuzz:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/harfbuzz/harfbuzz"
+        ]
     },
     "pkg:deb/debian/hashcat": {
         "VendorProductIDs": [
@@ -17616,7 +17643,8 @@
         "VendorProductIDs": [
             "\"minio\":\"console\"",
             "\"minio\":\"minio\"",
-            "\"minio\":\"minio-java\""
+            "\"minio\":\"minio-java\"",
+            "\"n/a\":\"minio\""
         ],
         "CPEs": [
             "cpe:2.3:a:minio:minio:*:*:*:*:*:*:*:*"
@@ -22300,7 +22328,9 @@
         "PackageIDs": [
             "\"https://packages.fedoraproject.org/\":\"OpenImageIO\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/openimageio"
+        ]
     },
     "pkg:deb/debian/openjdk-10": {
         "VendorProductIDs": [
@@ -23496,7 +23526,9 @@
             "\"gnu\":\"patch\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"patch\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/patool": {
@@ -25517,6 +25549,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/pylint": {
+        "VendorProductIDs": [
+            "\"pylint-dev\":\"pylint\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/pyload": {
         "VendorProductIDs": [
             "\"payload\":\"payload\"",
@@ -26329,6 +26369,7 @@
     },
     "pkg:deb/debian/python-opentelemetry": {
         "VendorProductIDs": [
+            "\"open-telemetry\":\"opentelemetry-python\"",
             "\"opentelemetry\":\"opentelemetry-exporter-otlp-proto-http\""
         ],
         "CPEs": [

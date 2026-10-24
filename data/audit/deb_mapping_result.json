@@ -311,7 +311,7 @@
             "pkg:deb/debian/openexr": 47
         },
         "\"academysoftwarefoundation\":\"openimageio\"": {
-            "pkg:deb/debian/openimageio": 22
+            "pkg:deb/debian/openimageio": 23
         },
         "\"acassen\":\"keepalived\"": {
             "pkg:deb/debian/keepalived": 1
@@ -2485,7 +2485,7 @@
             "pkg:deb/debian/boa": 1
         },
         "\"body-parser\":\"body-parser\"": {
-            "pkg:deb/debian/node-body-parser": 2
+            "pkg:deb/debian/node-body-parser": 3
         },
         "\"boinc\":\"boinc\"": {
             "pkg:deb/debian/boinc": 1
@@ -2604,7 +2604,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "\"bytecodealliance\":\"wasmtime\"": {
-            "pkg:deb/debian/rust-wasmtime": 58
+            "pkg:deb/debian/rust-wasmtime": 60
         },
         "\"byvoid\":\"opencc\"": {
             "pkg:deb/debian/opencc": 1
@@ -2822,8 +2822,8 @@
             "pkg:deb/debian/swupdate": 9
         },
         "\"cesnet\":\"libyang\"": {
-            "pkg:deb/debian/libyang": 1,
-            "pkg:deb/debian/libyang2": 1
+            "pkg:deb/debian/libyang": 2,
+            "pkg:deb/debian/libyang2": 2
         },
         "\"cgal project\":\"libcgal\"": {
             "pkg:deb/debian/cgal": 38
@@ -4323,6 +4323,9 @@
         },
         "\"flexera software llc\":\"linux kernel\"": {
             "pkg:deb/debian/linux": 4
+        },
+        "\"flexget\":\"flexget\"": {
+            "pkg:deb/debian/flexget": 1
         },
         "\"flightgear\":\"simgear\"": {
             "pkg:deb/debian/flightgear": 1,
@@ -6287,7 +6290,7 @@
             "pkg:deb/debian/hardlink": 3
         },
         "\"harfbuzz\":\"harfbuzz\"": {
-            "pkg:deb/debian/harfbuzz": 2
+            "pkg:deb/debian/harfbuzz": 4
         },
         "\"hashcat\":\"hashcat\"": {
             "pkg:deb/debian/hashcat": 4
@@ -7258,6 +7261,9 @@
         "\"juliangruber\":\"brace-expansion\"": {
             "pkg:deb/debian/node-brace-expansion": 9
         },
+        "\"junegunn\":\"fzf\"": {
+            "pkg:deb/debian/fzf": 1
+        },
         "\"juniper networks\":\"junos os\"": {
             "pkg:deb/debian/inetutils": 1,
             "pkg:deb/debian/socks4-server": 1
@@ -8021,7 +8027,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 17835,
+            "pkg:deb/debian/linux": 18053,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -10672,6 +10678,9 @@
         "\"n/a\":\"minimist\"": {
             "pkg:deb/debian/node-minimist": 1
         },
+        "\"n/a\":\"minio\"": {
+            "pkg:deb/debian/minio": 1
+        },
         "\"n/a\":\"mixin-deep\"": {
             "pkg:deb/debian/node-mixin-deep": 1
         },
@@ -12090,7 +12099,7 @@
             "pkg:deb/debian/libuv1": 2,
             "pkg:deb/debian/llhttp": 6,
             "pkg:deb/debian/node-undici": 1,
-            "pkg:deb/debian/nodejs": 116
+            "pkg:deb/debian/nodejs": 125
         },
         "\"nodejs\":\"node.js\"": {
             "pkg:deb/debian/nodejs": 2
@@ -12913,6 +12922,9 @@
         "\"open-telemetry\":\"opentelemetry-go\"": {
             "pkg:deb/debian/golang-opentelemetry-otel": 9
         },
+        "\"open-telemetry\":\"opentelemetry-python\"": {
+            "pkg:deb/debian/python-opentelemetry": 1
+        },
         "\"open-xchange gmbh\":\"ox dovecot ce\"": {
             "pkg:deb/debian/dovecot": 25
         },
@@ -13324,7 +13336,7 @@
         },
         "\"oracle corporation\":\"mysql connectors\"": {
             "pkg:deb/debian/mysql-5.7": 1,
-            "pkg:deb/debian/mysql-connector-java": 19,
+            "pkg:deb/debian/mysql-connector-java": 22,
             "pkg:deb/debian/mysql-connector-net": 6,
             "pkg:deb/debian/mysql-connector-python": 8,
             "pkg:deb/debian/mysql-connnector-java": 1
@@ -14304,6 +14316,9 @@
         "\"py-bcrypt\":\"py-bcrypt\"": {
             "pkg:deb/debian/python-bcrypt": 1
         },
+        "\"py-pdf\":\"fpdf2\"": {
+            "pkg:deb/debian/fpdf2": 2
+        },
         "\"py-pdf\":\"pypdf\"": {
             "pkg:deb/debian/pypdf": 59,
             "pkg:deb/debian/pypdf2": 58
@@ -14349,6 +14364,9 @@
         },
         "\"pyjwt_project\":\"pyjwt\"": {
             "pkg:deb/debian/pyjwt": 1
+        },
+        "\"pylint-dev\":\"pylint\"": {
+            "pkg:deb/debian/pylint": 1
         },
         "\"pyload\":\"pyload\"": {
             "pkg:deb/debian/pyload": 40
@@ -19150,8 +19168,8 @@
             "pkg:deb/debian/swupdate": 8
         },
         "cpe:2.3:a:cesnet:libyang:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libyang": 1,
-            "pkg:deb/debian/libyang2": 1
+            "pkg:deb/debian/libyang": 2,
+            "pkg:deb/debian/libyang2": 2
         },
         "cpe:2.3:a:checkmk:checkmk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/check-mk": 44,
@@ -20003,6 +20021,9 @@
         "cpe:2.3:a:haproxy:haproxy:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/haproxy": 6
         },
+        "cpe:2.3:a:harfbuzz_project:harfbuzz:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/harfbuzz": 2
+        },
         "cpe:2.3:a:hashcat:hashcat:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/hashcat": 3
         },
@@ -20249,6 +20270,9 @@
         },
         "cpe:2.3:a:juicedata:juicefs:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/juicefs": 1
+        },
+        "cpe:2.3:a:junegunn:fzf:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/fzf": 1
         },
         "cpe:2.3:a:jupyter:jupyter_server:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jupyter-server": 1
@@ -20644,7 +20668,7 @@
             "pkg:deb/debian/miniflux": 1
         },
         "cpe:2.3:a:minio:minio:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/minio": 3
+            "pkg:deb/debian/minio": 4
         },
         "cpe:2.3:a:miniupnp_project:miniupnpc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/miniupnpc": 2
@@ -21181,7 +21205,7 @@
             "pkg:deb/debian/libglvnd": 1
         },
         "cpe:2.3:a:openimageio:openimageio:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openimageio": 4
+            "pkg:deb/debian/openimageio": 5
         },
         "cpe:2.3:a:openldap:openldap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/lmdb": 1,
@@ -21372,7 +21396,7 @@
             "pkg:deb/debian/mysql-9.7": 119
         },
         "cpe:2.3:a:oracle:mysql_connector\\/j:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/mysql-connector-java": 5
+            "pkg:deb/debian/mysql-connector-java": 8
         },
         "cpe:2.3:a:oracle:mysql_connector\\/net:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mysql-connector-net": 3
@@ -22802,7 +22826,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 17827
+            "pkg:deb/debian/linux": 18045
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -23873,6 +23897,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"parted\"": {
             "pkg:deb/debian/parted": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"patch\"": {
+            "pkg:deb/debian/patch": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"pcp\"": {
             "pkg:deb/debian/pcp": 10
@@ -28335,6 +28362,9 @@
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
         },
+        "pkg:github/harfbuzz/harfbuzz": {
+            "pkg:deb/debian/harfbuzz": 2
+        },
         "pkg:github/hexpm/hex": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 10,
@@ -28632,6 +28662,9 @@
         "pkg:golang/github.com/juicedata/juicefs": {
             "pkg:deb/debian/juicefs": 1
         },
+        "pkg:golang/github.com/junegunn/fzf": {
+            "pkg:deb/debian/fzf": 1
+        },
         "pkg:golang/github.com/lxc/incus/v7/cmd/incus": {
             "pkg:deb/debian/incus": 1
         },
@@ -28898,7 +28931,7 @@
             "pkg:deb/debian/node-axios": 10
         },
         "pkg:npm/body-parser": {
-            "pkg:deb/debian/node-body-parser": 1
+            "pkg:deb/debian/node-body-parser": 2
         },
         "pkg:npm/braces": {
             "pkg:deb/debian/node-braces": 1
@@ -29172,6 +29205,9 @@
         "pkg:pypi/dulwich": {
             "pkg:deb/debian/dulwich": 5
         },
+        "pkg:pypi/flexget": {
+            "pkg:deb/debian/flexget": 1
+        },
         "pkg:pypi/gitpython": {
             "pkg:deb/debian/python-git": 28
         },
@@ -29201,6 +29237,9 @@
         },
         "pkg:pypi/offlineimap": {
             "pkg:deb/debian/offlineimap3": 1
+        },
+        "pkg:pypi/openimageio": {
+            "pkg:deb/debian/openimageio": 1
         },
         "pkg:pypi/opentelemetry-exporter-otlp-proto-http": {
             "pkg:deb/debian/python-opentelemetry": 1
