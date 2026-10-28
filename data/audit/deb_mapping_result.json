@@ -2206,7 +2206,7 @@
             "pkg:deb/debian/assertj-core": 1
         },
         "\"assimp\":\"assimp\"": {
-            "pkg:deb/debian/assimp": 9
+            "pkg:deb/debian/assimp": 10
         },
         "\"asterisk\":\"asterisk\"": {
             "pkg:deb/debian/asterisk": 37
@@ -4074,7 +4074,7 @@
             "pkg:deb/debian/ettercap": 1
         },
         "\"eugeny\":\"russh\"": {
-            "pkg:deb/debian/rust-russh": 20,
+            "pkg:deb/debian/rust-russh": 23,
             "pkg:deb/debian/rust-russh-cryptovec": 1
         },
         "\"eventlet\":\"eventlet\"": {
@@ -4359,7 +4359,7 @@
             "pkg:deb/debian/fluidsynth": 9
         },
         "\"follow-redirects\":\"follow-redirects\"": {
-            "pkg:deb/debian/node-follow-redirects": 4
+            "pkg:deb/debian/node-follow-redirects": 5
         },
         "\"follow-redirects\":\"follow-redirects/follow-redirects\"": {
             "pkg:deb/debian/node-follow-redirects": 2
@@ -4603,7 +4603,7 @@
         },
         "\"ggml-org\":\"llama.cpp\"": {
             "pkg:deb/debian/ggml": 1,
-            "pkg:deb/debian/llama.cpp": 30
+            "pkg:deb/debian/llama.cpp": 31
         },
         "\"ggml-org\":\"whisper.cpp\"": {
             "pkg:deb/debian/whisper.cpp": 5
@@ -5108,6 +5108,9 @@
         },
         "\"gnu\":\"mailman\"": {
             "pkg:deb/debian/mailman": 3
+        },
+        "\"gnu\":\"mtools\"": {
+            "pkg:deb/debian/mtools": 1
         },
         "\"gnu\":\"ncurses\"": {
             "pkg:deb/debian/ncurses": 2
@@ -7797,7 +7800,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "\"libexpat\":\"libexpat\"": {
-            "pkg:deb/debian/expat": 7
+            "pkg:deb/debian/expat": 8
         },
         "\"libexpat_project\":\"libexpat\"": {
             "pkg:deb/debian/expat": 3,
@@ -8452,7 +8455,7 @@
             "pkg:deb/debian/rust-sudo-rs": 1
         },
         "\"merbanan\":\"rtl_433\"": {
-            "pkg:deb/debian/rtl-433": 1
+            "pkg:deb/debian/rtl-433": 2
         },
         "\"mercurial\":\"mercurial\"": {
             "pkg:deb/debian/mercurial": 1
@@ -12977,7 +12980,7 @@
             "pkg:deb/debian/golang-opentelemetry-otel": 9
         },
         "\"open-telemetry\":\"opentelemetry-python\"": {
-            "pkg:deb/debian/python-opentelemetry": 1
+            "pkg:deb/debian/python-opentelemetry": 2
         },
         "\"open-xchange gmbh\":\"ox dovecot ce\"": {
             "pkg:deb/debian/dovecot": 25
@@ -13025,6 +13028,9 @@
         },
         "\"openbao\":\"openbao\"": {
             "pkg:deb/debian/openbao": 43
+        },
+        "\"openbsd\":\"libressl\"": {
+            "pkg:deb/debian/libressl": 4
         },
         "\"openbsd\":\"openssh\"": {
             "pkg:deb/debian/openssh": 32,
@@ -15350,6 +15356,9 @@
         "\"reviewboard\":\"reviewboard\"": {
             "pkg:deb/debian/reviewboard": 1
         },
+        "\"rgrove\":\"crass\"": {
+            "pkg:deb/debian/ruby-crass": 1
+        },
         "\"rgrove\":\"sanitize\"": {
             "pkg:deb/debian/ruby-sanitize": 3
         },
@@ -17130,7 +17139,7 @@
             "pkg:deb/debian/python-tuf": 1
         },
         "\"thorvg\":\"thorvg\"": {
-            "pkg:deb/debian/thorvg": 1
+            "pkg:deb/debian/thorvg": 2
         },
         "\"threerings\":\"openvpn-auth-ldap\"": {
             "pkg:deb/debian/openvpn-auth-ldap": 1
@@ -18268,12 +18277,16 @@
             "pkg:deb/debian/xwayland": 1
         },
         "\"x.org\":\"xorg-x11-server\"": {
-            "pkg:deb/debian/xorg-server": 2,
-            "pkg:deb/debian/xwayland": 2
+            "pkg:deb/debian/xorg-server": 4,
+            "pkg:deb/debian/xwayland": 4
         },
         "\"x.org\":\"xwayland\"": {
-            "pkg:deb/debian/xorg-server": 12,
-            "pkg:deb/debian/xwayland": 12
+            "pkg:deb/debian/xorg-server": 15,
+            "pkg:deb/debian/xwayland": 15
+        },
+        "\"x.orgg\":\"xorg-x11-server\"": {
+            "pkg:deb/debian/xorg-server": 1,
+            "pkg:deb/debian/xwayland": 1
         },
         "\"xapi\":\"xapi\"": {
             "pkg:deb/debian/xen-api": 1
@@ -19052,7 +19065,7 @@
             "pkg:deb/debian/asio": 1
         },
         "cpe:2.3:a:assimp:assimp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/assimp": 33
+            "pkg:deb/debian/assimp": 34
         },
         "cpe:2.3:a:asterisk:asterisk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/asterisk": 2
@@ -19745,7 +19758,7 @@
             "pkg:deb/debian/whisper.cpp": 4
         },
         "cpe:2.3:a:ggml:llama.cpp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/llama.cpp": 14
+            "pkg:deb/debian/llama.cpp": 15
         },
         "cpe:2.3:a:ghost:ghost:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghost": 38
@@ -20494,7 +20507,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "cpe:2.3:a:libexpat_project:libexpat:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/expat": 34,
+            "pkg:deb/debian/expat": 35,
             "pkg:deb/debian/firefox": 1,
             "pkg:deb/debian/firefox-esr": 1,
             "pkg:deb/debian/libxmltok": 3,
@@ -21292,6 +21305,9 @@
         "cpe:2.3:a:openbao:openbao:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openbao": 12
         },
+        "cpe:2.3:a:openbsd:libressl:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libressl": 4
+        },
         "cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/openssh": 32,
             "pkg:deb/debian/openssh-gssapi": 14
@@ -22043,7 +22059,7 @@
             "pkg:deb/debian/rpyc": 1
         },
         "cpe:2.3:a:rtl_433_project:rtl_433:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rtl-433": 1
+            "pkg:deb/debian/rtl-433": 2
         },
         "cpe:2.3:a:ruby-lang:cgi:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby2.7": 2,
@@ -22667,10 +22683,14 @@
             "pkg:deb/debian/xorg-server": 1
         },
         "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 1,
-            "pkg:deb/debian/xwayland": 1
+            "pkg:deb/debian/xorg-server": 3,
+            "pkg:deb/debian/xwayland": 3
         },
         "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/xorg-server": 4,
+            "pkg:deb/debian/xwayland": 4
+        },
+        "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xorg-server": 1,
             "pkg:deb/debian/xwayland": 1
         },
@@ -28447,7 +28467,7 @@
             "pkg:deb/debian/bluez-alsa": 1
         },
         "pkg:github/assimp/assimp": {
-            "pkg:deb/debian/assimp": 2
+            "pkg:deb/debian/assimp": 3
         },
         "pkg:github/bitwarden/server": {
             "pkg:deb/debian/bitwarden": 6
@@ -28523,7 +28543,7 @@
             "pkg:deb/debian/zziplib": 2
         },
         "pkg:github/ggml-org/llama.cpp": {
-            "pkg:deb/debian/llama.cpp": 4
+            "pkg:deb/debian/llama.cpp": 5
         },
         "pkg:github/gleam-lang/gleam": {
             "pkg:deb/debian/gleam": 6
@@ -28573,7 +28593,7 @@
             "pkg:deb/debian/liblas": 1
         },
         "pkg:github/libexpat/libexpat": {
-            "pkg:deb/debian/expat": 7
+            "pkg:deb/debian/expat": 8
         },
         "pkg:github/libgme/game-music-emu": {
             "pkg:deb/debian/game-music-emu": 2
@@ -28584,6 +28604,9 @@
         },
         "pkg:github/libjxl/libjxl": {
             "pkg:deb/debian/jpeg-xl": 1
+        },
+        "pkg:github/libressl/portable": {
+            "pkg:deb/debian/libressl": 4
         },
         "pkg:github/libssh2/libssh2": {
             "pkg:deb/debian/libssh2": 7
@@ -28622,7 +28645,7 @@
             "pkg:deb/debian/janus": 1
         },
         "pkg:github/merbanan/rtl_433": {
-            "pkg:deb/debian/rtl-433": 1
+            "pkg:deb/debian/rtl-433": 2
         },
         "pkg:github/michaelrsweet/mxml": {
             "pkg:deb/debian/mxml": 1

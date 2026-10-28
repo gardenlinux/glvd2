@@ -15158,11 +15158,16 @@
     },
     "pkg:deb/debian/libressl": {
         "VendorProductIDs": [
-            "\"libressl\":\"libressl\""
+            "\"libressl\":\"libressl\"",
+            "\"openbsd\":\"libressl\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:openbsd:libressl:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/libressl/portable"
+        ]
     },
     "pkg:deb/debian/librest": {
         "VendorProductIDs": [
@@ -18338,6 +18343,14 @@
     "pkg:deb/debian/msgpuck": {
         "VendorProductIDs": [
             "\"tarantool\":\"msgpuck library\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/mtools": {
+        "VendorProductIDs": [
+            "\"gnu\":\"mtools\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -28578,6 +28591,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/ruby-crass": {
+        "VendorProductIDs": [
+            "\"rgrove\":\"crass\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/ruby-css-parser": {
         "VendorProductIDs": [
             "\"premailer\":\"css_parser\""
@@ -34895,6 +34916,7 @@
             "\"x.org\":\"xorg-server\"",
             "\"x.org\":\"xorg-x11-server\"",
             "\"x.org\":\"xwayland\"",
+            "\"x.orgg\":\"xorg-x11-server\"",
             "\"xorg\":\"xorg-x11-server\"",
             "\"xorg\":\"xserver\"",
             "\"xorg\":\"xwayland\""
@@ -34903,6 +34925,7 @@
             "cpe:2.3:a:x.org:x_server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xserver:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xwayland:*:*:*:*:*:*:*:*"
         ],
@@ -34982,12 +35005,14 @@
             "\"x.org\":\"xorg-server\"",
             "\"x.org\":\"xorg-x11-server\"",
             "\"x.org\":\"xwayland\"",
+            "\"x.orgg\":\"xorg-x11-server\"",
             "\"xorg\":\"xserver\"",
             "\"xorg\":\"xwayland\""
         ],
         "CPEs": [
             "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xserver:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xwayland:*:*:*:*:*:*:*:*"
         ],
