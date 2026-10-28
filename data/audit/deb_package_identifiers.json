@@ -33,7 +33,9 @@
         "VendorProductIDs": [
             "\"3proxy\":\"3proxy\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:3proxy:3proxy:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/3proxy/3proxy"
@@ -1215,7 +1217,9 @@
     "pkg:deb/debian/asterisk": {
         "VendorProductIDs": [
             "\"asterisk\":\"asterisk\"",
+            "\"asterisk\":\"certified-asterisk\"",
             "\"asterisk\":\"certified_asterisk\"",
+            "\"certified-asterisk\":\"certified-asterisk\"",
             "\"pjsip\":\"pjmedia-video\"",
             "\"pjsip\":\"pjproject\"",
             "\"sangoma\":\"asterisk\"",
@@ -3263,7 +3267,9 @@
             "\"n/a\":\"coturn\"",
             "\"talos\":\"coturn\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:coturn_project:coturn:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/coturn/coturn"
@@ -3762,6 +3768,16 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/DentonW/DevIL"
+        ]
+    },
+    "pkg:deb/debian/devilutionx": {
+        "VendorProductIDs": [
+            "\"diasurgical\":\"devilutionx\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/diasurgical/DevilutionX"
         ]
     },
     "pkg:deb/debian/devscripts": {
@@ -4640,6 +4656,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/electrum": {
+        "VendorProductIDs": [
+            "\"spesmilo\":\"electrum\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:electrum:electrum:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/element-web": {
         "VendorProductIDs": [
             "\"element-hq\":\"element-web\""
@@ -4925,13 +4951,21 @@
     },
     "pkg:deb/debian/erlang-jose": {
         "VendorProductIDs": [
-            "\"potatosalad\":\"erlang-jose\""
+            "\"potatosalad\":\"erlang-jose\"",
+            "\"potatosalad\":\"jose\""
         ],
         "CPEs": [
-            "cpe:2.3:a:potatosalad:erlang-jose:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:potatosalad:erlang-jose:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:potatosalad:jose:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://github.com\":\"potatosalad/erlang-jose\"",
+            "\"https://repo.hex.pm\":\"jose\""
+        ],
+        "PackageURLs": [
+            "pkg:github/potatosalad/erlang-jose",
+            "pkg:hex/jose"
+        ]
     },
     "pkg:deb/debian/errands": {
         "VendorProductIDs": [
@@ -8953,7 +8987,9 @@
         "VendorProductIDs": [
             "\"tink-crypto\":\"tink-go\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:google:tink_go:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/tink-crypto/tink-go"
@@ -9575,6 +9611,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/gssproxy": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gssproxy\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/gst-plugins-bad0.10": {
         "VendorProductIDs": [
             "\"gstreamer\":\"gstreamer\"",
@@ -9676,6 +9720,14 @@
         "CPEs": [
             "cpe:2.3:a:gstreamer_project:gst-rtsp-server:*:*:*:*:*:*:*:*"
         ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/gstreamer-editing-services1.0": {
+        "VendorProductIDs": [
+            "\"gstreamer project\":\"gst-editing-services\""
+        ],
+        "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -9913,8 +9965,13 @@
             "\"haproxy project\":\"haproxy 2.9\"",
             "\"haproxy project\":\"haproxy 3.0\"",
             "\"haproxy technologies\":\"haproxy community edition\"",
+            "\"haproxy technologies\":\"haproxy kubernetes ingress controller\"",
             "\"haproxy technologies\":\"haproxy\"",
+            "\"haproxy technologies\":\"kubernetes ingress controller enterprise\"",
+            "\"haproxy\":\"haproxy enterprise edition\"",
             "\"haproxy\":\"haproxy\"",
+            "\"haproxy\":\"kubernetes ingress controller enterprise\"",
+            "\"haproxy\":\"kubernetes ingress controller\"",
             "\"n/a\":\"haproxy\"",
             "\"suse linux\":\"enterprise desktop\"",
             "\"suse linux\":\"enterprise high performance computing (hpc)\"",
@@ -13503,9 +13560,13 @@
         "VendorProductIDs": [
             "\"libyal\":\"libesedb\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libesedb_project:libesedb:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/libyal/libesedb"
+        ]
     },
     "pkg:deb/debian/libetpan": {
         "VendorProductIDs": [
@@ -13642,7 +13703,9 @@
         "VendorProductIDs": [
             "\"libyal\":\"libfwsi\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libfwsi_project:libfwsi:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/libyal/libfwsi"
@@ -13927,6 +13990,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libhttp-headers-actionpack-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"HTTP-Headers-ActionPack\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/HTTP-Headers-ActionPack"
+        ]
+    },
     "pkg:deb/debian/libhttp-tiny-perl": {
         "VendorProductIDs": [
             "\"haarg\":\"http::tiny\""
@@ -14013,6 +14086,16 @@
             "pkg:cpan/Imager-File-GIF",
             "pkg:cpan/Imager-File-PNG"
         ]
+    },
+    "pkg:deb/debian/libimobiledevice": {
+        "VendorProductIDs": [
+            "\"n/a\":\"libimobiledevice\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:libimobiledevice:libimobiledevice:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
     },
     "pkg:deb/debian/libinput": {
         "VendorProductIDs": [
@@ -14815,7 +14898,9 @@
         "VendorProductIDs": [
             "\"libyal\":\"libpff\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libpff_project:libpff:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/libyal/libpff"
@@ -14878,7 +14963,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Plack\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/Plack"
+        ]
     },
     "pkg:deb/debian/libpng1.6": {
         "VendorProductIDs": [
@@ -15790,6 +15877,16 @@
             "\"https://cpan.org/modules\":\"Web-API\""
         ],
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libweb-simple-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Web-Simple\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Web-Simple"
+        ]
     },
     "pkg:deb/debian/libwebp": {
         "VendorProductIDs": [
@@ -16847,6 +16944,14 @@
     "pkg:deb/debian/lua-http": {
         "VendorProductIDs": [
             "\"daurnimator\":\"lua-http\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/lua-nginx-dns": {
+        "VendorProductIDs": [
+            "\"openresty\":\"lua-resty-dns\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -18388,6 +18493,16 @@
             "pkg:github/michaelrsweet/mxml"
         ]
     },
+    "pkg:deb/debian/mycli": {
+        "VendorProductIDs": [
+            "\"dbcli\":\"mycli\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:dbcli:mycli:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/mydumper": {
         "VendorProductIDs": [
             "\"mydumper\":\"mydumper\""
@@ -18676,7 +18791,8 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:github/ntop/nDPI"
+            "pkg:github/ntop/nDPI",
+            "pkg:github/ntop/ndpi"
         ]
     },
     "pkg:deb/debian/neatvnc": {
@@ -18966,6 +19082,21 @@
             "pkg:maven/io.netty/netty-codec-http3",
             "pkg:maven/io.netty/netty-codec-socks",
             "pkg:maven/io.netty/netty-handler"
+        ]
+    },
+    "pkg:deb/debian/netty-tcnative": {
+        "VendorProductIDs": [
+            "\"netty\":\"netty-tcnative\"",
+            "\"netty\":\"netty-tcnative-boringssl-static\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/\":\"io.netty:netty-tcnative-boringssl-static\"",
+            "\"https://repo1.maven.org/maven2/io/netty/netty-tcnative/\":\"io.netty:netty-tcnative\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/io.netty/netty-tcnative",
+            "pkg:maven/io.netty/netty-tcnative-boringssl-static"
         ]
     },
     "pkg:deb/debian/network-manager": {
@@ -19847,9 +19978,13 @@
         "VendorProductIDs": [
             "\"i18next\":\"i18next-http-backend\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:i18next:i18next-http-backend:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:npm/i18next-http-backend"
+        ]
     },
     "pkg:deb/debian/node-immutable": {
         "VendorProductIDs": [
@@ -20498,14 +20633,19 @@
     },
     "pkg:deb/debian/node-serialize-javascript": {
         "VendorProductIDs": [
+            "\"n/a\":\"serialize-javascript\"",
             "\"yahoo\":\"serialize-javascript\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:yahoo:serialize_javascript:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"serialize-javascript\"",
             "\"https://github.com/yahoo/serialize-javascript\":\"serialize-javascript\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:npm/serialize-javascript"
+        ]
     },
     "pkg:deb/debian/node-serve-static": {
         "VendorProductIDs": [
@@ -21773,6 +21913,16 @@
             "pkg:golang/github.com/oauth2-proxy/oauth2-proxy/v7"
         ]
     },
+    "pkg:deb/debian/objenesis": {
+        "VendorProductIDs": [
+            "\"easymock\":\"objenesis\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:maven/org.objenesis/objenesis"
+        ]
+    },
     "pkg:deb/debian/obs-build": {
         "VendorProductIDs": [
             "\"suse\":\"build\""
@@ -21867,6 +22017,7 @@
     "pkg:deb/debian/octoprint": {
         "VendorProductIDs": [
             "\"gitlab\":\"gitlab\"",
+            "\"n/a\":\"octoprint\"",
             "\"octoprint\":\"octoprint\"",
             "\"octoprint\":\"octoprint/octoprint\""
         ],
@@ -22155,7 +22306,9 @@
             "cpe:2.3:a:open62541:open62541:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/open62541/open62541"
+        ]
     },
     "pkg:deb/debian/openafs": {
         "VendorProductIDs": [
@@ -22848,6 +23001,15 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/openscap": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"openscap\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"openscap-main\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/opensearch": {
@@ -24350,6 +24512,7 @@
     },
     "pkg:deb/debian/phpbb3": {
         "VendorProductIDs": [
+            "\"phpbb\":\"phpbb\"",
             "\"phpbb3\":\"phpbb3\""
         ],
         "CPEs": null,
@@ -25820,6 +25983,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-brotlicffi": {
+        "VendorProductIDs": [
+            "\"google\":\"brotli\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/python-certifi": {
         "VendorProductIDs": [
             "\"certifi\":\"python-certifi\""
@@ -26525,6 +26696,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-rply": {
+        "VendorProductIDs": [
+            "\"diegonehab\":\"rply\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/diegonehab/rply"
+        ]
+    },
     "pkg:deb/debian/python-rsa": {
         "VendorProductIDs": [
             "\"sybren a. stüvel\":\"python-rsa\""
@@ -27150,7 +27331,9 @@
             "\"qt\":\"qt\""
         ],
         "CPEs": [
-            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:qt:qt5compat:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -27229,6 +27412,7 @@
             "\"qt\":\"qtbase\""
         ],
         "CPEs": [
+            "cpe:2.3:a:qt:qt5compat:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*"
         ],
@@ -27241,6 +27425,7 @@
             "\"qt\":\"qtbase\""
         ],
         "CPEs": [
+            "cpe:2.3:a:qt:qt5compat:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*"
         ],
@@ -27604,7 +27789,9 @@
             "cpe:2.3:a:librdf:raptor_rdf_syntax_library:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/dajobe/raptor"
+        ]
     },
     "pkg:deb/debian/rar": {
         "VendorProductIDs": [
@@ -29139,6 +29326,7 @@
     },
     "pkg:deb/debian/ruby3.1": {
         "VendorProductIDs": [
+            "\"gitlab\":\"gitlab\"",
             "\"ruby\":\"erb\"",
             "\"ruby\":\"net-imap\"",
             "\"ruby\":\"rdoc\"",
@@ -29152,6 +29340,7 @@
             "\"ruby-lang\":\"uri\""
         ],
         "CPEs": [
+            "cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:cgi:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:rexml:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:ruby:*:*:*:*:*:*:*:*",
@@ -29184,6 +29373,7 @@
     },
     "pkg:deb/debian/ruby3.3": {
         "VendorProductIDs": [
+            "\"gitlab\":\"gitlab\"",
             "\"ruby\":\"erb\"",
             "\"ruby\":\"net-imap\"",
             "\"ruby\":\"resolv\"",
@@ -29195,6 +29385,7 @@
             "\"ruby-lang\":\"uri\""
         ],
         "CPEs": [
+            "cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:cgi:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:rexml:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:uri:*:*:*:*:*:*:*:*",
@@ -31479,7 +31670,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Starman\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/Starman"
+        ]
     },
     "pkg:deb/debian/starship": {
         "VendorProductIDs": [
@@ -32639,9 +32832,13 @@
         "VendorProductIDs": [
             "\"transmission\":\"transmission\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:transmissionbt:transmission:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/transmission/transmission"
+        ]
     },
     "pkg:deb/debian/tripleo-heat-templates": {
         "VendorProductIDs": [
@@ -33155,6 +33352,14 @@
         "PackageURLs": [
             "pkg:github/util-linux/util-linux"
         ]
+    },
+    "pkg:deb/debian/utox": {
+        "VendorProductIDs": [
+            "\"utox\":\"utox\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
     },
     "pkg:deb/debian/uv": {
         "VendorProductIDs": [
@@ -34696,6 +34901,8 @@
         ],
         "CPEs": [
             "cpe:2.3:a:x.org:x_server:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xserver:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xwayland:*:*:*:*:*:*:*:*"
         ],
@@ -34779,6 +34986,8 @@
             "\"xorg\":\"xwayland\""
         ],
         "CPEs": [
+            "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xserver:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xwayland:*:*:*:*:*:*:*:*"
         ],
