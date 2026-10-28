@@ -25,6 +25,21 @@
         "upstream_src": false,
         "has_patches": false
       }
+    },
+    "2:3.131-1gl0~bp2150": {
+      "pkg_name": "nss",
+      "version": "2:3.131-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/nss",
+      "repo": "bp-package-nss",
+      "commit": "6fbb188795fad9c796ad2d53a6bde572cb105ce4",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
     }
   }
 }

@@ -29,6 +29,21 @@
         "upstream_src": true,
         "has_patches": false
       }
+    },
+    "2.15.1-1gl0~bp2150": {
+      "pkg_name": "pyjwt",
+      "version": "2.15.1-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/pyjwt",
+      "repo": "bp-package-pyjwt",
+      "commit": "090b59a2b66e88cdea9ce4bab35e9f206073235d",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": false
+      }
     }
   }
 }

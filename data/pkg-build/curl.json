@@ -31,6 +31,22 @@
         "has_patches": true,
         "upstream_version": "8.22.0"
       }
+    },
+    "8.23.0-1gl0~bp2150": {
+      "pkg_name": "curl",
+      "version": "8.23.0-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/curl",
+      "repo": "package-curl",
+      "commit": "a31c3a40313410d2060d5a12949575807694e6e2",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "8.23.0"
+      }
     }
   }
 }

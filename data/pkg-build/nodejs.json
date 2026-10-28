@@ -25,6 +25,22 @@
         "upstream_src": false,
         "has_patches": false
       }
+    },
+    "24.22.0+dfsg+~cs24.19.2-2gl0~bp2150": {
+      "pkg_name": "nodejs",
+      "version": "24.22.0+dfsg+~cs24.19.2-2gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/nodejs",
+      "repo": "bp-package-nodejs",
+      "commit": "23cbc688f5f5f71e6e5aa9686151635b2061937d",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "24.22.0+dfsg+~cs24.19.2"
+      }
     }
   }
 }

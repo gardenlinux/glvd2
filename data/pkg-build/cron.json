@@ -25,6 +25,21 @@
         "upstream_src": false,
         "has_patches": false
       }
+    },
+    "3.0pl1-212gl0+bp2150": {
+      "pkg_name": "cron",
+      "version": "3.0pl1-212gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/cron",
+      "repo": "package-cron",
+      "commit": "0ac011594d419dffd60181d2cd46d9d456a0cd3f",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
     }
   }
 }

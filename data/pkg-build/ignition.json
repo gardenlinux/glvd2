@@ -29,6 +29,21 @@
         "upstream_src": true,
         "has_patches": true
       }
+    },
+    "2.26.0-1gl4~bp2150": {
+      "pkg_name": "ignition",
+      "version": "2.26.0-1gl4~bp2150",
+      "purl": "pkg:deb/gardenlinux/ignition",
+      "repo": "package-ignition",
+      "commit": "61db55836cf050a508a5cff1ed936f0cff4a24ea",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": true
+      }
     }
   }
 }

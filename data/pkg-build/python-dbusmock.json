@@ -12,6 +12,19 @@
         "upstream_src": false,
         "has_patches": false
       }
+    },
+    "0.38.1-1": {
+      "pkg_name": "python-dbusmock",
+      "version": "0.38.1-1",
+      "purl": "pkg:deb/gardenlinux/python-dbusmock",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
     }
   }
 }

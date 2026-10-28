@@ -27,6 +27,21 @@
         "upstream_src": false,
         "has_patches": true
       }
+    },
+    "2.87.2-3gl0~bp2150": {
+      "pkg_name": "glib2.0",
+      "version": "2.87.2-3gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/glib2.0",
+      "repo": "bp-package-glib2.0",
+      "commit": "f55120fcaa34c42798a729fad4370e58d519a4d0",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
     }
   }
 }

@@ -12,6 +12,22 @@
         "upstream_src": false,
         "has_patches": false
       }
+    },
+    "1.25.0-3gl0~bp2150": {
+      "pkg_name": "wget",
+      "version": "1.25.0-3gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/wget",
+      "repo": "bp-package-wget",
+      "commit": "2bf58afdca04138b12a068d79d67ba3a062dabdf",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "1.25.0"
+      }
     }
   }
 }

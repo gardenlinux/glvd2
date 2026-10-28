@@ -31,6 +31,22 @@
         "has_patches": true,
         "upstream_version": "10.4p1"
       }
+    },
+    "1:10.6p1-1gl0~bp2150": {
+      "pkg_name": "openssh",
+      "version": "1:10.6p1-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/openssh",
+      "repo": "package-openssh",
+      "commit": "8f641f2f0dddb7921a39d7b5b9c3ea05c11819b8",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "10.6p1"
+      }
     }
   }
 }
