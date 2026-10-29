@@ -10352,9 +10352,13 @@
         "VendorProductIDs": [
             "\"samtools\":\"htslib\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:htslib:htslib:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/samtools/htslib"
+        ]
     },
     "pkg:deb/debian/http-parser": {
         "VendorProductIDs": [
@@ -15896,6 +15900,16 @@
             "\"https://gitlab.com/libvirt/libvirt/\":\"libvirt\""
         ],
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libvmime": {
+        "VendorProductIDs": [
+            "\"kisli\":\"vmime\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/kisli/vmime"
+        ]
     },
     "pkg:deb/debian/libvncserver": {
         "VendorProductIDs": [
@@ -31486,6 +31500,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/speex": {
+        "VendorProductIDs": [
+            "\"xiph\":\"speex\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:xiph:speex:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/xiph/speex"
+        ]
+    },
     "pkg:deb/debian/spice": {
         "VendorProductIDs": [
             "\"[unknown]\":\"spice:\"",
@@ -34332,6 +34358,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http-error-context\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http-interface\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-management\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-ejb3\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-integration\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-tool-wrapper\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-embedded\"",

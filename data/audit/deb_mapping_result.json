@@ -1427,7 +1427,7 @@
             "pkg:deb/debian/kafka": 1
         },
         "\"apache software foundation\":\"apache kafka\"": {
-            "pkg:deb/debian/kafka": 22
+            "pkg:deb/debian/kafka": 23
         },
         "\"apache software foundation\":\"apache karaf cave\"": {
             "pkg:deb/debian/apache-karaf": 1
@@ -3691,7 +3691,7 @@
             "pkg:deb/debian/dolibarr": 3
         },
         "\"domoticz\":\"domoticz\"": {
-            "pkg:deb/debian/domoticz": 3
+            "pkg:deb/debian/domoticz": 4
         },
         "\"dompdf\":\"dompdf\"": {
             "pkg:deb/debian/php-dompdf": 11
@@ -7544,6 +7544,9 @@
         "\"khronos group\":\"vulkan\"": {
             "pkg:deb/debian/firmware-nonfree": 1
         },
+        "\"kisli\":\"vmime\"": {
+            "pkg:deb/debian/libvmime": 2
+        },
         "\"kitty project\":\"kitty\"": {
             "pkg:deb/debian/kitty": 1
         },
@@ -7636,7 +7639,7 @@
             "pkg:deb/debian/koha": 1
         },
         "\"labstack\":\"echo\"": {
-            "pkg:deb/debian/golang-github-labstack-echo": 8,
+            "pkg:deb/debian/golang-github-labstack-echo": 18,
             "pkg:deb/debian/golang-github-labstack-echo.v2": 2,
             "pkg:deb/debian/golang-github-labstack-echo.v3": 2
         },
@@ -8370,7 +8373,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 423
+            "pkg:deb/debian/mattermost-server": 424
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -15734,7 +15737,7 @@
             "pkg:deb/debian/rlottie": 3
         },
         "\"samtools\":\"htslib\"": {
-            "pkg:deb/debian/htslib": 10
+            "pkg:deb/debian/htslib": 11
         },
         "\"samtools\":\"samtools\"": {
             "pkg:deb/debian/samtools": 2
@@ -18361,6 +18364,9 @@
         "\"xhtml2pdf\":\"xhtml2pdf\"": {
             "pkg:deb/debian/xhtml2pdf": 2
         },
+        "\"xiph\":\"speex\"": {
+            "pkg:deb/debian/speex": 1
+        },
         "\"xlockmore\":\"xlockmore\"": {
             "pkg:deb/debian/xlockmore": 1
         },
@@ -20207,6 +20213,9 @@
         },
         "cpe:2.3:a:htmldoc_project:htmldoc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/htmldoc": 1
+        },
+        "cpe:2.3:a:htslib:htslib:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/htslib": 1
         },
         "cpe:2.3:a:http-cache-semantics_project:http-cache-semantics:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-got": 2
@@ -22740,6 +22749,9 @@
         "cpe:2.3:a:xhtml2pdf:xhtml2pdf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xhtml2pdf": 1
         },
+        "cpe:2.3:a:xiph:speex:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/speex": 1
+        },
         "cpe:2.3:a:xmedcon:medcon:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xmedcon": 1
         },
@@ -24978,6 +24990,9 @@
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-management\"": {
             "pkg:deb/debian/wildfly": 1
         },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-ejb3\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-integration\"": {
             "pkg:deb/debian/wildfly": 1
         },
@@ -24994,7 +25009,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-iiop-openjdk\"": {
-            "pkg:deb/debian/wildfly": 1
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-installation-manager\"": {
             "pkg:deb/debian/wildfly": 1
@@ -27505,7 +27520,7 @@
             "pkg:deb/debian/kafka": 2
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka\"": {
-            "pkg:deb/debian/kafka": 6
+            "pkg:deb/debian/kafka": 7
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-clients\"": {
             "pkg:deb/debian/kafka": 2
@@ -28650,6 +28665,9 @@
         "pkg:github/kanboard/kanboard": {
             "pkg:deb/debian/kanboard": 2
         },
+        "pkg:github/kisli/vmime": {
+            "pkg:deb/debian/libvmime": 2
+        },
         "pkg:github/krb5/krb5": {
             "pkg:deb/debian/krb5": 2
         },
@@ -28828,6 +28846,9 @@
         "pkg:github/saitoha/libsixel": {
             "pkg:deb/debian/libsixel": 1
         },
+        "pkg:github/samtools/htslib": {
+            "pkg:deb/debian/htslib": 1
+        },
         "pkg:github/sbabic/swupdate": {
             "pkg:deb/debian/swupdate": 2
         },
@@ -28908,6 +28929,9 @@
         },
         "pkg:github/wummel/patool": {
             "pkg:deb/debian/patool": 1
+        },
+        "pkg:github/xiph/speex": {
+            "pkg:deb/debian/speex": 1
         },
         "pkg:github/zaproxy/zap-extensions": {
             "pkg:deb/debian/zaproxy": 1
@@ -29067,7 +29091,7 @@
             "pkg:deb/debian/kafka": 2
         },
         "pkg:maven/org.apache.kafka/kafka": {
-            "pkg:deb/debian/kafka": 6
+            "pkg:deb/debian/kafka": 7
         },
         "pkg:maven/org.apache.kafka/kafka-clients": {
             "pkg:deb/debian/kafka": 1
