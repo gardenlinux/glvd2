@@ -5645,6 +5645,30 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/fltk1.3": {
+        "VendorProductIDs": [
+            "\"fltk\":\"fltk\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:fltk_project:fltk:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/fltk/fltk"
+        ]
+    },
+    "pkg:deb/debian/fltk1.4": {
+        "VendorProductIDs": [
+            "\"fltk\":\"fltk\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:fltk_project:fltk:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/fltk/fltk"
+        ]
+    },
     "pkg:deb/debian/fluentd": {
         "VendorProductIDs": [
             "\"cloud native computing foundation (cncf)\":\"fluentd\"",
@@ -11940,14 +11964,20 @@
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-clients\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-raft\"",
-            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-streams\""
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-streams\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka_2.11\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka_2.12\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka_2.13\""
         ],
         "PackageURLs": [
             "pkg:maven/org.apache.kafka/connect-runtime",
             "pkg:maven/org.apache.kafka/kafka",
             "pkg:maven/org.apache.kafka/kafka-clients",
             "pkg:maven/org.apache.kafka/kafka-raft",
-            "pkg:maven/org.apache.kafka/kafka-streams"
+            "pkg:maven/org.apache.kafka/kafka-streams",
+            "pkg:maven/org.apache.kafka/kafka_2.11",
+            "pkg:maven/org.apache.kafka/kafka_2.12",
+            "pkg:maven/org.apache.kafka/kafka_2.13"
         ]
     },
     "pkg:deb/debian/kakoune": {
@@ -27401,12 +27431,15 @@
     },
     "pkg:deb/debian/qpid-proton": {
         "VendorProductIDs": [
+            "\"apache software foundation\":\"apache qpid proton c\"",
             "\"apache software foundation\":\"apache qpid proton\"",
             "\"apache software foundation\":\"apache qpid proton-j\""
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:software-id/apache.org/qpid-proton"
+        ]
     },
     "pkg:deb/debian/qt4-x11": {
         "VendorProductIDs": [

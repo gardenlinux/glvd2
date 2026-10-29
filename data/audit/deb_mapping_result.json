@@ -1529,6 +1529,9 @@
         "\"apache software foundation\":\"apache qpid dispatch router\"": {
             "pkg:deb/debian/qpid-dispatch": 1
         },
+        "\"apache software foundation\":\"apache qpid proton c\"": {
+            "pkg:deb/debian/qpid-proton": 4
+        },
         "\"apache software foundation\":\"apache qpid proton\"": {
             "pkg:deb/debian/qpid-proton": 1
         },
@@ -4354,6 +4357,10 @@
         },
         "\"floraison\":\"fugit\"": {
             "pkg:deb/debian/ruby-fugit": 1
+        },
+        "\"fltk\":\"fltk\"": {
+            "pkg:deb/debian/fltk1.3": 2,
+            "pkg:deb/debian/fltk1.4": 2
         },
         "\"fluent\":\"fluentd\"": {
             "pkg:deb/debian/fluentd": 2
@@ -14686,12 +14693,12 @@
         "\"qt\":\"qt\"": {
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-5compat": 2,
-            "pkg:deb/debian/qt6-base": 17,
+            "pkg:deb/debian/qt6-base": 18,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 15,
+            "pkg:deb/debian/qtbase-opensource-src": 16,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -19677,6 +19684,10 @@
         "cpe:2.3:a:floraison:fugit:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-fugit": 1
         },
+        "cpe:2.3:a:fltk_project:fltk:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/fltk1.3": 2,
+            "pkg:deb/debian/fltk1.4": 2
+        },
         "cpe:2.3:a:fluidsynth:fluidsynth:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/fluidsynth": 1
         },
@@ -21896,12 +21907,12 @@
         "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-5compat": 2,
-            "pkg:deb/debian/qt6-base": 16,
+            "pkg:deb/debian/qt6-base": 17,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 14,
+            "pkg:deb/debian/qtbase-opensource-src": 15,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -21915,8 +21926,8 @@
         },
         "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt6-5compat": 1,
-            "pkg:deb/debian/qt6-base": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 4,
+            "pkg:deb/debian/qt6-base": 5,
+            "pkg:deb/debian/qtbase-opensource-src": 5,
             "pkg:deb/debian/qtbase-opensource-src-gles": 4
         },
         "cpe:2.3:a:qt:qtsvg:*:*:*:*:*:*:*:*": {
@@ -27520,7 +27531,7 @@
             "pkg:deb/debian/kafka": 2
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka\"": {
-            "pkg:deb/debian/kafka": 7
+            "pkg:deb/debian/kafka": 6
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-clients\"": {
             "pkg:deb/debian/kafka": 2
@@ -27530,6 +27541,15 @@
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-streams\"": {
             "pkg:deb/debian/kafka": 2
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka_2.11\"": {
+            "pkg:deb/debian/kafka": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka_2.12\"": {
+            "pkg:deb/debian/kafka": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka_2.13\"": {
+            "pkg:deb/debian/kafka": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf.decanter.collector:org.apache.karaf.decanter.collector.log.socket\"": {
             "pkg:deb/debian/apache-karaf": 1
@@ -28612,6 +28632,10 @@
         "pkg:github/ffmpeg/ffmpeg": {
             "pkg:deb/debian/ffmpeg": 9
         },
+        "pkg:github/fltk/fltk": {
+            "pkg:deb/debian/fltk1.3": 2,
+            "pkg:deb/debian/fltk1.4": 2
+        },
         "pkg:github/freeswitch/sofia-sip": {
             "pkg:deb/debian/sofia-sip": 1
         },
@@ -29091,7 +29115,7 @@
             "pkg:deb/debian/kafka": 2
         },
         "pkg:maven/org.apache.kafka/kafka": {
-            "pkg:deb/debian/kafka": 7
+            "pkg:deb/debian/kafka": 6
         },
         "pkg:maven/org.apache.kafka/kafka-clients": {
             "pkg:deb/debian/kafka": 1
@@ -29101,6 +29125,15 @@
         },
         "pkg:maven/org.apache.kafka/kafka-streams": {
             "pkg:deb/debian/kafka": 2
+        },
+        "pkg:maven/org.apache.kafka/kafka_2.11": {
+            "pkg:deb/debian/kafka": 1
+        },
+        "pkg:maven/org.apache.kafka/kafka_2.12": {
+            "pkg:deb/debian/kafka": 1
+        },
+        "pkg:maven/org.apache.kafka/kafka_2.13": {
+            "pkg:deb/debian/kafka": 1
         },
         "pkg:maven/org.apache.logging.log4j/log4j-1.2-api": {
             "pkg:deb/debian/apache-log4j1.2": 1,
@@ -29625,6 +29658,9 @@
         },
         "pkg:pypi/xhtml2pdf": {
             "pkg:deb/debian/xhtml2pdf": 1
+        },
+        "pkg:software-id/apache.org/qpid-proton": {
+            "pkg:deb/debian/qpid-proton": 4
         },
         "pkg:software-id/erlang.org/otp": {
             "pkg:deb/debian/erlang": 33,

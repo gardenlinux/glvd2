@@ -1,5 +1,5 @@
 {
-    "1877.27": [
+    "1877.28": [
         "pkg:deb/gardenlinux/abseil@20240722.0-3",
         "pkg:deb/gardenlinux/acl@2.4.0-1gl0~bp1877",
         "pkg:deb/gardenlinux/acorn@8.8.1%2Bds%2B~cs25.17.7-2",
@@ -685,7 +685,7 @@
         "pkg:deb/gardenlinux/libyuv@0.0.1904.20250204-1",
         "pkg:deb/gardenlinux/libzstd@1.5.7%2Bdfsg-1gl0~bp1877",
         "pkg:deb/gardenlinux/linux-base@4.12gl0%2Bbp1877",
-        "pkg:deb/gardenlinux/linux@6.12.112-1gl14~bp1877",
+        "pkg:deb/gardenlinux/linux@6.12.114-1gl14~bp1877",
         "pkg:deb/gardenlinux/llvm-toolchain-17@1:17.0.6-21",
         "pkg:deb/gardenlinux/llvm-toolchain-18@1:18.1.8-18",
         "pkg:deb/gardenlinux/llvm-toolchain-19@1:19.1.7-3",
