@@ -1427,7 +1427,7 @@
             "pkg:deb/debian/kafka": 1
         },
         "\"apache software foundation\":\"apache kafka\"": {
-            "pkg:deb/debian/kafka": 11
+            "pkg:deb/debian/kafka": 22
         },
         "\"apache software foundation\":\"apache karaf cave\"": {
             "pkg:deb/debian/apache-karaf": 1
@@ -2272,7 +2272,7 @@
             "pkg:deb/debian/wordpress": 4
         },
         "\"avahi\":\"avahi\"": {
-            "pkg:deb/debian/avahi": 6
+            "pkg:deb/debian/avahi": 12
         },
         "\"awesomized\":\"libmemcached\"": {
             "pkg:deb/debian/libmemcached": 1
@@ -2288,6 +2288,9 @@
         },
         "\"axboe\":\"fio\"": {
             "pkg:deb/debian/fio": 2
+        },
+        "\"axel download accelerator\":\"axel\"": {
+            "pkg:deb/debian/axel": 1
         },
         "\"axios\":\"axios\"": {
             "pkg:deb/debian/node-axios": 53
@@ -2607,7 +2610,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "\"bytecodealliance\":\"wasmtime\"": {
-            "pkg:deb/debian/rust-wasmtime": 61
+            "pkg:deb/debian/rust-wasmtime": 62
         },
         "\"byvoid\":\"opencc\"": {
             "pkg:deb/debian/opencc": 1
@@ -4074,7 +4077,7 @@
             "pkg:deb/debian/ettercap": 1
         },
         "\"eugeny\":\"russh\"": {
-            "pkg:deb/debian/rust-russh": 23,
+            "pkg:deb/debian/rust-russh": 24,
             "pkg:deb/debian/rust-russh-cryptovec": 1
         },
         "\"eventlet\":\"eventlet\"": {
@@ -5559,7 +5562,7 @@
             "pkg:deb/debian/golang-github-xenolf-lego": 2
         },
         "\"go-chi\":\"chi\"": {
-            "pkg:deb/debian/golang-github-go-chi-chi": 5
+            "pkg:deb/debian/golang-github-go-chi-chi": 6
         },
         "\"go-git\":\"go-billy\"": {
             "pkg:deb/debian/golang-github-go-git-go-billy": 2,
@@ -6042,7 +6045,7 @@
             "pkg:deb/debian/graylog2": 15
         },
         "\"greyclab\":\"cimg\"": {
-            "pkg:deb/debian/cimg": 3
+            "pkg:deb/debian/cimg": 4
         },
         "\"grichter\":\"apache::sessionx\"": {
             "pkg:deb/debian/libapache-sessionx-perl": 1
@@ -6290,7 +6293,7 @@
             "pkg:deb/debian/node-hoek": 1
         },
         "\"happyseafox\":\"sail\"": {
-            "pkg:deb/debian/sail": 7
+            "pkg:deb/debian/sail": 8
         },
         "\"haproxy project\":\"haproxy 2.6\"": {
             "pkg:deb/debian/haproxy": 1
@@ -6601,7 +6604,7 @@
             "pkg:deb/debian/hyprland": 1
         },
         "\"i18next\":\"i18next-http-backend\"": {
-            "pkg:deb/debian/node-i18next-http-backend": 3
+            "pkg:deb/debian/node-i18next-http-backend": 4
         },
         "\"ibm\":\"aix\"": {
             "pkg:deb/debian/linux": 1
@@ -7633,7 +7636,7 @@
             "pkg:deb/debian/koha": 1
         },
         "\"labstack\":\"echo\"": {
-            "pkg:deb/debian/golang-github-labstack-echo": 2,
+            "pkg:deb/debian/golang-github-labstack-echo": 8,
             "pkg:deb/debian/golang-github-labstack-echo.v2": 2,
             "pkg:deb/debian/golang-github-labstack-echo.v3": 2
         },
@@ -7912,9 +7915,9 @@
             "pkg:deb/debian/retroarch": 2
         },
         "\"libsdl-org\":\"sdl_image\"": {
-            "pkg:deb/debian/libsdl2-image": 1,
-            "pkg:deb/debian/libsdl3-image": 1,
-            "pkg:deb/debian/sdl-image1.2": 1
+            "pkg:deb/debian/libsdl2-image": 2,
+            "pkg:deb/debian/libsdl3-image": 2,
+            "pkg:deb/debian/sdl-image1.2": 2
         },
         "\"libsidplayfp\":\"libsidplayfp\"": {
             "pkg:deb/debian/libsidplayfp": 1
@@ -7995,6 +7998,9 @@
         "\"libyal\":\"libfwsi\"": {
             "pkg:deb/debian/libfwsi": 2
         },
+        "\"libyal\":\"libmsiecf\"": {
+            "pkg:deb/debian/libmsiecf": 1
+        },
         "\"libyal\":\"libpff\"": {
             "pkg:deb/debian/libpff": 1
         },
@@ -8069,7 +8075,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18065,
+            "pkg:deb/debian/linux": 18181,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8856,7 +8862,7 @@
             "pkg:deb/debian/mod-wsgi": 1
         },
         "\"modelcontextprotocol\":\"python-sdk\"": {
-            "pkg:deb/debian/python-mcp": 8
+            "pkg:deb/debian/python-mcp": 11
         },
         "\"module::scandeps\":\"module::scandeps\"": {
             "pkg:deb/debian/libmodule-scandeps-perl": 1
@@ -8984,7 +8990,7 @@
             "pkg:deb/debian/golang-mongodb-mongo-driver": 4
         },
         "\"mongodb\":\"java driver\"": {
-            "pkg:deb/debian/mongo-java-driver": 2
+            "pkg:deb/debian/mongo-java-driver": 3
         },
         "\"mongodb\":\"java_driver\"": {
             "pkg:deb/debian/mongo-java-driver": 1
@@ -9407,7 +9413,7 @@
             "pkg:deb/debian/atftp": 1
         },
         "\"n/a\":\"avahi\"": {
-            "pkg:deb/debian/avahi": 8
+            "pkg:deb/debian/avahi": 3
         },
         "\"n/a\":\"ayttm\"": {
             "pkg:deb/debian/ayttm": 1
@@ -13427,36 +13433,36 @@
             "pkg:deb/debian/mysql-workbench": 2
         },
         "\"oracle corporation\":\"oracle graalvm enterprise edition\"": {
-            "pkg:deb/debian/openjdk-11": 58,
-            "pkg:deb/debian/openjdk-17": 55,
-            "pkg:deb/debian/openjdk-21": 56,
-            "pkg:deb/debian/openjdk-24": 6,
-            "pkg:deb/debian/openjdk-25": 48,
-            "pkg:deb/debian/openjdk-26": 6,
-            "pkg:deb/debian/openjdk-27": 27,
-            "pkg:deb/debian/openjdk-8": 59,
-            "pkg:deb/debian/openjfx": 2
-        },
-        "\"oracle corporation\":\"oracle graalvm for jdk\"": {
-            "pkg:deb/debian/openjdk-11": 58,
+            "pkg:deb/debian/openjdk-11": 59,
             "pkg:deb/debian/openjdk-17": 56,
             "pkg:deb/debian/openjdk-21": 57,
-            "pkg:deb/debian/openjdk-24": 7,
+            "pkg:deb/debian/openjdk-24": 6,
             "pkg:deb/debian/openjdk-25": 49,
             "pkg:deb/debian/openjdk-26": 6,
             "pkg:deb/debian/openjdk-27": 28,
-            "pkg:deb/debian/openjdk-8": 55
+            "pkg:deb/debian/openjdk-8": 60,
+            "pkg:deb/debian/openjfx": 2
+        },
+        "\"oracle corporation\":\"oracle graalvm for jdk\"": {
+            "pkg:deb/debian/openjdk-11": 59,
+            "pkg:deb/debian/openjdk-17": 57,
+            "pkg:deb/debian/openjdk-21": 58,
+            "pkg:deb/debian/openjdk-24": 7,
+            "pkg:deb/debian/openjdk-25": 50,
+            "pkg:deb/debian/openjdk-26": 6,
+            "pkg:deb/debian/openjdk-27": 29,
+            "pkg:deb/debian/openjdk-8": 56
         },
         "\"oracle corporation\":\"oracle java se\"": {
-            "pkg:deb/debian/openjdk-11": 77,
-            "pkg:deb/debian/openjdk-17": 72,
-            "pkg:deb/debian/openjdk-21": 76,
+            "pkg:deb/debian/openjdk-11": 78,
+            "pkg:deb/debian/openjdk-17": 73,
+            "pkg:deb/debian/openjdk-21": 77,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
-            "pkg:deb/debian/openjdk-25": 64,
+            "pkg:deb/debian/openjdk-25": 65,
             "pkg:deb/debian/openjdk-26": 10,
-            "pkg:deb/debian/openjdk-27": 40,
-            "pkg:deb/debian/openjdk-8": 80,
+            "pkg:deb/debian/openjdk-27": 41,
+            "pkg:deb/debian/openjdk-8": 81,
             "pkg:deb/debian/openjfx": 3
         },
         "\"oracle corporation\":\"oracle java se, oracle graalvm for jdk, oracle graalvm enterprise edition\"": {
@@ -15326,6 +15332,9 @@
         "\"redmine\":\"redmine\"": {
             "pkg:deb/debian/redmine": 1
         },
+        "\"reduxjs\":\"redux-devtools\"": {
+            "pkg:deb/debian/node-redux-devtools": 1
+        },
         "\"refirm labs\":\"binwalk\"": {
             "pkg:deb/debian/binwalk": 2
         },
@@ -15710,7 +15719,7 @@
         "\"samba\":\"samba\"": {
             "pkg:deb/debian/cifs-utils": 1,
             "pkg:deb/debian/heimdal": 2,
-            "pkg:deb/debian/samba": 15
+            "pkg:deb/debian/samba": 16
         },
         "\"samboy\":\"maradns\"": {
             "pkg:deb/debian/maradns": 1
@@ -18277,14 +18286,18 @@
             "pkg:deb/debian/xwayland": 1
         },
         "\"x.org\":\"xorg-x11-server\"": {
-            "pkg:deb/debian/xorg-server": 4,
-            "pkg:deb/debian/xwayland": 4
+            "pkg:deb/debian/xorg-server": 12,
+            "pkg:deb/debian/xwayland": 12
         },
         "\"x.org\":\"xwayland\"": {
-            "pkg:deb/debian/xorg-server": 15,
-            "pkg:deb/debian/xwayland": 15
+            "pkg:deb/debian/xorg-server": 22,
+            "pkg:deb/debian/xwayland": 22
         },
         "\"x.orgg\":\"xorg-x11-server\"": {
+            "pkg:deb/debian/xorg-server": 1,
+            "pkg:deb/debian/xwayland": 1
+        },
+        "\"x.orgg\":\"xwayland\"": {
             "pkg:deb/debian/xorg-server": 1,
             "pkg:deb/debian/xwayland": 1
         },
@@ -18578,6 +18591,9 @@
         },
         "\"zaproxy\":\"zap-extensions\"": {
             "pkg:deb/debian/zaproxy": 1
+        },
+        "\"zchunk\":\"zchunk\"": {
+            "pkg:deb/debian/zchunk": 1
         },
         "\"zdoom\":\"gzdoom\"": {
             "pkg:deb/debian/gzdoom": 1
@@ -19097,6 +19113,9 @@
         "cpe:2.3:a:automattic:wordpress:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/wordpress": 1
         },
+        "cpe:2.3:a:axel_download_accelerator:axel:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/axel": 1
+        },
         "cpe:2.3:a:axios:axios:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-axios": 12
         },
@@ -19215,7 +19234,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "cpe:2.3:a:bytecodealliance:wasmtime:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rust-wasmtime": 14
+            "pkg:deb/debian/rust-wasmtime": 15
         },
         "cpe:2.3:a:c-ares:c-ares:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/c-ares": 1
@@ -19274,6 +19293,9 @@
         },
         "cpe:2.3:a:cilium:ebpf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-github-cilium-ebpf": 1
+        },
+        "cpe:2.3:a:cimg:cimg:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/cimg": 1
         },
         "cpe:2.3:a:cisco:cjose:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cjose": 1
@@ -20568,6 +20590,11 @@
         "cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libreoffice": 1
         },
+        "cpe:2.3:a:libsdl:sdl_image:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libsdl2-image": 1,
+            "pkg:deb/debian/libsdl3-image": 1,
+            "pkg:deb/debian/sdl-image1.2": 1
+        },
         "cpe:2.3:a:libsndfile:libsndfile:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libsndfile": 1
         },
@@ -21428,16 +21455,16 @@
             "pkg:deb/debian/zfs-linux": 1
         },
         "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 72,
-            "pkg:deb/debian/openjdk-17": 68,
+            "pkg:deb/debian/openjdk-11": 73,
+            "pkg:deb/debian/openjdk-17": 69,
             "pkg:deb/debian/openjdk-20": 1,
-            "pkg:deb/debian/openjdk-21": 67,
+            "pkg:deb/debian/openjdk-21": 68,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 6,
-            "pkg:deb/debian/openjdk-25": 51,
+            "pkg:deb/debian/openjdk-25": 52,
             "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-27": 27,
-            "pkg:deb/debian/openjdk-8": 72,
+            "pkg:deb/debian/openjdk-27": 28,
+            "pkg:deb/debian/openjdk-8": 73,
             "pkg:deb/debian/openjfx": 6,
             "pkg:deb/debian/webkit2gtk": 1,
             "pkg:deb/debian/wpewebkit": 1
@@ -21449,26 +21476,26 @@
             "pkg:deb/debian/openjdk-8": 2
         },
         "cpe:2.3:a:oracle:graalvm_for_jdk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 70,
-            "pkg:deb/debian/openjdk-17": 68,
-            "pkg:deb/debian/openjdk-21": 69,
+            "pkg:deb/debian/openjdk-11": 71,
+            "pkg:deb/debian/openjdk-17": 69,
+            "pkg:deb/debian/openjdk-21": 70,
             "pkg:deb/debian/openjdk-23": 4,
             "pkg:deb/debian/openjdk-24": 7,
-            "pkg:deb/debian/openjdk-25": 52,
+            "pkg:deb/debian/openjdk-25": 53,
             "pkg:deb/debian/openjdk-26": 9,
-            "pkg:deb/debian/openjdk-27": 28,
-            "pkg:deb/debian/openjdk-8": 66
+            "pkg:deb/debian/openjdk-27": 29,
+            "pkg:deb/debian/openjdk-8": 67
         },
         "cpe:2.3:a:oracle:java_se:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openjdk-11": 89,
-            "pkg:deb/debian/openjdk-17": 83,
-            "pkg:deb/debian/openjdk-21": 85,
+            "pkg:deb/debian/openjdk-11": 90,
+            "pkg:deb/debian/openjdk-17": 84,
+            "pkg:deb/debian/openjdk-21": 86,
             "pkg:deb/debian/openjdk-23": 5,
             "pkg:deb/debian/openjdk-24": 8,
-            "pkg:deb/debian/openjdk-25": 67,
+            "pkg:deb/debian/openjdk-25": 68,
             "pkg:deb/debian/openjdk-26": 13,
-            "pkg:deb/debian/openjdk-27": 40,
-            "pkg:deb/debian/openjdk-8": 92,
+            "pkg:deb/debian/openjdk-27": 41,
+            "pkg:deb/debian/openjdk-8": 93,
             "pkg:deb/debian/openjfx": 7
         },
         "cpe:2.3:a:oracle:javafx:*:*:*:*:*:*:*:*": {
@@ -22015,6 +22042,9 @@
         },
         "cpe:2.3:a:redmine:redmine:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/redmine": 1
+        },
+        "cpe:2.3:a:reduxjs:redux-devtools:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/node-redux-devtools": 1
         },
         "cpe:2.3:a:renesas:rcar_gen3_v2.5:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/arm-trusted-firmware": 2
@@ -22683,14 +22713,18 @@
             "pkg:deb/debian/xorg-server": 1
         },
         "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 3,
-            "pkg:deb/debian/xwayland": 3
+            "pkg:deb/debian/xorg-server": 11,
+            "pkg:deb/debian/xwayland": 11
         },
         "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 4,
-            "pkg:deb/debian/xwayland": 4
+            "pkg:deb/debian/xorg-server": 11,
+            "pkg:deb/debian/xwayland": 11
         },
         "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/xorg-server": 1,
+            "pkg:deb/debian/xwayland": 1
+        },
+        "cpe:2.3:a:x.orgg:xwayland:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xorg-server": 1,
             "pkg:deb/debian/xwayland": 1
         },
@@ -22790,6 +22824,9 @@
         },
         "cpe:2.3:a:zammad:zammad:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/zammad": 7
+        },
+        "cpe:2.3:a:zchunk:zchunk:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/zchunk": 1
         },
         "cpe:2.3:a:zeek:zeek:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/zeek": 3
@@ -22970,7 +23007,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18057
+            "pkg:deb/debian/linux": 18173
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -24328,13 +24365,13 @@
             "pkg:deb/debian/rust-rpm-sequoia": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba\"": {
-            "pkg:deb/debian/samba": 25
+            "pkg:deb/debian/samba": 26
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba-winbind\"": {
             "pkg:deb/debian/samba": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba4\"": {
-            "pkg:deb/debian/samba": 24
+            "pkg:deb/debian/samba": 25
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"sbc\"": {
             "pkg:deb/debian/sbc": 1
@@ -25397,6 +25434,9 @@
         "\"https://cpan.org/modules\":\"HTML-Parser\"": {
             "pkg:deb/debian/libhtml-parser-perl": 1
         },
+        "\"https://cpan.org/modules\":\"HTTP-Body\"": {
+            "pkg:deb/debian/libhttp-body-perl": 9
+        },
         "\"https://cpan.org/modules\":\"HTTP-Daemon\"": {
             "pkg:deb/debian/libhttp-daemon-perl": 1
         },
@@ -25446,6 +25486,9 @@
         },
         "\"https://cpan.org/modules\":\"List-SomeUtils-XS\"": {
             "pkg:deb/debian/liblist-someutils-xs-perl": 1
+        },
+        "\"https://cpan.org/modules\":\"MIME-tools\"": {
+            "pkg:deb/debian/libmime-tools-perl": 10
         },
         "\"https://cpan.org/modules\":\"Module-Load\"": {
             "pkg:deb/debian/perl": 1
@@ -25837,6 +25880,9 @@
         "\"https://github.com/astral-sh/uv\":\"uv\"": {
             "pkg:deb/debian/uv": 1
         },
+        "\"https://github.com/avahi/avahi\":\"avahi\"": {
+            "pkg:deb/debian/avahi": 5
+        },
         "\"https://github.com/avahi/avahi/\":\"avahi\"": {
             "pkg:deb/debian/avahi": 2
         },
@@ -26220,6 +26266,9 @@
         },
         "\"https://gitlab.com/qemu-project/qemu/\":\"net\"": {
             "pkg:deb/debian/qemu": 1
+        },
+        "\"https://gitlab.com/samba-team/samba\":\"samba\"": {
+            "pkg:deb/debian/samba": 1
         },
         "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 2
@@ -27452,8 +27501,20 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.james:apache-mime4j-dom\"": {
             "pkg:deb/debian/apache-mime4j": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:connect-runtime\"": {
+            "pkg:deb/debian/kafka": 2
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka\"": {
+            "pkg:deb/debian/kafka": 6
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-clients\"": {
+            "pkg:deb/debian/kafka": 2
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-raft\"": {
             "pkg:deb/debian/kafka": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-streams\"": {
+            "pkg:deb/debian/kafka": 2
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf.decanter.collector:org.apache.karaf.decanter.collector.log.socket\"": {
             "pkg:deb/debian/apache-karaf": 1
@@ -28186,7 +28247,7 @@
             "pkg:deb/debian/rust-wasmtime": 8
         },
         "pkg:cargo/wasmtime-wasi": {
-            "pkg:deb/debian/rust-wasmtime": 5
+            "pkg:deb/debian/rust-wasmtime": 6
         },
         "pkg:cargo/wasmtime-wasi-http": {
             "pkg:deb/debian/rust-wasmtime": 1
@@ -28264,6 +28325,9 @@
         "pkg:cpan/HTML-FormHandler": {
             "pkg:deb/debian/libhtml-formhandler-perl": 5
         },
+        "pkg:cpan/HTTP-Body": {
+            "pkg:deb/debian/libhttp-body-perl": 9
+        },
         "pkg:cpan/HTTP-Headers-ActionPack": {
             "pkg:deb/debian/libhttp-headers-actionpack-perl": 1
         },
@@ -28281,6 +28345,9 @@
         },
         "pkg:cpan/Lemonldap-NG-Portal": {
             "pkg:deb/debian/lemonldap-ng": 3
+        },
+        "pkg:cpan/MIME-tools": {
+            "pkg:deb/debian/libmime-tools-perl": 10
         },
         "pkg:cpan/Mozilla-CA": {
             "pkg:deb/debian/libmozilla-ca-perl": 1
@@ -28626,6 +28693,9 @@
         "pkg:github/libyal/libfwsi": {
             "pkg:deb/debian/libfwsi": 2
         },
+        "pkg:github/libyal/libmsiecf": {
+            "pkg:deb/debian/libmsiecf": 1
+        },
         "pkg:github/libyal/libpff": {
             "pkg:deb/debian/libpff": 1
         },
@@ -28861,7 +28931,7 @@
             "pkg:deb/debian/golang-github-go-chi-chi": 1
         },
         "pkg:golang/github.com/go-chi/chi/v5": {
-            "pkg:deb/debian/golang-github-go-chi-chi": 3
+            "pkg:deb/debian/golang-github-go-chi-chi": 4
         },
         "pkg:golang/github.com/gohugoio/hugo": {
             "pkg:deb/debian/hugo": 12
@@ -28992,6 +29062,21 @@
         },
         "pkg:maven/org.apache.jackrabbit/jackrabbit-spi2dav": {
             "pkg:deb/debian/jackrabbit": 1
+        },
+        "pkg:maven/org.apache.kafka/connect-runtime": {
+            "pkg:deb/debian/kafka": 2
+        },
+        "pkg:maven/org.apache.kafka/kafka": {
+            "pkg:deb/debian/kafka": 6
+        },
+        "pkg:maven/org.apache.kafka/kafka-clients": {
+            "pkg:deb/debian/kafka": 1
+        },
+        "pkg:maven/org.apache.kafka/kafka-raft": {
+            "pkg:deb/debian/kafka": 1
+        },
+        "pkg:maven/org.apache.kafka/kafka-streams": {
+            "pkg:deb/debian/kafka": 2
         },
         "pkg:maven/org.apache.logging.log4j/log4j-1.2-api": {
             "pkg:deb/debian/apache-log4j1.2": 1,

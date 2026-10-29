@@ -1365,6 +1365,7 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"avahi\"",
+            "\"https://github.com/avahi/avahi\":\"avahi\"",
             "\"https://github.com/avahi/avahi/\":\"avahi\"",
             "\"https://packages.fedoraproject.org/\":\"avahi\""
         ],
@@ -1383,6 +1384,16 @@
             "\"ax25-tools\":\"ax25-tools\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/axel": {
+        "VendorProductIDs": [
+            "\"axel download accelerator\":\"axel\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:axel_download_accelerator:axel:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -2679,6 +2690,7 @@
             "\"n/a\":\"clmg\""
         ],
         "CPEs": [
+            "cpe:2.3:a:cimg:cimg:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:clmg_project:clmg:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
@@ -11920,9 +11932,19 @@
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"kafka-clients\"",
-            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-clients\""
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:connect-runtime\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-clients\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-raft\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:kafka-streams\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.kafka/connect-runtime",
+            "pkg:maven/org.apache.kafka/kafka",
+            "pkg:maven/org.apache.kafka/kafka-clients",
+            "pkg:maven/org.apache.kafka/kafka-raft",
+            "pkg:maven/org.apache.kafka/kafka-streams"
+        ]
     },
     "pkg:deb/debian/kakoune": {
         "VendorProductIDs": [
@@ -13969,6 +13991,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libhttp-body-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"HTTP-Body\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/HTTP-Body"
+        ]
+    },
     "pkg:deb/debian/libhttp-daemon-perl": {
         "VendorProductIDs": [
             "\"libwww-perl\":\"http-daemon\"",
@@ -14410,6 +14442,16 @@
             "pkg:github/sezero/mikmod"
         ]
     },
+    "pkg:deb/debian/libmime-tools-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"MIME-tools\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/MIME-tools"
+        ]
+    },
     "pkg:deb/debian/libmina-sshd-java": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache mina sshd\""
@@ -14545,6 +14587,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libmsiecf": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libmsiecf\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libyal/libmsiecf"
+        ]
     },
     "pkg:deb/debian/libmspack": {
         "VendorProductIDs": [
@@ -15244,7 +15296,9 @@
             "\"simple directmedia layer\":\"simple directmedia layer\"",
             "\"talos\":\"simple direct media\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libsdl:sdl_image:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -15252,7 +15306,9 @@
         "VendorProductIDs": [
             "\"libsdl-org\":\"sdl_image\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libsdl:sdl_image:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -20584,6 +20640,16 @@
             "\"noderedis\":\"node-redis\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/node-redux-devtools": {
+        "VendorProductIDs": [
+            "\"reduxjs\":\"redux-devtools\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:reduxjs:redux-devtools:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -30483,6 +30549,7 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba4\"",
             "\"https://git.samba.org/samba.git\":\"samba\"",
             "\"https://github.com/samba-team/samba\":\"samba\"",
+            "\"https://gitlab.com/samba-team/samba\":\"samba\"",
             "\"https://packages.fedoraproject.org/\":\"samba\"",
             "\"https://www.samba.org/\":\"samba\""
         ],
@@ -30656,7 +30723,9 @@
             "\"simple directmedia layer\":\"simple directmedia layer\"",
             "\"talos\":\"simple direct media\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:libsdl:sdl_image:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -34917,6 +34986,7 @@
             "\"x.org\":\"xorg-x11-server\"",
             "\"x.org\":\"xwayland\"",
             "\"x.orgg\":\"xorg-x11-server\"",
+            "\"x.orgg\":\"xwayland\"",
             "\"xorg\":\"xorg-x11-server\"",
             "\"xorg\":\"xserver\"",
             "\"xorg\":\"xwayland\""
@@ -34926,6 +34996,7 @@
             "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.orgg:xwayland:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xserver:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xwayland:*:*:*:*:*:*:*:*"
         ],
@@ -35006,6 +35077,7 @@
             "\"x.org\":\"xorg-x11-server\"",
             "\"x.org\":\"xwayland\"",
             "\"x.orgg\":\"xorg-x11-server\"",
+            "\"x.orgg\":\"xwayland\"",
             "\"xorg\":\"xserver\"",
             "\"xorg\":\"xwayland\""
         ],
@@ -35013,6 +35085,7 @@
             "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.orgg:xwayland:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xserver:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xorg:xwayland:*:*:*:*:*:*:*:*"
         ],
@@ -35281,6 +35354,16 @@
             "\"openstack\":\"zaqar\""
         ],
         "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/zchunk": {
+        "VendorProductIDs": [
+            "\"zchunk\":\"zchunk\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:zchunk:zchunk:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },

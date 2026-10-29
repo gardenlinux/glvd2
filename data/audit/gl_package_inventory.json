@@ -203,6 +203,7 @@
     "pkg:deb/gardenlinux/gettext",
     "pkg:deb/gardenlinux/gfs2-utils",
     "pkg:deb/gardenlinux/git",
+    "pkg:deb/gardenlinux/gl-fips-checker",
     "pkg:deb/gardenlinux/glib-networking",
     "pkg:deb/gardenlinux/glib2.0",
     "pkg:deb/gardenlinux/glibc",
