@@ -13,6 +13,21 @@
         "has_patches": false
       }
     },
+    "1:2.0.29-2gl1~bp1877": {
+      "pkg_name": "kexec-tools",
+      "version": "1:2.0.29-2gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/kexec-tools",
+      "repo": "package-kexec-tools",
+      "commit": "1847a4e1491757b280794c868c698d57083092cd",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
     "1:2.0.32-3gl0": {
       "pkg_name": "kexec-tools",
       "version": "1:2.0.32-3gl0",

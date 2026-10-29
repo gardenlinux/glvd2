@@ -28,6 +28,21 @@
         "has_patches": false
       }
     },
+    "2.4.9-8gl0~bp1877": {
+      "pkg_name": "gnupg2",
+      "version": "2.4.9-8gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/gnupg2",
+      "repo": "package-gnupg2",
+      "commit": "b7eb8e019c43739732c2219a85e5ed620bcc5a5a",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
+    },
     "2.4.9-8gl0~bp2150": {
       "pkg_name": "gnupg2",
       "version": "2.4.9-8gl0~bp2150",

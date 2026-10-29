@@ -13,6 +13,21 @@
         "has_patches": false
       }
     },
+    "2.4.0-1gl0~bp1877": {
+      "pkg_name": "acl",
+      "version": "2.4.0-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/acl",
+      "repo": "package-acl",
+      "commit": "91217bcb3ed159fb24d10b2380a04ff37c212352",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": true,
+        "has_patches": false
+      }
+    },
     "2.4.0-1gl0~bp2150": {
       "pkg_name": "acl",
       "version": "2.4.0-1gl0~bp2150",

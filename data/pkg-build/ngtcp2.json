@@ -31,6 +31,22 @@
         "has_patches": false,
         "upstream_version": "1.22.1"
       }
+    },
+    "1.24.0-1gl0~bp1877": {
+      "pkg_name": "ngtcp2",
+      "version": "1.24.0-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/ngtcp2",
+      "repo": "bp-package-ngtcp2",
+      "commit": "e9a74053cf73367abfc4ef7d0ceeb9ec8607180b",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.24.0"
+      }
     }
   }
 }

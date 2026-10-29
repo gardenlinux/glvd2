@@ -32,6 +32,22 @@
         "upstream_version": "2.3.6"
       }
     },
+    "2.3.7-0gl1~bp1877": {
+      "pkg_name": "containerd",
+      "version": "2.3.7-0gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/containerd",
+      "repo": "package-containerd",
+      "commit": "61765f48bee423202f181a0d433346cecc460035",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true,
+        "upstream_version": "2.3.7"
+      }
+    },
     "2.3.7-0gl1~bp2150": {
       "pkg_name": "containerd",
       "version": "2.3.7-0gl1~bp2150",

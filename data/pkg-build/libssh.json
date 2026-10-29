@@ -26,6 +26,21 @@
         "has_patches": false
       }
     },
+    "0.12.2-1gl0~bp1877": {
+      "pkg_name": "libssh",
+      "version": "0.12.2-1gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libssh",
+      "repo": "bp-package-libssh",
+      "commit": "3051e472cd850fbc2c0b46daaafc2c32167736d0",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    },
     "0.12.2-1gl0~bp2150": {
       "pkg_name": "libssh",
       "version": "0.12.2-1gl0~bp2150",

@@ -41,6 +41,22 @@
         "has_patches": false,
         "upstream_version": "1.2.0"
       }
+    },
+    "1.2.0-4.1gl2~bp1877": {
+      "pkg_name": "brotli",
+      "version": "1.2.0-4.1gl2~bp1877",
+      "purl": "pkg:deb/gardenlinux/brotli",
+      "repo": "bp-package-brotli",
+      "commit": "1a5558cf9bdc2afe01c82bc8e1f54334b46ef2dd",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.2.0"
+      }
     }
   }
 }

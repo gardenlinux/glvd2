@@ -50,6 +50,22 @@
         "upstream_version": "1.11.1"
       }
     },
+    "1.11.1-6gl0~bp1877": {
+      "pkg_name": "libssh2",
+      "version": "1.11.1-6gl0~bp1877",
+      "purl": "pkg:deb/gardenlinux/libssh2",
+      "repo": "bp-package-libssh2",
+      "commit": "f1c2a86845b9b8a02120a1d5759c153e5beb4288",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "1.11.1"
+      }
+    },
     "1.11.1-6gl0~bp2150": {
       "pkg_name": "libssh2",
       "version": "1.11.1-6gl0~bp2150",
