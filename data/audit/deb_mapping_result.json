@@ -2268,7 +2268,7 @@
             "pkg:deb/debian/python-authlib": 21
         },
         "\"authlib\":\"joserfc\"": {
-            "pkg:deb/debian/joserfc": 7
+            "pkg:deb/debian/joserfc": 9
         },
         "\"autocaliweb\":\"autocaliweb\"": {
             "pkg:deb/debian/calibre-web": 2
@@ -3534,7 +3534,7 @@
         },
         "\"digitalbazaar\":\"forge\"": {
             "pkg:deb/debian/-node-node-forge": 2,
-            "pkg:deb/debian/node-node-forge": 17
+            "pkg:deb/debian/node-node-forge": 23
         },
         "\"digitaldruid\":\"hoteldruid\"": {
             "pkg:deb/debian/hoteldruid": 1
@@ -5591,10 +5591,10 @@
             "pkg:deb/debian/gitea": 4
         },
         "\"go-jose\":\"go-jose\"": {
-            "pkg:deb/debian/golang-github-go-jose-go-jose": 3,
-            "pkg:deb/debian/golang-github-go-jose-go-jose.v3": 1,
-            "pkg:deb/debian/golang-gopkg-square-go-jose.v1": 1,
-            "pkg:deb/debian/golang-gopkg-square-go-jose.v2": 2
+            "pkg:deb/debian/golang-github-go-jose-go-jose": 6,
+            "pkg:deb/debian/golang-github-go-jose-go-jose.v3": 4,
+            "pkg:deb/debian/golang-gopkg-square-go-jose.v1": 4,
+            "pkg:deb/debian/golang-gopkg-square-go-jose.v2": 5
         },
         "\"go-jose_project\":\"go-jose\"": {
             "pkg:deb/debian/golang-github-go-jose-go-jose": 1,
@@ -14422,14 +14422,14 @@
             "pkg:deb/debian/fpdf2": 2
         },
         "\"py-pdf\":\"pypdf\"": {
-            "pkg:deb/debian/pypdf": 62,
-            "pkg:deb/debian/pypdf2": 61
+            "pkg:deb/debian/pypdf": 69,
+            "pkg:deb/debian/pypdf2": 68
         },
         "\"py-pdf\":\"pypdf2\"": {
             "pkg:deb/debian/pypdf2": 1
         },
         "\"pyasn1\":\"pyasn1\"": {
-            "pkg:deb/debian/pyasn1": 5
+            "pkg:deb/debian/pyasn1": 9
         },
         "\"pyca\":\"cryptography\"": {
             "pkg:deb/debian/python-cryptography": 9
@@ -15841,7 +15841,7 @@
             "pkg:deb/debian/seaweedfs": 13
         },
         "\"sebastianbergmann\":\"phpunit\"": {
-            "pkg:deb/debian/phpunit": 2
+            "pkg:deb/debian/phpunit": 3
         },
         "\"sebhildebrandt\":\"systeminformation\"": {
             "pkg:deb/debian/jupyterlab": 5,
@@ -18380,7 +18380,7 @@
             "pkg:deb/debian/xen": 139
         },
         "\"xerial\":\"snappy-java\"": {
-            "pkg:deb/debian/snappy-java": 3
+            "pkg:deb/debian/snappy-java": 4
         },
         "\"xerial\":\"sqlite-jdbc\"": {
             "pkg:deb/debian/xerial-sqlite-jdbc": 1
