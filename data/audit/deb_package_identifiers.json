@@ -2057,7 +2057,13 @@
     "pkg:deb/debian/brotli": {
         "VendorProductIDs": [
             "\"google llc\":\"brotli\"",
-            "\"google\":\"brotli\""
+            "\"google\":\"brotli\"",
+            "\"siemens\":\"cloud connector configurator\"",
+            "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
+            "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
+            "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"edge opc ua server configurator\"",
+            "\"siemens\":\"flow creator configurator\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -21262,6 +21268,12 @@
             "\"nodejs\":\"node.js\"",
             "\"nodejs\":\"nodejs\"",
             "\"rust-lang\":\"rust\"",
+            "\"siemens\":\"cloud connector configurator\"",
+            "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
+            "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
+            "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"edge opc ua server configurator\"",
+            "\"siemens\":\"flow creator configurator\"",
             "\"the node.js project\":\"node.js\"",
             "\"thephpgroup\":\"thephpgroup\"",
             "\"yt-dlp_project\":\"yt-dlp\""
@@ -26158,7 +26170,13 @@
     },
     "pkg:deb/debian/python-brotlicffi": {
         "VendorProductIDs": [
-            "\"google\":\"brotli\""
+            "\"google\":\"brotli\"",
+            "\"siemens\":\"cloud connector configurator\"",
+            "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
+            "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
+            "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"edge opc ua server configurator\"",
+            "\"siemens\":\"flow creator configurator\""
         ],
         "CPEs": null,
         "PackageIDs": null,

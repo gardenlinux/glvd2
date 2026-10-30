@@ -4893,7 +4893,7 @@
             "pkg:deb/debian/ekiga": 1
         },
         "\"gnome\":\"epiphany\"": {
-            "pkg:deb/debian/epiphany-browser": 1
+            "pkg:deb/debian/epiphany-browser": 2
         },
         "\"gnome\":\"evolution data server\"": {
             "pkg:deb/debian/evolution": 1,
@@ -7575,7 +7575,7 @@
             "pkg:deb/debian/python-idna": 1
         },
         "\"klauspost\":\"compress\"": {
-            "pkg:deb/debian/golang-github-klauspost-compress": 1
+            "pkg:deb/debian/golang-github-klauspost-compress": 2
         },
         "\"klibc\":\"klibc\"": {
             "pkg:deb/debian/klibc": 1
@@ -8315,7 +8315,7 @@
             "pkg:deb/debian/mariadb-connector-c": 1
         },
         "\"mariadb-corporation\":\"mariadb-connector-j\"": {
-            "pkg:deb/debian/mariadb-connector-java": 1
+            "pkg:deb/debian/mariadb-connector-java": 8
         },
         "\"mariocasciaro\":\"mariocasciaro/object-path\"": {
             "pkg:deb/debian/node-object-path": 1
@@ -14552,14 +14552,14 @@
             "pkg:deb/debian/python-aiohttp": 1
         },
         "\"python\":\"cpython\"": {
-            "pkg:deb/debian/pypy3": 6,
-            "pkg:deb/debian/python2.7": 7,
+            "pkg:deb/debian/pypy3": 5,
+            "pkg:deb/debian/python2.7": 6,
             "pkg:deb/debian/python3.10": 2,
-            "pkg:deb/debian/python3.11": 8,
-            "pkg:deb/debian/python3.12": 8,
-            "pkg:deb/debian/python3.13": 5,
+            "pkg:deb/debian/python3.11": 7,
+            "pkg:deb/debian/python3.12": 7,
+            "pkg:deb/debian/python3.13": 4,
             "pkg:deb/debian/python3.7": 4,
-            "pkg:deb/debian/python3.9": 8
+            "pkg:deb/debian/python3.9": 7
         },
         "\"python\":\"pillow\"": {
             "pkg:deb/debian/pillow": 2
@@ -15951,14 +15951,44 @@
         "\"sidekiq\":\"sidekiq/sidekiq\"": {
             "pkg:deb/debian/ruby-sidekiq": 1
         },
+        "\"siemens\":\"cloud connector configurator\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"common configurator\\u00a0(cc on iem)\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
         "\"siemens\":\"comos v10.4.5\"": {
             "pkg:deb/debian/curl": 1
         },
         "\"siemens\":\"comos v10.6\"": {
             "pkg:deb/debian/curl": 1
         },
+        "\"siemens\":\"data flow monitoring\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"edge opc ua server configurator\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
         "\"siemens\":\"efibootguard\"": {
             "pkg:deb/debian/efibootguard": 1
+        },
+        "\"siemens\":\"flow creator configurator\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"gwap\"": {
             "pkg:deb/debian/node-axios": 1
@@ -21875,14 +21905,14 @@
             "pkg:deb/debian/python-aiohttp": 1
         },
         "cpe:2.3:a:python:cpython:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/pypy3": 6,
-            "pkg:deb/debian/python2.7": 7,
+            "pkg:deb/debian/pypy3": 5,
+            "pkg:deb/debian/python2.7": 6,
             "pkg:deb/debian/python3.10": 2,
-            "pkg:deb/debian/python3.11": 8,
-            "pkg:deb/debian/python3.12": 8,
-            "pkg:deb/debian/python3.13": 5,
+            "pkg:deb/debian/python3.11": 7,
+            "pkg:deb/debian/python3.12": 7,
+            "pkg:deb/debian/python3.13": 4,
             "pkg:deb/debian/python3.7": 4,
-            "pkg:deb/debian/python3.9": 8
+            "pkg:deb/debian/python3.9": 7
         },
         "cpe:2.3:a:python:pillow:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/pillow": 2
@@ -26391,7 +26421,7 @@
             "pkg:deb/debian/dia": 1
         },
         "\"https://gitlab.gnome.org/GNOME/epiphany\":\"epiphany\"": {
-            "pkg:deb/debian/epiphany-browser": 2
+            "pkg:deb/debian/epiphany-browser": 3
         },
         "\"https://gitlab.gnome.org/GNOME/evolution-data-server\":\"evolution-data-server\"": {
             "pkg:deb/debian/evolution-data-server": 1
