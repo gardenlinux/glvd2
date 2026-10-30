@@ -81,6 +81,7 @@ func (s *IssueService) EnsureIssue(ctx context.Context, rec *assessment.Record) 
 // ErrIssueNotFound is returned when no issue exists for a given CVE label.
 var ErrIssueNotFound = errors.New("issue not found")
 
+// findIssue returns (nil, nil) when no issue matches the label, and (issue, nil) when found.
 func (s *IssueService) findIssue(ctx context.Context, label string) (*gogithub.Issue, error) {
 	opts := &gogithub.IssueListByRepoOptions{
 		Labels:      []string{label},
@@ -92,7 +93,7 @@ func (s *IssueService) findIssue(ctx context.Context, label string) (*gogithub.I
 		return nil, fmt.Errorf("could not search issues for label %s: %w", label, err)
 	}
 	if len(issues) == 0 {
-		return nil, ErrIssueNotFound
+		return nil, nil
 	}
 	return issues[0], nil
 }
@@ -119,14 +120,14 @@ func (s *IssueService) ensureLabel(ctx context.Context, label string) error {
 func issueTitle(rec *assessment.Record) string {
 	title := rec.ID
 	if rec.Upstream.Description != "" {
-		// use first sentence of description as subtitle, capped at 80 chars
-		sub := rec.Upstream.Description
-		if i := strings.IndexByte(sub, '.'); i > 0 && i < 80 { //nolint:mnd // visual cap
+		// use first sentence of description as subtitle, capped at 80 runes
+		sub := []rune(rec.Upstream.Description)
+		if i := strings.IndexByte(rec.Upstream.Description, '.'); i > 0 && i < 80 { //nolint:mnd // visual cap
 			sub = sub[:i+1]
 		} else if len(sub) > 80 { //nolint:mnd
-			sub = sub[:80] + "…"
+			sub = append(sub[:80], '…')
 		}
-		title += ": " + sub
+		title += ": " + string(sub)
 	}
 	return title
 }
@@ -158,16 +159,11 @@ func issueBody(rec *assessment.Record) string {
 	}
 
 	b.WriteString("---\n")
-	fmt.Fprintf(&b, "_Assessment file: `data/%s/%sxxx/%s.json`_\n\n",
-		cveYear(rec.ID), cveBucket(rec.ID), rec.ID)
+	if path, err := assessment.Path("data", rec.ID); err == nil {
+		fmt.Fprintf(&b, "_Assessment file: `%s`_\n\n", path)
+	}
 
-	b.WriteString("**Commands** (security-team only):\n")
-	b.WriteString("- `/relevant [justification]` — mark CVE as relevant to Garden Linux\n")
-	b.WriteString("- `/not-relevant [justification]` — mark CVE as not relevant\n")
-	b.WriteString("- `/override release=<dist> pkg=<name> status=<affected|not-affected|fixed|unknown> [justification]`\n")
-	b.WriteString("- `/rescore release=<dist> pkg=<name> score=<0.0-10.0> [justification]`\n")
-	b.WriteString("- `/notes <text>` — replace free-text notes\n")
-	b.WriteString("- `/reopen <reason>` — reopen a closed issue\n")
+	b.WriteString(commandsReference())
 
 	return b.String()
 }
@@ -181,10 +177,10 @@ func ExtractCVEIDs(text string) []string {
 func (s *IssueService) CloseIssue(ctx context.Context, cveID, prURL string) error {
 	issue, err := s.findIssue(ctx, cveLabel(cveID))
 	if err != nil {
-		slog.Info("no open issue found, skipping close", slog.String("cve_id", cveID))
-		return nil //nolint:nilerr // ErrIssueNotFound is expected and not an error here
+		return fmt.Errorf("could not find issue for %s: %w", cveID, err)
 	}
-	if issue.GetState() == "closed" {
+	if issue == nil || issue.GetState() == "closed" {
+		slog.Info("no open issue found, skipping close", slog.String("cve_id", cveID))
 		return nil
 	}
 
@@ -212,6 +208,9 @@ func (s *IssueService) CloseIssue(ctx context.Context, cveID, prURL string) erro
 func (s *IssueService) ReopenIssue(ctx context.Context, cveID, reason, actor string) error {
 	issue, err := s.findIssue(ctx, cveLabel(cveID))
 	if err != nil {
+		return fmt.Errorf("could not find issue for %s: %w", cveID, err)
+	}
+	if issue == nil {
 		return fmt.Errorf("no issue found for %s", cveID)
 	}
 	if issue.GetState() == "open" {
@@ -233,22 +232,4 @@ func (s *IssueService) ReopenIssue(ctx context.Context, cveID, reason, actor str
 
 	slog.Info("reopened issue", slog.String("cve_id", cveID), slog.String("actor", actor))
 	return nil
-}
-
-func cveYear(cveID string) string {
-	matches := cveIDRegex.FindStringSubmatch(cveID)
-	if matches == nil {
-		return ""
-	}
-	return matches[1]
-}
-
-func cveBucket(cveID string) string {
-	matches := cveIDRegex.FindStringSubmatch(cveID)
-	if matches == nil {
-		return ""
-	}
-	number := matches[2]
-	bucketLen := max(len(number)-3, 1) //nolint:mnd // 3 = digits replaced with "xxx"
-	return number[:bucketLen]
 }

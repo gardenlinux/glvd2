@@ -75,24 +75,19 @@ func (s *server) handleIssueComment(ctx context.Context, e *gogithub.IssueCommen
 		return
 	}
 
-	cmds, errs := bot.ParseCommands(body)
-	for _, err := range errs {
-		s.replyToIssue(ctx, repoOwner, repoName, issueNumber,
-			":x: Command parse error: "+err.Error())
-	}
-	if len(cmds) == 0 {
+	cmds, reopen, _ := bot.ParseCommands(body)
+
+	// /reopen is handled at the issue level and does not require team membership
+	if reopen != nil {
+		if err := s.issues.ReopenIssue(ctx, cveID, reopen.Reason, actor); err != nil {
+			s.replyToIssue(ctx, repoOwner, repoName, issueNumber,
+				":x: Could not reopen: "+err.Error())
+		}
 		return
 	}
 
-	// /reopen is handled at the issue level and does not require team membership
-	for _, cmd := range cmds {
-		if r, ok := cmd.(bot.ReopenCommand); ok {
-			if err := s.issues.ReopenIssue(ctx, cveID, r.Reason, actor); err != nil {
-				s.replyToIssue(ctx, repoOwner, repoName, issueNumber,
-					":x: Could not reopen: "+err.Error())
-			}
-			return
-		}
+	if len(cmds) == 0 {
+		return
 	}
 
 	// all other commands require security-team membership
@@ -126,12 +121,14 @@ func (s *server) handleIssueComment(ctx context.Context, e *gogithub.IssueCommen
 		Now:          time.Now().UTC(),
 	}
 
-	for _, cmd := range cmds {
-		if applyErr := cmd.Apply(rec, cmdCtx); applyErr != nil {
-			s.replyToIssue(ctx, repoOwner, repoName, issueNumber,
-				":x: "+applyErr.Error())
-			return
-		}
+	parseErrs, applyErr := bot.ApplyCommands(rec, cmds, cmdCtx)
+	for _, err := range parseErrs {
+		s.replyToIssue(ctx, repoOwner, repoName, issueNumber,
+			":x: Command parse error: "+err.Error())
+	}
+	if applyErr != nil {
+		s.replyToIssue(ctx, repoOwner, repoName, issueNumber, ":x: "+applyErr.Error())
+		return
 	}
 
 	if err = s.assessmentRepo.WriteAssessment(ctx, rec, sha); err != nil {

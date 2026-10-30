@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"regexp"
+	"net/http"
 	"strings"
 	"time"
 
@@ -13,10 +13,9 @@ import (
 	gogithub "github.com/google/go-github/v72/github"
 )
 
-var cveIDRegex = regexp.MustCompile(`^CVE-(\d{4})-(\d+)$`)
-
+// IsValidCVEID reports whether id is a valid CVE identifier.
 func IsValidCVEID(id string) bool {
-	return cveIDRegex.MatchString(id)
+	return assessment.ValidateCVEID(id) == nil
 }
 
 // ErrAssessmentNotFound is returned when no assessment file exists for the CVE yet.
@@ -36,15 +35,18 @@ func NewAssessmentRepoService(gh *gogithub.Client, repoOwner, repoName string) *
 // ReadAssessment fetches and parses the assessment file for cveID.
 // Returns ErrAssessmentNotFound if the file does not exist yet.
 func (s *AssessmentRepoService) ReadAssessment(ctx context.Context, cveID string) (*assessment.Record, string, error) {
-	path, err := assessmentRepoPath(cveID)
+	path, err := assessment.Path("data", cveID)
 	if err != nil {
 		return nil, "", err
 	}
 
-	file, _, _, err := s.gh.Repositories.GetContents(ctx, s.repoOwner, s.repoName, path,
+	file, _, resp, err := s.gh.Repositories.GetContents(ctx, s.repoOwner, s.repoName, path,
 		&gogithub.RepositoryContentGetOptions{})
 	if err != nil {
-		return nil, "", ErrAssessmentNotFound
+		if resp != nil && resp.StatusCode == http.StatusNotFound {
+			return nil, "", ErrAssessmentNotFound
+		}
+		return nil, "", fmt.Errorf("could not fetch assessment for %s: %w", cveID, err)
 	}
 
 	content, err := file.GetContent()
@@ -63,7 +65,7 @@ func (s *AssessmentRepoService) ReadAssessment(ctx context.Context, cveID string
 // WriteAssessment creates or updates the assessment file for rec.
 // sha must be the file's current SHA (from ReadAssessment), or empty when creating.
 func (s *AssessmentRepoService) WriteAssessment(ctx context.Context, rec *assessment.Record, sha string) error {
-	path, err := assessmentRepoPath(rec.ID)
+	path, err := assessment.Path("data", rec.ID)
 	if err != nil {
 		return err
 	}
@@ -103,26 +105,16 @@ func NewAssessmentRecord(cveID string, issueNumber int, now time.Time) *assessme
 	}
 }
 
-// assessmentRepoPath returns the in-repo file path for a CVE, e.g. data/2024/1xxx/CVE-2024-1234.json.
-func assessmentRepoPath(cveID string) (string, error) {
-	matches := cveIDRegex.FindStringSubmatch(cveID)
-	if matches == nil {
-		return "", errors.New("invalid CVE ID: " + cveID)
-	}
-	year := matches[1]
-	number := matches[2]
-
-	bucketLen := max(len(number)-3, 1) //nolint:mnd // 3 = digits replaced with "xxx"
-	bucket := number[:bucketLen] + "xxx"
-
-	return fmt.Sprintf("data/%s/%s/%s.json", year, bucket, cveID), nil
-}
-
 // IsTeamMember reports whether actor is an active member of teamSlug in the given org.
+// Returns false, nil when the actor is not a member (404); returns an error for any
+// other API failure so callers can distinguish "not a member" from "could not check".
 func IsTeamMember(ctx context.Context, gh *gogithub.Client, org, teamSlug, actor string) (bool, error) {
-	membership, _, err := gh.Teams.GetTeamMembershipBySlug(ctx, org, teamSlug, actor)
+	membership, resp, err := gh.Teams.GetTeamMembershipBySlug(ctx, org, teamSlug, actor)
 	if err != nil {
-		return false, nil //nolint:nilerr // 404 means not a member
+		if resp != nil && resp.StatusCode == http.StatusNotFound {
+			return false, nil
+		}
+		return false, fmt.Errorf("checking team membership for %s: %w", actor, err)
 	}
 	return strings.EqualFold(membership.GetState(), "active"), nil
 }

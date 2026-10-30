@@ -28,8 +28,18 @@ func runTriageComment(args []string) error {
 		return err
 	}
 
-	if *cveID == "" || *actor == "" || *commentIDStr == "" || *body == "" {
-		return errors.New("--cve-id, --actor, --comment-id and --body are required")
+	if *cveID == "" || *actor == "" || *commentIDStr == "" {
+		return errors.New("--cve-id, --actor and --comment-id are required")
+	}
+
+	// body can be passed via --body flag or TRIAGE_COMMENT_BODY env var;
+	// the env var is preferred for multiline content from GitHub Actions
+	commentBody := *body
+	if commentBody == "" {
+		commentBody = os.Getenv("TRIAGE_COMMENT_BODY")
+	}
+	if commentBody == "" {
+		return errors.New("comment body must be provided via --body or TRIAGE_COMMENT_BODY")
 	}
 
 	commentID, err := strconv.ParseInt(*commentIDStr, 10, 64)
@@ -65,7 +75,7 @@ func runTriageComment(args []string) error {
 		org, securityTeam,
 		issueRepoOwner, issueRepoName,
 		assessmentRepoOwner, assessmentRepoName,
-		*cveID, *actor, commentID, issueNumber, *body,
+		*cveID, *actor, commentID, issueNumber, commentBody,
 	)
 }
 
@@ -95,20 +105,19 @@ func applyTriageComment(
 		}
 	}
 
-	cmds, _ := bot.ParseCommands(body)
-	if len(cmds) == 0 {
+	cmds, reopen, parseErrs := bot.ParseCommands(body)
+
+	// /reopen is handled at the issue level and does not require team membership
+	if reopen != nil {
+		if err := issues.ReopenIssue(ctx, cveID, reopen.Reason, actor); err != nil {
+			reply(":x: Could not reopen: " + err.Error())
+			return err
+		}
 		return nil
 	}
 
-	// /reopen is handled at the issue level and does not require team membership
-	for _, cmd := range cmds {
-		if r, ok := cmd.(bot.ReopenCommand); ok {
-			if err := issues.ReopenIssue(ctx, cveID, r.Reason, actor); err != nil {
-				reply(":x: Could not reopen: " + err.Error())
-				return err
-			}
-			return nil
-		}
+	if len(cmds) == 0 {
+		return nil
 	}
 
 	member, err := bot.IsTeamMember(ctx, gh, org, securityTeam, actor)
@@ -136,9 +145,9 @@ func applyTriageComment(
 		Now:          time.Now().UTC(),
 	}
 
-	parseErrs, applyErr := bot.ApplyCommands(rec, body, cmdCtx)
-	for _, err := range parseErrs {
-		reply(":x: Command parse error: " + err.Error())
+	_, applyErr := bot.ApplyCommands(rec, cmds, cmdCtx)
+	for _, e := range parseErrs {
+		reply(":x: Command parse error: " + e.Error())
 	}
 	if applyErr != nil {
 		reply(":x: " + applyErr.Error())
