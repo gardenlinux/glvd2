@@ -163,6 +163,22 @@ type ReopenCommand struct {
 
 func (c ReopenCommand) Apply(_ *assessment.Record, _ CommandContext) error { return nil }
 
+// ApplyCommands parses body, applies every non-reopen command to rec, and returns
+// the first application error. Parse errors are collected separately.
+// It is the pure, testable core of the triage flow.
+func ApplyCommands(rec *assessment.Record, body string, ctx CommandContext) ([]error, error) {
+	cmds, parseErrs := ParseCommands(body)
+	for _, cmd := range cmds {
+		if _, ok := cmd.(ReopenCommand); ok {
+			continue
+		}
+		if err := cmd.Apply(rec, ctx); err != nil {
+			return parseErrs, err
+		}
+	}
+	return parseErrs, nil
+}
+
 // ParseCommand parses a single line from an issue comment into a Command.
 // Returns ErrNotACommand if the line is not a recognised command.
 func ParseCommand(line string) (Command, error) { //nolint:ireturn,cyclop // interface intentional, switch is fine

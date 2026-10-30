@@ -95,10 +95,7 @@ func applyTriageComment(
 		}
 	}
 
-	cmds, errs := bot.ParseCommands(body)
-	for _, err := range errs {
-		reply(":x: Command parse error: " + err.Error())
-	}
+	cmds, _ := bot.ParseCommands(body)
 	if len(cmds) == 0 {
 		return nil
 	}
@@ -139,11 +136,13 @@ func applyTriageComment(
 		Now:          time.Now().UTC(),
 	}
 
-	for _, cmd := range cmds {
-		if applyErr := cmd.Apply(rec, cmdCtx); applyErr != nil {
-			reply(":x: " + applyErr.Error())
-			return applyErr
-		}
+	parseErrs, applyErr := bot.ApplyCommands(rec, body, cmdCtx)
+	for _, err := range parseErrs {
+		reply(":x: Command parse error: " + err.Error())
+	}
+	if applyErr != nil {
+		reply(":x: " + applyErr.Error())
+		return applyErr
 	}
 
 	if err = assessments.WriteAssessment(ctx, rec, sha); err != nil {
