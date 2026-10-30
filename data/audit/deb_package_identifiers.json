@@ -4476,12 +4476,18 @@
         "PackageURLs": null
     },
     "pkg:deb/debian/dwarfutils": {
-        "VendorProductIDs": null,
-        "CPEs": null,
+        "VendorProductIDs": [
+            "\"davea42\":\"libdwarf\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:libdwarf_project:libdwarf:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://github.com/davea42/libdwarf-code/\":\"libdwarf\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/davea42/libdwarf-code"
+        ]
     },
     "pkg:deb/debian/dxflib": {
         "VendorProductIDs": [
@@ -8560,6 +8566,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/golang-github-gopasspw-gopass": {
+        "VendorProductIDs": [
+            "\"gopasspw\":\"gopass\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:golang/github.com/gopasspw/gopass"
+        ]
     },
     "pkg:deb/debian/golang-github-gorilla-csrf": {
         "VendorProductIDs": [
@@ -15531,6 +15547,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libspreadsheet-xlsx-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Spreadsheet-XLSX\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Spreadsheet-XLSX"
+        ]
+    },
     "pkg:deb/debian/libspring-java": {
         "VendorProductIDs": [
             "\"dell emc\":\"spring by pivotal\"",
@@ -19431,6 +19457,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/nibabel": {
+        "VendorProductIDs": [
+            "\"nipy\":\"nibabel\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:nipy:nibabel:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/nicotine-plus": {
         "VendorProductIDs": [
             "\"nicotine-plus\":\"nicotine-plus\""
@@ -20545,6 +20581,20 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/node-open": {
+        "VendorProductIDs": [
+            "\"anomalyco\":\"opencode\"",
+            "\"modelcontextprotocol\":\"inspector\"",
+            "\"sindresorhus\":\"open\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:npm/%40modelcontextprotocol/inspector",
+            "pkg:npm/open",
+            "pkg:npm/opencode-ai"
+        ]
     },
     "pkg:deb/debian/node-openpgp": {
         "VendorProductIDs": [
@@ -26537,6 +26587,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-markdown2": {
+        "VendorProductIDs": [
+            "\"trentm\":\"python-markdown2\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:python-markdown2_project:python-markdown2:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:pypi/markdown2"
+        ]
+    },
     "pkg:deb/debian/python-marshmallow": {
         "VendorProductIDs": [
             "\"marshmallow-code\":\"marshmallow\""
@@ -29557,10 +29619,10 @@
     },
     "pkg:deb/debian/rust-actix-files": {
         "VendorProductIDs": [
-            "\"actix\":\"actix-web\""
+            "\"actix\":\"actix-files\""
         ],
         "CPEs": [
-            "cpe:2.3:a:actix:actix-web:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:actix:actix-files:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": [
@@ -29569,10 +29631,10 @@
     },
     "pkg:deb/debian/rust-actix-http": {
         "VendorProductIDs": [
-            "\"actix\":\"actix-web\""
+            "\"actix\":\"actix-http\""
         ],
         "CPEs": [
-            "cpe:2.3:a:actix:actix-web:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:actix:actix-http:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": [
