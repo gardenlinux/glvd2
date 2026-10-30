@@ -144,10 +144,21 @@ func (a AutoTriage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v)
 }
 
-// ManualTriage is the human-owned triage result.
-type ManualTriage struct {
+// ManualTriageEntry is one immutable audit record written by the bot.
+type ManualTriageEntry struct {
 	Status        TriageStatus `json:"status,omitempty"`
 	Justification string       `json:"justification,omitempty"`
+	Author        string       `json:"author,omitempty"`
+	At            time.Time    `json:"at,omitzero"`
+	IssueComment  int64        `json:"issue_comment,omitempty"`
+}
+
+// ManualTriage is the human-owned triage result.
+// Status and Justification always reflect the latest History entry.
+type ManualTriage struct {
+	Status        TriageStatus        `json:"status,omitempty"`
+	Justification string              `json:"justification,omitempty"`
+	History       []ManualTriageEntry `json:"history,omitempty"`
 }
 
 // IsEmpty returns true if the ManualTriage has no status set.
@@ -242,10 +253,23 @@ func (s PackageStatus) MarshalJSON() ([]byte, error) {
 	}{alias: alias(s), Status: s.Reason.Status()})
 }
 
-// PackageOverride is a human's per-package release override. The reasoning goes in the justification.
-type PackageOverride struct {
+// PackageOverrideEntry is one immutable audit record for a per-package override written by the bot.
+type PackageOverrideEntry struct {
 	Status        ReleaseStatus `json:"status,omitempty"`
 	Justification string        `json:"justification,omitempty"`
+	ScoreOverride *float64      `json:"score_override,omitempty"`
+	Author        string        `json:"author,omitempty"`
+	At            time.Time     `json:"at,omitzero"`
+	IssueComment  int64         `json:"issue_comment,omitempty"`
+}
+
+// PackageOverride is a human's per-package release override.
+// Status, Justification, and ScoreOverride always reflect the latest History entry.
+type PackageOverride struct {
+	Status        ReleaseStatus          `json:"status,omitempty"`
+	Justification string                 `json:"justification,omitempty"`
+	ScoreOverride *float64               `json:"score_override,omitempty"`
+	History       []PackageOverrideEntry `json:"history,omitempty"`
 }
 
 // IsEmpty returns true if the override has no status set.
