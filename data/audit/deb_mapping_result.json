@@ -3975,7 +3975,7 @@
             "pkg:deb/debian/elgg": 2
         },
         "\"elixir-lang\":\"elixir\"": {
-            "pkg:deb/debian/elixir-lang": 2
+            "pkg:deb/debian/elixir-lang": 3
         },
         "\"elixir-tesla\":\"tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -4902,7 +4902,7 @@
             "pkg:deb/debian/ekiga": 1
         },
         "\"gnome\":\"epiphany\"": {
-            "pkg:deb/debian/epiphany-browser": 2
+            "pkg:deb/debian/epiphany-browser": 4
         },
         "\"gnome\":\"evolution data server\"": {
             "pkg:deb/debian/evolution": 1,
@@ -6630,6 +6630,9 @@
         "\"hyprland\":\"hyprland\"": {
             "pkg:deb/debian/hyprland": 1
         },
+        "\"i18next\":\"i18next\"": {
+            "pkg:deb/debian/node-i18next": 1
+        },
         "\"i18next\":\"i18next-http-backend\"": {
             "pkg:deb/debian/node-i18next-http-backend": 4
         },
@@ -7674,7 +7677,7 @@
             "pkg:deb/debian/ladybird": 1
         },
         "\"ladybirdbrowser\":\"ladybird\"": {
-            "pkg:deb/debian/ladybird": 1
+            "pkg:deb/debian/ladybird": 3
         },
         "\"lambdaisland\":\"uri\"": {
             "pkg:deb/debian/lambdaisland-uri-clojure": 1
@@ -7684,7 +7687,7 @@
         },
         "\"laravel\":\"framework\"": {
             "pkg:deb/debian/php-illuminate-database": 1,
-            "pkg:deb/debian/php-laravel-framework": 6
+            "pkg:deb/debian/php-laravel-framework": 8
         },
         "\"latchset\":\"jose\"": {
             "pkg:deb/debian/jose": 1
@@ -7927,6 +7930,9 @@
         },
         "\"librecad\":\"librecad\"": {
             "pkg:deb/debian/librecad": 1
+        },
+        "\"libredwg\":\"libredwg\"": {
+            "pkg:deb/debian/libredwg": 3
         },
         "\"libreoffice\":\"libreoffice\"": {
             "pkg:deb/debian/libreoffice": 1
@@ -13888,7 +13894,7 @@
             "pkg:deb/debian/pgadmin4": 1
         },
         "\"pgadmin.org\":\"pgadmin 4\"": {
-            "pkg:deb/debian/pgadmin4": 41
+            "pkg:deb/debian/pgadmin4": 56
         },
         "\"pgjdbc\":\"pgjdbc\"": {
             "pkg:deb/debian/libpgjava": 9
@@ -15710,7 +15716,7 @@
             "pkg:deb/debian/serendipity": 8
         },
         "\"sabnzbd\":\"sabnzbd\"": {
-            "pkg:deb/debian/sabnzbdplus": 2
+            "pkg:deb/debian/sabnzbdplus": 3
         },
         "\"sagemath\":\"cocalc\"": {
             "pkg:deb/debian/cocalc": 1
@@ -19873,7 +19879,7 @@
             "pkg:deb/debian/elfutils": 1
         },
         "cpe:2.3:a:elixir-lang:elixir:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/elixir-lang": 2
+            "pkg:deb/debian/elixir-lang": 3
         },
         "cpe:2.3:a:elixir-tesla:tesla:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -24839,7 +24845,7 @@
             "pkg:deb/debian/undertow": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-servlet\"": {
-            "pkg:deb/debian/undertow": 2
+            "pkg:deb/debian/undertow": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-websockets-jsr\"": {
             "pkg:deb/debian/undertow": 2
@@ -25062,21 +25068,21 @@
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
-            "pkg:deb/debian/undertow": 3,
+            "pkg:deb/debian/undertow": 4,
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"": {
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
-            "pkg:deb/debian/undertow": 4,
+            "pkg:deb/debian/undertow": 5,
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"": {
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
-            "pkg:deb/debian/undertow": 4,
+            "pkg:deb/debian/undertow": 5,
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jws5-tomcat\"": {
@@ -25226,7 +25232,7 @@
             "pkg:deb/debian/undertow": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-servlet\"": {
-            "pkg:deb/debian/undertow": 2
+            "pkg:deb/debian/undertow": 3
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-websockets-jsr\"": {
             "pkg:deb/debian/undertow": 2
@@ -26126,7 +26132,7 @@
             "pkg:deb/debian/brpc": 35
         },
         "\"https://github.com\":\"elixir-lang/elixir\"": {
-            "pkg:deb/debian/elixir-lang": 2
+            "pkg:deb/debian/elixir-lang": 3
         },
         "\"https://github.com\":\"elixir-tesla/tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -26701,7 +26707,7 @@
             "pkg:deb/debian/dia": 1
         },
         "\"https://gitlab.gnome.org/GNOME/epiphany\":\"epiphany\"": {
-            "pkg:deb/debian/epiphany-browser": 3
+            "pkg:deb/debian/epiphany-browser": 5
         },
         "\"https://gitlab.gnome.org/GNOME/evolution-data-server\":\"evolution-data-server\"": {
             "pkg:deb/debian/evolution-data-server": 1
@@ -28973,7 +28979,7 @@
             "pkg:deb/debian/domoticz": 1
         },
         "pkg:github/elixir-lang/elixir": {
-            "pkg:deb/debian/elixir-lang": 2
+            "pkg:deb/debian/elixir-lang": 3
         },
         "pkg:github/elixir-tesla/tesla": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -29885,6 +29891,9 @@
         },
         "pkg:otp/megaco?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
+        },
+        "pkg:otp/mix?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git": {
+            "pkg:deb/debian/elixir-lang": 1
         },
         "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 4
