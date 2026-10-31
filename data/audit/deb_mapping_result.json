@@ -2389,7 +2389,7 @@
         },
         "\"best practical solutions\":\"request tracker\"": {
             "pkg:deb/debian/request-tracker4": 2,
-            "pkg:deb/debian/request-tracker5": 2
+            "pkg:deb/debian/request-tracker5": 3
         },
         "\"best practical\":\"request tracker\"": {
             "pkg:deb/debian/request-tracker4": 1,
@@ -2453,10 +2453,13 @@
             "pkg:deb/debian/bitwarden": 1
         },
         "\"bitwarden\":\"server\"": {
-            "pkg:deb/debian/bitwarden": 5
+            "pkg:deb/debian/bitwarden": 6
         },
         "\"bitwizard\":\"mtr\"": {
             "pkg:deb/debian/mtr": 1
+        },
+        "\"blender foundation\":\"blender\"": {
+            "pkg:deb/debian/blender": 5
         },
         "\"blender\":\"blender\"": {
             "pkg:deb/debian/blender": 22
@@ -2651,7 +2654,7 @@
             "pkg:deb/debian/cakephp": 1
         },
         "\"cakephp\":\"cakephp\"": {
-            "pkg:deb/debian/cakephp": 6
+            "pkg:deb/debian/cakephp": 11
         },
         "\"cakephp\":\"cakephp/database\"": {
             "pkg:deb/debian/cakephp": 1
@@ -3061,11 +3064,14 @@
             "pkg:deb/debian/golang-github-cli-go-gh": 1,
             "pkg:deb/debian/golang-github-cli-go-gh-v2": 2
         },
+        "\"clickhouse\":\"clickhouse cloud\"": {
+            "pkg:deb/debian/clickhouse": 1
+        },
         "\"clickhouse\":\"clickhouse oss\"": {
             "pkg:deb/debian/clickhouse": 1
         },
         "\"clickhouse\":\"clickhouse\"": {
-            "pkg:deb/debian/clickhouse": 6
+            "pkg:deb/debian/clickhouse": 7
         },
         "\"clickhouse\":\"db\"": {
             "pkg:deb/debian/clickhouse": 1
@@ -3321,7 +3327,7 @@
             "pkg:deb/debian/python-kafka": 2
         },
         "\"dani-garcia\":\"vaultwarden\"": {
-            "pkg:deb/debian/vaultwarden": 19
+            "pkg:deb/debian/vaultwarden": 20
         },
         "\"danielgatis\":\"rembg\"": {
             "pkg:deb/debian/rembg": 1
@@ -3578,6 +3584,9 @@
         },
         "\"dloebl\":\"cgif\"": {
             "pkg:deb/debian/cgif": 1
+        },
+        "\"dlundquist\":\"sniproxy\"": {
+            "pkg:deb/debian/sniproxy": 1
         },
         "\"dmendel\":\"bindata\"": {
             "pkg:deb/debian/ruby-bindata": 1
@@ -4407,7 +4416,7 @@
             "pkg:deb/debian/foreman": 1
         },
         "\"forgejo\":\"forgejo\"": {
-            "pkg:deb/debian/forgejo": 5
+            "pkg:deb/debian/forgejo": 8
         },
         "\"form-data\":\"form-data\"": {
             "pkg:deb/debian/node-form-data": 1
@@ -7093,7 +7102,7 @@
             "pkg:deb/debian/jellyfin-server": 1
         },
         "\"jellyfin\":\"jellyfin\"": {
-            "pkg:deb/debian/jellyfin-server": 16
+            "pkg:deb/debian/jellyfin-server": 19
         },
         "\"jelmer\":\"dulwich\"": {
             "pkg:deb/debian/dulwich": 10
@@ -7789,6 +7798,9 @@
         },
         "\"libarchive\":\"libarchive\"": {
             "pkg:deb/debian/libarchive": 6
+        },
+        "\"libass\":\"libass\"": {
+            "pkg:deb/debian/libass": 2
         },
         "\"libbluray\":\"libbluray\"": {
             "pkg:deb/debian/libbluray": 1
@@ -9074,7 +9086,7 @@
             "pkg:deb/debian/monopd": 1
         },
         "\"moodle project\":\"moodle\"": {
-            "pkg:deb/debian/moodle": 9
+            "pkg:deb/debian/moodle": 13
         },
         "\"moodle\":\"h5p\"": {
             "pkg:deb/debian/moodle": 2
@@ -13280,7 +13292,7 @@
             "pkg:deb/debian/swift": 1
         },
         "\"openstack\":\"keystonemiddleware\"": {
-            "pkg:deb/debian/python-keystonemiddleware": 1
+            "pkg:deb/debian/python-keystonemiddleware": 2
         },
         "\"openstack\":\"manila\"": {
             "pkg:deb/debian/manila": 1
@@ -14027,6 +14039,9 @@
         "\"pip maintainers\":\"pip\"": {
             "pkg:deb/debian/python-pip": 2
         },
+        "\"pistacheio\":\"pistache\"": {
+            "pkg:deb/debian/pistache": 1
+        },
         "\"pithos\":\"pithos\"": {
             "pkg:deb/debian/pithos": 1
         },
@@ -14277,7 +14292,7 @@
             "pkg:deb/debian/ejabberd": 1
         },
         "\"proftpd project\":\"proftpd\"": {
-            "pkg:deb/debian/proftpd-dfsg": 2
+            "pkg:deb/debian/proftpd-dfsg": 5
         },
         "\"proftpd\":\"proftpd\"": {
             "pkg:deb/debian/proftpd-dfsg": 5
@@ -15393,7 +15408,7 @@
             "pkg:deb/debian/reviewboard": 1
         },
         "\"rgrove\":\"crass\"": {
-            "pkg:deb/debian/ruby-crass": 1
+            "pkg:deb/debian/ruby-crass": 5
         },
         "\"rgrove\":\"sanitize\"": {
             "pkg:deb/debian/ruby-sanitize": 3
@@ -15951,6 +15966,26 @@
         "\"sidekiq\":\"sidekiq/sidekiq\"": {
             "pkg:deb/debian/ruby-sidekiq": 1
         },
+        "\"siemens\":\"amis ts\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"ax4\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"capital\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"cloud connector configurator\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -15977,6 +16012,18 @@
             "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/python-brotlicffi": 1
         },
+        "\"siemens\":\"designcenter x\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"designcenter\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"dfmexpress\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"edge opc ua server configurator\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -15984,6 +16031,14 @@
         },
         "\"siemens\":\"efibootguard\"": {
             "pkg:deb/debian/efibootguard": 1
+        },
+        "\"siemens\":\"energy engage v2.0sp9\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"energy engage v3.1sp1\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"flow creator configurator\"": {
             "pkg:deb/debian/brotli": 1,
@@ -15993,11 +16048,207 @@
         "\"siemens\":\"gwap\"": {
             "pkg:deb/debian/node-axios": 1
         },
+        "\"siemens\":\"heliox dual port 60kw\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"heliox flex pro\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"hyperlynx\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"insights hub\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"kas\"": {
             "pkg:deb/debian/kas": 3
         },
         "\"siemens\":\"linux-entra-sso\"": {
             "pkg:deb/debian/linux-entra-sso": 1
+        },
+        "\"siemens\":\"opcenter connect electronics\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter connect mom\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter execution core\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter execution foundation\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter execution pharma\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter intelligence\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter intra plant logistics\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter quality\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter rdnl\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter x\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pads pro essentials\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pads pro student edition\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pads professional - xcr\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pads professional\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pads standard \u0026 standard plus\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pads standard - xcr\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"polarion\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"quadview\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"sicharge flex\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"sicharge uc\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"sifinity go\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"sifinity setup\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"simcenter flomaster\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"simcenter flux\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"simcenter simlab\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"solid edge\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"spectrum power 3\"": {
+            "pkg:deb/debian/php8.2": 1,
+            "pkg:deb/debian/php8.4": 1
+        },
+        "\"siemens\":\"spectrum power 4\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"spectrum power 7\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"spectrum power tg\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"supply chain suite\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"teamcenter\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"tecnomatix plant simulation\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"testway\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"valor npi\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"versicharge ac series\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"versicloud\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"xcargo\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"xpedition designer\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"xpedition enterprise xcr\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"xpedition enterprise\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"xpedition ic packaging\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"xpedition layout browser\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"signal\":\"signal-desktop\"": {
             "pkg:deb/debian/signal-desktop": 2
@@ -16954,7 +17205,7 @@
             "pkg:deb/debian/gdm3": 1
         },
         "\"the gnu c library\":\"glibc\"": {
-            "pkg:deb/debian/glibc": 32
+            "pkg:deb/debian/glibc": 33
         },
         "\"the gnu projec\":\"gnu wget\"": {
             "pkg:deb/debian/wget": 1
@@ -17464,7 +17715,7 @@
             "pkg:deb/debian/trac": 1
         },
         "\"traefik\":\"traefik\"": {
-            "pkg:deb/debian/traefik": 76
+            "pkg:deb/debian/traefik": 79
         },
         "\"trailofbits\":\"rfc3161-client\"": {
             "pkg:deb/debian/python-rfc3161-client": 1
@@ -19213,7 +19464,7 @@
         },
         "cpe:2.3:a:best_practical_solutions:request_tracker:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/request-tracker4": 2,
-            "pkg:deb/debian/request-tracker5": 2
+            "pkg:deb/debian/request-tracker5": 3
         },
         "cpe:2.3:a:bestpractical:request_tracker:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/request-tracker4": 1,
@@ -19245,10 +19496,10 @@
             "pkg:deb/debian/bitcoinj": 1
         },
         "cpe:2.3:a:bitwarden:server:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/bitwarden": 6
+            "pkg:deb/debian/bitwarden": 7
         },
         "cpe:2.3:a:blender:blender:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/blender": 1
+            "pkg:deb/debian/blender": 6
         },
         "cpe:2.3:a:blosc:c-blosc2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/c-blosc2": 1
@@ -19315,6 +19566,9 @@
         },
         "cpe:2.3:a:cairographics:cairo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cairo": 1
+        },
+        "cpe:2.3:a:cakephp:cakephp:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/cakephp": 5
         },
         "cpe:2.3:a:calibre-web_project:calibre-web:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/calibre-web": 2
@@ -19759,7 +20013,7 @@
             "pkg:deb/debian/fontforge": 1
         },
         "cpe:2.3:a:forgejo:forgejo:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/forgejo": 6
+            "pkg:deb/debian/forgejo": 9
         },
         "cpe:2.3:a:fort_validator_project:fort_validator:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/fort-validator": 4
@@ -20368,6 +20622,9 @@
         "cpe:2.3:a:jbardin:scp.py:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/python-scp": 1
         },
+        "cpe:2.3:a:jellyfin:jellyfin:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/jellyfin-server": 3
+        },
         "cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jenkins": 2
         },
@@ -20968,7 +21225,7 @@
             "pkg:deb/debian/moodle": 2
         },
         "cpe:2.3:a:moodle:moodle:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/moodle": 36
+            "pkg:deb/debian/moodle": 40
         },
         "cpe:2.3:a:mopidy:mopidy:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mopidy": 1
@@ -21503,7 +21760,7 @@
             "pkg:deb/debian/keystone": 12
         },
         "cpe:2.3:a:openstack:keystonemiddleware:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/python-keystonemiddleware": 1
+            "pkg:deb/debian/python-keystonemiddleware": 2
         },
         "cpe:2.3:a:openstack:manila:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/manila": 1
@@ -21849,7 +22106,7 @@
             "pkg:deb/debian/node-prismjs": 1
         },
         "cpe:2.3:a:proftpd:proftpd:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/proftpd-dfsg": 7
+            "pkg:deb/debian/proftpd-dfsg": 10
         },
         "cpe:2.3:a:prosody:prosody:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/prosody": 4
@@ -22080,6 +22337,11 @@
         },
         "cpe:2.3:a:redhat:helm_cli:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/helm-kubernetes": 2
+        },
+        "cpe:2.3:a:redhat:network_satellite:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/openssl": 1,
+            "pkg:deb/debian/openssl096": 1,
+            "pkg:deb/debian/openssl097": 1
         },
         "cpe:2.3:a:redhat:openjdk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/giflib": 1,
@@ -22346,6 +22608,9 @@
         "cpe:2.3:a:snipeitapp:snipe-it:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/snipe-it": 60
         },
+        "cpe:2.3:a:sniproxy_project:sniproxy:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/sniproxy": 1
+        },
         "cpe:2.3:a:socketry:protocol-http1:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-protocol-http1": 1
         },
@@ -22561,7 +22826,7 @@
             "pkg:deb/debian/tpm2-tss": 1
         },
         "cpe:2.3:a:traefik:traefik:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/traefik": 23
+            "pkg:deb/debian/traefik": 26
         },
         "cpe:2.3:a:traefik:traefik_enterprise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/traefik": 1
@@ -23253,10 +23518,10 @@
             "pkg:deb/debian/tiff": 14
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"compat-openssl10\"": {
-            "pkg:deb/debian/openssl": 2
+            "pkg:deb/debian/openssl": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"compat-openssl11\"": {
-            "pkg:deb/debian/openssl": 2
+            "pkg:deb/debian/openssl": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"compat-poppler022\"": {
             "pkg:deb/debian/poppler": 3
@@ -23298,7 +23563,7 @@
             "pkg:deb/debian/dhcpcd": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnsmasq\"": {
-            "pkg:deb/debian/dnsmasq": 14
+            "pkg:deb/debian/dnsmasq": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dogtag-pki\"": {
             "pkg:deb/debian/dogtag-pki": 7
@@ -23379,7 +23644,7 @@
             "pkg:deb/debian/modules": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"eog\"": {
-            "pkg:deb/debian/eog": 1
+            "pkg:deb/debian/eog": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"erlang\"": {
             "pkg:deb/debian/erlang": 5
@@ -23520,7 +23785,7 @@
             "pkg:deb/debian/gfs2-utils": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript\"": {
-            "pkg:deb/debian/ghostscript": 6
+            "pkg:deb/debian/ghostscript": 8
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ghostscript-chinese\"": {
             "pkg:deb/debian/ghostscript": 1
@@ -23532,13 +23797,13 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 71
+            "pkg:deb/debian/gimp": 72
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 16
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"glib-networking\"": {
-            "pkg:deb/debian/glib-networking": 3
+            "pkg:deb/debian/glib-networking": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"glibc\"": {
             "pkg:deb/debian/glibc": 9
@@ -23855,7 +24120,7 @@
             "pkg:deb/debian/tiff": 7
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-openssl\"": {
-            "pkg:deb/debian/openssl": 2
+            "pkg:deb/debian/openssl": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-spice-vdagent\"": {
             "pkg:deb/debian/spice-vdagent": 2
@@ -24041,10 +24306,14 @@
             "pkg:deb/debian/openssh": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl\"": {
-            "pkg:deb/debian/openssl": 2
+            "pkg:deb/debian/openssl": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl-main\"": {
             "pkg:deb/debian/openssl": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl096b\"": {
+            "pkg:deb/debian/openssl": 1,
+            "pkg:deb/debian/openssl096": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl3\"": {
             "pkg:deb/debian/openssl": 1
@@ -24888,11 +25157,16 @@
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"networkmanager\"": {
             "pkg:deb/debian/network-manager": 1
         },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"openssl\"": {
+            "pkg:deb/debian/openssl": 1,
+            "pkg:deb/debian/openssl096": 1,
+            "pkg:deb/debian/openssl097": 1
+        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jberet-jberet-parent\"": {
             "pkg:deb/debian/undertow": 4
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.eap-jboss-eap-parent\"": {
-            "pkg:deb/debian/jbossas4": 2
+            "pkg:deb/debian/jbossas4": 3
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.eap-jboss-eap-xp\"": {
             "pkg:deb/debian/undertow": 4
@@ -25383,6 +25657,9 @@
         "\"https://conda-forge.org/\":\"pyarrow\"": {
             "pkg:deb/debian/apache-arrow": 1
         },
+        "\"https://console.clickhouse.cloud/\":\"ClickHouse\"": {
+            "pkg:deb/debian/clickhouse": 1
+        },
         "\"https://cpan.org/modules\":\"Apache-Session\"": {
             "pkg:deb/debian/libapache-session-perl": 3
         },
@@ -25536,6 +25813,9 @@
         "\"https://cpan.org/modules\":\"HTTP-Headers-ActionPack\"": {
             "pkg:deb/debian/libhttp-headers-actionpack-perl": 1
         },
+        "\"https://cpan.org/modules\":\"HTTP-Parser-XS\"": {
+            "pkg:deb/debian/libhttp-parser-xs-perl": 1
+        },
         "\"https://cpan.org/modules\":\"HTTP-Tiny\"": {
             "pkg:deb/debian/libhttp-tiny-perl": 2,
             "pkg:deb/debian/perl": 2
@@ -25646,7 +25926,7 @@
             "pkg:deb/debian/libspreadsheet-xlsx-perl": 1
         },
         "\"https://cpan.org/modules\":\"Starlet\"": {
-            "pkg:deb/debian/starlet": 1
+            "pkg:deb/debian/starlet": 5
         },
         "\"https://cpan.org/modules\":\"Starman\"": {
             "pkg:deb/debian/starman": 5
@@ -25801,7 +26081,7 @@
             "pkg:deb/debian/moodle": 13
         },
         "\"https://git.moodle.org\":\"moodle\"": {
-            "pkg:deb/debian/moodle": 73
+            "pkg:deb/debian/moodle": 77
         },
         "\"https://git.ruby-lang.org/ruby.git\":\"Ruby\"": {
             "pkg:deb/debian/ruby2.7": 1,
@@ -26609,6 +26889,9 @@
         },
         "\"https://packagehub.suse.com/\":\"pam\"": {
             "pkg:deb/debian/pam": 1
+        },
+        "\"https://packages.clickhouse.com/\":\"ClickHouse\"": {
+            "pkg:deb/debian/clickhouse": 1
         },
         "\"https://packages.debian.org\":\"graphicsmagick\"": {
             "pkg:deb/debian/graphicsmagick": 1
@@ -28357,6 +28640,9 @@
         "pkg:composer/apache/thrift": {
             "pkg:deb/debian/thrift": 10
         },
+        "pkg:composer/cakephp/cakephp": {
+            "pkg:deb/debian/cakephp": 5
+        },
         "pkg:composer/dolibarr/dolibarr": {
             "pkg:deb/debian/dolibarr": 2
         },
@@ -28433,6 +28719,9 @@
         "pkg:cpan/HTTP-Headers-ActionPack": {
             "pkg:deb/debian/libhttp-headers-actionpack-perl": 1
         },
+        "pkg:cpan/HTTP-Parser-XS": {
+            "pkg:deb/debian/libhttp-parser-xs-perl": 1
+        },
         "pkg:cpan/Imager": {
             "pkg:deb/debian/libimager-perl": 7
         },
@@ -28477,6 +28766,9 @@
         },
         "pkg:cpan/Spreadsheet-XLSX": {
             "pkg:deb/debian/libspreadsheet-xlsx-perl": 1
+        },
+        "pkg:cpan/Starlet": {
+            "pkg:deb/debian/starlet": 4
         },
         "pkg:cpan/Starman": {
             "pkg:deb/debian/starman": 4
@@ -28642,7 +28934,7 @@
             "pkg:deb/debian/assimp": 3
         },
         "pkg:github/bitwarden/server": {
-            "pkg:deb/debian/bitwarden": 6
+            "pkg:deb/debian/bitwarden": 7
         },
         "pkg:github/canboat/canboat": {
             "pkg:deb/debian/canboat": 1
@@ -28670,6 +28962,9 @@
         },
         "pkg:github/dlbeer/quirc": {
             "pkg:deb/debian/quirc": 1
+        },
+        "pkg:github/dlundquist/sniproxy": {
+            "pkg:deb/debian/sniproxy": 1
         },
         "pkg:github/dokuwiki/dokuwiki": {
             "pkg:deb/debian/dokuwiki": 1
@@ -28755,6 +29050,9 @@
         },
         "pkg:github/icculus/smpeg": {
             "pkg:deb/debian/smpeg": 2
+        },
+        "pkg:github/jellyfin/jellyfin": {
+            "pkg:deb/debian/jellyfin-server": 3
         },
         "pkg:github/jhy/jsoup": {
             "pkg:deb/debian/jsoup": 1
@@ -28842,6 +29140,9 @@
         "pkg:github/miniupnp/miniupnp": {
             "pkg:deb/debian/miniupnpc": 2
         },
+        "pkg:github/moodle/moodle": {
+            "pkg:deb/debian/moodle": 4
+        },
         "pkg:github/nationalsecurityagency/ghidra": {
             "pkg:deb/debian/ghidra": 19
         },
@@ -28920,7 +29221,7 @@
             "pkg:deb/debian/erlang-jose": 8
         },
         "pkg:github/proftpd/proftpd": {
-            "pkg:deb/debian/proftpd-dfsg": 1
+            "pkg:deb/debian/proftpd-dfsg": 4
         },
         "pkg:github/pymupdf/PyMuPDF": {
             "pkg:deb/debian/pymupdf": 1
@@ -29106,7 +29407,7 @@
             "pkg:deb/debian/traefik": 11
         },
         "pkg:golang/github.com/traefik/traefik/v3": {
-            "pkg:deb/debian/traefik": 21
+            "pkg:deb/debian/traefik": 24
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1

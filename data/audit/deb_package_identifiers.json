@@ -1823,6 +1823,7 @@
     },
     "pkg:deb/debian/blender": {
         "VendorProductIDs": [
+            "\"blender foundation\":\"blender\"",
             "\"blender\":\"blender\"",
             "\"n/a\":\"blender\""
         ],
@@ -2063,7 +2064,15 @@
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"edge opc ua server configurator\"",
-            "\"siemens\":\"flow creator configurator\""
+            "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"heliox dual port 60kw\"",
+            "\"siemens\":\"heliox flex pro\"",
+            "\"siemens\":\"sicharge flex\"",
+            "\"siemens\":\"sicharge uc\"",
+            "\"siemens\":\"sifinity go\"",
+            "\"siemens\":\"sifinity setup\"",
+            "\"siemens\":\"versicharge ac series\"",
+            "\"siemens\":\"versicloud\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -2325,9 +2334,13 @@
             "\"cakephp\":\"cakephp\"",
             "\"cakephp\":\"cakephp/database\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:cakephp:cakephp:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/cakephp/cakephp"
+        ]
     },
     "pkg:deb/debian/calibre": {
         "VendorProductIDs": [
@@ -2850,6 +2863,7 @@
     },
     "pkg:deb/debian/clickhouse": {
         "VendorProductIDs": [
+            "\"clickhouse\":\"clickhouse cloud\"",
             "\"clickhouse\":\"clickhouse oss\"",
             "\"clickhouse\":\"clickhouse\"",
             "\"clickhouse\":\"db\"",
@@ -2859,7 +2873,9 @@
             "cpe:2.3:a:clickhouse:clickhouse:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://github.com/ClickHouse/clickhouse\":\"ClickHouse\""
+            "\"https://console.clickhouse.cloud/\":\"ClickHouse\"",
+            "\"https://github.com/ClickHouse/clickhouse\":\"ClickHouse\"",
+            "\"https://packages.clickhouse.com/\":\"ClickHouse\""
         ],
         "PackageURLs": null
     },
@@ -11430,9 +11446,13 @@
             "\"jellyfin\":\"code-quality.yml\"",
             "\"jellyfin\":\"jellyfin\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:jellyfin:jellyfin:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/jellyfin/jellyfin"
+        ]
     },
     "pkg:deb/debian/jenkins": {
         "VendorProductIDs": [
@@ -12905,6 +12925,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libass": {
+        "VendorProductIDs": [
+            "\"libass\":\"libass\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libauthen-sasl-perl": {
         "VendorProductIDs": [
             "\"ehuels\":\"authen::sasl::perl::digest_md5\""
@@ -14086,6 +14114,16 @@
         ],
         "PackageURLs": [
             "pkg:cpan/HTTP-Headers-ActionPack"
+        ]
+    },
+    "pkg:deb/debian/libhttp-parser-xs-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"HTTP-Parser-XS\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/HTTP-Parser-XS"
         ]
     },
     "pkg:deb/debian/libhttp-tiny-perl": {
@@ -18295,7 +18333,9 @@
             "\"https://github.com/moodle/moodle/\":\"moodle\"",
             "\"https://moodle.org/\":\"moodle\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/moodle/moodle"
+        ]
     },
     "pkg:deb/debian/moonlight-qt": {
         "VendorProductIDs": [
@@ -21274,6 +21314,14 @@
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"heliox dual port 60kw\"",
+            "\"siemens\":\"heliox flex pro\"",
+            "\"siemens\":\"sicharge flex\"",
+            "\"siemens\":\"sicharge uc\"",
+            "\"siemens\":\"sifinity go\"",
+            "\"siemens\":\"sifinity setup\"",
+            "\"siemens\":\"versicharge ac series\"",
+            "\"siemens\":\"versicloud\"",
             "\"the node.js project\":\"node.js\"",
             "\"thephpgroup\":\"thephpgroup\"",
             "\"yt-dlp_project\":\"yt-dlp\""
@@ -23278,7 +23326,8 @@
             "\"the openssl project\":\"openssl\""
         ],
         "CPEs": [
-            "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:network_satellite:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"compat-openssl10\"",
@@ -23286,7 +23335,30 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-openssl\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl-main\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl3\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl096b\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl3\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"openssl\""
+        ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/openssl096": {
+        "VendorProductIDs": null,
+        "CPEs": [
+            "cpe:2.3:a:redhat:network_satellite:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssl096b\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"openssl\""
+        ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/openssl097": {
+        "VendorProductIDs": null,
+        "CPEs": [
+            "cpe:2.3:a:redhat:network_satellite:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": [
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"openssl\""
         ],
         "PackageURLs": null
     },
@@ -24670,7 +24742,56 @@
             "\"php group\":\"php\"",
             "\"php\":\"archive_tar\"",
             "\"php\":\"php\"",
-            "\"php_group\":\"php\""
+            "\"php_group\":\"php\"",
+            "\"siemens\":\"amis ts\"",
+            "\"siemens\":\"ax4\"",
+            "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"",
+            "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"",
+            "\"siemens\":\"capital\"",
+            "\"siemens\":\"designcenter x\"",
+            "\"siemens\":\"designcenter\"",
+            "\"siemens\":\"dfmexpress\"",
+            "\"siemens\":\"energy engage v2.0sp9\"",
+            "\"siemens\":\"energy engage v3.1sp1\"",
+            "\"siemens\":\"hyperlynx\"",
+            "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"opcenter connect electronics\"",
+            "\"siemens\":\"opcenter connect mom\"",
+            "\"siemens\":\"opcenter execution core\"",
+            "\"siemens\":\"opcenter execution foundation\"",
+            "\"siemens\":\"opcenter execution pharma\"",
+            "\"siemens\":\"opcenter intelligence\"",
+            "\"siemens\":\"opcenter intra plant logistics\"",
+            "\"siemens\":\"opcenter quality\"",
+            "\"siemens\":\"opcenter rdnl\"",
+            "\"siemens\":\"opcenter x\"",
+            "\"siemens\":\"pads pro essentials\"",
+            "\"siemens\":\"pads pro student edition\"",
+            "\"siemens\":\"pads professional - xcr\"",
+            "\"siemens\":\"pads professional\"",
+            "\"siemens\":\"pads standard \u0026 standard plus\"",
+            "\"siemens\":\"pads standard - xcr\"",
+            "\"siemens\":\"polarion\"",
+            "\"siemens\":\"quadview\"",
+            "\"siemens\":\"simcenter flomaster\"",
+            "\"siemens\":\"simcenter flux\"",
+            "\"siemens\":\"simcenter simlab\"",
+            "\"siemens\":\"solid edge\"",
+            "\"siemens\":\"spectrum power 3\"",
+            "\"siemens\":\"spectrum power 4\"",
+            "\"siemens\":\"spectrum power 7\"",
+            "\"siemens\":\"spectrum power tg\"",
+            "\"siemens\":\"supply chain suite\"",
+            "\"siemens\":\"teamcenter\"",
+            "\"siemens\":\"tecnomatix plant simulation\"",
+            "\"siemens\":\"testway\"",
+            "\"siemens\":\"valor npi\"",
+            "\"siemens\":\"xcargo\"",
+            "\"siemens\":\"xpedition designer\"",
+            "\"siemens\":\"xpedition enterprise xcr\"",
+            "\"siemens\":\"xpedition enterprise\"",
+            "\"siemens\":\"xpedition ic packaging\"",
+            "\"siemens\":\"xpedition layout browser\""
         ],
         "CPEs": [
             "cpe:2.3:a:php:archive_tar:*:*:*:*:*:*:*:*",
@@ -24686,7 +24807,56 @@
     "pkg:deb/debian/php8.4": {
         "VendorProductIDs": [
             "\"php group\":\"php\"",
-            "\"php\":\"php\""
+            "\"php\":\"php\"",
+            "\"siemens\":\"amis ts\"",
+            "\"siemens\":\"ax4\"",
+            "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"",
+            "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"",
+            "\"siemens\":\"capital\"",
+            "\"siemens\":\"designcenter x\"",
+            "\"siemens\":\"designcenter\"",
+            "\"siemens\":\"dfmexpress\"",
+            "\"siemens\":\"energy engage v2.0sp9\"",
+            "\"siemens\":\"energy engage v3.1sp1\"",
+            "\"siemens\":\"hyperlynx\"",
+            "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"opcenter connect electronics\"",
+            "\"siemens\":\"opcenter connect mom\"",
+            "\"siemens\":\"opcenter execution core\"",
+            "\"siemens\":\"opcenter execution foundation\"",
+            "\"siemens\":\"opcenter execution pharma\"",
+            "\"siemens\":\"opcenter intelligence\"",
+            "\"siemens\":\"opcenter intra plant logistics\"",
+            "\"siemens\":\"opcenter quality\"",
+            "\"siemens\":\"opcenter rdnl\"",
+            "\"siemens\":\"opcenter x\"",
+            "\"siemens\":\"pads pro essentials\"",
+            "\"siemens\":\"pads pro student edition\"",
+            "\"siemens\":\"pads professional - xcr\"",
+            "\"siemens\":\"pads professional\"",
+            "\"siemens\":\"pads standard \u0026 standard plus\"",
+            "\"siemens\":\"pads standard - xcr\"",
+            "\"siemens\":\"polarion\"",
+            "\"siemens\":\"quadview\"",
+            "\"siemens\":\"simcenter flomaster\"",
+            "\"siemens\":\"simcenter flux\"",
+            "\"siemens\":\"simcenter simlab\"",
+            "\"siemens\":\"solid edge\"",
+            "\"siemens\":\"spectrum power 3\"",
+            "\"siemens\":\"spectrum power 4\"",
+            "\"siemens\":\"spectrum power 7\"",
+            "\"siemens\":\"spectrum power tg\"",
+            "\"siemens\":\"supply chain suite\"",
+            "\"siemens\":\"teamcenter\"",
+            "\"siemens\":\"tecnomatix plant simulation\"",
+            "\"siemens\":\"testway\"",
+            "\"siemens\":\"valor npi\"",
+            "\"siemens\":\"xcargo\"",
+            "\"siemens\":\"xpedition designer\"",
+            "\"siemens\":\"xpedition enterprise xcr\"",
+            "\"siemens\":\"xpedition enterprise\"",
+            "\"siemens\":\"xpedition ic packaging\"",
+            "\"siemens\":\"xpedition layout browser\""
         ],
         "CPEs": null,
         "PackageIDs": [
@@ -24872,7 +25042,8 @@
     },
     "pkg:deb/debian/pistache": {
         "VendorProductIDs": [
-            "\"n/a\":\"pistacheio/pistache\""
+            "\"n/a\":\"pistacheio/pistache\"",
+            "\"pistacheio\":\"pistache\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -26176,7 +26347,15 @@
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"edge opc ua server configurator\"",
-            "\"siemens\":\"flow creator configurator\""
+            "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"heliox dual port 60kw\"",
+            "\"siemens\":\"heliox flex pro\"",
+            "\"siemens\":\"sicharge flex\"",
+            "\"siemens\":\"sicharge uc\"",
+            "\"siemens\":\"sifinity go\"",
+            "\"siemens\":\"sifinity setup\"",
+            "\"siemens\":\"versicharge ac series\"",
+            "\"siemens\":\"versicloud\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -31438,11 +31617,16 @@
     },
     "pkg:deb/debian/sniproxy": {
         "VendorProductIDs": [
+            "\"dlundquist\":\"sniproxy\"",
             "\"sniproxy\":\"sniproxy\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:sniproxy_project:sniproxy:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/dlundquist/sniproxy"
+        ]
     },
     "pkg:deb/debian/snort": {
         "VendorProductIDs": [
@@ -31874,7 +32058,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Starlet\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/Starlet"
+        ]
     },
     "pkg:deb/debian/starlette": {
         "VendorProductIDs": [
