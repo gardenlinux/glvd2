@@ -2611,6 +2611,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/cherrytree": {
+        "VendorProductIDs": [
+            "\"giuspen\":\"cherrytree\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:cherrytree_project:cherrytree:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/chicken": {
         "VendorProductIDs": [
             "\"chicken\":\"chicken\""
@@ -11801,6 +11811,14 @@
             "cpe:2.3:a:mwiede:jsch:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/json-glib": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"json-glib\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/json-smart": {
@@ -30590,6 +30608,14 @@
         "PackageURLs": [
             "pkg:cargo/sequoia-openpgp"
         ]
+    },
+    "pkg:deb/debian/rust-sevenz-rust2": {
+        "VendorProductIDs": [
+            "\"hasenbanck\":\"sevenz-rust2\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
     },
     "pkg:deb/debian/rust-shlex": {
         "VendorProductIDs": [

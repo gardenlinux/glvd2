@@ -4850,6 +4850,9 @@
         "\"gittuf\":\"gittuf\"": {
             "pkg:deb/debian/gittuf": 1
         },
+        "\"giuspen\":\"cherrytree\"": {
+            "pkg:deb/debian/cherrytree": 2
+        },
         "\"gksu-polkit\":\"gksu-polkit\"": {
             "pkg:deb/debian/gksu-polkit": 2
         },
@@ -6177,7 +6180,7 @@
             "pkg:deb/debian/h2o": 11
         },
         "\"h2o\":\"picotls\"": {
-            "pkg:deb/debian/picotls": 1
+            "pkg:deb/debian/picotls": 2
         },
         "\"h2o_project\":\"picotls\"": {
             "pkg:deb/debian/picotls": 1
@@ -6363,6 +6366,9 @@
         },
         "\"harfbuzz\":\"harfbuzz\"": {
             "pkg:deb/debian/harfbuzz": 4
+        },
+        "\"hasenbanck\":\"sevenz-rust2\"": {
+            "pkg:deb/debian/rust-sevenz-rust2": 1
         },
         "\"hashcat\":\"hashcat\"": {
             "pkg:deb/debian/hashcat": 4
@@ -14893,9 +14899,9 @@
             "pkg:deb/debian/rails": 1
         },
         "\"randombit\":\"botan\"": {
-            "pkg:deb/debian/botan": 7,
+            "pkg:deb/debian/botan": 12,
             "pkg:deb/debian/botan1.10": 1,
-            "pkg:deb/debian/botan3": 6
+            "pkg:deb/debian/botan3": 11
         },
         "\"rapidlasso\":\"laszip\"": {
             "pkg:deb/debian/laszip": 1
@@ -16715,7 +16721,7 @@
             "pkg:deb/debian/libde265": 9
         },
         "\"strukturag\":\"libheif\"": {
-            "pkg:deb/debian/libheif": 33
+            "pkg:deb/debian/libheif": 34
         },
         "\"strukturag\":\"strukturag/libde265\"": {
             "pkg:deb/debian/libde265": 1
@@ -17099,7 +17105,7 @@
             "pkg:deb/debian/tensorflow": 402
         },
         "\"tesseract-ocr\":\"tesseract\"": {
-            "pkg:deb/debian/tesseract": 10
+            "pkg:deb/debian/tesseract": 14
         },
         "\"tex live\":\"tex live\"": {
             "pkg:deb/debian/okular": 1,
@@ -19606,6 +19612,9 @@
         "cpe:2.3:a:checkmk:checkmk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/check-mk": 44,
             "pkg:deb/debian/ckeck-mk": 1
+        },
+        "cpe:2.3:a:cherrytree_project:cherrytree:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/cherrytree": 2
         },
         "cpe:2.3:a:chmlib:chmlib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/chmlib": 1
@@ -23882,6 +23891,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"jq-main\"": {
             "pkg:deb/debian/jq": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"json-glib\"": {
+            "pkg:deb/debian/json-glib": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"jss\"": {
             "pkg:deb/debian/jss": 2
