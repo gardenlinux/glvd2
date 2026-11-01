@@ -258,6 +258,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/afflib": {
+        "VendorProductIDs": [
+            "\"sshock\":\"afflib\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:afflib_project:afflib:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/sshock/AFFLIBv3"
+        ]
+    },
     "pkg:deb/debian/aide": {
         "VendorProductIDs": [
             "\"aide\":\"aide\""
@@ -8930,6 +8942,18 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/golang-github-prometheus-common": {
+        "VendorProductIDs": [
+            "\"prometheus\":\"prometheus\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:prometheus:prometheus:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/prometheus/prometheus"
+        ]
     },
     "pkg:deb/debian/golang-github-prometheus-exporter-toolkit": {
         "VendorProductIDs": [
@@ -24961,7 +24985,9 @@
             "cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/phpmyadmin/phpmyadmin"
+        ]
     },
     "pkg:deb/debian/phppgadmin": {
         "VendorProductIDs": [
@@ -31935,7 +31961,9 @@
             "\"https://www.sqlite.org/download.html\":\"sqlite\"",
             "\"https://www.sqlite.org/src\":\"expr.c\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/sqlite/sqlite"
+        ]
     },
     "pkg:deb/debian/sqlitedict": {
         "VendorProductIDs": [
@@ -34219,7 +34247,8 @@
     },
     "pkg:deb/debian/vtk9": {
         "VendorProductIDs": [
-            "\"n/a\":\"vtk\""
+            "\"n/a\":\"vtk\"",
+            "\"vtk\":\"vtk\""
         ],
         "CPEs": null,
         "PackageIDs": null,

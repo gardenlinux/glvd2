@@ -4282,7 +4282,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 77
+            "pkg:deb/debian/ffmpeg": 78
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -5951,7 +5951,7 @@
             "pkg:deb/debian/golang-google-protobuf": 1
         },
         "\"gopacket\":\"gopacket\"": {
-            "pkg:deb/debian/golang-github-gopacket-gopacket": 3,
+            "pkg:deb/debian/golang-github-gopacket-gopacket": 4,
             "pkg:deb/debian/gopacket": 3
         },
         "\"gopasspw\":\"gopass\"": {
@@ -7669,7 +7669,7 @@
             "pkg:deb/debian/kubernetes": 54
         },
         "\"kyz\":\"libmspack\"": {
-            "pkg:deb/debian/libmspack": 1
+            "pkg:deb/debian/libmspack": 2
         },
         "\"l2c2technologies\":\"koha\"": {
             "pkg:deb/debian/koha": 1
@@ -13995,7 +13995,7 @@
             "pkg:deb/debian/phpmemcachedadmin": 2
         },
         "\"phpmyadmin\":\"phpmyadmin\"": {
-            "pkg:deb/debian/phpmyadmin": 3
+            "pkg:deb/debian/phpmyadmin": 6
         },
         "\"phpseclib\":\"1x\"": {
             "pkg:deb/debian/php-phpseclib": 1,
@@ -14319,6 +14319,7 @@
             "pkg:deb/debian/golang-github-prometheus-exporter-toolkit": 1
         },
         "\"prometheus\":\"prometheus\"": {
+            "pkg:deb/debian/golang-github-prometheus-common": 1,
             "pkg:deb/debian/prometheus": 5
         },
         "\"prosody\":\"prosody\"": {
@@ -16316,7 +16317,7 @@
             "pkg:deb/debian/simplesamlphp": 1
         },
         "\"simsong\":\"tcpflow\"": {
-            "pkg:deb/debian/tcpflow": 1
+            "pkg:deb/debian/tcpflow": 2
         },
         "\"simulpiscator\":\"airsane\"": {
             "pkg:deb/debian/airsane": 1
@@ -16618,7 +16619,7 @@
             "pkg:deb/debian/sqlite3": 1
         },
         "\"sqlite\":\"sqlite\"": {
-            "pkg:deb/debian/sqlite3": 7
+            "pkg:deb/debian/sqlite3": 18
         },
         "\"sqlite\":\"sqlite3\"": {
             "pkg:deb/debian/sqlite3": 1
@@ -16647,6 +16648,9 @@
         },
         "\"sri\":\"mojolicious\"": {
             "pkg:deb/debian/libmojolicious-perl": 3
+        },
+        "\"sshock\":\"afflib\"": {
+            "pkg:deb/debian/afflib": 1
         },
         "\"sssd\":\"sssd\"": {
             "pkg:deb/debian/sssd": 2
@@ -18298,7 +18302,8 @@
             "pkg:deb/debian/vsftpd": 1
         },
         "\"vtk\":\"vtk\"": {
-            "pkg:deb/debian/vtk-dicom": 1
+            "pkg:deb/debian/vtk-dicom": 1,
+            "pkg:deb/debian/vtk9": 4
         },
         "\"w1.fi\":\"hostapd\"": {
             "pkg:deb/debian/wpa": 1
@@ -19074,6 +19079,9 @@
         },
         "cpe:2.3:a:aertherwide:exiftags:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/exiftags": 1
+        },
+        "cpe:2.3:a:afflib_project:afflib:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/afflib": 1
         },
         "cpe:2.3:a:agronholm:cbor2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cbor2": 1
@@ -19988,7 +19996,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 69
+            "pkg:deb/debian/ffmpeg": 70
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -20917,7 +20925,7 @@
             "pkg:deb/debian/libmodbus": 3
         },
         "cpe:2.3:a:libmspack_project:libmspack:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libmspack": 1
+            "pkg:deb/debian/libmspack": 2
         },
         "cpe:2.3:a:libpff_project:libpff:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libpff": 1
@@ -22023,7 +22031,7 @@
             "pkg:deb/debian/phplist": 1
         },
         "cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/phpmyadmin": 2
+            "pkg:deb/debian/phpmyadmin": 5
         },
         "cpe:2.3:a:phpseclib:1x:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-phpseclib": 1,
@@ -22122,6 +22130,9 @@
         },
         "cpe:2.3:a:proftpd:proftpd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/proftpd-dfsg": 10
+        },
+        "cpe:2.3:a:prometheus:prometheus:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/golang-github-prometheus-common": 1
         },
         "cpe:2.3:a:prosody:prosody:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/prosody": 4
@@ -22639,7 +22650,7 @@
             "pkg:deb/debian/libspring-java": 1
         },
         "cpe:2.3:a:sqlite:sqlite:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/sqlite3": 4
+            "pkg:deb/debian/sqlite3": 15
         },
         "cpe:2.3:a:sqlitedict:sqlitedict:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sqlitedict": 1
@@ -28679,6 +28690,9 @@
         "pkg:composer/limesurvey/limesurvey": {
             "pkg:deb/debian/limesurvey": 2
         },
+        "pkg:composer/phpmyadmin/phpmyadmin": {
+            "pkg:deb/debian/phpmyadmin": 3
+        },
         "pkg:composer/smarty/smarty": {
             "pkg:deb/debian/smarty3": 1,
             "pkg:deb/debian/smarty4": 1
@@ -29016,7 +29030,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 9
+            "pkg:deb/debian/ffmpeg": 10
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -29085,7 +29099,7 @@
             "pkg:deb/debian/krb5": 2
         },
         "pkg:github/kyz/libmspack": {
-            "pkg:deb/debian/libmspack": 1
+            "pkg:deb/debian/libmspack": 2
         },
         "pkg:github/libLAS/libLAS": {
             "pkg:deb/debian/liblas": 1
@@ -29241,6 +29255,9 @@
         "pkg:github/proftpd/proftpd": {
             "pkg:deb/debian/proftpd-dfsg": 4
         },
+        "pkg:github/prometheus/prometheus": {
+            "pkg:deb/debian/golang-github-prometheus-common": 1
+        },
         "pkg:github/pymupdf/PyMuPDF": {
             "pkg:deb/debian/pymupdf": 1
         },
@@ -29282,6 +29299,12 @@
         },
         "pkg:github/shaarli/Shaarli": {
             "pkg:deb/debian/shaarli": 1
+        },
+        "pkg:github/sqlite/sqlite": {
+            "pkg:deb/debian/sqlite3": 2
+        },
+        "pkg:github/sshock/AFFLIBv3": {
+            "pkg:deb/debian/afflib": 1
         },
         "pkg:github/strongswan/strongswan": {
             "pkg:deb/debian/strongswan": 1
