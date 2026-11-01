@@ -17275,6 +17275,7 @@
             "cpe:2.3:a:canonical:lxd:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://canonical.com/lxd\":\"lxd\"",
             "\"https://github.com/canonical\":\"lxd\"",
             "\"https://github.com/canonical/lxd\":\"lxd\""
         ],

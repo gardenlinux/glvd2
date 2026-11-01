@@ -2741,7 +2741,7 @@
         },
         "\"canonical\":\"lxd\"": {
             "pkg:deb/debian/incus": 16,
-            "pkg:deb/debian/lxd": 37
+            "pkg:deb/debian/lxd": 38
         },
         "\"canonical\":\"ppp\"": {
             "pkg:deb/debian/ppp": 1
@@ -25529,6 +25529,9 @@
         },
         "\"https://canonical.com/juju\":\"juju\"": {
             "pkg:deb/debian/juju": 1
+        },
+        "\"https://canonical.com/lxd\":\"lxd\"": {
+            "pkg:deb/debian/lxd": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"aom-main\"": {
             "pkg:deb/debian/aom": 4
