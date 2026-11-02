@@ -13,7 +13,6 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 )
 
@@ -61,7 +60,7 @@ func (s Set) AuditEntries() []string {
 }
 
 // inReleaseFetchFunc fetches and parses the package list from the InRelease file.
-type inReleaseFetchFunc func(ctx context.Context, release version.GardenLinuxRelease) ([]packages.Package, error)
+type inReleaseFetchFunc func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error)
 
 // Accumulator accumulates the inventory through consuming the SBOMs.
 // It implements [sbom.Consumer].
@@ -84,7 +83,7 @@ func WithMinPURLs(n int) Option {
 
 // WithInReleaseFetch overrides InRelease fetching/parsing (for tests).
 func WithInReleaseFetch(
-	f func(ctx context.Context, release version.GardenLinuxRelease) ([]packages.Package, error),
+	f func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error),
 ) Option {
 	return func(a *Accumulator) { a.fetchInRelease = f }
 }
@@ -122,7 +121,7 @@ func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) 
 		"falling back to the release InRelease file",
 		slog.String("release", release.Name))
 
-	pkgs, err := a.fetchInRelease(ctx, version.ReleaseSuite(release))
+	pkgs, err := a.fetchInRelease(ctx, glrd.ReleaseSuite(release))
 	if err != nil {
 		return fmt.Errorf("fetching InRelease for release %s: %w", release.Name, err)
 	}

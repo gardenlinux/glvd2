@@ -7,7 +7,8 @@ import (
 	"log/slog"
 	"net/url"
 
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
+	"github.com/gardenlinux/glvd2/internal/config"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/spf13/cobra"
 )
 
@@ -15,6 +16,8 @@ type options struct {
 	Version string
 	PkgFmt  string
 	SBOMURL string
+	Flavor  string
+	Gitish  string
 }
 
 type PackageListFormat int
@@ -46,55 +49,68 @@ func parsePackageListFormat(s string) (PackageListFormat, error) {
 	}
 }
 
-func Cmd() *cobra.Command {
+func Cmd(cfg *config.AppConfig) *cobra.Command {
 	var opts options
 	cmd := &cobra.Command{
 		Use:     "packages",
-		Short:   "Print packages of a <version>",
+		Short:   "List packages/dependencies of a release <version>",
 		GroupID: "debug",
 		Args:    cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			return run(cmd.Context(), opts)
+			return run(cmd.Context(), cfg, opts)
 		},
 	}
-	cmd.Flags().StringVar(&opts.Version, "version", "", "specific version. Required when pkgfmt=inrelease")
-	cmd.Flags().StringVar(&opts.PkgFmt, "pkgfmt", "inrelease", "define packagelist format (inrelease,cyclonedx)")
+	cmd.Flags().StringVar(&opts.Version, "version", "", "release version")
+	cmd.Flags().StringVar(&opts.Flavor, "flavor", "", "image flavor")
+	cmd.Flags().StringVar(&opts.PkgFmt, "pkgfmt", "cyclonedx", "define packagelist format (inrelease,cyclonedx)")
 	cmd.Flags().StringVar(
 		&opts.SBOMURL,
 		"sbomURL",
 		"",
-		"URL to sbom in cyclonedx format, required when pkgfmt=cyclonedx")
+		"Use this URL as SBOM source")
+
+	cmd.MarkFlagRequired("version")
+	cmd.MarkFlagRequired("flavor")
 
 	return cmd
 }
 
-func run(ctx context.Context, opts options) error {
+func run(ctx context.Context, cfg *config.AppConfig, opts options) error {
 	pkgListFormat, err := parsePackageListFormat(opts.PkgFmt)
 	if err != nil {
 		return err
 	}
 
+	var release glrd.GardenLinuxRelease
+	release, err = glrd.MakeGardenLinuxReleaseFromString(opts.Version)
+	if err != nil {
+		return err
+	}
+
+	if opts.Version == "" {
+		return errors.New("a release version is always required")
+	}
+
 	var packages []Package
 	switch pkgListFormat {
 	case InReleaseFormat:
-		if opts.Version == "" {
-			return errors.New("version required when pkgfmt=inrelease")
-		}
-		var release version.GardenLinuxRelease
-		release, err = version.MakeGardenLinuxReleaseFromString(opts.Version)
-		if err != nil {
-			return err
-		}
 		packages, err = GetPackageListsFromInRelease(ctx, release)
 	case CycloneDXFormat:
-		if opts.SBOMURL == "" {
-			return errors.New("sbomURL required when pkgfmt=cyclonedx")
-		}
 		var sbomURL *url.URL
-		sbomURL, err = url.Parse(opts.SBOMURL)
+		if len(opts.SBOMURL) == 0 { // Automatically build the SBOM URL from the github release page
+			glrdRelease, err := glrd.GetRelease(ctx, cfg.GLRDReleasesURL, release)
+			if err != nil {
+				return err
+			}
+
+			sbomURL, err = glrdRelease.LocateSBOM(opts.Flavor)
+		} else { // URL for SBOM is provided (mostly debugging)
+			sbomURL, err = url.Parse(opts.SBOMURL)
+		}
 		if err != nil {
 			return err
 		}
+
 		packages, err = GetPackageListFromCycloneDx(ctx, sbomURL)
 	default:
 		return fmt.Errorf("unhandled packagelist format %v", pkgListFormat)

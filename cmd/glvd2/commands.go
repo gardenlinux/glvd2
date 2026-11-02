@@ -72,7 +72,7 @@ func registerSubcommands(root *cobra.Command, cfg *config.AppConfig) {
 
 	factories := []func() *cobra.Command{
 		func() *cobra.Command { return glrd.Cmd(cfg) },
-		packages.Cmd,
+		func() *cobra.Command { return packages.Cmd(cfg) },
 		glcve.ReleasePageCmd,
 		glcve.MentionedCVEsCmd,
 		func() *cobra.Command { return pkgbuild.Cmd(cfg) },

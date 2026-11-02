@@ -45,6 +45,8 @@ func analyzeRecipe(content string) BuildSignals {
 			s.HasPatches = true
 		case isFetch(line):
 			classifyFetch(line, &s)
+		case isCommand(line, "add_sbom"):
+			s.HasSbom = true
 		}
 	}
 

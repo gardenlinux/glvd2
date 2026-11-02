@@ -8,9 +8,9 @@ import (
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/flavorinventory"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/gltest"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -95,7 +95,7 @@ func TestAccumulator_InReleaseFallbackUsesPool(t *testing.T) {
 
 	s := flavorinventory.NewAccumulator(
 		flavorinventory.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return []packages.Package{
 					{Name: "libc6", Source: "glibc", Namespace: purl.NamespaceDebian},
 				}, nil
@@ -173,7 +173,7 @@ func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 	fetchErr := errors.New("storage unreachable")
 	s := flavorinventory.NewAccumulator(
 		flavorinventory.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return nil, fetchErr
 			}),
 	)
