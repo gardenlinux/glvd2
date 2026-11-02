@@ -6139,9 +6139,13 @@
         "VendorProductIDs": [
             "\"tildearrow\":\"furnace\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:tildearrow:furnace:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/tildearrow/furnace"
+        ]
     },
     "pkg:deb/debian/fuse": {
         "VendorProductIDs": [
@@ -11283,6 +11287,17 @@
         "PackageIDs": [
             "\"https://repo1.maven.org/maven2\":\"com.fasterxml.jackson.dataformat:jackson-dataformat-smile\"",
             "\"https://repo1.maven.org/maven2\":\"tools.jackson.dataformat:jackson-dataformat-smile\""
+        ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/jackson-dataformats-binary": {
+        "VendorProductIDs": [
+            "\"fasterxml\":\"jackson-dataformat-protobuf\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"com.fasterxml.jackson.dataformat:jackson-dataformat-protobuf\"",
+            "\"https://repo.maven.apache.org/maven2\":\"tools.jackson.dataformat:jackson-dataformat-protobuf\""
         ],
         "PackageURLs": null
     },
@@ -26839,6 +26854,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-markdown": {
+        "VendorProductIDs": [
+            "\"python-markdown\":\"markdown\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:python-markdown2_project:python-markdown2:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:pypi/markdown"
+        ]
+    },
     "pkg:deb/debian/python-markdown2": {
         "VendorProductIDs": [
             "\"trentm\":\"python-markdown2\""
@@ -27755,12 +27782,34 @@
             "pkg:software-id/apache.org/qpid-proton"
         ]
     },
+    "pkg:deb/debian/qt3d-opensource-src": {
+        "VendorProductIDs": [
+            "\"qt\":\"qt framework\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:qt:qt3d:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/qt4-x11": {
         "VendorProductIDs": [
             "\"n/a\":\"qt\"",
             "\"qt\":\"qt\""
         ],
         "CPEs": [
+            "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/qt6-3d": {
+        "VendorProductIDs": [
+            "\"qt\":\"qt framework\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:qt:qt3d:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
@@ -34206,7 +34255,9 @@
             "\"n/a\":\"alpaca\"",
             "\"vsftpd\":\"vsftpd\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:vsftpd_project:vsftpd:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"vsftpd\""
         ],
@@ -34723,6 +34774,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http-error-context\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-http-interface\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-management\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-ee-dist\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-ejb3\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-integration\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-elytron-tool-wrapper\"",

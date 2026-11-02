@@ -4223,6 +4223,9 @@
             "pkg:deb/debian/jackson-databind": 30,
             "pkg:deb/debian/libjackson-json-java": 2
         },
+        "\"fasterxml\":\"jackson-dataformat-protobuf\"": {
+            "pkg:deb/debian/jackson-dataformats-binary": 2
+        },
         "\"fasterxml\":\"jackson-dataformats-binary\"": {
             "pkg:deb/debian/jackson-dataformat-cbor": 1,
             "pkg:deb/debian/jackson-dataformat-smile": 1
@@ -4282,7 +4285,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 78
+            "pkg:deb/debian/ffmpeg": 83
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -6051,7 +6054,7 @@
             "pkg:deb/debian/graphite-web": 3
         },
         "\"graphql-python\":\"graphql-core\"": {
-            "pkg:deb/debian/graphql-core": 2
+            "pkg:deb/debian/graphql-core": 3
         },
         "\"grassroot dicom\":\"grassroot dicom\"": {
             "pkg:deb/debian/gdcm": 7
@@ -8181,7 +8184,7 @@
             "pkg:deb/debian/nix": 1
         },
         "\"ljharb\":\"qs\"": {
-            "pkg:deb/debian/node-qs": 4
+            "pkg:deb/debian/node-qs": 5
         },
         "\"ljharb\":\"shell-quote\"": {
             "pkg:deb/debian/node-shell-quote": 1
@@ -14560,11 +14563,11 @@
             "pkg:deb/debian/pypy3": 60,
             "pkg:deb/debian/python2.7": 47,
             "pkg:deb/debian/python3.10": 3,
-            "pkg:deb/debian/python3.11": 76,
+            "pkg:deb/debian/python3.11": 77,
             "pkg:deb/debian/python3.12": 26,
-            "pkg:deb/debian/python3.13": 71,
-            "pkg:deb/debian/python3.14": 50,
-            "pkg:deb/debian/python3.15": 11,
+            "pkg:deb/debian/python3.13": 72,
+            "pkg:deb/debian/python3.14": 51,
+            "pkg:deb/debian/python3.15": 12,
             "pkg:deb/debian/python3.7": 7,
             "pkg:deb/debian/python3.9": 69
         },
@@ -14635,6 +14638,9 @@
         },
         "\"python-ldap\":\"python-ldap\"": {
             "pkg:deb/debian/python-ldap": 2
+        },
+        "\"python-markdown\":\"markdown\"": {
+            "pkg:deb/debian/python-markdown": 1
         },
         "\"python-mechanize\":\"mechanize\"": {
             "pkg:deb/debian/python-mechanize": 1
@@ -14735,15 +14741,19 @@
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src-gles": 2
         },
+        "\"qt\":\"qt framework\"": {
+            "pkg:deb/debian/qt3d-opensource-src": 1,
+            "pkg:deb/debian/qt6-3d": 1
+        },
         "\"qt\":\"qt\"": {
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-5compat": 2,
-            "pkg:deb/debian/qt6-base": 18,
+            "pkg:deb/debian/qt6-base": 19,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 16,
+            "pkg:deb/debian/qtbase-opensource-src": 17,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -17582,7 +17592,7 @@
             "pkg:deb/debian/tikiwiki": 1
         },
         "\"tildearrow\":\"furnace\"": {
-            "pkg:deb/debian/furnace": 2
+            "pkg:deb/debian/furnace": 4
         },
         "\"tildeslash ltd.\":\"monit\"": {
             "pkg:deb/debian/monit": 1
@@ -18299,7 +18309,7 @@
             "pkg:deb/debian/adminer": 19
         },
         "\"vsftpd\":\"vsftpd\"": {
-            "pkg:deb/debian/vsftpd": 1
+            "pkg:deb/debian/vsftpd": 3
         },
         "\"vtk\":\"vtk\"": {
             "pkg:deb/debian/vtk-dicom": 1,
@@ -18751,7 +18761,7 @@
         "\"xpdf\":\"xpdf\"": {
             "pkg:deb/debian/kdegraphics": 1,
             "pkg:deb/debian/poppler": 1,
-            "pkg:deb/debian/xpdf": 16
+            "pkg:deb/debian/xpdf": 17
         },
         "\"xpdfreader\":\"xpdf\"": {
             "pkg:deb/debian/xpdf": 2
@@ -19996,7 +20006,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 70
+            "pkg:deb/debian/ffmpeg": 75
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -22178,6 +22188,7 @@
             "pkg:deb/debian/python-jose": 3
         },
         "cpe:2.3:a:python-markdown2_project:python-markdown2:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/python-markdown": 1,
             "pkg:deb/debian/python-markdown2": 1
         },
         "cpe:2.3:a:python-social-auth:social-app-django:*:*:*:*:*:*:*:*": {
@@ -22246,20 +22257,26 @@
         "cpe:2.3:a:qpdf_project:qpdf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qpdf": 1
         },
+        "cpe:2.3:a:qt:qt3d:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/qt3d-opensource-src": 1,
+            "pkg:deb/debian/qt6-3d": 1
+        },
         "cpe:2.3:a:qt:qt5compat:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt6-5compat": 1,
             "pkg:deb/debian/qtbase-opensource-src": 1,
             "pkg:deb/debian/qtbase-opensource-src-gles": 1
         },
         "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/qt3d-opensource-src": 1,
             "pkg:deb/debian/qt4-x11": 1,
+            "pkg:deb/debian/qt6-3d": 1,
             "pkg:deb/debian/qt6-5compat": 2,
-            "pkg:deb/debian/qt6-base": 17,
+            "pkg:deb/debian/qt6-base": 18,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 15,
+            "pkg:deb/debian/qtbase-opensource-src": 16,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -22273,8 +22290,8 @@
         },
         "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt6-5compat": 1,
-            "pkg:deb/debian/qt6-base": 5,
-            "pkg:deb/debian/qtbase-opensource-src": 5,
+            "pkg:deb/debian/qt6-base": 6,
+            "pkg:deb/debian/qtbase-opensource-src": 6,
             "pkg:deb/debian/qtbase-opensource-src-gles": 4
         },
         "cpe:2.3:a:qt:qtsvg:*:*:*:*:*:*:*:*": {
@@ -22814,6 +22831,9 @@
         "cpe:2.3:a:tiki:tikiwiki_cms\\/groupware:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/tikiwiki": 2
         },
+        "cpe:2.3:a:tildearrow:furnace:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/furnace": 2
+        },
         "cpe:2.3:a:tiny-http_project:tiny-http:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rust-tiny-http": 2
         },
@@ -22980,6 +23000,9 @@
         },
         "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-security-2.0-java": 1
+        },
+        "cpe:2.3:a:vsftpd_project:vsftpd:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/vsftpd": 2
         },
         "cpe:2.3:a:w1.fi:hostapd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/wpa": 1
@@ -23414,7 +23437,7 @@
             "pkg:deb/debian/libcap2": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"389-ds-base\"": {
-            "pkg:deb/debian/389-ds-base": 40
+            "pkg:deb/debian/389-ds-base": 41
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ImageMagick\"": {
             "pkg:deb/debian/imagemagick": 21
@@ -23958,7 +23981,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 104
+            "pkg:deb/debian/keycloak": 108
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -24973,7 +24996,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-iiop-openjdk\"": {
-            "pkg:deb/debian/wildfly": 1
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-io\"": {
             "pkg:deb/debian/wildfly": 1
@@ -25368,6 +25391,9 @@
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-domain-management\"": {
             "pkg:deb/debian/wildfly": 1
         },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-ee-dist\"": {
+            "pkg:deb/debian/wildfly": 1
+        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-ejb3\"": {
             "pkg:deb/debian/wildfly": 1
         },
@@ -25387,7 +25413,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-iiop-openjdk\"": {
-            "pkg:deb/debian/wildfly": 2
+            "pkg:deb/debian/wildfly": 3
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-installation-manager\"": {
             "pkg:deb/debian/wildfly": 1
@@ -26905,7 +26931,7 @@
             "pkg:deb/debian/node-pbkdf2": 2
         },
         "\"https://npmjs.com/qs\":\"qs\"": {
-            "pkg:deb/debian/node-qs": 6
+            "pkg:deb/debian/node-qs": 7
         },
         "\"https://npmjs.com/sha.js\":\"sha.js\"": {
             "pkg:deb/debian/node-sha.js": 1
@@ -27776,6 +27802,9 @@
         "\"https://repo.maven.apache.org/maven2\":\"com.fasterxml.jackson.core:jackson-databind\"": {
             "pkg:deb/debian/jackson-databind": 4
         },
+        "\"https://repo.maven.apache.org/maven2\":\"com.fasterxml.jackson.dataformat:jackson-dataformat-protobuf\"": {
+            "pkg:deb/debian/jackson-dataformats-binary": 2
+        },
         "\"https://repo.maven.apache.org/maven2\":\"com.opensymphony:xwork\"": {
             "pkg:deb/debian/libstruts1.2-java": 1
         },
@@ -28137,6 +28166,9 @@
         },
         "\"https://repo.maven.apache.org/maven2\":\"tools.jackson.core:jackson-databind\"": {
             "pkg:deb/debian/jackson-databind": 4
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"tools.jackson.dataformat:jackson-dataformat-protobuf\"": {
+            "pkg:deb/debian/jackson-dataformats-binary": 2
         },
         "\"https://repo.maven.apache.org/maven2/\":\"org.apache.cassandra:cassandra-all\"": {
             "pkg:deb/debian/cassandra": 2
@@ -29033,7 +29065,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 10
+            "pkg:deb/debian/ffmpeg": 15
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -29323,6 +29355,9 @@
         },
         "pkg:github/telegramdesktop/tdesktop": {
             "pkg:deb/debian/telegram-desktop": 1
+        },
+        "pkg:github/tildearrow/furnace": {
+            "pkg:deb/debian/furnace": 2
         },
         "pkg:github/tink-crypto/tink-go": {
             "pkg:deb/debian/golang-github-tink-crypto-tink-go": 1
@@ -30028,6 +30063,9 @@
         },
         "pkg:pypi/libais": {
             "pkg:deb/debian/python-libais": 1
+        },
+        "pkg:pypi/markdown": {
+            "pkg:deb/debian/python-markdown": 1
         },
         "pkg:pypi/markdown2": {
             "pkg:deb/debian/python-markdown2": 1
