@@ -1492,8 +1492,8 @@
             "pkg:deb/debian/libmina-sshd-java": 17
         },
         "\"apache software foundation\":\"apache mina\"": {
-            "pkg:deb/debian/mina": 7,
-            "pkg:deb/debian/mina2": 7
+            "pkg:deb/debian/mina": 8,
+            "pkg:deb/debian/mina2": 8
         },
         "\"apache software foundation\":\"apache netbeans\"": {
             "pkg:deb/debian/netbeans": 1
@@ -27994,8 +27994,8 @@
             "pkg:deb/debian/apache-log4j2": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.mina:mina-core\"": {
-            "pkg:deb/debian/mina": 2,
-            "pkg:deb/debian/mina2": 2
+            "pkg:deb/debian/mina": 3,
+            "pkg:deb/debian/mina2": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.mina:mina-filter-compression\"": {
             "pkg:deb/debian/mina": 1,
@@ -29615,6 +29615,10 @@
         "pkg:maven/org.apache.logging.log4j/log4j-layout-template-json": {
             "pkg:deb/debian/apache-log4j1.2": 1,
             "pkg:deb/debian/apache-log4j2": 1
+        },
+        "pkg:maven/org.apache.mina/mina-core": {
+            "pkg:deb/debian/mina": 1,
+            "pkg:deb/debian/mina2": 1
         },
         "pkg:maven/org.apache.opennlp/opennlp-core": {
             "pkg:deb/debian/apache-opennlp": 1

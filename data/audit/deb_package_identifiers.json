@@ -17928,7 +17928,9 @@
             "\"https://repo.maven.apache.org/maven2/org/apache/mina\":\"org.apache.mina:mina-core\"",
             "\"https://repo.maven.apache.org/maven2/org/apache/mina/\":\"org.apache.mina:mina.core\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.mina/mina-core"
+        ]
     },
     "pkg:deb/debian/mina2": {
         "VendorProductIDs": [
@@ -17941,7 +17943,9 @@
             "\"https://repo.maven.apache.org/maven2/org/apache/mina\":\"org.apache.mina:mina-core\"",
             "\"https://repo.maven.apache.org/maven2/org/apache/mina/\":\"org.apache.mina:mina.core\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.mina/mina-core"
+        ]
     },
     "pkg:deb/debian/minetest": {
         "VendorProductIDs": [
