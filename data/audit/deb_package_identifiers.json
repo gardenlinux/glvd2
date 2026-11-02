@@ -419,6 +419,7 @@
             "\"amd\":\"amd epyc™ embedded 7003 series processors\"",
             "\"amd\":\"amd epyc™ embedded 7003\"",
             "\"amd\":\"amd epyc™ embedded 8004 series processors\"",
+            "\"amd\":\"amd epyc™ embedded 9003  series processors\"",
             "\"amd\":\"amd epyc™ embedded 9003\"",
             "\"amd\":\"amd epyc™ embedded 9004 series processors (formerly codenamed \\\"bergamo\\\")\"",
             "\"amd\":\"amd epyc™ embedded 9004 series processors (formerly codenamed \\\"genoa\\\")\"",
@@ -3422,6 +3423,14 @@
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"criu\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/croc": {
+        "VendorProductIDs": [
+            "\"schollz\":\"croc\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/cron": {
@@ -8554,6 +8563,22 @@
         "PackageIDs": [
             "\"https://github.com/go-viper/mapstructure/\":\"github.com/go-viper/mapstructure/v2\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/golang-github-gofiber-fiber": {
+        "VendorProductIDs": [
+            "\"gofiber\":\"fiber\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/golang-github-gofiber-fiber-v2": {
+        "VendorProductIDs": [
+            "\"gofiber\":\"fiber\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/golang-github-golang-jwt-jwt": {
