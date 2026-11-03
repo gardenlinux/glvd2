@@ -312,13 +312,15 @@
         "PackageIDs": [
             "\"https://pypi.org/project/apache-airflow-providers-fab/\":\"apache-airflow-providers-fab\"",
             "\"https://pypi.python.org\":\"apache-airflow\"",
+            "\"https://pypi.python.org\":\"apache-airflow-core\"",
             "\"https://pypi.python.org\":\"apache-airflow-providers-cncf-kubernetes\"",
             "\"https://pypi.python.org\":\"apache-airflow-providers-smtp\"",
             "\"https://pypi.python.org\":\"apache-airflow\u003e 3.0.0, \u003c 3.1.1\"",
             "\"https://pypi.python.org/\":\"apache-airflow\""
         ],
         "PackageURLs": [
-            "pkg:pypi/apache-airflow"
+            "pkg:pypi/apache-airflow",
+            "pkg:pypi/apache-airflow-core"
         ]
     },
     "pkg:deb/debian/airsane": {
@@ -9771,6 +9773,8 @@
     },
     "pkg:deb/debian/gst-plugins-bad1.0": {
         "VendorProductIDs": [
+            "\"gstreamer project\":\"gst-plugins-bad\"",
+            "\"gstreamer project\":\"gst-plugins-base\"",
             "\"gstreamer\":\"gstreamer\"",
             "\"gstreamer_project\":\"gstreamer\"",
             "\"n/a\":\"gstreamer\""
@@ -9794,6 +9798,8 @@
     },
     "pkg:deb/debian/gst-plugins-base1.0": {
         "VendorProductIDs": [
+            "\"gstreamer project\":\"gst-plugins-bad\"",
+            "\"gstreamer project\":\"gst-plugins-base\"",
             "\"gstreamer\":\"gstreamer\"",
             "\"n/a\":\"gstreamer\""
         ],
@@ -9815,6 +9821,7 @@
     },
     "pkg:deb/debian/gst-plugins-good1.0": {
         "VendorProductIDs": [
+            "\"gstreamer project\":\"gst-plugins-good\"",
             "\"gstreamer\":\"good plug-ins\"",
             "\"gstreamer\":\"gst-plugins-good\"",
             "\"gstreamer\":\"gstreamer\"",
@@ -10356,7 +10363,9 @@
             "\"n/a\":\"hivex\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"hivex\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/homeassistant": {
@@ -18000,6 +18009,14 @@
     "pkg:deb/debian/minicom": {
         "VendorProductIDs": [
             "\"[unknown]\":\"minicom\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/minidlna": {
+        "VendorProductIDs": [
+            "\"readymedia\":\"readymedia (minidlna)\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -26237,7 +26254,8 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:github/pymupdf/PyMuPDF"
+            "pkg:github/pymupdf/PyMuPDF",
+            "pkg:pypi/pymupdf"
         ]
     },
     "pkg:deb/debian/pyopenssl": {

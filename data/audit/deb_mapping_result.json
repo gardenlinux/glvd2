@@ -6129,6 +6129,17 @@
         "\"gstreamer project\":\"gst-editing-services\"": {
             "pkg:deb/debian/gstreamer-editing-services1.0": 1
         },
+        "\"gstreamer project\":\"gst-plugins-bad\"": {
+            "pkg:deb/debian/gst-plugins-bad1.0": 4,
+            "pkg:deb/debian/gst-plugins-base1.0": 1
+        },
+        "\"gstreamer project\":\"gst-plugins-base\"": {
+            "pkg:deb/debian/gst-plugins-bad1.0": 1,
+            "pkg:deb/debian/gst-plugins-base1.0": 2
+        },
+        "\"gstreamer project\":\"gst-plugins-good\"": {
+            "pkg:deb/debian/gst-plugins-good1.0": 1
+        },
         "\"gstreamer\":\"good plug-ins\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 2
         },
@@ -14248,7 +14259,7 @@
             "pkg:deb/debian/postgresql-9.6": 6
         },
         "\"postgresql\":\"psqlodbc\"": {
-            "pkg:deb/debian/psqlodbc": 1
+            "pkg:deb/debian/psqlodbc": 12
         },
         "\"postorius project\":\"postorius\"": {
             "pkg:deb/debian/postorius": 1
@@ -14536,7 +14547,7 @@
             "pkg:deb/debian/smartdns": 1
         },
         "\"pymupdf\":\"pymupdf\"": {
-            "pkg:deb/debian/pymupdf": 1
+            "pkg:deb/debian/pymupdf": 2
         },
         "\"pypa\":\"pipenv\"": {
             "pkg:deb/debian/pipenv": 1
@@ -14984,6 +14995,9 @@
         },
         "\"readest\":\"readest\"": {
             "pkg:deb/debian/readest": 1
+        },
+        "\"readymedia\":\"readymedia (minidlna)\"": {
+            "pkg:deb/debian/minidlna": 1
         },
         "\"red hat bootloader team\":\"shim\"": {
             "pkg:deb/debian/shim": 1
@@ -23912,6 +23926,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"hibernate-c3p0\"": {
             "pkg:deb/debian/c3p0": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"hivex\"": {
+            "pkg:deb/debian/hivex": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"hplip\"": {
             "pkg:deb/debian/hplip": 3
         },
@@ -24057,7 +24074,7 @@
             "pkg:deb/debian/librsvg": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libslirp\"": {
-            "pkg:deb/debian/libslirp": 2
+            "pkg:deb/debian/libslirp": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libsndfile\"": {
             "pkg:deb/debian/libsndfile": 1
@@ -27737,7 +27754,10 @@
             "pkg:deb/debian/starlette": 1
         },
         "\"https://pypi.python.org\":\"apache-airflow\"": {
-            "pkg:deb/debian/airflow": 88
+            "pkg:deb/debian/airflow": 55
+        },
+        "\"https://pypi.python.org\":\"apache-airflow-core\"": {
+            "pkg:deb/debian/airflow": 66
         },
         "\"https://pypi.python.org\":\"apache-airflow-providers-cncf-kubernetes\"": {
             "pkg:deb/debian/airflow": 1
@@ -30058,7 +30078,10 @@
             "pkg:deb/debian/python-ansi2html": 1
         },
         "pkg:pypi/apache-airflow": {
-            "pkg:deb/debian/airflow": 21
+            "pkg:deb/debian/airflow": 33
+        },
+        "pkg:pypi/apache-airflow-core": {
+            "pkg:deb/debian/airflow": 66
         },
         "pkg:pypi/biopython": {
             "pkg:deb/debian/python-biopython": 1
@@ -30122,6 +30145,9 @@
         },
         "pkg:pypi/pyarrow": {
             "pkg:deb/debian/apache-arrow": 1
+        },
+        "pkg:pypi/pymupdf": {
+            "pkg:deb/debian/pymupdf": 1
         },
         "pkg:pypi/pytest": {
             "pkg:deb/debian/pytest": 1
