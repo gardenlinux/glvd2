@@ -4147,6 +4147,9 @@
         "\"expressjs\":\"express\"": {
             "pkg:deb/debian/node-express": 4
         },
+        "\"expressjs\":\"multer\"": {
+            "pkg:deb/debian/node-multer": 7
+        },
         "\"expressjs\":\"serve-static\"": {
             "pkg:deb/debian/node-serve-static": 1
         },
@@ -8130,7 +8133,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18181,
+            "pkg:deb/debian/linux": 18207,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -9236,6 +9239,9 @@
         },
         "\"mujs\":\"mujs\"": {
             "pkg:deb/debian/mujs": 1
+        },
+        "\"multer\":\"multer\"": {
+            "pkg:deb/debian/node-multer": 8
         },
         "\"multiparty\":\"multiparty\"": {
             "pkg:deb/debian/node-multiparty": 4
@@ -15876,6 +15882,9 @@
         "\"scrapy\":\"scrapy/scrapy\"": {
             "pkg:deb/debian/python-scrapy": 6
         },
+        "\"scribus\":\"scribus\"": {
+            "pkg:deb/debian/scribus": 7
+        },
         "\"scylladb\":\"scylladb\"": {
             "pkg:deb/debian/scylladb": 1
         },
@@ -17095,9 +17104,6 @@
         "\"tecnick\":\"tcpdf\"": {
             "pkg:deb/debian/tcpdf": 5
         },
-        "\"tehshrike\":\"deepmerge\"": {
-            "pkg:deb/debian/node-deepmerge": 1
-        },
         "\"telegram\":\"desktop\"": {
             "pkg:deb/debian/telegram-desktop": 1
         },
@@ -17635,7 +17641,7 @@
             "pkg:deb/debian/rust-tiny-http": 2
         },
         "\"tinymce\":\"tinymce\"": {
-            "pkg:deb/debian/tinymce": 13
+            "pkg:deb/debian/tinymce": 14
         },
         "\"tinyproxy project\":\"tinyproxy\"": {
             "pkg:deb/debian/tinyproxy": 1
@@ -23418,7 +23424,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18173
+            "pkg:deb/debian/linux": 18199
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -25850,6 +25856,9 @@
         },
         "\"https://cpan.org/modules\":\"File-Find-Rule\"": {
             "pkg:deb/debian/libfile-find-rule-perl": 1
+        },
+        "\"https://cpan.org/modules\":\"Furl\"": {
+            "pkg:deb/debian/libfurl-perl": 1
         },
         "\"https://cpan.org/modules\":\"GD\"": {
             "pkg:deb/debian/libgd-perl": 1
@@ -28784,6 +28793,9 @@
         "pkg:cpan/ExtUtils-Typemaps-Default": {
             "pkg:deb/debian/libextutils-typemaps-default-perl": 3
         },
+        "pkg:cpan/Furl": {
+            "pkg:deb/debian/libfurl-perl": 1
+        },
         "pkg:cpan/HTML-FormFu": {
             "pkg:deb/debian/libhtml-formfu-perl": 1
         },
@@ -29779,9 +29791,6 @@
         "pkg:npm/cookies": {
             "pkg:deb/debian/node-cookies": 1
         },
-        "pkg:npm/deepmerge": {
-            "pkg:deb/debian/node-deepmerge": 1
-        },
         "pkg:npm/dompurify": {
             "pkg:deb/debian/node-dompurify": 19
         },
@@ -29826,6 +29835,9 @@
         },
         "pkg:npm/morgan": {
             "pkg:deb/debian/node-morgan": 3
+        },
+        "pkg:npm/multer": {
+            "pkg:deb/debian/node-multer": 11
         },
         "pkg:npm/multiparty": {
             "pkg:deb/debian/node-multiparty": 4

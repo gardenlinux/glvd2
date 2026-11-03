@@ -13888,6 +13888,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libfurl-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Furl\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Furl"
+        ]
+    },
     "pkg:deb/debian/libfwsi": {
         "VendorProductIDs": [
             "\"libyal\":\"libfwsi\""
@@ -19961,16 +19971,6 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
-    "pkg:deb/debian/node-deepmerge": {
-        "VendorProductIDs": [
-            "\"tehshrike\":\"deepmerge\""
-        ],
-        "CPEs": null,
-        "PackageIDs": null,
-        "PackageURLs": [
-            "pkg:npm/deepmerge"
-        ]
-    },
     "pkg:deb/debian/node-diff": {
         "VendorProductIDs": [
             "\"kpdecker\":\"jsdiff\""
@@ -20622,6 +20622,17 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/node-multer": {
+        "VendorProductIDs": [
+            "\"expressjs\":\"multer\"",
+            "\"multer\":\"multer\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:npm/multer"
+        ]
     },
     "pkg:deb/debian/node-multiparty": {
         "VendorProductIDs": [
@@ -31147,6 +31158,14 @@
         "PackageIDs": [
             "\"https://git.savannah.gnu.org/cgit/screen.git\":\"screen\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/scribus": {
+        "VendorProductIDs": [
+            "\"scribus\":\"scribus\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/scylladb": {
