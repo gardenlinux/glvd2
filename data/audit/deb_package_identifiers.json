@@ -13160,7 +13160,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Catalyst-Plugin-Authentication\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/Catalyst-Plugin-Authentication"
+        ]
     },
     "pkg:deb/debian/libcatalyst-plugin-session-perl": {
         "VendorProductIDs": [

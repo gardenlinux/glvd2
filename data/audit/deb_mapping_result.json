@@ -17273,7 +17273,7 @@
             "pkg:deb/debian/grub2": 2
         },
         "\"the hdf group\":\"hdf5\"": {
-            "pkg:deb/debian/hdf5": 12
+            "pkg:deb/debian/hdf5": 13
         },
         "\"the heketi project\":\"heketi\"": {
             "pkg:deb/debian/heketi": 1
@@ -25785,7 +25785,7 @@
             "pkg:deb/debian/libcatalyst-authentication-credential-http-perl": 1
         },
         "\"https://cpan.org/modules\":\"Catalyst-Plugin-Authentication\"": {
-            "pkg:deb/debian/libcatalyst-plugin-authentication-perl": 2
+            "pkg:deb/debian/libcatalyst-plugin-authentication-perl": 3
         },
         "\"https://cpan.org/modules\":\"Catalyst-Plugin-Session\"": {
             "pkg:deb/debian/libcatalyst-plugin-session-perl": 1
@@ -28788,6 +28788,9 @@
         },
         "pkg:cpan/Authen-SASL": {
             "pkg:deb/debian/libauthen-sasl-perl": 1
+        },
+        "pkg:cpan/Catalyst-Plugin-Authentication": {
+            "pkg:deb/debian/libcatalyst-plugin-authentication-perl": 1
         },
         "pkg:cpan/Catalyst-Plugin-Static-Simple": {
             "pkg:deb/debian/libcatalyst-plugin-static-simple-perl": 1
