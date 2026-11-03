@@ -15,13 +15,17 @@ import (
 
 // SBOM global release
 // https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/aws-gardener_prod-amd64-2150.14.0-a213f775.sbom
-// Parameters are: Version, Version, GitCommitId
-const sbomGlobalUrlFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s.sbom"
+// Parameters are: Version, Version, GitCommitId.
+//
+//nolint:lll // long url
+const sbomGlobalURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s.sbom"
 
 // SBOM flavor release
 // https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/aws-gardener_prod-amd64-2150.14.0-a213f775.sbom
-// Parameters are: Version, Flavor, Version, GitCommitId
-const sbomUrlFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s-%s.sbom"
+// Parameters are: Version, Flavor, Version, GitCommitId.
+//
+//nolint:lll // long url
+const sbomURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s-%s.sbom"
 
 type Git struct {
 	Commit      string `json:"commit"`
@@ -135,17 +139,21 @@ var ErrNoSBOM = errors.New("no SBOM published for release flavor")
 //
 // TODO: not yet implemented; always reports ErrNoSBOM.
 func (r Release) LocateSBOM(flavor string) (*url.URL, error) {
-	return BuildSbomUrlFromRelease(MakeGardenLinuxRelease(r.Version), flavor, r.Git.CommitShort)
+	return BuildSbomURLFromRelease(MakeGardenLinuxRelease(r.Version), flavor, r.Git.CommitShort)
 }
 
 // Global release sbom url, over all flavors
-func BuildGlobalSbomUrlFromRelease(release GardenLinuxRelease, gitCommitId string) (*url.URL, error) {
-	return url.Parse(fmt.Sprintf(sbomGlobalUrlFormat, release.Format(), release.Format(), gitCommitId))
+//
+//nolint:godoclint // line comment
+func BuildGlobalSbomURLFromRelease(release GardenLinuxRelease, gitCommitId string) (*url.URL, error) {
+	return url.Parse(fmt.Sprintf(sbomGlobalURLFormat, release.Format(), release.Format(), gitCommitId))
 }
 
 // Flavor release sbom url
-func BuildSbomUrlFromRelease(release GardenLinuxRelease, flavor string, gitCommitId string) (*url.URL, error) {
-	return url.Parse(fmt.Sprintf(sbomUrlFormat, release.Format(), flavor, release.Format(), gitCommitId))
+//
+//nolint:godoclint // line comment
+func BuildSbomURLFromRelease(release GardenLinuxRelease, flavor, gitCommitId string) (*url.URL, error) {
+	return url.Parse(fmt.Sprintf(sbomURLFormat, release.Format(), flavor, release.Format(), gitCommitId))
 }
 
 func doReleasesCmd(ctx context.Context, releasesURL string) error {

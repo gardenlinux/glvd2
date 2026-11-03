@@ -51,6 +51,8 @@ func parsePackageListFormat(s string) (PackageListFormat, error) {
 
 func Cmd(cfg *config.AppConfig) *cobra.Command {
 	var opts options
+	var err error
+
 	cmd := &cobra.Command{
 		Use:     "packages",
 		Short:   "List packages/dependencies of a release <version>",
@@ -69,14 +71,23 @@ func Cmd(cfg *config.AppConfig) *cobra.Command {
 		"",
 		"Use this URL as SBOM source")
 
-	cmd.MarkFlagRequired("version")
-	cmd.MarkFlagRequired("flavor")
+	err = cmd.MarkFlagRequired("version")
+	if err != nil {
+		panic(err)
+	}
+	err = cmd.MarkFlagRequired("flavor")
+	if err != nil {
+		panic(err)
+	}
 
 	return cmd
 }
 
 func run(ctx context.Context, cfg *config.AppConfig, opts options) error {
-	pkgListFormat, err := parsePackageListFormat(opts.PkgFmt)
+	var pkgListFormat PackageListFormat
+	var err error
+
+	pkgListFormat, err = parsePackageListFormat(opts.PkgFmt)
 	if err != nil {
 		return err
 	}
@@ -98,7 +109,8 @@ func run(ctx context.Context, cfg *config.AppConfig, opts options) error {
 	case CycloneDXFormat:
 		var sbomURL *url.URL
 		if len(opts.SBOMURL) == 0 { // Automatically build the SBOM URL from the github release page
-			glrdRelease, err := glrd.GetRelease(ctx, cfg.GLRDReleasesURL, release)
+			var glrdRelease glrd.Release
+			glrdRelease, err = glrd.GetRelease(ctx, cfg.GLRDReleasesURL, release)
 			if err != nil {
 				return err
 			}
