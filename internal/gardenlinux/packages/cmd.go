@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net/url"
+	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
@@ -58,6 +59,12 @@ func Cmd(cfg *config.AppConfig) *cobra.Command {
 		Short:   "List packages/dependencies of a release <version>",
 		GroupID: "debug",
 		Args:    cobra.NoArgs,
+		PreRunE: func(cmd *cobra.Command, args []string) error {
+			if strings.ToLower(opts.PkgFmt) == "cyclonedx" && opts.Flavor == "" {
+				return fmt.Errorf("--flavor is required when --pkgfmt is %q", opts.PkgFmt)
+			}
+			return nil
+		},
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			return run(cmd.Context(), cfg, opts)
 		},
@@ -72,10 +79,6 @@ func Cmd(cfg *config.AppConfig) *cobra.Command {
 		"Use this URL as SBOM source")
 
 	err = cmd.MarkFlagRequired("version")
-	if err != nil {
-		panic(err)
-	}
-	err = cmd.MarkFlagRequired("flavor")
 	if err != nil {
 		panic(err)
 	}
