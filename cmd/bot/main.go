@@ -41,7 +41,7 @@ func mustEnv(key string) string {
 	v := os.Getenv(key)
 	if v == "" {
 		slog.Error("required environment variable not set", slog.String("var", key))
-		os.Exit(1)
+		os.Exit(1) //nolint:revive // intentional: missing required env var is fatal at startup
 	}
 	return v
 }

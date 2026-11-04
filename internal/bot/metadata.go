@@ -82,11 +82,11 @@ func (s *AssessmentRepoService) WriteAssessment(ctx context.Context, rec *assess
 
 	commitMsg := "chore: update assessment for " + rec.ID
 	opts := &gogithub.RepositoryContentFileOptions{
-		Message: gogithub.Ptr(commitMsg),
+		Message: &commitMsg,
 		Content: data,
 	}
 	if sha != "" {
-		opts.SHA = gogithub.Ptr(sha)
+		opts.SHA = &sha
 		_, _, err = s.gh.Repositories.UpdateFile(ctx, s.repoOwner, s.repoName, path, opts)
 	} else {
 		_, _, err = s.gh.Repositories.CreateFile(ctx, s.repoOwner, s.repoName, path, opts)

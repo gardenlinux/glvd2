@@ -37,17 +37,12 @@ func (s *IssueService) EnsureIssue(ctx context.Context, rec *assessment.Record) 
 	label := cveLabel(rec.ID)
 
 	existing, err := s.findIssue(ctx, label)
-	if err != nil {
-		return err
-	}
-
-	title := issueTitle(rec)
-	body := issueBody(rec)
-
-	if existing == nil {
+	if errors.Is(err, ErrIssueNotFound) {
 		if err = s.ensureLabel(ctx, label); err != nil {
 			return err
 		}
+		title := IssueTitle(rec)
+		body := issueBody(rec)
 		_, _, err = s.gh.Issues.Create(ctx, s.repoOwner, s.repoName, &gogithub.IssueRequest{
 			Title:  &title,
 			Body:   &body,
@@ -59,8 +54,12 @@ func (s *IssueService) EnsureIssue(ctx context.Context, rec *assessment.Record) 
 		slog.Info("created issue", slog.String("cve_id", rec.ID))
 		return nil
 	}
+	if err != nil {
+		return err
+	}
 
-	// update body if the issue already exists
+	title := IssueTitle(rec)
+	body := issueBody(rec)
 	_, _, err = s.gh.Issues.Edit(
 		ctx,
 		s.repoOwner,
@@ -78,10 +77,10 @@ func (s *IssueService) EnsureIssue(ctx context.Context, rec *assessment.Record) 
 	return nil
 }
 
-// ErrIssueNotFound is returned when no issue exists for a given CVE label.
+// ErrIssueNotFound is returned by findIssue when no issue matches the label.
 var ErrIssueNotFound = errors.New("issue not found")
 
-// findIssue returns (nil, nil) when no issue matches the label, and (issue, nil) when found.
+// findIssue returns ErrIssueNotFound when no issue matches the label.
 func (s *IssueService) findIssue(ctx context.Context, label string) (*gogithub.Issue, error) {
 	opts := &gogithub.IssueListByRepoOptions{
 		Labels:      []string{label},
@@ -93,7 +92,7 @@ func (s *IssueService) findIssue(ctx context.Context, label string) (*gogithub.I
 		return nil, fmt.Errorf("could not search issues for label %s: %w", label, err)
 	}
 	if len(issues) == 0 {
-		return nil, nil
+		return nil, ErrIssueNotFound
 	}
 	return issues[0], nil
 }
@@ -118,16 +117,16 @@ func (s *IssueService) ensureLabel(ctx context.Context, label string) error {
 	return nil
 }
 
-func issueTitle(rec *assessment.Record) string {
+func IssueTitle(rec *assessment.Record) string {
 	title := rec.ID
 	if rec.Upstream.Description != "" {
 		// use first sentence of description as subtitle, capped at 80 runes
-		const cap = 80
+		const maxRunes = 80
 		sub := []rune(rec.Upstream.Description)
-		if i := runeIndex(sub, '.'); i >= 0 && i < cap {
+		if i := runeIndex(sub, '.'); i >= 0 && i < maxRunes {
 			sub = sub[:i+1]
-		} else if len(sub) > cap {
-			sub = append(sub[:cap], '…')
+		} else if len(sub) > maxRunes {
+			sub = append(sub[:maxRunes], '…')
 		}
 		title += ": " + string(sub)
 	}
@@ -188,12 +187,12 @@ func ExtractCVEIDs(text string) []string {
 // CloseIssue finds the open issue for cveID and closes it, posting a comment with prURL.
 func (s *IssueService) CloseIssue(ctx context.Context, cveID, prURL string) error {
 	issue, err := s.findIssue(ctx, cveLabel(cveID))
-	if err != nil {
-		return fmt.Errorf("could not find issue for %s: %w", cveID, err)
-	}
-	if issue == nil || issue.GetState() == "closed" {
+	if errors.Is(err, ErrIssueNotFound) || issue.GetState() == "closed" {
 		slog.Info("no open issue found, skipping close", slog.String("cve_id", cveID))
 		return nil
+	}
+	if err != nil {
+		return fmt.Errorf("could not find issue for %s: %w", cveID, err)
 	}
 
 	comment := fmt.Sprintf(
@@ -220,11 +219,11 @@ func (s *IssueService) CloseIssue(ctx context.Context, cveID, prURL string) erro
 // ReopenIssue finds the issue for cveID (open or closed) and reopens it.
 func (s *IssueService) ReopenIssue(ctx context.Context, cveID, reason, actor string) error {
 	issue, err := s.findIssue(ctx, cveLabel(cveID))
+	if errors.Is(err, ErrIssueNotFound) {
+		return fmt.Errorf("no issue found for %s", cveID)
+	}
 	if err != nil {
 		return fmt.Errorf("could not find issue for %s: %w", cveID, err)
-	}
-	if issue == nil {
-		return fmt.Errorf("no issue found for %s", cveID)
 	}
 	if issue.GetState() == "open" {
 		return nil

@@ -1,16 +1,16 @@
-package bot
+package bot_test
 
 import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
+	"github.com/gardenlinux/glvd2/internal/bot"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestAssessmentPath(t *testing.T) {
-	// Spot-check that assessment.Path produces the expected layout for a few IDs.
-	// The full bucketing behaviour is tested in the assessment package.
+	t.Parallel()
 	cases := []struct {
 		cveID string
 		want  string
@@ -23,25 +23,30 @@ func TestAssessmentPath(t *testing.T) {
 	}
 
 	for _, tc := range cases {
-		path, err := assessment.Path("data", tc.cveID)
-		require.NoError(t, err, "cveID=%s", tc.cveID)
-		assert.Equal(t, tc.want, path, "cveID=%s", tc.cveID)
+		t.Run(tc.cveID, func(t *testing.T) {
+			t.Parallel()
+			path, err := assessment.Path("data", tc.cveID)
+			require.NoError(t, err, "cveID=%s", tc.cveID)
+			assert.Equal(t, tc.want, path, "cveID=%s", tc.cveID)
+		})
 	}
 }
 
 func TestAssessmentPath_InvalidID(t *testing.T) {
+	t.Parallel()
 	_, err := assessment.Path("data", "not-a-cve")
 	assert.Error(t, err)
 }
 
 func TestIsValidCVEID(t *testing.T) {
+	t.Parallel()
 	valid := []string{"CVE-2024-1234", "CVE-2008-3595", "CVE-2024-999999"}
 	for _, id := range valid {
-		assert.True(t, IsValidCVEID(id), "expected valid: %s", id)
+		assert.True(t, bot.IsValidCVEID(id), "expected valid: %s", id)
 	}
 
 	invalid := []string{"cve-2024-1234", "CVE-24-1234", "CVE-2024", "BDSA-2024-1234", ""}
 	for _, id := range invalid {
-		assert.False(t, IsValidCVEID(id), "expected invalid: %s", id)
+		assert.False(t, bot.IsValidCVEID(id), "expected invalid: %s", id)
 	}
 }

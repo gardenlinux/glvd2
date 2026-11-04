@@ -10,6 +10,7 @@ import (
 )
 
 func TestManualTriage_HistoryPreservesAll(t *testing.T) {
+	t.Parallel()
 	mt := assessment.ManualTriage{}
 
 	t1 := time.Date(2026, 1, 1, 0, 0, 0, 0, time.UTC)
@@ -30,6 +31,7 @@ func TestManualTriage_HistoryPreservesAll(t *testing.T) {
 }
 
 func TestPackageOverride_ScoreOverride(t *testing.T) {
+	t.Parallel()
 	score := 3.1
 	po := assessment.PackageOverride{
 		Status:        assessment.ReleaseStatusNotAffected,
@@ -43,11 +45,13 @@ func TestPackageOverride_ScoreOverride(t *testing.T) {
 }
 
 func TestPackageOverride_IsEmpty_WithScore(t *testing.T) {
+	t.Parallel()
 	assert.True(t, assessment.PackageOverride{}.IsEmpty())
 	assert.False(t, assessment.PackageOverride{Status: assessment.ReleaseStatusAffected}.IsEmpty())
 }
 
 func TestPackageOverride_HistoryPreservesScoreOverride(t *testing.T) {
+	t.Parallel()
 	score1 := 4.0
 	score2 := 2.5
 	po := assessment.PackageOverride{}

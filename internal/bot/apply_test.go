@@ -1,10 +1,11 @@
-package bot
+package bot_test
 
 import (
 	"testing"
 	"time"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
+	"github.com/gardenlinux/glvd2/internal/bot"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -13,8 +14,8 @@ func fixedTime() time.Time {
 	return time.Date(2026, 10, 30, 12, 0, 0, 0, time.UTC)
 }
 
-func testCtx() CommandContext {
-	return CommandContext{
+func testCtx() bot.CommandContext {
+	return bot.CommandContext{
 		Actor:        "alice",
 		IssueComment: 99,
 		Now:          fixedTime(),
@@ -25,14 +26,13 @@ func emptyRecord() *assessment.Record {
 	return &assessment.Record{ID: "CVE-2024-1234"}
 }
 
-// applyBody is a test helper that parses body and applies it, returning any
-// parse errors and the first application error.
-func applyBody(rec *assessment.Record, body string, ctx CommandContext) ([]error, error) {
-	cmds, _, parseErrs := ParseCommands(body)
-	return parseErrs, ApplyCommands(rec, cmds, ctx)
+func applyBody(rec *assessment.Record, body string, ctx bot.CommandContext) ([]error, error) {
+	cmds, _, parseErrs := bot.ParseCommands(body)
+	return parseErrs, bot.ApplyCommands(rec, cmds, ctx)
 }
 
 func TestApplyCommands_Relevant(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/relevant confirmed reachable", testCtx())
 	require.NoError(t, err)
@@ -49,6 +49,7 @@ func TestApplyCommands_Relevant(t *testing.T) {
 }
 
 func TestApplyCommands_NotRelevant(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/not-relevant false positive", testCtx())
 	require.NoError(t, err)
@@ -59,11 +60,12 @@ func TestApplyCommands_NotRelevant(t *testing.T) {
 }
 
 func TestApplyCommands_RelevantThenNotRelevant_KeepsHistory(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/relevant first decision", testCtx())
 	require.NoError(t, err)
 
-	ctx2 := CommandContext{Actor: "bob", IssueComment: 100, Now: fixedTime().Add(time.Hour)}
+	ctx2 := bot.CommandContext{Actor: "bob", IssueComment: 100, Now: fixedTime().Add(time.Hour)}
 	_, err = applyBody(rec, "/not-relevant changed my mind", ctx2)
 	require.NoError(t, err)
 
@@ -75,6 +77,7 @@ func TestApplyCommands_RelevantThenNotRelevant_KeepsHistory(t *testing.T) {
 }
 
 func TestApplyCommands_Notes(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/notes see also CVE-2018-3646", testCtx())
 	require.NoError(t, err)
@@ -82,8 +85,13 @@ func TestApplyCommands_Notes(t *testing.T) {
 }
 
 func TestApplyCommands_Override_CreatesReleaseBlock(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected subsystem not compiled", testCtx())
+	_, err := applyBody(
+		rec,
+		"/override release=1592.15 pkg=linux status=not-affected subsystem not compiled",
+		testCtx(),
+	)
 	require.NoError(t, err)
 
 	purl := "pkg:deb/debian/linux"
@@ -99,6 +107,7 @@ func TestApplyCommands_Override_CreatesReleaseBlock(t *testing.T) {
 }
 
 func TestApplyCommands_Override_UsesAutoKeyForShortName(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	rec.Releases = map[string]assessment.ReleaseDecision{
 		"1592.15": {
@@ -118,11 +127,12 @@ func TestApplyCommands_Override_UsesAutoKeyForShortName(t *testing.T) {
 }
 
 func TestApplyCommands_Override_AppendHistory(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected first", testCtx())
 	require.NoError(t, err)
 
-	ctx2 := CommandContext{Actor: "bob", IssueComment: 200, Now: fixedTime().Add(time.Hour)}
+	ctx2 := bot.CommandContext{Actor: "bob", IssueComment: 200, Now: fixedTime().Add(time.Hour)}
 	_, err = applyBody(rec, "/override release=1592.15 pkg=linux status=affected updated", ctx2)
 	require.NoError(t, err)
 
@@ -134,6 +144,7 @@ func TestApplyCommands_Override_AppendHistory(t *testing.T) {
 }
 
 func TestApplyCommands_Rescore(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/rescore release=1592.15 pkg=linux score=3.1 mitigated", testCtx())
 	require.NoError(t, err)
@@ -148,12 +159,14 @@ func TestApplyCommands_Rescore(t *testing.T) {
 }
 
 func TestApplyCommands_Rescore_InvalidScore(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/rescore release=1592.15 pkg=linux score=11.0", testCtx())
 	assert.Error(t, err)
 }
 
 func TestApplyCommands_Rescore_FullPURL(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	_, err := applyBody(rec, "/rescore release=1592.15 pkg=pkg:deb/debian/openssl score=5.0", testCtx())
 	require.NoError(t, err)
@@ -163,9 +176,9 @@ func TestApplyCommands_Rescore_FullPURL(t *testing.T) {
 }
 
 func TestApplyCommands_ReopenNotApplied(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
-	// /reopen is returned separately from ParseCommands, not applied to the record
-	cmds, reopen, _ := ParseCommands("/reopen needs more work")
+	cmds, reopen, _ := bot.ParseCommands("/reopen needs more work")
 	assert.Nil(t, cmds)
 	require.NotNil(t, reopen)
 	assert.Equal(t, "needs more work", reopen.Reason)
@@ -173,9 +186,7 @@ func TestApplyCommands_ReopenNotApplied(t *testing.T) {
 }
 
 func TestApplyCommands_Override_AmbiguousShortName(t *testing.T) {
-	// Two packages from different ecosystems share the final name segment "linux".
-	// Neither matches the canonical "pkg:deb/debian/linux" exactly, so suffix-matching
-	// finds both and must return an ambiguity error.
+	t.Parallel()
 	rec := emptyRecord()
 	rec.Releases = map[string]assessment.ReleaseDecision{
 		"1592.15": {
@@ -193,6 +204,7 @@ func TestApplyCommands_Override_AmbiguousShortName(t *testing.T) {
 }
 
 func TestApplyCommands_Override_FullPURLNotAmbiguous(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	rec.Releases = map[string]assessment.ReleaseDecision{
 		"1592.15": {
@@ -205,20 +217,26 @@ func TestApplyCommands_Override_FullPURLNotAmbiguous(t *testing.T) {
 		},
 	}
 
-	_, err := applyBody(rec, "/override release=1592.15 pkg=pkg:deb/debian/linux status=not-affected", testCtx())
+	_, err := applyBody(
+		rec,
+		"/override release=1592.15 pkg=pkg:deb/debian/linux status=not-affected",
+		testCtx(),
+	)
 	require.NoError(t, err, "full PURL should bypass ambiguity check")
 	_, ok := rec.Releases["1592.15"].Manual.Packages["pkg:deb/debian/linux"]
 	assert.True(t, ok)
 }
 
 func TestApplyCommands_ParseError(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	parseErrs, applyErr := applyBody(rec, "/rescore release=1592.15 pkg=linux score=bad", testCtx())
-	assert.Nil(t, applyErr)
+	require.NoError(t, applyErr)
 	assert.Len(t, parseErrs, 1)
 }
 
 func TestApplyCommands_MultipleCommands(t *testing.T) {
+	t.Parallel()
 	rec := emptyRecord()
 	body := "/relevant confirmed\n/notes see also related CVE"
 	_, err := applyBody(rec, body, testCtx())

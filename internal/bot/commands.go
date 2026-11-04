@@ -10,7 +10,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/assessment"
 )
 
-// ErrNotACommand is returned by parseOneLine when the line is not a recognised command.
+// ErrNotACommand is returned by ParseOneLine when the line is not a recognised command.
 var ErrNotACommand = errors.New("not a command")
 
 // CommandContext carries the per-comment metadata attached to every command.
@@ -81,7 +81,7 @@ type RescoreCommand struct {
 }
 
 func (c RescoreCommand) Apply(rec *assessment.Record, ctx CommandContext) error {
-	if c.Score < 0 || c.Score > 10 { //nolint:mnd // CVSS range
+	if c.Score < 0 || c.Score > 10 { // CVSS score range is 0–10
 		return fmt.Errorf("score must be between 0.0 and 10.0, got %.1f", c.Score)
 	}
 	existing, commit, err := ensurePackageEntry(rec, c.Release, c.Pkg)
@@ -136,13 +136,16 @@ func ApplyCommands(rec *assessment.Record, cmds []Command, ctx CommandContext) e
 // ParseCommands scans a multi-line comment body and returns all triage
 // commands, any /reopen command found, and any parse errors. Each /command
 // line is parsed independently; lines not starting with "/" are ignored.
-func ParseCommands(body string) (cmds []Command, reopen *ReopenCommand, errs []error) {
+func ParseCommands(body string) ([]Command, *ReopenCommand, []error) {
+	var cmds []Command
+	var reopen *ReopenCommand
+	var errs []error
 	for line := range strings.Lines(body) {
 		trimmed := strings.TrimSpace(line)
 		if !strings.HasPrefix(trimmed, "/") {
 			continue
 		}
-		cmd, ro, err := parseOneLine(trimmed)
+		cmd, ro, err := ParseOneLine(trimmed)
 		switch {
 		case err != nil && !errors.Is(err, ErrNotACommand):
 			errs = append(errs, err)
@@ -155,9 +158,11 @@ func ParseCommands(body string) (cmds []Command, reopen *ReopenCommand, errs []e
 	return cmds, reopen, errs
 }
 
-// parseOneLine parses a single slash-command line. Exactly one of cmd or
+// ParseOneLine parses a single slash-command line. Exactly one of cmd or
 // reopen is non-nil on success; both are nil when err is ErrNotACommand.
-func parseOneLine(line string) (cmd Command, reopen *ReopenCommand, err error) { //nolint:cyclop,ireturn
+//
+//nolint:cyclop,ireturn // command dispatch requires interface return
+func ParseOneLine(line string) (Command, *ReopenCommand, error) {
 	switch {
 	case strings.HasPrefix(line, "/relevant"):
 		just := strings.TrimSpace(strings.TrimPrefix(line, "/relevant"))
@@ -204,8 +209,8 @@ func commandsReference() string {
 
 // parseFlags parses a string of "key=value" tokens separated by whitespace.
 // Returns the flags map and any remaining text that follows the flags.
-func parseFlags(s string) (flags map[string]string, rest string) {
-	flags = make(map[string]string)
+func parseFlags(s string) (map[string]string, string) {
+	flags := make(map[string]string)
 	parts := strings.Fields(s)
 	i := 0
 	for i < len(parts) {
@@ -216,14 +221,14 @@ func parseFlags(s string) (flags map[string]string, rest string) {
 		flags[k] = v
 		i++
 	}
-	rest = strings.TrimSpace(strings.Join(parts[i:], " "))
+	rest := strings.TrimSpace(strings.Join(parts[i:], " "))
 	return flags, rest
 }
 
 // extractReleasePkg pulls the shared release= and pkg= flags from a parsed flags map.
-func extractReleasePkg(flags map[string]string, cmd string) (release, pkg string, err error) {
-	release = flags["release"]
-	pkg = flags["pkg"]
+func extractReleasePkg(flags map[string]string, cmd string) (string, string, error) {
+	release := flags["release"]
+	pkg := flags["pkg"]
 	if release == "" {
 		return "", "", fmt.Errorf("%s requires release=<dist>", cmd)
 	}
@@ -233,7 +238,7 @@ func extractReleasePkg(flags map[string]string, cmd string) (release, pkg string
 	return release, pkg, nil
 }
 
-func parseOverrideCommand(rest string) (Command, error) { //nolint:ireturn
+func parseOverrideCommand(rest string) (Command, error) { //nolint:ireturn // Command is the intended interface return
 	flags, just := parseFlags(rest)
 	release, pkg, err := extractReleasePkg(flags, "/override")
 	if err != nil {
@@ -252,13 +257,16 @@ func parseOverrideCommand(rest string) (Command, error) { //nolint:ireturn
 		assessment.ReleaseStatusUnknown:
 		status = assessment.ReleaseStatus(statusStr)
 	default:
-		return nil, fmt.Errorf("/override: unknown status %q (must be affected, not-affected, fixed, or unknown)", statusStr)
+		return nil, fmt.Errorf(
+			"/override: unknown status %q (must be affected, not-affected, fixed, or unknown)",
+			statusStr,
+		)
 	}
 
 	return OverrideCommand{Release: release, Pkg: pkg, Status: status, Justification: just}, nil
 }
 
-func parseRescoreCommand(rest string) (Command, error) { //nolint:ireturn
+func parseRescoreCommand(rest string) (Command, error) { //nolint:ireturn // Command is the intended interface return
 	flags, just := parseFlags(rest)
 	release, pkg, err := extractReleasePkg(flags, "/rescore")
 	if err != nil {
@@ -288,7 +296,10 @@ func ensurePackageEntry(rec *assessment.Record, release, pkg string) (
 		return nil, nil, err
 	}
 	if purl == "" {
-		return nil, nil, fmt.Errorf("unknown package %q for release %q (use full PURL or a name present in auto data)", pkg, release)
+		return nil, nil, fmt.Errorf(
+			"unknown package %q for release %q (use full PURL or a name present in auto data)",
+			pkg, release,
+		)
 	}
 
 	if rec.Releases == nil {

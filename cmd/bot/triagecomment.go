@@ -132,7 +132,10 @@ func applyTriageComment(
 		return err
 	}
 	if !member {
-		reply(fmt.Sprintf(":no_entry: @%s is not a member of the security team and cannot apply triage commands.", actor))
+		reply(fmt.Sprintf(
+			":no_entry: @%s is not a member of the security team and cannot apply triage commands.",
+			actor,
+		))
 		return nil
 	}
 
