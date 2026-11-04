@@ -28,12 +28,17 @@ const (
 	CycloneDXFormat
 )
 
+const (
+	InReleaseFormatStr = "inrelease"
+	CycloneDXFormatStr = "cyclonedx"
+)
+
 func (f PackageListFormat) String() string {
 	switch f {
 	case InReleaseFormat:
-		return "inrelease"
+		return InReleaseFormatStr
 	case CycloneDXFormat:
-		return "cyclonedx"
+		return CycloneDXFormatStr
 	default:
 		return "unknown format"
 	}
@@ -41,9 +46,9 @@ func (f PackageListFormat) String() string {
 
 func parsePackageListFormat(s string) (PackageListFormat, error) {
 	switch s {
-	case "inrelease":
+	case InReleaseFormatStr:
 		return InReleaseFormat, nil
-	case "cyclonedx":
+	case CycloneDXFormatStr:
 		return CycloneDXFormat, nil
 	default:
 		return 0, fmt.Errorf("unknown packagelist format %q", s)
@@ -59,8 +64,8 @@ func Cmd(cfg *config.AppConfig) *cobra.Command {
 		Short:   "List packages/dependencies of a release <version>",
 		GroupID: "debug",
 		Args:    cobra.NoArgs,
-		PreRunE: func(cmd *cobra.Command, args []string) error {
-			if strings.ToLower(opts.PkgFmt) == "cyclonedx" && opts.Flavor == "" {
+		PreRunE: func(_ *cobra.Command, _ []string) error {
+			if strings.ToLower(opts.PkgFmt) == CycloneDXFormatStr && opts.Flavor == "" {
 				return fmt.Errorf("--flavor is required when --pkgfmt is %q", opts.PkgFmt)
 			}
 			return nil
@@ -71,7 +76,10 @@ func Cmd(cfg *config.AppConfig) *cobra.Command {
 	}
 	cmd.Flags().StringVar(&opts.Version, "version", "", "release version")
 	cmd.Flags().StringVar(&opts.Flavor, "flavor", "", "image flavor")
-	cmd.Flags().StringVar(&opts.PkgFmt, "pkgfmt", "cyclonedx", "define packagelist format (inrelease,cyclonedx)")
+	cmd.Flags().StringVar(&opts.PkgFmt, "pkgfmt", CycloneDXFormatStr,
+		fmt.Sprintf("define packagelist format (%s, %s)",
+			InReleaseFormatStr,
+			CycloneDXFormatStr))
 	cmd.Flags().StringVar(
 		&opts.SBOMURL,
 		"sbomURL",
