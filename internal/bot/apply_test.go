@@ -9,12 +9,16 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var fixedTime = time.Date(2026, 10, 30, 12, 0, 0, 0, time.UTC)
+func fixedTime() time.Time {
+	return time.Date(2026, 10, 30, 12, 0, 0, 0, time.UTC)
+}
 
-var testCtx = CommandContext{
-	Actor:        "alice",
-	IssueComment: 99,
-	Now:          fixedTime,
+func testCtx() CommandContext {
+	return CommandContext{
+		Actor:        "alice",
+		IssueComment: 99,
+		Now:          fixedTime(),
+	}
 }
 
 func emptyRecord() *assessment.Record {
@@ -30,7 +34,7 @@ func applyBody(rec *assessment.Record, body string, ctx CommandContext) ([]error
 
 func TestApplyCommands_Relevant(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/relevant confirmed reachable", testCtx)
+	_, err := applyBody(rec, "/relevant confirmed reachable", testCtx())
 	require.NoError(t, err)
 
 	assert.Equal(t, assessment.StatusRelevant, rec.Manual.ManualTriage.Status)
@@ -40,13 +44,13 @@ func TestApplyCommands_Relevant(t *testing.T) {
 	assert.Equal(t, assessment.StatusRelevant, h.Status)
 	assert.Equal(t, "confirmed reachable", h.Justification)
 	assert.Equal(t, "alice", h.Author)
-	assert.Equal(t, fixedTime, h.At)
+	assert.Equal(t, fixedTime(), h.At)
 	assert.Equal(t, int64(99), h.IssueComment)
 }
 
 func TestApplyCommands_NotRelevant(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/not-relevant false positive", testCtx)
+	_, err := applyBody(rec, "/not-relevant false positive", testCtx())
 	require.NoError(t, err)
 
 	assert.Equal(t, assessment.StatusNotRelevant, rec.Manual.ManualTriage.Status)
@@ -56,10 +60,10 @@ func TestApplyCommands_NotRelevant(t *testing.T) {
 
 func TestApplyCommands_RelevantThenNotRelevant_KeepsHistory(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/relevant first decision", testCtx)
+	_, err := applyBody(rec, "/relevant first decision", testCtx())
 	require.NoError(t, err)
 
-	ctx2 := CommandContext{Actor: "bob", IssueComment: 100, Now: fixedTime.Add(time.Hour)}
+	ctx2 := CommandContext{Actor: "bob", IssueComment: 100, Now: fixedTime().Add(time.Hour)}
 	_, err = applyBody(rec, "/not-relevant changed my mind", ctx2)
 	require.NoError(t, err)
 
@@ -72,14 +76,14 @@ func TestApplyCommands_RelevantThenNotRelevant_KeepsHistory(t *testing.T) {
 
 func TestApplyCommands_Notes(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/notes see also CVE-2018-3646", testCtx)
+	_, err := applyBody(rec, "/notes see also CVE-2018-3646", testCtx())
 	require.NoError(t, err)
 	assert.Equal(t, "see also CVE-2018-3646", rec.Manual.Notes)
 }
 
 func TestApplyCommands_Override_CreatesReleaseBlock(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected subsystem not compiled", testCtx)
+	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected subsystem not compiled", testCtx())
 	require.NoError(t, err)
 
 	purl := "pkg:deb/debian/linux"
@@ -106,7 +110,7 @@ func TestApplyCommands_Override_UsesAutoKeyForShortName(t *testing.T) {
 		},
 	}
 
-	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=fixed", testCtx)
+	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=fixed", testCtx())
 	require.NoError(t, err)
 
 	_, ok := rec.Releases["1592.15"].Manual.Packages["pkg:deb/debian/linux"]
@@ -115,10 +119,10 @@ func TestApplyCommands_Override_UsesAutoKeyForShortName(t *testing.T) {
 
 func TestApplyCommands_Override_AppendHistory(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected first", testCtx)
+	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected first", testCtx())
 	require.NoError(t, err)
 
-	ctx2 := CommandContext{Actor: "bob", IssueComment: 200, Now: fixedTime.Add(time.Hour)}
+	ctx2 := CommandContext{Actor: "bob", IssueComment: 200, Now: fixedTime().Add(time.Hour)}
 	_, err = applyBody(rec, "/override release=1592.15 pkg=linux status=affected updated", ctx2)
 	require.NoError(t, err)
 
@@ -131,7 +135,7 @@ func TestApplyCommands_Override_AppendHistory(t *testing.T) {
 
 func TestApplyCommands_Rescore(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/rescore release=1592.15 pkg=linux score=3.1 mitigated", testCtx)
+	_, err := applyBody(rec, "/rescore release=1592.15 pkg=linux score=3.1 mitigated", testCtx())
 	require.NoError(t, err)
 
 	pkg := rec.Releases["1592.15"].Manual.Packages["pkg:deb/debian/linux"]
@@ -145,13 +149,13 @@ func TestApplyCommands_Rescore(t *testing.T) {
 
 func TestApplyCommands_Rescore_InvalidScore(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/rescore release=1592.15 pkg=linux score=11.0", testCtx)
+	_, err := applyBody(rec, "/rescore release=1592.15 pkg=linux score=11.0", testCtx())
 	assert.Error(t, err)
 }
 
 func TestApplyCommands_Rescore_FullPURL(t *testing.T) {
 	rec := emptyRecord()
-	_, err := applyBody(rec, "/rescore release=1592.15 pkg=pkg:deb/debian/openssl score=5.0", testCtx)
+	_, err := applyBody(rec, "/rescore release=1592.15 pkg=pkg:deb/debian/openssl score=5.0", testCtx())
 	require.NoError(t, err)
 
 	_, ok := rec.Releases["1592.15"].Manual.Packages["pkg:deb/debian/openssl"]
@@ -184,7 +188,7 @@ func TestApplyCommands_Override_AmbiguousShortName(t *testing.T) {
 		},
 	}
 
-	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected", testCtx)
+	_, err := applyBody(rec, "/override release=1592.15 pkg=linux status=not-affected", testCtx())
 	assert.Error(t, err, "ambiguous short name should return an error")
 }
 
@@ -201,7 +205,7 @@ func TestApplyCommands_Override_FullPURLNotAmbiguous(t *testing.T) {
 		},
 	}
 
-	_, err := applyBody(rec, "/override release=1592.15 pkg=pkg:deb/debian/linux status=not-affected", testCtx)
+	_, err := applyBody(rec, "/override release=1592.15 pkg=pkg:deb/debian/linux status=not-affected", testCtx())
 	require.NoError(t, err, "full PURL should bypass ambiguity check")
 	_, ok := rec.Releases["1592.15"].Manual.Packages["pkg:deb/debian/linux"]
 	assert.True(t, ok)
@@ -209,7 +213,7 @@ func TestApplyCommands_Override_FullPURLNotAmbiguous(t *testing.T) {
 
 func TestApplyCommands_ParseError(t *testing.T) {
 	rec := emptyRecord()
-	parseErrs, applyErr := applyBody(rec, "/rescore release=1592.15 pkg=linux score=bad", testCtx)
+	parseErrs, applyErr := applyBody(rec, "/rescore release=1592.15 pkg=linux score=bad", testCtx())
 	assert.Nil(t, applyErr)
 	assert.Len(t, parseErrs, 1)
 }
@@ -217,7 +221,7 @@ func TestApplyCommands_ParseError(t *testing.T) {
 func TestApplyCommands_MultipleCommands(t *testing.T) {
 	rec := emptyRecord()
 	body := "/relevant confirmed\n/notes see also related CVE"
-	_, err := applyBody(rec, body, testCtx)
+	_, err := applyBody(rec, body, testCtx())
 	require.NoError(t, err)
 
 	assert.Equal(t, assessment.StatusRelevant, rec.Manual.ManualTriage.Status)

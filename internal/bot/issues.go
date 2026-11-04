@@ -49,8 +49,8 @@ func (s *IssueService) EnsureIssue(ctx context.Context, rec *assessment.Record) 
 			return err
 		}
 		_, _, err = s.gh.Issues.Create(ctx, s.repoOwner, s.repoName, &gogithub.IssueRequest{
-			Title:  gogithub.Ptr(title),
-			Body:   gogithub.Ptr(body),
+			Title:  &title,
+			Body:   &body,
 			Labels: &[]string{label, "cve"},
 		})
 		if err != nil {
@@ -67,8 +67,8 @@ func (s *IssueService) EnsureIssue(ctx context.Context, rec *assessment.Record) 
 		s.repoName,
 		existing.GetNumber(),
 		&gogithub.IssueRequest{
-			Title: gogithub.Ptr(title),
-			Body:  gogithub.Ptr(body),
+			Title: &title,
+			Body:  &body,
 		},
 	)
 	if err != nil {
@@ -107,9 +107,10 @@ func (s *IssueService) ensureLabel(ctx context.Context, label string) error {
 	if resp == nil || resp.StatusCode != http.StatusNotFound {
 		return fmt.Errorf("could not check label %s: %w", label, err)
 	}
+	color := "e11d48"
 	_, _, err = s.gh.Issues.CreateLabel(ctx, s.repoOwner, s.repoName, &gogithub.Label{
-		Name:  gogithub.Ptr(label),
-		Color: gogithub.Ptr("e11d48"),
+		Name:  &label,
+		Color: &color,
 	})
 	if err != nil {
 		return fmt.Errorf("could not create label %s: %w", label, err)
@@ -200,13 +201,14 @@ func (s *IssueService) CloseIssue(ctx context.Context, cveID, prURL string) erro
 			"If this CVE is not fully addressed, use `/reopen <reason>` to reopen.",
 		cveID, prURL)
 	_, _, err = s.gh.Issues.CreateComment(ctx, s.repoOwner, s.repoName, issue.GetNumber(),
-		&gogithub.IssueComment{Body: gogithub.Ptr(comment)})
+		&gogithub.IssueComment{Body: &comment})
 	if err != nil {
 		return fmt.Errorf("could not comment on issue for %s: %w", cveID, err)
 	}
 
+	closedState := "closed"
 	_, _, err = s.gh.Issues.Edit(ctx, s.repoOwner, s.repoName, issue.GetNumber(),
-		&gogithub.IssueRequest{State: gogithub.Ptr("closed")})
+		&gogithub.IssueRequest{State: &closedState})
 	if err != nil {
 		return fmt.Errorf("could not close issue for %s: %w", cveID, err)
 	}
@@ -230,13 +232,14 @@ func (s *IssueService) ReopenIssue(ctx context.Context, cveID, reason, actor str
 
 	comment := fmt.Sprintf(":warning: Reopened by @%s: %s", actor, reason)
 	_, _, err = s.gh.Issues.CreateComment(ctx, s.repoOwner, s.repoName, issue.GetNumber(),
-		&gogithub.IssueComment{Body: gogithub.Ptr(comment)})
+		&gogithub.IssueComment{Body: &comment})
 	if err != nil {
 		return fmt.Errorf("could not comment on issue for %s: %w", cveID, err)
 	}
 
+	openState := "open"
 	_, _, err = s.gh.Issues.Edit(ctx, s.repoOwner, s.repoName, issue.GetNumber(),
-		&gogithub.IssueRequest{State: gogithub.Ptr("open")})
+		&gogithub.IssueRequest{State: &openState})
 	if err != nil {
 		return fmt.Errorf("could not reopen issue for %s: %w", cveID, err)
 	}

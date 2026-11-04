@@ -44,9 +44,9 @@ func runPRMerged(args []string) error {
 
 	var firstErr error
 	for _, cveID := range bot.ExtractCVEIDs(body) {
-		if err := issues.CloseIssue(ctx, cveID, *prURL); err != nil {
+		if closeErr := issues.CloseIssue(ctx, cveID, *prURL); closeErr != nil {
 			if firstErr == nil {
-				firstErr = err
+				firstErr = closeErr
 			}
 		}
 	}

@@ -157,7 +157,7 @@ func ParseCommands(body string) (cmds []Command, reopen *ReopenCommand, errs []e
 
 // parseOneLine parses a single slash-command line. Exactly one of cmd or
 // reopen is non-nil on success; both are nil when err is ErrNotACommand.
-func parseOneLine(line string) (cmd Command, reopen *ReopenCommand, err error) { //nolint:cyclop
+func parseOneLine(line string) (cmd Command, reopen *ReopenCommand, err error) { //nolint:cyclop,ireturn
 	switch {
 	case strings.HasPrefix(line, "/relevant"):
 		just := strings.TrimSpace(strings.TrimPrefix(line, "/relevant"))
@@ -168,12 +168,12 @@ func parseOneLine(line string) (cmd Command, reopen *ReopenCommand, err error) {
 		return TriageCommand{Status: assessment.StatusNotRelevant, Justification: just}, nil, nil
 
 	case strings.HasPrefix(line, "/override"):
-		c, err := parseOverrideCommand(strings.TrimSpace(strings.TrimPrefix(line, "/override")))
-		return c, nil, err
+		c, parseErr := parseOverrideCommand(strings.TrimSpace(strings.TrimPrefix(line, "/override")))
+		return c, nil, parseErr
 
 	case strings.HasPrefix(line, "/rescore"):
-		c, err := parseRescoreCommand(strings.TrimSpace(strings.TrimPrefix(line, "/rescore")))
-		return c, nil, err
+		c, parseErr := parseRescoreCommand(strings.TrimSpace(strings.TrimPrefix(line, "/rescore")))
+		return c, nil, parseErr
 
 	case strings.HasPrefix(line, "/notes"):
 		text := strings.TrimSpace(strings.TrimPrefix(line, "/notes"))
@@ -194,7 +194,8 @@ func commandsReference() string {
 	b.WriteString("**Commands** (security-team only):\n")
 	b.WriteString("- `/relevant [justification]` — mark CVE as relevant to Garden Linux\n")
 	b.WriteString("- `/not-relevant [justification]` — mark CVE as not relevant\n")
-	b.WriteString("- `/override release=<dist> pkg=<name> status=<affected|not-affected|fixed|unknown> [justification]`\n")
+	b.WriteString("- `/override release=<dist> pkg=<name> status=<affected|not-affected|fixed|unknown>" +
+		" [justification]`\n")
 	b.WriteString("- `/rescore release=<dist> pkg=<name> score=<0.0-10.0> [justification]`\n")
 	b.WriteString("- `/notes <text>` — replace free-text notes\n")
 	b.WriteString("- `/reopen <reason>` — reopen a closed issue\n")
@@ -232,7 +233,7 @@ func extractReleasePkg(flags map[string]string, cmd string) (release, pkg string
 	return release, pkg, nil
 }
 
-func parseOverrideCommand(rest string) (Command, error) {
+func parseOverrideCommand(rest string) (Command, error) { //nolint:ireturn
 	flags, just := parseFlags(rest)
 	release, pkg, err := extractReleasePkg(flags, "/override")
 	if err != nil {
@@ -257,7 +258,7 @@ func parseOverrideCommand(rest string) (Command, error) {
 	return OverrideCommand{Release: release, Pkg: pkg, Status: status, Justification: just}, nil
 }
 
-func parseRescoreCommand(rest string) (Command, error) {
+func parseRescoreCommand(rest string) (Command, error) { //nolint:ireturn
 	flags, just := parseFlags(rest)
 	release, pkg, err := extractReleasePkg(flags, "/rescore")
 	if err != nil {
@@ -325,7 +326,7 @@ func resolvePURL(rec *assessment.Record, release, pkg string) (string, error) {
 	}
 
 	// exact match first
-	if _, ok := rd.Auto.Packages[canonical]; ok {
+	if _, found := rd.Auto.Packages[canonical]; found {
 		return canonical, nil
 	}
 

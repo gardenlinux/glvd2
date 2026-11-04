@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/assessment"
@@ -26,8 +27,13 @@ func TestParseOneLine(t *testing.T) {
 			wantCmd: TriageCommand{Status: assessment.StatusNotRelevant, Justification: "false positive"},
 		},
 		{
-			input:   "/override release=1592.15 pkg=linux status=not-affected subsystem not compiled",
-			wantCmd: OverrideCommand{Release: "1592.15", Pkg: "linux", Status: assessment.ReleaseStatusNotAffected, Justification: "subsystem not compiled"},
+			input: "/override release=1592.15 pkg=linux status=not-affected subsystem not compiled",
+			wantCmd: OverrideCommand{
+				Release:       "1592.15",
+				Pkg:           "linux",
+				Status:        assessment.ReleaseStatusNotAffected,
+				Justification: "subsystem not compiled",
+			},
 		},
 		{
 			input:   "/rescore release=1592.15 pkg=linux score=4.2 mitigated by isolation",
@@ -87,7 +93,7 @@ func TestParseOneLineErrors(t *testing.T) {
 
 func TestParseOneLineNotACommand(t *testing.T) {
 	_, _, err := parseOneLine("just a regular comment")
-	if err != ErrNotACommand {
+	if !errors.Is(err, ErrNotACommand) {
 		t.Errorf("expected ErrNotACommand, got %v", err)
 	}
 }

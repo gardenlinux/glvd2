@@ -50,30 +50,37 @@ func newFlagSet(name string) *flag.FlagSet {
 	return flag.NewFlagSet(name, flag.ContinueOnError)
 }
 
-// subcommands maps a CLI verb to its handler. Each is driven by a GitHub Action.
-var subcommands = map[string]func([]string) error{
-	"triage-comment": runTriageComment,
-	"pr-merged":      runPRMerged,
-}
+const minArgs = 2 // program name + subcommand
 
 func usage() string {
 	return "usage: glvd2-bot <triage-comment|pr-merged> [flags]"
 }
 
+func dispatch(subcommand string) (func([]string) error, bool) {
+	switch subcommand {
+	case "triage-comment":
+		return runTriageComment, true
+	case "pr-merged":
+		return runPRMerged, true
+	}
+	return nil, false
+}
+
 func main() {
-	if len(os.Args) < 2 {
+	if len(os.Args) < minArgs {
 		slog.Error(usage())
 		os.Exit(2) //nolint:mnd // conventional CLI usage exit code
 	}
 
-	run, ok := subcommands[os.Args[1]]
+	sub := os.Args[1]
+	run, ok := dispatch(sub)
 	if !ok {
-		slog.Error("unknown subcommand", slog.String("subcommand", os.Args[1]), slog.String("usage", usage()))
+		slog.Error("unknown subcommand", slog.String("subcommand", sub), slog.String("usage", usage()))
 		os.Exit(2) //nolint:mnd // conventional CLI usage exit code
 	}
 
 	if err := run(os.Args[2:]); err != nil {
-		slog.Error(os.Args[1]+" failed", slog.Any("error", err))
+		slog.Error("subcommand failed", slog.String("subcommand", sub), slog.Any("error", err))
 		os.Exit(1)
 	}
 }

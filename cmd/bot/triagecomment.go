@@ -49,9 +49,9 @@ func runTriageComment(args []string) error {
 	}
 	issueNumber := 0
 	if *issueNumberStr != "" {
-		n, err := strconv.Atoi(*issueNumberStr)
-		if err != nil {
-			return fmt.Errorf("invalid --issue-number: %w", err)
+		n, parseErr := strconv.Atoi(*issueNumberStr)
+		if parseErr != nil {
+			return fmt.Errorf("invalid --issue-number: %w", parseErr)
 		}
 		issueNumber = n
 	}
@@ -92,7 +92,9 @@ func applyTriageComment(
 	body string,
 ) error {
 	issues := bot.NewIssueService(gh, issueRepoOwner, issueRepoName)
-	assessments := bot.NewAssessmentRepoService(gh, assessmentRepoOwner, assessmentRepoName, os.Getenv("ASSESSMENT_BASE_DIR"))
+	assessments := bot.NewAssessmentRepoService(
+		gh, assessmentRepoOwner, assessmentRepoName, os.Getenv("ASSESSMENT_BASE_DIR"),
+	)
 
 	reply := func(msg string) {
 		if issueNumber == 0 {
@@ -100,7 +102,7 @@ func applyTriageComment(
 			return
 		}
 		_, _, err := gh.Issues.CreateComment(ctx, issueRepoOwner, issueRepoName, issueNumber,
-			&gogithub.IssueComment{Body: gogithub.Ptr(msg)})
+			&gogithub.IssueComment{Body: &msg})
 		if err != nil {
 			slog.Error("could not post reply comment", slog.Any("error", err))
 		}
@@ -174,7 +176,7 @@ func applyTriageComment(
 // where the app is installed on a personal account rather than an org.
 func isTeamMember(ctx context.Context, gh *gogithub.Client, org, teamSlug, actor string) (bool, error) {
 	if override := os.Getenv("SECURITY_TEAM_MEMBERS"); override != "" {
-		for _, login := range strings.Split(override, ",") {
+		for login := range strings.SplitSeq(override, ",") {
 			if strings.EqualFold(strings.TrimSpace(login), actor) {
 				return true, nil
 			}
