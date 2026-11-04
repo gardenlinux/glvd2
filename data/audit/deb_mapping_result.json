@@ -3502,6 +3502,9 @@
         "\"dest-unreach\":\"socat\"": {
             "pkg:deb/debian/socat": 1
         },
+        "\"deutsches klimarechenzentrum\":\"libaec\"": {
+            "pkg:deb/debian/libaec": 1
+        },
         "\"devise-two-factor\":\"devise-two-factor\"": {
             "pkg:deb/debian/ruby-devise-two-factor": 1
         },
@@ -3577,7 +3580,7 @@
             "pkg:deb/debian/python-daphne": 2
         },
         "\"djangoproject\":\"django\"": {
-            "pkg:deb/debian/python-django": 56
+            "pkg:deb/debian/python-django": 62
         },
         "\"djvunet\":\"djvulibre\"": {
             "pkg:deb/debian/djvulibre": 1
@@ -6130,7 +6133,7 @@
             "pkg:deb/debian/gstreamer-editing-services1.0": 1
         },
         "\"gstreamer project\":\"gst-plugins-bad\"": {
-            "pkg:deb/debian/gst-plugins-bad1.0": 4,
+            "pkg:deb/debian/gst-plugins-bad1.0": 2,
             "pkg:deb/debian/gst-plugins-base1.0": 1
         },
         "\"gstreamer project\":\"gst-plugins-base\"": {
@@ -8144,7 +8147,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18207,
+            "pkg:deb/debian/linux": 18233,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -12024,7 +12027,7 @@
             "pkg:deb/debian/nethack": 9
         },
         "\"netpbm\":\"netpbm\"": {
-            "pkg:deb/debian/netpbm-free": 7
+            "pkg:deb/debian/netpbm-free": 14
         },
         "\"netsurf\":\"libnsbmp\"": {
             "pkg:deb/debian/libnsbmp": 2
@@ -12056,6 +12059,9 @@
         "\"networkconfiguration\":\"dhcpcd\"": {
             "pkg:deb/debian/dhcpcd": 4,
             "pkg:deb/debian/dhcpcd5": 1
+        },
+        "\"networkupstools\":\"nut\"": {
+            "pkg:deb/debian/nut": 1
         },
         "\"neutrinolabs\":\"xrdp\"": {
             "pkg:deb/debian/xrdp": 34
@@ -12670,6 +12676,9 @@
             "pkg:deb/debian/nvidia-graphics-drivers-tesla-535": 79,
             "pkg:deb/debian/nvidia-graphics-drivers-tesla-550": 79,
             "pkg:deb/debian/nvidia-open-gpu-kernel-modules": 79
+        },
+        "\"nvidia\":\"slurm\"": {
+            "pkg:deb/debian/slurm-wlm": 7
         },
         "\"nvidia\":\"studio\"": {
             "pkg:deb/debian/nvidia-graphics-drivers": 2,
@@ -21440,7 +21449,7 @@
             "pkg:deb/debian/lemur": 1
         },
         "cpe:2.3:a:netpbm_project:netpbm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/netpbm-free": 2
+            "pkg:deb/debian/netpbm-free": 9
         },
         "cpe:2.3:a:netsurf-browser:libnsbmp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libnsbmp": 2
@@ -23438,7 +23447,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18199
+            "pkg:deb/debian/linux": 18225
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -25772,6 +25781,9 @@
         "\"https://cpan.org/modules\":\"Bytes-Random-Secure\"": {
             "pkg:deb/debian/libbytes-random-secure-perl": 1
         },
+        "\"https://cpan.org/modules\":\"CGI\"": {
+            "pkg:deb/debian/libcgi-pm-perl": 20
+        },
         "\"https://cpan.org/modules\":\"CGI-Session\"": {
             "pkg:deb/debian/libcgi-session-perl": 1
         },
@@ -27730,7 +27742,7 @@
             "pkg:deb/debian/apache-arrow": 1
         },
         "\"https://pypi.org/project/Django/\":\"django\"": {
-            "pkg:deb/debian/python-django": 36
+            "pkg:deb/debian/python-django": 42
         },
         "\"https://pypi.org/project/apache-airflow-providers-fab/\":\"apache-airflow-providers-fab\"": {
             "pkg:deb/debian/airflow": 1
@@ -28788,6 +28800,9 @@
         },
         "pkg:cpan/Authen-SASL": {
             "pkg:deb/debian/libauthen-sasl-perl": 1
+        },
+        "pkg:cpan/CGI": {
+            "pkg:deb/debian/libcgi-pm-perl": 20
         },
         "pkg:cpan/Catalyst-Plugin-Authentication": {
             "pkg:deb/debian/libcatalyst-plugin-authentication-perl": 1

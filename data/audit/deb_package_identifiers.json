@@ -12863,6 +12863,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libaec": {
+        "VendorProductIDs": [
+            "\"deutsches klimarechenzentrum\":\"libaec\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libansilove": {
         "VendorProductIDs": [
             "\"ansilove\":\"libansilove\""
@@ -13194,6 +13202,16 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/libcgi-pm-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"CGI\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/CGI"
+        ]
     },
     "pkg:deb/debian/libcgi-session-perl": {
         "VendorProductIDs": [
@@ -21681,6 +21699,14 @@
     "pkg:deb/debian/nusoap": {
         "VendorProductIDs": [
             "\"nusoap\":\"nusoap\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/nut": {
+        "VendorProductIDs": [
+            "\"networkupstools\":\"nut\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -31600,6 +31626,7 @@
     },
     "pkg:deb/debian/slurm-wlm": {
         "VendorProductIDs": [
+            "\"nvidia\":\"slurm\"",
             "\"schedmd\":\"slurm\""
         ],
         "CPEs": [
