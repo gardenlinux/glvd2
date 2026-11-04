@@ -1878,16 +1878,16 @@
             "pkg:deb/debian/wpewebkit": 1
         },
         "\"apple\":\"ipad_os\"": {
-            "pkg:deb/debian/webkit2gtk": 10,
-            "pkg:deb/debian/wpewebkit": 10
+            "pkg:deb/debian/webkit2gtk": 9,
+            "pkg:deb/debian/wpewebkit": 9
         },
         "\"apple\":\"ipados\"": {
             "pkg:deb/debian/webkit2gtk": 19,
             "pkg:deb/debian/wpewebkit": 19
         },
         "\"apple\":\"iphone_os\"": {
-            "pkg:deb/debian/webkit2gtk": 12,
-            "pkg:deb/debian/wpewebkit": 11
+            "pkg:deb/debian/webkit2gtk": 11,
+            "pkg:deb/debian/wpewebkit": 10
         },
         "\"apple\":\"itunes for windows\"": {
             "pkg:deb/debian/webkit2gtk": 119,
@@ -4500,8 +4500,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 273,
-            "pkg:deb/debian/freerdp3": 212
+            "pkg:deb/debian/freerdp2": 300,
+            "pkg:deb/debian/freerdp3": 239
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -4526,7 +4526,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "\"froxlor\":\"froxlor\"": {
-            "pkg:deb/debian/froxlor": 50
+            "pkg:deb/debian/froxlor": 53
         },
         "\"froxlor\":\"froxlor/froxlor\"": {
             "pkg:deb/debian/froxlor": 26
@@ -6007,7 +6007,7 @@
             "pkg:deb/debian/gpac": 47
         },
         "\"gphoto\":\"libgphoto2\"": {
-            "pkg:deb/debian/libgphoto2": 8
+            "pkg:deb/debian/libgphoto2": 10
         },
         "\"gpsd\":\"gpsd\"": {
             "pkg:deb/debian/gpsd": 2
@@ -6133,7 +6133,7 @@
             "pkg:deb/debian/gstreamer-editing-services1.0": 1
         },
         "\"gstreamer project\":\"gst-plugins-bad\"": {
-            "pkg:deb/debian/gst-plugins-bad1.0": 2,
+            "pkg:deb/debian/gst-plugins-bad1.0": 1,
             "pkg:deb/debian/gst-plugins-base1.0": 1
         },
         "\"gstreamer project\":\"gst-plugins-base\"": {
@@ -7815,7 +7815,7 @@
             "pkg:deb/debian/python-authlib": 1
         },
         "\"lepture\":\"mistune\"": {
-            "pkg:deb/debian/mistune": 26
+            "pkg:deb/debian/mistune": 28
         },
         "\"letodms\":\"letodms\"": {
             "pkg:deb/debian/letodms": 2
@@ -8147,7 +8147,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18233,
+            "pkg:deb/debian/linux": 18234,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -9052,7 +9052,7 @@
             "pkg:deb/debian/libbson-xs-perl": 1
         },
         "\"mongodb\":\"c driver\"": {
-            "pkg:deb/debian/mongo-c-driver": 14
+            "pkg:deb/debian/mongo-c-driver": 18
         },
         "\"mongodb\":\"c++ driver\"": {
             "pkg:deb/debian/mongo-cxx-driver": 5
@@ -9060,6 +9060,9 @@
         "\"mongodb\":\"c_driver\"": {
             "pkg:deb/debian/libbson-xs-perl": 1,
             "pkg:deb/debian/mongo-c-driver": 1
+        },
+        "\"mongodb\":\"database tools\"": {
+            "pkg:deb/debian/mongo-tools": 4
         },
         "\"mongodb\":\"go driver\"": {
             "pkg:deb/debian/golang-mongodb-mongo-driver": 4
@@ -12258,7 +12261,7 @@
             "pkg:deb/debian/node-undici": 15
         },
         "\"nodemailer\":\"nodemailer\"": {
-            "pkg:deb/debian/node-nodemailer": 22
+            "pkg:deb/debian/node-nodemailer": 25
         },
         "\"noderedis\":\"node-redis\"": {
             "pkg:deb/debian/node-redis": 1
@@ -12678,7 +12681,7 @@
             "pkg:deb/debian/nvidia-open-gpu-kernel-modules": 79
         },
         "\"nvidia\":\"slurm\"": {
-            "pkg:deb/debian/slurm-wlm": 7
+            "pkg:deb/debian/slurm-wlm": 8
         },
         "\"nvidia\":\"studio\"": {
             "pkg:deb/debian/nvidia-graphics-drivers": 2,
@@ -14031,7 +14034,7 @@
             "pkg:deb/debian/phpmemcachedadmin": 2
         },
         "\"phpmyadmin\":\"phpmyadmin\"": {
-            "pkg:deb/debian/phpmyadmin": 6
+            "pkg:deb/debian/phpmyadmin": 10
         },
         "\"phpseclib\":\"1x\"": {
             "pkg:deb/debian/php-phpseclib": 1,
@@ -14314,9 +14317,6 @@
             "pkg:deb/debian/dnsdist": 2,
             "pkg:deb/debian/pdns": 2,
             "pkg:deb/debian/pdns-recursor": 30
-        },
-        "\"ppp project\":\"ppp\"": {
-            "pkg:deb/debian/ppp": 1
         },
         "\"preactjs\":\"preact\"": {
             "pkg:deb/debian/node-preact": 1
@@ -15554,7 +15554,7 @@
             "pkg:deb/debian/rsync": 1
         },
         "\"rsyncproject\":\"rsync\"": {
-            "pkg:deb/debian/rsync": 39
+            "pkg:deb/debian/rsync": 40
         },
         "\"rsyslog\":\"rsyslog\"": {
             "pkg:deb/debian/rsyslog": 7
@@ -17282,7 +17282,13 @@
             "pkg:deb/debian/grub2": 2
         },
         "\"the hdf group\":\"hdf5\"": {
-            "pkg:deb/debian/hdf5": 13
+            "pkg:deb/debian/hdf5": 16
+        },
+        "\"the hdf group\":\"scale-offset filter\"": {
+            "pkg:deb/debian/hdf5": 1
+        },
+        "\"the hdf group\":\"szip filter\"": {
+            "pkg:deb/debian/hdf5": 1
         },
         "\"the heketi project\":\"heketi\"": {
             "pkg:deb/debian/heketi": 1
@@ -18724,7 +18730,7 @@
         },
         "\"xen\":\"xen\"": {
             "pkg:deb/debian/linux": 6,
-            "pkg:deb/debian/xen": 139
+            "pkg:deb/debian/xen": 141
         },
         "\"xerial\":\"snappy-java\"": {
             "pkg:deb/debian/snappy-java": 4
@@ -20112,8 +20118,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 130,
-            "pkg:deb/debian/freerdp3": 130
+            "pkg:deb/debian/freerdp2": 157,
+            "pkg:deb/debian/freerdp3": 157
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -20126,7 +20132,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "cpe:2.3:a:froxlor:froxlor:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/froxlor": 29
+            "pkg:deb/debian/froxlor": 32
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frr": 10
@@ -21238,7 +21244,7 @@
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:mistune_project:mistune:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/mistune": 9
+            "pkg:deb/debian/mistune": 11
         },
         "cpe:2.3:a:mit:kerberos_5:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/krb5": 6
@@ -21542,7 +21548,7 @@
             "pkg:deb/debian/node-undici": 3
         },
         "cpe:2.3:a:nodemailer:nodemailer:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/node-nodemailer": 20
+            "pkg:deb/debian/node-nodemailer": 23
         },
         "cpe:2.3:a:nokogiri:nokogiri:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-nokogiri": 4
@@ -22080,7 +22086,7 @@
             "pkg:deb/debian/phplist": 1
         },
         "cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/phpmyadmin": 5
+            "pkg:deb/debian/phpmyadmin": 9
         },
         "cpe:2.3:a:phpseclib:1x:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-phpseclib": 1,
@@ -22597,7 +22603,7 @@
             "pkg:deb/debian/ppp": 1
         },
         "cpe:2.3:a:samba:rsync:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rsync": 40
+            "pkg:deb/debian/rsync": 41
         },
         "cpe:2.3:a:samba:samba:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/heimdal": 1,
@@ -23383,16 +23389,16 @@
             "pkg:deb/debian/wpewebkit": 1
         },
         "cpe:2.3:o:apple:ipad_os:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/webkit2gtk": 10,
-            "pkg:deb/debian/wpewebkit": 10
+            "pkg:deb/debian/webkit2gtk": 9,
+            "pkg:deb/debian/wpewebkit": 9
         },
         "cpe:2.3:o:apple:ipados:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/webkit2gtk": 2,
             "pkg:deb/debian/wpewebkit": 2
         },
         "cpe:2.3:o:apple:iphone_os:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/webkit2gtk": 12,
-            "pkg:deb/debian/wpewebkit": 11
+            "pkg:deb/debian/webkit2gtk": 11,
+            "pkg:deb/debian/wpewebkit": 10
         },
         "cpe:2.3:o:apple:mac_os:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/webkit2gtk": 3,
@@ -23403,8 +23409,8 @@
             "pkg:deb/debian/wpewebkit": 1
         },
         "cpe:2.3:o:apple:tvos:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/webkit2gtk": 9,
-            "pkg:deb/debian/wpewebkit": 8
+            "pkg:deb/debian/webkit2gtk": 8,
+            "pkg:deb/debian/wpewebkit": 7
         },
         "cpe:2.3:o:apple:visionos:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/webkit2gtk": 6,
@@ -23415,8 +23421,8 @@
             "pkg:deb/debian/wpewebkit": 1
         },
         "cpe:2.3:o:apple:watchos:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/webkit2gtk": 6,
-            "pkg:deb/debian/wpewebkit": 5
+            "pkg:deb/debian/webkit2gtk": 5,
+            "pkg:deb/debian/wpewebkit": 4
         },
         "cpe:2.3:o:canonical:ubantu_kernel:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/linux": 2
@@ -23447,7 +23453,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18225
+            "pkg:deb/debian/linux": 18226
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -24588,6 +24594,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"postfix\"": {
             "pkg:deb/debian/postfix": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"ppp\"": {
+            "pkg:deb/debian/ppp": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"protobuf\"": {
             "pkg:deb/debian/protobuf": 1
@@ -28777,7 +28786,7 @@
             "pkg:deb/debian/limesurvey": 2
         },
         "pkg:composer/phpmyadmin/phpmyadmin": {
-            "pkg:deb/debian/phpmyadmin": 3
+            "pkg:deb/debian/phpmyadmin": 7
         },
         "pkg:composer/smarty/smarty": {
             "pkg:deb/debian/smarty3": 1,
@@ -29030,7 +29039,7 @@
             "pkg:deb/debian/opensips": 1
         },
         "pkg:github/RsyncProject/rsync": {
-            "pkg:deb/debian/rsync": 34
+            "pkg:deb/debian/rsync": 35
         },
         "pkg:github/Unidata/netcdf-c": {
             "pkg:deb/debian/netcdf": 1,
@@ -29891,7 +29900,7 @@
             "pkg:deb/debian/node-node-forge": 1
         },
         "pkg:npm/nodemailer": {
-            "pkg:deb/debian/node-nodemailer": 20
+            "pkg:deb/debian/node-nodemailer": 23
         },
         "pkg:npm/open": {
             "pkg:deb/debian/node-open": 1
@@ -30138,7 +30147,7 @@
             "pkg:deb/debian/python-markdown2": 1
         },
         "pkg:pypi/mistune": {
-            "pkg:deb/debian/mistune": 9
+            "pkg:deb/debian/mistune": 11
         },
         "pkg:pypi/mopidy": {
             "pkg:deb/debian/mopidy": 1

@@ -10244,7 +10244,9 @@
             "\"hdf5library\":\"hdf5library\"",
             "\"hdfgroup\":\"hdf5\"",
             "\"n/a\":\"hdf5\"",
-            "\"the hdf group\":\"hdf5\""
+            "\"the hdf group\":\"hdf5\"",
+            "\"the hdf group\":\"scale-offset filter\"",
+            "\"the hdf group\":\"szip filter\""
         ],
         "CPEs": [
             "cpe:2.3:a:hdf5library:hdf5library:*:*:*:*:*:*:*:*",
@@ -18341,7 +18343,8 @@
     "pkg:deb/debian/mongo-tools": {
         "VendorProductIDs": [
             "\"mongodb inc.\":\"mongodb database tools\"",
-            "\"mongodb inc.\":\"mongomirror\""
+            "\"mongodb inc.\":\"mongomirror\"",
+            "\"mongodb\":\"database tools\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -25726,14 +25729,15 @@
     "pkg:deb/debian/ppp": {
         "VendorProductIDs": [
             "\"canonical\":\"ppp\"",
-            "\"ppp project\":\"ppp\"",
             "\"samba\":\"ppp\"",
             "\"unspecified\":\"ppp\""
         ],
         "CPEs": [
             "cpe:2.3:a:samba:ppp:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"ppp\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/praat": {
