@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gardenlinux/glvd2/internal/bot"
@@ -91,7 +92,7 @@ func applyTriageComment(
 	body string,
 ) error {
 	issues := bot.NewIssueService(gh, issueRepoOwner, issueRepoName)
-	assessments := bot.NewAssessmentRepoService(gh, assessmentRepoOwner, assessmentRepoName)
+	assessments := bot.NewAssessmentRepoService(gh, assessmentRepoOwner, assessmentRepoName, os.Getenv("ASSESSMENT_BASE_DIR"))
 
 	reply := func(msg string) {
 		if issueNumber == 0 {
@@ -106,6 +107,9 @@ func applyTriageComment(
 	}
 
 	cmds, reopen, parseErrs := bot.ParseCommands(body)
+	for _, e := range parseErrs {
+		reply(":x: Command parse error: " + e.Error())
+	}
 
 	// /reopen is handled at the issue level and does not require team membership
 	if reopen != nil {
@@ -120,7 +124,7 @@ func applyTriageComment(
 		return nil
 	}
 
-	member, err := bot.IsTeamMember(ctx, gh, org, securityTeam, actor)
+	member, err := isTeamMember(ctx, gh, org, securityTeam, actor)
 	if err != nil {
 		reply(fmt.Sprintf(":x: Could not verify team membership for @%s: %s", actor, err))
 		return err
@@ -145,10 +149,7 @@ func applyTriageComment(
 		Now:          time.Now().UTC(),
 	}
 
-	_, applyErr := bot.ApplyCommands(rec, cmds, cmdCtx)
-	for _, e := range parseErrs {
-		reply(":x: Command parse error: " + e.Error())
-	}
+	applyErr := bot.ApplyCommands(rec, cmds, cmdCtx)
 	if applyErr != nil {
 		reply(":x: " + applyErr.Error())
 		return applyErr
@@ -166,4 +167,19 @@ func applyTriageComment(
 	slog.Info("updated assessment", slog.String("cve_id", cveID), slog.String("actor", actor))
 	reply(":white_check_mark: Recorded assessment for " + cveID + ".")
 	return nil
+}
+
+// isTeamMember checks team membership. When SECURITY_TEAM_MEMBERS is set (comma-separated
+// GitHub logins), it uses that list instead of the GitHub API — useful for local testing
+// where the app is installed on a personal account rather than an org.
+func isTeamMember(ctx context.Context, gh *gogithub.Client, org, teamSlug, actor string) (bool, error) {
+	if override := os.Getenv("SECURITY_TEAM_MEMBERS"); override != "" {
+		for _, login := range strings.Split(override, ",") {
+			if strings.EqualFold(strings.TrimSpace(login), actor) {
+				return true, nil
+			}
+		}
+		return false, nil
+	}
+	return bot.IsTeamMember(ctx, gh, org, teamSlug, actor)
 }

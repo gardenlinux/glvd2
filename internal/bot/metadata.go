@@ -26,16 +26,20 @@ type AssessmentRepoService struct {
 	gh        *gogithub.Client
 	repoOwner string
 	repoName  string
+	baseDir   string
 }
 
-func NewAssessmentRepoService(gh *gogithub.Client, repoOwner, repoName string) *AssessmentRepoService {
-	return &AssessmentRepoService{gh: gh, repoOwner: repoOwner, repoName: repoName}
+func NewAssessmentRepoService(gh *gogithub.Client, repoOwner, repoName, baseDir string) *AssessmentRepoService {
+	if baseDir == "" {
+		baseDir = "data/assessments"
+	}
+	return &AssessmentRepoService{gh: gh, repoOwner: repoOwner, repoName: repoName, baseDir: baseDir}
 }
 
 // ReadAssessment fetches and parses the assessment file for cveID.
 // Returns ErrAssessmentNotFound if the file does not exist yet.
 func (s *AssessmentRepoService) ReadAssessment(ctx context.Context, cveID string) (*assessment.Record, string, error) {
-	path, err := assessment.Path("data", cveID)
+	path, err := assessment.Path(s.baseDir, cveID)
 	if err != nil {
 		return nil, "", err
 	}
@@ -65,7 +69,7 @@ func (s *AssessmentRepoService) ReadAssessment(ctx context.Context, cveID string
 // WriteAssessment creates or updates the assessment file for rec.
 // sha must be the file's current SHA (from ReadAssessment), or empty when creating.
 func (s *AssessmentRepoService) WriteAssessment(ctx context.Context, rec *assessment.Record, sha string) error {
-	path, err := assessment.Path("data", rec.ID)
+	path, err := assessment.Path(s.baseDir, rec.ID)
 	if err != nil {
 		return err
 	}

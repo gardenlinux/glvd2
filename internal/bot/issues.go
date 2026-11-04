@@ -121,15 +121,26 @@ func issueTitle(rec *assessment.Record) string {
 	title := rec.ID
 	if rec.Upstream.Description != "" {
 		// use first sentence of description as subtitle, capped at 80 runes
+		const cap = 80
 		sub := []rune(rec.Upstream.Description)
-		if i := strings.IndexByte(rec.Upstream.Description, '.'); i > 0 && i < 80 { //nolint:mnd // visual cap
+		if i := runeIndex(sub, '.'); i >= 0 && i < cap {
 			sub = sub[:i+1]
-		} else if len(sub) > 80 { //nolint:mnd
-			sub = append(sub[:80], '…')
+		} else if len(sub) > cap {
+			sub = append(sub[:cap], '…')
 		}
 		title += ": " + string(sub)
 	}
 	return title
+}
+
+// runeIndex returns the index of the first occurrence of r in runes, or -1.
+func runeIndex(runes []rune, r rune) int {
+	for i, c := range runes {
+		if c == r {
+			return i
+		}
+	}
+	return -1
 }
 
 func issueBody(rec *assessment.Record) string {

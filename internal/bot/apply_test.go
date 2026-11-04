@@ -21,11 +21,11 @@ func emptyRecord() *assessment.Record {
 	return &assessment.Record{ID: "CVE-2024-1234"}
 }
 
-// applyBody is a test helper that parses body and applies it, returning the first error.
+// applyBody is a test helper that parses body and applies it, returning any
+// parse errors and the first application error.
 func applyBody(rec *assessment.Record, body string, ctx CommandContext) ([]error, error) {
-	cmds, _, errs := ParseCommands(body)
-	_, applyErr := ApplyCommands(rec, cmds, ctx)
-	return errs, applyErr
+	cmds, _, parseErrs := ParseCommands(body)
+	return parseErrs, ApplyCommands(rec, cmds, ctx)
 }
 
 func TestApplyCommands_Relevant(t *testing.T) {

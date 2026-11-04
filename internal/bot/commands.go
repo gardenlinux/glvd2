@@ -10,7 +10,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/assessment"
 )
 
-// ErrNotACommand is returned by ParseCommand when the line is not a recognised command.
+// ErrNotACommand is returned by parseOneLine when the line is not a recognised command.
 var ErrNotACommand = errors.New("not a command")
 
 // CommandContext carries the per-comment metadata attached to every command.
@@ -121,17 +121,16 @@ type ReopenCommand struct {
 	Reason string
 }
 
-// ApplyCommands applies every command in cmds to rec and returns the first
-// application error along with any parse errors that were collected earlier.
-// It is the pure, testable core of the triage flow.
-func ApplyCommands(rec *assessment.Record, cmds []Command, ctx CommandContext) ([]error, error) {
-	var parseErrs []error
+// ApplyCommands applies every command in cmds to rec, stopping at and
+// returning the first application error. It is the pure, testable core of
+// the triage flow.
+func ApplyCommands(rec *assessment.Record, cmds []Command, ctx CommandContext) error {
 	for _, cmd := range cmds {
 		if err := cmd.Apply(rec, ctx); err != nil {
-			return parseErrs, err
+			return err
 		}
 	}
-	return parseErrs, nil
+	return nil
 }
 
 // ParseCommands scans a multi-line comment body and returns all triage
