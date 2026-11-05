@@ -131,13 +131,7 @@ func (r Release) IsMaintainedAt(now time.Time) bool {
 	return now.Before(time.Unix(r.LifeCycle.EOL.Timestamp, 0))
 }
 
-// ErrNoSBOM reports that no CycloneDX SBOM is published for a specific release flavor.
-var ErrNoSBOM = errors.New("no SBOM published for release flavor")
-
 // LocateSBOM returns the CycloneDX SBOM location for a flavor of this release.
-// It returns ErrNoSBOM when no SBOM exists.
-//
-// TODO: not yet implemented; always reports ErrNoSBOM.
 func (r Release) LocateSBOM(flavor string) (*url.URL, error) {
 	return BuildSbomURLFromRelease(MakeGardenLinuxRelease(r.Version), flavor, r.Git.CommitShort)
 }

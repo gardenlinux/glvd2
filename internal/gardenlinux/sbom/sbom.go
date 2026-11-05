@@ -10,6 +10,7 @@ import (
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 )
 
 // LocatorFunc resolves the SBOM URL for a release flavor.
@@ -84,7 +85,7 @@ func locateFlavors(release glrd.Release, locate LocatorFunc) ([]flavorURL, bool,
 	for _, flavor := range release.Flavors {
 		sbomURL, err := locate(release, flavor)
 		// an error with getting an SBOM for any flavor returns a hard error
-		if errors.Is(err, glrd.ErrNoSBOM) {
+		if errors.Is(err, packages.ErrNoSBOM) {
 			return nil, false, nil
 		}
 		if err != nil {
