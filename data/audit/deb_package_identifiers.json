@@ -12316,7 +12316,9 @@
             "\"red hat, inc.\":\"keycloak\"",
             "\"redhat.com\":\"keycloak\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:redhat:support_for_springboot:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-admin-ui\"",
@@ -21019,6 +21021,8 @@
             "\"yahoo\":\"serialize-javascript\""
         ],
         "CPEs": [
+            "cpe:2.3:a:redhat:3scale:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:yahoo:serialize_javascript:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
@@ -33815,7 +33819,8 @@
             "\"unspecified\":\"undertow\""
         ],
         "CPEs": [
-            "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:support_for_springboot:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap7-undertow\"",

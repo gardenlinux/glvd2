@@ -4645,7 +4645,7 @@
         },
         "\"ggml-org\":\"llama.cpp\"": {
             "pkg:deb/debian/ggml": 1,
-            "pkg:deb/debian/llama.cpp": 32
+            "pkg:deb/debian/llama.cpp": 35
         },
         "\"ggml-org\":\"whisper.cpp\"": {
             "pkg:deb/debian/whisper.cpp": 5
@@ -8141,7 +8141,7 @@
         "\"linux\":\"kernel\"": {
             "pkg:deb/debian/bluez": 2,
             "pkg:deb/debian/libbpf": 3,
-            "pkg:deb/debian/linux": 91
+            "pkg:deb/debian/linux": 90
         },
         "\"linux\":\"kernel:\"": {
             "pkg:deb/debian/linux": 1
@@ -10968,7 +10968,7 @@
             "pkg:deb/debian/node-object-path": 1
         },
         "\"n/a\":\"octoprint\"": {
-            "pkg:deb/debian/octoprint": 1
+            "pkg:deb/debian/octoprint": 2
         },
         "\"n/a\":\"ofono\"": {
             "pkg:deb/debian/ofono": 4
@@ -20218,7 +20218,7 @@
             "pkg:deb/debian/whisper.cpp": 4
         },
         "cpe:2.3:a:ggml:llama.cpp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/llama.cpp": 16
+            "pkg:deb/debian/llama.cpp": 19
         },
         "cpe:2.3:a:ghost:ghost:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghost": 38
@@ -21717,7 +21717,7 @@
             "pkg:deb/debian/ocsinventory-server": 1
         },
         "cpe:2.3:a:octoprint:octoprint:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/octoprint": 4
+            "pkg:deb/debian/octoprint": 5
         },
         "cpe:2.3:a:odoo:odoo_community:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/odoo": 3
@@ -22442,6 +22442,7 @@
         },
         "cpe:2.3:a:redhat:3scale:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libxml2": 1,
+            "pkg:deb/debian/node-serialize-javascript": 1,
             "pkg:deb/debian/redis": 1
         },
         "cpe:2.3:a:redhat:a_mq_clients:*:*:*:*:*:*:*:*": {
@@ -22453,8 +22454,9 @@
         },
         "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jboss-xnio": 1,
+            "pkg:deb/debian/node-serialize-javascript": 1,
             "pkg:deb/debian/plexus-utils2": 2,
-            "pkg:deb/debian/undertow": 3
+            "pkg:deb/debian/undertow": 4
         },
         "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdb": 1,
@@ -22506,6 +22508,10 @@
         },
         "cpe:2.3:a:redhat:shim:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/shim": 1
+        },
+        "cpe:2.3:a:redhat:support_for_springboot:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/keycloak": 1,
+            "pkg:deb/debian/undertow": 1
         },
         "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/redict": 1,
@@ -23559,7 +23565,7 @@
             "pkg:deb/debian/activemq": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ansible\"": {
-            "pkg:deb/debian/ansible": 1
+            "pkg:deb/debian/ansible": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ansible-collection-ansible-posix\"": {
             "pkg:deb/debian/ansible": 1
@@ -23932,7 +23938,7 @@
             "pkg:deb/debian/gimp": 72
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
-            "pkg:deb/debian/gimp": 16
+            "pkg:deb/debian/gimp": 17
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"glib-networking\"": {
             "pkg:deb/debian/glib-networking": 4
@@ -26213,7 +26219,7 @@
             "pkg:deb/debian/linux": 1
         },
         "\"https://git.kernel.org/pub/scm/linux/kernel\":\"kernel\"": {
-            "pkg:deb/debian/linux": 18
+            "pkg:deb/debian/linux": 17
         },
         "\"https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git\":\"linux\"": {
             "pkg:deb/debian/linux": 1
@@ -29212,7 +29218,7 @@
             "pkg:deb/debian/zziplib": 2
         },
         "pkg:github/ggml-org/llama.cpp": {
-            "pkg:deb/debian/llama.cpp": 6
+            "pkg:deb/debian/llama.cpp": 9
         },
         "pkg:github/gleam-lang/gleam": {
             "pkg:deb/debian/gleam": 6
