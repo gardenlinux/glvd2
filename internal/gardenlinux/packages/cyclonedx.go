@@ -30,11 +30,11 @@ var ErrNoSBOM = errors.New("no SBOM published for release flavor")
 func GetCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
 	var raw string
-	var http_status int
+	var httpStatus int
 
 	client := whttp.NewClient()
-	raw, http_status, err = client.GetString(ctx, sbomURL.String())
-	if http_status == http.StatusNotFound {
+	raw, httpStatus, err = client.GetString(ctx, sbomURL.String())
+	if httpStatus == http.StatusNotFound {
 		return nil, ErrNoSBOM
 	}
 	if err != nil {

@@ -16,15 +16,11 @@ import (
 // SBOM global release (not yet available)
 // https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/2150.14.0-a213f775.sbom
 // Parameters are: Version, Version, GitCommitId.
-//
-//nolint:lll // long url
 const sbomGlobalURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s.sbom"
 
 // SBOM flavor release
 // https://github.com/gardenlinux/gardenlinux/releases/download/1877.25/gcp-gardener_prod-arm64-1877.25-abcdefgh.sbom
 // Parameters are: Version, Flavor, Version, GitCommitId.
-//
-//nolint:lll // long url
 const sbomURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s-%s.sbom"
 
 type Git struct {
