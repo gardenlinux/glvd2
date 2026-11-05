@@ -3392,6 +3392,9 @@
         "\"ddnexus\":\"pagy\"": {
             "pkg:deb/debian/ruby-pagy": 1
         },
+        "\"deadtrickster\":\"ssl_verify_fun\"": {
+            "pkg:deb/debian/rebar3": 1
+        },
         "\"debian gnu/linux\":\"apt as used in debian stretch and ubuntu\"": {
             "pkg:deb/debian/apt": 1
         },
@@ -3402,7 +3405,7 @@
             "pkg:deb/debian/tmpreaper": 1
         },
         "\"debian\":\"apt\"": {
-            "pkg:deb/debian/apt": 1
+            "pkg:deb/debian/apt": 2
         },
         "\"debian\":\"bind9\"": {
             "pkg:deb/debian/bind9": 1
@@ -3625,7 +3628,7 @@
             "pkg:deb/debian/docker.io": 2
         },
         "\"docker\":\"docker buildx\"": {
-            "pkg:deb/debian/docker-buildx": 1
+            "pkg:deb/debian/docker-buildx": 4
         },
         "\"docker\":\"docker cli\"": {
             "pkg:deb/debian/golang-github-moby-go-archive": 1
@@ -4500,8 +4503,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 300,
-            "pkg:deb/debian/freerdp3": 239
+            "pkg:deb/debian/freerdp2": 315,
+            "pkg:deb/debian/freerdp3": 254
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -5100,7 +5103,7 @@
             "pkg:deb/debian/gdb": 3
         },
         "\"gnu\":\"glibc\"": {
-            "pkg:deb/debian/glibc": 3
+            "pkg:deb/debian/glibc": 2
         },
         "\"gnu\":\"global\"": {
             "pkg:deb/debian/global": 1
@@ -8147,7 +8150,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18234,
+            "pkg:deb/debian/linux": 18221,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -9062,7 +9065,7 @@
             "pkg:deb/debian/mongo-c-driver": 1
         },
         "\"mongodb\":\"database tools\"": {
-            "pkg:deb/debian/mongo-tools": 4
+            "pkg:deb/debian/mongo-tools": 5
         },
         "\"mongodb\":\"go driver\"": {
             "pkg:deb/debian/golang-mongodb-mongo-driver": 4
@@ -9116,6 +9119,9 @@
         },
         "\"mongodb, inc.\":\"mongodb server\"": {
             "pkg:deb/debian/mongodb": 7
+        },
+        "\"monitoring-plugins\":\"monitoring-plugins\"": {
+            "pkg:deb/debian/monitoring-plugins": 1
         },
         "\"monkey\":\"monkey\"": {
             "pkg:deb/debian/monkey": 3
@@ -12994,6 +13000,9 @@
         "\"ollama\":\"ollama/ollama\"": {
             "pkg:deb/debian/ollama": 7
         },
+        "\"omniauth\":\"omniauth\"": {
+            "pkg:deb/debian/ruby-omniauth": 1
+        },
         "\"omniauth\":\"omniauth-saml\"": {
             "pkg:deb/debian/ruby-saml": 1
         },
@@ -16077,6 +16086,10 @@
             "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/python-brotlicffi": 1
         },
+        "\"siemens\":\"designcenter x essentials\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"designcenter x\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
@@ -16149,11 +16162,19 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"opcenter execution discrete\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"opcenter execution foundation\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"opcenter execution pharma\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"opcenter execution process\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
@@ -16198,6 +16219,10 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"pads standard - xcr\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"pathway to learning engineering\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
@@ -16605,7 +16630,7 @@
             "pkg:deb/debian/electrum": 3
         },
         "\"spip\":\"spip\"": {
-            "pkg:deb/debian/spip": 26
+            "pkg:deb/debian/spip": 27
         },
         "\"splitbrain\":\"splitbrain/dokuwiki\"": {
             "pkg:deb/debian/dokuwiki": 1
@@ -17270,7 +17295,7 @@
             "pkg:deb/debian/gdm3": 1
         },
         "\"the gnu c library\":\"glibc\"": {
-            "pkg:deb/debian/glibc": 33
+            "pkg:deb/debian/glibc": 34
         },
         "\"the gnu projec\":\"gnu wget\"": {
             "pkg:deb/debian/wget": 1
@@ -17786,7 +17811,7 @@
             "pkg:deb/debian/trac": 1
         },
         "\"traefik\":\"traefik\"": {
-            "pkg:deb/debian/traefik": 79
+            "pkg:deb/debian/traefik": 80
         },
         "\"trailofbits\":\"rfc3161-client\"": {
             "pkg:deb/debian/python-rfc3161-client": 1
@@ -17932,6 +17957,9 @@
         },
         "\"ubuntu\":\"accountsservice\"": {
             "pkg:deb/debian/accountsservice": 1
+        },
+        "\"ubuntu\":\"apt\"": {
+            "pkg:deb/debian/apt": 1
         },
         "\"ubuntu\":\"base-files\"": {
             "pkg:deb/debian/base-files": 1
@@ -18607,7 +18635,7 @@
             "pkg:deb/debian/woodpecker": 6
         },
         "\"wordpress foundation\":\"wordpress\"": {
-            "pkg:deb/debian/wordpress": 6
+            "pkg:deb/debian/wordpress": 7
         },
         "\"wordpress\":\"requests\"": {
             "pkg:deb/debian/wordpress": 1
@@ -19035,7 +19063,7 @@
         },
         "\"zlib\":\"zlib\"": {
             "pkg:deb/debian/minizip": 1,
-            "pkg:deb/debian/zlib": 3
+            "pkg:deb/debian/zlib": 4
         },
         "\"zmartzone iam\":\"mod_auth_openidc\"": {
             "pkg:deb/debian/libapache2-mod-auth-openidc": 1
@@ -19075,7 +19103,7 @@
             "pkg:deb/debian/zulip-server": 2
         },
         "\"zulip\":\"zulip\"": {
-            "pkg:deb/debian/zulip-server": 35
+            "pkg:deb/debian/zulip-server": 38
         },
         "\"zulip\":\"zulip-mobile\"": {
             "pkg:deb/debian/zulip-server": 1
@@ -19821,6 +19849,9 @@
         "cpe:2.3:a:dcmtk:dcmtk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/dcmtk": 1
         },
+        "cpe:2.3:a:deadtrickster:ssl_verify_fun:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/rebar3": 1
+        },
         "cpe:2.3:a:debian:freedombox:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/freedombox": 1
         },
@@ -20118,8 +20149,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 157,
-            "pkg:deb/debian/freerdp3": 157
+            "pkg:deb/debian/freerdp2": 172,
+            "pkg:deb/debian/freerdp3": 172
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -20301,7 +20332,7 @@
             "pkg:deb/debian/gdb": 3
         },
         "cpe:2.3:a:gnu:glibc:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/glibc": 3
+            "pkg:deb/debian/glibc": 2
         },
         "cpe:2.3:a:gnu:global:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/global": 1
@@ -22406,6 +22437,10 @@
         "cpe:2.3:a:re2c:re2c:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/re2c": 1
         },
+        "cpe:2.3:a:redhat:3scale:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libxml2": 1,
+            "pkg:deb/debian/redis": 1
+        },
         "cpe:2.3:a:redhat:a_mq_clients:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libhibernate-validator-java": 1,
             "pkg:deb/debian/plexus-utils2": 2
@@ -22414,14 +22449,17 @@
             "pkg:deb/debian/jboss-xnio": 1
         },
         "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/plexus-utils2": 2
+            "pkg:deb/debian/jboss-xnio": 1,
+            "pkg:deb/debian/plexus-utils2": 2,
+            "pkg:deb/debian/undertow": 3
         },
         "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdb": 1,
             "pkg:deb/debian/glib2.0": 1,
             "pkg:deb/debian/libarchive": 1,
             "pkg:deb/debian/libxml2": 1,
-            "pkg:deb/debian/rust-sequoia-openpgp": 1
+            "pkg:deb/debian/rust-sequoia-openpgp": 1,
+            "pkg:deb/debian/util-linux": 2
         },
         "cpe:2.3:a:redhat:helm_cli:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/helm-kubernetes": 2
@@ -22459,9 +22497,6 @@
             "pkg:deb/debian/python-pip": 1,
             "pkg:deb/debian/python-urllib3": 1,
             "pkg:deb/debian/redis": 1
-        },
-        "cpe:2.3:a:redhat:rhboac_hawtio:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/undertow": 1
         },
         "cpe:2.3:a:redhat:secrets_management_console:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-golang-x-net": 1
@@ -22917,7 +22952,7 @@
             "pkg:deb/debian/tpm2-tss": 1
         },
         "cpe:2.3:a:traefik:traefik:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/traefik": 26
+            "pkg:deb/debian/traefik": 27
         },
         "cpe:2.3:a:traefik:traefik_enterprise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/traefik": 1
@@ -23285,7 +23320,7 @@
         },
         "cpe:2.3:a:zlib:zlib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/minizip": 1,
-            "pkg:deb/debian/zlib": 4
+            "pkg:deb/debian/zlib": 5
         },
         "cpe:2.3:a:znc:znc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/znc": 1
@@ -23453,7 +23488,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18226
+            "pkg:deb/debian/linux": 18213
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -24776,7 +24811,7 @@
             "pkg:deb/debian/resteasy": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"resteasy-core\"": {
-            "pkg:deb/debian/resteasy": 3
+            "pkg:deb/debian/resteasy": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"resteasy-jaxrs\"": {
             "pkg:deb/debian/resteasy": 2
@@ -25291,8 +25326,8 @@
             "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"resteasy-core\"": {
-            "pkg:deb/debian/resteasy": 3,
-            "pkg:deb/debian/resteasy3.0": 3
+            "pkg:deb/debian/resteasy": 4,
+            "pkg:deb/debian/resteasy3.0": 4
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"resteasy-jaxrs\"": {
             "pkg:deb/debian/resteasy": 2,
@@ -26026,6 +26061,9 @@
         "\"https://cpan.org/modules\":\"Rex\"": {
             "pkg:deb/debian/rex": 1
         },
+        "\"https://cpan.org/modules\":\"SQL-Abstract\"": {
+            "pkg:deb/debian/libsql-abstract-perl": 3
+        },
         "\"https://cpan.org/modules\":\"Sereal-Decoder\"": {
             "pkg:deb/debian/libsereal-decoder-perl": 1,
             "pkg:deb/debian/libsereal-encoder-perl": 1
@@ -26084,7 +26122,7 @@
             "pkg:deb/debian/libweb-api-perl": 1
         },
         "\"https://cpan.org/modules\":\"Web-Simple\"": {
-            "pkg:deb/debian/libweb-simple-perl": 1
+            "pkg:deb/debian/libweb-simple-perl": 2
         },
         "\"https://cpan.org/modules\":\"XML-Bare\"": {
             "pkg:deb/debian/libxml-bare-perl": 2
@@ -26239,6 +26277,9 @@
         },
         "\"https://github.com\":\"apache/brpc\"": {
             "pkg:deb/debian/brpc": 35
+        },
+        "\"https://github.com\":\"deadtrickster/ssl_verify_fun.erl\"": {
+            "pkg:deb/debian/rebar3": 1
         },
         "\"https://github.com\":\"elixir-lang/elixir\"": {
             "pkg:deb/debian/elixir-lang": 3
@@ -27853,6 +27894,9 @@
         "\"https://repo.hex.pm\":\"jose\"": {
             "pkg:deb/debian/erlang-jose": 8
         },
+        "\"https://repo.hex.pm\":\"ssl_verify_fun\"": {
+            "pkg:deb/debian/rebar3": 1
+        },
         "\"https://repo.hex.pm\":\"tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
         },
@@ -28900,6 +28944,9 @@
         "pkg:cpan/Rex": {
             "pkg:deb/debian/rex": 1
         },
+        "pkg:cpan/SQL-Abstract": {
+            "pkg:deb/debian/libsql-abstract-perl": 3
+        },
         "pkg:cpan/Spreadsheet-XLSX": {
             "pkg:deb/debian/libspreadsheet-xlsx-perl": 1
         },
@@ -28925,7 +28972,7 @@
             "pkg:deb/debian/liburi-perl": 1
         },
         "pkg:cpan/Web-Simple": {
-            "pkg:deb/debian/libweb-simple-perl": 1
+            "pkg:deb/debian/libweb-simple-perl": 2
         },
         "pkg:cpan/XS-Parse-Keyword": {
             "pkg:deb/debian/libxs-parse-keyword-perl": 1
@@ -29089,6 +29136,9 @@
         },
         "pkg:github/davea42/libdwarf-code": {
             "pkg:deb/debian/dwarfutils": 1
+        },
+        "pkg:github/deadtrickster/ssl_verify_fun.erl": {
+            "pkg:deb/debian/rebar3": 1
         },
         "pkg:github/diasurgical/DevilutionX": {
             "pkg:deb/debian/devilutionx": 2
@@ -29255,7 +29305,7 @@
             "pkg:deb/debian/miniaudio": 1
         },
         "pkg:github/madler/zlib": {
-            "pkg:deb/debian/zlib": 2
+            "pkg:deb/debian/zlib": 3
         },
         "pkg:github/mborgerding/kissfft": {
             "pkg:deb/debian/kissfft": 2
@@ -29552,10 +29602,10 @@
             "pkg:deb/debian/traefik": 1
         },
         "pkg:golang/github.com/traefik/traefik/v2": {
-            "pkg:deb/debian/traefik": 11
+            "pkg:deb/debian/traefik": 12
         },
         "pkg:golang/github.com/traefik/traefik/v3": {
-            "pkg:deb/debian/traefik": 24
+            "pkg:deb/debian/traefik": 25
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1
@@ -29578,6 +29628,9 @@
         },
         "pkg:hex/jose": {
             "pkg:deb/debian/erlang-jose": 8
+        },
+        "pkg:hex/ssl_verify_fun": {
+            "pkg:deb/debian/rebar3": 1
         },
         "pkg:hex/tesla": {
             "pkg:deb/debian/elixir-tesla": 5

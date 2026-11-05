@@ -1049,7 +1049,8 @@
             "\"apt\":\"apt\"",
             "\"canonical\":\"apt\"",
             "\"debian gnu/linux\":\"apt as used in debian stretch and ubuntu\"",
-            "\"debian\":\"apt\""
+            "\"debian\":\"apt\"",
+            "\"ubuntu\":\"apt\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -11503,7 +11504,8 @@
             "\"n/a\":\"xnio\""
         ],
         "CPEs": [
-            "cpe:2.3:a:redhat:apache-camel-spring-boot:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:redhat:apache-camel-spring-boot:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap7-jboss-xnio-base\"",
@@ -15800,6 +15802,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libsql-abstract-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"SQL-Abstract\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/SQL-Abstract"
+        ]
+    },
     "pkg:deb/debian/libssh": {
         "VendorProductIDs": [
             "\"[unknown]\":\"libssh\"",
@@ -16355,6 +16367,7 @@
             "\"xmlsoft\":\"xmllint\""
         ],
         "CPEs": [
+            "cpe:2.3:a:redhat:3scale:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xmlsoft:libxml2:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:xmlsoft:xmllint:*:*:*:*:*:*:*:*"
@@ -18400,6 +18413,7 @@
     },
     "pkg:deb/debian/monitoring-plugins": {
         "VendorProductIDs": [
+            "\"monitoring-plugins\":\"monitoring-plugins\"",
             "\"nagios\":\"plugins\""
         ],
         "CPEs": [
@@ -24904,6 +24918,7 @@
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"",
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"",
             "\"siemens\":\"capital\"",
+            "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"designcenter x\"",
             "\"siemens\":\"designcenter\"",
             "\"siemens\":\"dfmexpress\"",
@@ -24914,8 +24929,10 @@
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
+            "\"siemens\":\"opcenter execution discrete\"",
             "\"siemens\":\"opcenter execution foundation\"",
             "\"siemens\":\"opcenter execution pharma\"",
+            "\"siemens\":\"opcenter execution process\"",
             "\"siemens\":\"opcenter intelligence\"",
             "\"siemens\":\"opcenter intra plant logistics\"",
             "\"siemens\":\"opcenter quality\"",
@@ -24927,6 +24944,7 @@
             "\"siemens\":\"pads professional\"",
             "\"siemens\":\"pads standard \u0026 standard plus\"",
             "\"siemens\":\"pads standard - xcr\"",
+            "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"polarion\"",
             "\"siemens\":\"quadview\"",
             "\"siemens\":\"simcenter flomaster\"",
@@ -24969,6 +24987,7 @@
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"",
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"",
             "\"siemens\":\"capital\"",
+            "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"designcenter x\"",
             "\"siemens\":\"designcenter\"",
             "\"siemens\":\"dfmexpress\"",
@@ -24979,8 +24998,10 @@
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
+            "\"siemens\":\"opcenter execution discrete\"",
             "\"siemens\":\"opcenter execution foundation\"",
             "\"siemens\":\"opcenter execution pharma\"",
+            "\"siemens\":\"opcenter execution process\"",
             "\"siemens\":\"opcenter intelligence\"",
             "\"siemens\":\"opcenter intra plant logistics\"",
             "\"siemens\":\"opcenter quality\"",
@@ -24992,6 +25013,7 @@
             "\"siemens\":\"pads professional\"",
             "\"siemens\":\"pads standard \u0026 standard plus\"",
             "\"siemens\":\"pads standard - xcr\"",
+            "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"polarion\"",
             "\"siemens\":\"quadview\"",
             "\"siemens\":\"simcenter flomaster\"",
@@ -28492,31 +28514,37 @@
     },
     "pkg:deb/debian/rebar3": {
         "VendorProductIDs": [
+            "\"deadtrickster\":\"ssl_verify_fun\"",
             "\"erlang\":\"otp\"",
             "\"erlang\":\"rebar3\"",
             "\"hexpm\":\"hex\"",
             "\"hexpm\":\"hex_core\""
         ],
         "CPEs": [
+            "cpe:2.3:a:deadtrickster:ssl_verify_fun:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:erlang:erlang\\/otp:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:erlang:rebar3:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:hexpm:hex:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:hexpm:hex_core:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://github.com\":\"deadtrickster/ssl_verify_fun.erl\"",
             "\"https://github.com\":\"erlang/otp\"",
             "\"https://github.com\":\"erlang/rebar3\"",
             "\"https://github.com\":\"hexpm/hex\"",
             "\"https://github.com\":\"hexpm/hex_core\"",
             "\"https://github.com\":\"rebar3\"",
-            "\"https://repo.hex.pm\":\"hex_core\""
+            "\"https://repo.hex.pm\":\"hex_core\"",
+            "\"https://repo.hex.pm\":\"ssl_verify_fun\""
         ],
         "PackageURLs": [
+            "pkg:github/deadtrickster/ssl_verify_fun.erl",
             "pkg:github/erlang/otp",
             "pkg:github/erlang/rebar3",
             "pkg:github/hexpm/hex",
             "pkg:github/hexpm/hex_core",
             "pkg:hex/hex_core",
+            "pkg:hex/ssl_verify_fun",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
@@ -28561,6 +28589,7 @@
             "\"valkey-io\":\"valkey\""
         ],
         "CPEs": [
+            "cpe:2.3:a:redhat:3scale:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:pdrive_lightspeed:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:valkey-io:valkey:*:*:*:*:*:*:*:*"
@@ -29478,7 +29507,8 @@
     },
     "pkg:deb/debian/ruby-omniauth": {
         "VendorProductIDs": [
-            "\"n/a\":\"omniauth ruby gem\""
+            "\"n/a\":\"omniauth ruby gem\"",
+            "\"omniauth\":\"omniauth\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -33772,7 +33802,7 @@
             "\"unspecified\":\"undertow\""
         ],
         "CPEs": [
-            "cpe:2.3:a:redhat:rhboac_hawtio:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:redhat:camel_k:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap7-undertow\"",
@@ -33969,7 +33999,8 @@
             "\"util-linux\":\"util-linux\""
         ],
         "CPEs": [
-            "cpe:2.3:a:kernel:util-linux:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:kernel:util-linux:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"util-linux\"",
