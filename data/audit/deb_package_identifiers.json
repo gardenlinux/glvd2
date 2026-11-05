@@ -4512,6 +4512,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:github/jelmer/dulwich",
             "pkg:pypi/dulwich"
         ]
     },
@@ -32577,6 +32578,8 @@
         "PackageIDs": [
             "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"",
             "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"",
+            "\"https://packagist.org/packages/symfony/routing\":\"symfony/routing\"",
+            "\"https://packagist.org/packages/symfony/security-http\":\"symfony/security-http\"",
             "\"https://packagist.org/packages/symfony/yaml\":\"symfony/yaml\""
         ],
         "PackageURLs": null
@@ -33208,6 +33211,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/tinyusb": {
+        "VendorProductIDs": [
+            "\"hathach\":\"tinyusb\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/hathach/tinyusb"
+        ]
     },
     "pkg:deb/debian/tinyxml2": {
         "VendorProductIDs": [

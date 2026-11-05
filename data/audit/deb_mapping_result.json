@@ -4896,7 +4896,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "\"glpi-project\":\"glpi\"": {
-            "pkg:deb/debian/glpi": 174
+            "pkg:deb/debian/glpi": 179
         },
         "\"glpi-project\":\"glpi-agent\"": {
             "pkg:deb/debian/glpi": 3
@@ -5604,7 +5604,7 @@
             "pkg:deb/debian/golang-github-xenolf-lego": 2
         },
         "\"go-chi\":\"chi\"": {
-            "pkg:deb/debian/golang-github-go-chi-chi": 6
+            "pkg:deb/debian/golang-github-go-chi-chi": 7
         },
         "\"go-git\":\"go-billy\"": {
             "pkg:deb/debian/golang-github-go-git-go-billy": 2,
@@ -6207,7 +6207,7 @@
             "pkg:deb/debian/h2database": 1
         },
         "\"h2o\":\"h2o\"": {
-            "pkg:deb/debian/h2o": 11
+            "pkg:deb/debian/h2o": 13
         },
         "\"h2o\":\"picotls\"": {
             "pkg:deb/debian/picotls": 2
@@ -6444,6 +6444,9 @@
         },
         "\"haskell-tls-extra\":\"haskell-tls-extra\"": {
             "pkg:deb/debian/haskell-tls-extra": 1
+        },
+        "\"hathach\":\"tinyusb\"": {
+            "pkg:deb/debian/tinyusb": 2
         },
         "\"haxx\":\"curl\"": {
             "pkg:deb/debian/curl": 2
@@ -7144,7 +7147,7 @@
             "pkg:deb/debian/jellyfin-server": 19
         },
         "\"jelmer\":\"dulwich\"": {
-            "pkg:deb/debian/dulwich": 10
+            "pkg:deb/debian/dulwich": 11
         },
         "\"jenkins project\":\"jenkins cloud foundry plugin\"": {
             "pkg:deb/debian/jenkins": 1
@@ -12855,7 +12858,7 @@
             "pkg:deb/debian/nvidia-open-gpu-kernel-modules": 1
         },
         "\"nvm-sh\":\"nvm\"": {
-            "pkg:deb/debian/nvm": 5
+            "pkg:deb/debian/nvm": 12
         },
         "\"nwaples\":\"rardecode\"": {
             "pkg:deb/debian/golang-github-nwaples-rardecode": 1
@@ -15012,7 +15015,7 @@
             "pkg:deb/debian/php-react-http": 1
         },
         "\"readest\":\"readest\"": {
-            "pkg:deb/debian/readest": 1
+            "pkg:deb/debian/readest": 5
         },
         "\"readymedia\":\"readymedia (minidlna)\"": {
             "pkg:deb/debian/minidlna": 1
@@ -15950,7 +15953,7 @@
             "pkg:deb/debian/unarr": 2
         },
         "\"sensiolabs\":\"symfony\"": {
-            "pkg:deb/debian/symfony": 4
+            "pkg:deb/debian/symfony": 6
         },
         "\"seperman\":\"deepdiff\"": {
             "pkg:deb/debian/deepdiff": 2
@@ -20285,7 +20288,7 @@
             "pkg:deb/debian/gleam": 6
         },
         "cpe:2.3:a:glpi-project:glpi:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/glpi": 19
+            "pkg:deb/debian/glpi": 20
         },
         "cpe:2.3:a:glpi-project:glpi_agent:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/glpi": 1
@@ -22676,7 +22679,7 @@
             "pkg:deb/debian/seaweedfs": 2
         },
         "cpe:2.3:a:sensiolabs:symfony:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/symfony": 4
+            "pkg:deb/debian/symfony": 6
         },
         "cpe:2.3:a:sftpgo_project:sftpgo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sftpgo": 2
@@ -27191,6 +27194,12 @@
         "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"": {
             "pkg:deb/debian/symfony": 1
         },
+        "\"https://packagist.org/packages/symfony/routing\":\"symfony/routing\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org/packages/symfony/security-http\":\"symfony/security-http\"": {
+            "pkg:deb/debian/symfony": 1
+        },
         "\"https://packagist.org/packages/symfony/yaml\":\"symfony/yaml\"": {
             "pkg:deb/debian/symfony": 1
         },
@@ -29209,13 +29218,16 @@
             "pkg:deb/debian/gleam": 6
         },
         "pkg:github/glpi-project/glpi": {
-            "pkg:deb/debian/glpi": 1
+            "pkg:deb/debian/glpi": 2
         },
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
         },
         "pkg:github/harfbuzz/harfbuzz": {
             "pkg:deb/debian/harfbuzz": 2
+        },
+        "pkg:github/hathach/tinyusb": {
+            "pkg:deb/debian/tinyusb": 2
         },
         "pkg:github/hexpm/hex": {
             "pkg:deb/debian/erlang": 1,
@@ -29239,6 +29251,9 @@
         },
         "pkg:github/jellyfin/jellyfin": {
             "pkg:deb/debian/jellyfin-server": 3
+        },
+        "pkg:github/jelmer/dulwich": {
+            "pkg:deb/debian/dulwich": 1
         },
         "pkg:github/jhy/jsoup": {
             "pkg:deb/debian/jsoup": 1
@@ -29551,7 +29566,7 @@
             "pkg:deb/debian/golang-github-go-chi-chi": 1
         },
         "pkg:golang/github.com/go-chi/chi/v5": {
-            "pkg:deb/debian/golang-github-go-chi-chi": 4
+            "pkg:deb/debian/golang-github-go-chi-chi": 5
         },
         "pkg:golang/github.com/gohugoio/hugo": {
             "pkg:deb/debian/hugo": 12
