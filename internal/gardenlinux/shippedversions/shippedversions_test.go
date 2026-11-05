@@ -6,10 +6,10 @@ import (
 	"testing"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/gltest"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/shippedversions"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -33,9 +33,9 @@ func TestAccumulator_SBOMVersionedIndex(t *testing.T) {
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
 	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
-		// Explicit source version from the upstream qualifier, differing from the binary version.
+		// Explicit source version from the upstream qualifier, differing from the binary glrd.
 		debComponent("libc6", "glibc", "2.31-13+b1", "2.31-13", purl.NamespaceGardenLinux, "amd64"),
-		// No explicit source version: binary version is the source version.
+		// No explicit source version: binary version is the source glrd.
 		debComponent("openssl", "openssl", "3.0.11-1", "", purl.NamespaceDebian, "amd64"),
 	)))
 
@@ -157,11 +157,11 @@ func TestAccumulator_FallsBackToInReleaseOnMissingSBOMSet(t *testing.T) {
 		{Name: "bash", Source: "bash", Version: "5.1-2", SourceVersion: "5.1-2", Namespace: purl.NamespaceDebian},
 	}
 
-	var gotRelease version.GardenLinuxRelease
+	var gotRelease glrd.GardenLinuxRelease
 	s := shippedversions.NewAccumulator(
 		shippedversions.WithMinPerRelease(1),
 		shippedversions.WithInReleaseFetch(
-			func(_ context.Context, r version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, r glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				gotRelease = r
 
 				return inRelPkgs, nil
@@ -197,7 +197,7 @@ func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 	fetchErr := errors.New("storage unreachable")
 	s := shippedversions.NewAccumulator(
 		shippedversions.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return nil, fetchErr
 			}),
 	)

@@ -59,6 +59,7 @@ type BuildSignals struct {
 	UpstreamSrc     bool   `json:"upstream_src"`               // loads src from the upstream project
 	HasPatches      bool   `json:"has_patches"`                // applies a patch set
 	UpstreamVersion string `json:"upstream_version,omitempty"` // usable upstream version the recipe declared, if any
+	HasSbom         bool   `json:"has_sbom,omitempty"`         // GL provided SBOM during build time
 }
 
 // classify maps the observed build signals to the provenance enum.

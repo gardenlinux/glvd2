@@ -19,7 +19,7 @@ func TestAnalyzeRecipe(t *testing.T) {
 			content: "# apt_src libgcrypt20\n" +
 				"apply_patches\n" +
 				`#version_suffix="gl3"`,
-			want: BuildSignals{BuiltByGL: true, HasPatches: true},
+			want: BuildSignals{BuiltByGL: true, HasPatches: true, HasSbom: false},
 		},
 		{
 			name: "salsa src with apply and upstream patches",
@@ -27,53 +27,58 @@ func TestAnalyzeRecipe(t *testing.T) {
 				"import_upstream_patches\n" +
 				"apply_patches patches-debian\n" +
 				`version_suffix="gl21"`,
-			want: BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true},
+			want: BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true, HasSbom: false},
 		},
 		{
 			name: "salsa src with upstream patches, package name in salsa url",
 			content: "git_src_commit \"39488fe\" \"https://salsa.debian.org/selinux-team/refpolicy.git\"\n" +
 				"import_upstream_patches",
-			want: BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true},
+			want: BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true, HasSbom: false},
 		},
 		{
 			name: "github upstream clone with apply_patches, version unknown",
 			content: "git clone -b \"$UPSTREAM_VERSION\" --depth=1 https://github.com/canonical/checkbox.git \"$upstream\"\n" +
 				"import_src \"$upstream/providers/gpgpu\"\n" +
 				"apply_patches",
-			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, HasPatches: true},
+			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, HasPatches: true, HasSbom: false},
 		},
 		{
 			name: "github upstream clone with a known version",
 			content: "version_orig=7.2.0\n" +
 				"git clone --depth=1 https://github.com/canonical/checkbox.git \"$upstream\"\n" +
 				"import_src \"$upstream\"",
-			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, UpstreamVersion: "7.2.0"},
+			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, UpstreamVersion: "7.2.0", HasSbom: false},
 		},
 		{
 			name: "upstream tarball plus salsa debian dir and patches",
 			content: "curl -sSLf https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.12.tar.xz\n" +
 				"git clone --depth 1 --branch 3.8.12-3 https://salsa.debian.org/gnutls-team/gnutls.git \"$salsadir\"\n" +
 				"apply_patches",
-			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, SalsaSrc: true, HasPatches: true},
+			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, SalsaSrc: true, HasPatches: true, HasSbom: false},
 		},
 		{
 			name: "upstream only, synthesized debian dir",
 			content: "git clone --depth 1 https://github.com/GoogleCloudPlatform/guest-agent.git \"$workdir\"\n" +
 				"import_src \"$workdir\"",
-			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true},
+			want: BuildSignals{BuiltByGL: true, UpstreamSrc: true, HasSbom: false},
 		},
 		{
 			name: "apt_src substring is not mistaken for the command",
 			content: "my_apt_src thing\n" +
 				"git_src -b debian/foo https://salsa.debian.org/debian/foo.git\n" +
 				"apply_patches",
-			want: BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true},
+			want: BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true, HasSbom: false},
 		},
 		{
 			name: "debian mirror tarball is not upstream",
 			content: "apt_src openssl\n" +
 				"curl -sSLf https://deb.debian.org/debian/pool/main/o/openssl/openssl_3.5.5.orig.tar.gz\n",
-			want: BuildSignals{BuiltByGL: true, AptSrc: true},
+			want: BuildSignals{BuiltByGL: true, AptSrc: true, HasSbom: false},
+		},
+		{
+			name:    "package provides sbom during build time",
+			content: "add_sbom \"$dir/src\" \"\" \"google-guest-agent\" \"$version_orig\"",
+			want:    BuildSignals{BuiltByGL: true, HasSbom: true},
 		},
 	}
 
@@ -105,6 +110,16 @@ func TestClassify(t *testing.T) {
 		{
 			"salsa plus patches",
 			BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true},
+			ProvenancePatchedFromDebian,
+		},
+		{
+			"apt plus patches (ignoring sbom)",
+			BuildSignals{BuiltByGL: true, AptSrc: true, HasPatches: true, HasSbom: true},
+			ProvenancePatchedFromDebian,
+		},
+		{
+			"salsa plus patches (ignoring sbom)",
+			BuildSignals{BuiltByGL: true, SalsaSrc: true, HasPatches: true, HasSbom: false},
 			ProvenancePatchedFromDebian,
 		},
 		{

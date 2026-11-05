@@ -13,6 +13,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// SBOM global release (not yet available)
+// https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/2150.14.0-a213f775.sbom
+// Parameters are: Version, Version, GitCommitId.
+const sbomGlobalURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s.sbom"
+
+// SBOM flavor release
+// https://github.com/gardenlinux/gardenlinux/releases/download/1877.25/gcp-gardener_prod-arm64-1877.25-abcdefgh.sbom
+// Parameters are: Version, Flavor, Version, GitCommitId.
+const sbomURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s-%s.sbom"
+
 type Git struct {
 	Commit      string `json:"commit"`
 	CommitShort string `json:"commit_short"`
@@ -77,6 +87,24 @@ func GetMaintainedReleases(ctx context.Context, releasesURL string) ([]Release, 
 	return ReleasesMaintainedAt(releases, time.Now()), nil
 }
 
+func GetRelease(ctx context.Context, releasesURL string, reqRelease GardenLinuxRelease) (Release, error) {
+	var releases []Release
+	var err error
+
+	releases, err = GetReleases(ctx, releasesURL)
+	if err != nil {
+		return Release{}, err
+	}
+
+	for _, release := range releases {
+		if reqRelease == ReleaseSuite(release) {
+			return release, nil
+		}
+	}
+
+	return Release{}, errors.New("release not found")
+}
+
 // ReleasesMaintainedAt returns the releases still maintained at the given time.
 func ReleasesMaintainedAt(releases []Release, now time.Time) []Release {
 	maintained := make([]Release, 0, len(releases))
@@ -99,15 +127,23 @@ func (r Release) IsMaintainedAt(now time.Time) bool {
 	return now.Before(time.Unix(r.LifeCycle.EOL.Timestamp, 0))
 }
 
-// ErrNoSBOM reports that no CycloneDX SBOM is published for a specific release flavor.
-var ErrNoSBOM = errors.New("no SBOM published for release flavor")
-
 // LocateSBOM returns the CycloneDX SBOM location for a flavor of this release.
-// It returns ErrNoSBOM when no SBOM exists.
+func (r Release) LocateSBOM(flavor string) (*url.URL, error) {
+	return BuildSbomURLFromRelease(MakeGardenLinuxRelease(r.Version), flavor, r.Git.CommitShort)
+}
+
+// Global release sbom url, over all flavors
 //
-// TODO: not yet implemented; always reports ErrNoSBOM.
-func (r Release) LocateSBOM(_ string) (*url.URL, error) {
-	return nil, ErrNoSBOM
+//nolint:godoclint // line comment
+func BuildGlobalSbomURLFromRelease(release GardenLinuxRelease, gitCommitId string) (*url.URL, error) {
+	return url.Parse(fmt.Sprintf(sbomGlobalURLFormat, release.Format(), release.Format(), gitCommitId))
+}
+
+// Flavor release sbom url
+//
+//nolint:godoclint // line comment
+func BuildSbomURLFromRelease(release GardenLinuxRelease, flavor, gitCommitId string) (*url.URL, error) {
+	return url.Parse(fmt.Sprintf(sbomURLFormat, release.Format(), flavor, release.Format(), gitCommitId))
 }
 
 func doReleasesCmd(ctx context.Context, releasesURL string) error {

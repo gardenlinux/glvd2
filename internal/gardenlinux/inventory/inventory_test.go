@@ -10,7 +10,6 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/gltest"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -99,11 +98,11 @@ func TestAccumulator_FallsBackToInReleaseOnMissingSBOMSet(t *testing.T) {
 		{Name: "bash", Source: "bash"},
 	}
 
-	var gotRelease version.GardenLinuxRelease
+	var gotRelease glrd.GardenLinuxRelease
 	s := inventory.NewAccumulator(
 		inventory.WithMinPURLs(1),
 		inventory.WithInReleaseFetch(
-			func(_ context.Context, r version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, r glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				gotRelease = r
 
 				return inRelPkgs, nil
@@ -152,7 +151,7 @@ func TestAccumulator_MixedSBOMAndInRelease(t *testing.T) {
 	s := inventory.NewAccumulator(
 		inventory.WithMinPURLs(1),
 		inventory.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return []packages.Package{{Name: "bash", Source: "bash"}}, nil
 			}),
 	)
@@ -178,7 +177,7 @@ func TestAccumulator_HardFailsOnEmptySource(t *testing.T) {
 	s := inventory.NewAccumulator(
 		inventory.WithMinPURLs(1),
 		inventory.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return []packages.Package{{Name: "libc6", Source: ""}}, nil
 			}),
 	)
@@ -192,7 +191,7 @@ func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 	fetchErr := errors.New("pool unreachable")
 	s := inventory.NewAccumulator(
 		inventory.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return nil, fetchErr
 			}),
 	)

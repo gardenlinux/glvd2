@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"net/http"
 	"net/url"
 	"strings"
 
@@ -21,13 +22,21 @@ const syftSourceProperty = "syft:metadata:source"
 // errNoComponents is returned when an SBOM contains no components.
 var errNoComponents = errors.New("sbom has no components")
 
+// ErrNoSBOM reports that no CycloneDX SBOM is published for a specific release flavor.
+var ErrNoSBOM = errors.New("no SBOM published for release flavor")
+
 // GetCycloneDx fetches and decodes the CycloneDX SBOM at sbomURL.
+// It returns ErrNoSBOM when no SBOM exists.
 func GetCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
 	var err error
 	var raw string
+	var httpStatus int
 
 	client := whttp.NewClient()
-	raw, _, err = client.GetString(ctx, sbomURL.String())
+	raw, httpStatus, err = client.GetString(ctx, sbomURL.String())
+	if httpStatus == http.StatusNotFound {
+		return nil, ErrNoSBOM
+	}
 	if err != nil {
 		return nil, err
 	}

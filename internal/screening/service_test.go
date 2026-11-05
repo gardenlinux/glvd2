@@ -12,7 +12,6 @@ import (
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/gardenlinux/glvd2/internal/glmap"
 	"github.com/gardenlinux/glvd2/internal/model/debtriage"
 	"github.com/gardenlinux/glvd2/internal/repository"
@@ -65,7 +64,7 @@ func testInventory(t *testing.T, sources ...string) inventory.Set {
 	acc := inventory.NewAccumulator(
 		inventory.WithMinPURLs(0),
 		inventory.WithInReleaseFetch(
-			func(_ context.Context, _ version.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
 				return pkgs, nil
 			},
 		),

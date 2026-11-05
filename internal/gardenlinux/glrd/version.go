@@ -1,4 +1,4 @@
-package version
+package glrd
 
 import (
 	"errors"
@@ -6,8 +6,6 @@ import (
 	"log/slog"
 	"strconv"
 	"strings"
-
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 )
 
 // GardenlinuxVersionParts: Versioning scheme before 2017.0.0.
@@ -28,7 +26,7 @@ type GardenLinuxRelease struct {
 	SemVer bool
 }
 
-func MakeGardenLinuxRelease(version glrd.Version) GardenLinuxRelease {
+func MakeGardenLinuxRelease(version Version) GardenLinuxRelease {
 	release := GardenLinuxRelease{}
 	release.parseFromGlrdVersion(version)
 	return release
@@ -37,12 +35,12 @@ func MakeGardenLinuxRelease(version glrd.Version) GardenLinuxRelease {
 // ReleaseSuite converts a GLRD release into the GardenLinuxRelease used to address the package pool.
 // The suite name mirrors the release's version scheme: "major.minor" for legacy releases
 // and "major.minor.patch" for semver releases.
-func ReleaseSuite(release glrd.Release) GardenLinuxRelease {
+func ReleaseSuite(release Release) GardenLinuxRelease {
 	return MakeGardenLinuxRelease(release.Version)
 }
 
 // ReleaseKey returns the GL version string that keys a release (its suite name).
-func ReleaseKey(release glrd.Release) string {
+func ReleaseKey(release Release) string {
 	return ReleaseSuite(release).Name
 }
 
@@ -64,7 +62,7 @@ func (g *GardenLinuxRelease) Format() string {
 	return fmt.Sprintf("%d.%d", g.Major, g.Minor)
 }
 
-func (g *GardenLinuxRelease) parseFromGlrdVersion(version glrd.Version) {
+func (g *GardenLinuxRelease) parseFromGlrdVersion(version Version) {
 	g.Major = version.Major
 	g.Minor = version.Minor
 	g.Patch = version.Patch
