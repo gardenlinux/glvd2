@@ -2,7 +2,6 @@ package packages
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log/slog"
 	"net/url"
@@ -18,7 +17,6 @@ type options struct {
 	PkgFmt  string
 	SBOMURL string
 	Flavor  string
-	Gitish  string
 }
 
 type PackageListFormat int
@@ -107,10 +105,6 @@ func run(ctx context.Context, cfg *config.AppConfig, opts options) error {
 	release, err = glrd.MakeGardenLinuxReleaseFromString(opts.Version)
 	if err != nil {
 		return err
-	}
-
-	if opts.Version == "" {
-		return errors.New("a release version is always required")
 	}
 
 	var packages []Package
