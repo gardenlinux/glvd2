@@ -34,7 +34,6 @@ type Analysis struct {
 	Provenance Provenance   `json:"provenance"`
 	FixedCVEs  []FixedCVE   `json:"fixed_cves,omitempty"`
 	Signals    BuildSignals `json:"signals"`
-	HasSbom    bool         `json:"has_sbom,omitempty"`
 }
 
 // EvidenceKind identifies how a CVE was detected as fixed by a build.
