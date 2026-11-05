@@ -45,7 +45,7 @@ func (f PackageListFormat) String() string {
 }
 
 func parsePackageListFormat(s string) (PackageListFormat, error) {
-	switch s {
+	switch strings.ToLower(s) {
 	case InReleaseFormatStr:
 		return InReleaseFormat, nil
 	case CycloneDXFormatStr:
