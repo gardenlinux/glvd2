@@ -13,8 +13,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// SBOM global release
-// https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/aws-gardener_prod-amd64-2150.14.0-a213f775.sbom
+// SBOM global release (not yet available)
+// https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/2150.14.0-a213f775.sbom
 // Parameters are: Version, Version, GitCommitId.
 //
 //nolint:lll // long url
