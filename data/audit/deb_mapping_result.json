@@ -3863,7 +3863,7 @@
             "pkg:deb/debian/jgit": 1
         },
         "\"eclipse foundation\":\"eclipse mojarra\"": {
-            "pkg:deb/debian/mojarra": 1
+            "pkg:deb/debian/mojarra": 2
         },
         "\"eclipse foundation\":\"eclipse rdf4j\"": {
             "pkg:deb/debian/rdf4j": 1
@@ -12075,7 +12075,7 @@
             "pkg:deb/debian/dhcpcd5": 1
         },
         "\"networkupstools\":\"nut\"": {
-            "pkg:deb/debian/nut": 1
+            "pkg:deb/debian/nut": 2
         },
         "\"neutrinolabs\":\"xrdp\"": {
             "pkg:deb/debian/xrdp": 34
@@ -12351,7 +12351,7 @@
             "pkg:deb/debian/ndpi": 3
         },
         "\"ntop\":\"ntopng\"": {
-            "pkg:deb/debian/ntopng": 8
+            "pkg:deb/debian/ntopng": 10
         },
         "\"ntp project\":\"ntp\"": {
             "pkg:deb/debian/ntp": 5
@@ -13863,6 +13863,9 @@
         "\"patrickjuchli\":\"basic-ftp\"": {
             "pkg:deb/debian/node-proxy-agents": 5
         },
+        "\"pavel-odintsov\":\"fastnetmon\"": {
+            "pkg:deb/debian/fastnetmon": 6
+        },
         "\"payload\":\"payload\"": {
             "pkg:deb/debian/pyload": 1
         },
@@ -14047,8 +14050,14 @@
         "\"phpmemcachedadmin\":\"phpmemcachedadmin\"": {
             "pkg:deb/debian/phpmemcachedadmin": 2
         },
+        "\"phpmyadmin\":\"motranslator\"": {
+            "pkg:deb/debian/phpmyadmin-motranslator": 1
+        },
         "\"phpmyadmin\":\"phpmyadmin\"": {
             "pkg:deb/debian/phpmyadmin": 10
+        },
+        "\"phpmyadmin\":\"sql-parser\"": {
+            "pkg:deb/debian/phpmyadmin-sql-parser": 1
         },
         "\"phpseclib\":\"1x\"": {
             "pkg:deb/debian/php-phpseclib": 1,
@@ -14856,6 +14865,9 @@
         "\"quickjs-ng\":\"quickjs\"": {
             "pkg:deb/debian/quickjs": 5,
             "pkg:deb/debian/quickjs-ng": 1
+        },
+        "\"quickjs-ng\":\"quickjs-ng\"": {
+            "pkg:deb/debian/quickjs-ng": 3
         },
         "\"quickjs_project\":\"quickjs\"": {
             "pkg:deb/debian/quickjs": 2
@@ -16509,7 +16521,7 @@
             "pkg:deb/debian/signal-desktop": 2
         },
         "\"signalwire\":\"freeswitch\"": {
-            "pkg:deb/debian/freeswitch": 17
+            "pkg:deb/debian/freeswitch": 38
         },
         "\"sigstore\":\"cosign\"": {
             "pkg:deb/debian/cosign": 9,
@@ -22287,8 +22299,14 @@
         "cpe:2.3:a:phplist:phplist:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/phplist": 1
         },
+        "cpe:2.3:a:phpmyadmin:motranslator:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/phpmyadmin-motranslator": 1
+        },
         "cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/phpmyadmin": 9
+        },
+        "cpe:2.3:a:phpmyadmin:sql-parser:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/phpmyadmin-sql-parser": 1
         },
         "cpe:2.3:a:phpseclib:1x:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-phpseclib": 1,
@@ -22549,7 +22567,8 @@
             "pkg:deb/debian/golang-github-lucas-clemente-quic-go": 1
         },
         "cpe:2.3:a:quickjs_project:quickjs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/quickjs": 4
+            "pkg:deb/debian/quickjs": 4,
+            "pkg:deb/debian/quickjs-ng": 3
         },
         "cpe:2.3:a:quinn_project:quinn:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rust-quinn-proto": 2
@@ -24207,11 +24226,14 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak\"": {
             "pkg:deb/debian/keycloak": 16
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-admin-cli\"": {
+            "pkg:deb/debian/keycloak": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-admin-ui\"": {
             "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-core\"": {
-            "pkg:deb/debian/keycloak": 13
+            "pkg:deb/debian/keycloak": 15
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-ldap-federation\"": {
             "pkg:deb/debian/keycloak": 1
@@ -24247,7 +24269,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 108
+            "pkg:deb/debian/keycloak": 120
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -25000,7 +25022,7 @@
             "pkg:deb/debian/resteasy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rh-sso7-keycloak\"": {
-            "pkg:deb/debian/keycloak": 31
+            "pkg:deb/debian/keycloak": 32
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rhoso-openvswitch\"": {
             "pkg:deb/debian/openvswitch": 1
@@ -25380,6 +25402,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk11-openshift-rhel8\"": {
+            "pkg:deb/debian/keycloak": 2,
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
@@ -25387,6 +25410,7 @@
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"": {
+            "pkg:deb/debian/keycloak": 2,
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
@@ -25394,6 +25418,7 @@
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"": {
+            "pkg:deb/debian/keycloak": 2,
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
@@ -25425,7 +25450,7 @@
             "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-core\"": {
-            "pkg:deb/debian/keycloak": 2
+            "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-policy-enforcer\"": {
             "pkg:deb/debian/keycloak": 1
@@ -26135,7 +26160,7 @@
             "pkg:deb/debian/libhtml-parser-perl": 1
         },
         "\"https://cpan.org/modules\":\"HTTP-Body\"": {
-            "pkg:deb/debian/libhttp-body-perl": 9
+            "pkg:deb/debian/libhttp-body-perl": 10
         },
         "\"https://cpan.org/modules\":\"HTTP-Daemon\"": {
             "pkg:deb/debian/libhttp-daemon-perl": 1
@@ -29086,7 +29111,7 @@
             "pkg:deb/debian/libhtml-formhandler-perl": 5
         },
         "pkg:cpan/HTTP-Body": {
-            "pkg:deb/debian/libhttp-body-perl": 9
+            "pkg:deb/debian/libhttp-body-perl": 10
         },
         "pkg:cpan/HTTP-Headers-ActionPack": {
             "pkg:deb/debian/libhttp-headers-actionpack-perl": 1
@@ -29621,6 +29646,9 @@
         },
         "pkg:github/pypy/pypy": {
             "pkg:deb/debian/pypy3": 1
+        },
+        "pkg:github/quickjs-ng/quickjs": {
+            "pkg:deb/debian/quickjs-ng": 3
         },
         "pkg:github/radareorg/radare2": {
             "pkg:deb/debian/radare2": 1
