@@ -142,14 +142,17 @@
     },
     "pkg:deb/debian/activemq": {
         "VendorProductIDs": [
+            "\"apache software foundation\":\"activemq broker\"",
             "\"apache software foundation\":\"apache activemq all module\"",
             "\"apache software foundation\":\"apache activemq all\"",
             "\"apache software foundation\":\"apache activemq amqp\"",
             "\"apache software foundation\":\"apache activemq broker\"",
             "\"apache software foundation\":\"apache activemq client\"",
+            "\"apache software foundation\":\"apache activemq kahadb\"",
             "\"apache software foundation\":\"apache activemq legacy openwire module\"",
             "\"apache software foundation\":\"apache activemq mqtt module\"",
             "\"apache software foundation\":\"apache activemq mqtt\"",
+            "\"apache software foundation\":\"apache activemq runtime config\"",
             "\"apache software foundation\":\"apache activemq stomp\"",
             "\"apache software foundation\":\"apache activemq web console\"",
             "\"apache software foundation\":\"apache activemq web\"",
@@ -169,14 +172,21 @@
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-amqp\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-broker\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-client\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-kahadb-store\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-mqtt\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-openwire-legacy\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-runtime-config\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-stomp\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-web\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:apache-activemq\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:apache-web-console\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.activemq/activemq-broker",
+            "pkg:maven/org.apache.activemq/activemq-kahadb-store",
+            "pkg:maven/org.apache.activemq/activemq-runtime-config",
+            "pkg:maven/org.apache.activemq/apache-activemq"
+        ]
     },
     "pkg:deb/debian/activitywatch": {
         "VendorProductIDs": [
@@ -6447,6 +6457,8 @@
             "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-14-gdb\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-15-gdb\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\"",
             "\"https://catalog.redhat.com/software/containers/\":\"gdb-main\""
         ],
@@ -8390,6 +8402,14 @@
     "pkg:deb/debian/golang-github-crewjam-saml": {
         "VendorProductIDs": [
             "\"crewjam\":\"saml\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/golang-github-dlclark-regexp2": {
+        "VendorProductIDs": [
+            "\"dlclark\":\"regexp2\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -12380,6 +12400,9 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak/keycloak-policy-enforcer\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"rh-sso7-keycloak\"",
             "\"https://bitbucket.org/b_c/jose4j/src/master/\":\"keycloak-core\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-container\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-operator-bundle-container\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-operator-container\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak-core\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak-ldap-federation\"",
@@ -26123,7 +26146,8 @@
     "pkg:deb/debian/puppet-agent": {
         "VendorProductIDs": [
             "\"n/a\":\"puppet enterprise, puppet agent\"",
-            "\"n/a\":\"puppet enterprise, puppet server, puppet agent\""
+            "\"n/a\":\"puppet enterprise, puppet server, puppet agent\"",
+            "\"perforce\":\"puppet enterprise\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -32739,6 +32763,7 @@
         ],
         "PackageIDs": [
             "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"",
+            "\"https://packagist.org/packages/symfony/html-sanitizer\":\"symfony/html-sanitizer\"",
             "\"https://packagist.org/packages/symfony/http-client\":\"symfony/http-client\"",
             "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"",
             "\"https://packagist.org/packages/symfony/routing\":\"symfony/routing\"",

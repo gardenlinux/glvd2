@@ -1210,6 +1210,9 @@
         "\"aous72\":\"openjph\"": {
             "pkg:deb/debian/openjph": 1
         },
+        "\"apache software foundation\":\"activemq broker\"": {
+            "pkg:deb/debian/activemq": 2
+        },
         "\"apache software foundation\":\"apache activemq all module\"": {
             "pkg:deb/debian/activemq": 1
         },
@@ -1225,6 +1228,9 @@
         "\"apache software foundation\":\"apache activemq client\"": {
             "pkg:deb/debian/activemq": 4
         },
+        "\"apache software foundation\":\"apache activemq kahadb\"": {
+            "pkg:deb/debian/activemq": 1
+        },
         "\"apache software foundation\":\"apache activemq legacy openwire module\"": {
             "pkg:deb/debian/activemq": 1
         },
@@ -1232,6 +1238,9 @@
             "pkg:deb/debian/activemq": 1
         },
         "\"apache software foundation\":\"apache activemq mqtt\"": {
+            "pkg:deb/debian/activemq": 1
+        },
+        "\"apache software foundation\":\"apache activemq runtime config\"": {
             "pkg:deb/debian/activemq": 1
         },
         "\"apache software foundation\":\"apache activemq stomp\"": {
@@ -1244,7 +1253,7 @@
             "pkg:deb/debian/activemq": 3
         },
         "\"apache software foundation\":\"apache activemq\"": {
-            "pkg:deb/debian/activemq": 34
+            "pkg:deb/debian/activemq": 39
         },
         "\"apache software foundation\":\"apache airflow cncf kubernetes provider\"": {
             "pkg:deb/debian/airflow": 1
@@ -1653,7 +1662,7 @@
             "pkg:deb/debian/xmlbeans": 1
         },
         "\"apache software foundation\":\"apache zookeeper\"": {
-            "pkg:deb/debian/zookeeper": 14
+            "pkg:deb/debian/zookeeper": 19
         },
         "\"apache software foundation\":\"hdfs native client\"": {
             "pkg:deb/debian/hadoop": 1
@@ -3595,6 +3604,9 @@
         "\"dlbeer\":\"quirc\"": {
             "pkg:deb/debian/quirc": 1
         },
+        "\"dlclark\":\"regexp2\"": {
+            "pkg:deb/debian/golang-github-dlclark-regexp2": 1
+        },
         "\"dloebl\":\"cgif\"": {
             "pkg:deb/debian/cgif": 1
         },
@@ -3988,7 +4000,7 @@
             "pkg:deb/debian/elgg": 2
         },
         "\"elixir-lang\":\"elixir\"": {
-            "pkg:deb/debian/elixir-lang": 3
+            "pkg:deb/debian/elixir-lang": 5
         },
         "\"elixir-tesla\":\"tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -6146,7 +6158,7 @@
             "pkg:deb/debian/gst-plugins-good1.0": 2
         },
         "\"gstreamer\":\"gst-plugins-good\"": {
-            "pkg:deb/debian/gst-plugins-good1.0": 2
+            "pkg:deb/debian/gst-plugins-good1.0": 5
         },
         "\"gstreamer\":\"gstreamer\"": {
             "pkg:deb/debian/gst-plugins-bad0.10": 8,
@@ -8037,7 +8049,7 @@
             "pkg:deb/debian/libvncserver": 5
         },
         "\"libwebsockets\":\"libwebsockets\"": {
-            "pkg:deb/debian/libwebsockets": 1
+            "pkg:deb/debian/libwebsockets": 2
         },
         "\"libwww-perl\":\"http-daemon\"": {
             "pkg:deb/debian/libhttp-daemon-perl": 1
@@ -13919,6 +13931,7 @@
             "pkg:deb/debian/ruby-puppet-resource-api": 1
         },
         "\"perforce\":\"puppet enterprise\"": {
+            "pkg:deb/debian/puppet-agent": 1,
             "pkg:deb/debian/puppetserver": 2,
             "pkg:deb/debian/ruby-puppet-resource-api": 1
         },
@@ -15973,7 +15986,7 @@
             "pkg:deb/debian/unarr": 2
         },
         "\"sensiolabs\":\"symfony\"": {
-            "pkg:deb/debian/symfony": 7
+            "pkg:deb/debian/symfony": 8
         },
         "\"seperman\":\"deepdiff\"": {
             "pkg:deb/debian/deepdiff": 2
@@ -17404,7 +17417,7 @@
             "pkg:deb/debian/dnsmasq": 1
         },
         "\"the document foundation\":\"libreoffice\"": {
-            "pkg:deb/debian/libreoffice": 47
+            "pkg:deb/debian/libreoffice": 48
         },
         "\"the dovecot project\":\"dovecot\"": {
             "pkg:deb/debian/dovecot": 3
@@ -20162,7 +20175,7 @@
             "pkg:deb/debian/elfutils": 1
         },
         "cpe:2.3:a:elixir-lang:elixir:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/elixir-lang": 3
+            "pkg:deb/debian/elixir-lang": 5
         },
         "cpe:2.3:a:elixir-tesla:tesla:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -22643,7 +22656,7 @@
             "pkg:deb/debian/jboss-xnio": 1,
             "pkg:deb/debian/node-serialize-javascript": 1,
             "pkg:deb/debian/plexus-utils2": 2,
-            "pkg:deb/debian/undertow": 4
+            "pkg:deb/debian/undertow": 5
         },
         "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdb": 1,
@@ -22878,7 +22891,7 @@
             "pkg:deb/debian/seaweedfs": 2
         },
         "cpe:2.3:a:sensiolabs:symfony:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/symfony": 7
+            "pkg:deb/debian/symfony": 8
         },
         "cpe:2.3:a:sftpgo_project:sftpgo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sftpgo": 2
@@ -24091,14 +24104,20 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-14-binutils\"": {
             "pkg:deb/debian/binutils": 9
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-14-gdb\"": {
+            "pkg:deb/debian/gdb": 4
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-15-binutils\"": {
             "pkg:deb/debian/binutils": 9
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-15-gdb\"": {
+            "pkg:deb/debian/gdb": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-16-binutils\"": {
             "pkg:deb/debian/binutils": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\"": {
-            "pkg:deb/debian/gdb": 1
+            "pkg:deb/debian/gdb": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdk-pixbuf2\"": {
             "pkg:deb/debian/gdk-pixbuf": 6
@@ -25474,7 +25493,7 @@
             "pkg:deb/debian/libxml2": 6
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"mod_proxy_cluster\"": {
-            "pkg:deb/debian/libapache2-mod-cluster": 1
+            "pkg:deb/debian/libapache2-mod-cluster": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"netty-codec-haproxy\"": {
             "pkg:deb/debian/netty": 1
@@ -25888,6 +25907,15 @@
         },
         "\"https://catalog.redhat.com/software/containers/\":\"kbd-main\"": {
             "pkg:deb/debian/kbd": 1
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-container\"": {
+            "pkg:deb/debian/keycloak": 10
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-operator-bundle-container\"": {
+            "pkg:deb/debian/keycloak": 10
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-operator-container\"": {
+            "pkg:deb/debian/keycloak": 10
         },
         "\"https://catalog.redhat.com/software/containers/\":\"krb5-main\"": {
             "pkg:deb/debian/krb5": 1
@@ -26490,7 +26518,7 @@
             "pkg:deb/debian/rebar3": 1
         },
         "\"https://github.com\":\"elixir-lang/elixir\"": {
-            "pkg:deb/debian/elixir-lang": 3
+            "pkg:deb/debian/elixir-lang": 5
         },
         "\"https://github.com\":\"elixir-tesla/tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -27008,7 +27036,7 @@
             "pkg:deb/debian/samba": 1
         },
         "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\"": {
-            "pkg:deb/debian/gst-plugins-good1.0": 2
+            "pkg:deb/debian/gst-plugins-good1.0": 5
         },
         "\"https://gitlab.freedesktop.org/pipewire/pipewire\":\"pipewire\"": {
             "pkg:deb/debian/pipewire": 1
@@ -27394,6 +27422,9 @@
             "pkg:deb/debian/thrift": 11
         },
         "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org/packages/symfony/html-sanitizer\":\"symfony/html-sanitizer\"": {
             "pkg:deb/debian/symfony": 1
         },
         "\"https://packagist.org/packages/symfony/http-client\":\"symfony/http-client\"": {
@@ -28159,15 +28190,21 @@
             "pkg:deb/debian/activemq": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-broker\"": {
-            "pkg:deb/debian/activemq": 14
+            "pkg:deb/debian/activemq": 16
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-client\"": {
             "pkg:deb/debian/activemq": 5
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-kahadb-store\"": {
+            "pkg:deb/debian/activemq": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-mqtt\"": {
             "pkg:deb/debian/activemq": 2
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-openwire-legacy\"": {
+            "pkg:deb/debian/activemq": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-runtime-config\"": {
             "pkg:deb/debian/activemq": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:activemq-stomp\"": {
@@ -28177,7 +28214,7 @@
             "pkg:deb/debian/activemq": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:apache-activemq\"": {
-            "pkg:deb/debian/activemq": 24
+            "pkg:deb/debian/activemq": 27
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.activemq:apache-web-console\"": {
             "pkg:deb/debian/activemq": 1
@@ -28434,7 +28471,7 @@
             "pkg:deb/debian/wss4j": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.zookeeper:zookeeper\"": {
-            "pkg:deb/debian/zookeeper": 11
+            "pkg:deb/debian/zookeeper": 16
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.eclipse.jetty.ee10:jetty-ee10-annotations\"": {
             "pkg:deb/debian/jetty12": 1,
@@ -29379,7 +29416,7 @@
             "pkg:deb/debian/domoticz": 1
         },
         "pkg:github/elixir-lang/elixir": {
-            "pkg:deb/debian/elixir-lang": 3
+            "pkg:deb/debian/elixir-lang": 5
         },
         "pkg:github/elixir-tesla/tesla": {
             "pkg:deb/debian/elixir-tesla": 5
@@ -29897,6 +29934,18 @@
         "pkg:maven/net.minidev/json-smart": {
             "pkg:deb/debian/json-smart": 1
         },
+        "pkg:maven/org.apache.activemq/activemq-broker": {
+            "pkg:deb/debian/activemq": 2
+        },
+        "pkg:maven/org.apache.activemq/activemq-kahadb-store": {
+            "pkg:deb/debian/activemq": 1
+        },
+        "pkg:maven/org.apache.activemq/activemq-runtime-config": {
+            "pkg:deb/debian/activemq": 1
+        },
+        "pkg:maven/org.apache.activemq/apache-activemq": {
+            "pkg:deb/debian/activemq": 3
+        },
         "pkg:maven/org.apache.bcel/bcel": {
             "pkg:deb/debian/bcel": 2
         },
@@ -30013,7 +30062,7 @@
             "pkg:deb/debian/wss4j": 1
         },
         "pkg:maven/org.apache.zookeeper/zookeeper": {
-            "pkg:deb/debian/zookeeper": 5
+            "pkg:deb/debian/zookeeper": 10
         },
         "pkg:maven/org.bouncycastle/bc-fips": {
             "pkg:deb/debian/bouncycastle": 9
@@ -30275,7 +30324,7 @@
             "pkg:deb/debian/erlang": 1
         },
         "pkg:otp/elixir?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git": {
-            "pkg:deb/debian/elixir-lang": 2
+            "pkg:deb/debian/elixir-lang": 4
         },
         "pkg:otp/erl_interface?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
