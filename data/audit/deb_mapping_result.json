@@ -1163,7 +1163,7 @@
             "pkg:deb/debian/sqlparse": 8
         },
         "\"angular\":\"angular\"": {
-            "pkg:deb/debian/angular.js": 31
+            "pkg:deb/debian/angular.js": 34
         },
         "\"angular\":\"devtools\"": {
             "pkg:deb/debian/angular.js": 1
@@ -2522,7 +2522,8 @@
             "pkg:deb/debian/twitter-bootstrap4": 1
         },
         "\"borgbackup\":\"borg\"": {
-            "pkg:deb/debian/borgbackup": 1
+            "pkg:deb/debian/borgbackup": 2,
+            "pkg:deb/debian/borgbackup2": 1
         },
         "\"botan_project\":\"botan\"": {
             "pkg:deb/debian/botan": 2
@@ -2743,8 +2744,8 @@
             "pkg:deb/debian/linux": 1
         },
         "\"canonical\":\"lxd\"": {
-            "pkg:deb/debian/incus": 16,
-            "pkg:deb/debian/lxd": 38
+            "pkg:deb/debian/incus": 24,
+            "pkg:deb/debian/lxd": 46
         },
         "\"canonical\":\"ppp\"": {
             "pkg:deb/debian/ppp": 1
@@ -2843,6 +2844,9 @@
             "pkg:deb/debian/mongoose": 23,
             "pkg:deb/debian/smplayer": 8,
             "pkg:deb/debian/swupdate": 9
+        },
+        "\"cesnet\":\"ipfixcol2\"": {
+            "pkg:deb/debian/ipfixcol2": 3
         },
         "\"cesnet\":\"libyang\"": {
             "pkg:deb/debian/libyang": 2,
@@ -6135,14 +6139,6 @@
         "\"gstreamer project\":\"gst-editing-services\"": {
             "pkg:deb/debian/gstreamer-editing-services1.0": 1
         },
-        "\"gstreamer project\":\"gst-plugins-bad\"": {
-            "pkg:deb/debian/gst-plugins-bad1.0": 1,
-            "pkg:deb/debian/gst-plugins-base1.0": 1
-        },
-        "\"gstreamer project\":\"gst-plugins-base\"": {
-            "pkg:deb/debian/gst-plugins-bad1.0": 1,
-            "pkg:deb/debian/gst-plugins-base1.0": 2
-        },
         "\"gstreamer project\":\"gst-plugins-good\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 1
         },
@@ -6980,7 +6976,7 @@
             "pkg:deb/debian/ircd-ratbox": 1
         },
         "\"irontec\":\"sngrep\"": {
-            "pkg:deb/debian/sngrep": 4
+            "pkg:deb/debian/sngrep": 6
         },
         "\"isaacs\":\"brace-expansion\"": {
             "pkg:deb/debian/node-brace-expansion": 1
@@ -8296,7 +8292,7 @@
             "pkg:deb/debian/lxd": 20
         },
         "\"lxc\":\"lxc\"": {
-            "pkg:deb/debian/lxc": 1
+            "pkg:deb/debian/lxc": 2
         },
         "\"lxc\":\"lxc-ci\"": {
             "pkg:deb/debian/lxc-ci": 1
@@ -9287,6 +9283,9 @@
         },
         "\"musing studio\":\"writefreely\"": {
             "pkg:deb/debian/writefreely": 1
+        },
+        "\"musl -libc\":\"musl\"": {
+            "pkg:deb/debian/musl": 1
         },
         "\"musl\":\"libc\"": {
             "pkg:deb/debian/musl": 1
@@ -10508,6 +10507,9 @@
         "\"n/a\":\"lapack\"": {
             "pkg:deb/debian/lapack": 1,
             "pkg:deb/debian/openblas": 1
+        },
+        "\"n/a\":\"laspy\"": {
+            "pkg:deb/debian/python-laspy": 1
         },
         "\"n/a\":\"latte/latte\"": {
             "pkg:deb/debian/php-nette": 1
@@ -13792,8 +13794,8 @@
             "pkg:deb/debian/modsecurity-crs": 4
         },
         "\"owasp-modsecurity\":\"modsecurity\"": {
-            "pkg:deb/debian/modsecurity": 5,
-            "pkg:deb/debian/modsecurity-apache": 4
+            "pkg:deb/debian/modsecurity": 9,
+            "pkg:deb/debian/modsecurity-apache": 6
         },
         "\"owncloud\":\"owncloud 10\"": {
             "pkg:deb/debian/owncloud": 1
@@ -15469,6 +15471,9 @@
         "\"request_project\":\"request\"": {
             "pkg:deb/debian/requests": 1
         },
+        "\"resiprocate\":\"resiprocate\"": {
+            "pkg:deb/debian/resiprocate": 1
+        },
         "\"rethinkdb\":\"rethinkdb\"": {
             "pkg:deb/debian/rethinkdb": 2
         },
@@ -15683,6 +15688,9 @@
         },
         "\"rubygems\":\"rubygems\"": {
             "pkg:deb/debian/rubygems": 1
+        },
+        "\"rubyonrails\":\"active storage\"": {
+            "pkg:deb/debian/rails": 1
         },
         "\"rubyonrails\":\"rails\"": {
             "pkg:deb/debian/rails": 3
@@ -15953,7 +15961,7 @@
             "pkg:deb/debian/unarr": 2
         },
         "\"sensiolabs\":\"symfony\"": {
-            "pkg:deb/debian/symfony": 6
+            "pkg:deb/debian/symfony": 7
         },
         "\"seperman\":\"deepdiff\"": {
             "pkg:deb/debian/deepdiff": 2
@@ -16059,7 +16067,27 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"building x\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"call stations\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"capital\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"chargesight\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"climatix cloud ic\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"climatix devices\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
@@ -16084,10 +16112,34 @@
         "\"siemens\":\"comos v10.6\"": {
             "pkg:deb/debian/curl": 1
         },
+        "\"siemens\":\"connect insights\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"connect x200\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"connect x300\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"connect x500\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"crsp\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"data flow monitoring\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"depotfinity\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"designcenter x essentials\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16121,6 +16173,18 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"energy management system\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"enlighted rtls\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"enlighted space\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"flow creator configurator\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -16137,7 +16201,17 @@
         "\"siemens\":\"heliox flex pro\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2,
             "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"heliox h60\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"heliox rapid\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"hyperlynx\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16152,6 +16226,22 @@
         },
         "\"siemens\":\"linux-entra-sso\"": {
             "pkg:deb/debian/linux-entra-sso": 1
+        },
+        "\"siemens\":\"local monitoring bt-monitoring-vm\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"navigator e\u0026s\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"novigo vansys core\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"novigo vansys\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"opcenter connect electronics\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16201,6 +16291,10 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"pace-design\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"pads pro essentials\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
@@ -16237,24 +16331,44 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"sicharge d configuration backend\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"sicharge d\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"sicharge flex\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2,
             "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"sicharge uc\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2,
             "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"sifinity control\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"sifinity go\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2,
             "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"sifinity setup\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2,
             "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"simcenter flomaster\"": {
@@ -16266,6 +16380,34 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"simcenter simlab\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"sinteso fs20 en\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"sipass integrated\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"siport\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"siveillance control pro\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"siveillance control\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"siveillance intrusion\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"siveillance video\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
@@ -16309,6 +16451,10 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"verischarge\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"versicharge ac series\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -16318,6 +16464,22 @@
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"versicloudheliox dual port 60kw\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"voice alarm panels\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"voice alarm systems and audio matrices\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"workplace experience\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"xcargo\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -18607,6 +18769,9 @@
         "\"wkentaro\":\"gdown\"": {
             "pkg:deb/debian/gdown": 1
         },
+        "\"wlroots\":\"wlroots\"": {
+            "pkg:deb/debian/wlroots": 1
+        },
         "\"wofssl\":\"wolfssl\"": {
             "pkg:deb/debian/wolfssl": 3
         },
@@ -19004,7 +19169,7 @@
             "pkg:deb/debian/zammad": 3
         },
         "\"zammad\":\"zammad\"": {
-            "pkg:deb/debian/zammad": 47
+            "pkg:deb/debian/zammad": 48
         },
         "\"zapping-vbi\":\"libzvbi\"": {
             "pkg:deb/debian/zvbi": 1
@@ -20710,7 +20875,7 @@
             "pkg:deb/debian/iputils": 2
         },
         "cpe:2.3:a:irontec:sngrep:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/sngrep": 4
+            "pkg:deb/debian/sngrep": 6
         },
         "cpe:2.3:a:isc:bind:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/bind9": 45
@@ -20923,6 +21088,9 @@
         },
         "cpe:2.3:a:laravel:framework:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-laravel-framework": 1
+        },
+        "cpe:2.3:a:laspy:laspy:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/python-laspy": 1
         },
         "cpe:2.3:a:latchset:jose:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jose": 1
@@ -22464,7 +22632,7 @@
             "pkg:deb/debian/libarchive": 1,
             "pkg:deb/debian/libxml2": 1,
             "pkg:deb/debian/rust-sequoia-openpgp": 1,
-            "pkg:deb/debian/util-linux": 2
+            "pkg:deb/debian/util-linux": 3
         },
         "cpe:2.3:a:redhat:helm_cli:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/helm-kubernetes": 2
@@ -22532,6 +22700,9 @@
         },
         "cpe:2.3:a:request_project:request:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/requests": 1
+        },
+        "cpe:2.3:a:resiprocate:resiprocate:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/resiprocate": 1
         },
         "cpe:2.3:a:rhonabwy_project:rhonabwy:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rhonabwy": 1
@@ -22604,6 +22775,9 @@
             "pkg:deb/debian/ruby3.1": 1,
             "pkg:deb/debian/ruby3.2": 1,
             "pkg:deb/debian/ruby3.3": 1
+        },
+        "cpe:2.3:a:rubyonrails:active_storage:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/rails": 1
         },
         "cpe:2.3:a:rubyonrails:rails:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rails": 3
@@ -22685,7 +22859,7 @@
             "pkg:deb/debian/seaweedfs": 2
         },
         "cpe:2.3:a:sensiolabs:symfony:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/symfony": 6
+            "pkg:deb/debian/symfony": 7
         },
         "cpe:2.3:a:sftpgo_project:sftpgo:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sftpgo": 2
@@ -27197,6 +27371,9 @@
         "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"": {
             "pkg:deb/debian/symfony": 1
         },
+        "\"https://packagist.org/packages/symfony/http-client\":\"symfony/http-client\"": {
+            "pkg:deb/debian/symfony": 1
+        },
         "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"": {
             "pkg:deb/debian/symfony": 1
         },
@@ -29003,6 +29180,9 @@
             "pkg:deb/debian/perl": 1,
             "pkg:deb/debian/podlators-perl": 1
         },
+        "pkg:gem/activestorage": {
+            "pkg:deb/debian/rails": 1
+        },
         "pkg:gem/commonmarker": {
             "pkg:deb/debian/ruby-commonmarker": 1
         },
@@ -29254,6 +29434,9 @@
         },
         "pkg:github/icculus/smpeg": {
             "pkg:deb/debian/smpeg": 2
+        },
+        "pkg:github/irontec/sngrep": {
+            "pkg:deb/debian/sngrep": 2
         },
         "pkg:github/jellyfin/jellyfin": {
             "pkg:deb/debian/jellyfin-server": 3

@@ -1931,6 +1931,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/borgbackup2": {
+        "VendorProductIDs": [
+            "\"borgbackup\":\"borg\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/botan": {
         "VendorProductIDs": [
             "\"botan_project\":\"botan\"",
@@ -9775,8 +9783,6 @@
     },
     "pkg:deb/debian/gst-plugins-bad1.0": {
         "VendorProductIDs": [
-            "\"gstreamer project\":\"gst-plugins-bad\"",
-            "\"gstreamer project\":\"gst-plugins-base\"",
             "\"gstreamer\":\"gstreamer\"",
             "\"gstreamer_project\":\"gstreamer\"",
             "\"n/a\":\"gstreamer\""
@@ -9800,8 +9806,6 @@
     },
     "pkg:deb/debian/gst-plugins-base1.0": {
         "VendorProductIDs": [
-            "\"gstreamer project\":\"gst-plugins-bad\"",
-            "\"gstreamer project\":\"gst-plugins-base\"",
             "\"gstreamer\":\"gstreamer\"",
             "\"n/a\":\"gstreamer\""
         ],
@@ -11030,6 +11034,14 @@
         "PackageURLs": [
             "pkg:github/esnet/iperf"
         ]
+    },
+    "pkg:deb/debian/ipfixcol2": {
+        "VendorProductIDs": [
+            "\"cesnet\":\"ipfixcol2\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
     },
     "pkg:deb/debian/ipfs": {
         "VendorProductIDs": [
@@ -18788,6 +18800,7 @@
     },
     "pkg:deb/debian/musl": {
         "VendorProductIDs": [
+            "\"musl -libc\":\"musl\"",
             "\"musl\":\"libc\"",
             "\"musl-libc\":\"musl\"",
             "\"n/a\":\"musl libc\""
@@ -24922,15 +24935,36 @@
             "\"siemens\":\"ax4\"",
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"",
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"",
+            "\"siemens\":\"building x\"",
+            "\"siemens\":\"call stations\"",
             "\"siemens\":\"capital\"",
+            "\"siemens\":\"chargesight\"",
+            "\"siemens\":\"climatix cloud ic\"",
+            "\"siemens\":\"climatix devices\"",
+            "\"siemens\":\"connect insights\"",
+            "\"siemens\":\"connect x200\"",
+            "\"siemens\":\"connect x300\"",
+            "\"siemens\":\"connect x500\"",
+            "\"siemens\":\"crsp\"",
+            "\"siemens\":\"depotfinity\"",
             "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"designcenter x\"",
             "\"siemens\":\"designcenter\"",
             "\"siemens\":\"dfmexpress\"",
             "\"siemens\":\"energy engage v2.0sp9\"",
             "\"siemens\":\"energy engage v3.1sp1\"",
+            "\"siemens\":\"energy management system\"",
+            "\"siemens\":\"enlighted rtls\"",
+            "\"siemens\":\"enlighted space\"",
+            "\"siemens\":\"heliox flex pro\"",
+            "\"siemens\":\"heliox h60\"",
+            "\"siemens\":\"heliox rapid\"",
             "\"siemens\":\"hyperlynx\"",
             "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"local monitoring bt-monitoring-vm\"",
+            "\"siemens\":\"navigator e\u0026s\"",
+            "\"siemens\":\"novigo vansys core\"",
+            "\"siemens\":\"novigo vansys\"",
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
@@ -24943,6 +24977,7 @@
             "\"siemens\":\"opcenter quality\"",
             "\"siemens\":\"opcenter rdnl\"",
             "\"siemens\":\"opcenter x\"",
+            "\"siemens\":\"pace-design\"",
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional - xcr\"",
@@ -24952,9 +24987,23 @@
             "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"polarion\"",
             "\"siemens\":\"quadview\"",
+            "\"siemens\":\"sicharge d configuration backend\"",
+            "\"siemens\":\"sicharge d\"",
+            "\"siemens\":\"sicharge flex\"",
+            "\"siemens\":\"sicharge uc\"",
+            "\"siemens\":\"sifinity control\"",
+            "\"siemens\":\"sifinity go\"",
+            "\"siemens\":\"sifinity setup\"",
             "\"siemens\":\"simcenter flomaster\"",
             "\"siemens\":\"simcenter flux\"",
             "\"siemens\":\"simcenter simlab\"",
+            "\"siemens\":\"sinteso fs20 en\"",
+            "\"siemens\":\"sipass integrated\"",
+            "\"siemens\":\"siport\"",
+            "\"siemens\":\"siveillance control pro\"",
+            "\"siemens\":\"siveillance control\"",
+            "\"siemens\":\"siveillance intrusion\"",
+            "\"siemens\":\"siveillance video\"",
             "\"siemens\":\"solid edge\"",
             "\"siemens\":\"spectrum power 3\"",
             "\"siemens\":\"spectrum power 4\"",
@@ -24965,6 +25014,11 @@
             "\"siemens\":\"tecnomatix plant simulation\"",
             "\"siemens\":\"testway\"",
             "\"siemens\":\"valor npi\"",
+            "\"siemens\":\"verischarge\"",
+            "\"siemens\":\"versicloudheliox dual port 60kw\"",
+            "\"siemens\":\"voice alarm panels\"",
+            "\"siemens\":\"voice alarm systems and audio matrices\"",
+            "\"siemens\":\"workplace experience\"",
             "\"siemens\":\"xcargo\"",
             "\"siemens\":\"xpedition designer\"",
             "\"siemens\":\"xpedition enterprise xcr\"",
@@ -24991,15 +25045,36 @@
             "\"siemens\":\"ax4\"",
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"",
             "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"",
+            "\"siemens\":\"building x\"",
+            "\"siemens\":\"call stations\"",
             "\"siemens\":\"capital\"",
+            "\"siemens\":\"chargesight\"",
+            "\"siemens\":\"climatix cloud ic\"",
+            "\"siemens\":\"climatix devices\"",
+            "\"siemens\":\"connect insights\"",
+            "\"siemens\":\"connect x200\"",
+            "\"siemens\":\"connect x300\"",
+            "\"siemens\":\"connect x500\"",
+            "\"siemens\":\"crsp\"",
+            "\"siemens\":\"depotfinity\"",
             "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"designcenter x\"",
             "\"siemens\":\"designcenter\"",
             "\"siemens\":\"dfmexpress\"",
             "\"siemens\":\"energy engage v2.0sp9\"",
             "\"siemens\":\"energy engage v3.1sp1\"",
+            "\"siemens\":\"energy management system\"",
+            "\"siemens\":\"enlighted rtls\"",
+            "\"siemens\":\"enlighted space\"",
+            "\"siemens\":\"heliox flex pro\"",
+            "\"siemens\":\"heliox h60\"",
+            "\"siemens\":\"heliox rapid\"",
             "\"siemens\":\"hyperlynx\"",
             "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"local monitoring bt-monitoring-vm\"",
+            "\"siemens\":\"navigator e\u0026s\"",
+            "\"siemens\":\"novigo vansys core\"",
+            "\"siemens\":\"novigo vansys\"",
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
@@ -25012,6 +25087,7 @@
             "\"siemens\":\"opcenter quality\"",
             "\"siemens\":\"opcenter rdnl\"",
             "\"siemens\":\"opcenter x\"",
+            "\"siemens\":\"pace-design\"",
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional - xcr\"",
@@ -25021,9 +25097,23 @@
             "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"polarion\"",
             "\"siemens\":\"quadview\"",
+            "\"siemens\":\"sicharge d configuration backend\"",
+            "\"siemens\":\"sicharge d\"",
+            "\"siemens\":\"sicharge flex\"",
+            "\"siemens\":\"sicharge uc\"",
+            "\"siemens\":\"sifinity control\"",
+            "\"siemens\":\"sifinity go\"",
+            "\"siemens\":\"sifinity setup\"",
             "\"siemens\":\"simcenter flomaster\"",
             "\"siemens\":\"simcenter flux\"",
             "\"siemens\":\"simcenter simlab\"",
+            "\"siemens\":\"sinteso fs20 en\"",
+            "\"siemens\":\"sipass integrated\"",
+            "\"siemens\":\"siport\"",
+            "\"siemens\":\"siveillance control pro\"",
+            "\"siemens\":\"siveillance control\"",
+            "\"siemens\":\"siveillance intrusion\"",
+            "\"siemens\":\"siveillance video\"",
             "\"siemens\":\"solid edge\"",
             "\"siemens\":\"spectrum power 3\"",
             "\"siemens\":\"spectrum power 4\"",
@@ -25034,6 +25124,11 @@
             "\"siemens\":\"tecnomatix plant simulation\"",
             "\"siemens\":\"testway\"",
             "\"siemens\":\"valor npi\"",
+            "\"siemens\":\"verischarge\"",
+            "\"siemens\":\"versicloudheliox dual port 60kw\"",
+            "\"siemens\":\"voice alarm panels\"",
+            "\"siemens\":\"voice alarm systems and audio matrices\"",
+            "\"siemens\":\"workplace experience\"",
             "\"siemens\":\"xcargo\"",
             "\"siemens\":\"xpedition designer\"",
             "\"siemens\":\"xpedition enterprise xcr\"",
@@ -26929,6 +27024,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/python-laspy": {
+        "VendorProductIDs": [
+            "\"n/a\":\"laspy\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:laspy:laspy:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/python-ldap": {
         "VendorProductIDs": [
             "\"python-ldap\":\"python-ldap\""
@@ -28348,17 +28453,21 @@
             "\"rails\":\"https://github.com/rails/rails\"",
             "\"rails\":\"rails\"",
             "\"rails\":\"rails-ujs\"",
+            "\"rubyonrails\":\"active storage\"",
             "\"rubyonrails\":\"rails\"",
             "\"rubyonrails\":\"ruby_on_rails\"",
             "\"unspecified\":\"ruby on rails\""
         ],
         "CPEs": [
             "cpe:2.3:a:rails:rails:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:rubyonrails:active_storage:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:rubyonrails:rails:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:rubyonrails:ruby_on_rails:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:gem/activestorage"
+        ]
     },
     "pkg:deb/debian/rake": {
         "VendorProductIDs": [
@@ -28706,6 +28815,16 @@
         ],
         "CPEs": [
             "cpe:2.3:a:jrburke:requirejs:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/resiprocate": {
+        "VendorProductIDs": [
+            "\"resiprocate\":\"resiprocate\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:resiprocate:resiprocate:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -31842,7 +31961,9 @@
             "cpe:2.3:a:irontec:sngrep:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/irontec/sngrep"
+        ]
     },
     "pkg:deb/debian/snipe-it": {
         "VendorProductIDs": [
@@ -32581,6 +32702,7 @@
         ],
         "PackageIDs": [
             "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"",
+            "\"https://packagist.org/packages/symfony/http-client\":\"symfony/http-client\"",
             "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"",
             "\"https://packagist.org/packages/symfony/routing\":\"symfony/routing\"",
             "\"https://packagist.org/packages/symfony/security-http\":\"symfony/security-http\"",
@@ -35009,6 +35131,14 @@
     "pkg:deb/debian/wlc": {
         "VendorProductIDs": [
             "\"weblateorg\":\"wlc\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/wlroots": {
+        "VendorProductIDs": [
+            "\"wlroots\":\"wlroots\""
         ],
         "CPEs": null,
         "PackageIDs": null,
