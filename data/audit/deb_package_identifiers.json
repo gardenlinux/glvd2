@@ -34290,13 +34290,17 @@
     },
     "pkg:deb/debian/usermin": {
         "VendorProductIDs": [
-            "\"usermin\":\"usermin\""
+            "\"usermin\":\"usermin\"",
+            "\"webmin\":\"usermin\""
         ],
         "CPEs": [
-            "cpe:2.3:a:usermin:usermin:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:usermin:usermin:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/webmin/usermin"
+        ]
     },
     "pkg:deb/debian/util-linux": {
         "VendorProductIDs": [

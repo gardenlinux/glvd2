@@ -1163,7 +1163,7 @@
             "pkg:deb/debian/sqlparse": 8
         },
         "\"angular\":\"angular\"": {
-            "pkg:deb/debian/angular.js": 34
+            "pkg:deb/debian/angular.js": 35
         },
         "\"angular\":\"devtools\"": {
             "pkg:deb/debian/angular.js": 1
@@ -6036,7 +6036,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 22
+            "pkg:deb/debian/gpac": 24
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -8401,7 +8401,7 @@
             "pkg:deb/debian/mariadb-10.6": 4
         },
         "\"mariadb\":\"server\"": {
-            "pkg:deb/debian/mariadb": 25,
+            "pkg:deb/debian/mariadb": 26,
             "pkg:deb/debian/mariadb-connector-c": 1
         },
         "\"mariadb-corporation\":\"mariadb-connector-j\"": {
@@ -18707,6 +18707,7 @@
             "pkg:deb/debian/wlc": 5
         },
         "\"webmin\":\"usermin\"": {
+            "pkg:deb/debian/usermin": 3,
             "pkg:deb/debian/webmin": 2
         },
         "\"webmin\":\"webmin\"": {
@@ -20766,7 +20767,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 75
+            "pkg:deb/debian/gpac": 77
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -22725,7 +22726,7 @@
             "pkg:deb/debian/jboss-xnio": 1,
             "pkg:deb/debian/node-serialize-javascript": 1,
             "pkg:deb/debian/plexus-utils2": 2,
-            "pkg:deb/debian/undertow": 5
+            "pkg:deb/debian/undertow": 6
         },
         "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdb": 1,
@@ -23397,6 +23398,7 @@
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/usermin": 3,
             "pkg:deb/debian/webmin": 1
         },
         "cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*": {
@@ -24360,7 +24362,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 130
+            "pkg:deb/debian/keycloak": 131
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -26883,7 +26885,7 @@
             "pkg:deb/debian/libapache2-mod-cluster": 1
         },
         "\"https://github.com/moodle/moodle\":\"moodle\"": {
-            "pkg:deb/debian/moodle": 22
+            "pkg:deb/debian/moodle": 23
         },
         "\"https://github.com/moodle/moodle/\":\"moodle\"": {
             "pkg:deb/debian/moodle": 9
@@ -29878,6 +29880,9 @@
         },
         "pkg:github/wb2osz/direwolf": {
             "pkg:deb/debian/direwolf": 2
+        },
+        "pkg:github/webmin/usermin": {
+            "pkg:deb/debian/usermin": 3
         },
         "pkg:github/wekan/wekan": {
             "pkg:deb/debian/wekan": 12
