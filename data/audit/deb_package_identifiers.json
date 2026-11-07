@@ -699,12 +699,14 @@
     },
     "pkg:deb/debian/ansible-core": {
         "VendorProductIDs": [
-            "\"n/a\":\"ansible\""
+            "\"n/a\":\"ansible\"",
+            "\"red hat\":\"ansible-core\""
         ],
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"ansible-core\"",
             "\"https://github.com/ansible/ansible\":\"ansible-core\"",
+            "\"https://pypi.org/project/ansible-core/\":\"ansible-core\"",
             "\"https://www.ansible.com/\":\"ansible\""
         ],
         "PackageURLs": null
@@ -2097,8 +2099,11 @@
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"dataxess configurator\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"gridscale x dsa\"",
+            "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
             "\"siemens\":\"heliox flex pro\"",
             "\"siemens\":\"sicharge flex\"",
@@ -4076,6 +4081,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/dnf5": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnf5\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/dnscrypt-proxy": {
         "VendorProductIDs": [
             "\"dnscrypt\":\"dnscrypt-proxy\""
@@ -4588,6 +4601,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/ebook-speaker": {
+        "VendorProductIDs": [
+            "\"book-readers\":\"ebook-speaker\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/book-readers/ebook-speaker"
+        ]
+    },
     "pkg:deb/debian/ecdsautils": {
         "VendorProductIDs": [
             "\"freifunk-gluon\":\"ecdsautils\""
@@ -4642,6 +4665,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/edfbrowser": {
+        "VendorProductIDs": [
+            "\"teunis van beelen\":\"edfbrowser\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:gitlab/teuniz/edfbrowser"
+        ]
+    },
     "pkg:deb/debian/editorconfig-core": {
         "VendorProductIDs": [
             "\"editorconfig\":\"editorconfig c core\"",
@@ -4661,6 +4694,7 @@
             "\"american megatrends incorporated (ami)\":\"bios\"",
             "\"canonical ltd.\":\"ubuntu edk ii\"",
             "\"extensible firmware interface development kit (edk ii)\":\"extensible firmware interface development kit (edk ii)\"",
+            "\"google\":\"brotli\"",
             "\"n/a\":\"edk ii\"",
             "\"n/a\":\"extensible firmware interface development kit (edk ii)\"",
             "\"n/a\":\"intel bios\"",
@@ -4668,6 +4702,23 @@
             "\"n/a\":\"tianocore\"",
             "\"openssl\":\"openssl\"",
             "\"phoenix technologies ltd.\":\"sct3\"",
+            "\"siemens\":\"cloud connector configurator\"",
+            "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
+            "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
+            "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"dataxess configurator\"",
+            "\"siemens\":\"edge opc ua server configurator\"",
+            "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"gridscale x dsa\"",
+            "\"siemens\":\"gridscale x pss®e\"",
+            "\"siemens\":\"heliox dual port 60kw\"",
+            "\"siemens\":\"heliox flex pro\"",
+            "\"siemens\":\"sicharge flex\"",
+            "\"siemens\":\"sicharge uc\"",
+            "\"siemens\":\"sifinity go\"",
+            "\"siemens\":\"sifinity setup\"",
+            "\"siemens\":\"versicharge ac series\"",
+            "\"siemens\":\"versicloud\"",
             "\"tianocore\":\"edk ii\"",
             "\"tianocore\":\"edk2\"",
             "\"ubuntu\":\"edk2\""
@@ -5778,6 +5829,16 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/FluidSynth/fluidsynth"
+        ]
+    },
+    "pkg:deb/debian/fluxbox": {
+        "VendorProductIDs": [
+            "\"fluxbox\":\"fluxbox\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/fluxbox/fluxbox"
         ]
     },
     "pkg:deb/debian/flvmeta": {
@@ -10753,7 +10814,8 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"ImageMagick\""
         ],
         "PackageURLs": [
-            "pkg:github/ImageMagick/ImageMagick"
+            "pkg:github/ImageMagick/ImageMagick",
+            "pkg:github/imagemagick/imagemagick"
         ]
     },
     "pkg:deb/debian/imlib2": {
@@ -12400,9 +12462,6 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak/keycloak-policy-enforcer\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"rh-sso7-keycloak\"",
             "\"https://bitbucket.org/b_c/jose4j/src/master/\":\"keycloak-core\"",
-            "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-container\"",
-            "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-operator-bundle-container\"",
-            "\"https://catalog.redhat.com/software/containers/\":\"keycloak-rhel9-operator-container\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak-core\"",
             "\"https://github.com/keycloak/keycloak\":\"keycloak-ldap-federation\"",
@@ -12618,6 +12677,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/kore": {
+        "VendorProductIDs": [
+            "\"jorisvink\":\"kore\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/jorisvink/kore"
+        ]
     },
     "pkg:deb/debian/krb5": {
         "VendorProductIDs": [
@@ -15083,6 +15152,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libnxml": {
+        "VendorProductIDs": [
+            "\"bakulf\":\"libnxml\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/bakulf/libnxml"
+        ]
+    },
     "pkg:deb/debian/liboauth2": {
         "VendorProductIDs": [
             "\"openidc\":\"liboauth2\""
@@ -15399,9 +15478,7 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"LibRaw\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libraw1394\""
         ],
-        "PackageURLs": [
-            "pkg:github/LibRaw/LibRaw"
-        ]
+        "PackageURLs": null
     },
     "pkg:deb/debian/libre": {
         "VendorProductIDs": [
@@ -16186,6 +16263,16 @@
             "\"https://gitlab.com/libvirt/libvirt\":\"libvirt\"",
             "\"https://gitlab.com/libvirt/libvirt/\":\"libvirt\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/libvmdk": {
+        "VendorProductIDs": [
+            "\"libyal\":\"libvmdk\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:libyal:libvmdk:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/libvmime": {
@@ -19802,6 +19889,7 @@
     },
     "pkg:deb/debian/nnn": {
         "VendorProductIDs": [
+            "\"jarun\":\"nnn\"",
             "\"nnn\":\"nnn\""
         ],
         "CPEs": null,
@@ -21527,8 +21615,11 @@
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"dataxess configurator\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"gridscale x dsa\"",
+            "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
             "\"siemens\":\"heliox flex pro\"",
             "\"siemens\":\"sicharge flex\"",
@@ -26684,8 +26775,11 @@
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"data flow monitoring\"",
+            "\"siemens\":\"dataxess configurator\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
+            "\"siemens\":\"gridscale x dsa\"",
+            "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
             "\"siemens\":\"heliox flex pro\"",
             "\"siemens\":\"sicharge flex\"",
@@ -32762,12 +32856,15 @@
             "cpe:2.3:a:symphony_php_framework:symphony_process:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://packagist.org/packages/symfony/config\":\"symfony/config\"",
             "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"",
             "\"https://packagist.org/packages/symfony/html-sanitizer\":\"symfony/html-sanitizer\"",
             "\"https://packagist.org/packages/symfony/http-client\":\"symfony/http-client\"",
             "\"https://packagist.org/packages/symfony/http-foundation\":\"symfony/http-foundation\"",
             "\"https://packagist.org/packages/symfony/routing\":\"symfony/routing\"",
             "\"https://packagist.org/packages/symfony/security-http\":\"symfony/security-http\"",
+            "\"https://packagist.org/packages/symfony/serializer\":\"symfony/serializer\"",
+            "\"https://packagist.org/packages/symfony/validator\":\"symfony/validator\"",
             "\"https://packagist.org/packages/symfony/yaml\":\"symfony/yaml\""
         ],
         "PackageURLs": null
@@ -35396,7 +35493,6 @@
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.wss4j:wss4j-ws-security-stax\""
         ],
         "PackageURLs": [
-            "pkg:/maven/org.apache.wss4j/wss4j-ws-security-dom",
             "pkg:maven/org.apache.wss4j/wss4j-ws-security-common",
             "pkg:maven/org.apache.wss4j/wss4j-ws-security-dom",
             "pkg:maven/org.apache.wss4j/wss4j-ws-security-policy-stax",
@@ -36140,6 +36236,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/zbar": {
+        "VendorProductIDs": [
+            "\"mchehab\":\"zbar\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/mchehab/zbar"
+        ]
     },
     "pkg:deb/debian/zchunk": {
         "VendorProductIDs": [
