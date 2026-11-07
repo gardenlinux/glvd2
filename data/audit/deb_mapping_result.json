@@ -1279,6 +1279,9 @@
         "\"apache software foundation\":\"apache arrow\"": {
             "pkg:deb/debian/apache-arrow": 3
         },
+        "\"apache software foundation\":\"apache axis 1.x (eol)\"": {
+            "pkg:deb/debian/axis": 1
+        },
         "\"apache software foundation\":\"apache axis\"": {
             "pkg:deb/debian/axis": 3
         },
@@ -2902,6 +2905,9 @@
         "\"checkmk\":\"nagvis\"": {
             "pkg:deb/debian/check-mk": 2,
             "pkg:deb/debian/nagvis": 2
+        },
+        "\"checkpoint-restore\":\"criu\"": {
+            "pkg:deb/debian/criu": 1
         },
         "\"cherokee webserver\":\"latest cherokee web server\"": {
             "pkg:deb/debian/cherokee": 1
@@ -19598,7 +19604,7 @@
             "pkg:deb/debian/apache2": 1
         },
         "cpe:2.3:a:apache:axis:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/axis": 1
+            "pkg:deb/debian/axis": 2
         },
         "cpe:2.3:a:apache:brpc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/brpc": 1
@@ -28217,6 +28223,9 @@
         "\"https://repo.hex.pm\":\"tesla\"": {
             "pkg:deb/debian/elixir-tesla": 5
         },
+        "\"https://repo.maven.apache.org/maven2\":\"axis:axis\"": {
+            "pkg:deb/debian/axis": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"com.fasterxml.jackson.core:jackson-core\"": {
             "pkg:deb/debian/jackson-core": 3
         },
@@ -28290,6 +28299,9 @@
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.ant:ant\"": {
             "pkg:deb/debian/ant": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.axis:axis\"": {
+            "pkg:deb/debian/axis": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.axis:axis-rt-core\"": {
             "pkg:deb/debian/axis": 1
@@ -29988,6 +30000,9 @@
         "pkg:hex/tesla": {
             "pkg:deb/debian/elixir-tesla": 5
         },
+        "pkg:maven/axis/axis": {
+            "pkg:deb/debian/axis": 1
+        },
         "pkg:maven/com.github.luben/zstd-jni": {
             "pkg:deb/debian/zstd-jni-java": 8
         },
@@ -30029,6 +30044,9 @@
         },
         "pkg:maven/org.apache.activemq/apache-activemq": {
             "pkg:deb/debian/activemq": 3
+        },
+        "pkg:maven/org.apache.axis/axis": {
+            "pkg:deb/debian/axis": 1
         },
         "pkg:maven/org.apache.bcel/bcel": {
             "pkg:deb/debian/bcel": 2

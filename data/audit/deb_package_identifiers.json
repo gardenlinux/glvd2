@@ -1427,6 +1427,7 @@
     },
     "pkg:deb/debian/axis": {
         "VendorProductIDs": [
+            "\"apache software foundation\":\"apache axis 1.x (eol)\"",
             "\"apache software foundation\":\"apache axis\"",
             "\"apache\":\"apache axis 1.4\"",
             "\"apache\":\"axis\""
@@ -1435,9 +1436,14 @@
             "cpe:2.3:a:apache:axis:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"axis:axis\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.axis:axis\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.axis:axis-rt-core\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/axis/axis",
+            "pkg:maven/org.apache.axis/axis"
+        ]
     },
     "pkg:deb/debian/ayttm": {
         "VendorProductIDs": [
@@ -3444,7 +3450,9 @@
         "PackageURLs": null
     },
     "pkg:deb/debian/criu": {
-        "VendorProductIDs": null,
+        "VendorProductIDs": [
+            "\"checkpoint-restore\":\"criu\""
+        ],
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"criu\""
