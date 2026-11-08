@@ -30859,7 +30859,10 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cargo/hickory-net",
+            "pkg:cargo/hickory-proto"
+        ]
     },
     "pkg:deb/debian/rust-hickory-recursor": {
         "VendorProductIDs": [
@@ -30873,6 +30876,7 @@
     },
     "pkg:deb/debian/rust-hickory-resolver": {
         "VendorProductIDs": [
+            "\"hickory-dns\":\"hickory-dns\"",
             "\"hickory-dns\":\"hickory-resolver\""
         ],
         "CPEs": null,
@@ -30880,6 +30884,7 @@
             "\"https://crates.io\":\"hickory-resolver\""
         ],
         "PackageURLs": [
+            "pkg:cargo/hickory-recursor",
             "pkg:cargo/hickory-resolver"
         ]
     },
@@ -31145,7 +31150,9 @@
         "PackageIDs": [
             "\"https://github.com/rustls/rustls\":\"rustls\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cargo/rustls"
+        ]
     },
     "pkg:deb/debian/rust-rustls-webpki": {
         "VendorProductIDs": [

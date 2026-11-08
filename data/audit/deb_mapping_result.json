@@ -6556,7 +6556,8 @@
             "pkg:deb/debian/rust-hickory-recursor": 1
         },
         "\"hickory-dns\":\"hickory-dns\"": {
-            "pkg:deb/debian/rust-hickory-proto": 1
+            "pkg:deb/debian/rust-hickory-proto": 3,
+            "pkg:deb/debian/rust-hickory-resolver": 1
         },
         "\"hickory-dns\":\"hickory-resolver\"": {
             "pkg:deb/debian/rust-hickory-resolver": 1
@@ -15845,7 +15846,7 @@
             "pkg:deb/debian/rust-cmov": 1
         },
         "\"rustls\":\"rustls\"": {
-            "pkg:deb/debian/rust-rustls": 1
+            "pkg:deb/debian/rust-rustls": 6
         },
         "\"rustls\":\"webpki\"": {
             "pkg:deb/debian/rust-rustls-webpki": 4
@@ -22933,7 +22934,7 @@
             "pkg:deb/debian/rustc": 2
         },
         "cpe:2.3:a:rustls_project:rustls:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rust-rustls": 1
+            "pkg:deb/debian/rust-rustls": 6
         },
         "cpe:2.3:a:s-lang:s-lang:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/slang2": 2
@@ -29159,17 +29160,27 @@
         "pkg:cargo/gix-worktree-state": {
             "pkg:deb/debian/rust-gix-worktree-state": 1
         },
+        "pkg:cargo/hickory-net": {
+            "pkg:deb/debian/rust-hickory-proto": 1
+        },
+        "pkg:cargo/hickory-proto": {
+            "pkg:deb/debian/rust-hickory-proto": 2
+        },
         "pkg:cargo/hickory-recursor": {
-            "pkg:deb/debian/rust-hickory-recursor": 1
+            "pkg:deb/debian/rust-hickory-recursor": 1,
+            "pkg:deb/debian/rust-hickory-resolver": 1
         },
         "pkg:cargo/hickory-resolver": {
-            "pkg:deb/debian/rust-hickory-resolver": 1
+            "pkg:deb/debian/rust-hickory-resolver": 2
         },
         "pkg:cargo/onefetch": {
             "pkg:deb/debian/onefetch": 1
         },
         "pkg:cargo/procs": {
             "pkg:deb/debian/rust-procs": 1
+        },
+        "pkg:cargo/rustls": {
+            "pkg:deb/debian/rust-rustls": 5
         },
         "pkg:cargo/rustls-webpki": {
             "pkg:deb/debian/rust-rustls-webpki": 4
