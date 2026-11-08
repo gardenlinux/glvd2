@@ -30657,6 +30657,19 @@
             "pkg:cargo/gix-validate"
         ]
     },
+    "pkg:deb/debian/rust-gix-commitgraph": {
+        "VendorProductIDs": [
+            "\"gitoxidelabs\":\"gitoxide\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:gitoxidelabs:gitoxide:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/gitoxide",
+            "pkg:cargo/gix-commitgraph"
+        ]
+    },
     "pkg:deb/debian/rust-gix-credentials": {
         "VendorProductIDs": [
             "\"gitoxidelabs\":\"gitoxide\""
@@ -30853,6 +30866,30 @@
             "pkg:cargo/gix-worktree-state"
         ]
     },
+    "pkg:deb/debian/rust-hickory-dns": {
+        "VendorProductIDs": [
+            "\"hickory-dns\":\"hickory-dns\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/hickory-dns",
+            "pkg:cargo/hickory-proto"
+        ]
+    },
+    "pkg:deb/debian/rust-hickory-net": {
+        "VendorProductIDs": [
+            "\"hickory-dns\":\"hickory-dns\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/hickory-net",
+            "pkg:cargo/hickory-proto",
+            "pkg:cargo/hickory-recursor",
+            "pkg:cargo/hickory-resolver"
+        ]
+    },
     "pkg:deb/debian/rust-hickory-proto": {
         "VendorProductIDs": [
             "\"hickory-dns\":\"hickory-dns\""
@@ -30861,17 +30898,25 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:cargo/hickory-net",
-            "pkg:cargo/hickory-proto"
+            "pkg:cargo/hickory-proto",
+            "pkg:cargo/hickory-recursor",
+            "pkg:cargo/hickory-resolver",
+            "pkg:cargo/hickory-server"
         ]
     },
     "pkg:deb/debian/rust-hickory-recursor": {
         "VendorProductIDs": [
-            "\"hickory project\":\"hickory dns\""
+            "\"hickory project\":\"hickory dns\"",
+            "\"hickory-dns\":\"hickory-dns\""
         ],
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:cargo/hickory-recursor"
+            "pkg:cargo/hickory-net",
+            "pkg:cargo/hickory-proto",
+            "pkg:cargo/hickory-recursor",
+            "pkg:cargo/hickory-resolver",
+            "pkg:cargo/hickory-server"
         ]
     },
     "pkg:deb/debian/rust-hickory-resolver": {
@@ -30884,8 +30929,24 @@
             "\"https://crates.io\":\"hickory-resolver\""
         ],
         "PackageURLs": [
+            "pkg:cargo/hickory-net",
+            "pkg:cargo/hickory-proto",
             "pkg:cargo/hickory-recursor",
-            "pkg:cargo/hickory-resolver"
+            "pkg:cargo/hickory-resolver",
+            "pkg:cargo/hickory-server"
+        ]
+    },
+    "pkg:deb/debian/rust-hickory-server": {
+        "VendorProductIDs": [
+            "\"hickory-dns\":\"hickory-dns\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/hickory-proto",
+            "pkg:cargo/hickory-recursor",
+            "pkg:cargo/hickory-resolver",
+            "pkg:cargo/hickory-server"
         ]
     },
     "pkg:deb/debian/rust-hurl": {
