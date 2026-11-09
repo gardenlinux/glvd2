@@ -14265,10 +14265,12 @@
         "VendorProductIDs": [
             "\"hibernate\":\"hibernate validator\"",
             "\"hibernate\":\"hibernate-validator\"",
+            "\"ibm\":\"hibernate validator\"",
             "\"red hat\":\"a-mq clients 2\"",
             "\"red hat, inc.\":\"hibernate-validator\""
         ],
         "CPEs": [
+            "cpe:2.3:a:ibm:hibernate_validator:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:a_mq_clients:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
@@ -14279,9 +14281,12 @@
     "pkg:deb/debian/libhibernate-validator4-java": {
         "VendorProductIDs": [
             "\"hibernate\":\"hibernate validator\"",
-            "\"hibernate\":\"hibernate-validator\""
+            "\"hibernate\":\"hibernate-validator\"",
+            "\"ibm\":\"hibernate validator\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:ibm:hibernate_validator:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -18243,6 +18248,7 @@
     },
     "pkg:deb/debian/minio": {
         "VendorProductIDs": [
+            "\"chainguard\":\"minio\"",
             "\"minio\":\"console\"",
             "\"minio\":\"minio\"",
             "\"minio\":\"minio-java\"",
@@ -28038,6 +28044,7 @@
         "VendorProductIDs": [
             "\"n/a\":\"pytorch\"",
             "\"pytorch\":\"pytorch\"",
+            "\"pytorch\":\"torchserve\"",
             "\"pytorchlightning\":\"pytorch_lightning\""
         ],
         "CPEs": [

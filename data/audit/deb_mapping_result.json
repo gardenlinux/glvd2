@@ -2876,6 +2876,9 @@
         "\"chaijs\":\"get-func-name\"": {
             "pkg:deb/debian/node-get-func-name": 1
         },
+        "\"chainguard\":\"minio\"": {
+            "pkg:deb/debian/minio": 1
+        },
         "\"chalk\":\"chalk/ansi-regex\"": {
             "pkg:deb/debian/node-ansi-regex": 1
         },
@@ -6715,6 +6718,10 @@
         },
         "\"ibm\":\"aix\"": {
             "pkg:deb/debian/linux": 1
+        },
+        "\"ibm\":\"hibernate validator\"": {
+            "pkg:deb/debian/libhibernate-validator-java": 1,
+            "pkg:deb/debian/libhibernate-validator4-java": 1
         },
         "\"ibm\":\"spectrum fusion hci\"": {
             "pkg:deb/debian/ceph": 1
@@ -14796,6 +14803,9 @@
         "\"pytorch\":\"pytorch\"": {
             "pkg:deb/debian/pytorch": 4
         },
+        "\"pytorch\":\"torchserve\"": {
+            "pkg:deb/debian/pytorch": 1
+        },
         "\"pytorch\":\"vision\"": {
             "pkg:deb/debian/pytorch-vision": 1
         },
@@ -18333,7 +18343,7 @@
             "pkg:deb/debian/linux": 1
         },
         "\"unrealircd\":\"unrealircd\"": {
-            "pkg:deb/debian/unrealircd": 1
+            "pkg:deb/debian/unrealircd": 2
         },
         "\"unshiftio\":\"unshiftio/url-parse\"": {
             "pkg:deb/debian/node-url-parse": 5
@@ -20949,6 +20959,10 @@
         "cpe:2.3:a:i18next:i18next-http-backend:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-i18next-http-backend": 1
         },
+        "cpe:2.3:a:ibm:hibernate_validator:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libhibernate-validator-java": 1,
+            "pkg:deb/debian/libhibernate-validator4-java": 1
+        },
         "cpe:2.3:a:icinga:icinga_web_2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/icinga2": 1
         },
@@ -23333,7 +23347,7 @@
             "pkg:deb/debian/netcdf-parallel": 1
         },
         "cpe:2.3:a:unrealircd:unrealircd:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/unrealircd": 1
+            "pkg:deb/debian/unrealircd": 2
         },
         "cpe:2.3:a:unshield_project:unshield:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/unshield": 1
@@ -24403,7 +24417,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 131
+            "pkg:deb/debian/keycloak": 132
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 2
@@ -24946,7 +24960,7 @@
             "pkg:deb/debian/pipewire": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"podman\"": {
-            "pkg:deb/debian/podman": 7
+            "pkg:deb/debian/podman": 6
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"podman-main\"": {
             "pkg:deb/debian/podman": 1
