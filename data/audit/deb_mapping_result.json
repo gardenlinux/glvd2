@@ -2909,9 +2909,6 @@
             "pkg:deb/debian/check-mk": 2,
             "pkg:deb/debian/nagvis": 2
         },
-        "\"checkpoint-restore\":\"criu\"": {
-            "pkg:deb/debian/criu": 1
-        },
         "\"cherokee webserver\":\"latest cherokee web server\"": {
             "pkg:deb/debian/cherokee": 1
         },
@@ -7112,7 +7109,7 @@
             "pkg:deb/debian/python-zipp": 1
         },
         "\"jarun\":\"nnn\"": {
-            "pkg:deb/debian/nnn": 2
+            "pkg:deb/debian/nnn": 3
         },
         "\"jashkenas\":\"underscore\"": {
             "pkg:deb/debian/underscore": 1

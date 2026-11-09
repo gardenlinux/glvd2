@@ -3452,9 +3452,7 @@
         "PackageURLs": null
     },
     "pkg:deb/debian/criu": {
-        "VendorProductIDs": [
-            "\"checkpoint-restore\":\"criu\""
-        ],
+        "VendorProductIDs": null,
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"criu\""
