@@ -14324,7 +14324,7 @@
             "pkg:deb/debian/postfix": 1
         },
         "\"postfixadmin\":\"postfixadmin\"": {
-            "pkg:deb/debian/postfixadmin": 1
+            "pkg:deb/debian/postfixadmin": 2
         },
         "\"postgis\":\"address_standardizer\"": {
             "pkg:deb/debian/address-standardizer": 1
@@ -18866,6 +18866,9 @@
         "\"wildfly\":\"wildfly\"": {
             "pkg:deb/debian/wildfly": 1
         },
+        "\"willamowius\":\"gnugk\"": {
+            "pkg:deb/debian/gnugk": 2
+        },
         "\"wind river\":\"linux\"": {
             "pkg:deb/debian/h2o": 1,
             "pkg:deb/debian/haproxy": 1,
@@ -22491,6 +22494,9 @@
         },
         "cpe:2.3:a:postfix:postfix:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/postfix": 1
+        },
+        "cpe:2.3:a:postfixadmin_project:postfixadmin:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/postfixadmin": 1
         },
         "cpe:2.3:a:postgis:postgis:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/postgis": 1
@@ -29277,6 +29283,9 @@
         },
         "pkg:composer/phpmyadmin/phpmyadmin": {
             "pkg:deb/debian/phpmyadmin": 7
+        },
+        "pkg:composer/postfixadmin/postfixadmin": {
+            "pkg:deb/debian/postfixadmin": 1
         },
         "pkg:composer/smarty/smarty": {
             "pkg:deb/debian/smarty3": 1,

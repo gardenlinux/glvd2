@@ -7245,6 +7245,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/gnugk": {
+        "VendorProductIDs": [
+            "\"willamowius\":\"gnugk\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/gnumeric": {
         "VendorProductIDs": [
             "\"gnome\":\"gnumeric\""
@@ -25854,9 +25862,13 @@
         "VendorProductIDs": [
             "\"postfixadmin\":\"postfixadmin\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:postfixadmin_project:postfixadmin:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/postfixadmin/postfixadmin"
+        ]
     },
     "pkg:deb/debian/postgis": {
         "VendorProductIDs": [
