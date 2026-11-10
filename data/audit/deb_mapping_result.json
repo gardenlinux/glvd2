@@ -378,7 +378,7 @@
             "pkg:deb/debian/pycares": 1
         },
         "\"aio-libs\":\"aiohttp\"": {
-            "pkg:deb/debian/python-aiohttp": 53
+            "pkg:deb/debian/python-aiohttp": 54
         },
         "\"aio-libs\":\"aiomysql\"": {
             "pkg:deb/debian/aiomysql": 1
@@ -1132,7 +1132,7 @@
             "pkg:deb/debian/python-sh": 1
         },
         "\"ampache\":\"ampache\"": {
-            "pkg:deb/debian/ampache": 15
+            "pkg:deb/debian/ampache": 16
         },
         "\"ampache\":\"ampache/ampache\"": {
             "pkg:deb/debian/ampache": 3
@@ -6188,8 +6188,11 @@
         "\"gstreamer\":\"good plug-ins\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 2
         },
+        "\"gstreamer\":\"gst-plugins-base\"": {
+            "pkg:deb/debian/gst-plugins-base1.0": 1
+        },
         "\"gstreamer\":\"gst-plugins-good\"": {
-            "pkg:deb/debian/gst-plugins-good1.0": 5
+            "pkg:deb/debian/gst-plugins-good1.0": 6
         },
         "\"gstreamer\":\"gstreamer\"": {
             "pkg:deb/debian/gst-plugins-bad0.10": 8,
@@ -14633,7 +14636,7 @@
             "pkg:deb/debian/pylint": 1
         },
         "\"pyload\":\"pyload\"": {
-            "pkg:deb/debian/pyload": 40
+            "pkg:deb/debian/pyload": 44
         },
         "\"pyload\":\"pyload/pyload\"": {
             "pkg:deb/debian/pyload": 9
@@ -14984,7 +14987,7 @@
             "pkg:deb/debian/rabbitmq-server": 77
         },
         "\"rack\":\"rack\"": {
-            "pkg:deb/debian/ruby-rack": 34
+            "pkg:deb/debian/ruby-rack": 38
         },
         "\"rack\":\"rack-contrib\"": {
             "pkg:deb/debian/ruby-rack-contrib": 1
@@ -16172,8 +16175,12 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"capital\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"chargesight\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16210,6 +16217,12 @@
         },
         "\"siemens\":\"comos v10.6\"": {
             "pkg:deb/debian/curl": 1
+        },
+        "\"siemens\":\"comos walkinside\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"connect insights\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16248,8 +16261,12 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"designcenter x essentials\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"designcenter x\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16298,6 +16315,12 @@
             "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/python-brotlicffi": 1
         },
+        "\"siemens\":\"gdap (gproms digital application platform)\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
         "\"siemens\":\"gridscale x dsa\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/edk2": 1,
@@ -16336,12 +16359,26 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"hyperlynx\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"innexis architecture native acceleration 2026\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"insights hub\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"kas\"": {
             "pkg:deb/debian/kas": 3
@@ -16366,72 +16403,132 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"opcenter connect electronics\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter connect mom\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter execution core\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter execution discrete\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter execution foundation\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter execution pharma\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter execution process\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter intelligence\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter intra plant logistics\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter quality\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter rdnl\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"opcenter x\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"pace-design\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"pads pro essentials\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"pads pro student edition\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"pads professional - xcr\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"pads professional\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"pads standard \u0026 standard plus\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16442,12 +16539,38 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"pathway to learning engineering\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"pave360 automotive 2026\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"polarion\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"process preparation x\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"project server web administration tool\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"quadview\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16497,6 +16620,12 @@
             "pkg:deb/debian/php8.4": 2,
             "pkg:deb/debian/python-brotlicffi": 1
         },
+        "\"siemens\":\"simcenter executable digital twin\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
         "\"siemens\":\"simcenter flomaster\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
@@ -16508,6 +16637,12 @@
         "\"siemens\":\"simcenter simlab\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"simcenter studio\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"sinteso fs20 en\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16538,8 +16673,12 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"solid edge\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"spectrum power 3\"": {
             "pkg:deb/debian/php8.2": 1,
@@ -16614,16 +16753,24 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"xpedition designer\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"xpedition enterprise xcr\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"xpedition enterprise\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2
+            "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"xpedition ic packaging\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -17848,7 +17995,7 @@
             "pkg:deb/debian/golang-github-theupdateframework-go-tuf": 5
         },
         "\"theupdateframework\":\"python-tuf\"": {
-            "pkg:deb/debian/python-tuf": 1
+            "pkg:deb/debian/python-tuf": 2
         },
         "\"theupdateframework\":\"tuf\"": {
             "pkg:deb/debian/python-tuf": 1
@@ -18000,7 +18147,7 @@
             "pkg:deb/debian/tinyproxy": 1
         },
         "\"tinyproxy\":\"tinyproxy\"": {
-            "pkg:deb/debian/tinyproxy": 5
+            "pkg:deb/debian/tinyproxy": 6
         },
         "\"tinytag\":\"tinytag\"": {
             "pkg:deb/debian/python-tinytag": 1
@@ -19602,7 +19749,7 @@
             "pkg:deb/debian/amd64-microcode": 1
         },
         "cpe:2.3:a:ampache:ampache:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ampache": 5
+            "pkg:deb/debian/ampache": 6
         },
         "cpe:2.3:a:amphp:http-client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-amphp-http": 1,
@@ -23285,7 +23432,7 @@
             "pkg:deb/debian/tinyproxy": 1
         },
         "cpe:2.3:a:tinyproxy_project:tinyproxy:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/tinyproxy": 3
+            "pkg:deb/debian/tinyproxy": 4
         },
         "cpe:2.3:a:tinyxml2_project:tinyxml2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/tinyxml2": 2
@@ -24809,7 +24956,7 @@
             "pkg:deb/debian/opensc": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openscap\"": {
-            "pkg:deb/debian/openscap": 1
+            "pkg:deb/debian/openscap": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"openssh\"": {
             "pkg:deb/debian/openssh": 9
@@ -27181,6 +27328,12 @@
         },
         "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 5
+        },
+        "\"https://gitlab.freedesktop.org/gstreamer/gstreamer\":\"gst-plugins-base\"": {
+            "pkg:deb/debian/gst-plugins-base1.0": 1
+        },
+        "\"https://gitlab.freedesktop.org/gstreamer/gstreamer\":\"gst-plugins-good\"": {
+            "pkg:deb/debian/gst-plugins-good1.0": 1
         },
         "\"https://gitlab.freedesktop.org/pipewire/pipewire\":\"pipewire\"": {
             "pkg:deb/debian/pipewire": 1
