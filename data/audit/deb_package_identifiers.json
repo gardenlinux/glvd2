@@ -5169,10 +5169,13 @@
             "\"n/a\":\"ettercap\""
         ],
         "CPEs": [
+            "cpe:2.3:a:ettercap-project:ettercap:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ettercap:ettercap:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/Ettercap/ettercap"
+        ]
     },
     "pkg:deb/debian/eucalyptus": {
         "VendorProductIDs": [
@@ -6105,7 +6108,9 @@
         "PackageIDs": [
             "\"https://www.freerdp.com/\":\"freerdp\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/FreeRDP/FreeRDP"
+        ]
     },
     "pkg:deb/debian/freerdp3": {
         "VendorProductIDs": [
@@ -6117,7 +6122,9 @@
         "PackageIDs": [
             "\"https://www.freerdp.com/\":\"freerdp\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/FreeRDP/FreeRDP"
+        ]
     },
     "pkg:deb/debian/freeswan": {
         "VendorProductIDs": [
@@ -6747,6 +6754,7 @@
             "\"artifex\":\"ghostpdl\"",
             "\"artifex\":\"ghostscript\"",
             "\"artifex\":\"ghostxps\"",
+            "\"artifexsoftware\":\"ghostpdl\"",
             "\"ghostscript\":\"ghostscript\"",
             "\"n/a\":\"ghostscript\"",
             "\"red hat\":\"ghostscript\"",
@@ -18944,6 +18952,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/munin": {
+        "VendorProductIDs": [
+            "\"munin-monitoring\":\"munin\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:munin-monitoring:munin:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/mupdf": {
         "VendorProductIDs": [
             "\"artifex software inc. *pymupdf*\":\"mupdf\"",
@@ -24337,7 +24355,9 @@
         "VendorProductIDs": [
             "\"wummel\":\"patool\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:wummel:patool:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/wummel/patool"

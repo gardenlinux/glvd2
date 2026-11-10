@@ -2222,6 +2222,9 @@
         "\"artifex\":\"mupdf\"": {
             "pkg:deb/debian/mupdf": 5
         },
+        "\"artifexsoftware\":\"ghostpdl\"": {
+            "pkg:deb/debian/ghostscript": 1
+        },
         "\"artifexsoftware\":\"mupdf\"": {
             "pkg:deb/debian/mupdf": 1
         },
@@ -4134,7 +4137,7 @@
             "pkg:deb/debian/golang-github-go-ethereum": 3
         },
         "\"ettercap\":\"ettercap\"": {
-            "pkg:deb/debian/ettercap": 1
+            "pkg:deb/debian/ettercap": 8
         },
         "\"eugeny\":\"russh\"": {
             "pkg:deb/debian/rust-russh": 25,
@@ -4545,8 +4548,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 315,
-            "pkg:deb/debian/freerdp3": 254
+            "pkg:deb/debian/freerdp2": 316,
+            "pkg:deb/debian/freerdp3": 255
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -9340,6 +9343,9 @@
         },
         "\"mumble\":\"mumble\"": {
             "pkg:deb/debian/mumble": 1
+        },
+        "\"munin-monitoring\":\"munin\"": {
+            "pkg:deb/debian/munin": 1
         },
         "\"musescore\":\"musescore\"": {
             "pkg:deb/debian/musescore2": 1,
@@ -15610,7 +15616,7 @@
             "pkg:deb/debian/node-rollup": 2
         },
         "\"ronf\":\"asyncssh\"": {
-            "pkg:deb/debian/python-asyncssh": 4
+            "pkg:deb/debian/python-asyncssh": 5
         },
         "\"rordenlab\":\"dcm2niix\"": {
             "pkg:deb/debian/dcm2niix": 1
@@ -17463,7 +17469,7 @@
             "pkg:deb/debian/libjpeg-turbo": 1
         },
         "\"tencent\":\"rapidjson\"": {
-            "pkg:deb/debian/rapidjson": 3
+            "pkg:deb/debian/rapidjson": 4
         },
         "\"tensorflow\":\"keras\"": {
             "pkg:deb/debian/keras": 1
@@ -18953,7 +18959,7 @@
             "pkg:deb/debian/libdbix-class-encodedcolumn-perl": 2
         },
         "\"wummel\":\"patool\"": {
-            "pkg:deb/debian/patool": 1
+            "pkg:deb/debian/patool": 2
         },
         "\"wvware\":\"wv\"": {
             "pkg:deb/debian/wv": 2
@@ -19788,7 +19794,7 @@
             "pkg:deb/debian/ghostscript": 1
         },
         "cpe:2.3:a:artifex:ghostscript:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ghostscript": 15
+            "pkg:deb/debian/ghostscript": 16
         },
         "cpe:2.3:a:artifex:mujs:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mujs": 1
@@ -20327,6 +20333,9 @@
         "cpe:2.3:a:ethereum:go_ethereum:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-github-go-ethereum": 3
         },
+        "cpe:2.3:a:ettercap-project:ettercap:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/ettercap": 7
+        },
         "cpe:2.3:a:ettercap:ettercap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ettercap": 2
         },
@@ -20449,8 +20458,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 172,
-            "pkg:deb/debian/freerdp3": 172
+            "pkg:deb/debian/freerdp2": 173,
+            "pkg:deb/debian/freerdp3": 173
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -21709,6 +21718,9 @@
         },
         "cpe:2.3:a:mtr:mtr:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mtr": 1
+        },
+        "cpe:2.3:a:munin-monitoring:munin:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/munin": 1
         },
         "cpe:2.3:a:musescore:musescore:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/musescore2": 1,
@@ -23197,7 +23209,7 @@
             "pkg:deb/debian/telegram-desktop": 2
         },
         "cpe:2.3:a:tencent:rapidjson:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rapidjson": 2
+            "pkg:deb/debian/rapidjson": 3
         },
         "cpe:2.3:a:tensorflow:tensorflow:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/keras": 1
@@ -23509,6 +23521,9 @@
         },
         "cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/wordpress": 2
+        },
+        "cpe:2.3:a:wummel:patool:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/patool": 1
         },
         "cpe:2.3:a:wxwidgets:wxwidgets:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/wxwidgets3.2": 1
@@ -24429,7 +24444,7 @@
             "pkg:deb/debian/keycloak": 132
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
-            "pkg:deb/debian/krb5": 6
+            "pkg:deb/debian/krb5": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"kronosnet\"": {
             "pkg:deb/debian/kronosnet": 3
@@ -25492,7 +25507,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-server\"": {
-            "pkg:deb/debian/wildfly": 3
+            "pkg:deb/debian/wildfly": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-subsystem-test-framework\"": {
             "pkg:deb/debian/wildfly": 1
@@ -25933,7 +25948,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-server\"": {
-            "pkg:deb/debian/wildfly": 3
+            "pkg:deb/debian/wildfly": 4
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-service\"": {
             "pkg:deb/debian/wildfly": 1
@@ -29490,11 +29505,18 @@
         "pkg:github/Dolibarr/dolibarr": {
             "pkg:deb/debian/dolibarr": 1
         },
+        "pkg:github/Ettercap/ettercap": {
+            "pkg:deb/debian/ettercap": 7
+        },
         "pkg:github/FFmpeg/FFmpeg": {
             "pkg:deb/debian/ffmpeg": 12
         },
         "pkg:github/FluidSynth/fluidsynth": {
             "pkg:deb/debian/fluidsynth": 1
+        },
+        "pkg:github/FreeRDP/FreeRDP": {
+            "pkg:deb/debian/freerdp2": 1,
+            "pkg:deb/debian/freerdp3": 1
         },
         "pkg:github/GNUAspell/aspell": {
             "pkg:deb/debian/aspell": 1
