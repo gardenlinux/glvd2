@@ -1,10 +1,9 @@
-package version_test
+package glrd_test
 
 import (
 	"testing"
 
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -15,32 +14,32 @@ func TestMakeGardenLinuxReleaseFromString_Valid(t *testing.T) {
 	tests := []struct {
 		name string
 		in   string
-		want version.GardenLinuxRelease
+		want glrd.GardenLinuxRelease
 	}{
 		{
 			name: "legacy two-part",
 			in:   "1.2",
-			want: version.GardenLinuxRelease{Name: "1.2", Major: 1, Minor: 2, Patch: 0, SemVer: false},
+			want: glrd.GardenLinuxRelease{Name: "1.2", Major: 1, Minor: 2, Patch: 0, SemVer: false},
 		},
 		{
 			name: "legacy just below threshold",
 			in:   "2016.0",
-			want: version.GardenLinuxRelease{Name: "2016.0", Major: 2016, Minor: 0, Patch: 0, SemVer: false},
+			want: glrd.GardenLinuxRelease{Name: "2016.0", Major: 2016, Minor: 0, Patch: 0, SemVer: false},
 		},
 		{
 			name: "legacy minor greater than zero",
 			in:   "1877.14",
-			want: version.GardenLinuxRelease{Name: "1877.14", Major: 1877, Minor: 14, Patch: 0, SemVer: false},
+			want: glrd.GardenLinuxRelease{Name: "1877.14", Major: 1877, Minor: 14, Patch: 0, SemVer: false},
 		},
 		{
 			name: "semver at threshold",
 			in:   "2017.0.0",
-			want: version.GardenLinuxRelease{Name: "2017.0.0", Major: 2017, Minor: 0, Patch: 0, SemVer: true},
+			want: glrd.GardenLinuxRelease{Name: "2017.0.0", Major: 2017, Minor: 0, Patch: 0, SemVer: true},
 		},
 		{
 			name: "semver all non-zero parts",
 			in:   "2150.1.2",
-			want: version.GardenLinuxRelease{Name: "2150.1.2", Major: 2150, Minor: 1, Patch: 2, SemVer: true},
+			want: glrd.GardenLinuxRelease{Name: "2150.1.2", Major: 2150, Minor: 1, Patch: 2, SemVer: true},
 		},
 	}
 
@@ -48,7 +47,7 @@ func TestMakeGardenLinuxReleaseFromString_Valid(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			got, err := version.MakeGardenLinuxReleaseFromString(tt.in)
+			got, err := glrd.MakeGardenLinuxReleaseFromString(tt.in)
 			require.NoError(t, err)
 			assert.Equal(t, tt.want, got)
 			// Format is derived from SemVer, so the round-trip must reproduce the input.
@@ -111,7 +110,7 @@ func TestMakeGardenLinuxReleaseFromString_Errors(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			_, err := version.MakeGardenLinuxReleaseFromString(tt.in)
+			_, err := glrd.MakeGardenLinuxReleaseFromString(tt.in)
 			require.Error(t, err)
 			if tt.wantMsg != "" {
 				assert.Equal(t, tt.wantMsg, err.Error())
@@ -126,37 +125,37 @@ func TestMakeGardenLinuxRelease(t *testing.T) {
 	tests := []struct {
 		name string
 		in   glrd.Version
-		want version.GardenLinuxRelease
+		want glrd.GardenLinuxRelease
 	}{
 		{
 			name: "legacy two-part",
 			in:   glrd.Version{Major: 1877, Minor: 0},
-			want: version.GardenLinuxRelease{Name: "1877.0", Major: 1877, Minor: 0, Patch: 0, SemVer: false},
+			want: glrd.GardenLinuxRelease{Name: "1877.0", Major: 1877, Minor: 0, Patch: 0, SemVer: false},
 		},
 		{
 			name: "legacy two-part (minor > 0)",
 			in:   glrd.Version{Major: 1877, Minor: 4},
-			want: version.GardenLinuxRelease{Name: "1877.4", Major: 1877, Minor: 4, Patch: 0, SemVer: false},
+			want: glrd.GardenLinuxRelease{Name: "1877.4", Major: 1877, Minor: 4, Patch: 0, SemVer: false},
 		},
 		{
 			name: "legacy just below threshold",
-			in:   glrd.Version{Major: version.SemverMajorThreshold - 1, Minor: 0},
-			want: version.GardenLinuxRelease{Name: "2016.0", Major: 2016, Minor: 0, Patch: 0, SemVer: false},
+			in:   glrd.Version{Major: glrd.SemverMajorThreshold - 1, Minor: 0},
+			want: glrd.GardenLinuxRelease{Name: "2016.0", Major: 2016, Minor: 0, Patch: 0, SemVer: false},
 		},
 		{
 			name: "semver at threshold",
-			in:   glrd.Version{Major: version.SemverMajorThreshold, Minor: 0, Patch: 0},
-			want: version.GardenLinuxRelease{Name: "2017.0.0", Major: 2017, Minor: 0, Patch: 0, SemVer: true},
+			in:   glrd.Version{Major: glrd.SemverMajorThreshold, Minor: 0, Patch: 0},
+			want: glrd.GardenLinuxRelease{Name: "2017.0.0", Major: 2017, Minor: 0, Patch: 0, SemVer: true},
 		},
 		{
 			name: "semver minor and patch zero",
 			in:   glrd.Version{Major: 2150, Minor: 0, Patch: 0},
-			want: version.GardenLinuxRelease{Name: "2150.0.0", Major: 2150, Minor: 0, Patch: 0, SemVer: true},
+			want: glrd.GardenLinuxRelease{Name: "2150.0.0", Major: 2150, Minor: 0, Patch: 0, SemVer: true},
 		},
 		{
 			name: "semver all non-zero parts",
 			in:   glrd.Version{Major: 2150, Minor: 8, Patch: 1},
-			want: version.GardenLinuxRelease{Name: "2150.8.1", Major: 2150, Minor: 8, Patch: 1, SemVer: true},
+			want: glrd.GardenLinuxRelease{Name: "2150.8.1", Major: 2150, Minor: 8, Patch: 1, SemVer: true},
 		},
 	}
 
@@ -164,7 +163,7 @@ func TestMakeGardenLinuxRelease(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			assert.Equal(t, tt.want, version.MakeGardenLinuxRelease(tt.in))
+			assert.Equal(t, tt.want, glrd.MakeGardenLinuxRelease(tt.in))
 		})
 	}
 }
@@ -174,17 +173,17 @@ func TestFormat(t *testing.T) {
 
 	tests := []struct {
 		name string
-		in   version.GardenLinuxRelease
+		in   glrd.GardenLinuxRelease
 		want string
 	}{
 		{
 			name: "semver uses three parts",
-			in:   version.GardenLinuxRelease{Major: 2150, Minor: 1, Patch: 2, SemVer: true},
+			in:   glrd.GardenLinuxRelease{Major: 2150, Minor: 1, Patch: 2, SemVer: true},
 			want: "2150.1.2",
 		},
 		{
 			name: "legacy uses two parts",
-			in:   version.GardenLinuxRelease{Major: 1877, Minor: 14, Patch: 0, SemVer: false},
+			in:   glrd.GardenLinuxRelease{Major: 1877, Minor: 14, Patch: 0, SemVer: false},
 			want: "1877.14",
 		},
 	}

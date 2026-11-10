@@ -114,7 +114,7 @@ func TestFeed_IncompleteReleaseCallsMissingSBOMSetWithoutFetching(t *testing.T) 
 	fetchCalled := false
 	locate := func(_ glrd.Release, flavor string) (*url.URL, error) {
 		if flavor == "no-sbom" {
-			return nil, glrd.ErrNoSBOM
+			return nil, packages.ErrNoSBOM
 		}
 
 		return &url.URL{Scheme: "https", Host: "example", Path: "/" + flavor}, nil

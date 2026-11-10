@@ -13,7 +13,7 @@ import (
 	"strings"
 
 	"github.com/gardenlinux/glvd2/internal/debian"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/version"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/gardenlinux/glvd2/internal/whttp"
 	"github.com/git-pkgs/vers"
@@ -111,17 +111,17 @@ type PackageFile struct {
 }
 
 type InRelease struct {
-	Codename      version.GardenLinuxRelease // aka Version, Release, Suite
+	Codename      glrd.GardenLinuxRelease // aka Version, Release, Suite
 	Components    []Component
 	Architectures []Architecture
 	PackageFiles  []PackageFile
 }
 
-func BuildPackageURL(release version.GardenLinuxRelease, packageFile PackageFile) string {
+func BuildPackageURL(release glrd.GardenLinuxRelease, packageFile PackageFile) string {
 	return fmt.Sprintf(glPackageURL, release.Name, packageFile.PackagePath)
 }
 
-func getInReleaseFile(ctx context.Context, release version.GardenLinuxRelease) (string, error) {
+func getInReleaseFile(ctx context.Context, release glrd.GardenLinuxRelease) (string, error) {
 	client := whttp.NewClient()
 
 	inreleaseURL := fmt.Sprintf(glInreleaseURL, release.Name)
@@ -152,7 +152,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	// Codename
 	match = codenameRegex.FindStringSubmatch(content)
 	if match != nil {
-		glr, err := version.MakeGardenLinuxReleaseFromString(match[1])
+		glr, err := glrd.MakeGardenLinuxReleaseFromString(match[1])
 		if err != nil {
 			return result, err
 		}
@@ -204,7 +204,7 @@ func ParseInReleaseFile(content string) (InRelease, error) {
 	return result, nil
 }
 
-func GetPackageListsFromInRelease(ctx context.Context, release version.GardenLinuxRelease) ([]Package, error) {
+func GetPackageListsFromInRelease(ctx context.Context, release glrd.GardenLinuxRelease) ([]Package, error) {
 	content, err := getInReleaseFile(ctx, release)
 	if err != nil {
 		return nil, err
@@ -279,7 +279,7 @@ func higherDebVersion(a, b string) bool {
 
 func GetPackageList(
 	ctx context.Context,
-	release version.GardenLinuxRelease,
+	release glrd.GardenLinuxRelease,
 	packageFile PackageFile,
 ) ([]Package, error) {
 	url := BuildPackageURL(release, packageFile)
@@ -397,7 +397,7 @@ func validatePackage(pkg *Package) error {
 		return fmt.Errorf("package %q is missing an Architecture field", pkg.Name)
 	}
 
-	// An explicit source version appears only when it differs from the binary version.
+	// An explicit source version appears only when it differs from the binary glrd.
 	// Absent means by definition that they are equal.
 	if pkg.SourceVersion == "" {
 		pkg.SourceVersion = pkg.Version
