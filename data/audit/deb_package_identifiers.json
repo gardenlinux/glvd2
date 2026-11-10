@@ -312,6 +312,7 @@
             "\"apache software foundation\":\"apache airflow mysql provider\"",
             "\"apache software foundation\":\"apache airflow providers fab\"",
             "\"apache software foundation\":\"apache airflow providers smtp\"",
+            "\"apache software foundation\":\"apache airflow task sdk\"",
             "\"apache software foundation\":\"apache airflow\"",
             "\"apache\":\"airflow\"",
             "\"n/a\":\"apache airflow\""
@@ -325,12 +326,14 @@
             "\"https://pypi.python.org\":\"apache-airflow-core\"",
             "\"https://pypi.python.org\":\"apache-airflow-providers-cncf-kubernetes\"",
             "\"https://pypi.python.org\":\"apache-airflow-providers-smtp\"",
+            "\"https://pypi.python.org\":\"apache-airflow-task-sdk\"",
             "\"https://pypi.python.org\":\"apache-airflow\u003e 3.0.0, \u003c 3.1.1\"",
             "\"https://pypi.python.org/\":\"apache-airflow\""
         ],
         "PackageURLs": [
             "pkg:pypi/apache-airflow",
-            "pkg:pypi/apache-airflow-core"
+            "pkg:pypi/apache-airflow-core",
+            "pkg:pypi/apache-airflow-task-sdk"
         ]
     },
     "pkg:deb/debian/airsane": {
@@ -10483,6 +10486,15 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/hnswlib": {
+        "VendorProductIDs": [
+            "\"hnswlib\":\"hnswlib\"",
+            "\"spotify\":\"voyager\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/homeassistant": {
         "VendorProductIDs": [
             "\"home-assistant\":\"core\"",
@@ -18555,7 +18567,6 @@
             "\"mongodb inc\":\"mongodb server\"",
             "\"mongodb inc.\":\"mongodb server\"",
             "\"mongodb inc.\":\"server\"",
-            "\"mongodb\":\"atlas sql odbc driver\"",
             "\"mongodb\":\"bi connector odbc driver\"",
             "\"mongodb\":\"mongo-c-driver\"",
             "\"mongodb\":\"mongodb driver\"",

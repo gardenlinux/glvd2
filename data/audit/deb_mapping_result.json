@@ -1267,8 +1267,11 @@
         "\"apache software foundation\":\"apache airflow providers smtp\"": {
             "pkg:deb/debian/airflow": 1
         },
+        "\"apache software foundation\":\"apache airflow task sdk\"": {
+            "pkg:deb/debian/airflow": 1
+        },
         "\"apache software foundation\":\"apache airflow\"": {
-            "pkg:deb/debian/airflow": 146
+            "pkg:deb/debian/airflow": 163
         },
         "\"apache software foundation\":\"apache ant\"": {
             "pkg:deb/debian/ant": 3
@@ -2664,7 +2667,7 @@
             "pkg:deb/debian/symfony": 1
         },
         "\"cacti\":\"cacti\"": {
-            "pkg:deb/debian/cacti": 68
+            "pkg:deb/debian/cacti": 67
         },
         "\"caddyserver\":\"caddy\"": {
             "pkg:deb/debian/caddy": 17
@@ -6585,6 +6588,9 @@
         "\"hmbrand\":\"text::csv_xs\"": {
             "pkg:deb/debian/libtext-csv-xs-perl": 1
         },
+        "\"hnswlib\":\"hnswlib\"": {
+            "pkg:deb/debian/hnswlib": 1
+        },
         "\"hoene\":\"hoene/libmysofa\"": {
             "pkg:deb/debian/libmysofa": 1
         },
@@ -9105,9 +9111,6 @@
         "\"mongodb inc.\":\"server\"": {
             "pkg:deb/debian/mongodb": 1
         },
-        "\"mongodb\":\"atlas sql odbc driver\"": {
-            "pkg:deb/debian/mongodb": 1
-        },
         "\"mongodb\":\"bi connector odbc driver\"": {
             "pkg:deb/debian/mongodb": 1
         },
@@ -9115,7 +9118,7 @@
             "pkg:deb/debian/libbson-xs-perl": 1
         },
         "\"mongodb\":\"c driver\"": {
-            "pkg:deb/debian/mongo-c-driver": 18
+            "pkg:deb/debian/mongo-c-driver": 19
         },
         "\"mongodb\":\"c++ driver\"": {
             "pkg:deb/debian/mongo-cxx-driver": 5
@@ -9172,7 +9175,7 @@
             "pkg:deb/debian/ruby-mongo": 1
         },
         "\"mongodb\":\"schema builder cli\"": {
-            "pkg:deb/debian/mongodb": 2
+            "pkg:deb/debian/mongodb": 1
         },
         "\"mongodb, inc.\":\"c driver\"": {
             "pkg:deb/debian/mongo-c-driver": 1
@@ -9285,7 +9288,7 @@
             "pkg:deb/debian/mpack": 1
         },
         "\"mpdavis\":\"python-jose\"": {
-            "pkg:deb/debian/python-jose": 1
+            "pkg:deb/debian/python-jose": 2
         },
         "\"mpv-player\":\"mpv\"": {
             "pkg:deb/debian/mpv": 1
@@ -13005,7 +13008,7 @@
             "pkg:deb/debian/ruby-octokit": 1
         },
         "\"octoprint\":\"octoprint\"": {
-            "pkg:deb/debian/octoprint": 14
+            "pkg:deb/debian/octoprint": 15
         },
         "\"octoprint\":\"octoprint/octoprint\"": {
             "pkg:deb/debian/octoprint": 8
@@ -13858,8 +13861,8 @@
             "pkg:deb/debian/modsecurity-crs": 4
         },
         "\"owasp-modsecurity\":\"modsecurity\"": {
-            "pkg:deb/debian/modsecurity": 9,
-            "pkg:deb/debian/modsecurity-apache": 6
+            "pkg:deb/debian/modsecurity": 12,
+            "pkg:deb/debian/modsecurity-apache": 8
         },
         "\"owncloud\":\"owncloud 10\"": {
             "pkg:deb/debian/owncloud": 1
@@ -14685,11 +14688,11 @@
             "pkg:deb/debian/pypy3": 60,
             "pkg:deb/debian/python2.7": 47,
             "pkg:deb/debian/python3.10": 3,
-            "pkg:deb/debian/python3.11": 77,
+            "pkg:deb/debian/python3.11": 78,
             "pkg:deb/debian/python3.12": 26,
-            "pkg:deb/debian/python3.13": 72,
-            "pkg:deb/debian/python3.14": 52,
-            "pkg:deb/debian/python3.15": 12,
+            "pkg:deb/debian/python3.13": 73,
+            "pkg:deb/debian/python3.14": 53,
+            "pkg:deb/debian/python3.15": 13,
             "pkg:deb/debian/python3.7": 7,
             "pkg:deb/debian/python3.9": 69
         },
@@ -16922,6 +16925,9 @@
         "\"sporkmonger\":\"addressable\"": {
             "pkg:deb/debian/ruby-addressable": 2
         },
+        "\"spotify\":\"voyager\"": {
+            "pkg:deb/debian/hnswlib": 1
+        },
         "\"spotipy-dev\":\"spotipy\"": {
             "pkg:deb/debian/spotipy": 3
         },
@@ -17842,7 +17848,7 @@
             "pkg:deb/debian/python-tuf": 1
         },
         "\"thorvg\":\"thorvg\"": {
-            "pkg:deb/debian/thorvg": 2
+            "pkg:deb/debian/thorvg": 3
         },
         "\"threerings\":\"openvpn-auth-ldap\"": {
             "pkg:deb/debian/openvpn-auth-ldap": 1
@@ -22578,7 +22584,7 @@
             "pkg:deb/debian/pypdf2": 1
         },
         "cpe:2.3:a:python-jose_project:python-jose:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/python-jose": 3
+            "pkg:deb/debian/python-jose": 4
         },
         "cpe:2.3:a:python-markdown2_project:python-markdown2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/python-markdown": 1,
@@ -23907,7 +23913,7 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ansible-core\"": {
             "pkg:deb/debian/ansible": 8,
-            "pkg:deb/debian/ansible-core": 10
+            "pkg:deb/debian/ansible-core": 11
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"aom\"": {
             "pkg:deb/debian/aom": 4
@@ -24423,7 +24429,7 @@
             "pkg:deb/debian/keycloak": 132
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
-            "pkg:deb/debian/krb5": 2
+            "pkg:deb/debian/krb5": 6
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"kronosnet\"": {
             "pkg:deb/debian/kronosnet": 3
@@ -28202,15 +28208,18 @@
             "pkg:deb/debian/starlette": 1
         },
         "\"https://pypi.python.org\":\"apache-airflow\"": {
-            "pkg:deb/debian/airflow": 55
+            "pkg:deb/debian/airflow": 61
         },
         "\"https://pypi.python.org\":\"apache-airflow-core\"": {
-            "pkg:deb/debian/airflow": 66
+            "pkg:deb/debian/airflow": 83
         },
         "\"https://pypi.python.org\":\"apache-airflow-providers-cncf-kubernetes\"": {
             "pkg:deb/debian/airflow": 1
         },
         "\"https://pypi.python.org\":\"apache-airflow-providers-smtp\"": {
+            "pkg:deb/debian/airflow": 1
+        },
+        "\"https://pypi.python.org\":\"apache-airflow-task-sdk\"": {
             "pkg:deb/debian/airflow": 1
         },
         "\"https://pypi.python.org\":\"apache-airflow\u003e 3.0.0, \u003c 3.1.1\"": {
@@ -30681,10 +30690,13 @@
             "pkg:deb/debian/python-ansi2html": 1
         },
         "pkg:pypi/apache-airflow": {
-            "pkg:deb/debian/airflow": 33
+            "pkg:deb/debian/airflow": 39
         },
         "pkg:pypi/apache-airflow-core": {
-            "pkg:deb/debian/airflow": 66
+            "pkg:deb/debian/airflow": 83
+        },
+        "pkg:pypi/apache-airflow-task-sdk": {
+            "pkg:deb/debian/airflow": 1
         },
         "pkg:pypi/biopython": {
             "pkg:deb/debian/python-biopython": 1
@@ -30756,7 +30768,7 @@
             "pkg:deb/debian/pytest": 1
         },
         "pkg:pypi/python-jose": {
-            "pkg:deb/debian/python-jose": 1
+            "pkg:deb/debian/python-jose": 2
         },
         "pkg:pypi/sqlparse": {
             "pkg:deb/debian/sqlparse": 1
