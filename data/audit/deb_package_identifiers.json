@@ -6919,6 +6919,7 @@
             "\"microsoft\":\"microsoft visual studio 2019\""
         ],
         "CPEs": [
+            "cpe:2.3:a:git-scm:git:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:git:git:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
@@ -7088,21 +7089,18 @@
     },
     "pkg:deb/debian/gleam": {
         "VendorProductIDs": [
-            "\"gleam\":\"gleam\"",
-            "\"gleam-lang\":\"gleam\""
+            "\"gleam\":\"gleam\""
         ],
         "CPEs": [
             "cpe:2.3:a:gleam-lang:gleam:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://ghcr.io\":\"gleam-lang/gleam\"",
-            "\"https://github.com\":\"gleam-lang/gleam\"",
-            "\"https://gleam.run\":\"gleam.run/gleam\""
+            "\"https://github.com\":\"gleam-lang/gleam\""
         ],
         "PackageURLs": [
             "pkg:github/gleam-lang/gleam",
-            "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang",
-            "pkg:oci/gleam?repository_url=ghcr.io/gleam-lang",
+            "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang%2Fgleam",
             "pkg:software-id/gleam.run/gleam"
         ]
     },
@@ -7803,6 +7801,7 @@
             "\"go toolchain\":\"cmd/cgo\"",
             "\"go toolchain\":\"cmd/compile\"",
             "\"go toolchain\":\"cmd/go\"",
+            "\"go toolchain\":\"cmd/link\"",
             "\"go_build_constraint\":\"go_standard_library\"",
             "\"go_standard_library\":\"encoding\\\\/gob\"",
             "\"go_standard_library\":\"net\\\\/http\"",
@@ -7832,6 +7831,7 @@
             "\"https://pkg.go.dev\":\"cmd/cgo\"",
             "\"https://pkg.go.dev\":\"cmd/compile\"",
             "\"https://pkg.go.dev\":\"cmd/go\"",
+            "\"https://pkg.go.dev\":\"cmd/link\"",
             "\"https://pkg.go.dev\":\"compress/gzip\"",
             "\"https://pkg.go.dev\":\"crypto/internal/nistec\"",
             "\"https://pkg.go.dev\":\"crypto/tls\"",
@@ -8118,6 +8118,7 @@
             "\"go toolchain\":\"cmd/cgo\"",
             "\"go toolchain\":\"cmd/compile\"",
             "\"go toolchain\":\"cmd/go\"",
+            "\"go toolchain\":\"cmd/link\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
             "\"golang.org/x/net\":\"golang.org/x/net/http/httpproxy\"",
@@ -8131,6 +8132,7 @@
             "\"https://pkg.go.dev\":\"cmd/cgo\"",
             "\"https://pkg.go.dev\":\"cmd/compile\"",
             "\"https://pkg.go.dev\":\"cmd/go\"",
+            "\"https://pkg.go.dev\":\"cmd/link\"",
             "\"https://pkg.go.dev\":\"crypto/internal/nistec\"",
             "\"https://pkg.go.dev\":\"crypto/tls\"",
             "\"https://pkg.go.dev\":\"crypto/x509\"",
@@ -8243,8 +8245,10 @@
             "\"go standard library\":\"net/textproto\"",
             "\"go standard library\":\"net/url\"",
             "\"go standard library\":\"os\"",
+            "\"go toolchain\":\"cmd/cgo\"",
             "\"go toolchain\":\"cmd/compile\"",
             "\"go toolchain\":\"cmd/go\"",
+            "\"go toolchain\":\"cmd/link\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
             "\"golang.org/x/net\":\"golang.org/x/net/http2\""
@@ -8252,8 +8256,10 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://pkg.go.dev\":\"archive/tar\"",
+            "\"https://pkg.go.dev\":\"cmd/cgo\"",
             "\"https://pkg.go.dev\":\"cmd/compile\"",
             "\"https://pkg.go.dev\":\"cmd/go\"",
+            "\"https://pkg.go.dev\":\"cmd/link\"",
             "\"https://pkg.go.dev\":\"crypto/tls\"",
             "\"https://pkg.go.dev\":\"crypto/x509\"",
             "\"https://pkg.go.dev\":\"encoding/asn1\"",
@@ -8292,14 +8298,20 @@
             "\"go standard library\":\"net/textproto\"",
             "\"go standard library\":\"net/url\"",
             "\"go standard library\":\"os\"",
+            "\"go toolchain\":\"cmd/cgo\"",
+            "\"go toolchain\":\"cmd/compile\"",
             "\"go toolchain\":\"cmd/go\"",
+            "\"go toolchain\":\"cmd/link\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb\"",
             "\"golang.org/x/mod\":\"golang.org/x/mod/sumdb/tlog\"",
             "\"golang.org/x/net\":\"golang.org/x/net/http2\""
         ],
         "CPEs": null,
         "PackageIDs": [
+            "\"https://pkg.go.dev\":\"cmd/cgo\"",
+            "\"https://pkg.go.dev\":\"cmd/compile\"",
             "\"https://pkg.go.dev\":\"cmd/go\"",
+            "\"https://pkg.go.dev\":\"cmd/link\"",
             "\"https://pkg.go.dev\":\"crypto/tls\"",
             "\"https://pkg.go.dev\":\"crypto/x509\"",
             "\"https://pkg.go.dev\":\"encoding/asn1\"",
@@ -9988,16 +10000,13 @@
     },
     "pkg:deb/debian/gst-plugins-base1.0": {
         "VendorProductIDs": [
-            "\"gstreamer\":\"gst-plugins-base\"",
             "\"gstreamer\":\"gstreamer\"",
             "\"n/a\":\"gstreamer\""
         ],
         "CPEs": [
             "cpe:2.3:a:gstreamer:gstreamer:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": [
-            "\"https://gitlab.freedesktop.org/gstreamer/gstreamer\":\"gst-plugins-base\""
-        ],
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/gst-plugins-good0.10": {
@@ -10024,8 +10033,7 @@
             "cpe:2.3:a:gstreamer:gstreamer:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\"",
-            "\"https://gitlab.freedesktop.org/gstreamer/gstreamer\":\"gst-plugins-good\""
+            "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\""
         ],
         "PackageURLs": null
     },

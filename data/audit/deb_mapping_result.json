@@ -13,8 +13,8 @@
             "pkg:deb/debian/3proxy": 1
         },
         "\"7-zip\":\"7-zip\"": {
-            "pkg:deb/debian/7zip": 13,
-            "pkg:deb/debian/p7zip": 13
+            "pkg:deb/debian/7zip": 14,
+            "pkg:deb/debian/p7zip": 14
         },
         "\"7-zip\":\"7zip\"": {
             "pkg:deb/debian/7zip": 2,
@@ -414,7 +414,7 @@
             "pkg:deb/debian/node-ajv": 1
         },
         "\"alanxz\":\"rabbitmq-c\"": {
-            "pkg:deb/debian/librabbitmq": 2
+            "pkg:deb/debian/librabbitmq": 4
         },
         "\"albfan\":\"miraclecast\"": {
             "pkg:deb/debian/miraclecast": 1
@@ -3580,7 +3580,7 @@
         },
         "\"digitalbazaar\":\"forge\"": {
             "pkg:deb/debian/-node-node-forge": 2,
-            "pkg:deb/debian/node-node-forge": 23
+            "pkg:deb/debian/node-node-forge": 28
         },
         "\"digitaldruid\":\"hoteldruid\"": {
             "pkg:deb/debian/hoteldruid": 1
@@ -4731,7 +4731,7 @@
             "pkg:deb/debian/golang-github-gin-contrib-cors": 1
         },
         "\"git\":\"git\"": {
-            "pkg:deb/debian/git": 24
+            "pkg:deb/debian/git": 25
         },
         "\"git-annex\":\"git-annex\"": {
             "pkg:deb/debian/git-annex": 1
@@ -4924,10 +4924,7 @@
             "pkg:deb/debian/glpi": 1
         },
         "\"gleam\":\"gleam\"": {
-            "pkg:deb/debian/gleam": 5
-        },
-        "\"gleam-lang\":\"gleam\"": {
-            "pkg:deb/debian/gleam": 1
+            "pkg:deb/debian/gleam": 6
         },
         "\"glib\":\"glib\"": {
             "pkg:deb/debian/glib2.0": 2
@@ -5465,15 +5462,15 @@
             "pkg:deb/debian/golang-1.15": 16,
             "pkg:deb/debian/golang-1.17": 2,
             "pkg:deb/debian/golang-1.18": 4,
-            "pkg:deb/debian/golang-1.19": 24,
+            "pkg:deb/debian/golang-1.19": 25,
             "pkg:deb/debian/golang-1.20": 3,
             "pkg:deb/debian/golang-1.21": 4,
             "pkg:deb/debian/golang-1.22": 4,
             "pkg:deb/debian/golang-1.23": 5,
-            "pkg:deb/debian/golang-1.24": 14,
+            "pkg:deb/debian/golang-1.24": 15,
             "pkg:deb/debian/golang-1.25": 11,
-            "pkg:deb/debian/golang-1.26": 9,
-            "pkg:deb/debian/golang-1.27": 9,
+            "pkg:deb/debian/golang-1.26": 10,
+            "pkg:deb/debian/golang-1.27": 10,
             "pkg:deb/debian/golang-golang-x-net": 10,
             "pkg:deb/debian/golang-golang-x-net-dev": 1
         },
@@ -5614,34 +5611,43 @@
         "\"go toolchain\":\"cmd/cgo\"": {
             "pkg:deb/debian/golang-1.11": 2,
             "pkg:deb/debian/golang-1.15": 3,
-            "pkg:deb/debian/golang-1.19": 2,
+            "pkg:deb/debian/golang-1.19": 3,
             "pkg:deb/debian/golang-1.20": 1,
-            "pkg:deb/debian/golang-1.24": 1,
+            "pkg:deb/debian/golang-1.24": 2,
             "pkg:deb/debian/golang-1.25": 1,
+            "pkg:deb/debian/golang-1.26": 1,
+            "pkg:deb/debian/golang-1.27": 1,
             "pkg:deb/debian/golang-1.7": 1,
             "pkg:deb/debian/golang-1.8": 1
         },
         "\"go toolchain\":\"cmd/compile\"": {
             "pkg:deb/debian/golang-1.15": 2,
-            "pkg:deb/debian/golang-1.19": 2,
-            "pkg:deb/debian/golang-1.24": 2,
+            "pkg:deb/debian/golang-1.19": 5,
+            "pkg:deb/debian/golang-1.24": 5,
             "pkg:deb/debian/golang-1.25": 2,
-            "pkg:deb/debian/golang-1.26": 2
+            "pkg:deb/debian/golang-1.26": 5,
+            "pkg:deb/debian/golang-1.27": 3
         },
         "\"go toolchain\":\"cmd/go\"": {
             "pkg:deb/debian/golang-1.11": 8,
             "pkg:deb/debian/golang-1.15": 18,
-            "pkg:deb/debian/golang-1.19": 18,
+            "pkg:deb/debian/golang-1.19": 27,
             "pkg:deb/debian/golang-1.20": 5,
             "pkg:deb/debian/golang-1.21": 5,
             "pkg:deb/debian/golang-1.22": 1,
             "pkg:deb/debian/golang-1.23": 1,
-            "pkg:deb/debian/golang-1.24": 13,
+            "pkg:deb/debian/golang-1.24": 22,
             "pkg:deb/debian/golang-1.25": 10,
-            "pkg:deb/debian/golang-1.26": 8,
-            "pkg:deb/debian/golang-1.27": 4,
+            "pkg:deb/debian/golang-1.26": 17,
+            "pkg:deb/debian/golang-1.27": 13,
             "pkg:deb/debian/golang-1.7": 2,
             "pkg:deb/debian/golang-1.8": 2
+        },
+        "\"go toolchain\":\"cmd/link\"": {
+            "pkg:deb/debian/golang-1.19": 3,
+            "pkg:deb/debian/golang-1.24": 3,
+            "pkg:deb/debian/golang-1.26": 3,
+            "pkg:deb/debian/golang-1.27": 3
         },
         "\"go\":\"ssh library\"": {
             "pkg:deb/debian/golang-go.crypto": 1
@@ -6188,11 +6194,8 @@
         "\"gstreamer\":\"good plug-ins\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 2
         },
-        "\"gstreamer\":\"gst-plugins-base\"": {
-            "pkg:deb/debian/gst-plugins-base1.0": 1
-        },
         "\"gstreamer\":\"gst-plugins-good\"": {
-            "pkg:deb/debian/gst-plugins-good1.0": 6
+            "pkg:deb/debian/gst-plugins-good1.0": 5
         },
         "\"gstreamer\":\"gstreamer\"": {
             "pkg:deb/debian/gst-plugins-bad0.10": 8,
@@ -8219,7 +8222,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18238,
+            "pkg:deb/debian/linux": 18242,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -13386,7 +13389,7 @@
         "\"openssl\":\"openssl\"": {
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/libtomcrypt": 1,
-            "pkg:deb/debian/openssl": 141,
+            "pkg:deb/debian/openssl": 146,
             "pkg:deb/debian/openssl1.0": 30
         },
         "\"openstack foundation\":\"openstack-cinder\"": {
@@ -19582,8 +19585,8 @@
             "pkg:deb/debian/3proxy": 1
         },
         "cpe:2.3:a:7-zip:7-zip:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/7zip": 6,
-            "pkg:deb/debian/p7zip": 6
+            "pkg:deb/debian/7zip": 7,
+            "pkg:deb/debian/p7zip": 7
         },
         "cpe:2.3:a:7-zip:7zip:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/7zip": 2,
@@ -20691,6 +20694,9 @@
         },
         "cpe:2.3:a:git-ecosystem:git-credential-manager:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/git-credential-manager": 1
+        },
+        "cpe:2.3:a:git-scm:git:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/git": 1
         },
         "cpe:2.3:a:git:git:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/git": 6
@@ -23997,7 +24003,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18230
+            "pkg:deb/debian/linux": 18234
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -26649,7 +26655,7 @@
             "pkg:deb/debian/libweb-api-perl": 1
         },
         "\"https://cpan.org/modules\":\"Web-Simple\"": {
-            "pkg:deb/debian/libweb-simple-perl": 2
+            "pkg:deb/debian/libweb-simple-perl": 3
         },
         "\"https://cpan.org/modules\":\"XML-Bare\"": {
             "pkg:deb/debian/libxml-bare-perl": 2
@@ -27329,12 +27335,6 @@
         "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 5
         },
-        "\"https://gitlab.freedesktop.org/gstreamer/gstreamer\":\"gst-plugins-base\"": {
-            "pkg:deb/debian/gst-plugins-base1.0": 1
-        },
-        "\"https://gitlab.freedesktop.org/gstreamer/gstreamer\":\"gst-plugins-good\"": {
-            "pkg:deb/debian/gst-plugins-good1.0": 1
-        },
         "\"https://gitlab.freedesktop.org/pipewire/pipewire\":\"pipewire\"": {
             "pkg:deb/debian/pipewire": 1
         },
@@ -27470,9 +27470,6 @@
         "\"https://gitlab.gnome.org/GNOME/yelp/\":\"yelp\"": {
             "pkg:deb/debian/yelp": 1,
             "pkg:deb/debian/yelp-xsl": 1
-        },
-        "\"https://gleam.run\":\"gleam.run/gleam\"": {
-            "pkg:deb/debian/gleam": 1
         },
         "\"https://gnutls.org/download.html\":\"gnutls\"": {
             "pkg:deb/debian/gnutls28": 1
@@ -27777,34 +27774,43 @@
         "\"https://pkg.go.dev\":\"cmd/cgo\"": {
             "pkg:deb/debian/golang-1.11": 2,
             "pkg:deb/debian/golang-1.15": 3,
-            "pkg:deb/debian/golang-1.19": 2,
+            "pkg:deb/debian/golang-1.19": 3,
             "pkg:deb/debian/golang-1.20": 1,
-            "pkg:deb/debian/golang-1.24": 1,
+            "pkg:deb/debian/golang-1.24": 2,
             "pkg:deb/debian/golang-1.25": 1,
+            "pkg:deb/debian/golang-1.26": 1,
+            "pkg:deb/debian/golang-1.27": 1,
             "pkg:deb/debian/golang-1.7": 1,
             "pkg:deb/debian/golang-1.8": 1
         },
         "\"https://pkg.go.dev\":\"cmd/compile\"": {
             "pkg:deb/debian/golang-1.15": 2,
-            "pkg:deb/debian/golang-1.19": 2,
-            "pkg:deb/debian/golang-1.24": 2,
+            "pkg:deb/debian/golang-1.19": 5,
+            "pkg:deb/debian/golang-1.24": 5,
             "pkg:deb/debian/golang-1.25": 2,
-            "pkg:deb/debian/golang-1.26": 2
+            "pkg:deb/debian/golang-1.26": 5,
+            "pkg:deb/debian/golang-1.27": 3
         },
         "\"https://pkg.go.dev\":\"cmd/go\"": {
             "pkg:deb/debian/golang-1.11": 8,
             "pkg:deb/debian/golang-1.15": 18,
-            "pkg:deb/debian/golang-1.19": 18,
+            "pkg:deb/debian/golang-1.19": 27,
             "pkg:deb/debian/golang-1.20": 5,
             "pkg:deb/debian/golang-1.21": 5,
             "pkg:deb/debian/golang-1.22": 1,
             "pkg:deb/debian/golang-1.23": 1,
-            "pkg:deb/debian/golang-1.24": 13,
+            "pkg:deb/debian/golang-1.24": 22,
             "pkg:deb/debian/golang-1.25": 10,
-            "pkg:deb/debian/golang-1.26": 8,
-            "pkg:deb/debian/golang-1.27": 4,
+            "pkg:deb/debian/golang-1.26": 17,
+            "pkg:deb/debian/golang-1.27": 13,
             "pkg:deb/debian/golang-1.7": 2,
             "pkg:deb/debian/golang-1.8": 2
+        },
+        "\"https://pkg.go.dev\":\"cmd/link\"": {
+            "pkg:deb/debian/golang-1.19": 3,
+            "pkg:deb/debian/golang-1.24": 3,
+            "pkg:deb/debian/golang-1.26": 3,
+            "pkg:deb/debian/golang-1.27": 3
         },
         "\"https://pkg.go.dev\":\"compress/gzip\"": {
             "pkg:deb/debian/golang-1.11": 1,
@@ -28184,15 +28190,15 @@
             "pkg:deb/debian/golang-1.15": 16,
             "pkg:deb/debian/golang-1.17": 2,
             "pkg:deb/debian/golang-1.18": 4,
-            "pkg:deb/debian/golang-1.19": 24,
+            "pkg:deb/debian/golang-1.19": 25,
             "pkg:deb/debian/golang-1.20": 3,
             "pkg:deb/debian/golang-1.21": 4,
             "pkg:deb/debian/golang-1.22": 4,
             "pkg:deb/debian/golang-1.23": 5,
-            "pkg:deb/debian/golang-1.24": 14,
+            "pkg:deb/debian/golang-1.24": 15,
             "pkg:deb/debian/golang-1.25": 11,
-            "pkg:deb/debian/golang-1.26": 9,
-            "pkg:deb/debian/golang-1.27": 9,
+            "pkg:deb/debian/golang-1.26": 10,
+            "pkg:deb/debian/golang-1.27": 10,
             "pkg:deb/debian/golang-golang-x-net": 10,
             "pkg:deb/debian/golang-golang-x-net-dev": 1
         },
@@ -29601,7 +29607,7 @@
             "pkg:deb/debian/liburi-perl": 1
         },
         "pkg:cpan/Web-Simple": {
-            "pkg:deb/debian/libweb-simple-perl": 2
+            "pkg:deb/debian/libweb-simple-perl": 3
         },
         "pkg:cpan/XS-Parse-Keyword": {
             "pkg:deb/debian/libxs-parse-keyword-perl": 1
@@ -30713,11 +30719,8 @@
         "pkg:nuget/log4net": {
             "pkg:deb/debian/log4net": 7
         },
-        "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang": {
-            "pkg:deb/debian/gleam": 1
-        },
-        "pkg:oci/gleam?repository_url=ghcr.io/gleam-lang": {
-            "pkg:deb/debian/gleam": 5
+        "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang%2Fgleam": {
+            "pkg:deb/debian/gleam": 6
         },
         "pkg:opam/cohttp": {
             "pkg:deb/debian/ocaml-cohttp": 1
