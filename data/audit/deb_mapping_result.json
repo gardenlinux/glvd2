@@ -15047,7 +15047,7 @@
             "pkg:deb/debian/ruby-rack": 1
         },
         "\"rails\":\"rails\"": {
-            "pkg:deb/debian/rails": 14
+            "pkg:deb/debian/rails": 33
         },
         "\"rails\":\"rails-html-sanitizer\"": {
             "pkg:deb/debian/ruby-rails-html-sanitizer": 11
@@ -17061,7 +17061,7 @@
             "pkg:deb/debian/nekohtml": 1
         },
         "\"sparklemotion\":\"nokogiri\"": {
-            "pkg:deb/debian/ruby-nokogiri": 19
+            "pkg:deb/debian/ruby-nokogiri": 22
         },
         "\"sparklemotion\":\"sqlite3-ruby\"": {
             "pkg:deb/debian/ruby-sqlite3": 2
