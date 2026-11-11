@@ -4,14 +4,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"net/http"
 	"net/url"
 	"strings"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/debian"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/purl"
-	"github.com/gardenlinux/glvd2/internal/whttp"
 	"github.com/package-url/packageurl-go"
 )
 
@@ -22,44 +21,13 @@ const syftSourceProperty = "syft:metadata:source"
 // errNoComponents is returned when an SBOM contains no components.
 var errNoComponents = errors.New("sbom has no components")
 
-// ErrNoSBOM reports that no CycloneDX SBOM is published for a specific release flavor.
-var ErrNoSBOM = errors.New("no SBOM published for release flavor")
-
-// GetCycloneDx fetches and decodes the CycloneDX SBOM at sbomURL.
-// It returns ErrNoSBOM when no SBOM exists.
-func GetCycloneDx(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error) {
-	var err error
-	var raw string
-	var httpStatus int
-
-	client := whttp.NewClient()
-	raw, httpStatus, err = client.GetString(ctx, sbomURL.String())
-	if httpStatus == http.StatusNotFound {
-		return nil, ErrNoSBOM
-	}
-	if err != nil {
-		return nil, err
-	}
-
-	sbom := new(cdx.BOM)
-	decoder := cdx.NewBOMDecoder(strings.NewReader(raw), cdx.BOMFileFormatJSON)
-	if err = decoder.Decode(sbom); err != nil {
-		return nil, err
-	}
-
-	return sbom, nil
-}
-
 func GetPackageListFromCycloneDx(ctx context.Context, sbomURL *url.URL) ([]Package, error) {
-	var err error
-	var sbom *cdx.BOM
-
-	sbom, err = GetCycloneDx(ctx, sbomURL)
+	bom, err := sbom.FetchCycloneDX(ctx, sbomURL)
 	if err != nil {
 		return nil, err
 	}
 
-	return PackageListFromSBOM(sbom)
+	return PackageListFromSBOM(bom)
 }
 
 // PackageListFromSBOM projects a CycloneDX SBOM to its source-resolved deb packages.

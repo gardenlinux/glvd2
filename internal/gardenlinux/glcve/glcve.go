@@ -16,7 +16,7 @@ const githubReleaseURL = "https://api.github.com/repos/gardenlinux/gardenlinux/r
 
 var cvePatternRegex = regexp.MustCompile(`CVE-\d+-\d+`)
 
-func getReleasePage(ctx context.Context, release glrd.GardenLinuxRelease) (string, error) {
+func getReleasePage(ctx context.Context, releaseVersion string) (string, error) {
 	var err error
 	var client *whttp.HTTPClient
 
@@ -25,7 +25,7 @@ func getReleasePage(ctx context.Context, release glrd.GardenLinuxRelease) (strin
 		return "", err
 	}
 
-	url := fmt.Sprintf(githubReleaseURL, release.Name)
+	url := fmt.Sprintf(githubReleaseURL, releaseVersion)
 	var result string
 	result, _, err = client.GetString(ctx, url)
 	if err != nil {
@@ -72,13 +72,12 @@ func MentionedCVEsCmd() *cobra.Command {
 	return cmd
 }
 
-func GetMentionedCVEs(ctx context.Context, v string) ([]string, error) {
-	vers, err := glrd.MakeGardenLinuxReleaseFromString(v)
-	if err != nil {
+func GetMentionedCVEs(ctx context.Context, rawVersionStr string) ([]string, error) {
+	if err := glrd.ValidateVersion(rawVersionStr); err != nil {
 		return nil, err
 	}
 
-	releasePage, err := getReleasePage(ctx, vers)
+	releasePage, err := getReleasePage(ctx, rawVersionStr)
 	if err != nil {
 		return nil, err
 	}
@@ -101,17 +100,12 @@ func doMentionedCVEsInRelease(ctx context.Context, v string) error {
 	return nil
 }
 
-func doReleasePage(ctx context.Context, v string) error {
-	var err error
-	var vers glrd.GardenLinuxRelease
-
-	vers, err = glrd.MakeGardenLinuxReleaseFromString(v)
-	if err != nil {
+func doReleasePage(ctx context.Context, rawVersionStr string) error {
+	if err := glrd.ValidateVersion(rawVersionStr); err != nil {
 		return err
 	}
 
-	var releasePage string
-	releasePage, err = getReleasePage(ctx, vers)
+	releasePage, err := getReleasePage(ctx, rawVersionStr)
 	if err != nil {
 		return err
 	}

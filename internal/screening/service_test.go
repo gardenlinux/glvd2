@@ -9,7 +9,6 @@ import (
 	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/cvelistv5"
 	"github.com/gardenlinux/glvd2/internal/debsectracker"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/glmap"
@@ -64,13 +63,13 @@ func testInventory(t *testing.T, sources ...string) inventory.Set {
 	acc := inventory.NewAccumulator(
 		inventory.WithMinPURLs(0),
 		inventory.WithInReleaseFetch(
-			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ string) ([]packages.Package, error) {
 				return pkgs, nil
 			},
 		),
 	)
 
-	require.NoError(t, acc.MissingSBOMSet(t.Context(), glrd.Release{Name: "test"}))
+	require.NoError(t, acc.MissingSBOMSet(t.Context(), "test"))
 
 	set, err := acc.Result()
 	require.NoError(t, err)

@@ -10,7 +10,6 @@ import (
 	"slices"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/purl"
@@ -60,7 +59,7 @@ func (s Set) AuditEntries() []string {
 }
 
 // inReleaseFetchFunc fetches and parses the package list from the InRelease file.
-type inReleaseFetchFunc func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error)
+type inReleaseFetchFunc func(ctx context.Context, releaseVersion string) ([]packages.Package, error)
 
 // Accumulator accumulates the inventory through consuming the SBOMs.
 // It implements [sbom.Consumer].
@@ -83,7 +82,7 @@ func WithMinPURLs(n int) Option {
 
 // WithInReleaseFetch overrides InRelease fetching/parsing (for tests).
 func WithInReleaseFetch(
-	f func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error),
+	f func(ctx context.Context, releaseVersion string) ([]packages.Package, error),
 ) Option {
 	return func(a *Accumulator) { a.fetchInRelease = f }
 }
@@ -105,7 +104,7 @@ func NewAccumulator(opts ...Option) *Accumulator {
 // AddSBOM folds a release-flavor SBOM's deb packages into the set.
 // The release and flavor parameters are unused: the inventory unions all releases and flavors.
 // A conversion error is a hard failure: the inventory gates CVEs and must be trustworthy.
-func (a *Accumulator) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
+func (a *Accumulator) AddSBOM(_, _ string, bom *cdx.BOM) error {
 	pkgs, err := packages.PackageListFromSBOM(bom)
 	if err != nil {
 		return fmt.Errorf("converting SBOM: %w", err)
@@ -116,14 +115,14 @@ func (a *Accumulator) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
 
 // MissingSBOMSet falls back to the release's InRelease file
 // for a maintained release that lacks a complete SBOM set for all flavors.
-func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) error {
+func (a *Accumulator) MissingSBOMSet(ctx context.Context, releaseVersion string) error {
 	slog.Warn("not all flavors of the release have an SBOM; "+
 		"falling back to the release InRelease file",
-		slog.String("release", release.Name))
+		slog.String("release", releaseVersion))
 
-	pkgs, err := a.fetchInRelease(ctx, glrd.ReleaseSuite(release))
+	pkgs, err := a.fetchInRelease(ctx, releaseVersion)
 	if err != nil {
-		return fmt.Errorf("fetching InRelease for release %s: %w", release.Name, err)
+		return fmt.Errorf("fetching InRelease for release %s: %w", releaseVersion, err)
 	}
 
 	return a.addPackages(pkgs)

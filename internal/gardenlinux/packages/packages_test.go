@@ -3,7 +3,6 @@ package packages_test
 import (
 	"testing"
 
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/purl"
 	"github.com/stretchr/testify/assert"
@@ -13,12 +12,9 @@ import (
 func TestPackageUrl(t *testing.T) {
 	t.Parallel()
 
-	release, err := glrd.MakeGardenLinuxReleaseFromString("1877.10")
-	require.NoError(t, err)
-
 	packageFile := packages.PackageFile{PackagePath: "main/binary-amd64/Packages"}
 
-	url := packages.BuildPackageURL(release, packageFile)
+	url := packages.BuildPackageURL("1877.10", packageFile)
 	assert.Equal(
 		t,
 		"https://packages.gardenlinux.io/gardenlinux/dists/1877.10/main/binary-amd64/Packages",
@@ -136,10 +132,7 @@ vDYmziyeV/379UIrpWZIOPplKxysAM2Nz/PvmULnO5hduCz/69w=
 	inrelease, err := packages.ParseInReleaseFile(content)
 	require.NoError(t, err)
 
-	glr, err := glrd.MakeGardenLinuxReleaseFromString("1877.14")
-	require.NoError(t, err)
-
-	assert.Equal(t, glr, inrelease.Codename, "should find release 1877.14")
+	assert.Equal(t, "1877.14", inrelease.Codename, "should find release 1877.14")
 	assert.Len(t, inrelease.Components, len(expectedComponents), "should find only the one expected component")
 	assert.Equal(t, expectedComponents, inrelease.Components, "should find component main")
 	assert.Len(

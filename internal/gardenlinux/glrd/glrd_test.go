@@ -66,3 +66,56 @@ func TestReleasesMaintainedAt(t *testing.T) {
 	}
 	assert.Equal(t, []string{"maintained-1", "maintained-2", "maintained-3", "no-eol", "maintained-4"}, names)
 }
+
+func TestVersionString(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name string
+		in   glrd.Version
+		want string
+	}{
+		{"legacy two parts", glrd.Version{Major: 1877, Minor: 14}, "1877.14"},
+		{"legacy ignores patch", glrd.Version{Major: 1877, Minor: 14, Patch: 3}, "1877.14"},
+		{"semver three parts", glrd.Version{Major: 2150, Minor: 1, Patch: 2}, "2150.1.2"},
+		{"semver threshold", glrd.Version{Major: 2017, Minor: 0, Patch: 0}, "2017.0.0"},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, tc.want, tc.in.String())
+		})
+	}
+}
+
+func TestValidateVersion(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		in      string
+		wantErr bool
+	}{
+		{"legacy", "1877.14", false},
+		{"semver", "2150.1.2", false},
+		{"empty", "", true},
+		{"single part", "1877", true},
+		{"four parts", "1.2.3.4", true},
+		{"non-numeric", "1877.x", true},
+		{"minor-prefix", "minor-1877.14", true},
+		{"trailing dot", "1877.14.", true},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			err := glrd.ValidateVersion(tc.in)
+			if tc.wantErr {
+				assert.Error(t, err)
+			} else {
+				assert.NoError(t, err)
+			}
+		})
+	}
+}

@@ -10,7 +10,6 @@ import (
 	"slices"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/purl"
@@ -27,7 +26,7 @@ var ErrBelowThreshold = errors.New("release index below minimum size")
 // ErrEmptySource reports that a package carried an empty source name.
 var ErrEmptySource = errors.New("empty source name")
 
-// ErrEmptySourceVersion reports that a package carried an empty source glrd.
+// ErrEmptySourceVersion reports that a package carried an empty source version.
 var ErrEmptySourceVersion = errors.New("empty source version")
 
 // ErrMultipleVersions reports that two distinct source versions appeared for one
@@ -47,8 +46,8 @@ type Index struct {
 // shipped=false when the release ships no such source. It is namespace-variant
 // tolerant: a source stored under one of deb/gardenlinux still matches a query
 // under the other. It returns an error if canonicalSourcePURL cannot be parsed.
-func (i Index) Lookup(releaseKey, canonicalSourcePURL string) (string, bool, error) {
-	sources, ok := i.byRelease[releaseKey]
+func (i Index) Lookup(releaseVersion, canonicalSourcePURL string) (string, bool, error) {
+	sources, ok := i.byRelease[releaseVersion]
 	if !ok {
 		return "", false, nil
 	}
@@ -89,7 +88,7 @@ func (i Index) Releases() []string {
 }
 
 // inReleaseFetchFunc fetches and parses the package list from the InRelease file.
-type inReleaseFetchFunc func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error)
+type inReleaseFetchFunc func(ctx context.Context, releaseVersion string) ([]packages.Package, error)
 
 // Accumulator accumulates the per-release versioned index across the shared SBOM pass.
 // It implements [sbom.Consumer]. The zero value is not usable; construct it via [NewAccumulator].
@@ -117,7 +116,7 @@ func WithMinPerRelease(n int) Option {
 
 // WithInReleaseFetch overrides InRelease fetching/parsing (useful for tests).
 func WithInReleaseFetch(
-	f func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error),
+	f func(ctx context.Context, releaseVersion string) ([]packages.Package, error),
 ) Option {
 	return func(a *Accumulator) { a.fetchInRelease = f }
 }
@@ -139,27 +138,27 @@ func NewAccumulator(opts ...Option) *Accumulator {
 // AddSBOM folds one release-flavor SBOM into the release's versioned index.
 // flavor is unused, since every flavor draws from the same pool,
 // so a source has only one version per release regardless of flavor.
-func (a *Accumulator) AddSBOM(release glrd.Release, _ string, bom *cdx.BOM) error {
+func (a *Accumulator) AddSBOM(releaseVersion, _ string, bom *cdx.BOM) error {
 	pkgs, err := packages.PackageListFromSBOM(bom)
 	if err != nil {
 		return fmt.Errorf("converting SBOM: %w", err)
 	}
 
-	return a.addPackages(glrd.ReleaseKey(release), pkgs)
+	return a.addPackages(releaseVersion, pkgs)
 }
 
 // MissingSBOMSet falls back to the release's InRelease pool.
-func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) error {
+func (a *Accumulator) MissingSBOMSet(ctx context.Context, releaseVersion string) error {
 	slog.Warn("not all flavors of the release have an SBOM; "+
 		"falling back to the release InRelease file for versioned index",
-		slog.String("release", release.Name))
+		slog.String("release", releaseVersion))
 
-	pkgs, err := a.fetchInRelease(ctx, glrd.ReleaseSuite(release))
+	pkgs, err := a.fetchInRelease(ctx, releaseVersion)
 	if err != nil {
-		return fmt.Errorf("fetching InRelease for release %s: %w", release.Name, err)
+		return fmt.Errorf("fetching InRelease for release %s: %w", releaseVersion, err)
 	}
 
-	return a.addPackages(glrd.ReleaseKey(release), pkgs)
+	return a.addPackages(releaseVersion, pkgs)
 }
 
 // Result applies the per-release floor and returns the assembled index.
@@ -186,7 +185,7 @@ func (a *Accumulator) Result() (Index, error) {
 }
 
 // addPackages folds each package's shipped source version into the release index,
-// failing hard when a source would receive a second, distinct source glrd.
+// failing hard when a source would receive a second, distinct source version.
 func (a *Accumulator) addPackages(rel string, pkgs []packages.Package) error {
 	sources, ok := a.byRelease[rel]
 	if !ok {

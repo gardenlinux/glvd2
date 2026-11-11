@@ -62,13 +62,13 @@ func NewClient() *HTTPClient {
 	}
 }
 
-func (h *HTTPClient) get(ctx context.Context, url string) (Response, error) {
+func (h *HTTPClient) do(ctx context.Context, method, url string) (Response, error) {
 	maxAttempts := max(h.MaxRetries+1, 1)
 
 	var resp Response
 	var err error
 	for attempt := range maxAttempts {
-		resp, err = h.getOnce(ctx, url)
+		resp, err = h.doOnce(ctx, method, url)
 		if attempt == maxAttempts-1 || !shouldRetry(resp, err) {
 			return resp, err
 		}
@@ -90,19 +90,19 @@ func (h *HTTPClient) get(ctx context.Context, url string) (Response, error) {
 	return resp, err
 }
 
-// getOnce performs a single GET attempt.
+// doOnce performs a single request attempt for the given method.
 // It returns an error only for request-build, transport, or body-read failures.
-func (h *HTTPClient) getOnce(ctx context.Context, url string) (Response, error) {
+func (h *HTTPClient) doOnce(ctx context.Context, method, url string) (Response, error) {
 	slog.Debug("performing request",
 		slog.String("client", "http"),
-		slog.String("method", "GET"),
+		slog.String("method", method),
 		slog.String("url", url))
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	req, err := http.NewRequestWithContext(ctx, method, url, nil)
 	if err != nil {
 		slog.Error("could not create request",
 			slog.String("client", "http"),
-			slog.String("method", "GET"),
+			slog.String("method", method),
 			slog.String("url", url),
 			slog.Any("error", err))
 		return Response{}, err
@@ -118,7 +118,7 @@ func (h *HTTPClient) getOnce(ctx context.Context, url string) (Response, error) 
 	if err != nil {
 		slog.Error("could not perform request",
 			slog.String("client", "http"),
-			slog.String("method", "GET"),
+			slog.String("method", method),
 			slog.String("url", url),
 			slog.Any("error", err))
 		return Response{}, err
@@ -155,6 +155,21 @@ func (h *HTTPClient) client() *http.Client {
 		return h.Client
 	}
 	return &http.Client{Timeout: defaultTimeout}
+}
+
+func (h *HTTPClient) get(ctx context.Context, url string) (Response, error) {
+	return h.do(ctx, http.MethodGet, url)
+}
+
+// Head issues a HEAD request and returns the final HTTP status code after following redirects.
+// It returns an error only for request-build or transport failures, not for HTTP error statuses.
+func (h *HTTPClient) Head(ctx context.Context, url string) (int, error) {
+	response, err := h.do(ctx, http.MethodHead, url)
+	if err != nil {
+		return response.HTTPStatusCode, err
+	}
+
+	return response.HTTPStatusCode, nil
 }
 
 func (h *HTTPClient) GetRaw(ctx context.Context, url string) ([]byte, int, error) {

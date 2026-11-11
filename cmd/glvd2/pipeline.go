@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"net/url"
 
 	"github.com/gardenlinux/glvd2/internal/affectedness"
 	"github.com/gardenlinux/glvd2/internal/assessment"
@@ -17,7 +16,6 @@ import (
 	"github.com/gardenlinux/glvd2/internal/debsectracker"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/pkgbuild"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/shippedversions"
@@ -274,11 +272,7 @@ func buildSBOMProjections(
 	vmAcc := vendormap.NewAccumulator()
 	svAcc := shippedversions.NewAccumulator()
 
-	locate := func(release glrd.Release, flavor string) (*url.URL, error) {
-		return release.LocateSBOM(flavor)
-	}
-
-	if err = sbom.Feed(ctx, releaseSource, locate, packages.GetCycloneDx, invAcc, vmAcc, svAcc); err != nil {
+	if err = sbom.Feed(ctx, releaseSource, sbom.LocateSBOM, sbom.FetchCycloneDX, invAcc, vmAcc, svAcc); err != nil {
 		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, fmt.Errorf(
 			"feeding SBOMs: %w",
 			err,

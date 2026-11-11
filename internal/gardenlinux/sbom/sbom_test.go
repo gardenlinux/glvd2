@@ -40,7 +40,7 @@ type recordingConsumer struct {
 	missingError error
 }
 
-func (r *recordingConsumer) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
+func (r *recordingConsumer) AddSBOM(_, _ string, bom *cdx.BOM) error {
 	if r.addErr != nil {
 		return r.addErr
 	}
@@ -49,18 +49,34 @@ func (r *recordingConsumer) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) erro
 	return nil
 }
 
-func (r *recordingConsumer) MissingSBOMSet(_ context.Context, rel glrd.Release) error {
+func (r *recordingConsumer) MissingSBOMSet(_ context.Context, version string) error {
 	if r.missingError != nil {
 		return r.missingError
 	}
-	r.noSBOM = append(r.noSBOM, rel.Name)
+	r.noSBOM = append(r.noSBOM, version)
 
 	return nil
 }
 
 // locator resolves every flavor to a per-flavor URL.
 func locator() sbom.LocatorFunc {
-	return func(_ glrd.Release, flavor string) (*url.URL, error) {
+	return func(_ context.Context, _ glrd.Release, flavor string) (*url.URL, error) {
+		return &url.URL{Scheme: "https", Host: "example", Path: "/" + flavor}, nil
+	}
+}
+
+// locatorMissing resolves flavors to URLs, but reports ErrNoSBOM for the named flavors.
+func locatorMissing(missing ...string) sbom.LocatorFunc {
+	skip := make(map[string]bool, len(missing))
+	for _, f := range missing {
+		skip[f] = true
+	}
+
+	return func(_ context.Context, _ glrd.Release, flavor string) (*url.URL, error) {
+		if skip[flavor] {
+			return nil, sbom.ErrNoSBOM
+		}
+
 		return &url.URL{Scheme: "https", Host: "example", Path: "/" + flavor}, nil
 	}
 }
@@ -112,13 +128,6 @@ func TestFeed_IncompleteReleaseCallsMissingSBOMSetWithoutFetching(t *testing.T) 
 	t.Parallel()
 
 	fetchCalled := false
-	locate := func(_ glrd.Release, flavor string) (*url.URL, error) {
-		if flavor == "no-sbom" {
-			return nil, packages.ErrNoSBOM
-		}
-
-		return &url.URL{Scheme: "https", Host: "example", Path: "/" + flavor}, nil
-	}
 	fetch := func(_ context.Context, _ *url.URL) (*cdx.BOM, error) {
 		fetchCalled = true
 
@@ -126,12 +135,13 @@ func TestFeed_IncompleteReleaseCallsMissingSBOMSetWithoutFetching(t *testing.T) 
 	}
 
 	col := &recordingConsumer{}
-	err := sbom.Feed(t.Context(), source(release("has-sbom", "no-sbom")), locate, fetch, col)
+	err := sbom.Feed(t.Context(), source(release("has-sbom", "no-sbom")),
+		locatorMissing("no-sbom"), fetch, col)
 	require.NoError(t, err)
 
 	// since one flavor has no SBOM; no SBOMs should be fetched
 	assert.Empty(t, col.added, "no SBOM must be fed when the set is incomplete")
-	assert.Equal(t, []string{"r"}, col.noSBOM)
+	assert.Equal(t, []string{"1877.0"}, col.noSBOM)
 	assert.False(t, fetchCalled, "no fetch when the set is incomplete")
 }
 
@@ -149,7 +159,7 @@ func TestFeed_NoFlavorsCallsMissingSBOMSet(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Empty(t, col.added)
-	assert.Equal(t, []string{"r"}, col.noSBOM)
+	assert.Equal(t, []string{"1877.0"}, col.noSBOM)
 	assert.False(t, fetchCalled)
 }
 
@@ -185,10 +195,16 @@ func TestFeed_AbortsOnLocatorError(t *testing.T) {
 	t.Parallel()
 
 	locatorErr := errors.New("cannot build SBOM URL")
+	fetchCalled := false
 	err := sbom.Feed(t.Context(), source(release("kvm")),
-		func(_ glrd.Release, _ string) (*url.URL, error) { return nil, locatorErr },
-		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) { return &cdx.BOM{}, nil }, &recordingConsumer{})
+		func(_ context.Context, _ glrd.Release, _ string) (*url.URL, error) { return nil, locatorErr },
+		func(_ context.Context, _ *url.URL) (*cdx.BOM, error) {
+			fetchCalled = true
+
+			return &cdx.BOM{}, nil
+		}, &recordingConsumer{})
 	require.ErrorIs(t, err, locatorErr)
+	assert.False(t, fetchCalled, "no fetch when the locator fails")
 }
 
 func TestFeed_AbortsOnFetchError(t *testing.T) {
@@ -226,13 +242,15 @@ type countingConsumer struct {
 	added int
 }
 
-func (c *countingConsumer) AddSBOM(_ glrd.Release, _ string, _ *cdx.BOM) error {
+func (c *countingConsumer) AddSBOM(_, _ string, _ *cdx.BOM) error {
 	c.added++
 
 	return nil
 }
 
-func (c *countingConsumer) MissingSBOMSet(_ context.Context, _ glrd.Release) error { return nil }
+func (c *countingConsumer) MissingSBOMSet(_ context.Context, _ string) error {
+	return nil
+}
 
 // Check that the SBOMs are handeled one by one.
 func TestFeed_HoldsOneSBOMAtATime(t *testing.T) {

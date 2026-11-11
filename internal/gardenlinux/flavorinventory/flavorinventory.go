@@ -13,7 +13,6 @@ import (
 	"slices"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/purl"
@@ -38,8 +37,8 @@ type Inventory struct {
 // Lookup returns the flavors of a release that ship a source or shipped=false when no flavor ships it.
 // It is namespace-variant tolerant, such that a source stored under one of deb/gardenlinux
 // still matches a query under the other. It returns an error if canonicalSourcePURL cannot be parsed.
-func (i Inventory) Lookup(releaseKey, canonicalSourcePURL string) ([]string, bool, error) {
-	flavors, ok := i.byRelease[releaseKey]
+func (i Inventory) Lookup(releaseVersion, canonicalSourcePURL string) ([]string, bool, error) {
+	flavors, ok := i.byRelease[releaseVersion]
 	if !ok {
 		return nil, false, nil
 	}
@@ -93,7 +92,7 @@ func (i Inventory) AuditEntries() []AuditRelease {
 }
 
 // inReleaseFetchFunc fetches and parses the package list from the InRelease file.
-type inReleaseFetchFunc func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error)
+type inReleaseFetchFunc func(ctx context.Context, releaseVersion string) ([]packages.Package, error)
 
 // Accumulator accumulates the per-release, per-flavor inclusion across the shared
 // SBOM pass. It implements [sbom.Consumer]. The zero value is not usable;
@@ -110,7 +109,7 @@ type Option func(*Accumulator)
 
 // WithInReleaseFetch overrides InRelease fetching/parsing (for tests).
 func WithInReleaseFetch(
-	f func(ctx context.Context, release glrd.GardenLinuxRelease) ([]packages.Package, error),
+	f func(ctx context.Context, releaseVersion string) ([]packages.Package, error),
 ) Option {
 	return func(a *Accumulator) { a.fetchInRelease = f }
 }
@@ -130,29 +129,29 @@ func NewAccumulator(opts ...Option) *Accumulator {
 
 // AddSBOM folds one release-flavor SBOM's sources into that flavor's inclusion set.
 // A conversion error is a hard failure.
-func (a *Accumulator) AddSBOM(release glrd.Release, flavor string, bom *cdx.BOM) error {
+func (a *Accumulator) AddSBOM(releaseVersion, flavor string, bom *cdx.BOM) error {
 	pkgs, err := packages.PackageListFromSBOM(bom)
 	if err != nil {
 		return fmt.Errorf("converting SBOM: %w", err)
 	}
 
-	return a.addPackages(glrd.ReleaseKey(release), flavor, pkgs)
+	return a.addPackages(releaseVersion, flavor, pkgs)
 }
 
 // MissingSBOMSet falls back to the release's InRelease pool, recorded under the
 // single [PoolFlavor] sentinel: a release without a complete SBOM set has no
 // per-flavor data, so the per-flavor view degrades to release-level.
-func (a *Accumulator) MissingSBOMSet(ctx context.Context, release glrd.Release) error {
+func (a *Accumulator) MissingSBOMSet(ctx context.Context, releaseVersion string) error {
 	slog.Warn("not all flavors of the release have an SBOM; "+
 		"falling back to the release InRelease file under the pool sentinel flavor",
-		slog.String("release", release.Name))
+		slog.String("release", releaseVersion))
 
-	pkgs, err := a.fetchInRelease(ctx, glrd.ReleaseSuite(release))
+	pkgs, err := a.fetchInRelease(ctx, releaseVersion)
 	if err != nil {
-		return fmt.Errorf("fetching InRelease for release %s: %w", release.Name, err)
+		return fmt.Errorf("fetching InRelease for release %s: %w", releaseVersion, err)
 	}
 
-	return a.addPackages(glrd.ReleaseKey(release), PoolFlavor, pkgs)
+	return a.addPackages(releaseVersion, PoolFlavor, pkgs)
 }
 
 // Result returns the assembled inventory.
@@ -163,11 +162,11 @@ func (a *Accumulator) Result() Inventory {
 }
 
 // addPackages folds each package's source into the (release, flavor) inclusion set.
-func (a *Accumulator) addPackages(rel, flavor string, pkgs []packages.Package) error {
-	flavors, ok := a.byRelease[rel]
+func (a *Accumulator) addPackages(releaseVersion, flavor string, pkgs []packages.Package) error {
+	flavors, ok := a.byRelease[releaseVersion]
 	if !ok {
 		flavors = make(map[string]purl.VariantMap[struct{}])
-		a.byRelease[rel] = flavors
+		a.byRelease[releaseVersion] = flavors
 	}
 	sources, ok := flavors[flavor]
 	if !ok {

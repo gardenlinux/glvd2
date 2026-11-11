@@ -2,6 +2,7 @@ package packages
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"net/url"
@@ -9,6 +10,7 @@ import (
 
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/spf13/cobra"
 )
 
@@ -101,26 +103,24 @@ func run(ctx context.Context, cfg *config.AppConfig, opts options) error {
 		return err
 	}
 
-	var release glrd.GardenLinuxRelease
-	release, err = glrd.MakeGardenLinuxReleaseFromString(opts.Version)
-	if err != nil {
+	if err = glrd.ValidateVersion(opts.Version); err != nil {
 		return err
 	}
 
 	var packages []Package
 	switch pkgListFormat {
 	case InReleaseFormat:
-		packages, err = GetPackageListsFromInRelease(ctx, release)
+		packages, err = GetPackageListsFromInRelease(ctx, opts.Version)
 	case CycloneDXFormat:
 		var sbomURL *url.URL
 		if len(opts.SBOMURL) == 0 { // Automatically build the SBOM URL from the github release page
 			var glrdRelease glrd.Release
-			glrdRelease, err = glrd.GetRelease(ctx, cfg.GLRDReleasesURL, release)
+			glrdRelease, err = getRelease(ctx, cfg.GLRDReleasesURL, opts.Version)
 			if err != nil {
 				return err
 			}
 
-			sbomURL, err = glrdRelease.LocateSBOM(opts.Flavor)
+			sbomURL, err = sbom.BuildSBOMURL(glrdRelease, opts.Flavor)
 		} else { // URL for SBOM is provided (mostly debugging)
 			sbomURL, err = url.Parse(opts.SBOMURL)
 		}
@@ -144,4 +144,20 @@ func run(ctx context.Context, cfg *config.AppConfig, opts options) error {
 		)
 	}
 	return nil
+}
+
+// getRelease returns the GLRD release whose version string matches reqVersion.
+func getRelease(ctx context.Context, releasesURL, reqVersion string) (glrd.Release, error) {
+	releases, err := glrd.GetReleases(ctx, releasesURL)
+	if err != nil {
+		return glrd.Release{}, err
+	}
+
+	for _, release := range releases {
+		if reqVersion == release.Version.String() {
+			return release, nil
+		}
+	}
+
+	return glrd.Release{}, errors.New("release not found")
 }

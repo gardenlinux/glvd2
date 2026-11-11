@@ -10,12 +10,11 @@ import (
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 )
 
 // LocatorFunc resolves the SBOM URL for a release flavor.
-// It returns glrd.ErrNoSBOM when no SBOM exists for the flavor.
-type LocatorFunc func(release glrd.Release, flavor string) (*url.URL, error)
+// It returns ErrNoSBOM when no SBOM is published for the flavor.
+type LocatorFunc func(ctx context.Context, release glrd.Release, flavor string) (*url.URL, error)
 
 // FetchFunc fetches and decodes an SBOM into its CycloneDX BOM struct.
 type FetchFunc func(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error)
@@ -24,13 +23,14 @@ type FetchFunc func(ctx context.Context, sbomURL *url.URL) (*cdx.BOM, error)
 type ReleaseSource func(ctx context.Context) ([]glrd.Release, error)
 
 // Consumer receives via [Feed] either [AddSBOM] or [MissingSBOMSet] for each release-flavor.
+// Consumers are keyed by the release version string e.g. "1877.24.
 type Consumer interface {
-	// AddSBOM folds one release-flavor SBOM into the consumer. release and flavor identify the SBOM's origin.
+	// AddSBOM folds one release-flavor SBOM into the consumer. version and flavor identify the SBOM's origin.
 	// Consumers that do not need them can ignore them.
-	AddSBOM(release glrd.Release, flavor string, bom *cdx.BOM) error
+	AddSBOM(version, flavor string, bom *cdx.BOM) error
 	// MissingSBOMSet reports a maintained release that lacks a complete SBOM set.
 	// The consumer then decides how to react to this.
-	MissingSBOMSet(ctx context.Context, release glrd.Release) error
+	MissingSBOMSet(ctx context.Context, version string) error
 }
 
 // Feed lists the maintained releases once and for each release, resolves whether every
@@ -50,7 +50,7 @@ func Feed(
 	}
 
 	for _, release := range releases {
-		flavorURLs, complete, locErr := locateFlavors(release, locate)
+		flavorURLs, complete, locErr := locateFlavors(ctx, release, locate)
 		if locErr != nil {
 			return locErr
 		}
@@ -79,13 +79,12 @@ type flavorURL struct {
 
 // locateFlavors resolves the SBOM URL for every flavor of the release, keeping each flavor paired with its URL.
 // complete is false when any flavor lacks an SBOM or the release has no flavors.
-func locateFlavors(release glrd.Release, locate LocatorFunc) ([]flavorURL, bool, error) {
+func locateFlavors(ctx context.Context, release glrd.Release, locate LocatorFunc) ([]flavorURL, bool, error) {
 	flavorURLs := make([]flavorURL, 0, len(release.Flavors))
 
 	for _, flavor := range release.Flavors {
-		sbomURL, err := locate(release, flavor)
-		// an error with getting an SBOM for any flavor returns a hard error
-		if errors.Is(err, packages.ErrNoSBOM) {
+		sbomURL, err := locate(ctx, release, flavor)
+		if errors.Is(err, ErrNoSBOM) {
 			return nil, false, nil
 		}
 		if err != nil {
@@ -109,6 +108,8 @@ func feedRelease(
 	fetch FetchFunc,
 	consumers []Consumer,
 ) error {
+	releaseVersion := release.Version.String()
+
 	for _, fURLs := range flavorURLs {
 		bom, err := fetch(ctx, fURLs.url)
 		if err != nil {
@@ -116,7 +117,7 @@ func feedRelease(
 		}
 
 		for _, p := range consumers {
-			if addErr := p.AddSBOM(release, fURLs.flavor, bom); addErr != nil {
+			if addErr := p.AddSBOM(releaseVersion, fURLs.flavor, bom); addErr != nil {
 				return fmt.Errorf("release %s: %w", release.Name, addErr)
 			}
 		}
@@ -127,8 +128,10 @@ func feedRelease(
 
 // notifyMissingSBOMSet reports the incomplete release to every consumer.
 func notifyMissingSBOMSet(ctx context.Context, release glrd.Release, consumers []Consumer) error {
+	releaseVersion := release.Version.String()
+
 	for _, p := range consumers {
-		if err := p.MissingSBOMSet(ctx, release); err != nil {
+		if err := p.MissingSBOMSet(ctx, releaseVersion); err != nil {
 			return fmt.Errorf("release %s: %w", release.Name, err)
 		}
 	}

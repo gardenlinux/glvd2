@@ -8,7 +8,6 @@ import (
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/flavorinventory"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/gltest"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/purl"
@@ -24,7 +23,7 @@ func gldeb(name, source string) cdx.Component {
 func TestAccumulator_PerFlavorInclusion(t *testing.T) {
 	t.Parallel()
 
-	rel := gltest.Release(t, "1877.3", "kvm", "metal")
+	rel := "1877.3"
 	s := flavorinventory.NewAccumulator()
 
 	// glibc is universal; openssl ships only in kvm; grub only in metal.
@@ -59,7 +58,7 @@ func TestLookup_NamespaceVariantTolerant(t *testing.T) {
 	t.Parallel()
 
 	s := flavorinventory.NewAccumulator()
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		gltest.DebComponent(packages.Package{Name: "libc6", Source: "glibc"}),
 	)))
 	inv := s.Result()
@@ -76,7 +75,7 @@ func TestLookup_NotShipped(t *testing.T) {
 	t.Parallel()
 
 	s := flavorinventory.NewAccumulator()
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		gldeb("libc6", "glibc"),
 	)))
 	inv := s.Result()
@@ -95,13 +94,13 @@ func TestAccumulator_InReleaseFallbackUsesPool(t *testing.T) {
 
 	s := flavorinventory.NewAccumulator(
 		flavorinventory.WithInReleaseFetch(
-			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ string) ([]packages.Package, error) {
 				return []packages.Package{
 					{Name: "libc6", Source: "glibc", Namespace: purl.NamespaceDebian},
 				}, nil
 			}),
 	)
-	require.NoError(t, s.MissingSBOMSet(t.Context(), gltest.Release(t, "2150.8.1", "metal-amd64")))
+	require.NoError(t, s.MissingSBOMSet(t.Context(), "2150.8.1"))
 
 	inv := s.Result()
 
@@ -117,7 +116,7 @@ func TestAuditEntries_Stable(t *testing.T) {
 	// Build the same inventory twice with flavors/components fed in different orders.
 	build := func(order int) flavorinventory.Inventory {
 		s := flavorinventory.NewAccumulator()
-		rel := gltest.Release(t, "1877.3", "kvm", "metal")
+		rel := "1877.3"
 		if order == 0 {
 			require.NoError(t, s.AddSBOM(rel, "metal", gltest.BOM(
 				gldeb("grub-common", "grub2"),
@@ -163,7 +162,7 @@ func TestAccumulator_HardFailsOnSBOMConversionError(t *testing.T) {
 
 	components := []cdx.Component{{Type: cdx.ComponentTypeLibrary, Name: "mystery"}}
 	s := flavorinventory.NewAccumulator()
-	err := s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", &cdx.BOM{Components: &components})
+	err := s.AddSBOM("1877.3", "kvm", &cdx.BOM{Components: &components})
 	require.Error(t, err)
 }
 
@@ -173,10 +172,10 @@ func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 	fetchErr := errors.New("storage unreachable")
 	s := flavorinventory.NewAccumulator(
 		flavorinventory.WithInReleaseFetch(
-			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ string) ([]packages.Package, error) {
 				return nil, fetchErr
 			}),
 	)
-	err := s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.3", "metal-amd64"))
+	err := s.MissingSBOMSet(t.Context(), "1877.3")
 	require.ErrorIs(t, err, fetchErr)
 }

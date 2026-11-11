@@ -13,7 +13,6 @@ import (
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/cpe"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/sbom"
 	"github.com/gardenlinux/glvd2/internal/glmap"
@@ -39,7 +38,7 @@ func NewAccumulator() *Accumulator {
 // single rule mapping the shipped components' identifiers to the deb-source identity PURL.
 // The release and flavor parameters are unused: the vendormap unions all releases and flavors.
 // A derivation error is a hard failure.
-func (a *Accumulator) AddSBOM(_ glrd.Release, _ string, bom *cdx.BOM) error {
+func (a *Accumulator) AddSBOM(_, _ string, bom *cdx.BOM) error {
 	groups, err := packages.VendoredFromSBOM(bom)
 	if err != nil {
 		return fmt.Errorf("deriving vendored components: %w", err)
@@ -87,9 +86,9 @@ func vendoredRule(group packages.ShippedBy) (glmap.Rule, error) {
 
 // MissingSBOMSet can be ignored here:
 // without an SBOM there is no dependency graph to derive vendored inclusion from.
-func (a *Accumulator) MissingSBOMSet(_ context.Context, release glrd.Release) error {
+func (a *Accumulator) MissingSBOMSet(_ context.Context, releaseVersion string) error {
 	slog.Debug("release has no complete SBOM set; no vendored rules derived",
-		slog.String("release", release.Name))
+		slog.String("release", releaseVersion))
 
 	return nil
 }

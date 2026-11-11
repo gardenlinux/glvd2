@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
-	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/gltest"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/shippedversions"
@@ -32,10 +31,10 @@ func TestAccumulator_SBOMVersionedIndex(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
-		// Explicit source version from the upstream qualifier, differing from the binary glrd.
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
+		// Explicit source version from the upstream qualifier, differing from the binary version.
 		debComponent("libc6", "glibc", "2.31-13+b1", "2.31-13", purl.NamespaceGardenLinux, "amd64"),
-		// No explicit source version: binary version is the source glrd.
+		// No explicit source version: binary version is the source version.
 		debComponent("openssl", "openssl", "3.0.11-1", "", purl.NamespaceDebian, "amd64"),
 	)))
 
@@ -57,7 +56,7 @@ func TestLookup_NamespaceVariantTolerant(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		debComponent("libc6", "glibc", "2.31-13", "", purl.NamespaceGardenLinux, "amd64"),
 	)))
 
@@ -77,7 +76,7 @@ func TestLookup_NotShipped(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		debComponent("libc6", "glibc", "2.31-13", "", purl.NamespaceDebian, "amd64"),
 	)))
 
@@ -98,7 +97,7 @@ func TestAccumulator_SemverReleaseKey(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "2150.8.1", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("2150.8.1", "kvm", gltest.BOM(
 		debComponent("libc6", "glibc", "2.31-13", "", purl.NamespaceDebian, "amd64"),
 	)))
 
@@ -117,7 +116,7 @@ func TestAccumulator_BinNMUCollapsesToOneVersion(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		debComponent("libc6", "glibc", "2.31-13", "2.31-13", purl.NamespaceDebian, "amd64"),
 		debComponent("libc6", "glibc", "2.31-13+b1", "2.31-13", purl.NamespaceDebian, "arm64"),
 	)))
@@ -136,7 +135,7 @@ func TestAccumulator_MultipleSourceVersionsHardFails(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(1))
-	err := s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	err := s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		debComponent("libc6", "glibc", "2.31-13", "2.31-13", purl.NamespaceDebian, "amd64"),
 		debComponent("libc-bin", "glibc", "2.31-14", "2.31-14", purl.NamespaceDebian, "amd64"),
 	))
@@ -157,22 +156,22 @@ func TestAccumulator_FallsBackToInReleaseOnMissingSBOMSet(t *testing.T) {
 		{Name: "bash", Source: "bash", Version: "5.1-2", SourceVersion: "5.1-2", Namespace: purl.NamespaceDebian},
 	}
 
-	var gotRelease glrd.GardenLinuxRelease
+	var gotVersion string
 	s := shippedversions.NewAccumulator(
 		shippedversions.WithMinPerRelease(1),
 		shippedversions.WithInReleaseFetch(
-			func(_ context.Context, r glrd.GardenLinuxRelease) ([]packages.Package, error) {
-				gotRelease = r
+			func(_ context.Context, v string) ([]packages.Package, error) {
+				gotVersion = v
 
 				return inRelPkgs, nil
 			}),
 	)
-	require.NoError(t, s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.3", "metal-amd64")))
+	require.NoError(t, s.MissingSBOMSet(t.Context(), "1877.3"))
 
 	idx, err := s.Result()
 	require.NoError(t, err)
 
-	assert.Equal(t, "1877.3", gotRelease.Name)
+	assert.Equal(t, "1877.3", gotVersion)
 	versioned, shipped, err := idx.Lookup("1877.3", "pkg:deb/debian/glibc")
 	require.NoError(t, err)
 	assert.True(t, shipped)
@@ -183,7 +182,7 @@ func TestResult_HardFailsBelowThreshold(t *testing.T) {
 	t.Parallel()
 
 	s := shippedversions.NewAccumulator(shippedversions.WithMinPerRelease(100))
-	require.NoError(t, s.AddSBOM(gltest.Release(t, "1877.3", "kvm"), "kvm", gltest.BOM(
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
 		debComponent("libc6", "glibc", "2.31-13", "", purl.NamespaceDebian, "amd64"),
 	)))
 
@@ -197,10 +196,10 @@ func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
 	fetchErr := errors.New("storage unreachable")
 	s := shippedversions.NewAccumulator(
 		shippedversions.WithInReleaseFetch(
-			func(_ context.Context, _ glrd.GardenLinuxRelease) ([]packages.Package, error) {
+			func(_ context.Context, _ string) ([]packages.Package, error) {
 				return nil, fetchErr
 			}),
 	)
-	err := s.MissingSBOMSet(t.Context(), gltest.Release(t, "1877.3", "metal-amd64"))
+	err := s.MissingSBOMSet(t.Context(), "1877.3")
 	require.ErrorIs(t, err, fetchErr)
 }

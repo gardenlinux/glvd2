@@ -2,10 +2,9 @@ package glrd
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log/slog"
-	"net/url"
+	"regexp"
 	"time"
 
 	"github.com/gardenlinux/glvd2/internal/config"
@@ -13,15 +12,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// SBOM global release (not yet available)
-// https://github.com/gardenlinux/gardenlinux/releases/download/2150.14.0/2150.14.0-a213f775.sbom
-// Parameters are: Version, Version, GitCommitId.
-const sbomGlobalURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s.sbom"
+// versionPattern matches a Garden Linux version string (major.minor or major.minor.patch).
+var versionPattern = regexp.MustCompile(`^\d+\.\d+(\.\d+)?$`)
 
-// SBOM flavor release
-// https://github.com/gardenlinux/gardenlinux/releases/download/1877.25/gcp-gardener_prod-arm64-1877.25-abcdefgh.sbom
-// Parameters are: Version, Flavor, Version, GitCommitId.
-const sbomURLFormat = "https://github.com/gardenlinux/gardenlinux/releases/download/%s/%s-%s-%s.sbom"
+// ValidateVersion checks that s is a well-formed Garden Linux version string.
+func ValidateVersion(s string) error {
+	if !versionPattern.MatchString(s) {
+		return fmt.Errorf("invalid version %q: want major.minor or major.minor.patch", s)
+	}
+
+	return nil
+}
 
 type Git struct {
 	Commit      string `json:"commit"`
@@ -74,6 +75,12 @@ func GetReleases(ctx context.Context, releasesURL string) ([]Release, error) {
 		return nil, fmt.Errorf("retrieving releases from %q: %w", releasesURL, err)
 	}
 
+	for _, r := range releases.Releases {
+		if verr := ValidateVersion(r.Version.String()); verr != nil {
+			return nil, fmt.Errorf("release %q from %q: %w", r.Name, releasesURL, verr)
+		}
+	}
+
 	return releases.Releases, nil
 }
 
@@ -85,24 +92,6 @@ func GetMaintainedReleases(ctx context.Context, releasesURL string) ([]Release, 
 	}
 
 	return ReleasesMaintainedAt(releases, time.Now()), nil
-}
-
-func GetRelease(ctx context.Context, releasesURL string, reqRelease GardenLinuxRelease) (Release, error) {
-	var releases []Release
-	var err error
-
-	releases, err = GetReleases(ctx, releasesURL)
-	if err != nil {
-		return Release{}, err
-	}
-
-	for _, release := range releases {
-		if reqRelease == ReleaseSuite(release) {
-			return release, nil
-		}
-	}
-
-	return Release{}, errors.New("release not found")
 }
 
 // ReleasesMaintainedAt returns the releases still maintained at the given time.
@@ -127,23 +116,18 @@ func (r Release) IsMaintainedAt(now time.Time) bool {
 	return now.Before(time.Unix(r.LifeCycle.EOL.Timestamp, 0))
 }
 
-// LocateSBOM returns the CycloneDX SBOM location for a flavor of this release.
-func (r Release) LocateSBOM(flavor string) (*url.URL, error) {
-	return BuildSbomURLFromRelease(MakeGardenLinuxRelease(r.Version), flavor, r.Git.CommitShort)
-}
+// semverMajorThreshold is the first major version that uses the three-part
+// semver scheme (major.minor.patch). Earlier majors use two parts (major.minor).
+const semverMajorThreshold = 2017
 
-// Global release sbom url, over all flavors
-//
-//nolint:godoclint // line comment
-func BuildGlobalSbomURLFromRelease(release GardenLinuxRelease, gitCommitId string) (*url.URL, error) {
-	return url.Parse(fmt.Sprintf(sbomGlobalURLFormat, release.Format(), release.Format(), gitCommitId))
-}
+// String renders the version as its canonical Garden Linux string
+// ("major.minor" for legacy releases, "major.minor.patch" for semver releases).
+func (v Version) String() string {
+	if v.Major >= semverMajorThreshold {
+		return fmt.Sprintf("%d.%d.%d", v.Major, v.Minor, v.Patch)
+	}
 
-// Flavor release sbom url
-//
-//nolint:godoclint // line comment
-func BuildSbomURLFromRelease(release GardenLinuxRelease, flavor, gitCommitId string) (*url.URL, error) {
-	return url.Parse(fmt.Sprintf(sbomURLFormat, release.Format(), flavor, release.Format(), gitCommitId))
+	return fmt.Sprintf("%d.%d", v.Major, v.Minor)
 }
 
 func doReleasesCmd(ctx context.Context, releasesURL string) error {
