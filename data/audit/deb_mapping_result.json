@@ -18765,7 +18765,7 @@
             "pkg:deb/debian/cron": 1
         },
         "\"vlang\":\"v\"": {
-            "pkg:deb/debian/vlang": 1
+            "pkg:deb/debian/vlang": 2
         },
         "\"vllm\":\"vllm\"": {
             "pkg:deb/debian/vllm": 2
@@ -30201,7 +30201,7 @@
             "pkg:deb/debian/vlc": 2
         },
         "pkg:github/vlang/v": {
-            "pkg:deb/debian/vlang": 1
+            "pkg:deb/debian/vlang": 2
         },
         "pkg:github/wb2osz/direwolf": {
             "pkg:deb/debian/direwolf": 2
@@ -30746,10 +30746,10 @@
         "pkg:opam/opam-format": {
             "pkg:deb/debian/opam": 1
         },
-        "pkg:otp/asn1": {
+        "pkg:otp/asn1?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
-        "pkg:otp/eldap": {
+        "pkg:otp/eldap?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
         "pkg:otp/elixir?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git": {
@@ -30758,14 +30758,11 @@
         "pkg:otp/erl_interface?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
-        "pkg:otp/erts": {
-            "pkg:deb/debian/erlang": 1
-        },
         "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 3
         },
         "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 1
+            "pkg:deb/debian/erlang": 2
         },
         "pkg:otp/ftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
@@ -30775,11 +30772,11 @@
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 1,
+            "pkg:deb/debian/erlang-hex": 5,
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 7,
+            "pkg:deb/debian/erlang-hex": 3,
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
@@ -30787,13 +30784,13 @@
             "pkg:deb/debian/rebar3": 1
         },
         "pkg:otp/inets": {
-            "pkg:deb/debian/erlang": 11
+            "pkg:deb/debian/erlang": 1
         },
         "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 3
         },
         "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 2
+            "pkg:deb/debian/erlang": 12
         },
         "pkg:otp/kernel?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
@@ -30823,17 +30820,14 @@
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
-        "pkg:otp/snmp": {
-            "pkg:deb/debian/erlang": 1
-        },
-        "pkg:otp/ssh": {
+        "pkg:otp/snmp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
         "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 10
+            "pkg:deb/debian/erlang": 9
         },
         "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 1
+            "pkg:deb/debian/erlang": 3
         },
         "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 5
@@ -30841,14 +30835,11 @@
         "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 6
         },
-        "pkg:otp/stdlib": {
-            "pkg:deb/debian/erlang": 1
-        },
         "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
         "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 2,
+            "pkg:deb/debian/erlang": 3,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
