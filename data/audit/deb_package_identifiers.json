@@ -5988,8 +5988,12 @@
         "CPEs": [
             "cpe:2.3:a:apache:xml_graphics_fop:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:fop-core\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/org.apache.xmlgraphics/fop-core"
+        ]
     },
     "pkg:deb/debian/foreman": {
         "VendorProductIDs": [
@@ -13854,6 +13858,16 @@
         ],
         "PackageURLs": [
             "pkg:cpan/Dancer2"
+        ]
+    },
+    "pkg:deb/debian/libdata-dump-streamer-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Data-Dump-Streamer\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Data-Dump-Streamer"
         ]
     },
     "pkg:deb/debian/libdata-entropy-perl": {

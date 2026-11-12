@@ -1659,7 +1659,7 @@
             "pkg:deb/debian/batik": 4
         },
         "\"apache software foundation\":\"apache xml graphics fop\"": {
-            "pkg:deb/debian/fop": 1
+            "pkg:deb/debian/fop": 2
         },
         "\"apache software foundation\":\"apache xml graphics\"": {
             "pkg:deb/debian/batik": 5
@@ -4734,7 +4734,7 @@
             "pkg:deb/debian/golang-github-gin-contrib-cors": 1
         },
         "\"git\":\"git\"": {
-            "pkg:deb/debian/git": 25
+            "pkg:deb/debian/git": 26
         },
         "\"git-annex\":\"git-annex\"": {
             "pkg:deb/debian/git-annex": 1
@@ -20699,7 +20699,7 @@
             "pkg:deb/debian/git-credential-manager": 1
         },
         "cpe:2.3:a:git-scm:git:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/git": 1
+            "pkg:deb/debian/git": 2
         },
         "cpe:2.3:a:git:git:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/git": 6
@@ -26454,6 +26454,9 @@
         "\"https://cpan.org/modules\":\"Dancer2\"": {
             "pkg:deb/debian/libdancer2-perl": 5
         },
+        "\"https://cpan.org/modules\":\"Data-Dump-Streamer\"": {
+            "pkg:deb/debian/libdata-dump-streamer-perl": 1
+        },
         "\"https://cpan.org/modules\":\"Data-Entropy\"": {
             "pkg:deb/debian/libdata-entropy-perl": 2
         },
@@ -28820,6 +28823,9 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-dom\"": {
             "pkg:deb/debian/batik": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:fop-core\"": {
+            "pkg:deb/debian/fop": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.zookeeper:zookeeper\"": {
             "pkg:deb/debian/zookeeper": 16
         },
@@ -29524,6 +29530,9 @@
         },
         "pkg:cpan/Dancer2": {
             "pkg:deb/debian/libdancer2-perl": 5
+        },
+        "pkg:cpan/Data-Dump-Streamer": {
+            "pkg:deb/debian/libdata-dump-streamer-perl": 1
         },
         "pkg:cpan/Date-Manip": {
             "pkg:deb/debian/libdate-manip-perl": 2
@@ -30516,6 +30525,9 @@
         },
         "pkg:maven/org.apache.xmlgraphics/batik-dom": {
             "pkg:deb/debian/batik": 1
+        },
+        "pkg:maven/org.apache.xmlgraphics/fop-core": {
+            "pkg:deb/debian/fop": 1
         },
         "pkg:maven/org.apache.zookeeper/zookeeper": {
             "pkg:deb/debian/zookeeper": 10
