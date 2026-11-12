@@ -30,6 +30,21 @@
         "has_patches": true
       }
     },
+    "259.11-1gl0+bp2150": {
+      "pkg_name": "systemd",
+      "version": "259.11-1gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/systemd",
+      "repo": "package-systemd",
+      "commit": "ecb262fb8f42f9656a25085232174ab216f2c122",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true
+      }
+    },
     "259.9-1gl0+bp2150": {
       "pkg_name": "systemd",
       "version": "259.9-1gl0+bp2150",
