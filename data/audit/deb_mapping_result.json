@@ -1656,7 +1656,7 @@
             "pkg:deb/debian/xerces-c": 1
         },
         "\"apache software foundation\":\"apache xml graphics batik\"": {
-            "pkg:deb/debian/batik": 4
+            "pkg:deb/debian/batik": 8
         },
         "\"apache software foundation\":\"apache xml graphics fop\"": {
             "pkg:deb/debian/fop": 2
@@ -4734,7 +4734,7 @@
             "pkg:deb/debian/golang-github-gin-contrib-cors": 1
         },
         "\"git\":\"git\"": {
-            "pkg:deb/debian/git": 26
+            "pkg:deb/debian/git": 29
         },
         "\"git-annex\":\"git-annex\"": {
             "pkg:deb/debian/git-annex": 1
@@ -6772,7 +6772,7 @@
             "pkg:deb/debian/icingadb-web": 2
         },
         "\"icinga\":\"icingaweb2\"": {
-            "pkg:deb/debian/icingaweb2": 9
+            "pkg:deb/debian/icingaweb2": 10
         },
         "\"icinga\":\"icingaweb2-module-director\"": {
             "pkg:deb/debian/icingaweb2-module-director": 2
@@ -20699,7 +20699,7 @@
             "pkg:deb/debian/git-credential-manager": 1
         },
         "cpe:2.3:a:git-scm:git:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/git": 2
+            "pkg:deb/debian/git": 3
         },
         "cpe:2.3:a:git:git:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/git": 6
@@ -28818,9 +28818,15 @@
             "pkg:deb/debian/wss4j": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-bridge\"": {
-            "pkg:deb/debian/batik": 1
+            "pkg:deb/debian/batik": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-dom\"": {
+            "pkg:deb/debian/batik": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-svggen\"": {
+            "pkg:deb/debian/batik": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-util\"": {
             "pkg:deb/debian/batik": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:fop-core\"": {
@@ -30521,9 +30527,15 @@
             "pkg:deb/debian/wss4j": 1
         },
         "pkg:maven/org.apache.xmlgraphics/batik-bridge": {
-            "pkg:deb/debian/batik": 1
+            "pkg:deb/debian/batik": 3
         },
         "pkg:maven/org.apache.xmlgraphics/batik-dom": {
+            "pkg:deb/debian/batik": 1
+        },
+        "pkg:maven/org.apache.xmlgraphics/batik-svggen": {
+            "pkg:deb/debian/batik": 1
+        },
+        "pkg:maven/org.apache.xmlgraphics/batik-util": {
             "pkg:deb/debian/batik": 1
         },
         "pkg:maven/org.apache.xmlgraphics/fop-core": {

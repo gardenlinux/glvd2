@@ -1611,11 +1611,15 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-bridge\"",
-            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-dom\""
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-dom\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-svggen\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-util\""
         ],
         "PackageURLs": [
             "pkg:maven/org.apache.xmlgraphics/batik-bridge",
-            "pkg:maven/org.apache.xmlgraphics/batik-dom"
+            "pkg:maven/org.apache.xmlgraphics/batik-dom",
+            "pkg:maven/org.apache.xmlgraphics/batik-svggen",
+            "pkg:maven/org.apache.xmlgraphics/batik-util"
         ]
     },
     "pkg:deb/debian/bazel": {
