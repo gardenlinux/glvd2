@@ -999,6 +999,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/apitrace": {
+        "VendorProductIDs": [
+            "\"apitrace\":\"apitrace\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/apitrace/apitrace"
+        ]
+    },
     "pkg:deb/debian/apktool": {
         "VendorProductIDs": [
             "\"check point software technologies ltd.\":\"eclipse\"",
@@ -1599,8 +1609,14 @@
             "\"n/a\":\"apache batik\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-bridge\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-dom\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/org.apache.xmlgraphics/batik-bridge",
+            "pkg:maven/org.apache.xmlgraphics/batik-dom"
+        ]
     },
     "pkg:deb/debian/bazel": {
         "VendorProductIDs": [
@@ -5069,26 +5085,19 @@
             "pkg:otp/asn1?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/eldap?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/erl_interface?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/ftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:otp/ftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
-            "pkg:otp/inets",
-            "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/kernel?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:otp/kernel?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/megaco?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/snmp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
-            "pkg:otp/tftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:otp/tftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:software-id/erlang.org/otp"
         ]
     },
@@ -5157,12 +5166,9 @@
             "pkg:github/hexpm/hex",
             "pkg:github/hexpm/hex_core",
             "pkg:hex/hex_core",
-            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
-            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
-            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:software-id/erlang.org/otp"
@@ -29079,10 +29085,8 @@
             "pkg:hex/hex_core",
             "pkg:hex/ssl_verify_fun",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
-            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
-            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:software-id/erlang.org/otp"
@@ -35468,6 +35472,7 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-common\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-elytron\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-http-client\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-javadocs\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-cli\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-controller\"",
@@ -36116,6 +36121,14 @@
             "cpe:2.3:a:xfree86:xfree86:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/xfsprogs": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"xfsprogs\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/xgrammar": {

@@ -532,6 +532,7 @@
     "pkg:deb/gardenlinux/jemalloc",
     "pkg:deb/gardenlinux/jfsutils",
     "pkg:deb/gardenlinux/jinja2",
+    "pkg:deb/gardenlinux/jitterentropy-rngd",
     "pkg:deb/gardenlinux/jose",
     "pkg:deb/gardenlinux/jpeg-xl",
     "pkg:deb/gardenlinux/jq",

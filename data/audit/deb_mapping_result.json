@@ -1392,7 +1392,7 @@
             "pkg:deb/debian/apache-spark": 1
         },
         "\"apache software foundation\":\"apache http server\"": {
-            "pkg:deb/debian/apache2": 139,
+            "pkg:deb/debian/apache2": 142,
             "pkg:deb/debian/uwsgi": 2
         },
         "\"apache software foundation\":\"apache httpclient\"": {
@@ -1656,7 +1656,7 @@
             "pkg:deb/debian/xerces-c": 1
         },
         "\"apache software foundation\":\"apache xml graphics batik\"": {
-            "pkg:deb/debian/batik": 2
+            "pkg:deb/debian/batik": 4
         },
         "\"apache software foundation\":\"apache xml graphics fop\"": {
             "pkg:deb/debian/fop": 1
@@ -1853,6 +1853,9 @@
         },
         "\"apereo\":\"phpcas\"": {
             "pkg:deb/debian/php-cas": 1
+        },
+        "\"apitrace\":\"apitrace\"": {
+            "pkg:deb/debian/apitrace": 1
         },
         "\"apostrophecms\":\"sanitize-html\"": {
             "pkg:deb/debian/node-sanitize-html": 1
@@ -7204,7 +7207,7 @@
             "pkg:deb/debian/jellyfin-server": 1
         },
         "\"jellyfin\":\"jellyfin\"": {
-            "pkg:deb/debian/jellyfin-server": 19
+            "pkg:deb/debian/jellyfin-server": 20
         },
         "\"jelmer\":\"dulwich\"": {
             "pkg:deb/debian/dulwich": 11
@@ -8031,7 +8034,7 @@
             "pkg:deb/debian/librecad": 1
         },
         "\"librecad\":\"librecad\"": {
-            "pkg:deb/debian/librecad": 1
+            "pkg:deb/debian/librecad": 2
         },
         "\"libredwg\":\"libredwg\"": {
             "pkg:deb/debian/libredwg": 3
@@ -12339,7 +12342,7 @@
             "pkg:deb/debian/libuv1": 2,
             "pkg:deb/debian/llhttp": 6,
             "pkg:deb/debian/node-undici": 1,
-            "pkg:deb/debian/nodejs": 125
+            "pkg:deb/debian/nodejs": 140
         },
         "\"nodejs\":\"node.js\"": {
             "pkg:deb/debian/nodejs": 2
@@ -15047,7 +15050,7 @@
             "pkg:deb/debian/ruby-rack": 1
         },
         "\"rails\":\"rails\"": {
-            "pkg:deb/debian/rails": 33
+            "pkg:deb/debian/rails": 34
         },
         "\"rails\":\"rails-html-sanitizer\"": {
             "pkg:deb/debian/ruby-rails-html-sanitizer": 11
@@ -17744,7 +17747,7 @@
             "pkg:deb/debian/gdm3": 1
         },
         "\"the gnu c library\":\"glibc\"": {
-            "pkg:deb/debian/glibc": 34
+            "pkg:deb/debian/glibc": 36
         },
         "\"the gnu projec\":\"gnu wget\"": {
             "pkg:deb/debian/wget": 1
@@ -21199,7 +21202,7 @@
             "pkg:deb/debian/python-scp": 1
         },
         "cpe:2.3:a:jellyfin:jellyfin:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/jellyfin-server": 3
+            "pkg:deb/debian/jellyfin-server": 4
         },
         "cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/jenkins": 2
@@ -21499,7 +21502,7 @@
             "pkg:deb/debian/librecad": 1
         },
         "cpe:2.3:a:librecad:librecad:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/librecad": 1
+            "pkg:deb/debian/librecad": 2
         },
         "cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libreoffice": 1
@@ -24138,7 +24141,7 @@
             "pkg:deb/debian/clevis": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit\"": {
-            "pkg:deb/debian/cockpit": 8
+            "pkg:deb/debian/cockpit": 10
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit-files\"": {
             "pkg:deb/debian/cockpit-files": 3
@@ -24273,7 +24276,7 @@
             "pkg:deb/debian/undertow": 15
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly\"": {
-            "pkg:deb/debian/wildfly": 4
+            "pkg:deb/debian/wildfly": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-common\"": {
             "pkg:deb/debian/wildfly": 1
@@ -24281,8 +24284,11 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-elytron\"": {
             "pkg:deb/debian/wildfly": 2
         },
-        "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-javadocs\"": {
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-http-client\"": {
             "pkg:deb/debian/wildfly": 1
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"eap8-wildfly-javadocs\"": {
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"efivar\"": {
             "pkg:deb/debian/efivar": 1
@@ -25676,6 +25682,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"xdg-dbus-proxy\"": {
             "pkg:deb/debian/xdg-dbus-proxy": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"xfsprogs\"": {
+            "pkg:deb/debian/xfsprogs": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"xorg-x11-server-Xwayland\"": {
             "pkg:deb/debian/xwayland": 44
@@ -28805,6 +28814,12 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.wss4j:wss4j-ws-security-stax\"": {
             "pkg:deb/debian/wss4j": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-bridge\"": {
+            "pkg:deb/debian/batik": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:batik-dom\"": {
+            "pkg:deb/debian/batik": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.zookeeper:zookeeper\"": {
             "pkg:deb/debian/zookeeper": 16
         },
@@ -29699,7 +29714,7 @@
             "pkg:deb/debian/libvncserver": 2
         },
         "pkg:github/LibreCAD/LibreCAD": {
-            "pkg:deb/debian/librecad": 1
+            "pkg:deb/debian/librecad": 2
         },
         "pkg:github/LibreCAD/libdxfrw": {
             "pkg:deb/debian/librecad": 1
@@ -29759,6 +29774,9 @@
         },
         "pkg:github/apache/brpc": {
             "pkg:deb/debian/brpc": 35
+        },
+        "pkg:github/apitrace/apitrace": {
+            "pkg:deb/debian/apitrace": 1
         },
         "pkg:github/arkq/bluez-alsa": {
             "pkg:deb/debian/bluez-alsa": 1
@@ -29906,7 +29924,7 @@
             "pkg:deb/debian/sngrep": 2
         },
         "pkg:github/jellyfin/jellyfin": {
-            "pkg:deb/debian/jellyfin-server": 3
+            "pkg:deb/debian/jellyfin-server": 4
         },
         "pkg:github/jelmer/dulwich": {
             "pkg:deb/debian/dulwich": 1
@@ -30493,6 +30511,12 @@
         "pkg:maven/org.apache.wss4j/wss4j-ws-security-stax": {
             "pkg:deb/debian/wss4j": 1
         },
+        "pkg:maven/org.apache.xmlgraphics/batik-bridge": {
+            "pkg:deb/debian/batik": 1
+        },
+        "pkg:maven/org.apache.xmlgraphics/batik-dom": {
+            "pkg:deb/debian/batik": 1
+        },
         "pkg:maven/org.apache.zookeeper/zookeeper": {
             "pkg:deb/debian/zookeeper": 10
         },
@@ -30758,41 +30782,25 @@
         "pkg:otp/erl_interface?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
-        "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 3
-        },
         "pkg:otp/erts?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 2
+            "pkg:deb/debian/erlang": 5
         },
-        "pkg:otp/ftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
+        "pkg:otp/ftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
-        },
-        "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 1
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 5,
-            "pkg:deb/debian/rebar3": 1
-        },
-        "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 3,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 9,
+            "pkg:deb/debian/rebar3": 2
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
-        "pkg:otp/inets": {
-            "pkg:deb/debian/erlang": 1
-        },
-        "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 3
-        },
         "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 12
+            "pkg:deb/debian/erlang": 16
         },
-        "pkg:otp/kernel?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
+        "pkg:otp/kernel?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
         "pkg:otp/megaco?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
@@ -30801,20 +30809,13 @@
         "pkg:otp/mix?repository_url=https:%2F%2Fgithub.com%2Felixir-lang%2Felixir\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Felixir-lang%2Felixir.git": {
             "pkg:deb/debian/elixir-lang": 1
         },
-        "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 4
-        },
         "pkg:otp/public_key?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 1
+            "pkg:deb/debian/erlang": 5
         },
         "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 2
-        },
-        "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=repository_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 2,
+            "pkg:deb/debian/rebar3": 3
         },
         "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
             "pkg:deb/debian/erlang-hex": 1,
@@ -30823,27 +30824,18 @@
         "pkg:otp/snmp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
-        "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 9
-        },
         "pkg:otp/ssh?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 3
-        },
-        "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 5
+            "pkg:deb/debian/erlang": 12
         },
         "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 6
-        },
-        "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 1
+            "pkg:deb/debian/erlang": 11
         },
         "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
-            "pkg:deb/debian/erlang": 3,
+            "pkg:deb/debian/erlang": 4,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
-        "pkg:otp/tftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%20https:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
+        "pkg:otp/tftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
         },
         "pkg:pypi/BuildStream": {
@@ -30973,7 +30965,7 @@
             "pkg:deb/debian/qpid-proton": 4
         },
         "pkg:software-id/erlang.org/otp": {
-            "pkg:deb/debian/erlang": 33,
+            "pkg:deb/debian/erlang": 58,
             "pkg:deb/debian/erlang-hex": 1,
             "pkg:deb/debian/rebar3": 1
         },
