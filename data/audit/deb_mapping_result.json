@@ -436,7 +436,7 @@
             "pkg:deb/debian/sogo": 1
         },
         "\"alinto\":\"sogo\"": {
-            "pkg:deb/debian/sogo": 9
+            "pkg:deb/debian/sogo": 15
         },
         "\"alinto\":\"sope\"": {
             "pkg:deb/debian/sope": 1
@@ -535,21 +535,35 @@
         "\"amd\":\"amd athlon™ 3000 series mobile processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
+        "\"amd\":\"amd epyc™  embedded 2005 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 1,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
         "\"amd\":\"amd epyc™  embedded 3000 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ 4004 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 2
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
+        "\"amd\":\"amd epyc™ 4005 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 3,
+            "pkg:deb/debian/xen": 3
         },
         "\"amd\":\"amd epyc™ 7001 series processors\"": {
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd epyc™ 7001 series\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ 7002 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 2,
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd epyc™ 7002 series\"": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -561,25 +575,30 @@
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ 7003 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 9,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 7,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd epyc™ 7003 series\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ 8004 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 12,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 10,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
+        "\"amd\":\"amd epyc™ 8005 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
         },
         "\"amd\":\"amd epyc™ 9004 processors\"": {
             "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd epyc™ 9004 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 12,
-            "pkg:deb/debian/linux": 3,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 10,
+            "pkg:deb/debian/linux": 2,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd epyc™ 9004 series\"": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -588,38 +607,50 @@
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ 9005 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 16
+            "pkg:deb/debian/amd64-microcode": 18,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
         },
         "\"amd\":\"amd epyc™ 9v64h processor\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
+            "pkg:deb/debian/amd64-microcode": 2
+        },
+        "\"amd\":\"amd epyc™ embedded 2005 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 1,
             "pkg:deb/debian/linux": 2,
             "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd epyc™ embedded 3000 series processors\"": {
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd epyc™ embedded 3000\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
+        "\"amd\":\"amd epyc™ embedded 4005 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 2,
+            "pkg:deb/debian/xen": 2
+        },
         "\"amd\":\"amd epyc™ embedded 7002 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 2,
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd epyc™ embedded 7002\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ embedded 7003 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 11,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 9,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd epyc™ embedded 7003\"": {
             "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd epyc™ embedded 8004 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 10,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 8,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd epyc™ embedded 9003  series processors\"": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -628,26 +659,26 @@
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ embedded 9004 series processors (formerly codenamed \\\"bergamo\\\")\"": {
-            "pkg:deb/debian/amd64-microcode": 5
+            "pkg:deb/debian/amd64-microcode": 5,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd epyc™ embedded 9004 series processors (formerly codenamed \\\"genoa\\\")\"": {
-            "pkg:deb/debian/amd64-microcode": 5
+            "pkg:deb/debian/amd64-microcode": 5,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd epyc™ embedded 9004 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 6,
-            "pkg:deb/debian/linux": 3,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 4,
+            "pkg:deb/debian/linux": 1
         },
         "\"amd\":\"amd epyc™ embedded 9004\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd epyc™ embedded 9005 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 14
-        },
-        "\"amd\":\"amd epyc™ embedded 97x4\"": {
-            "pkg:deb/debian/amd64-microcode": 2,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 16,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
         },
         "\"amd\":\"amd instinct™ mi210\"": {
             "pkg:deb/debian/rccl": 1
@@ -683,6 +714,10 @@
         "\"amd\":\"amd ryzen embedded v2000a series processors\"": {
             "pkg:deb/debian/xen": 1
         },
+        "\"amd\":\"amd ryzen embedded v3000 edkii series processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
         "\"amd\":\"amd ryzen™  embedded r1000 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
@@ -691,6 +726,10 @@
         },
         "\"amd\":\"amd ryzen™  embedded v1000 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 1
+        },
+        "\"amd\":\"amd ryzen™ 2000 mobile processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 3000 series desktop processors\"": {
             "pkg:deb/debian/amd64-microcode": 3,
@@ -710,127 +749,168 @@
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd ryzen™ 4000 series desktop processors\"": {
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ 4000 series mobile processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1,
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ 5000 series desktop processor with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 5,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 3
         },
         "\"amd\":\"amd ryzen™ 5000 series desktop processors with radeon™ graphics\"": {
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ 5000 series desktop processors\"": {
-            "pkg:deb/debian/amd64-microcode": 5,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 5000 series mobile processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1,
-            "pkg:deb/debian/xen": 1
-        },
-        "\"amd\":\"amd ryzen™ 5000 series processors with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 2,
-            "pkg:deb/debian/linux": 2,
+            "pkg:deb/debian/linux": 1,
             "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ 6000 series processor with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd ryzen™ 6000 series processors with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 1,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 7000 series desktop processors\"": {
-            "pkg:deb/debian/amd64-microcode": 5,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 7000 series mobile processors\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd ryzen™ 7000 series processors with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd ryzen™ 7020 series processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 3,
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ 7030 series mobile processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1,
             "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 7035 series processor with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd ryzen™ 7035 series processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd ryzen™ 7040 series mobile processors with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 1,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 7040 series processors with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2
+        },
+        "\"amd\":\"amd ryzen™ 7045 series mobile processors with radeon™ graphics\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 7045 series mobile processors\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
+        "\"amd\":\"amd ryzen™ 8000 series desktop processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
         "\"amd\":\"amd ryzen™ 8000 series processor with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd ryzen™ 8000 series processors with radeon™ graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd ryzen™ 8040 series mobile processors with radeon™ graphics\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ 9000 series desktop processors\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
         },
         "\"amd\":\"amd ryzen™ 9000hx series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 2
+            "pkg:deb/debian/amd64-microcode": 4,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
         },
         "\"amd\":\"amd ryzen™ ai 300 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
+        },
+        "\"amd\":\"amd ryzen™ ai 400 series desktop processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ ai 400 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 3,
+            "pkg:deb/debian/xen": 3
         },
         "\"amd\":\"amd ryzen™ ai max 300 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 4,
+            "pkg:deb/debian/xen": 4
         },
-        "\"amd\":\"amd ryzen™ embedded 5000 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
+        "\"amd\":\"amd ryzen™ ai max 400 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 3,
+            "pkg:deb/debian/xen": 3
+        },
+        "\"amd\":\"amd ryzen™ ai z2 extreme\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
             "pkg:deb/debian/linux": 2,
             "pkg:deb/debian/xen": 2
+        },
+        "\"amd\":\"amd ryzen™ ai400 series desktop processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 2,
+            "pkg:deb/debian/xen": 2
+        },
+        "\"amd\":\"amd ryzen™ embedded 5000 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ embedded 5000\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
         "\"amd\":\"amd ryzen™ embedded 7000 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ embedded 7000\"": {
             "pkg:deb/debian/amd64-microcode": 1
+        },
+        "\"amd\":\"amd ryzen™ embedded 8000 series processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
+        "\"amd\":\"amd ryzen™ embedded 9000 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 3,
+            "pkg:deb/debian/xen": 3
+        },
+        "\"amd\":\"amd ryzen™ embedded p100 series processors\"": {
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 3,
+            "pkg:deb/debian/xen": 3
         },
         "\"amd\":\"amd ryzen™ embedded r1000\"": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -843,15 +923,20 @@
         },
         "\"amd\":\"amd ryzen™ embedded v2000 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 2,
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ embedded v2000\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
+        "\"amd\":\"amd ryzen™ embedded v2000a series processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
         "\"amd\":\"amd ryzen™ embedded v3000 series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
-            "pkg:deb/debian/linux": 2,
-            "pkg:deb/debian/xen": 2
+            "pkg:deb/debian/amd64-microcode": 2,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ embedded v3000\"": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -859,31 +944,62 @@
         "\"amd\":\"amd ryzen™ threadripper™ 3000 series processors\"": {
             "pkg:deb/debian/amd64-microcode": 3
         },
+        "\"amd\":\"amd ryzen™ threadripper™ 7000  processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
+        "\"amd\":\"amd ryzen™ threadripper™ 7000 wx-series processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
         "\"amd\":\"amd ryzen™ threadripper™ 9000 processors\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 1,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
+        "\"amd\":\"amd ryzen™ threadripper™ 9000 series\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ threadripper™ pro 3000 wx-series processors\"": {
-            "pkg:deb/debian/xen": 1
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ threadripper™ pro 3000wx series processors\"": {
             "pkg:deb/debian/amd64-microcode": 3
+        },
+        "\"amd\":\"amd ryzen™ threadripper™ pro 5000 wx-series processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"amd ryzen™ threadripper™ pro 5000wx- series desktop processors\"": {
             "pkg:deb/debian/amd64-microcode": 2
         },
         "\"amd\":\"amd ryzen™ threadripper™ pro 7000 wx-series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 4,
+            "pkg:deb/debian/amd64-microcode": 2,
             "pkg:deb/debian/linux": 2,
             "pkg:deb/debian/xen": 2
         },
         "\"amd\":\"amd ryzen™ threadripper™ pro 9000 wx-series processors\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 3,
+            "pkg:deb/debian/linux": 3,
+            "pkg:deb/debian/xen": 3
         },
         "\"amd\":\"amd ryzen™ threadripper™ pro processors\"": {
             "pkg:deb/debian/amd64-microcode": 1
         },
+        "\"amd\":\"amd ryzen™ z1 series processors\"": {
+            "pkg:deb/debian/linux": 2,
+            "pkg:deb/debian/xen": 2
+        },
         "\"amd\":\"amd ryzen™ z2 series processors extreme\"": {
-            "pkg:deb/debian/amd64-microcode": 1
+            "pkg:deb/debian/amd64-microcode": 1,
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
+        },
+        "\"amd\":\"amd ryzen™ z2 series processors\"": {
+            "pkg:deb/debian/linux": 1,
+            "pkg:deb/debian/xen": 1
         },
         "\"amd\":\"athlon_3000_series_mobile_processors_with_radeon_graphics\"": {
             "pkg:deb/debian/amd64-microcode": 1
@@ -1659,7 +1775,8 @@
             "pkg:deb/debian/batik": 8
         },
         "\"apache software foundation\":\"apache xml graphics fop\"": {
-            "pkg:deb/debian/fop": 2
+            "pkg:deb/debian/fop": 3,
+            "pkg:deb/debian/xmlgraphics-commons": 1
         },
         "\"apache software foundation\":\"apache xml graphics\"": {
             "pkg:deb/debian/batik": 5
@@ -3256,7 +3373,7 @@
             "pkg:deb/debian/coredns": 1
         },
         "\"coreruleset\":\"coreruleset\"": {
-            "pkg:deb/debian/modsecurity-crs": 2
+            "pkg:deb/debian/modsecurity-crs": 4
         },
         "\"corosync\":\"corosync\"": {
             "pkg:deb/debian/corosync": 1
@@ -6056,7 +6173,7 @@
             "pkg:deb/debian/golang-1.19": 1,
             "pkg:deb/debian/golang-1.21": 1
         },
-        "\"governikus\":\"ausweisapp\"": {
+        "\"governikus\":\"ausweisapp desktop\"": {
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
@@ -8421,6 +8538,9 @@
         "\"manwar\":\"cgi::simple\"": {
             "pkg:deb/debian/libcgi-simple-perl": 1
         },
+        "\"maplibre\":\"geojson-vt\"": {
+            "pkg:deb/debian/node-maplibre-geojson-vt": 1
+        },
         "\"mapserver\":\"mapserver\"": {
             "pkg:deb/debian/mapserver": 6
         },
@@ -10711,6 +10831,9 @@
         "\"n/a\":\"libuvc\"": {
             "pkg:deb/debian/libuvc": 1
         },
+        "\"n/a\":\"libva software\"": {
+            "pkg:deb/debian/libva": 1
+        },
         "\"n/a\":\"libvips\"": {
             "pkg:deb/debian/vips": 9
         },
@@ -11358,10 +11481,10 @@
             "pkg:deb/debian/postgresql-12": 6,
             "pkg:deb/debian/postgresql-13": 71,
             "pkg:deb/debian/postgresql-14": 4,
-            "pkg:deb/debian/postgresql-15": 58,
+            "pkg:deb/debian/postgresql-15": 110,
             "pkg:deb/debian/postgresql-16": 7,
-            "pkg:deb/debian/postgresql-17": 54,
-            "pkg:deb/debian/postgresql-18": 46,
+            "pkg:deb/debian/postgresql-17": 106,
+            "pkg:deb/debian/postgresql-18": 98,
             "pkg:deb/debian/postgresql-9.6": 12
         },
         "\"n/a\":\"postgresql-common (debian-specific postgres management tools)\"": {
@@ -12239,11 +12362,11 @@
             "pkg:deb/debian/nim": 4
         },
         "\"ninenines\":\"cowboy\"": {
-            "pkg:deb/debian/erlang-cowboy": 2
+            "pkg:deb/debian/erlang-cowboy": 3
         },
         "\"ninenines\":\"cowlib\"": {
             "pkg:deb/debian/erlang-cowboy": 1,
-            "pkg:deb/debian/erlang-cowlib": 6,
+            "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "\"ning\":\"compress-lzf\"": {
@@ -14041,6 +14164,9 @@
         },
         "\"pgadmin.org\":\"pgadmin 4\"": {
             "pkg:deb/debian/pgadmin4": 56
+        },
+        "\"pgedge\":\"spock\"": {
+            "pkg:deb/debian/pglogical": 1
         },
         "\"pgjdbc\":\"pgjdbc\"": {
             "pkg:deb/debian/libpgjava": 9
@@ -20969,7 +21095,7 @@
             "pkg:deb/debian/golang-1.19": 1,
             "pkg:deb/debian/golang-1.21": 1
         },
-        "cpe:2.3:a:governikus:ausweisapp:*:*:*:*:*:*:*:*": {
+        "cpe:2.3:a:governikus:ausweisapp_desktop:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
@@ -22013,11 +22139,11 @@
             "pkg:deb/debian/fort-validator": 1
         },
         "cpe:2.3:a:ninenines:cowboy:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/erlang-cowboy": 2
+            "pkg:deb/debian/erlang-cowboy": 3
         },
         "cpe:2.3:a:ninenines:cowlib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/erlang-cowboy": 1,
-            "pkg:deb/debian/erlang-cowlib": 6,
+            "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "cpe:2.3:a:nip2_project:nip2:*:*:*:*:*:*:*:*": {
@@ -25507,7 +25633,7 @@
             "pkg:deb/debian/undertow": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-core\"": {
-            "pkg:deb/debian/undertow": 12
+            "pkg:deb/debian/undertow": 11
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-parent\"": {
             "pkg:deb/debian/undertow": 1
@@ -26856,11 +26982,11 @@
             "pkg:deb/debian/rebar3": 3
         },
         "\"https://github.com\":\"ninenines/cowboy\"": {
-            "pkg:deb/debian/erlang-cowboy": 2
+            "pkg:deb/debian/erlang-cowboy": 3
         },
         "\"https://github.com\":\"ninenines/cowlib\"": {
             "pkg:deb/debian/erlang-cowboy": 1,
-            "pkg:deb/debian/erlang-cowlib": 6,
+            "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "\"https://github.com\":\"ollama/ollama\"": {
@@ -28460,11 +28586,11 @@
             "pkg:deb/debian/thrift": 6
         },
         "\"https://repo.hex.pm\":\"cowboy\"": {
-            "pkg:deb/debian/erlang-cowboy": 2
+            "pkg:deb/debian/erlang-cowboy": 3
         },
         "\"https://repo.hex.pm\":\"cowlib\"": {
             "pkg:deb/debian/erlang-cowboy": 1,
-            "pkg:deb/debian/erlang-cowlib": 6,
+            "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "\"https://repo.hex.pm\":\"hex_core\"": {
@@ -28830,7 +28956,8 @@
             "pkg:deb/debian/batik": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.xmlgraphics:fop-core\"": {
-            "pkg:deb/debian/fop": 1
+            "pkg:deb/debian/fop": 2,
+            "pkg:deb/debian/xmlgraphics-commons": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.zookeeper:zookeeper\"": {
             "pkg:deb/debian/zookeeper": 16
@@ -29680,7 +29807,7 @@
             "pkg:deb/debian/3proxy": 1
         },
         "pkg:github/Alinto/sogo": {
-            "pkg:deb/debian/sogo": 1
+            "pkg:deb/debian/sogo": 7
         },
         "pkg:github/ArtifexSoftware/mupdf": {
             "pkg:deb/debian/mupdf": 2
@@ -30064,11 +30191,11 @@
             "pkg:deb/debian/nilfs-tools": 1
         },
         "pkg:github/ninenines/cowboy": {
-            "pkg:deb/debian/erlang-cowboy": 2
+            "pkg:deb/debian/erlang-cowboy": 3
         },
         "pkg:github/ninenines/cowlib": {
             "pkg:deb/debian/erlang-cowboy": 1,
-            "pkg:deb/debian/erlang-cowlib": 6,
+            "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "pkg:github/nm-l2tp/NetworkManager-l2tp": {
@@ -30342,11 +30469,11 @@
             "pkg:deb/debian/miniflux": 1
         },
         "pkg:hex/cowboy": {
-            "pkg:deb/debian/erlang-cowboy": 2
+            "pkg:deb/debian/erlang-cowboy": 3
         },
         "pkg:hex/cowlib": {
             "pkg:deb/debian/erlang-cowboy": 1,
-            "pkg:deb/debian/erlang-cowlib": 6,
+            "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
         "pkg:hex/hex_core": {
@@ -30539,7 +30666,8 @@
             "pkg:deb/debian/batik": 1
         },
         "pkg:maven/org.apache.xmlgraphics/fop-core": {
-            "pkg:deb/debian/fop": 1
+            "pkg:deb/debian/fop": 2,
+            "pkg:deb/debian/xmlgraphics-commons": 1
         },
         "pkg:maven/org.apache.zookeeper/zookeeper": {
             "pkg:deb/debian/zookeeper": 10
