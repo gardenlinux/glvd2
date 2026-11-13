@@ -24513,7 +24513,7 @@
             "pkg:deb/debian/flatpak-builder": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman\"": {
-            "pkg:deb/debian/foreman": 26
+            "pkg:deb/debian/foreman": 29
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman-installer\"": {
             "pkg:deb/debian/foreman": 2
