@@ -3794,7 +3794,8 @@
         ],
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"dbus\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"dbus\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"dbus-main\""
         ],
         "PackageURLs": null
     },
@@ -15033,7 +15034,8 @@
         "VendorProductIDs": null,
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libmodulemd\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libmodulemd\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"libmodulemd-main\""
         ],
         "PackageURLs": null
     },

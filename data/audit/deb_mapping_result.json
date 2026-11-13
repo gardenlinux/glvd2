@@ -3580,7 +3580,7 @@
             "pkg:deb/debian/diffoscope": 1
         },
         "\"debian\":\"dpkg\"": {
-            "pkg:deb/debian/dpkg": 3
+            "pkg:deb/debian/dpkg": 4
         },
         "\"debian\":\"duck\"": {
             "pkg:deb/debian/duck": 1
@@ -19285,12 +19285,12 @@
             "pkg:deb/debian/xwayland": 1
         },
         "\"x.org\":\"xorg-x11-server\"": {
-            "pkg:deb/debian/xorg-server": 12,
-            "pkg:deb/debian/xwayland": 12
+            "pkg:deb/debian/xorg-server": 16,
+            "pkg:deb/debian/xwayland": 16
         },
         "\"x.org\":\"xwayland\"": {
-            "pkg:deb/debian/xorg-server": 22,
-            "pkg:deb/debian/xwayland": 22
+            "pkg:deb/debian/xorg-server": 26,
+            "pkg:deb/debian/xwayland": 26
         },
         "\"x.orgg\":\"xorg-x11-server\"": {
             "pkg:deb/debian/xorg-server": 1,
@@ -23835,12 +23835,12 @@
             "pkg:deb/debian/xorg-server": 1
         },
         "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 11,
-            "pkg:deb/debian/xwayland": 11
+            "pkg:deb/debian/xorg-server": 15,
+            "pkg:deb/debian/xwayland": 15
         },
         "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 11,
-            "pkg:deb/debian/xwayland": 11
+            "pkg:deb/debian/xorg-server": 15,
+            "pkg:deb/debian/xwayland": 15
         },
         "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xorg-server": 1,
@@ -26320,13 +26320,16 @@
             "pkg:deb/debian/binutils": 7
         },
         "\"https://catalog.redhat.com/software/containers/\":\"busybox-main\"": {
-            "pkg:deb/debian/busybox": 9
+            "pkg:deb/debian/busybox": 10
         },
         "\"https://catalog.redhat.com/software/containers/\":\"crun-main\"": {
             "pkg:deb/debian/crun": 2
         },
         "\"https://catalog.redhat.com/software/containers/\":\"cups-main\"": {
             "pkg:deb/debian/cups": 4
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"dbus-main\"": {
+            "pkg:deb/debian/dbus": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"dracut-main\"": {
             "pkg:deb/debian/dracut": 2
@@ -26350,13 +26353,16 @@
             "pkg:deb/debian/kbd": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"krb5-main\"": {
-            "pkg:deb/debian/krb5": 1
+            "pkg:deb/debian/krb5": 12
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libarchive-main\"": {
             "pkg:deb/debian/libarchive": 9
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libkcapi-main\"": {
             "pkg:deb/debian/libkcapi": 3
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"libmodulemd-main\"": {
+            "pkg:deb/debian/libmodulemd": 3
         },
         "\"https://catalog.redhat.com/software/containers/\":\"libsolv-main\"": {
             "pkg:deb/debian/libsolv": 3
@@ -26416,7 +26422,7 @@
             "pkg:deb/debian/python-urllib3": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"rpm-main\"": {
-            "pkg:deb/debian/rpm": 6
+            "pkg:deb/debian/rpm": 8
         },
         "\"https://catalog.redhat.com/software/containers/\":\"runc\"": {
             "pkg:deb/debian/runc": 1
