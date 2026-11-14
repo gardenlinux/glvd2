@@ -5735,6 +5735,7 @@
             "\"intel\":\"wireless-ac_9560\"",
             "\"khronos group\":\"opencl\"",
             "\"khronos group\":\"vulkan\"",
+            "\"n/a\":\"intel(r) npu driver software\"",
             "\"n/a\":\"intel(r) npu driver\"",
             "\"n/a\":\"intel(r) npu drivers\"",
             "\"n/a\":\"intel(r) proset/wireless and intel(r) killer(tm) wi-fi software\"",
@@ -22998,6 +22999,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/onednn": {
+        "VendorProductIDs": [
+            "\"n/a\":\"intel(r) oneapi deep neural network library (onednn) software\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/onefetch": {
         "VendorProductIDs": [
             "\"o2sh\":\"onefetch\""
@@ -30755,6 +30764,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/rust-bit-vec": {
+        "VendorProductIDs": [
+            "\"contain-rs\":\"bit-vec\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/rust-broot": {
         "VendorProductIDs": [
             "\"canop\":\"broot\""
@@ -36810,20 +36827,24 @@
     },
     "pkg:deb/debian/zlib": {
         "VendorProductIDs": [
+            "\"webpack\":\"webpack-dev-middleware\"",
             "\"zlib software\":\"zlib\"",
             "\"zlib\":\"zlib\""
         ],
         "CPEs": [
             "cpe:2.3:a:redhat:openjdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:openjdk_els:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:webpack.js:webpack-dev-middleware:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:zlib:zlib:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-zlib\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"zlib\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"zlib\"",
+            "\"https://www.npmjs.com/package/webpack-dev-middleware\":\"webpack-dev-middleware\""
         ],
         "PackageURLs": [
-            "pkg:github/madler/zlib"
+            "pkg:github/madler/zlib",
+            "pkg:npm/webpack-dev-middleware"
         ]
     },
     "pkg:deb/debian/znc": {

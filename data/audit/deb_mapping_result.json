@@ -3335,6 +3335,9 @@
         "\"consolekit\":\"consolekit\"": {
             "pkg:deb/debian/consolekit": 1
         },
+        "\"contain-rs\":\"bit-vec\"": {
+            "pkg:deb/debian/rust-bit-vec": 1
+        },
         "\"containerd\":\"containerd\"": {
             "pkg:deb/debian/containerd": 26,
             "pkg:deb/debian/docker.io": 2
@@ -10453,11 +10456,17 @@
             "pkg:deb/debian/intel-mediasdk": 1,
             "pkg:deb/debian/onevpl-intel-gpu": 1
         },
+        "\"n/a\":\"intel(r) npu driver software\"": {
+            "pkg:deb/debian/firmware-nonfree": 1
+        },
         "\"n/a\":\"intel(r) npu driver\"": {
             "pkg:deb/debian/firmware-nonfree": 4
         },
         "\"n/a\":\"intel(r) npu drivers\"": {
             "pkg:deb/debian/firmware-nonfree": 3
+        },
+        "\"n/a\":\"intel(r) oneapi deep neural network library (onednn) software\"": {
+            "pkg:deb/debian/onednn": 1
         },
         "\"n/a\":\"intel(r) oneapi level zero software\"": {
             "pkg:deb/debian/level-zero": 1
@@ -18158,7 +18167,7 @@
             "pkg:deb/debian/edk2": 6
         },
         "\"tianocore\":\"edk2\"": {
-            "pkg:deb/debian/edk2": 21
+            "pkg:deb/debian/edk2": 23
         },
         "\"tibco software inc.\":\"tibco jasperreports library community edition\"": {
             "pkg:deb/debian/jasperreports": 2
@@ -19047,6 +19056,9 @@
         "\"webpack\":\"webpack\"": {
             "pkg:deb/debian/node-webpack": 3
         },
+        "\"webpack\":\"webpack-dev-middleware\"": {
+            "pkg:deb/debian/zlib": 1
+        },
         "\"webpy\":\"web.py\"": {
             "pkg:deb/debian/webpy": 1
         },
@@ -19285,12 +19297,12 @@
             "pkg:deb/debian/xwayland": 1
         },
         "\"x.org\":\"xorg-x11-server\"": {
-            "pkg:deb/debian/xorg-server": 16,
-            "pkg:deb/debian/xwayland": 16
+            "pkg:deb/debian/xorg-server": 20,
+            "pkg:deb/debian/xwayland": 20
         },
         "\"x.org\":\"xwayland\"": {
-            "pkg:deb/debian/xorg-server": 26,
-            "pkg:deb/debian/xwayland": 26
+            "pkg:deb/debian/xorg-server": 30,
+            "pkg:deb/debian/xwayland": 30
         },
         "\"x.orgg\":\"xorg-x11-server\"": {
             "pkg:deb/debian/xorg-server": 1,
@@ -19648,7 +19660,7 @@
         },
         "\"zlib\":\"zlib\"": {
             "pkg:deb/debian/minizip": 1,
-            "pkg:deb/debian/zlib": 4
+            "pkg:deb/debian/zlib": 3
         },
         "\"zmartzone iam\":\"mod_auth_openidc\"": {
             "pkg:deb/debian/libapache2-mod-auth-openidc": 1
@@ -23762,6 +23774,9 @@
         "cpe:2.3:a:weborf_project:weborf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/weborf": 1
         },
+        "cpe:2.3:a:webpack.js:webpack-dev-middleware:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/zlib": 1
+        },
         "cpe:2.3:a:webpack:webpack:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-webpack": 1
         },
@@ -23835,12 +23850,12 @@
             "pkg:deb/debian/xorg-server": 1
         },
         "cpe:2.3:a:x.org:xorg-x11-server:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 15,
-            "pkg:deb/debian/xwayland": 15
+            "pkg:deb/debian/xorg-server": 19,
+            "pkg:deb/debian/xwayland": 19
         },
         "cpe:2.3:a:x.org:xwayland:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/xorg-server": 15,
-            "pkg:deb/debian/xwayland": 15
+            "pkg:deb/debian/xorg-server": 19,
+            "pkg:deb/debian/xwayland": 19
         },
         "cpe:2.3:a:x.orgg:xorg-x11-server:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xorg-server": 1,
@@ -23964,7 +23979,7 @@
         },
         "cpe:2.3:a:zlib:zlib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/minizip": 1,
-            "pkg:deb/debian/zlib": 5
+            "pkg:deb/debian/zlib": 4
         },
         "cpe:2.3:a:znc:znc:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/znc": 1
@@ -24330,7 +24345,7 @@
             "pkg:deb/debian/dash": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dbus\"": {
-            "pkg:deb/debian/dbus": 1
+            "pkg:deb/debian/dbus": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dbus-broker\"": {
             "pkg:deb/debian/dbus-broker": 1
@@ -29428,6 +29443,9 @@
         "\"https://www.npmjs.com/package/shell-quote\":\"shell-quote\"": {
             "pkg:deb/debian/node-shell-quote": 2
         },
+        "\"https://www.npmjs.com/package/webpack-dev-middleware\":\"webpack-dev-middleware\"": {
+            "pkg:deb/debian/zlib": 1
+        },
         "\"https://www.nuget.org\":\"ApacheThrift\"": {
             "pkg:deb/debian/thrift": 1
         },
@@ -30148,7 +30166,7 @@
             "pkg:deb/debian/miniaudio": 1
         },
         "pkg:github/madler/zlib": {
-            "pkg:deb/debian/zlib": 3
+            "pkg:deb/debian/zlib": 2
         },
         "pkg:github/mborgerding/kissfft": {
             "pkg:deb/debian/kissfft": 2
@@ -30888,6 +30906,9 @@
         },
         "pkg:npm/uuid": {
             "pkg:deb/debian/node-uuid": 1
+        },
+        "pkg:npm/webpack-dev-middleware": {
+            "pkg:deb/debian/zlib": 1
         },
         "pkg:npm/yauzl": {
             "pkg:deb/debian/node-yauzl": 1
