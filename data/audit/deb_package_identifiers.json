@@ -9714,7 +9714,9 @@
             "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/gpac/gpac"
+        ]
     },
     "pkg:deb/debian/gpsd": {
         "VendorProductIDs": [
@@ -14798,7 +14800,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"JSON-XS\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/JSON-XS"
+        ]
     },
     "pkg:deb/debian/libjwt": {
         "VendorProductIDs": [
@@ -31866,9 +31870,14 @@
         "VendorProductIDs": [
             "\"secdev\":\"scapy\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:scapy:scapy:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/Scapy",
+            "pkg:pypi/scapy"
+        ]
     },
     "pkg:deb/debian/sccache": {
         "VendorProductIDs": [

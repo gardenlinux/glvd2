@@ -4263,7 +4263,7 @@
             "pkg:deb/debian/ettercap": 8
         },
         "\"eugeny\":\"russh\"": {
-            "pkg:deb/debian/rust-russh": 25,
+            "pkg:deb/debian/rust-russh": 27,
             "pkg:deb/debian/rust-russh-cryptovec": 1
         },
         "\"eventlet\":\"eventlet\"": {
@@ -6180,7 +6180,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 24
+            "pkg:deb/debian/gpac": 26
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -8054,7 +8054,7 @@
             "pkg:deb/debian/libexif": 3
         },
         "\"libexpat project\":\"libexpat\"": {
-            "pkg:deb/debian/expat": 26,
+            "pkg:deb/debian/expat": 27,
             "pkg:deb/debian/firefox": 1,
             "pkg:deb/debian/firefox-esr": 1,
             "pkg:deb/debian/thunderbird": 1
@@ -9017,7 +9017,7 @@
             "pkg:deb/debian/miniaudio": 1
         },
         "\"miniflux\":\"miniflux\"": {
-            "pkg:deb/debian/miniflux": 1
+            "pkg:deb/debian/miniflux": 3
         },
         "\"miniflux\":\"v2\"": {
             "pkg:deb/debian/miniflux": 6
@@ -15191,7 +15191,7 @@
             "pkg:deb/debian/rails": 34
         },
         "\"rails\":\"rails-html-sanitizer\"": {
-            "pkg:deb/debian/ruby-rails-html-sanitizer": 11
+            "pkg:deb/debian/ruby-rails-html-sanitizer": 13
         },
         "\"rails\":\"rails-ujs\"": {
             "pkg:deb/debian/rails": 1
@@ -16191,7 +16191,7 @@
             "pkg:deb/debian/node-systeminformation": 15
         },
         "\"secdev\":\"scapy\"": {
-            "pkg:deb/debian/scapy": 1
+            "pkg:deb/debian/scapy": 4
         },
         "\"selinux project\":\"policycoreutils\"": {
             "pkg:deb/debian/policycoreutils": 1
@@ -21114,7 +21114,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 77
+            "pkg:deb/debian/gpac": 79
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -21587,7 +21587,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "cpe:2.3:a:libexpat_project:libexpat:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/expat": 36,
+            "pkg:deb/debian/expat": 37,
             "pkg:deb/debian/firefox": 1,
             "pkg:deb/debian/firefox-esr": 1,
             "pkg:deb/debian/libxmltok": 3,
@@ -21867,7 +21867,7 @@
             "pkg:deb/debian/mxml": 1
         },
         "cpe:2.3:a:miniflux_project:miniflux:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/miniflux": 1
+            "pkg:deb/debian/miniflux": 3
         },
         "cpe:2.3:a:minio:minio:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/minio": 4
@@ -23305,6 +23305,9 @@
         "cpe:2.3:a:sangoma:asterisk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/asterisk": 1
         },
+        "cpe:2.3:a:scapy:scapy:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/scapy": 3
+        },
         "cpe:2.3:a:schedmd:slurm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/slurm-llnl": 1,
             "pkg:deb/debian/slurm-wlm": 2
@@ -24267,7 +24270,7 @@
             "pkg:deb/debian/bubblewrap": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox\"": {
-            "pkg:deb/debian/busybox": 11
+            "pkg:deb/debian/busybox": 18
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox-main\"": {
             "pkg:deb/debian/busybox": 3
@@ -24348,7 +24351,7 @@
             "pkg:deb/debian/dash": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dbus\"": {
-            "pkg:deb/debian/dbus": 2
+            "pkg:deb/debian/dbus": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dbus-broker\"": {
             "pkg:deb/debian/dbus-broker": 1
@@ -26338,7 +26341,7 @@
             "pkg:deb/debian/binutils": 7
         },
         "\"https://catalog.redhat.com/software/containers/\":\"busybox-main\"": {
-            "pkg:deb/debian/busybox": 10
+            "pkg:deb/debian/busybox": 11
         },
         "\"https://catalog.redhat.com/software/containers/\":\"crun-main\"": {
             "pkg:deb/debian/crun": 2
@@ -26688,7 +26691,7 @@
             "pkg:deb/debian/libimager-perl": 1
         },
         "\"https://cpan.org/modules\":\"JSON-XS\"": {
-            "pkg:deb/debian/libjson-xs-perl": 1
+            "pkg:deb/debian/libjson-xs-perl": 8
         },
         "\"https://cpan.org/modules\":\"JavaScript-Minifier-XS\"": {
             "pkg:deb/debian/libjavascript-minifier-xs-perl": 2
@@ -29730,6 +29733,9 @@
         "pkg:cpan/Imager-File-PNG": {
             "pkg:deb/debian/libimager-perl": 1
         },
+        "pkg:cpan/JSON-XS": {
+            "pkg:deb/debian/libjson-xs-perl": 7
+        },
         "pkg:cpan/Lemonldap-NG-Handler": {
             "pkg:deb/debian/lemonldap-ng": 1
         },
@@ -30060,6 +30066,9 @@
         "pkg:github/glpi-project/glpi": {
             "pkg:deb/debian/glpi": 2
         },
+        "pkg:github/gpac/gpac": {
+            "pkg:deb/debian/gpac": 2
+        },
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
         },
@@ -30123,7 +30132,7 @@
             "pkg:deb/debian/liblas": 1
         },
         "pkg:github/libexpat/libexpat": {
-            "pkg:deb/debian/expat": 9
+            "pkg:deb/debian/expat": 10
         },
         "pkg:github/libgme/game-music-emu": {
             "pkg:deb/debian/game-music-emu": 2
@@ -30496,7 +30505,7 @@
             "pkg:deb/debian/helm-kubernetes": 1
         },
         "pkg:golang/miniflux.app/v2": {
-            "pkg:deb/debian/miniflux": 1
+            "pkg:deb/debian/miniflux": 3
         },
         "pkg:hex/cowboy": {
             "pkg:deb/debian/erlang-cowboy": 3
@@ -31029,6 +31038,9 @@
         "pkg:pypi/GitPython": {
             "pkg:deb/debian/python-git": 6
         },
+        "pkg:pypi/Scapy": {
+            "pkg:deb/debian/scapy": 1
+        },
         "pkg:pypi/aiosmtplib": {
             "pkg:deb/debian/aiosmtplib": 1
         },
@@ -31115,6 +31127,9 @@
         },
         "pkg:pypi/python-jose": {
             "pkg:deb/debian/python-jose": 2
+        },
+        "pkg:pypi/scapy": {
+            "pkg:deb/debian/scapy": 2
         },
         "pkg:pypi/sqlparse": {
             "pkg:deb/debian/sqlparse": 1
