@@ -2926,11 +2926,14 @@
     },
     "pkg:deb/debian/ckermit": {
         "VendorProductIDs": [
-            "\"kermitproject\":\"c-kermit\""
+            "\"kermitproject\":\"c-kermit\"",
+            "\"openkermit\":\"c-kermit\""
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/OpenKermit/ckermit"
+        ]
     },
     "pkg:deb/debian/clamav": {
         "VendorProductIDs": [

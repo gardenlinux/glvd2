@@ -378,7 +378,7 @@
             "pkg:deb/debian/pycares": 1
         },
         "\"aio-libs\":\"aiohttp\"": {
-            "pkg:deb/debian/python-aiohttp": 54
+            "pkg:deb/debian/python-aiohttp": 63
         },
         "\"aio-libs\":\"aiomysql\"": {
             "pkg:deb/debian/aiomysql": 1
@@ -13414,6 +13414,9 @@
         "\"openjpeg\":\"openjpeg\"": {
             "pkg:deb/debian/openjpeg2": 1
         },
+        "\"openkermit\":\"c-kermit\"": {
+            "pkg:deb/debian/ckermit": 11
+        },
         "\"openldap foundation\":\"openldap\"": {
             "pkg:deb/debian/lmdb": 1,
             "pkg:deb/debian/openldap": 1
@@ -15817,7 +15820,7 @@
             "pkg:deb/debian/rsyslog": 7
         },
         "\"rthalley\":\"dnspython\"": {
-            "pkg:deb/debian/dnspython": 1
+            "pkg:deb/debian/dnspython": 2
         },
         "\"rtmpdump\":\"librtmp\"": {
             "pkg:deb/debian/rtmpdump": 2
@@ -29909,6 +29912,9 @@
         },
         "pkg:github/OP-TEE/optee_os": {
             "pkg:deb/debian/optee-os": 3
+        },
+        "pkg:github/OpenKermit/ckermit": {
+            "pkg:deb/debian/ckermit": 11
         },
         "pkg:github/OpenSC/OpenSC": {
             "pkg:deb/debian/open5gs": 2
