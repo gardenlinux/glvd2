@@ -1685,7 +1685,7 @@
             "pkg:deb/debian/shiro": 1
         },
         "\"apache software foundation\":\"apache shiro\"": {
-            "pkg:deb/debian/shiro": 17
+            "pkg:deb/debian/shiro": 18
         },
         "\"apache software foundation\":\"apache solr\"": {
             "pkg:deb/debian/lucene-solr": 24
@@ -4710,7 +4710,7 @@
             "pkg:deb/debian/frr": 2
         },
         "\"frrouting\":\"frrouting\"": {
-            "pkg:deb/debian/frr": 10
+            "pkg:deb/debian/frr": 11
         },
         "\"frysk\":\"frysk\"": {
             "pkg:deb/debian/frysk": 1
@@ -20781,7 +20781,7 @@
             "pkg:deb/debian/froxlor": 32
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/frr": 11
+            "pkg:deb/debian/frr": 12
         },
         "cpe:2.3:a:fusiondirectory:fusiondirectory:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/fusiondirectory": 1
@@ -28911,7 +28911,7 @@
             "pkg:deb/debian/qpid-java": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-core\"": {
-            "pkg:deb/debian/shiro": 3
+            "pkg:deb/debian/shiro": 4
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-guice\"": {
             "pkg:deb/debian/shiro": 1
@@ -30691,6 +30691,9 @@
         },
         "pkg:maven/org.apache.qpid/qpid-broker-plugins-amqp-0-8-protocol": {
             "pkg:deb/debian/qpid-java": 1
+        },
+        "pkg:maven/org.apache.shiro/shiro-core": {
+            "pkg:deb/debian/shiro": 1
         },
         "pkg:maven/org.apache.sshd/sshd-core": {
             "pkg:deb/debian/libmina-sshd-java": 2

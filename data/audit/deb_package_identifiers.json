@@ -32239,7 +32239,9 @@
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-jakata-ee\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-web\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.shiro/shiro-core"
+        ]
     },
     "pkg:deb/debian/shynet": {
         "VendorProductIDs": [
