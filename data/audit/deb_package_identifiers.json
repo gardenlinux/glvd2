@@ -3482,7 +3482,9 @@
         "CPEs": [
             "cpe:2.3:a:gnu:cpio:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"cpio\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/cpp-ethereum": {
@@ -6173,7 +6175,9 @@
         "CPEs": [
             "cpe:2.3:a:freeradius:freeradius:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"freeradius\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/freerdp": {
@@ -9595,6 +9599,7 @@
             "\"open-telemetry\":\"go.opentelemetry.io/otel/propagation\"",
             "\"open-telemetry\":\"go.opentelemetry.io/otel/schema/v1.0\"",
             "\"open-telemetry\":\"go.opentelemetry.io/otel/schema/v1.1\"",
+            "\"open-telemetry\":\"go.opentelemetry.io/otel/sdk\"",
             "\"open-telemetry\":\"opentelemetry-go\""
         ],
         "CPEs": null,
@@ -12556,6 +12561,7 @@
             "\"jdennis\":\"keycloak-httpd-client-install\"",
             "\"keycloak\":\"keycloak rest api\"",
             "\"keycloak\":\"keycloak\"",
+            "\"keycloak\":\"keycloak-services\"",
             "\"louketo\":\"keycloak gatekeeper\"",
             "\"n/a\":\"keycloak\"",
             "\"n/a\":\"keycloak-model-infinispan\"",
@@ -13867,7 +13873,9 @@
         "PackageIDs": [
             "\"https://cpan.org/modules\":\"Dancer\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:cpan/Dancer"
+        ]
     },
     "pkg:deb/debian/libdancer2-perl": {
         "VendorProductIDs": null,
@@ -20370,6 +20378,16 @@
             "pkg:npm/cookies"
         ]
     },
+    "pkg:deb/debian/node-create-ecdh": {
+        "VendorProductIDs": [
+            "\"browserify\":\"createecdh\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://www.npmjs.com\":\"create-ecdh\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/node-css-loader": {
         "VendorProductIDs": [
             "\"n/a\":\"postcss-selector-parser\""
@@ -25962,7 +25980,8 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"podman-main\"",
             "\"https://catalog.redhat.com/software/containers/\":\"podman-main\"",
             "\"https://github.com/containers/podman\":\"podman\"",
-            "\"https://github.com/containers/podman/\":\"podman\""
+            "\"https://github.com/containers/podman/\":\"podman\"",
+            "\"https://github.com/podman-container-tools/podman\":\"podman\""
         ],
         "PackageURLs": null
     },
@@ -28538,6 +28557,7 @@
     },
     "pkg:deb/debian/qt6-base": {
         "VendorProductIDs": [
+            "\"qt\":\"qt framework\"",
             "\"qt\":\"qt\"",
             "\"qt\":\"qtbase\""
         ],
@@ -28628,6 +28648,7 @@
         "VendorProductIDs": [
             "\"n/a\":\"intel(r) proset/wireless wifi products on windows 10\"",
             "\"n/a\":\"qt library\"",
+            "\"qt\":\"qt framework\"",
             "\"qt\":\"qt\"",
             "\"qt\":\"qtbase\""
         ],
@@ -29590,7 +29611,9 @@
             "cpe:2.3:a:roundcube:webmail:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:composer/roundcube/roundcubemail"
+        ]
     },
     "pkg:deb/debian/roundup": {
         "VendorProductIDs": [
@@ -30108,6 +30131,7 @@
     },
     "pkg:deb/debian/ruby-nokogiri": {
         "VendorProductIDs": [
+            "\"flavorjones\":\"loofah\"",
             "\"n/a\":\"nokogiri (ruby gem)\"",
             "\"ruby\":\"nokogiri gem\"",
             "\"sparklemotion\":\"nokogiri\""

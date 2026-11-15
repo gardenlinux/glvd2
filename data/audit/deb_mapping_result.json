@@ -2728,6 +2728,9 @@
         "\"browserify\":\"browserify-sign\"": {
             "pkg:deb/debian/node-browserify-sign": 1
         },
+        "\"browserify\":\"createecdh\"": {
+            "pkg:deb/debian/node-create-ecdh": 1
+        },
         "\"browserify\":\"pbkdf2\"": {
             "pkg:deb/debian/node-pbkdf2": 1
         },
@@ -4462,7 +4465,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 83
+            "pkg:deb/debian/ffmpeg": 108
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -4527,7 +4530,8 @@
             "pkg:deb/debian/flatpress": 13
         },
         "\"flavorjones\":\"loofah\"": {
-            "pkg:deb/debian/ruby-loofah": 6
+            "pkg:deb/debian/ruby-loofah": 11,
+            "pkg:deb/debian/ruby-nokogiri": 1
         },
         "\"flexera software llc\":\"gnutls libtasn1\"": {
             "pkg:deb/debian/libtasn1-3": 1,
@@ -7786,6 +7790,9 @@
         },
         "\"keycloak\":\"keycloak\"": {
             "pkg:deb/debian/keycloak": 15
+        },
+        "\"keycloak\":\"keycloak-services\"": {
+            "pkg:deb/debian/keycloak": 1
         },
         "\"keystone\":\"keystone\"": {
             "pkg:deb/debian/keystone": 1
@@ -12186,7 +12193,7 @@
             "pkg:deb/debian/nats-server": 1
         },
         "\"naturalintelligence\":\"fast-xml-parser\"": {
-            "pkg:deb/debian/node-webfont": 10
+            "pkg:deb/debian/node-webfont": 11
         },
         "\"naturalintelligence\":\"fast_xml_parser\"": {
             "pkg:deb/debian/node-webfont": 1
@@ -12421,7 +12428,7 @@
             "pkg:deb/debian/unbound": 2
         },
         "\"nltk\":\"nltk\"": {
-            "pkg:deb/debian/nltk": 35
+            "pkg:deb/debian/nltk": 36
         },
         "\"nltk\":\"nltk/nltk\"": {
             "pkg:deb/debian/nltk": 11
@@ -13297,11 +13304,14 @@
         "\"open-telemetry\":\"go.opentelemetry.io/otel/schema/v1.1\"": {
             "pkg:deb/debian/golang-opentelemetry-otel": 1
         },
+        "\"open-telemetry\":\"go.opentelemetry.io/otel/sdk\"": {
+            "pkg:deb/debian/golang-opentelemetry-otel": 1
+        },
         "\"open-telemetry\":\"opentelemetry-cpp\"": {
             "pkg:deb/debian/opentelemetry-cpp": 1
         },
         "\"open-telemetry\":\"opentelemetry-go\"": {
-            "pkg:deb/debian/golang-opentelemetry-otel": 9
+            "pkg:deb/debian/golang-opentelemetry-otel": 11
         },
         "\"open-telemetry\":\"opentelemetry-python\"": {
             "pkg:deb/debian/python-opentelemetry": 2
@@ -14030,7 +14040,7 @@
             "pkg:deb/debian/p11-kit": 1
         },
         "\"packagekit\":\"packagekit\"": {
-            "pkg:deb/debian/packagekit": 4
+            "pkg:deb/debian/packagekit": 6
         },
         "\"pagure project\":\"pagure\"": {
             "pkg:deb/debian/pagure": 1
@@ -14841,11 +14851,11 @@
             "pkg:deb/debian/pypy3": 60,
             "pkg:deb/debian/python2.7": 47,
             "pkg:deb/debian/python3.10": 3,
-            "pkg:deb/debian/python3.11": 78,
+            "pkg:deb/debian/python3.11": 81,
             "pkg:deb/debian/python3.12": 26,
-            "pkg:deb/debian/python3.13": 73,
-            "pkg:deb/debian/python3.14": 53,
-            "pkg:deb/debian/python3.15": 13,
+            "pkg:deb/debian/python3.13": 76,
+            "pkg:deb/debian/python3.14": 56,
+            "pkg:deb/debian/python3.15": 16,
             "pkg:deb/debian/python3.7": 7,
             "pkg:deb/debian/python3.9": 69
         },
@@ -15025,9 +15035,11 @@
         "\"qt\":\"qt framework\"": {
             "pkg:deb/debian/qt3d-opensource-src": 1,
             "pkg:deb/debian/qt6-3d": 1,
+            "pkg:deb/debian/qt6-base": 1,
             "pkg:deb/debian/qt6-httpserver": 1,
-            "pkg:deb/debian/qt6-websockets": 1,
-            "pkg:deb/debian/qtwebsockets-opensource-src": 1
+            "pkg:deb/debian/qt6-websockets": 2,
+            "pkg:deb/debian/qtbase-opensource-src": 1,
+            "pkg:deb/debian/qtwebsockets-opensource-src": 2
         },
         "\"qt\":\"qt\"": {
             "pkg:deb/debian/qt4-x11": 1,
@@ -15778,7 +15790,7 @@
             "pkg:deb/debian/roundcube": 1
         },
         "\"roundcube\":\"webmail\"": {
-            "pkg:deb/debian/roundcube": 61
+            "pkg:deb/debian/roundcube": 62
         },
         "\"roundup\":\"roundup\"": {
             "pkg:deb/debian/roundup": 1
@@ -20685,7 +20697,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 75
+            "pkg:deb/debian/ffmpeg": 100
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -22667,7 +22679,7 @@
             "pkg:deb/debian/overleaf": 1
         },
         "cpe:2.3:a:packagekit:packagekit:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/packagekit": 1
+            "pkg:deb/debian/packagekit": 3
         },
         "cpe:2.3:a:palletsprojects:werkzeug:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/python-werkzeug": 2,
@@ -22979,21 +22991,21 @@
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-3d": 1,
             "pkg:deb/debian/qt6-5compat": 6,
-            "pkg:deb/debian/qt6-base": 19,
+            "pkg:deb/debian/qt6-base": 20,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-httpserver": 1,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qt6-websockets": 1,
-            "pkg:deb/debian/qtbase-opensource-src": 20,
+            "pkg:deb/debian/qt6-websockets": 2,
+            "pkg:deb/debian/qtbase-opensource-src": 21,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src-gles": 1,
             "pkg:deb/debian/qtimageformats-opensource-src": 1,
             "pkg:deb/debian/qtsvg-opensource-src": 4,
-            "pkg:deb/debian/qtwebsockets-opensource-src": 1
+            "pkg:deb/debian/qtwebsockets-opensource-src": 2
         },
         "cpe:2.3:a:qt:qt_network_authorization:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt6-networkauth": 1,
@@ -23001,8 +23013,8 @@
         },
         "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt6-5compat": 4,
-            "pkg:deb/debian/qt6-base": 7,
-            "pkg:deb/debian/qtbase-opensource-src": 10,
+            "pkg:deb/debian/qt6-base": 8,
+            "pkg:deb/debian/qtbase-opensource-src": 11,
             "pkg:deb/debian/qtbase-opensource-src-gles": 4
         },
         "cpe:2.3:a:qt:qthttpserver:*:*:*:*:*:*:*:*": {
@@ -23013,8 +23025,8 @@
             "pkg:deb/debian/qtsvg-opensource-src": 1
         },
         "cpe:2.3:a:qt:qtwebsockets:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/qt6-websockets": 1,
-            "pkg:deb/debian/qtwebsockets-opensource-src": 1
+            "pkg:deb/debian/qt6-websockets": 2,
+            "pkg:deb/debian/qtwebsockets-opensource-src": 2
         },
         "cpe:2.3:a:quic-go_project:quic-go:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-github-lucas-clemente-quic-go": 1
@@ -23198,7 +23210,7 @@
             "pkg:deb/debian/roundcube": 2
         },
         "cpe:2.3:a:roundcube:webmail:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/roundcube": 54
+            "pkg:deb/debian/roundcube": 55
         },
         "cpe:2.3:a:roundup-tracker:roundup:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/roundup": 1
@@ -24270,7 +24282,7 @@
             "pkg:deb/debian/bubblewrap": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox\"": {
-            "pkg:deb/debian/busybox": 18
+            "pkg:deb/debian/busybox": 22
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"busybox-main\"": {
             "pkg:deb/debian/busybox": 3
@@ -24288,7 +24300,7 @@
             "pkg:deb/debian/clevis": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit\"": {
-            "pkg:deb/debian/cockpit": 10
+            "pkg:deb/debian/cockpit": 11
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cockpit-files\"": {
             "pkg:deb/debian/cockpit-files": 3
@@ -24332,6 +24344,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"corosync\"": {
             "pkg:deb/debian/corosync": 4
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"cpio\"": {
+            "pkg:deb/debian/cpio": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cri-o\"": {
             "pkg:deb/debian/cri-o": 14
         },
@@ -24360,7 +24375,7 @@
             "pkg:deb/debian/dhcpcd": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnf5\"": {
-            "pkg:deb/debian/dnf5": 1
+            "pkg:deb/debian/dnf5": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnsmasq\"": {
             "pkg:deb/debian/dnsmasq": 13
@@ -24534,10 +24549,13 @@
             "pkg:deb/debian/flatpak-builder": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman\"": {
-            "pkg:deb/debian/foreman": 29
+            "pkg:deb/debian/foreman": 30
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"foreman-installer\"": {
             "pkg:deb/debian/foreman": 2
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"freeradius\"": {
+            "pkg:deb/debian/freeradius": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"freetype\"": {
             "pkg:deb/debian/freetype": 1
@@ -24747,7 +24765,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 132
+            "pkg:deb/debian/keycloak": 135
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -25290,7 +25308,7 @@
             "pkg:deb/debian/pipewire": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"podman\"": {
-            "pkg:deb/debian/podman": 6
+            "pkg:deb/debian/podman": 7
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"podman-main\"": {
             "pkg:deb/debian/podman": 1
@@ -25500,7 +25518,7 @@
             "pkg:deb/debian/resteasy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rh-sso7-keycloak\"": {
-            "pkg:deb/debian/keycloak": 32
+            "pkg:deb/debian/keycloak": 33
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rhoso-openvswitch\"": {
             "pkg:deb/debian/openvswitch": 1
@@ -25594,7 +25612,7 @@
             "pkg:deb/debian/squid": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"sssd\"": {
-            "pkg:deb/debian/sssd": 37
+            "pkg:deb/debian/sssd": 40
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"stunnel\"": {
             "pkg:deb/debian/stunnel": 2
@@ -26341,7 +26359,7 @@
             "pkg:deb/debian/binutils": 7
         },
         "\"https://catalog.redhat.com/software/containers/\":\"busybox-main\"": {
-            "pkg:deb/debian/busybox": 11
+            "pkg:deb/debian/busybox": 12
         },
         "\"https://catalog.redhat.com/software/containers/\":\"crun-main\"": {
             "pkg:deb/debian/crun": 2
@@ -26428,7 +26446,7 @@
             "pkg:deb/debian/p11-kit": 2
         },
         "\"https://catalog.redhat.com/software/containers/\":\"podman-main\"": {
-            "pkg:deb/debian/podman": 1
+            "pkg:deb/debian/podman": 2
         },
         "\"https://catalog.redhat.com/software/containers/\":\"policycoreutils-main\"": {
             "pkg:deb/debian/policycoreutils": 1
@@ -26602,7 +26620,7 @@
             "pkg:deb/debian/libdbix-class-encodedcolumn-perl": 2
         },
         "\"https://cpan.org/modules\":\"Dancer\"": {
-            "pkg:deb/debian/libdancer-perl": 1
+            "pkg:deb/debian/libdancer-perl": 2
         },
         "\"https://cpan.org/modules\":\"Dancer2\"": {
             "pkg:deb/debian/libdancer2-perl": 5
@@ -27239,7 +27257,7 @@
             "pkg:deb/debian/keycloak": 3
         },
         "\"https://github.com/keycloak/keycloak\":\"org.keycloak:keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 2
+            "pkg:deb/debian/keycloak": 3
         },
         "\"https://github.com/keycloak/keycloak/\":\"keycloak\"": {
             "pkg:deb/debian/keycloak": 4
@@ -27328,6 +27346,9 @@
         },
         "\"https://github.com/pgadmin-org/pgadmin4\":\"pgadmin4\"": {
             "pkg:deb/debian/pgadmin4": 1
+        },
+        "\"https://github.com/podman-container-tools/podman\":\"podman\"": {
+            "pkg:deb/debian/podman": 1
         },
         "\"https://github.com/protocolbuffers/protobuf/\":\"protobuf\"": {
             "pkg:deb/debian/protobuf": 1
@@ -29413,6 +29434,9 @@
         "\"https://www.libssh.org/\":\"libssh\"": {
             "pkg:deb/debian/libssh": 3
         },
+        "\"https://www.npmjs.com\":\"create-ecdh\"": {
+            "pkg:deb/debian/node-create-ecdh": 1
+        },
         "\"https://www.npmjs.com\":\"pbkdf2\"": {
             "pkg:deb/debian/node-pbkdf2": 1
         },
@@ -29651,6 +29675,9 @@
         "pkg:composer/postfixadmin/postfixadmin": {
             "pkg:deb/debian/postfixadmin": 1
         },
+        "pkg:composer/roundcube/roundcubemail": {
+            "pkg:deb/debian/roundcube": 1
+        },
         "pkg:composer/smarty/smarty": {
             "pkg:deb/debian/smarty3": 1,
             "pkg:deb/debian/smarty4": 1
@@ -29690,6 +29717,9 @@
         },
         "pkg:cpan/DBI": {
             "pkg:deb/debian/libdbi-perl": 8
+        },
+        "pkg:cpan/Dancer": {
+            "pkg:deb/debian/libdancer-perl": 1
         },
         "pkg:cpan/Dancer2": {
             "pkg:deb/debian/libdancer2-perl": 5
@@ -30036,7 +30066,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 15
+            "pkg:deb/debian/ffmpeg": 40
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
