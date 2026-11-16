@@ -15368,6 +15368,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libokhttp-java": {
+        "VendorProductIDs": [
+            "\"square\":\"okhttp\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:squareup:okhttp:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:maven/com.squareup.okhttp3/okhttp"
+        ]
+    },
     "pkg:deb/debian/libonion": {
         "VendorProductIDs": [
             "\"davidmoreno\":\"onion\""
@@ -32247,14 +32259,23 @@
             "cpe:2.3:a:apache:shiro:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-aspectj\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-cdi\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-core\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-guice\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-jakarta-ee\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-jakata-ee\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-spring\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-web\""
         ],
         "PackageURLs": [
-            "pkg:maven/org.apache.shiro/shiro-core"
+            "pkg:maven/org.apache.shiro/shiro-aspectj",
+            "pkg:maven/org.apache.shiro/shiro-cdi",
+            "pkg:maven/org.apache.shiro/shiro-core",
+            "pkg:maven/org.apache.shiro/shiro-guice",
+            "pkg:maven/org.apache.shiro/shiro-jakarta-ee",
+            "pkg:maven/org.apache.shiro/shiro-spring",
+            "pkg:maven/org.apache.shiro/shiro-web"
         ]
     },
     "pkg:deb/debian/shynet": {
@@ -32780,11 +32801,14 @@
         "VendorProductIDs": [
             "\"n/a\":\"sox (sound exchange)\"",
             "\"n/a\":\"sox\"",
+            "\"n/a\":\"sox_ng\"",
             "\"sound exchange\":\"libsox\"",
             "\"sourceforge\":\"sox - sound exchange\"",
             "\"sox\":\"sox\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:sox_ng:sox_ng:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"sox\"",
             "\"https://packages.fedoraproject.org/\":\"sox\""
@@ -36482,6 +36506,16 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/xschem": {
+        "VendorProductIDs": [
+            "\"stefan schippers\":\"xschem\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/stefanschippers/xschem"
+        ]
     },
     "pkg:deb/debian/xscreensaver": {
         "VendorProductIDs": [

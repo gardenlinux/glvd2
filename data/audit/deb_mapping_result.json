@@ -1685,7 +1685,7 @@
             "pkg:deb/debian/shiro": 1
         },
         "\"apache software foundation\":\"apache shiro\"": {
-            "pkg:deb/debian/shiro": 18
+            "pkg:deb/debian/shiro": 25
         },
         "\"apache software foundation\":\"apache solr\"": {
             "pkg:deb/debian/lucene-solr": 24
@@ -4468,7 +4468,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 156
+            "pkg:deb/debian/ffmpeg": 169
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -8355,7 +8355,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18241,
+            "pkg:deb/debian/linux": 18264,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -11832,6 +11832,9 @@
         },
         "\"n/a\":\"sox\"": {
             "pkg:deb/debian/sox": 5
+        },
+        "\"n/a\":\"sox_ng\"": {
+            "pkg:deb/debian/sox": 1
         },
         "\"n/a\":\"spdlog\"": {
             "pkg:deb/debian/spdlog": 1
@@ -17309,6 +17312,9 @@
         "\"sqlparse_project\":\"sqlparse\"": {
             "pkg:deb/debian/sqlparse": 1
         },
+        "\"square\":\"okhttp\"": {
+            "pkg:deb/debian/libokhttp-java": 1
+        },
         "\"squid-cache\":\"squid\"": {
             "pkg:deb/debian/squid": 19,
             "pkg:deb/debian/squid3": 6
@@ -17357,6 +17363,9 @@
         },
         "\"stefaan colman\":\"fileutils\"": {
             "pkg:deb/debian/ruby-fileutils": 1
+        },
+        "\"stefan schippers\":\"xschem\"": {
+            "pkg:deb/debian/xschem": 2
         },
         "\"stefanberger\":\"libtpms\"": {
             "pkg:deb/debian/libtpms": 2
@@ -20703,7 +20712,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 148
+            "pkg:deb/debian/ffmpeg": 161
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -23413,6 +23422,9 @@
         "cpe:2.3:a:socketry:protocol-http1:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-protocol-http1": 1
         },
+        "cpe:2.3:a:sox_ng:sox_ng:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/sox": 1
+        },
         "cpe:2.3:a:spip:saisies:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/spip": 2
         },
@@ -23430,6 +23442,9 @@
         },
         "cpe:2.3:a:sqlparse_project:sqlparse:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/sqlparse": 2
+        },
+        "cpe:2.3:a:squareup:okhttp:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libokhttp-java": 1
         },
         "cpe:2.3:a:squid-cache:squid:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/squid": 3,
@@ -24171,7 +24186,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18233
+            "pkg:deb/debian/linux": 18256
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -28916,20 +28931,29 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.qpid:qpid-broker-plugins-management-http\"": {
             "pkg:deb/debian/qpid-java": 1
         },
-        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-core\"": {
-            "pkg:deb/debian/shiro": 4
-        },
-        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-guice\"": {
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-aspectj\"": {
             "pkg:deb/debian/shiro": 1
         },
-        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-jakarta-ee\"": {
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-cdi\"": {
+            "pkg:deb/debian/shiro": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-core\"": {
+            "pkg:deb/debian/shiro": 7
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-guice\"": {
             "pkg:deb/debian/shiro": 2
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-jakarta-ee\"": {
+            "pkg:deb/debian/shiro": 5
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-jakata-ee\"": {
             "pkg:deb/debian/shiro": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-spring\"": {
+            "pkg:deb/debian/shiro": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.shiro:shiro-web\"": {
-            "pkg:deb/debian/shiro": 4
+            "pkg:deb/debian/shiro": 6
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.solr:solr-core\"": {
             "pkg:deb/debian/lucene-solr": 1
@@ -30075,7 +30099,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 88
+            "pkg:deb/debian/ffmpeg": 101
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -30387,6 +30411,9 @@
         "pkg:github/sshock/AFFLIBv3": {
             "pkg:deb/debian/afflib": 1
         },
+        "pkg:github/stefanschippers/xschem": {
+            "pkg:deb/debian/xschem": 2
+        },
         "pkg:github/strongswan/strongswan": {
             "pkg:deb/debian/strongswan": 1
         },
@@ -30583,6 +30610,9 @@
         "pkg:maven/com.ning/compress-lzf": {
             "pkg:deb/debian/compress-lzf": 1
         },
+        "pkg:maven/com.squareup.okhttp3/okhttp": {
+            "pkg:deb/debian/libokhttp-java": 1
+        },
         "pkg:maven/io.netty/netty-codec-classes-quic": {
             "pkg:deb/debian/netty": 1
         },
@@ -30707,8 +30737,26 @@
         "pkg:maven/org.apache.qpid/qpid-broker-plugins-amqp-0-8-protocol": {
             "pkg:deb/debian/qpid-java": 1
         },
-        "pkg:maven/org.apache.shiro/shiro-core": {
+        "pkg:maven/org.apache.shiro/shiro-aspectj": {
             "pkg:deb/debian/shiro": 1
+        },
+        "pkg:maven/org.apache.shiro/shiro-cdi": {
+            "pkg:deb/debian/shiro": 1
+        },
+        "pkg:maven/org.apache.shiro/shiro-core": {
+            "pkg:deb/debian/shiro": 4
+        },
+        "pkg:maven/org.apache.shiro/shiro-guice": {
+            "pkg:deb/debian/shiro": 1
+        },
+        "pkg:maven/org.apache.shiro/shiro-jakarta-ee": {
+            "pkg:deb/debian/shiro": 3
+        },
+        "pkg:maven/org.apache.shiro/shiro-spring": {
+            "pkg:deb/debian/shiro": 1
+        },
+        "pkg:maven/org.apache.shiro/shiro-web": {
+            "pkg:deb/debian/shiro": 2
         },
         "pkg:maven/org.apache.sshd/sshd-core": {
             "pkg:deb/debian/libmina-sshd-java": 2
