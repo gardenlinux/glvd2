@@ -4266,7 +4266,7 @@
             "pkg:deb/debian/golang-github-go-ethereum": 3
         },
         "\"ettercap\":\"ettercap\"": {
-            "pkg:deb/debian/ettercap": 8
+            "pkg:deb/debian/ettercap": 10
         },
         "\"eugeny\":\"russh\"": {
             "pkg:deb/debian/rust-russh": 27,
@@ -5069,7 +5069,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "\"glpi-project\":\"glpi\"": {
-            "pkg:deb/debian/glpi": 179
+            "pkg:deb/debian/glpi": 180
         },
         "\"glpi-project\":\"glpi-agent\"": {
             "pkg:deb/debian/glpi": 3
@@ -8355,7 +8355,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18242,
+            "pkg:deb/debian/linux": 18241,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -13364,7 +13364,7 @@
             "pkg:deb/debian/openbabel": 5
         },
         "\"openbao\":\"openbao\"": {
-            "pkg:deb/debian/openbao": 43
+            "pkg:deb/debian/openbao": 47
         },
         "\"openbsd\":\"libressl\"": {
             "pkg:deb/debian/libressl": 4
@@ -20646,7 +20646,7 @@
             "pkg:deb/debian/golang-github-go-ethereum": 3
         },
         "cpe:2.3:a:ettercap-project:ettercap:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ettercap": 7
+            "pkg:deb/debian/ettercap": 9
         },
         "cpe:2.3:a:ettercap:ettercap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ettercap": 2
@@ -22418,7 +22418,7 @@
             "pkg:deb/debian/openbabel": 5
         },
         "cpe:2.3:a:openbao:openbao:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/openbao": 12
+            "pkg:deb/debian/openbao": 16
         },
         "cpe:2.3:a:openbsd:libressl:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libressl": 4
@@ -24171,7 +24171,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18234
+            "pkg:deb/debian/linux": 18233
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -29891,7 +29891,7 @@
             "pkg:deb/debian/dolibarr": 1
         },
         "pkg:github/Ettercap/ettercap": {
-            "pkg:deb/debian/ettercap": 7
+            "pkg:deb/debian/ettercap": 9
         },
         "pkg:github/FFmpeg/FFmpeg": {
             "pkg:deb/debian/ffmpeg": 12
@@ -30516,11 +30516,17 @@
         "pkg:golang/github.com/openbao/openbao": {
             "pkg:deb/debian/openbao": 1
         },
+        "pkg:golang/github.com/openbao/openbao-plugins/auth/ldap": {
+            "pkg:deb/debian/openbao": 1
+        },
+        "pkg:golang/github.com/openbao/openbao-plugins/auth/radius": {
+            "pkg:deb/debian/openbao": 1
+        },
         "pkg:golang/github.com/openbao/openbao/sdk/v2": {
             "pkg:deb/debian/openbao": 1
         },
         "pkg:golang/github.com/openbao/openbao/v2": {
-            "pkg:deb/debian/openbao": 11
+            "pkg:deb/debian/openbao": 15
         },
         "pkg:golang/github.com/opentofu/opentofu": {
             "pkg:deb/debian/opentofu": 3

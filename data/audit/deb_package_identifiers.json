@@ -23219,6 +23219,8 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:golang/github.com/openbao/openbao",
+            "pkg:golang/github.com/openbao/openbao-plugins/auth/ldap",
+            "pkg:golang/github.com/openbao/openbao-plugins/auth/radius",
             "pkg:golang/github.com/openbao/openbao/sdk/v2",
             "pkg:golang/github.com/openbao/openbao/v2"
         ]
