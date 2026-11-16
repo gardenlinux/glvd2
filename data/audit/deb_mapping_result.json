@@ -2355,7 +2355,7 @@
             "pkg:deb/debian/assertj-core": 1
         },
         "\"assimp\":\"assimp\"": {
-            "pkg:deb/debian/assimp": 10
+            "pkg:deb/debian/assimp": 14
         },
         "\"asterisk\":\"asterisk\"": {
             "pkg:deb/debian/asterisk": 37
@@ -2772,7 +2772,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "\"bytecodealliance\":\"wasmtime\"": {
-            "pkg:deb/debian/rust-wasmtime": 76
+            "pkg:deb/debian/rust-wasmtime": 79
         },
         "\"byvoid\":\"opencc\"": {
             "pkg:deb/debian/opencc": 1
@@ -3464,6 +3464,9 @@
         },
         "\"cyrusimap\":\"cyrus imap\"": {
             "pkg:deb/debian/cyrus-imapd": 15
+        },
+        "\"cyrusimap\":\"cyrus-sasl\"": {
+            "pkg:deb/debian/cyrus-sasl2": 1
         },
         "\"cz.nic\":\"knot-resolver\"": {
             "pkg:deb/debian/knot-resolver": 4
@@ -4365,7 +4368,7 @@
             "pkg:deb/debian/pymdown-extensions": 5
         },
         "\"facelessuser\":\"soupsieve\"": {
-            "pkg:deb/debian/soupsieve": 4
+            "pkg:deb/debian/soupsieve": 9
         },
         "\"fail2ban\":\"fail2ban\"": {
             "pkg:deb/debian/fail2ban": 2
@@ -4465,7 +4468,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 108
+            "pkg:deb/debian/ffmpeg": 156
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -4710,7 +4713,7 @@
             "pkg:deb/debian/frr": 2
         },
         "\"frrouting\":\"frrouting\"": {
-            "pkg:deb/debian/frr": 11
+            "pkg:deb/debian/frr": 13
         },
         "\"frysk\":\"frysk\"": {
             "pkg:deb/debian/frysk": 1
@@ -6184,7 +6187,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 26
+            "pkg:deb/debian/gpac": 30
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -14851,11 +14854,11 @@
             "pkg:deb/debian/pypy3": 60,
             "pkg:deb/debian/python2.7": 47,
             "pkg:deb/debian/python3.10": 3,
-            "pkg:deb/debian/python3.11": 81,
+            "pkg:deb/debian/python3.11": 83,
             "pkg:deb/debian/python3.12": 26,
-            "pkg:deb/debian/python3.13": 76,
-            "pkg:deb/debian/python3.14": 56,
-            "pkg:deb/debian/python3.15": 16,
+            "pkg:deb/debian/python3.13": 78,
+            "pkg:deb/debian/python3.14": 58,
+            "pkg:deb/debian/python3.15": 18,
             "pkg:deb/debian/python3.7": 7,
             "pkg:deb/debian/python3.9": 69
         },
@@ -18924,7 +18927,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 121
+            "pkg:deb/debian/vllm": 128
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -20115,7 +20118,7 @@
             "pkg:deb/debian/asio": 1
         },
         "cpe:2.3:a:assimp:assimp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/assimp": 34
+            "pkg:deb/debian/assimp": 38
         },
         "cpe:2.3:a:asterisk:asterisk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/asterisk": 2
@@ -20268,7 +20271,7 @@
             "pkg:deb/debian/rust-rustix": 1
         },
         "cpe:2.3:a:bytecodealliance:wasmtime:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rust-wasmtime": 29
+            "pkg:deb/debian/rust-wasmtime": 32
         },
         "cpe:2.3:a:c-ares:c-ares:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/c-ares": 1
@@ -20439,6 +20442,9 @@
         },
         "cpe:2.3:a:cvc5:cvc5:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cvc5": 2
+        },
+        "cpe:2.3:a:cyrusimap:cyrus-sasl:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/cyrus-sasl2": 1
         },
         "cpe:2.3:a:cyrusimap:cyrus_imap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cyrus-imapd": 15
@@ -20697,7 +20703,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 100
+            "pkg:deb/debian/ffmpeg": 148
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -20781,7 +20787,7 @@
             "pkg:deb/debian/froxlor": 32
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/frr": 12
+            "pkg:deb/debian/frr": 13
         },
         "cpe:2.3:a:fusiondirectory:fusiondirectory:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/fusiondirectory": 1
@@ -21126,7 +21132,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 79
+            "pkg:deb/debian/gpac": 83
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -23737,10 +23743,10 @@
             "pkg:deb/debian/cron": 1
         },
         "cpe:2.3:a:vllm-project:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 8
+            "pkg:deb/debian/vllm": 9
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 44
+            "pkg:deb/debian/vllm": 50
         },
         "cpe:2.3:a:vmware:spring:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-java": 1
@@ -29637,7 +29643,7 @@
             "pkg:deb/debian/uv": 1
         },
         "pkg:cargo/wasmtime": {
-            "pkg:deb/debian/rust-wasmtime": 20
+            "pkg:deb/debian/rust-wasmtime": 23
         },
         "pkg:cargo/wasmtime-wasi": {
             "pkg:deb/debian/rust-wasmtime": 6
@@ -29990,7 +29996,7 @@
             "pkg:deb/debian/bluez-alsa": 1
         },
         "pkg:github/assimp/assimp": {
-            "pkg:deb/debian/assimp": 3
+            "pkg:deb/debian/assimp": 7
         },
         "pkg:github/bakulf/libnxml": {
             "pkg:deb/debian/libnxml": 1
@@ -30009,6 +30015,9 @@
         },
         "pkg:github/coturn/coturn": {
             "pkg:deb/debian/coturn": 1
+        },
+        "pkg:github/cyrusimap/cyrus-sasl": {
+            "pkg:deb/debian/cyrus-sasl2": 1
         },
         "pkg:github/dajobe/raptor": {
             "pkg:deb/debian/raptor2": 1
@@ -30066,7 +30075,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 40
+            "pkg:deb/debian/ffmpeg": 88
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -30097,7 +30106,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "pkg:github/gpac/gpac": {
-            "pkg:deb/debian/gpac": 2
+            "pkg:deb/debian/gpac": 6
         },
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
@@ -31189,7 +31198,7 @@
             "pkg:deb/debian/uv": 3
         },
         "pkg:pypi/vllm": {
-            "pkg:deb/debian/vllm": 43
+            "pkg:deb/debian/vllm": 49
         },
         "pkg:pypi/xhtml2pdf": {
             "pkg:deb/debian/xhtml2pdf": 1

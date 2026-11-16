@@ -3701,6 +3701,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/cyrus-sasl2": {
+        "VendorProductIDs": [
+            "\"cyrusimap\":\"cyrus-sasl\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:cyrusimap:cyrus-sasl:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/cyrusimap/cyrus-sasl"
+        ]
+    },
     "pkg:deb/debian/dacs": {
         "VendorProductIDs": [
             "\"n/a\":\"freebsd\""
