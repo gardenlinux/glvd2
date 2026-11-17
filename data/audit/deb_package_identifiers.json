@@ -5564,7 +5564,8 @@
             "\"ffmpeg\":\"ffmpeg\"",
             "\"libbpg\":\"libbpg\"",
             "\"n/a\":\"ffmpeg\"",
-            "\"unspecified\":\"ffmpeg\""
+            "\"unspecified\":\"ffmpeg\"",
+            "\"videolan\":\"vlc\""
         ],
         "CPEs": [
             "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*"
@@ -36944,6 +36945,14 @@
         "CPEs": [
             "cpe:2.3:a:openzfs:openzfs:*:*:*:*:*:*:*:*"
         ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/zip": {
+        "VendorProductIDs": [
+            "\"info-zip\":\"zip\""
+        ],
+        "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
     },

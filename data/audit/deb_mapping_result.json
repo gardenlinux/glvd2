@@ -4109,7 +4109,7 @@
             "pkg:deb/debian/eglibc": 1
         },
         "\"egroupware\":\"egroupware\"": {
-            "pkg:deb/debian/egroupware": 4
+            "pkg:deb/debian/egroupware": 5
         },
         "\"ehuels\":\"authen::sasl::perl::digest_md5\"": {
             "pkg:deb/debian/libauthen-sasl-perl": 1
@@ -6966,6 +6966,9 @@
         },
         "\"info-zip\":\"unzip\"": {
             "pkg:deb/debian/unzip": 4
+        },
+        "\"info-zip\":\"zip\"": {
+            "pkg:deb/debian/zip": 1
         },
         "\"iniparser\":\"iniparser\"": {
             "pkg:deb/debian/iniparser": 1
@@ -13557,7 +13560,7 @@
         "\"openssl\":\"openssl\"": {
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/libtomcrypt": 1,
-            "pkg:deb/debian/openssl": 146,
+            "pkg:deb/debian/openssl": 149,
             "pkg:deb/debian/openssl1.0": 30
         },
         "\"openstack foundation\":\"openstack-cinder\"": {
@@ -18915,7 +18918,8 @@
             "pkg:deb/debian/vlc": 3
         },
         "\"videolan\":\"vlc\"": {
-            "pkg:deb/debian/vlc": 5
+            "pkg:deb/debian/ffmpeg": 1,
+            "pkg:deb/debian/vlc": 6
         },
         "\"videolan\":\"vlc_media_player\"": {
             "pkg:deb/debian/vlc": 2
@@ -22421,7 +22425,7 @@
             "pkg:deb/debian/suricata": 13
         },
         "cpe:2.3:a:ollama:ollama:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ollama": 13
+            "pkg:deb/debian/ollama": 14
         },
         "cpe:2.3:a:omniauth:omniauth-saml:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-saml": 1
