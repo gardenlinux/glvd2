@@ -12357,6 +12357,17 @@
             "pkg:pypi/jupyterlab"
         ]
     },
+    "pkg:deb/debian/jxrlib": {
+        "VendorProductIDs": [
+            "\"microsoft\":\"jxrlib\"",
+            "\"mircomir\":\"jxrlib\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/mircomir/jxrlib"
+        ]
+    },
     "pkg:deb/debian/jython": {
         "VendorProductIDs": [
             "\"python software foundation\":\"cpython\""
@@ -16997,11 +17008,13 @@
     "pkg:deb/debian/limesurvey": {
         "VendorProductIDs": [
             "\"limesurvey gmbh\":\"limesurvey\"",
+            "\"limesurvey\":\"limesurvey community edition\"",
             "\"limesurvey\":\"limesurvey\"",
             "\"n/a\":\"limesurvey\""
         ],
         "CPEs": [
-            "cpe:2.3:a:limesurvey:limesurvey:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:limesurvey:limesurvey:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:limesurvey:limesurvey_community_edition:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": [
@@ -19066,7 +19079,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/msgpack/msgpack-c"
+        ]
     },
     "pkg:deb/debian/msgpack-java": {
         "VendorProductIDs": [

@@ -441,7 +441,7 @@
             "pkg:deb/debian/sogo": 1
         },
         "\"alinto\":\"sogo\"": {
-            "pkg:deb/debian/sogo": 15
+            "pkg:deb/debian/sogo": 16
         },
         "\"alinto\":\"sope\"": {
             "pkg:deb/debian/sope": 1
@@ -3347,7 +3347,7 @@
             "pkg:deb/debian/rust-bit-vec": 1
         },
         "\"containerd\":\"containerd\"": {
-            "pkg:deb/debian/containerd": 26,
+            "pkg:deb/debian/containerd": 27,
             "pkg:deb/debian/docker.io": 2
         },
         "\"containers\":\"aardvark-dns\"": {
@@ -4109,7 +4109,7 @@
             "pkg:deb/debian/eglibc": 1
         },
         "\"egroupware\":\"egroupware\"": {
-            "pkg:deb/debian/egroupware": 3
+            "pkg:deb/debian/egroupware": 4
         },
         "\"ehuels\":\"authen::sasl::perl::digest_md5\"": {
             "pkg:deb/debian/libauthen-sasl-perl": 1
@@ -5074,7 +5074,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "\"glpi-project\":\"glpi\"": {
-            "pkg:deb/debian/glpi": 180
+            "pkg:deb/debian/glpi": 182
         },
         "\"glpi-project\":\"glpi-agent\"": {
             "pkg:deb/debian/glpi": 3
@@ -6192,7 +6192,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 30
+            "pkg:deb/debian/gpac": 34
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -8317,8 +8317,11 @@
         "\"limesurvey gmbh\":\"limesurvey\"": {
             "pkg:deb/debian/limesurvey": 1
         },
+        "\"limesurvey\":\"limesurvey community edition\"": {
+            "pkg:deb/debian/limesurvey": 2
+        },
         "\"limesurvey\":\"limesurvey\"": {
-            "pkg:deb/debian/limesurvey": 25
+            "pkg:deb/debian/limesurvey": 26
         },
         "\"linaro/op-tee\":\"op-tee\"": {
             "pkg:deb/debian/optee-os": 7
@@ -8833,6 +8836,9 @@
         "\"microsoft\":\"azure_uamqp\"": {
             "pkg:deb/debian/azure-uamqp-python": 1
         },
+        "\"microsoft\":\"jxrlib\"": {
+            "pkg:deb/debian/jxrlib": 4
+        },
         "\"microsoft\":\"knack\"": {
             "pkg:deb/debian/knack": 2
         },
@@ -9058,6 +9064,9 @@
         },
         "\"mirage\":\"cohttp\"": {
             "pkg:deb/debian/ocaml-cohttp": 1
+        },
+        "\"mircomir\":\"jxrlib\"": {
+            "pkg:deb/debian/jxrlib": 4
         },
         "\"misp\":\"misp\"": {
             "pkg:deb/debian/misp": 154
@@ -9456,7 +9465,7 @@
             "pkg:deb/debian/errands": 1
         },
         "\"msgpack\":\"msgpack-c\"": {
-            "pkg:deb/debian/msgpack-c": 1
+            "pkg:deb/debian/msgpack-c": 2
         },
         "\"msgpack\":\"msgpack-java\"": {
             "pkg:deb/debian/msgpack-java": 3
@@ -17857,7 +17866,7 @@
         },
         "\"the document foundation\":\"libreoffice\"": {
             "pkg:deb/debian/hsqldb1.8.0": 2,
-            "pkg:deb/debian/libreoffice": 67
+            "pkg:deb/debian/libreoffice": 72
         },
         "\"the dovecot project\":\"dovecot\"": {
             "pkg:deb/debian/dovecot": 3
@@ -19833,7 +19842,7 @@
             "pkg:deb/debian/node-ajv": 1
         },
         "cpe:2.3:a:alinto:sogo:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/sogo": 6
+            "pkg:deb/debian/sogo": 7
         },
         "cpe:2.3:a:alsa-project:alsa-lib:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/alsa-lib": 5
@@ -21159,7 +21168,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 83
+            "pkg:deb/debian/gpac": 87
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -21736,7 +21745,10 @@
             "pkg:deb/debian/lighttpd": 2
         },
         "cpe:2.3:a:limesurvey:limesurvey:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/limesurvey": 23
+            "pkg:deb/debian/limesurvey": 24
+        },
+        "cpe:2.3:a:limesurvey:limesurvey_community_edition:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/limesurvey": 2
         },
         "cpe:2.3:a:linux:kernel:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/linux": 2
@@ -29919,7 +29931,7 @@
             "pkg:deb/debian/3proxy": 1
         },
         "pkg:github/Alinto/sogo": {
-            "pkg:deb/debian/sogo": 7
+            "pkg:deb/debian/sogo": 8
         },
         "pkg:github/ArtifexSoftware/mupdf": {
             "pkg:deb/debian/mupdf": 2
@@ -29977,7 +29989,7 @@
             "pkg:deb/debian/libredwg": 1
         },
         "pkg:github/LimeSurvey/LimeSurvey": {
-            "pkg:deb/debian/limesurvey": 1
+            "pkg:deb/debian/limesurvey": 2
         },
         "pkg:github/Mindwerks/wildmidi": {
             "pkg:deb/debian/wildmidi": 2
@@ -30149,7 +30161,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "pkg:github/gpac/gpac": {
-            "pkg:deb/debian/gpac": 6
+            "pkg:deb/debian/gpac": 10
         },
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
@@ -30287,11 +30299,17 @@
         "pkg:github/miniupnp/miniupnp": {
             "pkg:deb/debian/miniupnpc": 2
         },
+        "pkg:github/mircomir/jxrlib": {
+            "pkg:deb/debian/jxrlib": 4
+        },
         "pkg:github/moodle/moodle": {
             "pkg:deb/debian/moodle": 4
         },
         "pkg:github/mpv-player/mpv": {
             "pkg:deb/debian/mpv": 1
+        },
+        "pkg:github/msgpack/msgpack-c": {
+            "pkg:deb/debian/msgpack-c": 1
         },
         "pkg:github/nationalsecurityagency/ghidra": {
             "pkg:deb/debian/ghidra": 19
