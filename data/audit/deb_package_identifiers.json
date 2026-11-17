@@ -5285,9 +5285,12 @@
     "pkg:deb/debian/evince": {
         "VendorProductIDs": [
             "\"evince team\":\"evince\"",
-            "\"mate-desktop\":\"atril\""
+            "\"mate-desktop\":\"atril\"",
+            "\"tex live\":\"tex live\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:tug:tex_live:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"evince\""
         ],
@@ -5295,9 +5298,12 @@
     },
     "pkg:deb/debian/evince-gtk3": {
         "VendorProductIDs": [
-            "\"mate-desktop\":\"atril\""
+            "\"mate-desktop\":\"atril\"",
+            "\"tex live\":\"tex live\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:tug:tex_live:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -10704,7 +10710,8 @@
     },
     "pkg:deb/debian/hsqldb1.8.0": {
         "VendorProductIDs": [
-            "\"n/a\":\"libreoffice\""
+            "\"n/a\":\"libreoffice\"",
+            "\"the document foundation\":\"libreoffice\""
         ],
         "CPEs": null,
         "PackageIDs": [
@@ -25489,6 +25496,8 @@
             "\"siemens\":\"voice alarm panels\"",
             "\"siemens\":\"voice alarm systems and audio matrices\"",
             "\"siemens\":\"workplace experience\"",
+            "\"siemens\":\"wtv676-hb6035 firmware\"",
+            "\"siemens\":\"wtv776-hb6035 firmware\"",
             "\"siemens\":\"xcargo\"",
             "\"siemens\":\"xpedition designer\"",
             "\"siemens\":\"xpedition enterprise xcr\"",
@@ -25599,6 +25608,8 @@
             "\"siemens\":\"voice alarm panels\"",
             "\"siemens\":\"voice alarm systems and audio matrices\"",
             "\"siemens\":\"workplace experience\"",
+            "\"siemens\":\"wtv676-hb6035 firmware\"",
+            "\"siemens\":\"wtv776-hb6035 firmware\"",
             "\"siemens\":\"xcargo\"",
             "\"siemens\":\"xpedition designer\"",
             "\"siemens\":\"xpedition enterprise xcr\"",
@@ -30755,14 +30766,32 @@
     },
     "pkg:deb/debian/rust-actix-http": {
         "VendorProductIDs": [
-            "\"actix\":\"actix-http\""
+            "\"actix\":\"actix-http\"",
+            "\"actix\":\"actix-web\""
         ],
         "CPEs": [
-            "cpe:2.3:a:actix:actix-http:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:actix:actix-http:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:actix:actix-web:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": [
-            "pkg:cargo/actix-http"
+            "pkg:cargo/actix-http",
+            "pkg:cargo/actix-web"
+        ]
+    },
+    "pkg:deb/debian/rust-actix-web": {
+        "VendorProductIDs": [
+            "\"actix\":\"actix-http\"",
+            "\"actix\":\"actix-web\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:actix:actix-http:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:actix:actix-web:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:cargo/actix-http",
+            "pkg:cargo/actix-web"
         ]
     },
     "pkg:deb/debian/rust-aes-gcm": {
@@ -36913,24 +36942,20 @@
     },
     "pkg:deb/debian/zlib": {
         "VendorProductIDs": [
-            "\"webpack\":\"webpack-dev-middleware\"",
             "\"zlib software\":\"zlib\"",
             "\"zlib\":\"zlib\""
         ],
         "CPEs": [
             "cpe:2.3:a:redhat:openjdk:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:redhat:openjdk_els:*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:webpack.js:webpack-dev-middleware:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:zlib:zlib:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"mingw-zlib\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"zlib\"",
-            "\"https://www.npmjs.com/package/webpack-dev-middleware\":\"webpack-dev-middleware\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"zlib\""
         ],
         "PackageURLs": [
-            "pkg:github/madler/zlib",
-            "pkg:npm/webpack-dev-middleware"
+            "pkg:github/madler/zlib"
         ]
     },
     "pkg:deb/debian/znc": {

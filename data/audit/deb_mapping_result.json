@@ -326,7 +326,12 @@
             "pkg:deb/debian/rust-actix-files": 2
         },
         "\"actix\":\"actix-http\"": {
-            "pkg:deb/debian/rust-actix-http": 1
+            "pkg:deb/debian/rust-actix-http": 2,
+            "pkg:deb/debian/rust-actix-web": 1
+        },
+        "\"actix\":\"actix-web\"": {
+            "pkg:deb/debian/rust-actix-http": 1,
+            "pkg:deb/debian/rust-actix-web": 1
         },
         "\"adaltas\":\"node-csv\"": {
             "pkg:deb/debian/node-csv-parse": 1
@@ -4713,7 +4718,7 @@
             "pkg:deb/debian/frr": 2
         },
         "\"frrouting\":\"frrouting\"": {
-            "pkg:deb/debian/frr": 13
+            "pkg:deb/debian/frr": 14
         },
         "\"frysk\":\"frysk\"": {
             "pkg:deb/debian/frysk": 1
@@ -4861,7 +4866,7 @@
             "pkg:deb/debian/golang-github-gin-contrib-cors": 1
         },
         "\"git\":\"git\"": {
-            "pkg:deb/debian/git": 29
+            "pkg:deb/debian/git": 30
         },
         "\"git-annex\":\"git-annex\"": {
             "pkg:deb/debian/git-annex": 1
@@ -16910,6 +16915,14 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"wtv676-hb6035 firmware\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"wtv776-hb6035 firmware\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"xcargo\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
@@ -17800,6 +17813,8 @@
             "pkg:deb/debian/edfbrowser": 1
         },
         "\"tex live\":\"tex live\"": {
+            "pkg:deb/debian/evince": 1,
+            "pkg:deb/debian/evince-gtk3": 1,
             "pkg:deb/debian/okular": 1,
             "pkg:deb/debian/texlive-bin": 1,
             "pkg:deb/debian/texstudio": 1
@@ -17841,7 +17856,8 @@
             "pkg:deb/debian/dnsmasq": 1
         },
         "\"the document foundation\":\"libreoffice\"": {
-            "pkg:deb/debian/libreoffice": 48
+            "pkg:deb/debian/hsqldb1.8.0": 2,
+            "pkg:deb/debian/libreoffice": 67
         },
         "\"the dovecot project\":\"dovecot\"": {
             "pkg:deb/debian/dovecot": 3
@@ -19083,9 +19099,6 @@
         "\"webpack\":\"webpack\"": {
             "pkg:deb/debian/node-webpack": 3
         },
-        "\"webpack\":\"webpack-dev-middleware\"": {
-            "pkg:deb/debian/zlib": 1
-        },
         "\"webpy\":\"web.py\"": {
             "pkg:deb/debian/webpy": 1
         },
@@ -19770,7 +19783,12 @@
             "pkg:deb/debian/rust-actix-files": 2
         },
         "cpe:2.3:a:actix:actix-http:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rust-actix-http": 1
+            "pkg:deb/debian/rust-actix-http": 2,
+            "pkg:deb/debian/rust-actix-web": 1
+        },
+        "cpe:2.3:a:actix:actix-web:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/rust-actix-http": 1,
+            "pkg:deb/debian/rust-actix-web": 1
         },
         "cpe:2.3:a:adminer:adminer:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/adminer": 18
@@ -20796,7 +20814,7 @@
             "pkg:deb/debian/froxlor": 32
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/frr": 13
+            "pkg:deb/debian/frr": 14
         },
         "cpe:2.3:a:fusiondirectory:fusiondirectory:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/fusiondirectory": 1
@@ -23668,6 +23686,8 @@
             "pkg:deb/debian/tryton-server": 3
         },
         "cpe:2.3:a:tug:tex_live:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/evince": 1,
+            "pkg:deb/debian/evince-gtk3": 1,
             "pkg:deb/debian/okular": 1,
             "pkg:deb/debian/texlive-bin": 3,
             "pkg:deb/debian/texstudio": 1
@@ -23812,9 +23832,6 @@
         },
         "cpe:2.3:a:weborf_project:weborf:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/weborf": 1
-        },
-        "cpe:2.3:a:webpack.js:webpack-dev-middleware:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/zlib": 1
         },
         "cpe:2.3:a:webpack:webpack:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-webpack": 1
@@ -29503,9 +29520,6 @@
         "\"https://www.npmjs.com/package/shell-quote\":\"shell-quote\"": {
             "pkg:deb/debian/node-shell-quote": 2
         },
-        "\"https://www.npmjs.com/package/webpack-dev-middleware\":\"webpack-dev-middleware\"": {
-            "pkg:deb/debian/zlib": 1
-        },
         "\"https://www.nuget.org\":\"ApacheThrift\"": {
             "pkg:deb/debian/thrift": 1
         },
@@ -29550,7 +29564,12 @@
             "pkg:deb/debian/rust-actix-files": 2
         },
         "pkg:cargo/actix-http": {
-            "pkg:deb/debian/rust-actix-http": 1
+            "pkg:deb/debian/rust-actix-http": 2,
+            "pkg:deb/debian/rust-actix-web": 1
+        },
+        "pkg:cargo/actix-web": {
+            "pkg:deb/debian/rust-actix-http": 1,
+            "pkg:deb/debian/rust-actix-web": 1
         },
         "pkg:cargo/broot": {
             "pkg:deb/debian/rust-broot": 1
@@ -31017,9 +31036,6 @@
         },
         "pkg:npm/uuid": {
             "pkg:deb/debian/node-uuid": 1
-        },
-        "pkg:npm/webpack-dev-middleware": {
-            "pkg:deb/debian/zlib": 1
         },
         "pkg:npm/yauzl": {
             "pkg:deb/debian/node-yauzl": 1
