@@ -20,6 +20,7 @@ func TestValidate_AcceptsValidConfig(t *testing.T) {
 		AuditDir:                 "./data/audit",
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
+		LastCommitOfRunAnchor:    "GLVD2-Last-Commit-Of-Run: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
 		Screening:                config.Screening{EscalationWindow: 24 * time.Hour},
 	}
@@ -37,6 +38,7 @@ func TestValidate_ValidationErrors(t *testing.T) {
 		AuditDir:                 "./data/audit",
 		AssessmentsDir:           "./data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
+		LastCommitOfRunAnchor:    "GLVD2-Last-Commit-Of-Run: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
 		Screening:                config.Screening{EscalationWindow: 24 * time.Hour},
 	}
@@ -52,6 +54,7 @@ func TestValidate_ValidationErrors(t *testing.T) {
 		{"missing AuditDir", func(c *config.AppConfig) { c.AuditDir = "" }},
 		{"missing AssessmentDataDir", func(c *config.AppConfig) { c.AssessmentsDir = "" }},
 		{"missing BaselineCommitAnchor", func(c *config.AppConfig) { c.BaselineCommitAnchor = "" }},
+		{"missing LastCommitOfRunAnchor", func(c *config.AppConfig) { c.LastCommitOfRunAnchor = "" }},
 		{"missing GLRDReleasesURL", func(c *config.AppConfig) { c.GLRDReleasesURL = "" }},
 		{"non-positive EscalationWindow", func(c *config.AppConfig) { c.Screening.EscalationWindow = 0 }},
 	}

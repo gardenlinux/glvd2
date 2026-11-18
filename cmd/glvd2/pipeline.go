@@ -14,6 +14,7 @@ import (
 	database "github.com/gardenlinux/glvd2/internal/db"
 	"github.com/gardenlinux/glvd2/internal/debmap"
 	"github.com/gardenlinux/glvd2/internal/debsectracker"
+	"github.com/gardenlinux/glvd2/internal/gardenlinux/flavorinventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/glrd"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/inventory"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/pkgbuild"
@@ -130,12 +131,12 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	curated, vendored, inv, shippedIndex, err := buildSBOMProjections(ctx, cfg)
+	curated, vendored, inv, shippedIndex, flavorInv, err := buildSBOMProjections(ctx, cfg)
 	if err != nil {
 		return err
 	}
 
-	if err = recordAudits(auditService, curated, inv, vendored, shippedIndex); err != nil {
+	if err = recordAudits(auditService, curated, inv, vendored, shippedIndex, flavorInv); err != nil {
 		return err
 	}
 
@@ -163,8 +164,8 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		slog.Int("created", summary.Created),
 		slog.Int("updated", summary.Updated))
 
-	if err = publisher.Run(ctx, commitGroups, func(name string) string {
-		return commitMessageForGroup(name, cfg, summary)
+	if err = publisher.Run(ctx, commitGroups, func(name string, isLastCommit bool) string {
+		return commitMessageForGroup(name, cfg, summary, isLastCommit)
 	}); err != nil {
 		slog.Error("publishing artifacts failed", slog.Any("error", err))
 		return err
@@ -258,48 +259,54 @@ func buildAssessmentService(
 func buildSBOMProjections(
 	ctx context.Context,
 	cfg *config.AppConfig,
-) (glmap.Rules, glmap.Rules, inventory.Set, shippedversions.Index, error) {
+) (glmap.Rules, glmap.Rules, inventory.Set, shippedversions.Index, flavorinventory.Inventory, error) {
 	curated, err := glmap.New(configpath.DefaultGLSpecificMappingConfigPath)
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{},
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
 			fmt.Errorf("loading curated GL-specific mapping: %w", err)
 	}
 
-	releaseSource := func(ctx context.Context) ([]glrd.Release, error) {
-		return glrd.GetMaintainedReleases(ctx, cfg.GLRDReleasesURL)
+	// Fetch the maintained releases once and feed them to the shared SBOM pass.
+	releases, err := glrd.GetMaintainedReleases(ctx, cfg.GLRDReleasesURL)
+	if err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+			fmt.Errorf("listing maintained releases: %w", err)
 	}
+	releaseSource := func(context.Context) ([]glrd.Release, error) {
+		return releases, nil
+	}
+
 	invAcc := inventory.NewAccumulator()
 	vmAcc := vendormap.NewAccumulator()
 	svAcc := shippedversions.NewAccumulator()
+	fiAcc := flavorinventory.NewAccumulator()
 
-	if err = sbom.Feed(ctx, releaseSource, sbom.LocateSBOM, sbom.FetchCycloneDX, invAcc, vmAcc, svAcc); err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, fmt.Errorf(
-			"feeding SBOMs: %w",
-			err,
-		)
+	if err = sbom.Feed(
+		ctx, releaseSource, sbom.LocateSBOM, sbom.FetchCycloneDX, invAcc, vmAcc, svAcc, fiAcc,
+	); err != nil {
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+			fmt.Errorf("feeding SBOMs: %w", err)
 	}
 
 	inv, err := invAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{},
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
 			fmt.Errorf("building GL package inventory: %w", err)
 	}
 
 	vendored, err := vmAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, fmt.Errorf(
-			"building vendored-inclusion resolver: %w",
-			err,
-		)
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+			fmt.Errorf("building vendored-inclusion resolver: %w", err)
 	}
 
 	shippedIndex, err := svAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{},
+		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
 			fmt.Errorf("building per-release versioned index: %w", err)
 	}
 
-	return curated, vendored, inv, shippedIndex, nil
+	return curated, vendored, inv, shippedIndex, fiAcc.Result(), nil
 }
 
 func recordAudits(
@@ -308,6 +315,7 @@ func recordAudits(
 	inv inventory.Set,
 	vendored glmap.Rules,
 	shippedIndex shippedversions.Index,
+	flavorInv flavorinventory.Inventory,
 ) error {
 	artifacts := []struct {
 		label    string
@@ -318,6 +326,7 @@ func recordAudits(
 		{"GL package inventory", "gl_package_inventory.json", inv.AuditEntries()},
 		{"vendored inclusion", "vendored_inclusion.json", vendored.AuditEntries()},
 		{"shipped version index", "shipped_versions_index.json", shippedIndex.AuditEntries()},
+		{"flavor inventory", "flavor_inventory.json", flavorInv.Record()},
 	}
 
 	for _, a := range artifacts {

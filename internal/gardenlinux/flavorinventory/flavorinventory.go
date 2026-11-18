@@ -1,4 +1,4 @@
-// Package flavorinventory builds the version-free, per-release per-flavor source inclusion artifact:
+// Package flavorinventory builds the per-release, per-flavor source membership artifact:
 // release -> flavor -> set of source identity PURLs.
 // It is a sibling of the identity inventory (internal/gardenlinux/inventory), differing only in that
 // it keeps the per-release, per-flavor breakdown instead of unioning everything.
@@ -6,11 +6,13 @@ package flavorinventory
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log/slog"
 	"maps"
+	"regexp"
 	"slices"
+	"strconv"
+	"strings"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/gardenlinux/glvd2/internal/gardenlinux/packages"
@@ -18,116 +20,103 @@ import (
 	"github.com/gardenlinux/glvd2/internal/purl"
 )
 
-// PoolFlavor is the fallback flavor used for releases that lacks a complete SBOM set:
-// its InRelease pool is release-wide, with no per-flavor breakdown, so the
-// per-flavor view degrades gracefully to release-level under this single flavor.
-const PoolFlavor = "pool"
-
-// ErrEmptySource reports that a package carried an empty source name.
-var ErrEmptySource = errors.New("empty source name")
-
-// Inventory is the version-free per-release, per-flavor source inclusion artifact.
-// The release key is the GL version string ("1877.26", "2150.12.0").
-// The zero value is not usable; construct it via an Accumulator.
+// Inventory is the per-release, per-flavor source membership artifact. The release key is
+// the GL version string ("1877.26", "2150.12.0"). The zero value is not usable; construct
+// it via an Accumulator.
 type Inventory struct {
-	// byRelease maps a release key to flavor -> set of source identity PURLs.
+	// byRelease maps: a release key -> flavor -> set of source identity PURLs.
 	byRelease map[string]map[string]purl.VariantMap[struct{}]
 }
 
-// Lookup returns the flavors of a release that ship a source or shipped=false when no flavor ships it.
-// It is namespace-variant tolerant, such that a source stored under one of deb/gardenlinux
-// still matches a query under the other. It returns an error if canonicalSourcePURL cannot be parsed.
-func (i Inventory) Lookup(releaseVersion, canonicalSourcePURL string) ([]string, bool, error) {
-	flavors, ok := i.byRelease[releaseVersion]
-	if !ok {
-		return nil, false, nil
+// Record is the serialized shape written to the audit artifact.
+type Record struct {
+	Releases []ReleaseEntry `json:"releases"`
+}
+
+// ReleaseEntry is one release row, mapping each flavor to its sorted source identity PURLs.
+type ReleaseEntry struct {
+	Release string              `json:"release"`
+	Flavors map[string][]string `json:"flavors"`
+}
+
+// Record returns the serialized flavor inventory. Releases are ordered numerically and
+// sources lexically; flavors serialize as a JSON object with keys sorted by the encoder, so
+// identical input yields identical bytes regardless of arrival order.
+func (i Inventory) Record() Record {
+	rec := Record{}
+
+	releases := slices.SortedFunc(maps.Keys(i.byRelease), compareReleases)
+	rec.Releases = make([]ReleaseEntry, 0, len(releases))
+	for _, rel := range releases {
+		entry := ReleaseEntry{Release: rel, Flavors: make(map[string][]string)}
+		for flavor, sources := range i.byRelease[rel] {
+			entry.Flavors[flavor] = slices.Sorted(maps.Keys(sources))
+		}
+		rec.Releases = append(rec.Releases, entry)
 	}
 
-	var shipping []string
-	for flavor, sources := range flavors {
-		_, has, err := sources.Get(canonicalSourcePURL)
+	return rec
+}
+
+// compareReleases orders release version strings numerically. Strings that are neither
+// major.minor nor major.minor.patch are unparseable and sort after parseable ones,
+// lexically among themselves, so the ordering is total and deterministic.
+func compareReleases(a, b string) int {
+	fa, okA := releaseFields(a)
+	fb, okB := releaseFields(b)
+	switch {
+	case !okA && !okB:
+		return strings.Compare(a, b)
+	case !okA:
+		return 1
+	case !okB:
+		return -1
+	default:
+		return slices.Compare(fa, fb)
+	}
+}
+
+// releaseRegex matches a major.minor or major.minor.patch version string.
+var releaseRegex = regexp.MustCompile(`^(?P<major>\d+)\.(?P<minor>\d+)(?:\.(?P<patch>\d+))?$`)
+
+// releaseFields parses a major.minor or major.minor.patch version string and returns its numeric components.
+// Returns false when s does not match either form.
+func releaseFields(s string) ([]int, bool) {
+	m := releaseRegex.FindStringSubmatch(s)
+	if m == nil {
+		return nil, false
+	}
+	fields := make([]int, 0, len(m)-1)
+	for _, g := range m[1:] {
+		if g == "" {
+			break
+		}
+
+		n, err := strconv.Atoi(g) // always succeeds: group contains only digits
 		if err != nil {
-			return nil, false, err
+			return []int{}, false
 		}
-		if has {
-			shipping = append(shipping, flavor)
-		}
+
+		fields = append(fields, n)
 	}
 
-	if len(shipping) == 0 {
-		return nil, false, nil
-	}
-	slices.Sort(shipping)
-
-	return shipping, true, nil
+	return fields, true
 }
 
-// AuditRelease is the stable audit structure for one release.
-type AuditRelease struct {
-	Release string        `json:"release"`
-	Flavors []AuditFlavor `json:"flavors"`
-}
-
-// AuditFlavor is the stable audit structure for one flavor's source inclusion set.
-type AuditFlavor struct {
-	Flavor  string   `json:"flavor"`
-	Sources []string `json:"sources"`
-}
-
-// AuditEntries returns the inventory in a stable structure: Releases, flavors, and source PURLs are all sorted,
-// so identical input yields identical serialized bytes and runs diff cleanly.
-func (i Inventory) AuditEntries() []AuditRelease {
-	out := make([]AuditRelease, 0, len(i.byRelease))
-	for _, rel := range slices.Sorted(maps.Keys(i.byRelease)) {
-		flavors := i.byRelease[rel]
-		entry := AuditRelease{Release: rel, Flavors: make([]AuditFlavor, 0, len(flavors))}
-		for _, flavor := range slices.Sorted(maps.Keys(flavors)) {
-			sources := slices.Sorted(maps.Keys(flavors[flavor]))
-			entry.Flavors = append(entry.Flavors, AuditFlavor{Flavor: flavor, Sources: sources})
-		}
-		out = append(out, entry)
-	}
-
-	return out
-}
-
-// inReleaseFetchFunc fetches and parses the package list from the InRelease file.
-type inReleaseFetchFunc func(ctx context.Context, releaseVersion string) ([]packages.Package, error)
-
-// Accumulator accumulates the per-release, per-flavor inclusion across the shared
-// SBOM pass. It implements [sbom.Consumer]. The zero value is not usable;
-// construct it via [NewAccumulator].
+// Accumulator accumulates the per-release, per-flavor membership across the shared SBOM pass.
+// It implements [sbom.Consumer]. The zero value is not usable; construct it via [NewAccumulator].
 type Accumulator struct {
-	fetchInRelease inReleaseFetchFunc
-	byRelease      map[string]map[string]purl.VariantMap[struct{}]
+	byRelease map[string]map[string]purl.VariantMap[struct{}]
 }
 
 var _ sbom.Consumer = (*Accumulator)(nil)
 
-// Option configures an Accumulator.
-type Option func(*Accumulator)
-
-// WithInReleaseFetch overrides InRelease fetching/parsing (for tests).
-func WithInReleaseFetch(
-	f func(ctx context.Context, releaseVersion string) ([]packages.Package, error),
-) Option {
-	return func(a *Accumulator) { a.fetchInRelease = f }
+// NewAccumulator constructs a per-release, per-flavor membership accumulator.
+func NewAccumulator() *Accumulator {
+	return &Accumulator{byRelease: make(map[string]map[string]purl.VariantMap[struct{}])}
 }
 
-// NewAccumulator constructs a per-release, per-flavor inclusion accumulator.
-func NewAccumulator(opts ...Option) *Accumulator {
-	a := &Accumulator{
-		fetchInRelease: packages.GetPackageListsFromInRelease,
-		byRelease:      make(map[string]map[string]purl.VariantMap[struct{}]),
-	}
-	for _, opt := range opts {
-		opt(a)
-	}
-
-	return a
-}
-
-// AddSBOM folds one release-flavor SBOM's sources into that flavor's inclusion set.
+// AddSBOM folds one release-flavor SBOM's sources into that flavor's membership set.
 // A conversion error is a hard failure.
 func (a *Accumulator) AddSBOM(releaseVersion, flavor string, bom *cdx.BOM) error {
 	pkgs, err := packages.PackageListFromSBOM(bom)
@@ -138,30 +127,26 @@ func (a *Accumulator) AddSBOM(releaseVersion, flavor string, bom *cdx.BOM) error
 	return a.addPackages(releaseVersion, flavor, pkgs)
 }
 
-// MissingSBOMSet falls back to the release's InRelease pool, recorded under the
-// single [PoolFlavor] sentinel: a release without a complete SBOM set has no
-// per-flavor data, so the per-flavor view degrades to release-level.
-func (a *Accumulator) MissingSBOMSet(ctx context.Context, releaseVersion string) error {
+// MissingSBOMSet records that the release lacks a complete SBOM set, so no flavor membership
+// is known for it. The release is left absent from the inventory. The release-wide InRelease
+// fallback that keeps release-level analysis working lives in the identity inventory.
+func (a *Accumulator) MissingSBOMSet(_ context.Context, releaseVersion string) error {
 	slog.Warn("not all flavors of the release have an SBOM; "+
-		"falling back to the release InRelease file under the pool sentinel flavor",
+		"recording no flavor membership for the release",
 		slog.String("release", releaseVersion))
 
-	pkgs, err := a.fetchInRelease(ctx, releaseVersion)
-	if err != nil {
-		return fmt.Errorf("fetching InRelease for release %s: %w", releaseVersion, err)
-	}
-
-	return a.addPackages(releaseVersion, PoolFlavor, pkgs)
+	return nil
 }
 
 // Result returns the assembled inventory.
 func (a *Accumulator) Result() Inventory {
-	slog.Info("built GL per-release per-flavor source inventory", slog.Int("releases", len(a.byRelease)))
+	slog.Info("built GL per-release per-flavor source inventory",
+		slog.Int("releasesWithFlavorMembership", len(a.byRelease)))
 
 	return Inventory{byRelease: a.byRelease}
 }
 
-// addPackages folds each package's source into the (release, flavor) inclusion set.
+// addPackages folds each package's source into the (release, flavor) membership set.
 func (a *Accumulator) addPackages(releaseVersion, flavor string, pkgs []packages.Package) error {
 	flavors, ok := a.byRelease[releaseVersion]
 	if !ok {
@@ -175,10 +160,6 @@ func (a *Accumulator) addPackages(releaseVersion, flavor string, pkgs []packages
 	}
 
 	for _, pkg := range pkgs {
-		if pkg.Source == "" {
-			return fmt.Errorf("package %q: %w", pkg.Name, ErrEmptySource)
-		}
-
 		identity, err := pkg.IdentityPURL()
 		if err != nil {
 			return fmt.Errorf("identity PURL for source %q: %w", pkg.Source, err)

@@ -386,6 +386,98 @@ func TestIntegrationPushRollbackOnNonFastForward(t *testing.T) {
 	assert.Contains(t, staged, "data/assessments/a.json", "rolled-back change must remain staged")
 }
 
+const testCompletionMarker = "GLVD2-Last-Commit-Of-Run: true"
+
+func TestIntegrationCompletionMarkerOnLastCommit(t *testing.T) {
+	t.Parallel()
+
+	runWithMarker := func(t *testing.T, stage func(dir string)) string {
+		t.Helper()
+
+		dir := initTestRepo(t)
+		seedCommitGroupDirs(t, dir)
+		stage(dir)
+
+		cfg := publish.Config{
+			Target: publish.Target{Remote: "origin", Branch: "main"},
+			Level:  publish.LevelCommit,
+		}
+		s := publish.NewService(cfg, git.NewWriter(dir, git.Committer{}))
+		require.NoError(t, s.Run(t.Context(), createCommitGroup(), testMessageWithCompletionMarker))
+
+		return dir
+	}
+
+	t.Run("trailing empty group keeps marker on the last actual commit", func(t *testing.T) {
+		t.Parallel()
+
+		// Only assessments has content; audit (the trailing group) stays empty.
+		dir := runWithMarker(t, func(dir string) {
+			gittest.WriteFile(t, dir, "data/assessments/a.json", `{"a":1}`)
+		})
+
+		// HEAD is the assessments commit and carries the marker.
+		head := gittest.Run(t, dir, "log", "-1", "--format=%B", "HEAD")
+		assert.Contains(t, head, "data(assessments): update")
+		assert.Contains(t, head, testCompletionMarker)
+		// Exactly one commit in history carries the marker.
+		marked := strings.TrimSpace(gittest.Run(t, dir, "log", "--grep=^"+testCompletionMarker+"$", "--format=%H"))
+		assert.Len(t, strings.Split(marked, "\n"), 1)
+	})
+
+	t.Run("mark only the last commit", func(t *testing.T) {
+		t.Parallel()
+
+		dir := runWithMarker(t, func(dir string) {
+			gittest.WriteFile(t, dir, "data/assessments/a.json", `{"a":1}`)
+			gittest.WriteFile(t, dir, "data/audit/b.json", `{"b":2}`)
+		})
+
+		// HEAD (audit) carries the marker; the assessments commit does not.
+		head := gittest.Run(t, dir, "log", "-1", "--format=%B", "HEAD")
+		assert.Contains(t, head, "data(audit): update")
+		assert.Contains(t, head, testCompletionMarker)
+		prev := gittest.Run(t, dir, "log", "-1", "--format=%B", "HEAD~1")
+		assert.Contains(t, prev, "data(assessments): update")
+		assert.NotContains(t, prev, testCompletionMarker)
+	})
+}
+
+// TestIntegrationCompletionMarkerNotLeftAfterPushRollback verifies that a rejected push
+// rolls back so no completion-marked commit remains reachable on the local branch.
+func TestIntegrationCompletionMarkerNotLeftAfterPushRollback(t *testing.T) {
+	t.Parallel()
+
+	remote := gittest.InitBareRemote(t)
+	dir := initTestRepo(t)
+	seedCommitGroupDirs(t, dir)
+	gittest.Run(t, dir, "remote", "add", "origin", remote)
+	gittest.Run(t, dir, "push", "origin", "main")
+	gittest.Run(t, remote, "symbolic-ref", "HEAD", "refs/heads/main")
+
+	// Advance the remote concurrently so our push is a non-fast-forward.
+	other := t.TempDir()
+	gittest.Run(t, other, "clone", remote, ".")
+	gittest.Run(t, other, "commit", "--allow-empty", "-m", "chore: concurrent")
+	gittest.Run(t, other, "push", "origin", "HEAD:refs/heads/main")
+
+	gittest.WriteFile(t, dir, "data/assessments/a.json", `{"a":1}`)
+
+	cfg := publish.Config{
+		Target: publish.Target{Remote: "origin", Branch: "main"},
+		Level:  publish.LevelPush,
+	}
+	s := publish.NewService(cfg, git.NewWriter(dir, git.Committer{}))
+
+	err := s.Run(t.Context(), createCommitGroup(), testMessageWithCompletionMarker)
+	require.Error(t, err)
+	require.ErrorIs(t, err, git.ErrNonFastForward)
+
+	// No commit reachable from the local branch carries the completion marker.
+	marked := strings.TrimSpace(gittest.Run(t, dir, "log", "--grep=^"+testCompletionMarker+"$", "--format=%H"))
+	assert.Empty(t, marked, "a failed, rolled-back run must leave no completion-marked commit")
+}
+
 // TestIntegrationFullPipelineHappyPath chains the four Service steps in the same
 // order as the production pipeline against a real repo and remote, verifying that a
 // clean run commits each non-empty group and fast-forwards the remote to local HEAD.

@@ -1,9 +1,7 @@
 package flavorinventory_test
 
 import (
-	"context"
 	"encoding/json"
-	"errors"
 	"testing"
 
 	cdx "github.com/CycloneDX/cyclonedx-go"
@@ -15,12 +13,12 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// gldeb builds a "Garden Linux"-namespaced gldeb component from a binary name and source.
+// gldeb builds a "Garden Linux"-namespaced deb component from a binary name and source.
 func gldeb(name, source string) cdx.Component {
 	return gltest.DebComponent(packages.Package{Name: name, Source: source, Namespace: purl.NamespaceGardenLinux})
 }
 
-func TestAccumulator_PerFlavorInclusion(t *testing.T) {
+func TestRecord_PerFlavorSBOMs(t *testing.T) {
 	t.Parallel()
 
 	rel := "1877.3"
@@ -36,84 +34,50 @@ func TestAccumulator_PerFlavorInclusion(t *testing.T) {
 		gldeb("grub-common", "grub2"),
 	)))
 
-	inv := s.Result()
+	rec := s.Result().Record()
 
-	flavors, shipped, err := inv.Lookup("1877.3", "pkg:deb/gardenlinux/glibc")
-	require.NoError(t, err)
-	assert.True(t, shipped)
-	assert.Equal(t, []string{"kvm", "metal"}, flavors, "universal source appears under all flavors")
-
-	flavors, shipped, err = inv.Lookup("1877.3", "pkg:deb/gardenlinux/openssl")
-	require.NoError(t, err)
-	assert.True(t, shipped)
-	assert.Equal(t, []string{"kvm"}, flavors, "kvm-only source appears under exactly kvm")
-
-	flavors, shipped, err = inv.Lookup("1877.3", "pkg:deb/gardenlinux/grub2")
-	require.NoError(t, err)
-	assert.True(t, shipped)
-	assert.Equal(t, []string{"metal"}, flavors)
+	require.Len(t, rec.Releases, 1)
+	assert.Equal(t, rel, rec.Releases[0].Release)
+	assert.Equal(t, map[string][]string{
+		"kvm":   {"pkg:deb/gardenlinux/glibc", "pkg:deb/gardenlinux/openssl"},
+		"metal": {"pkg:deb/gardenlinux/glibc", "pkg:deb/gardenlinux/grub2"},
+	}, rec.Releases[0].Flavors)
 }
 
-func TestLookup_NamespaceVariantTolerant(t *testing.T) {
+func TestRecord_IncompleteSBOMSetRecordsNoRelease(t *testing.T) {
 	t.Parallel()
 
 	s := flavorinventory.NewAccumulator()
-	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
-		gltest.DebComponent(packages.Package{Name: "libc6", Source: "glibc"}),
-	)))
-	inv := s.Result()
-
-	for _, q := range []string{"pkg:deb/gardenlinux/glibc", "pkg:deb/debian/glibc"} {
-		flavors, shipped, err := inv.Lookup("1877.3", q)
-		require.NoError(t, err)
-		assert.True(t, shipped, "query %q must hit", q)
-		assert.Equal(t, []string{"kvm"}, flavors)
-	}
-}
-
-func TestLookup_NotShipped(t *testing.T) {
-	t.Parallel()
-
-	s := flavorinventory.NewAccumulator()
-	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
-		gldeb("libc6", "glibc"),
-	)))
-	inv := s.Result()
-
-	_, shipped, err := inv.Lookup("1877.3", "pkg:deb/gardenlinux/wayland")
-	require.NoError(t, err)
-	assert.False(t, shipped, "absent source is not shipped")
-
-	_, shipped, err = inv.Lookup("9999.9", "pkg:deb/gardenlinux/glibc")
-	require.NoError(t, err)
-	assert.False(t, shipped, "absent release is not shipped")
-}
-
-func TestAccumulator_InReleaseFallbackUsesPool(t *testing.T) {
-	t.Parallel()
-
-	s := flavorinventory.NewAccumulator(
-		flavorinventory.WithInReleaseFetch(
-			func(_ context.Context, _ string) ([]packages.Package, error) {
-				return []packages.Package{
-					{Name: "libc6", Source: "glibc", Namespace: purl.NamespaceDebian},
-				}, nil
-			}),
-	)
 	require.NoError(t, s.MissingSBOMSet(t.Context(), "2150.8.1"))
 
-	inv := s.Result()
+	rec := s.Result().Record()
 
-	flavors, shipped, err := inv.Lookup("2150.8.1", "pkg:deb/debian/glibc")
-	require.NoError(t, err)
-	assert.True(t, shipped)
-	assert.Equal(t, []string{flavorinventory.PoolFlavor}, flavors, "pre-SBOM release degrades to the pool flavor")
+	assert.Empty(t, rec.Releases, "an incomplete SBOM set records no flavor membership")
 }
 
-func TestAuditEntries_Stable(t *testing.T) {
+func TestRecord_NumericReleaseOrdering(t *testing.T) {
 	t.Parallel()
 
-	// Build the same inventory twice with flavors/components fed in different orders.
+	s := flavorinventory.NewAccumulator()
+	// Lexical order would put "1000.1" before "184.1" before "99.1"; numeric order differs.
+	for _, rel := range []string{"1000.1", "99.1", "184.1"} {
+		require.NoError(t, s.AddSBOM(rel, "kvm", gltest.BOM(gldeb("libc6", "glibc"))))
+	}
+
+	rec := s.Result().Record()
+
+	got := make([]string, len(rec.Releases))
+	for i, r := range rec.Releases {
+		got[i] = r.Release
+	}
+	assert.Equal(t, []string{"99.1", "184.1", "1000.1"}, got)
+}
+
+// TestRecord_StableAcrossArrivalOrder verifies identical input in different arrival orders
+// serializes to identical bytes.
+func TestRecord_StableAcrossArrivalOrder(t *testing.T) {
+	t.Parallel()
+
 	build := func(order int) flavorinventory.Inventory {
 		s := flavorinventory.NewAccumulator()
 		rel := "1877.3"
@@ -140,21 +104,12 @@ func TestAuditEntries_Stable(t *testing.T) {
 		return s.Result()
 	}
 
-	first, err := json.Marshal(build(0).AuditEntries())
+	first, err := json.Marshal(build(0).Record())
 	require.NoError(t, err)
-	second, err := json.Marshal(build(1).AuditEntries())
+	second, err := json.Marshal(build(1).Record())
 	require.NoError(t, err)
 
 	assert.Equal(t, string(first), string(second), "same input yields identical bytes regardless of feed order")
-
-	// Spot-check the stable, sorted shape.
-	entries := build(0).AuditEntries()
-	require.Len(t, entries, 1)
-	assert.Equal(t, "1877.3", entries[0].Release)
-	require.Len(t, entries[0].Flavors, 2)
-	assert.Equal(t, "kvm", entries[0].Flavors[0].Flavor)
-	assert.Equal(t, "metal", entries[0].Flavors[1].Flavor)
-	assert.Equal(t, []string{"pkg:deb/gardenlinux/glibc", "pkg:deb/gardenlinux/openssl"}, entries[0].Flavors[0].Sources)
 }
 
 func TestAccumulator_HardFailsOnSBOMConversionError(t *testing.T) {
@@ -164,18 +119,4 @@ func TestAccumulator_HardFailsOnSBOMConversionError(t *testing.T) {
 	s := flavorinventory.NewAccumulator()
 	err := s.AddSBOM("1877.3", "kvm", &cdx.BOM{Components: &components})
 	require.Error(t, err)
-}
-
-func TestAccumulator_HardFailsOnInReleaseFetchError(t *testing.T) {
-	t.Parallel()
-
-	fetchErr := errors.New("storage unreachable")
-	s := flavorinventory.NewAccumulator(
-		flavorinventory.WithInReleaseFetch(
-			func(_ context.Context, _ string) ([]packages.Package, error) {
-				return nil, fetchErr
-			}),
-	)
-	err := s.MissingSBOMSet(t.Context(), "1877.3")
-	require.ErrorIs(t, err, fetchErr)
 }

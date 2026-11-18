@@ -132,13 +132,14 @@ func (s *Service) VerifyCleanIndexForPush(ctx context.Context) error {
 }
 
 // Run commits for each commit group (skipping empty ones) and optionally pushes,
-// rolling back to the starting HEAD on failure. commitMessageFor supplies the
-// commit message for a group by its name; it is invoked only for groups with
-// staged changes, after the pipeline run when post-run state is available.
+// rolling back to the starting HEAD on failure. commitMessageFor supplies the commit
+// message for a group by its name. isLastCommit is true for the last group that will actually
+// commit, letting the caller mark run completion on that commit. It is invoked only for
+// groups with staged changes, after the pipeline run when post-run state is available.
 func (s *Service) Run(
 	ctx context.Context,
 	commitGroups []CommitGroup,
-	commitMessageFor func(name string) string,
+	commitMessageFor func(name string, isLastCommit bool) string,
 ) error {
 	if s.cfg.Level == LevelNone {
 		slog.Info("skipping committing and publishing step", slog.String("publishLevel", s.cfg.Level.String()))
@@ -150,10 +151,20 @@ func (s *Service) Run(
 		return fmt.Errorf("capturing start commit: %w", err)
 	}
 
-	for _, commitGroup := range commitGroups {
-		if cErr := s.commitGroup(ctx, commitGroup, commitMessageFor); cErr != nil {
-			return s.rollback(ctx, startSHA, cErr)
+	// Build the ordered list of commits to make, with empty groups dropped and each message already resolved.
+	planned, err := s.planCommits(ctx, commitGroups, commitMessageFor)
+	if err != nil {
+		return s.rollback(ctx, startSHA, err)
+	}
+
+	for _, pc := range planned {
+		if cErr := s.git.Commit(ctx, pc.message, pc.group.Paths...); cErr != nil {
+			return s.rollback(ctx, startSHA, fmt.Errorf("committing group %q: %w", pc.group.Name, cErr))
 		}
+
+		slog.Info("committed group",
+			slog.String("group", pc.group.Name),
+			slog.Any("paths", pc.group.Paths))
 	}
 
 	if s.cfg.Level == LevelPush {
@@ -165,37 +176,51 @@ func (s *Service) Run(
 	return nil
 }
 
-// commitGroup commits all changes for paths of a specific commit group with one commit per group.
-func (s *Service) commitGroup(
+// plannedCommit is a commit the run will create: a group that has staged changes paired
+// with its resolved message.
+type plannedCommit struct {
+	group   CommitGroup
+	message string
+}
+
+// planCommits stages each group and returns the ordered commits to create, skipping groups
+// with no staged changes and resolving each message with isLastCommit set on the last one.
+// Staging all groups up front is safe because each commit is restricted to its group's paths.
+func (s *Service) planCommits(
 	ctx context.Context,
-	commitGroup CommitGroup,
-	commitMessageFor func(name string) string,
-) error {
-	if err := s.git.AddPaths(ctx, commitGroup.Paths...); err != nil {
-		return fmt.Errorf("staging group %q: %w", commitGroup.Name, err)
+	commitGroups []CommitGroup,
+	commitMessageFor func(name string, isLastCommit bool) string,
+) ([]plannedCommit, error) {
+	var toCommit []CommitGroup
+	for _, commitGroup := range commitGroups {
+		if err := s.git.AddPaths(ctx, commitGroup.Paths...); err != nil {
+			return nil, fmt.Errorf("staging group %q: %w", commitGroup.Name, err)
+		}
+
+		hasStagedChanges, err := s.git.HasStagedChanges(ctx, commitGroup.Paths...)
+		if err != nil {
+			return nil, fmt.Errorf("checking staged content for group %q: %w", commitGroup.Name, err)
+		}
+		if !hasStagedChanges {
+			slog.Info("skipping empty commit group",
+				slog.String("group", commitGroup.Name),
+				slog.Any("paths", commitGroup.Paths))
+			continue
+		}
+
+		toCommit = append(toCommit, commitGroup)
 	}
 
-	hasStagedChanges, err := s.git.HasStagedChanges(ctx, commitGroup.Paths...)
-	if err != nil {
-		return fmt.Errorf("checking staged content for group %q: %w", commitGroup.Name, err)
-	}
-	if !hasStagedChanges {
-		slog.Info("skipping empty commit group",
-			slog.String("group", commitGroup.Name),
-			slog.Any("paths", commitGroup.Paths))
-		return nil
+	planned := make([]plannedCommit, len(toCommit))
+	for i, commitGroup := range toCommit {
+		isLastCommit := i == len(toCommit)-1
+		planned[i] = plannedCommit{
+			group:   commitGroup,
+			message: commitMessageFor(commitGroup.Name, isLastCommit),
+		}
 	}
 
-	commitMessage := commitMessageFor(commitGroup.Name)
-	if cErr := s.git.Commit(ctx, commitMessage, commitGroup.Paths...); cErr != nil {
-		return fmt.Errorf("committing group %q: %w", commitGroup.Name, cErr)
-	}
-
-	slog.Info("committed group",
-		slog.String("group", commitGroup.Name),
-		slog.Any("paths", commitGroup.Paths))
-
-	return nil
+	return planned, nil
 }
 
 // pushIfAdvanced pushes only when HEAD advanced past startSHA.

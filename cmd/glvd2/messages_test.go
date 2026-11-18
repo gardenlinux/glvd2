@@ -39,3 +39,40 @@ func TestBuildSubmoduleUpdateMessage(t *testing.T) {
 
 	assert.Equal(t, "data(cvelistv5): update\n", msg)
 }
+
+func TestAppendTrailer(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name    string
+		message string
+		line    string
+		want    string
+	}{
+		{
+			name:    "appends a blank-line-separated trailer",
+			message: "data(audit): update\n",
+			line:    "GLVD2-Last-Commit-Of-Run: true",
+			want:    "data(audit): update\n\nGLVD2-Last-Commit-Of-Run: true\n",
+		},
+		{
+			name:    "coexists with an existing trailer",
+			message: "data(assessments): update\n\nGLVD2-Baseline: true\n",
+			line:    "GLVD2-Last-Commit-Of-Run: true",
+			want:    "data(assessments): update\n\nGLVD2-Baseline: true\n\nGLVD2-Last-Commit-Of-Run: true\n",
+		},
+		{
+			name:    "empty line is a no-op",
+			message: "data(audit): update\n",
+			line:    "",
+			want:    "data(audit): update\n",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, tc.want, appendTrailer(tc.message, tc.line))
+		})
+	}
+}
