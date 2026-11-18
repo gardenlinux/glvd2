@@ -7186,6 +7186,9 @@
         "\"irontec\":\"sngrep\"": {
             "pkg:deb/debian/sngrep": 6
         },
+        "\"iru cai\":\"fqterm\"": {
+            "pkg:deb/debian/fqterm": 2
+        },
         "\"isaacs\":\"brace-expansion\"": {
             "pkg:deb/debian/node-brace-expansion": 1
         },
@@ -8375,7 +8378,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18264,
+            "pkg:deb/debian/linux": 18272,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -19746,7 +19749,7 @@
             "pkg:deb/debian/znuny": 8
         },
         "\"zoneminder\":\"zoneminder\"": {
-            "pkg:deb/debian/zoneminder": 28
+            "pkg:deb/debian/zoneminder": 29
         },
         "\"zope\":\"restrictedpython\"": {
             "pkg:deb/debian/restrictedpython": 1
@@ -24237,7 +24240,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18256
+            "pkg:deb/debian/linux": 18264
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -30345,6 +30348,9 @@
         },
         "pkg:github/msgpack/msgpack-c": {
             "pkg:deb/debian/msgpack-c": 1
+        },
+        "pkg:github/mytbk/fqterm": {
+            "pkg:deb/debian/fqterm": 2
         },
         "pkg:github/nationalsecurityagency/ghidra": {
             "pkg:deb/debian/ghidra": 19

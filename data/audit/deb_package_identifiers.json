@@ -6117,6 +6117,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/fqterm": {
+        "VendorProductIDs": [
+            "\"iru cai\":\"fqterm\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/mytbk/fqterm"
+        ]
+    },
     "pkg:deb/debian/freecad": {
         "VendorProductIDs": [
             "\"freecad\":\"freecad\""
