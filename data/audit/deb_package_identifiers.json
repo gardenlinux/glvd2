@@ -7221,6 +7221,17 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/globus-gss-assist": {
+        "VendorProductIDs": [
+            "\"grid community forum\":\"globus-gss-assist\"",
+            "\"grid community forum\":\"grid community toolkit\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/gridcf/gct"
+        ]
+    },
     "pkg:deb/debian/glpi": {
         "VendorProductIDs": [
             "\"gldpi-project\":\"gldpi-agent\"",
