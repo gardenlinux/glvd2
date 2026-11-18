@@ -53,7 +53,9 @@
             "cpe:2.3:a:7-zip:7zip:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/ip7z/7zip"
+        ]
     },
     "pkg:deb/debian/7zip-rar": {
         "VendorProductIDs": [
@@ -14718,6 +14720,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libio-socket-ssl-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"IO-Socket-SSL\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/IO-Socket-SSL"
+        ]
+    },
     "pkg:deb/debian/libjackson-json-java": {
         "VendorProductIDs": [
             "\"fasterxml\":\"jackson-databind\"",
@@ -16504,6 +16516,14 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libvisio": {
+        "VendorProductIDs": [
+            "\"the document foundation\":\"libvisio\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libvmdk": {
         "VendorProductIDs": [
             "\"libyal\":\"libvmdk\""
@@ -16982,6 +17002,7 @@
     },
     "pkg:deb/debian/lightdm": {
         "VendorProductIDs": [
+            "\"debian\":\"lightdm\"",
             "\"lightdm\":\"lightdm\""
         ],
         "CPEs": null,
@@ -17854,6 +17875,14 @@
     "pkg:deb/debian/mahara": {
         "VendorProductIDs": [
             "\"mahara\":\"mahara\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/mail-parser": {
+        "VendorProductIDs": [
+            "\"spamscope\":\"mail-parser\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -24433,7 +24462,9 @@
             "cpe:2.3:a:7-zip:7zip:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/ip7z/7zip"
+        ]
     },
     "pkg:deb/debian/p7zip-rar": {
         "VendorProductIDs": [
@@ -35533,9 +35564,13 @@
             "\"n/a\":\"weblate\"",
             "\"weblateorg\":\"weblate\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:weblate:weblate:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/weblate"
+        ]
     },
     "pkg:deb/debian/webmin": {
         "VendorProductIDs": [
