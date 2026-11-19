@@ -7468,6 +7468,7 @@
     "pkg:deb/debian/gnutls28": {
         "VendorProductIDs": [
             "\"[unknown]\":\"gnutls\"",
+            "\"gnutls project\":\"gnutls\"",
             "\"gnutls\":\"gnutls\"",
             "\"n/a\":\"gnutls\""
         ],
@@ -21457,6 +21458,7 @@
     },
     "pkg:deb/debian/node-re2": {
         "VendorProductIDs": [
+            "\"uhop\":\"install-artifact-from-github\"",
             "\"uhop\":\"node-re2\""
         ],
         "CPEs": null,
@@ -26242,6 +26244,7 @@
             "\"postfixadmin\":\"postfixadmin\""
         ],
         "CPEs": [
+            "cpe:2.3:a:postfixadmin:postfixadmin:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:postfixadmin_project:postfixadmin:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
