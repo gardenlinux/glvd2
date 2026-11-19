@@ -2134,17 +2134,19 @@
         "VendorProductIDs": [
             "\"google llc\":\"brotli\"",
             "\"google\":\"brotli\"",
-            "\"siemens\":\"capital\"",
+            "\"siemens\":\"blueplanet 100 nx3 m8\"",
+            "\"siemens\":\"blueplanet 125 nx3 m10\"",
+            "\"siemens\":\"blueplanet 87.0 tl3 – 165 tl3 (gen1 / gen2)\"",
+            "\"siemens\":\"blueplanet gridsave 100 – 165 tl3 (hv)\"",
+            "\"siemens\":\"blueplanet gridsave 92 – 137 tl3 (gen1 / gen2)\"",
             "\"siemens\":\"cloud connector configurator\"",
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"comos walkinside\"",
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"dataxess configurator\"",
-            "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
-            "\"siemens\":\"gdap (gproms digital application platform)\"",
             "\"siemens\":\"gridscale x dsa\"",
             "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
@@ -2152,6 +2154,7 @@
             "\"siemens\":\"hyperlynx\"",
             "\"siemens\":\"innexis architecture native acceleration 2026\"",
             "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"integrated pa suite tester\"",
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
@@ -2167,9 +2170,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
-            "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"pave360 automotive 2026\"",
-            "\"siemens\":\"polarion\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
             "\"siemens\":\"sicharge flex\"",
@@ -2178,7 +2179,6 @@
             "\"siemens\":\"sifinity setup\"",
             "\"siemens\":\"simcenter executable digital twin\"",
             "\"siemens\":\"simcenter studio\"",
-            "\"siemens\":\"solid edge\"",
             "\"siemens\":\"versicharge ac series\"",
             "\"siemens\":\"versicloud\"",
             "\"siemens\":\"xpedition designer\"",
@@ -4795,17 +4795,19 @@
             "\"n/a\":\"tianocore\"",
             "\"openssl\":\"openssl\"",
             "\"phoenix technologies ltd.\":\"sct3\"",
-            "\"siemens\":\"capital\"",
+            "\"siemens\":\"blueplanet 100 nx3 m8\"",
+            "\"siemens\":\"blueplanet 125 nx3 m10\"",
+            "\"siemens\":\"blueplanet 87.0 tl3 – 165 tl3 (gen1 / gen2)\"",
+            "\"siemens\":\"blueplanet gridsave 100 – 165 tl3 (hv)\"",
+            "\"siemens\":\"blueplanet gridsave 92 – 137 tl3 (gen1 / gen2)\"",
             "\"siemens\":\"cloud connector configurator\"",
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"comos walkinside\"",
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"dataxess configurator\"",
-            "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
-            "\"siemens\":\"gdap (gproms digital application platform)\"",
             "\"siemens\":\"gridscale x dsa\"",
             "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
@@ -4813,6 +4815,7 @@
             "\"siemens\":\"hyperlynx\"",
             "\"siemens\":\"innexis architecture native acceleration 2026\"",
             "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"integrated pa suite tester\"",
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
@@ -4828,9 +4831,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
-            "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"pave360 automotive 2026\"",
-            "\"siemens\":\"polarion\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
             "\"siemens\":\"sicharge flex\"",
@@ -4839,7 +4840,6 @@
             "\"siemens\":\"sifinity setup\"",
             "\"siemens\":\"simcenter executable digital twin\"",
             "\"siemens\":\"simcenter studio\"",
-            "\"siemens\":\"solid edge\"",
             "\"siemens\":\"versicharge ac series\"",
             "\"siemens\":\"versicloud\"",
             "\"siemens\":\"xpedition designer\"",
@@ -14230,6 +14230,16 @@
         ],
         "PackageURLs": null
     },
+    "pkg:deb/debian/libfontenc": {
+        "VendorProductIDs": [
+            "\"x.org\":\"libfontenc\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:x.org:libfontenc:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/libfreemarker-java": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache freemarker\""
@@ -16708,10 +16718,12 @@
             "\"suse\":\"suse liberty linux 10\"",
             "\"suse\":\"suse liberty linux 8\"",
             "\"suse\":\"suse liberty linux 9\"",
+            "\"x.org\":\"libxfont\"",
             "\"x.org\":\"libxfont2\""
         ],
         "CPEs": [
-            "cpe:2.3:a:x.org:libxfont2:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:x.org:libxfont2:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:x.org:libxfont:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": null
@@ -17462,7 +17474,9 @@
             "\"n/a\":\"lldp/openvswitch\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"lldpd\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/llhttp": {
@@ -18610,6 +18624,7 @@
             "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*",
             "cpe:2.3:a:misp:sachertortephp_\\(cakephp-based_misp_application\\):*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:misp_project:misp:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:webkul:aureus_erp:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
@@ -21983,17 +21998,19 @@
             "\"nodejs\":\"node.js\"",
             "\"nodejs\":\"nodejs\"",
             "\"rust-lang\":\"rust\"",
-            "\"siemens\":\"capital\"",
+            "\"siemens\":\"blueplanet 100 nx3 m8\"",
+            "\"siemens\":\"blueplanet 125 nx3 m10\"",
+            "\"siemens\":\"blueplanet 87.0 tl3 – 165 tl3 (gen1 / gen2)\"",
+            "\"siemens\":\"blueplanet gridsave 100 – 165 tl3 (hv)\"",
+            "\"siemens\":\"blueplanet gridsave 92 – 137 tl3 (gen1 / gen2)\"",
             "\"siemens\":\"cloud connector configurator\"",
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"comos walkinside\"",
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"dataxess configurator\"",
-            "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
-            "\"siemens\":\"gdap (gproms digital application platform)\"",
             "\"siemens\":\"gridscale x dsa\"",
             "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
@@ -22001,6 +22018,7 @@
             "\"siemens\":\"hyperlynx\"",
             "\"siemens\":\"innexis architecture native acceleration 2026\"",
             "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"integrated pa suite tester\"",
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
@@ -22016,9 +22034,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
-            "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"pave360 automotive 2026\"",
-            "\"siemens\":\"polarion\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
             "\"siemens\":\"sicharge flex\"",
@@ -22027,7 +22043,6 @@
             "\"siemens\":\"sifinity setup\"",
             "\"siemens\":\"simcenter executable digital twin\"",
             "\"siemens\":\"simcenter studio\"",
-            "\"siemens\":\"solid edge\"",
             "\"siemens\":\"versicharge ac series\"",
             "\"siemens\":\"versicloud\"",
             "\"siemens\":\"xpedition designer\"",
@@ -27199,17 +27214,19 @@
     "pkg:deb/debian/python-brotlicffi": {
         "VendorProductIDs": [
             "\"google\":\"brotli\"",
-            "\"siemens\":\"capital\"",
+            "\"siemens\":\"blueplanet 100 nx3 m8\"",
+            "\"siemens\":\"blueplanet 125 nx3 m10\"",
+            "\"siemens\":\"blueplanet 87.0 tl3 – 165 tl3 (gen1 / gen2)\"",
+            "\"siemens\":\"blueplanet gridsave 100 – 165 tl3 (hv)\"",
+            "\"siemens\":\"blueplanet gridsave 92 – 137 tl3 (gen1 / gen2)\"",
             "\"siemens\":\"cloud connector configurator\"",
             "\"siemens\":\"common configurator on device\\u00a0(cc on edge)\"",
             "\"siemens\":\"common configurator\\u00a0(cc on iem)\"",
             "\"siemens\":\"comos walkinside\"",
             "\"siemens\":\"data flow monitoring\"",
             "\"siemens\":\"dataxess configurator\"",
-            "\"siemens\":\"designcenter x essentials\"",
             "\"siemens\":\"edge opc ua server configurator\"",
             "\"siemens\":\"flow creator configurator\"",
-            "\"siemens\":\"gdap (gproms digital application platform)\"",
             "\"siemens\":\"gridscale x dsa\"",
             "\"siemens\":\"gridscale x pss®e\"",
             "\"siemens\":\"heliox dual port 60kw\"",
@@ -27217,6 +27234,7 @@
             "\"siemens\":\"hyperlynx\"",
             "\"siemens\":\"innexis architecture native acceleration 2026\"",
             "\"siemens\":\"insights hub\"",
+            "\"siemens\":\"integrated pa suite tester\"",
             "\"siemens\":\"opcenter connect electronics\"",
             "\"siemens\":\"opcenter connect mom\"",
             "\"siemens\":\"opcenter execution core\"",
@@ -27232,9 +27250,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
-            "\"siemens\":\"pathway to learning engineering\"",
             "\"siemens\":\"pave360 automotive 2026\"",
-            "\"siemens\":\"polarion\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
             "\"siemens\":\"sicharge flex\"",
@@ -27243,7 +27259,6 @@
             "\"siemens\":\"sifinity setup\"",
             "\"siemens\":\"simcenter executable digital twin\"",
             "\"siemens\":\"simcenter studio\"",
-            "\"siemens\":\"solid edge\"",
             "\"siemens\":\"versicharge ac series\"",
             "\"siemens\":\"versicloud\"",
             "\"siemens\":\"xpedition designer\"",
@@ -31606,6 +31621,14 @@
         "PackageURLs": null
     },
     "pkg:deb/debian/rust-rsa": {
+        "VendorProductIDs": [
+            "\"rustcrypto\":\"rsa\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/rust-rsa-0.9": {
         "VendorProductIDs": [
             "\"rustcrypto\":\"rsa\""
         ],

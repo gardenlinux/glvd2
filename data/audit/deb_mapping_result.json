@@ -2005,8 +2005,8 @@
         },
         "\"apple\":\"ios and ipados\"": {
             "pkg:deb/debian/libxslt": 1,
-            "pkg:deb/debian/webkit2gtk": 276,
-            "pkg:deb/debian/wpewebkit": 273
+            "pkg:deb/debian/webkit2gtk": 302,
+            "pkg:deb/debian/wpewebkit": 299
         },
         "\"apple\":\"ios\"": {
             "pkg:deb/debian/firmware-nonfree": 1,
@@ -2047,8 +2047,8 @@
         "\"apple\":\"safari\"": {
             "pkg:deb/debian/chromium-browser": 2,
             "pkg:deb/debian/webkit": 2,
-            "pkg:deb/debian/webkit2gtk": 357,
-            "pkg:deb/debian/wpewebkit": 270
+            "pkg:deb/debian/webkit2gtk": 383,
+            "pkg:deb/debian/wpewebkit": 296
         },
         "\"apple\":\"security update - catalina\"": {
             "pkg:deb/debian/webkit2gtk": 1,
@@ -2060,12 +2060,12 @@
         },
         "\"apple\":\"tvos\"": {
             "pkg:deb/debian/libxslt": 1,
-            "pkg:deb/debian/webkit2gtk": 311,
-            "pkg:deb/debian/wpewebkit": 220
+            "pkg:deb/debian/webkit2gtk": 322,
+            "pkg:deb/debian/wpewebkit": 231
         },
         "\"apple\":\"visionos\"": {
-            "pkg:deb/debian/webkit2gtk": 165,
-            "pkg:deb/debian/wpewebkit": 165
+            "pkg:deb/debian/webkit2gtk": 188,
+            "pkg:deb/debian/wpewebkit": 188
         },
         "\"apple\":\"watch_os\"": {
             "pkg:deb/debian/webkit2gtk": 1,
@@ -2073,8 +2073,8 @@
         },
         "\"apple\":\"watchos\"": {
             "pkg:deb/debian/libxslt": 1,
-            "pkg:deb/debian/webkit2gtk": 267,
-            "pkg:deb/debian/wpewebkit": 231
+            "pkg:deb/debian/webkit2gtk": 277,
+            "pkg:deb/debian/wpewebkit": 241
         },
         "\"appneta\":\"tcpreplay\"": {
             "pkg:deb/debian/tcpreplay": 6
@@ -4274,7 +4274,7 @@
             "pkg:deb/debian/golang-github-go-ethereum": 3
         },
         "\"ettercap\":\"ettercap\"": {
-            "pkg:deb/debian/ettercap": 10
+            "pkg:deb/debian/ettercap": 13
         },
         "\"eugeny\":\"russh\"": {
             "pkg:deb/debian/rust-russh": 27,
@@ -4346,10 +4346,10 @@
             "pkg:deb/debian/nginx": 2
         },
         "\"f5\":\"nginx open source\"": {
-            "pkg:deb/debian/nginx": 35
+            "pkg:deb/debian/nginx": 44
         },
         "\"f5\":\"nginx plus\"": {
-            "pkg:deb/debian/nginx": 35
+            "pkg:deb/debian/nginx": 44
         },
         "\"f5\":\"nginx\"": {
             "pkg:deb/debian/nginx": 6
@@ -5258,7 +5258,7 @@
             "pkg:deb/debian/elfutils": 6
         },
         "\"gnu\":\"emacs\"": {
-            "pkg:deb/debian/emacs": 9,
+            "pkg:deb/debian/emacs": 10,
             "pkg:deb/debian/org-mode": 1
         },
         "\"gnu\":\"gawk\"": {
@@ -6195,7 +6195,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 40
+            "pkg:deb/debian/gpac": 53
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -8676,7 +8676,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 424
+            "pkg:deb/debian/mattermost-server": 439
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -9084,7 +9084,7 @@
             "pkg:deb/debian/jxrlib": 4
         },
         "\"misp\":\"misp\"": {
-            "pkg:deb/debian/misp": 154
+            "pkg:deb/debian/misp": 155
         },
         "\"misp\":\"misp-stix\"": {
             "pkg:deb/debian/misp": 4
@@ -13572,7 +13572,7 @@
         "\"openssl\":\"openssl\"": {
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/libtomcrypt": 1,
-            "pkg:deb/debian/openssl": 149,
+            "pkg:deb/debian/openssl": 150,
             "pkg:deb/debian/openssl1.0": 30
         },
         "\"openstack foundation\":\"openstack-cinder\"": {
@@ -13849,7 +13849,7 @@
             "pkg:deb/debian/openjfx": 3
         },
         "\"oracle corporation\":\"oracle vm virtualbox\"": {
-            "pkg:deb/debian/virtualbox": 144
+            "pkg:deb/debian/virtualbox": 155
         },
         "\"oracle corporation\":\"vm virtualbox\"": {
             "pkg:deb/debian/virtualbox": 279,
@@ -16055,7 +16055,8 @@
             "pkg:deb/debian/rust-aes-gcm": 2
         },
         "\"rustcrypto\":\"rsa\"": {
-            "pkg:deb/debian/rust-rsa": 2
+            "pkg:deb/debian/rust-rsa": 2,
+            "pkg:deb/debian/rust-rsa-0.9": 1
         },
         "\"rustcrypto\":\"utils\"": {
             "pkg:deb/debian/rust-cmov": 1
@@ -16349,6 +16350,18 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"blueplanet 100 nx3 m8\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"blueplanet 125 nx3 m10\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
         "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx - s\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
@@ -16356,6 +16369,24 @@
         "\"siemens\":\"blueplanet 360 nx3 m6 wm od iisx\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"blueplanet 87.0 tl3 – 165 tl3 (gen1 / gen2)\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"blueplanet gridsave 100 – 165 tl3 (hv)\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"blueplanet gridsave 92 – 137 tl3 (gen1 / gen2)\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"building x\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16366,12 +16397,8 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"capital\"": {
-            "pkg:deb/debian/brotli": 1,
-            "pkg:deb/debian/edk2": 1,
-            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2,
-            "pkg:deb/debian/python-brotlicffi": 1
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"chargesight\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16452,12 +16479,8 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"designcenter x essentials\"": {
-            "pkg:deb/debian/brotli": 1,
-            "pkg:deb/debian/edk2": 1,
-            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2,
-            "pkg:deb/debian/python-brotlicffi": 1
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"designcenter x\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -16501,12 +16524,6 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"flow creator configurator\"": {
-            "pkg:deb/debian/brotli": 1,
-            "pkg:deb/debian/edk2": 1,
-            "pkg:deb/debian/nodejs": 1,
-            "pkg:deb/debian/python-brotlicffi": 1
-        },
-        "\"siemens\":\"gdap (gproms digital application platform)\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -16569,6 +16586,12 @@
             "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"integrated pa suite tester\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"kas\"": {
@@ -16730,12 +16753,8 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"pathway to learning engineering\"": {
-            "pkg:deb/debian/brotli": 1,
-            "pkg:deb/debian/edk2": 1,
-            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2,
-            "pkg:deb/debian/python-brotlicffi": 1
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"pave360 automotive 2026\"": {
             "pkg:deb/debian/brotli": 1,
@@ -16744,12 +16763,8 @@
             "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"polarion\"": {
-            "pkg:deb/debian/brotli": 1,
-            "pkg:deb/debian/edk2": 1,
-            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2,
-            "pkg:deb/debian/python-brotlicffi": 1
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"process preparation x\"": {
             "pkg:deb/debian/brotli": 1,
@@ -16864,12 +16879,8 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"solid edge\"": {
-            "pkg:deb/debian/brotli": 1,
-            "pkg:deb/debian/edk2": 1,
-            "pkg:deb/debian/nodejs": 1,
             "pkg:deb/debian/php8.2": 2,
-            "pkg:deb/debian/php8.4": 2,
-            "pkg:deb/debian/python-brotlicffi": 1
+            "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"spectrum power 3\"": {
             "pkg:deb/debian/php8.2": 1,
@@ -18471,7 +18482,7 @@
             "pkg:deb/debian/trac": 1
         },
         "\"traefik\":\"traefik\"": {
-            "pkg:deb/debian/traefik": 80
+            "pkg:deb/debian/traefik": 81
         },
         "\"trailofbits\":\"rfc3161-client\"": {
             "pkg:deb/debian/python-rfc3161-client": 1
@@ -18558,7 +18569,7 @@
             "pkg:deb/debian/php-twig": 1
         },
         "\"twigphp\":\"twig\"": {
-            "pkg:deb/debian/php-twig": 25,
+            "pkg:deb/debian/php-twig": 24,
             "pkg:deb/debian/twig": 6
         },
         "\"twisted\":\"treq\"": {
@@ -18983,7 +18994,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 128
+            "pkg:deb/debian/vllm": 131
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -19106,7 +19117,7 @@
             "pkg:deb/debian/misp": 1
         },
         "\"weblateorg\":\"weblate\"": {
-            "pkg:deb/debian/weblate": 45
+            "pkg:deb/debian/weblate": 47
         },
         "\"weblateorg\":\"wlc\"": {
             "pkg:deb/debian/wlc": 5
@@ -19338,8 +19349,14 @@
         "\"x-stream\":\"xstream\"": {
             "pkg:deb/debian/libxstream-java": 32
         },
+        "\"x.org\":\"libfontenc\"": {
+            "pkg:deb/debian/libfontenc": 1
+        },
         "\"x.org\":\"libx11\"": {
             "pkg:deb/debian/libx11": 4
+        },
+        "\"x.org\":\"libxfont\"": {
+            "pkg:deb/debian/libxfont": 1
         },
         "\"x.org\":\"libxfont2\"": {
             "pkg:deb/debian/libxfont": 3
@@ -20704,7 +20721,7 @@
             "pkg:deb/debian/golang-github-go-ethereum": 3
         },
         "cpe:2.3:a:ettercap-project:ettercap:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ettercap": 9
+            "pkg:deb/debian/ettercap": 12
         },
         "cpe:2.3:a:ettercap:ettercap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ettercap": 2
@@ -21008,7 +21025,7 @@
             "pkg:deb/debian/cpio": 3
         },
         "cpe:2.3:a:gnu:emacs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/emacs": 9,
+            "pkg:deb/debian/emacs": 10,
             "pkg:deb/debian/org-mode": 1
         },
         "cpe:2.3:a:gnu:gdb:*:*:*:*:*:*:*:*": {
@@ -21190,7 +21207,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 93
+            "pkg:deb/debian/gpac": 106
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -21962,12 +21979,15 @@
             "pkg:deb/debian/rust-mio-0.6": 1
         },
         "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/misp": 43
+            "pkg:deb/debian/misp": 44
         },
         "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:misp:sachertortephp_\\(cakephp-based_misp_application\\):*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/misp": 1
+        },
+        "cpe:2.3:a:misp_project:misp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:mistune_project:mistune:*:*:*:*:*:*:*:*": {
@@ -22722,7 +22742,7 @@
             "pkg:deb/debian/openjdk-8": 1
         },
         "cpe:2.3:a:oracle:vm_virtualbox:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/virtualbox": 135
+            "pkg:deb/debian/virtualbox": 146
         },
         "cpe:2.3:a:orangehrm:orangehrm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/orangehrm": 1
@@ -23695,7 +23715,7 @@
             "pkg:deb/debian/tpm2-tss": 1
         },
         "cpe:2.3:a:traefik:traefik:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/traefik": 27
+            "pkg:deb/debian/traefik": 28
         },
         "cpe:2.3:a:traefik:traefik_enterprise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/traefik": 1
@@ -23815,7 +23835,7 @@
             "pkg:deb/debian/vllm": 9
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 50
+            "pkg:deb/debian/vllm": 53
         },
         "cpe:2.3:a:vmware:spring:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-java": 1
@@ -23858,7 +23878,7 @@
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:weblate:weblate:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/weblate": 2
+            "pkg:deb/debian/weblate": 4
         },
         "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/usermin": 3,
@@ -23921,11 +23941,17 @@
         "cpe:2.3:a:x-stream:x-stream:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libxstream-java": 1
         },
+        "cpe:2.3:a:x.org:libfontenc:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libfontenc": 1
+        },
         "cpe:2.3:a:x.org:libx11:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libx11": 4
         },
         "cpe:2.3:a:x.org:libxfont2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libxfont": 2
+        },
+        "cpe:2.3:a:x.org:libxfont:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libxfont": 1
         },
         "cpe:2.3:a:x.org:libxi:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libxi": 8
@@ -24961,6 +24987,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libyang\"": {
             "pkg:deb/debian/libyang": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"lldpd\"": {
+            "pkg:deb/debian/lldpd": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"lua-expat\"": {
             "pkg:deb/debian/expat": 1
         },
@@ -25614,10 +25643,10 @@
             "pkg:deb/debian/rsync": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog\"": {
-            "pkg:deb/debian/rsyslog": 2
+            "pkg:deb/debian/rsyslog": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog7\"": {
-            "pkg:deb/debian/rsyslog": 2
+            "pkg:deb/debian/rsyslog": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ruby3.3\"": {
             "pkg:deb/debian/ruby3.3": 1
@@ -29977,7 +30006,7 @@
             "pkg:deb/debian/dolibarr": 1
         },
         "pkg:github/Ettercap/ettercap": {
-            "pkg:deb/debian/ettercap": 9
+            "pkg:deb/debian/ettercap": 12
         },
         "pkg:github/FFmpeg/FFmpeg": {
             "pkg:deb/debian/ffmpeg": 12
@@ -30192,7 +30221,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "pkg:github/gpac/gpac": {
-            "pkg:deb/debian/gpac": 16
+            "pkg:deb/debian/gpac": 29
         },
         "pkg:github/gridcf/gct": {
             "pkg:deb/debian/globus-gss-assist": 1
@@ -30646,10 +30675,10 @@
             "pkg:deb/debian/traefik": 1
         },
         "pkg:golang/github.com/traefik/traefik/v2": {
-            "pkg:deb/debian/traefik": 12
+            "pkg:deb/debian/traefik": 13
         },
         "pkg:golang/github.com/traefik/traefik/v3": {
-            "pkg:deb/debian/traefik": 25
+            "pkg:deb/debian/traefik": 26
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1
@@ -31327,10 +31356,10 @@
             "pkg:deb/debian/uv": 3
         },
         "pkg:pypi/vllm": {
-            "pkg:deb/debian/vllm": 49
+            "pkg:deb/debian/vllm": 52
         },
         "pkg:pypi/weblate": {
-            "pkg:deb/debian/weblate": 2
+            "pkg:deb/debian/weblate": 4
         },
         "pkg:pypi/xhtml2pdf": {
             "pkg:deb/debian/xhtml2pdf": 1
