@@ -2530,6 +2530,9 @@
         "\"benoitc\":\"gunicorn\"": {
             "pkg:deb/debian/gunicorn": 1
         },
+        "\"benoitc\":\"idna\"": {
+            "pkg:deb/debian/erlang-idna": 1
+        },
         "\"bep\":\"imagemeta\"": {
             "pkg:deb/debian/golang-github-bep-imagemeta": 2
         },
@@ -4884,7 +4887,7 @@
             "pkg:deb/debian/git": 2
         },
         "\"git-lfs\":\"git-lfs\"": {
-            "pkg:deb/debian/git-lfs": 5
+            "pkg:deb/debian/git-lfs": 7
         },
         "\"gitea\":\"act_runner\"": {
             "pkg:deb/debian/gitea": 1
@@ -8381,7 +8384,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18518,
+            "pkg:deb/debian/linux": 18757,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -20270,6 +20273,9 @@
         "cpe:2.3:a:benoitc:gunicorn:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gunicorn": 1
         },
+        "cpe:2.3:a:benoitc:idna:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/erlang-idna": 1
+        },
         "cpe:2.3:a:best_practical_solutions:request_tracker:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/request-tracker4": 2,
             "pkg:deb/debian/request-tracker5": 3
@@ -24286,7 +24292,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18510
+            "pkg:deb/debian/linux": 18749
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -24475,7 +24481,7 @@
             "pkg:deb/debian/criu": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"crun\"": {
-            "pkg:deb/debian/crun": 3
+            "pkg:deb/debian/crun": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cups\"": {
             "pkg:deb/debian/cups": 4
@@ -24855,6 +24861,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-ldap-federation\"": {
             "pkg:deb/debian/keycloak": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-model-jpa\"": {
+            "pkg:deb/debian/keycloak": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-oauth\"": {
             "pkg:deb/debian/keycloak": 1
         },
@@ -24877,7 +24886,7 @@
             "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core\"": {
-            "pkg:deb/debian/keycloak": 1
+            "pkg:deb/debian/keycloak": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core-public\"": {
             "pkg:deb/debian/keycloak": 1
@@ -24886,7 +24895,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 135
+            "pkg:deb/debian/keycloak": 141
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -24987,7 +24996,7 @@
             "pkg:deb/debian/tiff": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtirpc\"": {
-            "pkg:deb/debian/libtirpc": 2
+            "pkg:deb/debian/libtirpc": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libtpms\"": {
             "pkg:deb/debian/libtpms": 1
@@ -25642,7 +25651,7 @@
             "pkg:deb/debian/resteasy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rh-sso7-keycloak\"": {
-            "pkg:deb/debian/keycloak": 33
+            "pkg:deb/debian/keycloak": 41
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rhoso-openvswitch\"": {
             "pkg:deb/debian/openvswitch": 1
@@ -26025,7 +26034,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk11-openshift-rhel8\"": {
-            "pkg:deb/debian/keycloak": 2,
+            "pkg:deb/debian/keycloak": 3,
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
@@ -26033,7 +26042,7 @@
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"": {
-            "pkg:deb/debian/keycloak": 2,
+            "pkg:deb/debian/keycloak": 3,
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
@@ -26041,7 +26050,7 @@
             "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"": {
-            "pkg:deb/debian/keycloak": 2,
+            "pkg:deb/debian/keycloak": 3,
             "pkg:deb/debian/netty": 7,
             "pkg:deb/debian/resteasy": 2,
             "pkg:deb/debian/resteasy3.0": 2,
@@ -26088,6 +26097,9 @@
             "pkg:deb/debian/keycloak": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-rest-admin-ui-ext\"": {
+            "pkg:deb/debian/keycloak": 1
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-saml-core\"": {
             "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-services\"": {
@@ -27126,6 +27138,9 @@
         },
         "\"https://github.com\":\"apache/brpc\"": {
             "pkg:deb/debian/brpc": 35
+        },
+        "\"https://github.com\":\"benoitc/erlang-idna\"": {
+            "pkg:deb/debian/erlang-idna": 1
         },
         "\"https://github.com\":\"deadtrickster/ssl_verify_fun.erl\"": {
             "pkg:deb/debian/rebar3": 1
@@ -28778,6 +28793,9 @@
             "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
+        "\"https://repo.hex.pm\":\"idna\"": {
+            "pkg:deb/debian/erlang-idna": 1
+        },
         "\"https://repo.hex.pm\":\"jose\"": {
             "pkg:deb/debian/erlang-jose": 8
         },
@@ -30152,6 +30170,9 @@
         "pkg:github/bakulf/libnxml": {
             "pkg:deb/debian/libnxml": 1
         },
+        "pkg:github/benoitc/erlang-idna": {
+            "pkg:deb/debian/erlang-idna": 1
+        },
         "pkg:github/bitwarden/server": {
             "pkg:deb/debian/bitwarden": 7
         },
@@ -30734,6 +30755,9 @@
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
+        },
+        "pkg:hex/idna": {
+            "pkg:deb/debian/erlang-idna": 1
         },
         "pkg:hex/jose": {
             "pkg:deb/debian/erlang-jose": 8

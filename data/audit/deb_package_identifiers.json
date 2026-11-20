@@ -5203,6 +5203,22 @@
             "pkg:software-id/erlang.org/otp"
         ]
     },
+    "pkg:deb/debian/erlang-idna": {
+        "VendorProductIDs": [
+            "\"benoitc\":\"idna\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:benoitc:idna:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": [
+            "\"https://github.com\":\"benoitc/erlang-idna\"",
+            "\"https://repo.hex.pm\":\"idna\""
+        ],
+        "PackageURLs": [
+            "pkg:github/benoitc/erlang-idna",
+            "pkg:hex/idna"
+        ]
+    },
     "pkg:deb/debian/erlang-jose": {
         "VendorProductIDs": [
             "\"potatosalad\":\"erlang-jose\"",
@@ -12637,6 +12653,7 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-admin-ui\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-core\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-ldap-federation\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-model-jpa\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-oauth\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-policy-enforcer\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-quarkus-server\"",
@@ -12667,6 +12684,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-quarkus-server-app\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-quarkus-server-deployment\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-rest-admin-ui-ext\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-saml-core\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-services\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak-keycloak-parent\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak/keycloak-policy-enforcer\"",
