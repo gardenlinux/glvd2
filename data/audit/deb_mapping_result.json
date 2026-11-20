@@ -3717,7 +3717,7 @@
         },
         "\"digitalbazaar\":\"forge\"": {
             "pkg:deb/debian/-node-node-forge": 2,
-            "pkg:deb/debian/node-node-forge": 28
+            "pkg:deb/debian/node-node-forge": 29
         },
         "\"digitaldruid\":\"hoteldruid\"": {
             "pkg:deb/debian/hoteldruid": 1
@@ -4884,7 +4884,7 @@
             "pkg:deb/debian/git": 2
         },
         "\"git-lfs\":\"git-lfs\"": {
-            "pkg:deb/debian/git-lfs": 3
+            "pkg:deb/debian/git-lfs": 5
         },
         "\"gitea\":\"act_runner\"": {
             "pkg:deb/debian/gitea": 1
@@ -8381,7 +8381,7 @@
             "pkg:deb/debian/linux": 43
         },
         "\"linux\":\"linux\"": {
-            "pkg:deb/debian/linux": 18272,
+            "pkg:deb/debian/linux": 18518,
             "pkg:deb/debian/xen": 4
         },
         "\"linux\":\"linux_kernel\"": {
@@ -8520,7 +8520,7 @@
             "pkg:deb/debian/lwip": 1
         },
         "\"lxc\":\"incus\"": {
-            "pkg:deb/debian/incus": 65,
+            "pkg:deb/debian/incus": 66,
             "pkg:deb/debian/lxd": 20
         },
         "\"lxc\":\"lxc\"": {
@@ -9087,7 +9087,7 @@
             "pkg:deb/debian/jxrlib": 4
         },
         "\"misp\":\"misp\"": {
-            "pkg:deb/debian/misp": 163
+            "pkg:deb/debian/misp": 169
         },
         "\"misp\":\"misp-stix\"": {
             "pkg:deb/debian/misp": 4
@@ -13769,7 +13769,7 @@
             "pkg:deb/debian/mariadb": 8,
             "pkg:deb/debian/mariadb-10.5": 2,
             "pkg:deb/debian/mysql-8.0": 29,
-            "pkg:deb/debian/mysql-9.7": 119,
+            "pkg:deb/debian/mysql-9.7": 125,
             "pkg:deb/debian/mysql-cluster": 5
         },
         "\"oracle corporation\":\"mysql connectors\"": {
@@ -13793,7 +13793,7 @@
             "pkg:deb/debian/mysql-5.6": 1,
             "pkg:deb/debian/mysql-5.7": 434,
             "pkg:deb/debian/mysql-8.0": 607,
-            "pkg:deb/debian/mysql-9.7": 119
+            "pkg:deb/debian/mysql-9.7": 125
         },
         "\"oracle corporation\":\"mysql shell\"": {
             "pkg:deb/debian/mysql-8.0": 4
@@ -14269,8 +14269,8 @@
             "pkg:deb/debian/php7.4": 75,
             "pkg:deb/debian/php8.0": 7,
             "pkg:deb/debian/php8.1": 9,
-            "pkg:deb/debian/php8.2": 61,
-            "pkg:deb/debian/php8.4": 38
+            "pkg:deb/debian/php8.2": 78,
+            "pkg:deb/debian/php8.4": 55
         },
         "\"php\":\"archive_tar\"": {
             "pkg:deb/debian/php7.3": 1,
@@ -15081,13 +15081,13 @@
         },
         "\"qt\":\"qt\"": {
             "pkg:deb/debian/qt4-x11": 1,
-            "pkg:deb/debian/qt6-5compat": 6,
+            "pkg:deb/debian/qt6-5compat": 7,
             "pkg:deb/debian/qt6-base": 20,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 21,
+            "pkg:deb/debian/qtbase-opensource-src": 22,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -15958,8 +15958,9 @@
         "\"ruby-lang\":\"ruby\"": {
             "pkg:deb/debian/ruby2.5": 1,
             "pkg:deb/debian/ruby2.7": 1,
-            "pkg:deb/debian/ruby3.1": 1,
-            "pkg:deb/debian/ruby3.2": 1
+            "pkg:deb/debian/ruby3.1": 2,
+            "pkg:deb/debian/ruby3.2": 1,
+            "pkg:deb/debian/ruby3.3": 1
         },
         "\"ruby-lang\":\"uri\"": {
             "pkg:deb/debian/ruby2.7": 1,
@@ -16866,10 +16867,18 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"siveillance control pro\"": {
+            "pkg:deb/debian/openjdk-17": 1,
+            "pkg:deb/debian/openjdk-21": 1,
+            "pkg:deb/debian/openjdk-25": 1,
+            "pkg:deb/debian/openjdk-27": 1,
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"siveillance control\"": {
+            "pkg:deb/debian/openjdk-17": 1,
+            "pkg:deb/debian/openjdk-21": 1,
+            "pkg:deb/debian/openjdk-25": 1,
+            "pkg:deb/debian/openjdk-27": 1,
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
@@ -16997,7 +17006,7 @@
             "pkg:deb/debian/signal-desktop": 2
         },
         "\"signalwire\":\"freeswitch\"": {
-            "pkg:deb/debian/freeswitch": 38
+            "pkg:deb/debian/freeswitch": 40
         },
         "\"sigstore\":\"cosign\"": {
             "pkg:deb/debian/cosign": 9,
@@ -17969,7 +17978,7 @@
             "pkg:deb/debian/gdm3": 1
         },
         "\"the gnu c library\":\"glibc\"": {
-            "pkg:deb/debian/glibc": 39
+            "pkg:deb/debian/glibc": 40
         },
         "\"the gnu projec\":\"gnu wget\"": {
             "pkg:deb/debian/wget": 1
@@ -18003,7 +18012,7 @@
         },
         "\"the libreswan project\":\"libreswan\"": {
             "pkg:deb/debian/freeswan": 1,
-            "pkg:deb/debian/libreswan": 10,
+            "pkg:deb/debian/libreswan": 12,
             "pkg:deb/debian/openswan": 1,
             "pkg:deb/debian/strongswan": 1
         },
@@ -19362,7 +19371,7 @@
             "pkg:deb/debian/libx11": 4
         },
         "\"x.org\":\"libxfont\"": {
-            "pkg:deb/debian/libxfont": 1
+            "pkg:deb/debian/libxfont": 2
         },
         "\"x.org\":\"libxfont2\"": {
             "pkg:deb/debian/libxfont": 3
@@ -21985,7 +21994,7 @@
             "pkg:deb/debian/rust-mio-0.6": 1
         },
         "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/misp": 51
+            "pkg:deb/debian/misp": 57
         },
         "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/misp": 1
@@ -22712,7 +22721,7 @@
             "pkg:deb/debian/mariadb": 8,
             "pkg:deb/debian/mariadb-10.5": 2,
             "pkg:deb/debian/mysql-8.0": 20,
-            "pkg:deb/debian/mysql-9.7": 119
+            "pkg:deb/debian/mysql-9.7": 125
         },
         "cpe:2.3:a:oracle:mysql_connector\\/j:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mysql-connector-java": 8
@@ -22737,7 +22746,7 @@
             "pkg:deb/debian/mariadb-10.3": 1,
             "pkg:deb/debian/mariadb-10.5": 3,
             "pkg:deb/debian/mysql-8.0": 183,
-            "pkg:deb/debian/mysql-9.7": 119
+            "pkg:deb/debian/mysql-9.7": 125
         },
         "cpe:2.3:a:oracle:mysql_shell:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/mysql-8.0": 4
@@ -22831,7 +22840,8 @@
         "cpe:2.3:a:php:php:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php7.3": 3,
             "pkg:deb/debian/php7.4": 7,
-            "pkg:deb/debian/php8.2": 7
+            "pkg:deb/debian/php8.2": 24,
+            "pkg:deb/debian/php8.4": 17
         },
         "cpe:2.3:a:php_group:php:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php7.3": 4,
@@ -23078,15 +23088,15 @@
             "pkg:deb/debian/qt6-3d": 1
         },
         "cpe:2.3:a:qt:qt5compat:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/qt6-5compat": 5,
-            "pkg:deb/debian/qtbase-opensource-src": 4,
+            "pkg:deb/debian/qt6-5compat": 6,
+            "pkg:deb/debian/qtbase-opensource-src": 5,
             "pkg:deb/debian/qtbase-opensource-src-gles": 1
         },
         "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt3d-opensource-src": 1,
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-3d": 1,
-            "pkg:deb/debian/qt6-5compat": 6,
+            "pkg:deb/debian/qt6-5compat": 7,
             "pkg:deb/debian/qt6-base": 20,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
@@ -23094,7 +23104,7 @@
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
             "pkg:deb/debian/qt6-websockets": 2,
-            "pkg:deb/debian/qtbase-opensource-src": 21,
+            "pkg:deb/debian/qtbase-opensource-src": 22,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -23108,9 +23118,9 @@
             "pkg:deb/debian/qtnetworkauth-everywhere-src": 1
         },
         "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/qt6-5compat": 4,
+            "pkg:deb/debian/qt6-5compat": 5,
             "pkg:deb/debian/qt6-base": 8,
-            "pkg:deb/debian/qtbase-opensource-src": 11,
+            "pkg:deb/debian/qtbase-opensource-src": 12,
             "pkg:deb/debian/qtbase-opensource-src-gles": 4
         },
         "cpe:2.3:a:qt:qthttpserver:*:*:*:*:*:*:*:*": {
@@ -23335,8 +23345,9 @@
         "cpe:2.3:a:ruby-lang:ruby:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby2.5": 1,
             "pkg:deb/debian/ruby2.7": 1,
-            "pkg:deb/debian/ruby3.1": 1,
-            "pkg:deb/debian/ruby3.2": 1
+            "pkg:deb/debian/ruby3.1": 2,
+            "pkg:deb/debian/ruby3.2": 1,
+            "pkg:deb/debian/ruby3.3": 1
         },
         "cpe:2.3:a:ruby-lang:uri:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby2.7": 1,
@@ -23960,7 +23971,7 @@
             "pkg:deb/debian/libxfont": 2
         },
         "cpe:2.3:a:x.org:libxfont:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libxfont": 1
+            "pkg:deb/debian/libxfont": 2
         },
         "cpe:2.3:a:x.org:libxi:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libxi": 8
@@ -24275,7 +24286,7 @@
             "pkg:deb/debian/linux": 6
         },
         "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/linux": 18264
+            "pkg:deb/debian/linux": 18510
         },
         "cpe:2.3:o:linux_mint:xreader:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xreader": 2
@@ -24353,7 +24364,7 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ansible-core\"": {
             "pkg:deb/debian/ansible": 8,
-            "pkg:deb/debian/ansible-core": 11
+            "pkg:deb/debian/ansible-core": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"aom\"": {
             "pkg:deb/debian/aom": 4
@@ -24734,7 +24745,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 72
+            "pkg:deb/debian/gimp": 73
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 17
@@ -25102,7 +25113,7 @@
             "pkg:deb/debian/nautilus": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"nbdkit\"": {
-            "pkg:deb/debian/nbdkit": 2
+            "pkg:deb/debian/nbdkit": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"netavark\"": {
             "pkg:deb/debian/netavark": 1
@@ -26453,6 +26464,9 @@
         "\"https://bodhi.fedoraproject.org/updates/?packages=PackageKit\":\"PackageKit\"": {
             "pkg:deb/debian/packagekit": 1
         },
+        "\"https://bodhi.fedoraproject.org/updates/?packages=nbdkit\":\"nbdkit\"": {
+            "pkg:deb/debian/nbdkit": 1
+        },
         "\"https://bodhi.fedoraproject.org/updates/?packages=xdg-dbus-proxy\":\"xdg-dbus-proxy\"": {
             "pkg:deb/debian/xdg-dbus-proxy": 1
         },
@@ -26680,6 +26694,9 @@
         },
         "\"https://cpan.org/modules\":\"Config-IniFiles\"": {
             "pkg:deb/debian/libconfig-inifiles-perl": 1
+        },
+        "\"https://cpan.org/modules\":\"Convert-ASN1\"": {
+            "pkg:deb/debian/libconvert-asn1-perl": 8
         },
         "\"https://cpan.org/modules\":\"Cpanel-JSON-XS\"": {
             "pkg:deb/debian/libcpanel-json-xs-perl": 18
@@ -27156,10 +27173,6 @@
         "\"https://github.com\":\"potatosalad/erlang-jose\"": {
             "pkg:deb/debian/erlang-jose": 8
         },
-        "\"https://github.com\":\"rebar3\"": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
-        },
         "\"https://github.com/389ds/389-ds-base\":\"389-ds-base\"": {
             "pkg:deb/debian/389-ds-base": 6
         },
@@ -27395,7 +27408,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "\"https://github.com/libreswan/libreswan\":\"libreswan\"": {
-            "pkg:deb/debian/libreswan": 7
+            "pkg:deb/debian/libreswan": 9
         },
         "\"https://github.com/linux-pam/linux-pam\":\"linux-pam\"": {
             "pkg:deb/debian/pam": 2
@@ -27416,7 +27429,7 @@
             "pkg:deb/debian/libapache2-mod-cluster": 1
         },
         "\"https://github.com/moodle/moodle\":\"moodle\"": {
-            "pkg:deb/debian/moodle": 23
+            "pkg:deb/debian/moodle": 40
         },
         "\"https://github.com/moodle/moodle/\":\"moodle\"": {
             "pkg:deb/debian/moodle": 9
@@ -27624,6 +27637,9 @@
         },
         "\"https://gitlab.com/nbdkit/libnbd\":\"libnbd\"": {
             "pkg:deb/debian/libnbd": 2
+        },
+        "\"https://gitlab.com/nbdkit/nbdkit\":\"nbdkit\"": {
+            "pkg:deb/debian/nbdkit": 1
         },
         "\"https://gitlab.com/qemu-project/qemu\":\"qemu\"": {
             "pkg:deb/debian/qemu": 20
@@ -29635,6 +29651,14 @@
         },
         "\"https://www.wolfssl.com/download/\":\"wolfssl\"": {
             "pkg:deb/debian/wolfssl": 1
+        },
+        "\"https://www.x.org/\":\"xserver\"": {
+            "pkg:deb/debian/xorg-server": 2,
+            "pkg:deb/debian/xwayland": 2
+        },
+        "\"https://www.x.org/\":\"xwayland\"": {
+            "pkg:deb/debian/xorg-server": 2,
+            "pkg:deb/debian/xwayland": 2
         }
     },
     "package_urls": {
@@ -29835,6 +29859,9 @@
         },
         "pkg:cpan/Catalyst-Plugin-Static-Simple": {
             "pkg:deb/debian/libcatalyst-plugin-static-simple-perl": 1
+        },
+        "pkg:cpan/Convert-ASN1": {
+            "pkg:deb/debian/libconvert-asn1-perl": 8
         },
         "pkg:cpan/Cpanel-JSON-XS": {
             "pkg:deb/debian/libcpanel-json-xs-perl": 15
@@ -31193,12 +31220,8 @@
         },
         "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 9,
-            "pkg:deb/debian/rebar3": 2
-        },
-        "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 10,
+            "pkg:deb/debian/rebar3": 3
         },
         "pkg:otp/inets?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 16
@@ -31217,12 +31240,8 @@
         },
         "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
             "pkg:deb/debian/erlang": 1,
-            "pkg:deb/debian/erlang-hex": 2,
-            "pkg:deb/debian/rebar3": 3
-        },
-        "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git": {
-            "pkg:deb/debian/erlang-hex": 1,
-            "pkg:deb/debian/rebar3": 1
+            "pkg:deb/debian/erlang-hex": 3,
+            "pkg:deb/debian/rebar3": 4
         },
         "pkg:otp/snmp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git": {
             "pkg:deb/debian/erlang": 1
@@ -31383,6 +31402,10 @@
         },
         "pkg:software-id/gleam.run/gleam": {
             "pkg:deb/debian/gleam": 6
+        },
+        "pkg:software-id/php.net/php": {
+            "pkg:deb/debian/php8.2": 17,
+            "pkg:deb/debian/php8.4": 17
         }
     }
 }

@@ -5189,7 +5189,6 @@
             "\"https://github.com\":\"erlang/rebar3\"",
             "\"https://github.com\":\"hexpm/hex\"",
             "\"https://github.com\":\"hexpm/hex_core\"",
-            "\"https://github.com\":\"rebar3\"",
             "\"https://repo.hex.pm\":\"hex_core\""
         ],
         "PackageURLs": [
@@ -5199,9 +5198,7 @@
             "pkg:github/hexpm/hex_core",
             "pkg:hex/hex_core",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
-            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
-            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:software-id/erlang.org/otp"
         ]
@@ -13708,6 +13705,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libconvert-asn1-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Convert-ASN1\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Convert-ASN1"
+        ]
+    },
     "pkg:deb/debian/libcpanel-json-xs-perl": {
         "VendorProductIDs": [
             "\"cpanel\":\"cpanel\"",
@@ -19604,6 +19611,8 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"nbdkit\"",
+            "\"https://bodhi.fedoraproject.org/updates/?packages=nbdkit\":\"nbdkit\"",
+            "\"https://gitlab.com/nbdkit/nbdkit\":\"nbdkit\"",
             "\"https://nbdkit.org/\":\"nbdkit\""
         ],
         "PackageURLs": null
@@ -23564,7 +23573,9 @@
             "\"oracle\":\"openjdk\"",
             "\"red hat\":\"openjdk els 11.0.30\"",
             "\"red hat\":\"temurin build of openjdk 25.0.2\"",
-            "\"red hat\":\"temurin build of openjdk 25.0.3\""
+            "\"red hat\":\"temurin build of openjdk 25.0.3\"",
+            "\"siemens\":\"siveillance control pro\"",
+            "\"siemens\":\"siveillance control\""
         ],
         "CPEs": [
             "cpe:2.3:a:littlecms:little_cms_color_engine:*:*:*:*:*:*:*:*",
@@ -23622,7 +23633,9 @@
             "\"oracle\":\"jre\"",
             "\"red hat\":\"openjdk els 11.0.30\"",
             "\"red hat\":\"temurin build of openjdk 25.0.2\"",
-            "\"red hat\":\"temurin build of openjdk 25.0.3\""
+            "\"red hat\":\"temurin build of openjdk 25.0.3\"",
+            "\"siemens\":\"siveillance control pro\"",
+            "\"siemens\":\"siveillance control\""
         ],
         "CPEs": [
             "cpe:2.3:a:littlecms:little_cms_color_engine:*:*:*:*:*:*:*:*",
@@ -23677,7 +23690,9 @@
             "\"oracle corporation\":\"oracle javafx\"",
             "\"red hat\":\"openjdk els 11.0.30\"",
             "\"red hat\":\"temurin build of openjdk 25.0.2\"",
-            "\"red hat\":\"temurin build of openjdk 25.0.3\""
+            "\"red hat\":\"temurin build of openjdk 25.0.3\"",
+            "\"siemens\":\"siveillance control pro\"",
+            "\"siemens\":\"siveillance control\""
         ],
         "CPEs": [
             "cpe:2.3:a:littlecms:little_cms_color_engine:*:*:*:*:*:*:*:*",
@@ -23714,7 +23729,9 @@
             "\"oracle corporation\":\"oracle graalvm enterprise edition\"",
             "\"oracle corporation\":\"oracle graalvm for jdk\"",
             "\"oracle corporation\":\"oracle java se\"",
-            "\"oracle corporation\":\"oracle javafx\""
+            "\"oracle corporation\":\"oracle javafx\"",
+            "\"siemens\":\"siveillance control pro\"",
+            "\"siemens\":\"siveillance control\""
         ],
         "CPEs": [
             "cpe:2.3:a:oracle:graalvm:*:*:*:*:*:*:*:*",
@@ -25599,7 +25616,9 @@
             "\"https://packages.fedoraproject.org/\":\"php\"",
             "\"https://www.php.net/\":\"openssl\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:software-id/php.net/php"
+        ]
     },
     "pkg:deb/debian/php8.4": {
         "VendorProductIDs": [
@@ -25702,12 +25721,16 @@
             "\"siemens\":\"xpedition ic packaging\"",
             "\"siemens\":\"xpedition layout browser\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:php:php:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"php8.4\"",
             "\"https://www.php.net/\":\"openssl\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:software-id/php.net/php"
+        ]
     },
     "pkg:deb/debian/phpbb3": {
         "VendorProductIDs": [
@@ -29316,7 +29339,6 @@
             "\"https://github.com\":\"erlang/rebar3\"",
             "\"https://github.com\":\"hexpm/hex\"",
             "\"https://github.com\":\"hexpm/hex_core\"",
-            "\"https://github.com\":\"rebar3\"",
             "\"https://repo.hex.pm\":\"hex_core\"",
             "\"https://repo.hex.pm\":\"ssl_verify_fun\""
         ],
@@ -29329,9 +29351,7 @@
             "pkg:hex/hex_core",
             "pkg:hex/ssl_verify_fun",
             "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
-            "pkg:otp/hex?repository_url=https:%2F%2Fgithub.com%2Fhexpm%2Fhex.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Fhexpm%2Fhex.git",
             "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
-            "pkg:otp/rebar3?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Frebar3.git\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Frebar3.git",
             "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:software-id/erlang.org/otp"
         ]
@@ -30797,12 +30817,14 @@
             "\"ruby\":\"zlib\"",
             "\"ruby-lang\":\"cgi\"",
             "\"ruby-lang\":\"rexml\"",
+            "\"ruby-lang\":\"ruby\"",
             "\"ruby-lang\":\"uri\""
         ],
         "CPEs": [
             "cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:cgi:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:rexml:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ruby-lang:ruby:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby-lang:uri:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ruby:rexml:*:*:*:*:*:*:*:*"
         ],
@@ -36587,7 +36609,9 @@
             "\"https://gitlab.freedesktop.org/xorg/xserver\":\"xorg-x11-server\"",
             "\"https://gitlab.freedesktop.org/xorg/xserver\":\"xwayland\"",
             "\"https://gitlab.freedesktop.org/xorg/xserver/\":\"xorg-server\"",
-            "\"https://gitlab.freedesktop.org/xorg/xserver/\":\"xserver\""
+            "\"https://gitlab.freedesktop.org/xorg/xserver/\":\"xserver\"",
+            "\"https://www.x.org/\":\"xserver\"",
+            "\"https://www.x.org/\":\"xwayland\""
         ],
         "PackageURLs": null
     },
@@ -36687,7 +36711,9 @@
             "\"https://gitlab.freedesktop.org/xorg/xserver\":\"xorg-x11-server\"",
             "\"https://gitlab.freedesktop.org/xorg/xserver\":\"xwayland\"",
             "\"https://gitlab.freedesktop.org/xorg/xserver/\":\"xorg-server\"",
-            "\"https://gitlab.freedesktop.org/xorg/xserver/\":\"xserver\""
+            "\"https://gitlab.freedesktop.org/xorg/xserver/\":\"xserver\"",
+            "\"https://www.x.org/\":\"xserver\"",
+            "\"https://www.x.org/\":\"xwayland\""
         ],
         "PackageURLs": null
     },
