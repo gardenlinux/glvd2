@@ -2426,7 +2426,7 @@
             "pkg:deb/debian/wordpress": 4
         },
         "\"avahi\":\"avahi\"": {
-            "pkg:deb/debian/avahi": 12
+            "pkg:deb/debian/avahi": 14
         },
         "\"awesomized\":\"libmemcached\"": {
             "pkg:deb/debian/libmemcached": 1
@@ -3133,7 +3133,7 @@
             "pkg:deb/debian/clamav": 2
         },
         "\"cisco\":\"cisco secure endpoint\"": {
-            "pkg:deb/debian/clamav": 20
+            "pkg:deb/debian/clamav": 30
         },
         "\"cisco\":\"cisco secure web appliance\"": {
             "pkg:deb/debian/clamav": 1
@@ -12283,7 +12283,7 @@
             "pkg:deb/debian/less": 1
         },
         "\"netatalk\":\"netatalk\"": {
-            "pkg:deb/debian/netatalk": 57
+            "pkg:deb/debian/netatalk": 60
         },
         "\"netbox labs\":\"netbox\"": {
             "pkg:deb/debian/netbox": 1
@@ -12451,6 +12451,9 @@
         },
         "\"nlnet labs\":\"ldns\"": {
             "pkg:deb/debian/ldns": 1
+        },
+        "\"nlnet labs\":\"net::dns\"": {
+            "pkg:deb/debian/libnet-dns-perl": 1
         },
         "\"nlnet labs\":\"nsd\"": {
             "pkg:deb/debian/nsd": 13,
@@ -13582,7 +13585,7 @@
         "\"openssl\":\"openssl\"": {
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/libtomcrypt": 1,
-            "pkg:deb/debian/openssl": 151,
+            "pkg:deb/debian/openssl": 153,
             "pkg:deb/debian/openssl1.0": 30
         },
         "\"openstack foundation\":\"openstack-cinder\"": {
@@ -14237,6 +14240,9 @@
         },
         "\"pgjdbc\":\"pgjdbc\"": {
             "pkg:deb/debian/libpgjava": 9
+        },
+        "\"pgpainless\":\"pgpainless\"": {
+            "pkg:deb/debian/pgpainless": 1
         },
         "\"pgpartman\":\"pg_partman\"": {
             "pkg:deb/debian/pg-partman": 7

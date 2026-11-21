@@ -15308,6 +15308,7 @@
     },
     "pkg:deb/debian/libnet-dns-perl": {
         "VendorProductIDs": [
+            "\"nlnet labs\":\"net::dns\"",
             "\"nlnetlabs\":\"net::dns\""
         ],
         "CPEs": null,
@@ -25069,6 +25070,14 @@
             "\"enterprisedb\":\"pglogical\"",
             "\"n/a\":\"pglogical\"",
             "\"pgedge\":\"spock\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/pgpainless": {
+        "VendorProductIDs": [
+            "\"pgpainless\":\"pgpainless\""
         ],
         "CPEs": null,
         "PackageIDs": null,
