@@ -8588,7 +8588,7 @@
             "pkg:deb/debian/node-maplibre-geojson-vt": 1
         },
         "\"mapserver\":\"mapserver\"": {
-            "pkg:deb/debian/mapserver": 6
+            "pkg:deb/debian/mapserver": 12
         },
         "\"mar10\":\"wsgidav\"": {
             "pkg:deb/debian/python-wsgidav": 1
