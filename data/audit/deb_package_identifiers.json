@@ -7107,7 +7107,9 @@
             "\"gittuf\":\"gittuf\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://pkg.go.dev\":\"github.com/gittuf/gittuf\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/gksu-polkit": {
@@ -10302,6 +10304,14 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"gvfs\"",
             "\"https://gitlab.gnome.org/GNOME/gvfs\":\"gvfs\""
         ],
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/gvmd": {
+        "VendorProductIDs": [
+            "\"greenbone\":\"gvmd\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
         "PackageURLs": null
     },
     "pkg:deb/debian/gzdoom": {
@@ -31528,10 +31538,12 @@
     },
     "pkg:deb/debian/rust-gix-transport": {
         "VendorProductIDs": [
-            "\"gitoxidelabs\":\"gitoxide\""
+            "\"gitoxidelabs\":\"gitoxide\"",
+            "\"gitoxidelabs\":\"gix-transport\""
         ],
         "CPEs": [
-            "cpe:2.3:a:gitoxidelabs:gitoxide:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:gitoxidelabs:gitoxide:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:gitoxidelabs:gix-transport:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
         "PackageURLs": [
