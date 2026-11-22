@@ -1615,7 +1615,7 @@
             "pkg:deb/debian/apache-log4j2": 3
         },
         "\"apache software foundation\":\"apache log4net\"": {
-            "pkg:deb/debian/log4net": 7
+            "pkg:deb/debian/log4net": 10
         },
         "\"apache software foundation\":\"apache maven\"": {
             "pkg:deb/debian/maven": 1,
@@ -2996,7 +2996,7 @@
             "pkg:deb/debian/asterisk": 1
         },
         "\"cesanta\":\"mongoose\"": {
-            "pkg:deb/debian/mongoose": 24,
+            "pkg:deb/debian/mongoose": 27,
             "pkg:deb/debian/smplayer": 8,
             "pkg:deb/debian/swupdate": 9
         },
@@ -7912,6 +7912,9 @@
         "\"kriszyp\":\"kriszyp/json-schema\"": {
             "pkg:deb/debian/node-json-schema": 1
         },
+        "\"krita\":\"krita\"": {
+            "pkg:deb/debian/krita": 9
+        },
         "\"ktsuss\":\"ktsuss\"": {
             "pkg:deb/debian/ktsuss": 2
         },
@@ -8686,7 +8689,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 439
+            "pkg:deb/debian/mattermost-server": 440
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -13381,7 +13384,7 @@
             "pkg:deb/debian/pdns-recursor": 3
         },
         "\"open5gs\":\"open5gs\"": {
-            "pkg:deb/debian/open5gs": 18
+            "pkg:deb/debian/open5gs": 19
         },
         "\"open62541 project / o6 automation gmbh\":\"open62541\"": {
             "pkg:deb/debian/open62541": 2
@@ -14820,7 +14823,7 @@
             "pkg:deb/debian/python-httpx2": 5
         },
         "\"pydantic\":\"pydantic\"": {
-            "pkg:deb/debian/pydantic": 1
+            "pkg:deb/debian/pydantic": 3
         },
         "\"pydantic\":\"pydantic-settings\"": {
             "pkg:deb/debian/pydantic-settings": 1
@@ -16163,7 +16166,7 @@
             "pkg:deb/debian/rlottie": 3
         },
         "\"samtools\":\"htslib\"": {
-            "pkg:deb/debian/htslib": 11
+            "pkg:deb/debian/htslib": 18
         },
         "\"samtools\":\"samtools\"": {
             "pkg:deb/debian/samtools": 2
@@ -19737,7 +19740,7 @@
             "pkg:deb/debian/wireshark": 2
         },
         "\"wireshark foundation\":\"wireshark\"": {
-            "pkg:deb/debian/wireshark": 185
+            "pkg:deb/debian/wireshark": 220
         },
         "\"wireshark\":\"wireshark\"": {
             "pkg:deb/debian/wireshark": 11
@@ -20854,7 +20857,7 @@
             "pkg:deb/debian/snapd": 3
         },
         "cpe:2.3:a:cesanta:mongoose:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/mongoose": 10,
+            "pkg:deb/debian/mongoose": 12,
             "pkg:deb/debian/swupdate": 8
         },
         "cpe:2.3:a:cesnet:libyang:*:*:*:*:*:*:*:*": {
@@ -22952,7 +22955,7 @@
             "pkg:deb/debian/dovecot": 1
         },
         "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/open5gs": 121
+            "pkg:deb/debian/open5gs": 122
         },
         "cpe:2.3:a:open62541:open62541:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/open62541": 6
@@ -24928,7 +24931,7 @@
             "pkg:deb/debian/cpio": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cri-o\"": {
-            "pkg:deb/debian/cri-o": 14
+            "pkg:deb/debian/cri-o": 15
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"criu\"": {
             "pkg:deb/debian/criu": 1
@@ -26369,7 +26372,7 @@
             "pkg:deb/debian/wildfly": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-iiop-openjdk\"": {
-            "pkg:deb/debian/wildfly": 3
+            "pkg:deb/debian/wildfly": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-io\"": {
             "pkg:deb/debian/wildfly": 1
@@ -28357,7 +28360,10 @@
             "pkg:deb/debian/tinymce": 3
         },
         "\"https://nuget.org/packages\":\"log4net\"": {
-            "pkg:deb/debian/log4net": 6
+            "pkg:deb/debian/log4net": 9
+        },
+        "\"https://nuget.org/packages\":\"log4net.Ext.Mail\"": {
+            "pkg:deb/debian/log4net": 1
         },
         "\"https://packagehub.suse.com/\":\"pam\"": {
             "pkg:deb/debian/pam": 1
@@ -29139,6 +29145,9 @@
         },
         "\"https://pypi.org\":\"pip\"": {
             "pkg:deb/debian/python-pip": 2
+        },
+        "\"https://pypi.org\":\"pydantic\"": {
+            "pkg:deb/debian/pydantic": 2
         },
         "\"https://pypi.org/\":\"pyarrow\"": {
             "pkg:deb/debian/apache-arrow": 1
@@ -30638,6 +30647,9 @@
         "pkg:github/canboat/canboat": {
             "pkg:deb/debian/canboat": 1
         },
+        "pkg:github/cesanta/mongoose": {
+            "pkg:deb/debian/mongoose": 3
+        },
         "pkg:github/composefs/tar-rs": {
             "pkg:deb/debian/rust-tar": 1
         },
@@ -30945,7 +30957,7 @@
             "pkg:deb/debian/ollama": 1
         },
         "pkg:github/open5gs/open5gs": {
-            "pkg:deb/debian/open5gs": 3
+            "pkg:deb/debian/open5gs": 4
         },
         "pkg:github/open62541/open62541": {
             "pkg:deb/debian/open62541": 1
@@ -31651,7 +31663,10 @@
             "pkg:deb/debian/tinymce": 3
         },
         "pkg:nuget/log4net": {
-            "pkg:deb/debian/log4net": 7
+            "pkg:deb/debian/log4net": 10
+        },
+        "pkg:nuget/log4net.Ext.Mail": {
+            "pkg:deb/debian/log4net": 1
         },
         "pkg:oci/gleam?repository_url=ghcr.io%2Fgleam-lang%2Fgleam": {
             "pkg:deb/debian/gleam": 6

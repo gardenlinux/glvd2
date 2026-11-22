@@ -12947,7 +12947,8 @@
     },
     "pkg:deb/debian/krita": {
         "VendorProductIDs": [
-            "\"kde\":\"krita\""
+            "\"kde\":\"krita\"",
+            "\"krita\":\"krita\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -17676,10 +17677,12 @@
         ],
         "PackageIDs": [
             "\"https://nuget.org/packages\":\"log4net\"",
+            "\"https://nuget.org/packages\":\"log4net.Ext.Mail\"",
             "\"https://www.nuget.org/packages\":\"log4net\""
         ],
         "PackageURLs": [
-            "pkg:nuget/log4net"
+            "pkg:nuget/log4net",
+            "pkg:nuget/log4net.Ext.Mail"
         ]
     },
     "pkg:deb/debian/logback": {
@@ -18920,7 +18923,9 @@
             "cpe:2.3:a:cesanta:mongoose:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/cesanta/mongoose"
+        ]
     },
     "pkg:deb/debian/monit": {
         "VendorProductIDs": [
@@ -27166,7 +27171,9 @@
         "CPEs": [
             "cpe:2.3:a:pydantic_project:pydantic:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://pypi.org\":\"pydantic\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/pydantic-settings": {
