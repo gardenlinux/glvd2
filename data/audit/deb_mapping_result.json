@@ -6202,7 +6202,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 73
+            "pkg:deb/debian/gpac": 111
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -8107,7 +8107,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "\"libexpat\":\"libexpat\"": {
-            "pkg:deb/debian/expat": 9
+            "pkg:deb/debian/expat": 10
         },
         "\"libexpat_project\":\"libexpat\"": {
             "pkg:deb/debian/expat": 3,
@@ -21684,7 +21684,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 126
+            "pkg:deb/debian/gpac": 164
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -22157,7 +22157,7 @@
             "pkg:deb/debian/libxmltok": 2
         },
         "cpe:2.3:a:libexpat_project:libexpat:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/expat": 37,
+            "pkg:deb/debian/expat": 38,
             "pkg:deb/debian/firefox": 1,
             "pkg:deb/debian/firefox-esr": 1,
             "pkg:deb/debian/libxmltok": 3,
@@ -30746,7 +30746,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "pkg:github/gpac/gpac": {
-            "pkg:deb/debian/gpac": 49
+            "pkg:deb/debian/gpac": 87
         },
         "pkg:github/gridcf/gct": {
             "pkg:deb/debian/globus-gss-assist": 1
@@ -30818,7 +30818,7 @@
             "pkg:deb/debian/liblas": 1
         },
         "pkg:github/libexpat/libexpat": {
-            "pkg:deb/debian/expat": 10
+            "pkg:deb/debian/expat": 11
         },
         "pkg:github/libgme/game-music-emu": {
             "pkg:deb/debian/game-music-emu": 2
