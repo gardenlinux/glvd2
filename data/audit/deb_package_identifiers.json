@@ -29530,6 +29530,7 @@
         ],
         "PackageIDs": null,
         "PackageURLs": [
+            "pkg:githubactions/rclone/rclone",
             "pkg:golang/github.com/diskfs/go-diskfs",
             "pkg:golang/github.com/rclone/rclone"
         ]

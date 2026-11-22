@@ -15303,7 +15303,7 @@
             "pkg:deb/debian/libfile-find-rule-perl": 1
         },
         "\"rclone\":\"rclone\"": {
-            "pkg:deb/debian/rclone": 42
+            "pkg:deb/debian/rclone": 49
         },
         "\"rdesktop\":\"rdesktop\"": {
             "pkg:deb/debian/rdesktop": 4
@@ -23652,7 +23652,7 @@
             "pkg:deb/debian/unrar-nonfree": 2
         },
         "cpe:2.3:a:rclone:rclone:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rclone": 21
+            "pkg:deb/debian/rclone": 28
         },
         "cpe:2.3:a:rdesktop:rdesktop:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/rdesktop": 3
@@ -31124,6 +31124,9 @@
         "pkg:github/zeek/zeek": {
             "pkg:deb/debian/zeek": 2
         },
+        "pkg:githubactions/rclone/rclone": {
+            "pkg:deb/debian/rclone": 1
+        },
         "pkg:gitlab/teuniz/edfbrowser": {
             "pkg:deb/debian/edfbrowser": 1
         },
@@ -31191,7 +31194,7 @@
             "pkg:deb/debian/opentofu": 3
         },
         "pkg:golang/github.com/rclone/rclone": {
-            "pkg:deb/debian/rclone": 20
+            "pkg:deb/debian/rclone": 26
         },
         "pkg:golang/github.com/seaweedfs/seaweedfs": {
             "pkg:deb/debian/seaweedfs": 1
