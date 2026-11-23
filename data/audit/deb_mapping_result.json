@@ -4142,6 +4142,9 @@
         "\"elastic\":\"packetbeat\"": {
             "pkg:deb/debian/packetbeat": 7
         },
+        "\"elazarl\":\"goproxy\"": {
+            "pkg:deb/debian/golang-github-elazarl-goproxy": 1
+        },
         "\"electron\":\"electron\"": {
             "pkg:deb/debian/electron": 68
         },
@@ -4482,7 +4485,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 179
+            "pkg:deb/debian/ffmpeg": 205
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -4718,7 +4721,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "\"froxlor\":\"froxlor\"": {
-            "pkg:deb/debian/froxlor": 53
+            "pkg:deb/debian/froxlor": 54
         },
         "\"froxlor\":\"froxlor/froxlor\"": {
             "pkg:deb/debian/froxlor": 26
@@ -12491,7 +12494,7 @@
             "pkg:deb/debian/unbound": 2
         },
         "\"nltk\":\"nltk\"": {
-            "pkg:deb/debian/nltk": 56
+            "pkg:deb/debian/nltk": 66
         },
         "\"nltk\":\"nltk/nltk\"": {
             "pkg:deb/debian/nltk": 11
@@ -13603,7 +13606,7 @@
         "\"openssl\":\"openssl\"": {
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/libtomcrypt": 1,
-            "pkg:deb/debian/openssl": 153,
+            "pkg:deb/debian/openssl": 154,
             "pkg:deb/debian/openssl1.0": 30
         },
         "\"openstack foundation\":\"openstack-cinder\"": {
@@ -21273,7 +21276,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 171
+            "pkg:deb/debian/ffmpeg": 197
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -21354,7 +21357,7 @@
             "pkg:deb/debian/unearth": 1
         },
         "cpe:2.3:a:froxlor:froxlor:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/froxlor": 32
+            "pkg:deb/debian/froxlor": 33
         },
         "cpe:2.3:a:frrouting:frrouting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frr": 14
@@ -21692,6 +21695,9 @@
         },
         "cpe:2.3:a:google:v8:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/chromium": 2
+        },
+        "cpe:2.3:a:goproxy_project:goproxy:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/golang-github-elazarl-goproxy": 1
         },
         "cpe:2.3:a:gorillatoolkit:schema:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/golang-github-gorilla-schema": 1
@@ -22775,7 +22781,7 @@
             "pkg:deb/debian/unbound": 2
         },
         "cpe:2.3:a:nltk:nltk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/nltk": 30
+            "pkg:deb/debian/nltk": 40
         },
         "cpe:2.3:a:nmap:nmap:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/nmap": 2
@@ -30749,7 +30755,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 111
+            "pkg:deb/debian/ffmpeg": 136
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -31188,6 +31194,9 @@
         },
         "pkg:golang/github.com/dundee/gdu/v5": {
             "pkg:deb/debian/gdu": 1
+        },
+        "pkg:golang/github.com/elazarl/goproxy": {
+            "pkg:deb/debian/golang-github-elazarl-goproxy": 1
         },
         "pkg:golang/github.com/go-chi/chi": {
             "pkg:deb/debian/golang-github-go-chi-chi": 1
@@ -31872,7 +31881,7 @@
             "pkg:deb/debian/mopidy": 1
         },
         "pkg:pypi/nltk": {
-            "pkg:deb/debian/nltk": 30
+            "pkg:deb/debian/nltk": 40
         },
         "pkg:pypi/offlineimap": {
             "pkg:deb/debian/offlineimap3": 1

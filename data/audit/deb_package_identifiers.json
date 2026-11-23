@@ -8711,6 +8711,18 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/golang-github-elazarl-goproxy": {
+        "VendorProductIDs": [
+            "\"elazarl\":\"goproxy\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:goproxy_project:goproxy:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:golang/github.com/elazarl/goproxy"
+        ]
+    },
     "pkg:deb/debian/golang-github-emicklei-go-restful": {
         "VendorProductIDs": [
             "\"emicklei\":\"emicklei/go-restful\""
