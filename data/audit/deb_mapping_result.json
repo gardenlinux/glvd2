@@ -2099,9 +2099,6 @@
             "pkg:deb/debian/trivy": 5
         },
         "\"aquasecurity\":\"trivy-action\"": {
-            "pkg:deb/debian/trivy": 2
-        },
-        "\"aquasecurity\":\"trivy-vscode-extension\"": {
             "pkg:deb/debian/trivy": 1
         },
         "\"arangodb\":\"arangodb community edition\"": {
@@ -3578,6 +3575,9 @@
         "\"debian\":\"bind9\"": {
             "pkg:deb/debian/bind9": 1
         },
+        "\"debian\":\"debbugs\"": {
+            "pkg:deb/debian/debbugs": 1
+        },
         "\"debian\":\"debian based gnu grub\"": {
             "pkg:deb/debian/grub2": 1
         },
@@ -4034,6 +4034,9 @@
         },
         "\"eclipse foundation\":\"eclipse mojarra\"": {
             "pkg:deb/debian/mojarra": 2
+        },
+        "\"eclipse foundation\":\"eclipse mosquitto\"": {
+            "pkg:deb/debian/mosquitto": 6
         },
         "\"eclipse foundation\":\"eclipse rdf4j\"": {
             "pkg:deb/debian/rdf4j": 1
@@ -6536,6 +6539,9 @@
         "\"hackerone\":\"ws node module\"": {
             "pkg:deb/debian/node-ws": 2
         },
+        "\"hackerschoice\":\"dsniff\"": {
+            "pkg:deb/debian/dsniff": 1
+        },
         "\"haiwen\":\"seafile-server\"": {
             "pkg:deb/debian/seafile-server": 1
         },
@@ -6732,6 +6738,9 @@
         },
         "\"hickory-dns\":\"hickory-resolver\"": {
             "pkg:deb/debian/rust-hickory-resolver": 1
+        },
+        "\"highlight\":\"highlight.js\"": {
+            "pkg:deb/debian/highlight.js": 1
         },
         "\"highlightjs\":\"highlight.js\"": {
             "pkg:deb/debian/highlight.js": 1
@@ -8689,7 +8698,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 440
+            "pkg:deb/debian/mattermost-server": 444
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -12479,7 +12488,7 @@
             "pkg:deb/debian/unbound": 2
         },
         "\"nltk\":\"nltk\"": {
-            "pkg:deb/debian/nltk": 36
+            "pkg:deb/debian/nltk": 56
         },
         "\"nltk\":\"nltk/nltk\"": {
             "pkg:deb/debian/nltk": 11
@@ -13384,7 +13393,7 @@
             "pkg:deb/debian/pdns-recursor": 3
         },
         "\"open5gs\":\"open5gs\"": {
-            "pkg:deb/debian/open5gs": 19
+            "pkg:deb/debian/open5gs": 20
         },
         "\"open62541 project / o6 automation gmbh\":\"open62541\"": {
             "pkg:deb/debian/open62541": 2
@@ -13566,6 +13575,9 @@
         "\"opensearch-project\":\"security\"": {
             "pkg:deb/debian/opensearch": 5
         },
+        "\"openshot\":\"openshot-qt\"": {
+            "pkg:deb/debian/openshot-qt": 1
+        },
         "\"opensips\":\"opensips\"": {
             "pkg:deb/debian/opensips": 20
         },
@@ -13726,7 +13738,7 @@
             "pkg:deb/debian/openvpn": 1
         },
         "\"openvpn\":\"openvpn\"": {
-            "pkg:deb/debian/openvpn": 32
+            "pkg:deb/debian/openvpn": 33
         },
         "\"openvpn\":\"openvpn2\"": {
             "pkg:deb/debian/openvpn": 1
@@ -14795,8 +14807,8 @@
             "pkg:deb/debian/fpdf2": 2
         },
         "\"py-pdf\":\"pypdf\"": {
-            "pkg:deb/debian/pypdf": 69,
-            "pkg:deb/debian/pypdf2": 68
+            "pkg:deb/debian/pypdf": 72,
+            "pkg:deb/debian/pypdf2": 71
         },
         "\"py-pdf\":\"pypdf2\"": {
             "pkg:deb/debian/pypdf2": 1
@@ -14823,7 +14835,7 @@
             "pkg:deb/debian/python-httpx2": 5
         },
         "\"pydantic\":\"pydantic\"": {
-            "pkg:deb/debian/pydantic": 3
+            "pkg:deb/debian/pydantic": 8
         },
         "\"pydantic\":\"pydantic-settings\"": {
             "pkg:deb/debian/pydantic-settings": 1
@@ -15349,7 +15361,7 @@
             "pkg:deb/debian/ansible": 29
         },
         "\"red hat\":\"ansible-core\"": {
-            "pkg:deb/debian/ansible-core": 1
+            "pkg:deb/debian/ansible-core": 2
         },
         "\"red hat\":\"bind\"": {
             "pkg:deb/debian/bind9": 1
@@ -16249,7 +16261,7 @@
             "pkg:deb/debian/libstb": 1
         },
         "\"seaweedfs\":\"seaweedfs\"": {
-            "pkg:deb/debian/seaweedfs": 13
+            "pkg:deb/debian/seaweedfs": 15
         },
         "\"sebastianbergmann\":\"phpunit\"": {
             "pkg:deb/debian/phpunit": 3
@@ -17757,7 +17769,7 @@
             "pkg:deb/debian/dokuwiki": 1
         },
         "\"sporkmonger\":\"addressable\"": {
-            "pkg:deb/debian/ruby-addressable": 2
+            "pkg:deb/debian/ruby-addressable": 9
         },
         "\"spotify\":\"voyager\"": {
             "pkg:deb/debian/hnswlib": 1
@@ -19740,7 +19752,7 @@
             "pkg:deb/debian/wireshark": 2
         },
         "\"wireshark foundation\":\"wireshark\"": {
-            "pkg:deb/debian/wireshark": 220
+            "pkg:deb/debian/wireshark": 222
         },
         "\"wireshark\":\"wireshark\"": {
             "pkg:deb/debian/wireshark": 11
@@ -21800,6 +21812,9 @@
             "pkg:deb/debian/erlang-hex": 4,
             "pkg:deb/debian/rebar3": 3
         },
+        "cpe:2.3:a:highlight:highlight.js:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/highlight.js": 1
+        },
         "cpe:2.3:a:horde:horde_imp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/php-horde-imp": 1
         },
@@ -22955,7 +22970,7 @@
             "pkg:deb/debian/dovecot": 1
         },
         "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/open5gs": 122
+            "pkg:deb/debian/open5gs": 123
         },
         "cpe:2.3:a:open62541:open62541:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/open62541": 6
@@ -23451,6 +23466,10 @@
             "pkg:deb/debian/filezilla": 1,
             "pkg:deb/debian/putty": 6
         },
+        "cpe:2.3:a:py-pdf:pypdf:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/pypdf": 3,
+            "pkg:deb/debian/pypdf2": 3
+        },
         "cpe:2.3:a:pydantic_project:pydantic:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/pydantic": 1
         },
@@ -23912,7 +23931,7 @@
             "pkg:deb/debian/scylladb": 1
         },
         "cpe:2.3:a:seaweedfs:seaweedfs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/seaweedfs": 2
+            "pkg:deb/debian/seaweedfs": 4
         },
         "cpe:2.3:a:sensiolabs:symfony:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/symfony": 17
@@ -24876,6 +24895,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"caddy\"": {
             "pkg:deb/debian/caddy": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"certmonger\"": {
+            "pkg:deb/debian/certmonger": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cifs-utils\"": {
             "pkg:deb/debian/cifs-utils": 2
         },
@@ -24925,7 +24947,7 @@
             "pkg:deb/debian/coreutils": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"corosync\"": {
-            "pkg:deb/debian/corosync": 4
+            "pkg:deb/debian/corosync": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cpio\"": {
             "pkg:deb/debian/cpio": 1
@@ -24961,7 +24983,7 @@
             "pkg:deb/debian/dnf5": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnsmasq\"": {
-            "pkg:deb/debian/dnsmasq": 13
+            "pkg:deb/debian/dnsmasq": 14
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dogtag-pki\"": {
             "pkg:deb/debian/dogtag-pki": 7
@@ -25207,7 +25229,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 73
+            "pkg:deb/debian/gimp": 74
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 18
@@ -26128,10 +26150,10 @@
             "pkg:deb/debian/rsync": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog\"": {
-            "pkg:deb/debian/rsyslog": 3
+            "pkg:deb/debian/rsyslog": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog7\"": {
-            "pkg:deb/debian/rsyslog": 3
+            "pkg:deb/debian/rsyslog": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ruby3.3\"": {
             "pkg:deb/debian/ruby3.3": 1
@@ -29147,7 +29169,7 @@
             "pkg:deb/debian/python-pip": 2
         },
         "\"https://pypi.org\":\"pydantic\"": {
-            "pkg:deb/debian/pydantic": 2
+            "pkg:deb/debian/pydantic": 7
         },
         "\"https://pypi.org/\":\"pyarrow\"": {
             "pkg:deb/debian/apache-arrow": 1
@@ -29156,7 +29178,7 @@
             "pkg:deb/debian/python-django": 42
         },
         "\"https://pypi.org/project/ansible-core/\":\"ansible-core\"": {
-            "pkg:deb/debian/ansible-core": 1
+            "pkg:deb/debian/ansible-core": 2
         },
         "\"https://pypi.org/project/apache-airflow-providers-fab/\":\"apache-airflow-providers-fab\"": {
             "pkg:deb/debian/airflow": 1
@@ -30751,6 +30773,9 @@
         "pkg:github/gridcf/gct": {
             "pkg:deb/debian/globus-gss-assist": 1
         },
+        "pkg:github/hackerschoice/dsniff": {
+            "pkg:deb/debian/dsniff": 1
+        },
         "pkg:github/haproxy/haproxy": {
             "pkg:deb/debian/haproxy": 2
         },
@@ -30957,10 +30982,13 @@
             "pkg:deb/debian/ollama": 1
         },
         "pkg:github/open5gs/open5gs": {
-            "pkg:deb/debian/open5gs": 4
+            "pkg:deb/debian/open5gs": 5
         },
         "pkg:github/open62541/open62541": {
             "pkg:deb/debian/open62541": 1
+        },
+        "pkg:github/openshot/openshot-qt": {
+            "pkg:deb/debian/openshot-qt": 1
         },
         "pkg:github/openslide/openslide": {
             "pkg:deb/debian/openslide": 1
@@ -31197,7 +31225,7 @@
             "pkg:deb/debian/rclone": 26
         },
         "pkg:golang/github.com/seaweedfs/seaweedfs": {
-            "pkg:deb/debian/seaweedfs": 1
+            "pkg:deb/debian/seaweedfs": 3
         },
         "pkg:golang/github.com/traefik/traefik": {
             "pkg:deb/debian/traefik": 1
@@ -31847,6 +31875,10 @@
         },
         "pkg:pypi/pymupdf": {
             "pkg:deb/debian/pymupdf": 1
+        },
+        "pkg:pypi/pypdf": {
+            "pkg:deb/debian/pypdf": 3,
+            "pkg:deb/debian/pypdf2": 3
         },
         "pkg:pypi/pytest": {
             "pkg:deb/debian/pytest": 1

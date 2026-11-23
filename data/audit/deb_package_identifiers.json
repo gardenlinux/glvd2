@@ -2619,6 +2619,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/certmonger": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"certmonger\""
+        ],
+        "PackageURLs": null
+    },
     "pkg:deb/debian/cfitsio": {
         "VendorProductIDs": [
             "\"heasarc\":\"cfitsio\"",
@@ -3868,6 +3876,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/debbugs": {
+        "VendorProductIDs": [
+            "\"debian\":\"debbugs\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/debian-edu-config": {
         "VendorProductIDs": [
             "\"debian\":\"debian-edu-config\""
@@ -4589,6 +4605,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/dsniff": {
+        "VendorProductIDs": [
+            "\"hackerschoice\":\"dsniff\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/hackerschoice/dsniff"
+        ]
     },
     "pkg:deb/debian/duc": {
         "VendorProductIDs": [
@@ -10643,9 +10669,12 @@
     },
     "pkg:deb/debian/highlight.js": {
         "VendorProductIDs": [
+            "\"highlight\":\"highlight.js\"",
             "\"highlightjs\":\"highlight.js\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:highlight:highlight.js:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -19044,6 +19073,7 @@
     },
     "pkg:deb/debian/mosquitto": {
         "VendorProductIDs": [
+            "\"eclipse foundation\":\"eclipse mosquitto\"",
             "\"eclipse foundation\":\"mosquitto\"",
             "\"eclipse\":\"mosquitto\"",
             "\"eclipse_foundation\":\"mosquitto\"",
@@ -24053,6 +24083,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/openshot-qt": {
+        "VendorProductIDs": [
+            "\"openshot\":\"openshot-qt\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/openshot/openshot-qt"
+        ]
+    },
     "pkg:deb/debian/opensips": {
         "VendorProductIDs": [
             "\"n/a\":\"opensips\"",
@@ -27314,9 +27354,13 @@
         "VendorProductIDs": [
             "\"py-pdf\":\"pypdf\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:py-pdf:pypdf:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/pypdf"
+        ]
     },
     "pkg:deb/debian/pypdf2": {
         "VendorProductIDs": [
@@ -27325,10 +27369,13 @@
             "\"pypdf_project\":\"pypdf\""
         ],
         "CPEs": [
+            "cpe:2.3:a:py-pdf:pypdf:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:pypdf_project:pypdf:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/pypdf"
+        ]
     },
     "pkg:deb/debian/pypy3": {
         "VendorProductIDs": [
@@ -34757,7 +34804,6 @@
             "\"aquasecurity\":\"setup-trivy\"",
             "\"aquasecurity\":\"trivy\"",
             "\"aquasecurity\":\"trivy-action\"",
-            "\"aquasecurity\":\"trivy-vscode-extension\"",
             "\"berriai\":\"litellm\"",
             "\"team-telnyx\":\"telnyx\""
         ],
