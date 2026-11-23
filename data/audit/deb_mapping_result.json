@@ -2357,7 +2357,7 @@
             "pkg:deb/debian/assertj-core": 1
         },
         "\"assimp\":\"assimp\"": {
-            "pkg:deb/debian/assimp": 14
+            "pkg:deb/debian/assimp": 24
         },
         "\"asterisk\":\"asterisk\"": {
             "pkg:deb/debian/asterisk": 37
@@ -4482,7 +4482,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 169
+            "pkg:deb/debian/ffmpeg": 179
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -4692,8 +4692,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 316,
-            "pkg:deb/debian/freerdp3": 255
+            "pkg:deb/debian/freerdp2": 317,
+            "pkg:deb/debian/freerdp3": 256
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -11875,6 +11875,9 @@
         "\"n/a\":\"snapd\"": {
             "pkg:deb/debian/snapd": 1
         },
+        "\"n/a\":\"snes9x\"": {
+            "pkg:deb/debian/libretro-snes9x": 1
+        },
         "\"n/a\":\"sockjs\"": {
             "pkg:deb/debian/node-socks": 1
         },
@@ -13320,7 +13323,7 @@
             "pkg:deb/debian/assimp": 1
         },
         "\"open asset import library\":\"assimp\"": {
-            "pkg:deb/debian/assimp": 47
+            "pkg:deb/debian/assimp": 52
         },
         "\"open babel\":\"open babel\"": {
             "pkg:deb/debian/openbabel": 14
@@ -19446,7 +19449,7 @@
             "pkg:deb/debian/vifm": 2
         },
         "\"vim\":\"vim\"": {
-            "pkg:deb/debian/vim": 73
+            "pkg:deb/debian/vim": 74
         },
         "\"vim\":\"vim/vim\"": {
             "pkg:deb/debian/vim": 159
@@ -19598,6 +19601,9 @@
         },
         "\"webkul\":\"aureus erp\"": {
             "pkg:deb/debian/misp": 1
+        },
+        "\"weblate\":\"weblate\"": {
+            "pkg:deb/debian/weblate": 1
         },
         "\"weblateorg\":\"weblate\"": {
             "pkg:deb/debian/weblate": 47
@@ -19954,6 +19960,9 @@
         },
         "\"xmedcon\":\"medcon\"": {
             "pkg:deb/debian/xmedcon": 1
+        },
+        "\"xmendez\":\"wfuzz\"": {
+            "pkg:deb/debian/wfuzz": 1
         },
         "\"xmind\":\"xmind\"": {
             "pkg:deb/debian/xmind": 1
@@ -20676,7 +20685,7 @@
             "pkg:deb/debian/asio": 1
         },
         "cpe:2.3:a:assimp:assimp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/assimp": 38
+            "pkg:deb/debian/assimp": 53
         },
         "cpe:2.3:a:asterisk:asterisk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/asterisk": 2
@@ -21264,7 +21273,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 161
+            "pkg:deb/debian/ffmpeg": 171
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -21331,8 +21340,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 173,
-            "pkg:deb/debian/freerdp3": 173
+            "pkg:deb/debian/freerdp2": 174,
+            "pkg:deb/debian/freerdp3": 174
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -23986,6 +23995,9 @@
         "cpe:2.3:a:snakeyaml_project:snakeyaml:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/snakeyaml": 1
         },
+        "cpe:2.3:a:snes9x:snes9x:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libretro-snes9x": 1
+        },
         "cpe:2.3:a:snipeitapp:snipe-it:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/snipe-it": 60
         },
@@ -24318,7 +24330,7 @@
             "pkg:deb/debian/vlc": 5
         },
         "cpe:2.3:a:vim:vim:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vim": 2
+            "pkg:deb/debian/vim": 3
         },
         "cpe:2.3:a:virtualenv:virtualenv:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/python-virtualenv": 1
@@ -24379,7 +24391,7 @@
             "pkg:deb/debian/misp": 1
         },
         "cpe:2.3:a:weblate:weblate:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/weblate": 4
+            "pkg:deb/debian/weblate": 5
         },
         "cpe:2.3:a:webmin:usermin:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/usermin": 3,
@@ -30652,7 +30664,7 @@
             "pkg:deb/debian/bluez-alsa": 1
         },
         "pkg:github/assimp/assimp": {
-            "pkg:deb/debian/assimp": 7
+            "pkg:deb/debian/assimp": 17
         },
         "pkg:github/bakulf/libnxml": {
             "pkg:deb/debian/libnxml": 1
@@ -30737,7 +30749,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 101
+            "pkg:deb/debian/ffmpeg": 111
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -30745,6 +30757,10 @@
         },
         "pkg:github/fluxbox/fluxbox": {
             "pkg:deb/debian/fluxbox": 2
+        },
+        "pkg:github/freerdp/freerdp": {
+            "pkg:deb/debian/freerdp2": 1,
+            "pkg:deb/debian/freerdp3": 1
         },
         "pkg:github/freeswitch/sofia-sip": {
             "pkg:deb/debian/sofia-sip": 1
@@ -31124,6 +31140,9 @@
         },
         "pkg:github/videolan/vlc": {
             "pkg:deb/debian/vlc": 2
+        },
+        "pkg:github/vim/vim": {
+            "pkg:deb/debian/vim": 1
         },
         "pkg:github/vlang/v": {
             "pkg:deb/debian/vlang": 2
@@ -31917,7 +31936,10 @@
             "pkg:deb/debian/vllm": 52
         },
         "pkg:pypi/weblate": {
-            "pkg:deb/debian/weblate": 4
+            "pkg:deb/debian/weblate": 5
+        },
+        "pkg:pypi/wfuzz": {
+            "pkg:deb/debian/wfuzz": 1
         },
         "pkg:pypi/xhtml2pdf": {
             "pkg:deb/debian/xhtml2pdf": 1

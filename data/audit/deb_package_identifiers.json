@@ -6271,7 +6271,8 @@
             "\"https://www.freerdp.com/\":\"freerdp\""
         ],
         "PackageURLs": [
-            "pkg:github/FreeRDP/FreeRDP"
+            "pkg:github/FreeRDP/FreeRDP",
+            "pkg:github/freerdp/freerdp"
         ]
     },
     "pkg:deb/debian/freerdp3": {
@@ -6285,7 +6286,8 @@
             "\"https://www.freerdp.com/\":\"freerdp\""
         ],
         "PackageURLs": [
-            "pkg:github/FreeRDP/FreeRDP"
+            "pkg:github/FreeRDP/FreeRDP",
+            "pkg:github/freerdp/freerdp"
         ]
     },
     "pkg:deb/debian/freeswan": {
@@ -15924,9 +15926,12 @@
     },
     "pkg:deb/debian/libretro-snes9x": {
         "VendorProductIDs": [
+            "\"n/a\":\"snes9x\"",
             "\"snes9x team\":\"snes9x\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:snes9x:snes9x:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
@@ -35511,7 +35516,9 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"vim\"",
             "\"https://catalog.redhat.com/software/containers/\":\"vim-main\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/vim/vim"
+        ]
     },
     "pkg:deb/debian/vino": {
         "VendorProductIDs": [
@@ -35946,6 +35953,7 @@
     "pkg:deb/debian/weblate": {
         "VendorProductIDs": [
             "\"n/a\":\"weblate\"",
+            "\"weblate\":\"weblate\"",
             "\"weblateorg\":\"weblate\""
         ],
         "CPEs": [
@@ -36031,6 +36039,16 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/wekan/wekan"
+        ]
+    },
+    "pkg:deb/debian/wfuzz": {
+        "VendorProductIDs": [
+            "\"xmendez\":\"wfuzz\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:pypi/wfuzz"
         ]
     },
     "pkg:deb/debian/wget": {
