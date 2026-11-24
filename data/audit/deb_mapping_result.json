@@ -1419,7 +1419,7 @@
             "pkg:deb/debian/brpc": 41
         },
         "\"apache software foundation\":\"apache buildstream\"": {
-            "pkg:deb/debian/buildstream": 1
+            "pkg:deb/debian/buildstream": 3
         },
         "\"apache software foundation\":\"apache cassandra\"": {
             "pkg:deb/debian/cassandra": 10
@@ -1696,7 +1696,7 @@
             "pkg:deb/debian/shiro": 25
         },
         "\"apache software foundation\":\"apache solr\"": {
-            "pkg:deb/debian/lucene-solr": 24
+            "pkg:deb/debian/lucene-solr": 26
         },
         "\"apache software foundation\":\"apache spamassassin\"": {
             "pkg:deb/debian/spamassassin": 6
@@ -4489,7 +4489,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 227
+            "pkg:deb/debian/ffmpeg": 248
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -8708,7 +8708,7 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 444
+            "pkg:deb/debian/mattermost-server": 445
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
@@ -16503,6 +16503,10 @@
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
         },
+        "\"siemens\":\"cp61850 (6dd7050-0aa80)\"": {
+            "pkg:deb/debian/php8.2": 2,
+            "pkg:deb/debian/php8.4": 2
+        },
         "\"siemens\":\"crsp\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
@@ -16573,6 +16577,12 @@
             "pkg:deb/debian/php8.4": 2
         },
         "\"siemens\":\"flow creator configurator\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"gdap (gproms digital application platform)\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -16710,6 +16720,12 @@
             "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"integrated pa suite tester\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
+        },
+        "\"siemens\":\"intralog wms kronos\"": {
             "pkg:deb/debian/brotli": 1,
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/nodejs": 1,
@@ -17342,6 +17358,12 @@
         "\"siemens\":\"siport\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"sitop manager\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"siveillance control pro\"": {
             "pkg:deb/debian/openjdk-17": 1,
@@ -21283,7 +21305,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 219
+            "pkg:deb/debian/ffmpeg": 240
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -29242,7 +29264,7 @@
             "pkg:deb/debian/airflow": 1
         },
         "\"https://pypi.python.org\":\"buildstream\"": {
-            "pkg:deb/debian/buildstream": 1
+            "pkg:deb/debian/buildstream": 3
         },
         "\"https://pypi.python.org\":\"pyarrow\"": {
             "pkg:deb/debian/apache-arrow": 1
@@ -29597,7 +29619,7 @@
             "pkg:deb/debian/shiro": 6
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.solr:solr-core\"": {
-            "pkg:deb/debian/lucene-solr": 1
+            "pkg:deb/debian/lucene-solr": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.spark:spark-hive-thriftserver_2.11\"": {
             "pkg:deb/debian/apache-spark": 1
@@ -30762,7 +30784,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 158
+            "pkg:deb/debian/ffmpeg": 179
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,
@@ -31465,6 +31487,9 @@
         "pkg:maven/org.apache.shiro/shiro-web": {
             "pkg:deb/debian/shiro": 2
         },
+        "pkg:maven/org.apache.solr/solr-core": {
+            "pkg:deb/debian/lucene-solr": 2
+        },
         "pkg:maven/org.apache.sshd/sshd-core": {
             "pkg:deb/debian/libmina-sshd-java": 2
         },
@@ -31828,7 +31853,7 @@
             "pkg:deb/debian/erlang": 1
         },
         "pkg:pypi/BuildStream": {
-            "pkg:deb/debian/buildstream": 1
+            "pkg:deb/debian/buildstream": 3
         },
         "pkg:pypi/GitPython": {
             "pkg:deb/debian/python-git": 6
