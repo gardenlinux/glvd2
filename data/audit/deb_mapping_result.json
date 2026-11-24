@@ -323,10 +323,10 @@
             "pkg:deb/debian/activitywatch": 1
         },
         "\"actix\":\"actix-files\"": {
-            "pkg:deb/debian/rust-actix-files": 2
+            "pkg:deb/debian/rust-actix-files": 3
         },
         "\"actix\":\"actix-http\"": {
-            "pkg:deb/debian/rust-actix-http": 2,
+            "pkg:deb/debian/rust-actix-http": 4,
             "pkg:deb/debian/rust-actix-web": 1
         },
         "\"actix\":\"actix-web\"": {
@@ -1432,6 +1432,9 @@
         },
         "\"apache software foundation\":\"apache commons beanutils 2.x\"": {
             "pkg:deb/debian/commons-beanutils": 1
+        },
+        "\"apache software foundation\":\"apache commons codec\"": {
+            "pkg:deb/debian/libcommons-codec-java": 1
         },
         "\"apache software foundation\":\"apache commons compress\"": {
             "pkg:deb/debian/libcommons-compress-java": 10
@@ -4036,7 +4039,7 @@
             "pkg:deb/debian/mojarra": 2
         },
         "\"eclipse foundation\":\"eclipse mosquitto\"": {
-            "pkg:deb/debian/mosquitto": 6
+            "pkg:deb/debian/mosquitto": 7
         },
         "\"eclipse foundation\":\"eclipse rdf4j\"": {
             "pkg:deb/debian/rdf4j": 1
@@ -5136,7 +5139,7 @@
             "pkg:deb/debian/gdm3": 1
         },
         "\"gnome\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 12
+            "pkg:deb/debian/gimp": 13
         },
         "\"gnome\":\"glade\"": {
             "pkg:deb/debian/glade": 1
@@ -6393,6 +6396,9 @@
         },
         "\"guimard\":\"apache::session::generate::sha256\"": {
             "pkg:deb/debian/libapache-session-browseable-perl": 1
+        },
+        "\"gunicorn\":\"gunicorn\"": {
+            "pkg:deb/debian/gunicorn": 2
         },
         "\"gutenberg team\":\"gutenberg\"": {
             "pkg:deb/debian/wordpress": 1
@@ -7910,7 +7916,7 @@
             "pkg:deb/debian/calibre": 15
         },
         "\"kovidgoyal\":\"kitty\"": {
-            "pkg:deb/debian/kitty": 8
+            "pkg:deb/debian/kitty": 9
         },
         "\"kozea\":\"cairosvg\"": {
             "pkg:deb/debian/cairosvg": 4
@@ -8148,7 +8154,7 @@
         },
         "\"libical\":\"libical\"": {
             "pkg:deb/debian/libical": 1,
-            "pkg:deb/debian/libical3": 1
+            "pkg:deb/debian/libical3": 2
         },
         "\"libimobiledevice\":\"usbmuxd\"": {
             "pkg:deb/debian/usbmuxd": 1
@@ -12559,7 +12565,7 @@
             "pkg:deb/debian/node-undici": 16
         },
         "\"nodemailer\":\"nodemailer\"": {
-            "pkg:deb/debian/node-nodemailer": 25
+            "pkg:deb/debian/node-nodemailer": 26
         },
         "\"noderedis\":\"node-redis\"": {
             "pkg:deb/debian/node-redis": 1
@@ -12635,7 +12641,7 @@
             "pkg:deb/debian/nltk": 1
         },
         "\"ntop\":\"ndpi\"": {
-            "pkg:deb/debian/ndpi": 3
+            "pkg:deb/debian/ndpi": 4
         },
         "\"ntop\":\"ntopng\"": {
             "pkg:deb/debian/ntopng": 10
@@ -13380,7 +13386,7 @@
             "pkg:deb/debian/golang-opentelemetry-otel": 11
         },
         "\"open-telemetry\":\"opentelemetry-python\"": {
-            "pkg:deb/debian/python-opentelemetry": 2
+            "pkg:deb/debian/python-opentelemetry": 3
         },
         "\"open-xchange gmbh\":\"ox dovecot ce\"": {
             "pkg:deb/debian/dovecot": 25
@@ -14157,7 +14163,7 @@
             "pkg:deb/debian/node-path-to-regexp": 3
         },
         "\"patrickjuchli\":\"basic-ftp\"": {
-            "pkg:deb/debian/node-proxy-agents": 5
+            "pkg:deb/debian/node-proxy-agents": 7
         },
         "\"pavel-odintsov\":\"fastnetmon\"": {
             "pkg:deb/debian/fastnetmon": 6
@@ -14260,7 +14266,7 @@
             "pkg:deb/debian/pglogical": 1
         },
         "\"pgjdbc\":\"pgjdbc\"": {
-            "pkg:deb/debian/libpgjava": 9
+            "pkg:deb/debian/libpgjava": 16
         },
         "\"pgpainless\":\"pgpainless\"": {
             "pkg:deb/debian/pgpainless": 1
@@ -14415,7 +14421,7 @@
             "pkg:deb/debian/golang-github-pion-stun-v3": 1
         },
         "\"pip maintainers\":\"pip\"": {
-            "pkg:deb/debian/python-pip": 2
+            "pkg:deb/debian/python-pip": 3
         },
         "\"pistacheio\":\"pistache\"": {
             "pkg:deb/debian/pistache": 1
@@ -15115,13 +15121,13 @@
         },
         "\"qt\":\"qt\"": {
             "pkg:deb/debian/qt4-x11": 1,
-            "pkg:deb/debian/qt6-5compat": 7,
+            "pkg:deb/debian/qt6-5compat": 9,
             "pkg:deb/debian/qt6-base": 20,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
-            "pkg:deb/debian/qtbase-opensource-src": 21,
+            "pkg:deb/debian/qtbase-opensource-src": 23,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -18931,7 +18937,7 @@
             "pkg:deb/debian/libimager-perl": 1
         },
         "\"tornadoweb\":\"tornado\"": {
-            "pkg:deb/debian/python-tornado": 26,
+            "pkg:deb/debian/python-tornado": 27,
             "pkg:deb/debian/salt": 1
         },
         "\"torprject\":\"tor\"": {
@@ -20326,7 +20332,7 @@
             "pkg:deb/debian/rust-actix-files": 2
         },
         "cpe:2.3:a:actix:actix-http:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/rust-actix-http": 2,
+            "pkg:deb/debian/rust-actix-http": 4,
             "pkg:deb/debian/rust-actix-web": 1
         },
         "cpe:2.3:a:actix:actix-web:*:*:*:*:*:*:*:*": {
@@ -21769,6 +21775,9 @@
             "pkg:deb/debian/gst-plugins-bad0.10": 1,
             "pkg:deb/debian/gst-plugins-bad1.0": 1
         },
+        "cpe:2.3:a:gunicorn:gunicorn:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/gunicorn": 2
+        },
         "cpe:2.3:a:guzzlephp:guzzle:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/guzzle": 4
         },
@@ -22118,7 +22127,7 @@
             "pkg:deb/debian/calibre": 1
         },
         "cpe:2.3:a:kovidgoyal:kitty:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/kitty": 6
+            "pkg:deb/debian/kitty": 7
         },
         "cpe:2.3:a:kubernetes:kubelet:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/kubernetes": 2
@@ -22207,7 +22216,7 @@
         },
         "cpe:2.3:a:libical_project:libical:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libical": 1,
-            "pkg:deb/debian/libical3": 1
+            "pkg:deb/debian/libical3": 2
         },
         "cpe:2.3:a:libimobiledevice:libimobiledevice:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libimobiledevice": 5
@@ -22808,7 +22817,7 @@
             "pkg:deb/debian/node-undici": 4
         },
         "cpe:2.3:a:nodemailer:nodemailer:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/node-nodemailer": 23
+            "pkg:deb/debian/node-nodemailer": 24
         },
         "cpe:2.3:a:nokogiri:nokogiri:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-nokogiri": 4
@@ -22832,7 +22841,7 @@
             "pkg:deb/debian/ghidra": 29
         },
         "cpe:2.3:a:ntop:ndpi:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ndpi": 3
+            "pkg:deb/debian/ndpi": 4
         },
         "cpe:2.3:a:ntop:ntopng:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ntopng": 3
@@ -23584,15 +23593,15 @@
             "pkg:deb/debian/qt6-3d": 1
         },
         "cpe:2.3:a:qt:qt5compat:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/qt6-5compat": 6,
-            "pkg:deb/debian/qtbase-opensource-src": 5,
+            "pkg:deb/debian/qt6-5compat": 8,
+            "pkg:deb/debian/qtbase-opensource-src": 7,
             "pkg:deb/debian/qtbase-opensource-src-gles": 1
         },
         "cpe:2.3:a:qt:qt:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/qt3d-opensource-src": 1,
             "pkg:deb/debian/qt4-x11": 1,
             "pkg:deb/debian/qt6-3d": 1,
-            "pkg:deb/debian/qt6-5compat": 7,
+            "pkg:deb/debian/qt6-5compat": 9,
             "pkg:deb/debian/qt6-base": 20,
             "pkg:deb/debian/qt6-connectivity": 2,
             "pkg:deb/debian/qt6-declarative": 3,
@@ -23600,7 +23609,7 @@
             "pkg:deb/debian/qt6-imageformats": 1,
             "pkg:deb/debian/qt6-svg": 4,
             "pkg:deb/debian/qt6-websockets": 2,
-            "pkg:deb/debian/qtbase-opensource-src": 21,
+            "pkg:deb/debian/qtbase-opensource-src": 23,
             "pkg:deb/debian/qtbase-opensource-src-gles": 9,
             "pkg:deb/debian/qtconnectivity-opensource-src": 2,
             "pkg:deb/debian/qtdeclarative-opensource-src": 2,
@@ -23614,9 +23623,9 @@
             "pkg:deb/debian/qtnetworkauth-everywhere-src": 1
         },
         "cpe:2.3:a:qt:qtbase:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/qt6-5compat": 5,
+            "pkg:deb/debian/qt6-5compat": 7,
             "pkg:deb/debian/qt6-base": 8,
-            "pkg:deb/debian/qtbase-opensource-src": 11,
+            "pkg:deb/debian/qtbase-opensource-src": 13,
             "pkg:deb/debian/qtbase-opensource-src-gles": 4
         },
         "cpe:2.3:a:qt:qthttpserver:*:*:*:*:*:*:*:*": {
@@ -25204,20 +25213,14 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-14-binutils\"": {
             "pkg:deb/debian/binutils": 9
         },
-        "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-14-gdb\"": {
-            "pkg:deb/debian/gdb": 5
-        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-15-binutils\"": {
             "pkg:deb/debian/binutils": 9
-        },
-        "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-15-gdb\"": {
-            "pkg:deb/debian/gdb": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-16-binutils\"": {
             "pkg:deb/debian/binutils": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\"": {
-            "pkg:deb/debian/gdb": 6
+            "pkg:deb/debian/gdb": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdk-pixbuf2\"": {
             "pkg:deb/debian/gdk-pixbuf": 6
@@ -26168,10 +26171,10 @@
             "pkg:deb/debian/rsync": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog\"": {
-            "pkg:deb/debian/rsyslog": 4
+            "pkg:deb/debian/rsyslog": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog7\"": {
-            "pkg:deb/debian/rsyslog": 4
+            "pkg:deb/debian/rsyslog": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ruby3.3\"": {
             "pkg:deb/debian/ruby3.3": 1
@@ -28234,7 +28237,7 @@
             "pkg:deb/debian/gi-docgen": 1
         },
         "\"https://gitlab.gnome.org/GNOME/gimp\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 17
+            "pkg:deb/debian/gimp": 18
         },
         "\"https://gitlab.gnome.org/GNOME/gimp/\":\"gimp\"": {
             "pkg:deb/debian/gimp": 1
@@ -29211,7 +29214,7 @@
             "pkg:deb/debian/lemur": 1
         },
         "\"https://pypi.org/project/pip\":\"pip\"": {
-            "pkg:deb/debian/python-pip": 4
+            "pkg:deb/debian/python-pip": 5
         },
         "\"https://pypi.org/project/pip\":\"sqlparse\"": {
             "pkg:deb/debian/sqlparse": 1
@@ -29335,6 +29338,9 @@
         },
         "\"https://repo.maven.apache.org/maven2\":\"commons-beanutils:commons-beanutils\"": {
             "pkg:deb/debian/commons-beanutils": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"commons-codec:commons-codec\"": {
+            "pkg:deb/debian/libcommons-codec-java": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"commons-configuration:commons-configuration\"": {
             "pkg:deb/debian/commons-configuration": 1,
@@ -29706,7 +29712,7 @@
             "pkg:deb/debian/jansi1": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.postgresql:postgresql\"": {
-            "pkg:deb/debian/libpgjava": 3
+            "pkg:deb/debian/libpgjava": 10
         },
         "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"": {
             "pkg:deb/debian/jetty12": 1,
@@ -30186,10 +30192,10 @@
     },
     "package_urls": {
         "pkg:cargo/actix-files": {
-            "pkg:deb/debian/rust-actix-files": 2
+            "pkg:deb/debian/rust-actix-files": 3
         },
         "pkg:cargo/actix-http": {
-            "pkg:deb/debian/rust-actix-http": 2,
+            "pkg:deb/debian/rust-actix-http": 4,
             "pkg:deb/debian/rust-actix-web": 1
         },
         "pkg:cargo/actix-web": {
@@ -30855,6 +30861,9 @@
         "pkg:github/kisli/vmime": {
             "pkg:deb/debian/libvmime": 2
         },
+        "pkg:github/kovidgoyal/kitty": {
+            "pkg:deb/debian/kitty": 1
+        },
         "pkg:github/krb5/krb5": {
             "pkg:deb/debian/krb5": 2
         },
@@ -30872,7 +30881,7 @@
         },
         "pkg:github/libical/libical": {
             "pkg:deb/debian/libical": 1,
-            "pkg:deb/debian/libical3": 1
+            "pkg:deb/debian/libical3": 2
         },
         "pkg:github/libjxl/libjxl": {
             "pkg:deb/debian/jpeg-xl": 1
@@ -30989,7 +30998,7 @@
             "pkg:deb/debian/ndpi": 1
         },
         "pkg:github/ntop/ndpi": {
-            "pkg:deb/debian/ndpi": 1
+            "pkg:deb/debian/ndpi": 2
         },
         "pkg:github/ntop/ntopng": {
             "pkg:deb/debian/ntopng": 2
@@ -31306,6 +31315,9 @@
         },
         "pkg:maven/com.squareup.okhttp3/okhttp": {
             "pkg:deb/debian/libokhttp-java": 1
+        },
+        "pkg:maven/commons-codec/commons-codec": {
+            "pkg:deb/debian/libcommons-codec-java": 1
         },
         "pkg:maven/io.netty/netty-codec-classes-quic": {
             "pkg:deb/debian/netty": 1
@@ -31671,7 +31683,7 @@
             "pkg:deb/debian/node-node-forge": 1
         },
         "pkg:npm/nodemailer": {
-            "pkg:deb/debian/node-nodemailer": 23
+            "pkg:deb/debian/node-nodemailer": 24
         },
         "pkg:npm/open": {
             "pkg:deb/debian/node-open": 1
@@ -31852,6 +31864,9 @@
         },
         "pkg:pypi/gitpython": {
             "pkg:deb/debian/python-git": 28
+        },
+        "pkg:pypi/gunicorn": {
+            "pkg:deb/debian/gunicorn": 2
         },
         "pkg:pypi/jupyterhub": {
             "pkg:deb/debian/jupyterhub": 1

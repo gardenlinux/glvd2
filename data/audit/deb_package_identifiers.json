@@ -6702,8 +6702,6 @@
             "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-14-gdb\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"gcc-toolset-15-gdb\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"gdb\"",
             "\"https://catalog.redhat.com/software/containers/\":\"gdb-main\""
         ],
@@ -10314,13 +10312,17 @@
     "pkg:deb/debian/gunicorn": {
         "VendorProductIDs": [
             "\"benoitc\":\"benoitc/gunicorn\"",
-            "\"benoitc\":\"gunicorn\""
+            "\"benoitc\":\"gunicorn\"",
+            "\"gunicorn\":\"gunicorn\""
         ],
         "CPEs": [
-            "cpe:2.3:a:benoitc:gunicorn:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:benoitc:gunicorn:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:gunicorn:gunicorn:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/gunicorn"
+        ]
     },
     "pkg:deb/debian/guzzle": {
         "VendorProductIDs": [
@@ -12853,7 +12855,9 @@
             "cpe:2.3:a:kovidgoyal:kitty:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/kovidgoyal/kitty"
+        ]
     },
     "pkg:deb/debian/kleopatra": {
         "VendorProductIDs": [
@@ -13695,6 +13699,18 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/obgm/libcoap"
+        ]
+    },
+    "pkg:deb/debian/libcommons-codec-java": {
+        "VendorProductIDs": [
+            "\"apache software foundation\":\"apache commons codec\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"commons-codec:commons-codec\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/commons-codec/commons-codec"
         ]
     },
     "pkg:deb/debian/libcommons-compress-java": {
