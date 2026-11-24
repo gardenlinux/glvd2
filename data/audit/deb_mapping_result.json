@@ -4382,7 +4382,8 @@
             "pkg:deb/debian/osquery": 1
         },
         "\"facebook\":\"zstandard\"": {
-            "pkg:deb/debian/libzstd": 3
+            "pkg:deb/debian/libzstd": 3,
+            "pkg:deb/debian/zstd": 1
         },
         "\"facelessuser\":\"pymdown-extensions\"": {
             "pkg:deb/debian/pymdown-extensions": 5
@@ -4488,7 +4489,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "\"ffmpeg\":\"ffmpeg\"": {
-            "pkg:deb/debian/ffmpeg": 205
+            "pkg:deb/debian/ffmpeg": 227
         },
         "\"ffuf\":\"ffuf\"": {
             "pkg:deb/debian/ffuf": 1
@@ -7843,7 +7844,7 @@
             "pkg:deb/debian/keycloak": 15
         },
         "\"keycloak\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 1
+            "pkg:deb/debian/keycloak": 2
         },
         "\"keystone\":\"keystone\"": {
             "pkg:deb/debian/keystone": 1
@@ -9115,7 +9116,7 @@
             "pkg:deb/debian/jxrlib": 4
         },
         "\"misp\":\"misp\"": {
-            "pkg:deb/debian/misp": 171
+            "pkg:deb/debian/misp": 200
         },
         "\"misp\":\"misp-stix\"": {
             "pkg:deb/debian/misp": 4
@@ -14266,7 +14267,7 @@
             "pkg:deb/debian/pglogical": 1
         },
         "\"pgjdbc\":\"pgjdbc\"": {
-            "pkg:deb/debian/libpgjava": 16
+            "pkg:deb/debian/libpgjava": 17
         },
         "\"pgpainless\":\"pgpainless\"": {
             "pkg:deb/debian/pgpainless": 1
@@ -21282,7 +21283,7 @@
             "pkg:deb/debian/fetchmail": 1
         },
         "cpe:2.3:a:ffmpeg:ffmpeg:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/ffmpeg": 197
+            "pkg:deb/debian/ffmpeg": 219
         },
         "cpe:2.3:a:filezilla-project:filezilla_client:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/filezilla": 1
@@ -22495,7 +22496,7 @@
             "pkg:deb/debian/rust-mio-0.6": 1
         },
         "cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/misp": 59
+            "pkg:deb/debian/misp": 88
         },
         "cpe:2.3:a:misp:misp_\\(malware_information_sharing_platform\\):*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/misp": 1
@@ -25394,7 +25395,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 142
+            "pkg:deb/debian/keycloak": 143
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -26120,10 +26121,10 @@
             "pkg:deb/debian/pyasn1": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"qemu-kvm\"": {
-            "pkg:deb/debian/qemu": 36
+            "pkg:deb/debian/qemu": 39
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"qemu-kvm-ma\"": {
-            "pkg:deb/debian/qemu": 36
+            "pkg:deb/debian/qemu": 39
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"qemu-kvm-rhev\"": {
             "pkg:deb/debian/qemu": 5
@@ -27900,7 +27901,7 @@
             "pkg:deb/debian/keycloak": 3
         },
         "\"https://github.com/keycloak/keycloak\":\"org.keycloak:keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 3
+            "pkg:deb/debian/keycloak": 4
         },
         "\"https://github.com/keycloak/keycloak/\":\"keycloak\"": {
             "pkg:deb/debian/keycloak": 4
@@ -29712,7 +29713,7 @@
             "pkg:deb/debian/jansi1": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.postgresql:postgresql\"": {
-            "pkg:deb/debian/libpgjava": 10
+            "pkg:deb/debian/libpgjava": 11
         },
         "\"https://repo.maven.apache.org/maven2\":\"pkg://maven/org.eclipse.jetty/jetty-http\"": {
             "pkg:deb/debian/jetty12": 1,
@@ -30761,7 +30762,7 @@
             "pkg:deb/debian/iperf3": 1
         },
         "pkg:github/ffmpeg/ffmpeg": {
-            "pkg:deb/debian/ffmpeg": 136
+            "pkg:deb/debian/ffmpeg": 158
         },
         "pkg:github/fltk/fltk": {
             "pkg:deb/debian/fltk1.3": 2,

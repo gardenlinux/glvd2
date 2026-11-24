@@ -37556,6 +37556,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/zstd": {
+        "VendorProductIDs": [
+            "\"facebook\":\"zstandard\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/zstd-jni-java": {
         "VendorProductIDs": [
             "\"luben\":\"zstd-jni\""
