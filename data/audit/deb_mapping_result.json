@@ -1641,7 +1641,7 @@
             "pkg:deb/debian/apache-opennlp": 1
         },
         "\"apache software foundation\":\"apache opennlp\"": {
-            "pkg:deb/debian/apache-opennlp": 7
+            "pkg:deb/debian/apache-opennlp": 8
         },
         "\"apache software foundation\":\"apache openoffice\"": {
             "pkg:deb/debian/libreoffice": 7
@@ -1653,6 +1653,9 @@
         "\"apache software foundation\":\"apache pdfbox\"": {
             "pkg:deb/debian/libpdfbox-java": 6,
             "pkg:deb/debian/libpdfbox2-java": 6
+        },
+        "\"apache software foundation\":\"apache perl\"": {
+            "pkg:deb/debian/libapache2-mod-perl2": 6
         },
         "\"apache software foundation\":\"apache poi\"": {
             "pkg:deb/debian/libapache-poi-java": 3
@@ -2534,7 +2537,7 @@
             "pkg:deb/debian/erlang-idna": 1
         },
         "\"bep\":\"imagemeta\"": {
-            "pkg:deb/debian/golang-github-bep-imagemeta": 2
+            "pkg:deb/debian/golang-github-bep-imagemeta": 3
         },
         "\"berriai\":\"litellm\"": {
             "pkg:deb/debian/trivy": 1
@@ -3176,7 +3179,7 @@
             "pkg:deb/debian/webcit": 1
         },
         "\"civetweb\":\"civetweb\"": {
-            "pkg:deb/debian/civetweb": 4
+            "pkg:deb/debian/civetweb": 5
         },
         "\"civetweb_project\":\"civetweb\"": {
             "pkg:deb/debian/civetweb": 1
@@ -3646,6 +3649,9 @@
         },
         "\"dedecms\":\"dedecms\"": {
             "pkg:deb/debian/racktables": 1
+        },
+        "\"deeplook\":\"svglib\"": {
+            "pkg:deb/debian/python-svglib": 1
         },
         "\"defnull\":\"multipart\"": {
             "pkg:deb/debian/multipart": 1
@@ -4382,14 +4388,16 @@
             "pkg:deb/debian/osquery": 1
         },
         "\"facebook\":\"zstandard\"": {
-            "pkg:deb/debian/libzstd": 3,
-            "pkg:deb/debian/zstd": 1
+            "pkg:deb/debian/libzstd": 4
         },
         "\"facelessuser\":\"pymdown-extensions\"": {
             "pkg:deb/debian/pymdown-extensions": 5
         },
         "\"facelessuser\":\"soupsieve\"": {
             "pkg:deb/debian/soupsieve": 9
+        },
+        "\"facelessuser\":\"wcmatch\"": {
+            "pkg:deb/debian/python-wcmatch": 1
         },
         "\"fail2ban\":\"fail2ban\"": {
             "pkg:deb/debian/fail2ban": 2
@@ -4584,8 +4592,8 @@
             "pkg:deb/debian/ruby-fugit": 1
         },
         "\"fltk\":\"fltk\"": {
-            "pkg:deb/debian/fltk1.3": 2,
-            "pkg:deb/debian/fltk1.4": 2
+            "pkg:deb/debian/fltk1.3": 3,
+            "pkg:deb/debian/fltk1.4": 3
         },
         "\"fluent\":\"fluentd\"": {
             "pkg:deb/debian/fluentd": 2
@@ -4841,7 +4849,7 @@
         },
         "\"ggml-org\":\"llama.cpp\"": {
             "pkg:deb/debian/ggml": 1,
-            "pkg:deb/debian/llama.cpp": 35
+            "pkg:deb/debian/llama.cpp": 37
         },
         "\"ggml-org\":\"whisper.cpp\"": {
             "pkg:deb/debian/whisper.cpp": 5
@@ -6278,7 +6286,7 @@
             "pkg:deb/debian/graphite-web": 3
         },
         "\"graphql-python\":\"graphql-core\"": {
-            "pkg:deb/debian/graphql-core": 3
+            "pkg:deb/debian/graphql-core": 4
         },
         "\"grassroot dicom\":\"grassroot dicom\"": {
             "pkg:deb/debian/gdcm": 7
@@ -7903,6 +7911,9 @@
         "\"konstanty bialkowski\":\"libmodplug\"": {
             "pkg:deb/debian/libmodplug": 4
         },
+        "\"konstanty\":\"libmodplug\"": {
+            "pkg:deb/debian/libmodplug": 1
+        },
         "\"kornelski\":\"http-cache-semantics\"": {
             "pkg:deb/debian/node-got": 2
         },
@@ -8368,7 +8379,7 @@
             "pkg:deb/debian/limesurvey": 2
         },
         "\"limesurvey\":\"limesurvey\"": {
-            "pkg:deb/debian/limesurvey": 26
+            "pkg:deb/debian/limesurvey": 27
         },
         "\"linaro/op-tee\":\"op-tee\"": {
             "pkg:deb/debian/optee-os": 7
@@ -8708,13 +8719,13 @@
         },
         "\"mattermost\":\"mattermost\"": {
             "pkg:deb/debian/mattermost-desktop": 12,
-            "pkg:deb/debian/mattermost-server": 445
+            "pkg:deb/debian/mattermost-server": 446
         },
         "\"mattermost\":\"mattermost_server\"": {
             "pkg:deb/debian/mattermost-server": 2
         },
         "\"matthias-wandel\":\"jhead\"": {
-            "pkg:deb/debian/jhead": 3
+            "pkg:deb/debian/jhead": 4
         },
         "\"matthiask\":\"html-sanitizer\"": {
             "pkg:deb/debian/python-html-sanitizer": 1
@@ -13344,8 +13355,14 @@
         "\"open information security foundation\":\"suricata\"": {
             "pkg:deb/debian/suricata": 2
         },
+        "\"open robotics\":\"ros 2\"": {
+            "pkg:deb/debian/ros-rviz": 1
+        },
         "\"open robotics\":\"ros\"": {
             "pkg:deb/debian/ros-actionlib": 1
+        },
+        "\"open robotics\":\"rviz\"": {
+            "pkg:deb/debian/ros-rviz": 8
         },
         "\"open shortest path first (ospf)\":\"protocol\"": {
             "pkg:deb/debian/frr": 1,
@@ -13406,7 +13423,7 @@
             "pkg:deb/debian/pdns-recursor": 3
         },
         "\"open5gs\":\"open5gs\"": {
-            "pkg:deb/debian/open5gs": 20
+            "pkg:deb/debian/open5gs": 21
         },
         "\"open62541 project / o6 automation gmbh\":\"open62541\"": {
             "pkg:deb/debian/open62541": 2
@@ -13613,7 +13630,7 @@
         "\"openssl\":\"openssl\"": {
             "pkg:deb/debian/edk2": 1,
             "pkg:deb/debian/libtomcrypt": 1,
-            "pkg:deb/debian/openssl": 154,
+            "pkg:deb/debian/openssl": 155,
             "pkg:deb/debian/openssl1.0": 30
         },
         "\"openstack foundation\":\"openstack-cinder\"": {
@@ -14033,6 +14050,9 @@
         },
         "\"osgeo\":\"gdal\"": {
             "pkg:deb/debian/gdal": 7
+        },
+        "\"osgeo\":\"shapelib\"": {
+            "pkg:deb/debian/shapelib": 1
         },
         "\"osmocom\":\"libsmpp34\"": {
             "pkg:deb/debian/libsmpp34": 1
@@ -17875,6 +17895,9 @@
         "\"sqlitedict\":\"sqlitedict\"": {
             "pkg:deb/debian/sqlitedict": 1
         },
+        "\"sqlmapproject\":\"sqlmap\"": {
+            "pkg:deb/debian/sqlmap": 1
+        },
         "\"sqlparse_project\":\"sqlparse\"": {
             "pkg:deb/debian/sqlparse": 1
         },
@@ -18241,7 +18264,7 @@
         },
         "\"systemd\":\"systemd\"": {
             "pkg:deb/debian/network-manager": 1,
-            "pkg:deb/debian/systemd": 11
+            "pkg:deb/debian/systemd": 10
         },
         "\"systemd\":\"systemd-homed\"": {
             "pkg:deb/debian/systemd": 1
@@ -19100,7 +19123,7 @@
             "pkg:deb/debian/ruby-secure-headers": 2
         },
         "\"twogood\":\"unshield\"": {
-            "pkg:deb/debian/unshield": 1
+            "pkg:deb/debian/unshield": 2
         },
         "\"typelevel\":\"jawn\"": {
             "pkg:deb/debian/jawn": 3
@@ -19455,6 +19478,9 @@
         "\"videolan\":\"dav1d\"": {
             "pkg:deb/debian/dav1d": 1
         },
+        "\"videolan\":\"libaacs\"": {
+            "pkg:deb/debian/libaacs": 1
+        },
         "\"videolan\":\"libbluray\"": {
             "pkg:deb/debian/libbluray": 2
         },
@@ -19608,6 +19634,18 @@
         "\"wbond\":\"certvalidator\"": {
             "pkg:deb/debian/python-certvalidator": 1
         },
+        "\"web-token\":\"jwt-encryption-algorithm-ecdh-es\"": {
+            "pkg:deb/debian/php-web-token-jwt-framework": 1
+        },
+        "\"web-token\":\"jwt-experimental\"": {
+            "pkg:deb/debian/php-web-token-jwt-framework": 1
+        },
+        "\"web-token\":\"jwt-framework\"": {
+            "pkg:deb/debian/php-web-token-jwt-framework": 4
+        },
+        "\"web-token\":\"jwt-library\"": {
+            "pkg:deb/debian/php-web-token-jwt-framework": 3
+        },
         "\"web2py\":\"web2py\"": {
             "pkg:deb/debian/web2py": 4
         },
@@ -19733,11 +19771,41 @@
         "\"wikimedia foundation\":\"luasandbox\"": {
             "pkg:deb/debian/mediawiki": 1
         },
+        "\"wikimedia foundation\":\"mediawiki - abusefilter extension\"": {
+            "pkg:deb/debian/mediawiki": 4
+        },
         "\"wikimedia foundation\":\"mediawiki - centralauth extension\"": {
             "pkg:deb/debian/mediawiki": 1
         },
+        "\"wikimedia foundation\":\"mediawiki - checkuser extension\"": {
+            "pkg:deb/debian/mediawiki": 4
+        },
+        "\"wikimedia foundation\":\"mediawiki - echo extension\"": {
+            "pkg:deb/debian/mediawiki": 1
+        },
+        "\"wikimedia foundation\":\"mediawiki - minervaneue skin\"": {
+            "pkg:deb/debian/mediawiki": 2
+        },
+        "\"wikimedia foundation\":\"mediawiki - mobilefrontend extension\"": {
+            "pkg:deb/debian/mediawiki": 1
+        },
+        "\"wikimedia foundation\":\"mediawiki - oathauth extension\"": {
+            "pkg:deb/debian/mediawiki": 3
+        },
+        "\"wikimedia foundation\":\"mediawiki - translate extension\"": {
+            "pkg:deb/debian/mediawiki": 1
+        },
+        "\"wikimedia foundation\":\"mediawiki - visualeditor extension\"": {
+            "pkg:deb/debian/mediawiki": 3
+        },
+        "\"wikimedia foundation\":\"mediawiki - wikimediamessages extension\"": {
+            "pkg:deb/debian/mediawiki": 1
+        },
         "\"wikimedia foundation\":\"mediawiki\"": {
-            "pkg:deb/debian/mediawiki": 54
+            "pkg:deb/debian/mediawiki": 68
+        },
+        "\"wikimedia foundation\":\"mediawiki/services/parsoid\"": {
+            "pkg:deb/debian/mediawiki": 4
         },
         "\"wikimedia foundation\":\"multimediaviewer\"": {
             "pkg:deb/debian/mediawiki": 1
@@ -20059,6 +20127,9 @@
         },
         "\"yahoo\":\"serialize-javascript\"": {
             "pkg:deb/debian/node-serialize-javascript": 4
+        },
+        "\"yakifo\":\"amqtt\"": {
+            "pkg:deb/debian/amqtt": 2
         },
         "\"yaml-rust\":\"yaml-rust\"": {
             "pkg:deb/debian/rust-yaml-rust": 1
@@ -20958,7 +21029,7 @@
             "pkg:deb/debian/snort": 1
         },
         "cpe:2.3:a:civetweb_project:civetweb:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/civetweb": 2
+            "pkg:deb/debian/civetweb": 3
         },
         "cpe:2.3:a:cjson_project:cjson:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/cjson": 3
@@ -21326,8 +21397,8 @@
             "pkg:deb/debian/ruby-fugit": 1
         },
         "cpe:2.3:a:fltk_project:fltk:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/fltk1.3": 2,
-            "pkg:deb/debian/fltk1.4": 2
+            "pkg:deb/debian/fltk1.3": 3,
+            "pkg:deb/debian/fltk1.4": 3
         },
         "cpe:2.3:a:fluidsynth:fluidsynth:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/fluidsynth": 1
@@ -21432,13 +21503,13 @@
             "pkg:deb/debian/llama.cpp": 9
         },
         "cpe:2.3:a:ggml-org:llama.cpp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/llama.cpp": 8
+            "pkg:deb/debian/llama.cpp": 9
         },
         "cpe:2.3:a:ggml-org:whisper.cpp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/whisper.cpp": 4
         },
         "cpe:2.3:a:ggml:llama.cpp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/llama.cpp": 19
+            "pkg:deb/debian/llama.cpp": 20
         },
         "cpe:2.3:a:ghost:ghost:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ghost": 38
@@ -21759,6 +21830,9 @@
         },
         "cpe:2.3:a:graphite_project:graphite:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/graphite2": 1
+        },
+        "cpe:2.3:a:graphql:graphql:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/graphql-core": 1
         },
         "cpe:2.3:a:grassroot:grassroot_platform:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdcm": 1
@@ -22143,6 +22217,9 @@
         "cpe:2.3:a:koha:koha:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/koha": 5
         },
+        "cpe:2.3:a:konstanty:libmodplug:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/libmodplug": 1
+        },
         "cpe:2.3:a:konstanty_bialkowski:libmodplug:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libmodplug": 4
         },
@@ -22323,7 +22400,7 @@
             "pkg:deb/debian/lighttpd": 2
         },
         "cpe:2.3:a:limesurvey:limesurvey:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/limesurvey": 24
+            "pkg:deb/debian/limesurvey": 25
         },
         "cpe:2.3:a:limesurvey:limesurvey_community_edition:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/limesurvey": 2
@@ -22417,7 +22494,7 @@
             "pkg:deb/debian/mattermost-server": 2
         },
         "cpe:2.3:a:matthias-wandel:jhead:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/jhead": 2
+            "pkg:deb/debian/jhead": 3
         },
         "cpe:2.3:a:maxima:maxima:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/maxima": 1
@@ -22694,6 +22771,9 @@
         "cpe:2.3:a:nanoid_project:nanoid:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-mocha": 2,
             "pkg:deb/debian/node-postcss": 2
+        },
+        "cpe:2.3:a:nats:jwt_library:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/php-web-token-jwt-framework": 3
         },
         "cpe:2.3:a:naturalintelligence:fast_xml_parser:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-webfont": 1
@@ -23017,7 +23097,7 @@
             "pkg:deb/debian/dovecot": 1
         },
         "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/open5gs": 123
+            "pkg:deb/debian/open5gs": 124
         },
         "cpe:2.3:a:open62541:open62541:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/open62541": 6
@@ -23294,6 +23374,9 @@
         },
         "cpe:2.3:a:osgeo:gdal:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdal": 6
+        },
+        "cpe:2.3:a:osgeo:shapelib:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/shapelib": 1
         },
         "cpe:2.3:a:osrg:gobgp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gobgp": 5
@@ -24311,6 +24394,9 @@
         },
         "cpe:2.3:a:twistedmatrix:twisted:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/twisted": 1
+        },
+        "cpe:2.3:a:twogood:unshield:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/unshield": 1
         },
         "cpe:2.3:a:uberrider:mediacenter:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/xbmc": 1
@@ -26194,10 +26280,10 @@
             "pkg:deb/debian/rsync": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog\"": {
-            "pkg:deb/debian/rsyslog": 5
+            "pkg:deb/debian/rsyslog": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rsyslog7\"": {
-            "pkg:deb/debian/rsyslog": 5
+            "pkg:deb/debian/rsyslog": 9
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"ruby3.3\"": {
             "pkg:deb/debian/ruby3.3": 1
@@ -26578,6 +26664,9 @@
             "pkg:deb/debian/resteasy3.0": 2,
             "pkg:deb/debian/undertow": 5,
             "pkg:deb/debian/wildfly": 2
+        },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-parent\"": {
+            "pkg:deb/debian/jbossas4": 3
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jws5-tomcat\"": {
             "pkg:deb/debian/jss": 1
@@ -27534,6 +27623,9 @@
         "\"https://cpan.org/modules\":\"libwww-perl\"": {
             "pkg:deb/debian/libwww-perl": 1
         },
+        "\"https://cpan.org/modules\":\"mod_perl\"": {
+            "pkg:deb/debian/libapache2-mod-perl2": 6
+        },
         "\"https://cpan.org/modules\":\"perl\"": {
             "pkg:deb/debian/perl": 9,
             "pkg:deb/debian/podlators-perl": 1
@@ -27911,7 +28003,7 @@
             "pkg:deb/debian/keras": 1
         },
         "\"https://github.com/keycloak/keycloak\":\"keycloak\"": {
-            "pkg:deb/debian/keycloak": 31
+            "pkg:deb/debian/keycloak": 38
         },
         "\"https://github.com/keycloak/keycloak\":\"keycloak-core\"": {
             "pkg:deb/debian/keycloak": 1
@@ -28260,7 +28352,7 @@
             "pkg:deb/debian/gi-docgen": 1
         },
         "\"https://gitlab.gnome.org/GNOME/gimp\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 18
+            "pkg:deb/debian/gimp": 20
         },
         "\"https://gitlab.gnome.org/GNOME/gimp/\":\"gimp\"": {
             "pkg:deb/debian/gimp": 1
@@ -28300,8 +28392,8 @@
             "pkg:deb/debian/libsoup3": 7
         },
         "\"https://gitlab.gnome.org/GNOME/libsoup/\":\"libsoup\"": {
-            "pkg:deb/debian/libsoup2.4": 15,
-            "pkg:deb/debian/libsoup3": 16
+            "pkg:deb/debian/libsoup2.4": 18,
+            "pkg:deb/debian/libsoup3": 19
         },
         "\"https://gitlab.gnome.org/GNOME/libxml2\":\"libxml2\"": {
             "pkg:deb/debian/libxml2": 1
@@ -29560,11 +29652,14 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.opennlp:opennlp-ml-libsvm\"": {
             "pkg:deb/debian/apache-opennlp": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.opennlp:opennlp-runtime\"": {
+            "pkg:deb/debian/apache-opennlp": 1
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.opennlp:opennlp-symspell\"": {
             "pkg:deb/debian/apache-opennlp": 1
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.opennlp:opennlp-tools\"": {
-            "pkg:deb/debian/apache-opennlp": 2
+            "pkg:deb/debian/apache-opennlp": 3
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.pdfbox:pdfbox-examples\"": {
             "pkg:deb/debian/libpdfbox-java": 2,
@@ -30544,6 +30639,9 @@
         "pkg:cpan/YAML": {
             "pkg:deb/debian/libyaml-perl": 2
         },
+        "pkg:cpan/mod_perl": {
+            "pkg:deb/debian/libapache2-mod-perl2": 6
+        },
         "pkg:cpan/perl": {
             "pkg:deb/debian/perl": 6,
             "pkg:deb/debian/podlators-perl": 1
@@ -30719,6 +30817,9 @@
         "pkg:github/cesanta/mongoose": {
             "pkg:deb/debian/mongoose": 3
         },
+        "pkg:github/civetweb/civetweb": {
+            "pkg:deb/debian/civetweb": 1
+        },
         "pkg:github/composefs/tar-rs": {
             "pkg:deb/debian/rust-tar": 1
         },
@@ -30787,8 +30888,8 @@
             "pkg:deb/debian/ffmpeg": 179
         },
         "pkg:github/fltk/fltk": {
-            "pkg:deb/debian/fltk1.3": 2,
-            "pkg:deb/debian/fltk1.4": 2
+            "pkg:deb/debian/fltk1.3": 3,
+            "pkg:deb/debian/fltk1.4": 3
         },
         "pkg:github/fluxbox/fluxbox": {
             "pkg:deb/debian/fluxbox": 2
@@ -30810,7 +30911,7 @@
             "pkg:deb/debian/zziplib": 2
         },
         "pkg:github/ggml-org/llama.cpp": {
-            "pkg:deb/debian/llama.cpp": 9
+            "pkg:deb/debian/llama.cpp": 10
         },
         "pkg:github/gleam-lang/gleam": {
             "pkg:deb/debian/gleam": 6
@@ -31036,7 +31137,7 @@
             "pkg:deb/debian/ollama": 1
         },
         "pkg:github/open5gs/open5gs": {
-            "pkg:deb/debian/open5gs": 5
+            "pkg:deb/debian/open5gs": 6
         },
         "pkg:github/open62541/open62541": {
             "pkg:deb/debian/open62541": 1
@@ -31451,11 +31552,14 @@
         "pkg:maven/org.apache.opennlp/opennlp-core": {
             "pkg:deb/debian/apache-opennlp": 1
         },
+        "pkg:maven/org.apache.opennlp/opennlp-runtime": {
+            "pkg:deb/debian/apache-opennlp": 1
+        },
         "pkg:maven/org.apache.opennlp/opennlp-symspell": {
             "pkg:deb/debian/apache-opennlp": 1
         },
         "pkg:maven/org.apache.opennlp/opennlp-tools": {
-            "pkg:deb/debian/apache-opennlp": 1
+            "pkg:deb/debian/apache-opennlp": 2
         },
         "pkg:maven/org.apache.qpid/qpid-broker-core": {
             "pkg:deb/debian/qpid-java": 1
@@ -31890,6 +31994,9 @@
         },
         "pkg:pypi/gitpython": {
             "pkg:deb/debian/python-git": 28
+        },
+        "pkg:pypi/graphql-core": {
+            "pkg:deb/debian/graphql-core": 1
         },
         "pkg:pypi/gunicorn": {
             "pkg:deb/debian/gunicorn": 2
