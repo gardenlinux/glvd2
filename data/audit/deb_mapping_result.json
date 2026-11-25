@@ -1580,7 +1580,7 @@
             "pkg:deb/debian/apache-karaf": 1
         },
         "\"apache software foundation\":\"apache karaf\"": {
-            "pkg:deb/debian/apache-karaf": 15
+            "pkg:deb/debian/apache-karaf": 18
         },
         "\"apache software foundation\":\"apache log4cxx (brew)\"": {
             "pkg:deb/debian/log4cxx": 1
@@ -2363,7 +2363,7 @@
             "pkg:deb/debian/assertj-core": 1
         },
         "\"assimp\":\"assimp\"": {
-            "pkg:deb/debian/assimp": 24
+            "pkg:deb/debian/assimp": 29
         },
         "\"asterisk\":\"asterisk\"": {
             "pkg:deb/debian/asterisk": 37
@@ -4617,7 +4617,7 @@
             "pkg:deb/debian/fontconfig": 1
         },
         "\"fontforge\":\"fontforge\"": {
-            "pkg:deb/debian/fontforge": 13
+            "pkg:deb/debian/fontforge": 14
         },
         "\"fonttools\":\"fonttools\"": {
             "pkg:deb/debian/fonttools": 2
@@ -6220,7 +6220,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "\"gpac\":\"gpac\"": {
-            "pkg:deb/debian/gpac": 111
+            "pkg:deb/debian/gpac": 117
         },
         "\"gpac\":\"gpac/gpac\"": {
             "pkg:deb/debian/gpac": 47
@@ -8227,7 +8227,7 @@
             "pkg:deb/debian/librecad": 1
         },
         "\"librecad\":\"librecad\"": {
-            "pkg:deb/debian/librecad": 2
+            "pkg:deb/debian/librecad": 4
         },
         "\"libredwg\":\"libredwg\"": {
             "pkg:deb/debian/libredwg": 3
@@ -12498,7 +12498,7 @@
         "\"nlnet labs\":\"routinator\"": {
             "pkg:deb/debian/cfrpki": 2,
             "pkg:deb/debian/fort-validator": 1,
-            "pkg:deb/debian/routinator": 20,
+            "pkg:deb/debian/routinator": 22,
             "pkg:deb/debian/rpki-client": 2
         },
         "\"nlnet labs\":\"unbound\"": {
@@ -14950,13 +14950,13 @@
             "pkg:deb/debian/pypy3": 60,
             "pkg:deb/debian/python2.7": 47,
             "pkg:deb/debian/python3.10": 3,
-            "pkg:deb/debian/python3.11": 83,
+            "pkg:deb/debian/python3.11": 84,
             "pkg:deb/debian/python3.12": 26,
-            "pkg:deb/debian/python3.13": 78,
-            "pkg:deb/debian/python3.14": 58,
-            "pkg:deb/debian/python3.15": 18,
+            "pkg:deb/debian/python3.13": 79,
+            "pkg:deb/debian/python3.14": 59,
+            "pkg:deb/debian/python3.15": 19,
             "pkg:deb/debian/python3.7": 7,
-            "pkg:deb/debian/python3.9": 69
+            "pkg:deb/debian/python3.9": 70
         },
         "\"python software foundation; beanbag\":\"djblets\"": {
             "pkg:deb/debian/djblets": 1,
@@ -20788,7 +20788,7 @@
             "pkg:deb/debian/asio": 1
         },
         "cpe:2.3:a:assimp:assimp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/assimp": 53
+            "pkg:deb/debian/assimp": 58
         },
         "cpe:2.3:a:asterisk:asterisk:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/asterisk": 2
@@ -21811,7 +21811,7 @@
             "pkg:deb/debian/ausweisapp2": 1
         },
         "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/gpac": 164
+            "pkg:deb/debian/gpac": 170
         },
         "cpe:2.3:a:gpsd_project:gpsd:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gpsd": 2
@@ -22352,7 +22352,7 @@
             "pkg:deb/debian/librecad": 1
         },
         "cpe:2.3:a:librecad:librecad:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/librecad": 2
+            "pkg:deb/debian/librecad": 4
         },
         "cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libreoffice": 1
@@ -25359,7 +25359,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 74
+            "pkg:deb/debian/gimp": 75
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 18
@@ -29620,6 +29620,12 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf.decanter.collector:org.apache.karaf.decanter.collector.log.socket\"": {
             "pkg:deb/debian/apache-karaf": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf.shell:org.apache.karaf.shell.ssh\"": {
+            "pkg:deb/debian/apache-karaf": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf:apache-karaf\"": {
+            "pkg:deb/debian/apache-karaf": 2
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf:cave\"": {
             "pkg:deb/debian/apache-karaf": 1
         },
@@ -30726,7 +30732,7 @@
             "pkg:deb/debian/libvncserver": 2
         },
         "pkg:github/LibreCAD/LibreCAD": {
-            "pkg:deb/debian/librecad": 2
+            "pkg:deb/debian/librecad": 4
         },
         "pkg:github/LibreCAD/libdxfrw": {
             "pkg:deb/debian/librecad": 1
@@ -30797,7 +30803,7 @@
             "pkg:deb/debian/bluez-alsa": 1
         },
         "pkg:github/assimp/assimp": {
-            "pkg:deb/debian/assimp": 17
+            "pkg:deb/debian/assimp": 22
         },
         "pkg:github/bakulf/libnxml": {
             "pkg:deb/debian/libnxml": 1
@@ -30894,6 +30900,9 @@
         "pkg:github/fluxbox/fluxbox": {
             "pkg:deb/debian/fluxbox": 2
         },
+        "pkg:github/fontforge/fontforge": {
+            "pkg:deb/debian/fontforge": 1
+        },
         "pkg:github/freerdp/freerdp": {
             "pkg:deb/debian/freerdp2": 1,
             "pkg:deb/debian/freerdp3": 1
@@ -30920,7 +30929,7 @@
             "pkg:deb/debian/glpi": 2
         },
         "pkg:github/gpac/gpac": {
-            "pkg:deb/debian/gpac": 87
+            "pkg:deb/debian/gpac": 93
         },
         "pkg:github/gridcf/gct": {
             "pkg:deb/debian/globus-gss-assist": 1
@@ -31529,6 +31538,12 @@
         },
         "pkg:maven/org.apache.kafka/kafka_2.13": {
             "pkg:deb/debian/kafka": 1
+        },
+        "pkg:maven/org.apache.karaf.shell/org.apache.karaf.shell.ssh": {
+            "pkg:deb/debian/apache-karaf": 1
+        },
+        "pkg:maven/org.apache.karaf/apache-karaf": {
+            "pkg:deb/debian/apache-karaf": 2
         },
         "pkg:maven/org.apache.logging.log4j/log4j-1.2-api": {
             "pkg:deb/debian/apache-log4j1.2": 1,

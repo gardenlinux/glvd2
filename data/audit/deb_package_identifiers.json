@@ -873,9 +873,14 @@
         ],
         "PackageIDs": [
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf.decanter.collector:org.apache.karaf.decanter.collector.log.socket\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf.shell:org.apache.karaf.shell.ssh\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf:apache-karaf\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.karaf:cave\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/org.apache.karaf.shell/org.apache.karaf.shell.ssh",
+            "pkg:maven/org.apache.karaf/apache-karaf"
+        ]
     },
     "pkg:deb/debian/apache-log4j1.2": {
         "VendorProductIDs": [
@@ -6050,7 +6055,9 @@
             "cpe:2.3:a:fontforge:fontforge:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/fontforge/fontforge"
+        ]
     },
     "pkg:deb/debian/fonttools": {
         "VendorProductIDs": [
