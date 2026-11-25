@@ -1553,13 +1553,13 @@
             "pkg:deb/debian/apache-mime4j": 1
         },
         "\"apache software foundation\":\"apache jena fuseki\"": {
-            "pkg:deb/debian/apache-jena": 2
+            "pkg:deb/debian/apache-jena": 5
         },
         "\"apache software foundation\":\"apache jena sdb\"": {
             "pkg:deb/debian/apache-jena": 1
         },
         "\"apache software foundation\":\"apache jena\"": {
-            "pkg:deb/debian/apache-jena": 6
+            "pkg:deb/debian/apache-jena": 10
         },
         "\"apache software foundation\":\"apache jmeter\"": {
             "pkg:deb/debian/jakarta-jmeter": 3
@@ -25116,7 +25116,7 @@
             "pkg:deb/debian/dhcpcd": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnf5\"": {
-            "pkg:deb/debian/dnf5": 2
+            "pkg:deb/debian/dnf5": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnsmasq\"": {
             "pkg:deb/debian/dnsmasq": 14
@@ -27120,6 +27120,9 @@
         "\"https://catalog.redhat.com/software/containers/\":\"dbus-main\"": {
             "pkg:deb/debian/dbus": 1
         },
+        "\"https://catalog.redhat.com/software/containers/\":\"dnf5-main\"": {
+            "pkg:deb/debian/dnf5": 1
+        },
         "\"https://catalog.redhat.com/software/containers/\":\"dracut-main\"": {
             "pkg:deb/debian/dracut": 2
         },
@@ -28135,6 +28138,9 @@
         },
         "\"https://github.com/rpm-software-management/popt\":\"popt\"": {
             "pkg:deb/debian/popt": 3
+        },
+        "\"https://github.com/rpm-software-management/rpm-sequoia\":\"rpm-sequoia\"": {
+            "pkg:deb/debian/rust-rpm-sequoia": 1
         },
         "\"https://github.com/rustls/rustls\":\"rustls\"": {
             "pkg:deb/debian/rust-rustls": 1
@@ -29593,6 +29599,9 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.james:apache-mime4j-dom\"": {
             "pkg:deb/debian/apache-mime4j": 1
         },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jena:jena-arq\"": {
+            "pkg:deb/debian/apache-jena": 2
+        },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:connect-runtime\"": {
             "pkg:deb/debian/kafka": 2
         },
@@ -30067,7 +30076,7 @@
             "pkg:deb/debian/glibc": 1
         },
         "\"https://sourceware.org/git/binutils-gdb.git\":\"binutils\"": {
-            "pkg:deb/debian/binutils": 1
+            "pkg:deb/debian/binutils": 3
         },
         "\"https://sourceware.org/git/glibc.git\":\"glibc\"": {
             "pkg:deb/debian/glibc": 1
@@ -31514,6 +31523,9 @@
         },
         "pkg:maven/org.apache.jackrabbit/jackrabbit-spi2dav": {
             "pkg:deb/debian/jackrabbit": 1
+        },
+        "pkg:maven/org.apache.jena/jena-arq": {
+            "pkg:deb/debian/apache-jena": 2
         },
         "pkg:maven/org.apache.kafka/connect-runtime": {
             "pkg:deb/debian/kafka": 2

@@ -856,8 +856,12 @@
             "cpe:2.3:a:apache:jena:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:apache:jena_sdb:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jena:jena-arq\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/org.apache.jena/jena-arq"
+        ]
     },
     "pkg:deb/debian/apache-karaf": {
         "VendorProductIDs": [
@@ -4214,7 +4218,8 @@
         "VendorProductIDs": null,
         "CPEs": null,
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnf5\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"dnf5\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"dnf5-main\""
         ],
         "PackageURLs": null
     },
@@ -32100,7 +32105,8 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"rust-rpm-sequoia\"",
-            "\"https://catalog.redhat.com/software/containers/\":\"rust-rpm-sequoia-main\""
+            "\"https://catalog.redhat.com/software/containers/\":\"rust-rpm-sequoia-main\"",
+            "\"https://github.com/rpm-software-management/rpm-sequoia\":\"rpm-sequoia\""
         ],
         "PackageURLs": null
     },
