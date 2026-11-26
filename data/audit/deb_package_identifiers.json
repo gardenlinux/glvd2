@@ -5184,6 +5184,7 @@
             "pkg:otp/ssl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/stdlib?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:otp/tftp?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
+            "pkg:otp/xmerl?repository_url=https:%2F%2Fgithub.com%2Ferlang%2Fotp\u0026vcs_url=git%2Bhttps:%2F%2Fgithub.com%2Ferlang%2Fotp.git",
             "pkg:software-id/erlang.org/otp"
         ]
     },
@@ -12346,8 +12347,12 @@
             "\"n/a\":\"apache jspwiki\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-war\""
+        ],
+        "PackageURLs": [
+            "pkg:maven/org.apache.jspwiki/jspwiki-war"
+        ]
     },
     "pkg:deb/debian/jss": {
         "VendorProductIDs": [
@@ -14151,7 +14156,8 @@
         ],
         "CPEs": null,
         "PackageIDs": [
-            "\"https://cpan.org/modules\":\"DBI\""
+            "\"https://cpan.org/modules\":\"DBI\"",
+            "\"https://github.com/perl5-dbi/DBI\":\"DBI\""
         ],
         "PackageURLs": [
             "pkg:cpan/DBI"
@@ -16221,7 +16227,8 @@
         "CPEs": null,
         "PackageIDs": [
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libsoup\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libsoup3\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"libsoup3\"",
+            "\"https://gitlab.gnome.org/GNOME/libsoup/\":\"libsoup\""
         ],
         "PackageURLs": null
     },
@@ -18527,6 +18534,7 @@
             "\"wikimedia foundation\":\"mediawiki - centralauth extension\"",
             "\"wikimedia foundation\":\"mediawiki - checkuser extension\"",
             "\"wikimedia foundation\":\"mediawiki - echo extension\"",
+            "\"wikimedia foundation\":\"mediawiki - math extension\"",
             "\"wikimedia foundation\":\"mediawiki - minervaneue skin\"",
             "\"wikimedia foundation\":\"mediawiki - mobilefrontend extension\"",
             "\"wikimedia foundation\":\"mediawiki - oathauth extension\"",
@@ -21513,6 +21521,17 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/node-parse5": {
+        "VendorProductIDs": [
+            "\"inikulin\":\"parse5\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:npm/parse5",
+            "pkg:npm/parse5-html-rewriting-stream"
+        ]
     },
     "pkg:deb/debian/node-path-to-regexp": {
         "VendorProductIDs": [
@@ -25582,12 +25601,19 @@
             "\"symfony\":\"twig\"",
             "\"twig\":\"cssinliner-extra\"",
             "\"twig\":\"markdown-extra\"",
+            "\"twig\":\"twig/html-extra\"",
+            "\"twig\":\"twig/markdown-extra\"",
+            "\"twig\":\"twig/twig\"",
             "\"twigphp\":\"twig\""
         ],
         "CPEs": [
             "cpe:2.3:a:symfony:twig:*:*:*:*:*:*:*:*"
         ],
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://packagist.org\":\"twig/html-extra\"",
+            "\"https://packagist.org\":\"twig/markdown-extra\"",
+            "\"https://packagist.org\":\"twig/twig\""
+        ],
         "PackageURLs": [
             "pkg:composer/twig/twig"
         ]
@@ -26619,6 +26645,7 @@
         ],
         "CPEs": null,
         "PackageIDs": [
+            "\"https://github.com/polkit-org/polkit\":\"polkit\"",
             "\"https://www.freedesktop.org/software/polkit/releases/\":\"polkit\""
         ],
         "PackageURLs": null
