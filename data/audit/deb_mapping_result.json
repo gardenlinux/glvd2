@@ -25518,7 +25518,7 @@
             "pkg:deb/debian/keycloak": 4
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server-spi\"": {
-            "pkg:deb/debian/keycloak": 1
+            "pkg:deb/debian/keycloak": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
             "pkg:deb/debian/keycloak": 145
@@ -26476,7 +26476,7 @@
             "pkg:deb/debian/w3m": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"webkit2gtk3\"": {
-            "pkg:deb/debian/webkit2gtk": 37
+            "pkg:deb/debian/webkit2gtk": 38
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"wildfly-cli\"": {
             "pkg:deb/debian/wildfly": 1
@@ -28033,7 +28033,7 @@
             "pkg:deb/debian/keras": 1
         },
         "\"https://github.com/keycloak/keycloak\":\"keycloak\"": {
-            "pkg:deb/debian/keycloak": 46
+            "pkg:deb/debian/keycloak": 47
         },
         "\"https://github.com/keycloak/keycloak\":\"keycloak-core\"": {
             "pkg:deb/debian/keycloak": 1
