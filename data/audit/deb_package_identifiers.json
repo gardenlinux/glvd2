@@ -12759,6 +12759,7 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core-public\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server-spi\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"org.keycloak-keycloak-parent\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"org.keycloak.authentication\"",
@@ -13914,8 +13915,12 @@
             "\"perl-crypt-jwt\":\"perl-crypt-jwt\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
-        "PackageURLs": null
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"Crypt-JWT\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/Crypt-JWT"
+        ]
     },
     "pkg:deb/debian/libcrypt-nacl-sodium-perl": {
         "VendorProductIDs": [
@@ -15695,6 +15700,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libpdf-api2-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"PDF-API2\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/PDF-API2"
+        ]
+    },
     "pkg:deb/debian/libpdfbox-java": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache pdfbox examples\"",
@@ -16823,6 +16838,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/libwww-form-urlencoded-xs-perl": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://cpan.org/modules\":\"WWW-Form-UrlEncoded-XS\""
+        ],
+        "PackageURLs": [
+            "pkg:cpan/WWW-Form-UrlEncoded-XS"
+        ]
+    },
     "pkg:deb/debian/libwww-oauth-perl": {
         "VendorProductIDs": [
             "\"dbook\":\"www::oauth\""
@@ -16972,7 +16997,9 @@
             "\"https://gitlab.gnome.org/GNOME/libxml2\":\"libxml2\"",
             "\"https://gitlab.gnome.org/GNOME/libxml2/\":\"libxml2\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/gnome/libxml2"
+        ]
     },
     "pkg:deb/debian/libxmlrpc3-java": {
         "VendorProductIDs": [

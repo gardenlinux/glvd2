@@ -4707,8 +4707,8 @@
         },
         "\"freerdp\":\"freerdp\"": {
             "pkg:deb/debian/freerdp": 41,
-            "pkg:deb/debian/freerdp2": 317,
-            "pkg:deb/debian/freerdp3": 256
+            "pkg:deb/debian/freerdp2": 318,
+            "pkg:deb/debian/freerdp3": 257
         },
         "\"freeswitch\":\"sofia-sip\"": {
             "pkg:deb/debian/sofia-sip": 6
@@ -5142,7 +5142,7 @@
             "pkg:deb/debian/gdk-pixbuf": 1
         },
         "\"gnome\":\"gdm\"": {
-            "pkg:deb/debian/gdm3": 1
+            "pkg:deb/debian/gdm3": 2
         },
         "\"gnome\":\"gdm3\"": {
             "pkg:deb/debian/gdm3": 1
@@ -5186,7 +5186,7 @@
             "pkg:deb/debian/libsoup3": 4
         },
         "\"gnome\":\"libxml2\"": {
-            "pkg:deb/debian/libxml2": 2,
+            "pkg:deb/debian/libxml2": 10,
             "pkg:deb/debian/libxslt": 1
         },
         "\"gnome\":\"libxslt\"": {
@@ -5358,7 +5358,7 @@
             "pkg:deb/debian/mailman": 3
         },
         "\"gnu\":\"mtools\"": {
-            "pkg:deb/debian/mtools": 1
+            "pkg:deb/debian/mtools": 2
         },
         "\"gnu\":\"ncurses\"": {
             "pkg:deb/debian/ncurses": 2
@@ -21458,8 +21458,8 @@
             "pkg:deb/debian/freeradius": 1
         },
         "cpe:2.3:a:freerdp:freerdp:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/freerdp2": 174,
-            "pkg:deb/debian/freerdp3": 174
+            "pkg:deb/debian/freerdp2": 175,
+            "pkg:deb/debian/freerdp3": 175
         },
         "cpe:2.3:a:frontaccounting:frontaccounting:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/frontaccounting": 6
@@ -24658,7 +24658,7 @@
             "pkg:deb/debian/xmind": 1
         },
         "cpe:2.3:a:xmlsoft:libxml2:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libxml2": 14
+            "pkg:deb/debian/libxml2": 22
         },
         "cpe:2.3:a:xmlsoft:libxslt:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libxslt": 2
@@ -25517,8 +25517,11 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server\"": {
             "pkg:deb/debian/keycloak": 4
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server-spi\"": {
+            "pkg:deb/debian/keycloak": 1
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 144
+            "pkg:deb/debian/keycloak": 145
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -26815,10 +26818,10 @@
             "pkg:deb/debian/jss": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow\"": {
-            "pkg:deb/debian/undertow": 13
+            "pkg:deb/debian/undertow": 12
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-core\"": {
-            "pkg:deb/debian/undertow": 14
+            "pkg:deb/debian/undertow": 15
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-core-2.3.10.Final.jar\"": {
             "pkg:deb/debian/undertow": 1
@@ -27351,6 +27354,9 @@
         "\"https://cpan.org/modules\":\"Crypt-DSA\"": {
             "pkg:deb/debian/libcrypt-dsa-perl": 4
         },
+        "\"https://cpan.org/modules\":\"Crypt-JWT\"": {
+            "pkg:deb/debian/libcrypt-jwt-perl": 4
+        },
         "\"https://cpan.org/modules\":\"Crypt-NaCl-Sodium\"": {
             "pkg:deb/debian/libcrypt-nacl-sodium-perl": 2
         },
@@ -27539,6 +27545,9 @@
         "\"https://cpan.org/modules\":\"Net-Whois-Raw\"": {
             "pkg:deb/debian/libnet-whois-raw-perl": 1
         },
+        "\"https://cpan.org/modules\":\"PDF-API2\"": {
+            "pkg:deb/debian/libpdf-api2-perl": 1
+        },
         "\"https://cpan.org/modules\":\"Plack\"": {
             "pkg:deb/debian/libplack-perl": 2
         },
@@ -27604,6 +27613,9 @@
         },
         "\"https://cpan.org/modules\":\"Unicode-LineBreak\"": {
             "pkg:deb/debian/libunicode-linebreak-perl": 1
+        },
+        "\"https://cpan.org/modules\":\"WWW-Form-UrlEncoded-XS\"": {
+            "pkg:deb/debian/libwww-form-urlencoded-xs-perl": 2
         },
         "\"https://cpan.org/modules\":\"WWW-OAuth\"": {
             "pkg:deb/debian/libwww-oauth-perl": 1
@@ -28021,7 +28033,7 @@
             "pkg:deb/debian/keras": 1
         },
         "\"https://github.com/keycloak/keycloak\":\"keycloak\"": {
-            "pkg:deb/debian/keycloak": 45
+            "pkg:deb/debian/keycloak": 46
         },
         "\"https://github.com/keycloak/keycloak\":\"keycloak-core\"": {
             "pkg:deb/debian/keycloak": 1
@@ -28201,7 +28213,7 @@
             "pkg:deb/debian/systemd": 1
         },
         "\"https://github.com/theforeman/foreman\":\"foreman\"": {
-            "pkg:deb/debian/foreman": 9
+            "pkg:deb/debian/foreman": 10
         },
         "\"https://github.com/theforeman/puppet-foreman\":\"puppet-foreman\"": {
             "pkg:deb/debian/foreman": 1
@@ -30562,6 +30574,9 @@
         "pkg:cpan/Cpanel-JSON-XS": {
             "pkg:deb/debian/libcpanel-json-xs-perl": 15
         },
+        "pkg:cpan/Crypt-JWT": {
+            "pkg:deb/debian/libcrypt-jwt-perl": 4
+        },
         "pkg:cpan/DBD-Pg": {
             "pkg:deb/debian/libdbd-pg-perl": 1
         },
@@ -30643,6 +30658,9 @@
         "pkg:cpan/Net-Whois-Raw": {
             "pkg:deb/debian/libnet-whois-raw-perl": 1
         },
+        "pkg:cpan/PDF-API2": {
+            "pkg:deb/debian/libpdf-api2-perl": 1
+        },
         "pkg:cpan/Plack": {
             "pkg:deb/debian/libplack-perl": 1
         },
@@ -30678,6 +30696,9 @@
         },
         "pkg:cpan/URI": {
             "pkg:deb/debian/liburi-perl": 1
+        },
+        "pkg:cpan/WWW-Form-UrlEncoded-XS": {
+            "pkg:deb/debian/libwww-form-urlencoded-xs-perl": 2
         },
         "pkg:cpan/Web-Simple": {
             "pkg:deb/debian/libweb-simple-perl": 3
@@ -30750,8 +30771,8 @@
             "pkg:deb/debian/fluidsynth": 1
         },
         "pkg:github/FreeRDP/FreeRDP": {
-            "pkg:deb/debian/freerdp2": 1,
-            "pkg:deb/debian/freerdp3": 1
+            "pkg:deb/debian/freerdp2": 2,
+            "pkg:deb/debian/freerdp3": 2
         },
         "pkg:github/GNUAspell/aspell": {
             "pkg:deb/debian/aspell": 1
@@ -30970,6 +30991,9 @@
         },
         "pkg:github/glpi-project/glpi": {
             "pkg:deb/debian/glpi": 2
+        },
+        "pkg:github/gnome/libxml2": {
+            "pkg:deb/debian/libxml2": 4
         },
         "pkg:github/gpac/gpac": {
             "pkg:deb/debian/gpac": 93
