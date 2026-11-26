@@ -31,6 +31,22 @@
         "upstream_version": "1.22.1"
       }
     },
+    "1.22.3-1gl0+bp1877": {
+      "pkg_name": "krb5",
+      "version": "1.22.3-1gl0+bp1877",
+      "purl": "pkg:deb/gardenlinux/krb5",
+      "repo": "package-krb5",
+      "commit": "563be6d64a87d08e766419c953bc0c8842a94143",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false,
+        "upstream_version": "1.22.3"
+      }
+    },
     "1.22.3-1gl0+bp2150": {
       "pkg_name": "krb5",
       "version": "1.22.3-1gl0+bp2150",

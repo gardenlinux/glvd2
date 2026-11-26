@@ -29,6 +29,21 @@
         "upstream_src": false,
         "has_patches": true
       }
+    },
+    "2.1.13-stable-1gl1~bp1877": {
+      "pkg_name": "libevent",
+      "version": "2.1.13-stable-1gl1~bp1877",
+      "purl": "pkg:deb/gardenlinux/libevent",
+      "repo": "bp-package-libevent",
+      "commit": "6eea65154423f82801a7b9c9ef0d165bf1183bc2",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
     }
   }
 }

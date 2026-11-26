@@ -32,6 +32,22 @@
         "upstream_version": "6.12.114"
       }
     },
+    "6.12.119-1gl15~bp1877": {
+      "pkg_name": "linux",
+      "version": "6.12.119-1gl15~bp1877",
+      "purl": "pkg:deb/gardenlinux/linux",
+      "repo": "package-linux",
+      "commit": "8d164dea34832b0c94663fe8eb8d98164b13cc25",
+      "provenance": "unknown",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "6.12.119"
+      }
+    },
     "6.18.56-1gl0~bp2150": {
       "pkg_name": "linux",
       "version": "6.18.56-1gl0~bp2150",
