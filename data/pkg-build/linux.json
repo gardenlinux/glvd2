@@ -97,6 +97,28 @@
         "has_patches": true,
         "upstream_version": "6.18.63"
       }
+    },
+    "6.18.65-1gl0~bp2150": {
+      "pkg_name": "linux",
+      "version": "6.18.65-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/linux",
+      "repo": "package-linux",
+      "commit": "94cdc8d9b4a5028b9ca70a98ca3ffc528f688c59",
+      "provenance": "unknown",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-31688",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "6.18.65"
+      }
     }
   }
 }

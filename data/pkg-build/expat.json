@@ -1,5 +1,31 @@
 {
   "versions": {
+    "2.10.0-1gl0+bp2150": {
+      "pkg_name": "expat",
+      "version": "2.10.0-1gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/expat",
+      "repo": "package-expat",
+      "commit": "a26484e1f9f0b71291fbc2ac6ea4dfc1ff83f5f5",
+      "provenance": "patched-from-debian",
+      "fixed_cves": [
+        {
+          "id": "CVE-2026-124317",
+          "kind": "patch-filename"
+        },
+        {
+          "id": "CVE-2026-128241",
+          "kind": "patch-filename"
+        }
+      ],
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true,
+        "upstream_version": "2.10.0"
+      }
+    },
     "2.8.4-2gl0~bp1877": {
       "pkg_name": "expat",
       "version": "2.8.4-2gl0~bp1877",

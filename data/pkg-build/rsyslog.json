@@ -29,6 +29,21 @@
         "upstream_src": false,
         "has_patches": true
       }
+    },
+    "8.2608.0-4gl1~bp2150": {
+      "pkg_name": "rsyslog",
+      "version": "8.2608.0-4gl1~bp2150",
+      "purl": "pkg:deb/gardenlinux/rsyslog",
+      "repo": "bp-package-rsyslog",
+      "commit": "f160a1801630f077d1f031ccafb275f0d11f6d62",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": false
+      }
     }
   }
 }

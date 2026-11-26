@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "2.2.1-1": {
+      "pkg_name": "mongo-c-driver",
+      "version": "2.2.1-1",
+      "purl": "pkg:deb/gardenlinux/mongo-c-driver",
+      "provenance": "taken-from-testing",
+      "signals": {
+        "built_by_gl": false,
+        "apt_src": false,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": false
+      }
+    }
+  }
+}

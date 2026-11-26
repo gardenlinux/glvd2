@@ -29,6 +29,21 @@
         "upstream_src": false,
         "has_patches": true
       }
+    },
+    "3.3.8gl0+bp2150": {
+      "pkg_name": "apt",
+      "version": "3.3.8gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/apt",
+      "repo": "package-apt",
+      "commit": "f822ace205373596a8f9ed961c081659f6f8a934",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": false,
+        "has_patches": true
+      }
     }
   }
 }

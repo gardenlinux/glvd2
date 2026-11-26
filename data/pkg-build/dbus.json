@@ -25,6 +25,21 @@
         "upstream_src": false,
         "has_patches": false
       }
+    },
+    "1.16.4-1gl0+bp2150": {
+      "pkg_name": "dbus",
+      "version": "1.16.4-1gl0+bp2150",
+      "purl": "pkg:deb/gardenlinux/dbus",
+      "repo": "package-dbus",
+      "commit": "55ab21fbfd00a915427f28338bd88fbef9de6a16",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": true,
+        "salsa_src": false,
+        "upstream_src": false,
+        "has_patches": true
+      }
     }
   }
 }

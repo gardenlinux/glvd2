@@ -30,6 +30,21 @@
         "upstream_src": true,
         "has_patches": true
       }
+    },
+    "3.13.18-1gl0~bp2150": {
+      "pkg_name": "python3.13",
+      "version": "3.13.18-1gl0~bp2150",
+      "purl": "pkg:deb/gardenlinux/python3.13",
+      "repo": "package-python3.13",
+      "commit": "b44644e326a242c3274cd07b6fdfbe1b08e4c9ed",
+      "provenance": "patched-from-debian",
+      "signals": {
+        "built_by_gl": true,
+        "apt_src": false,
+        "salsa_src": true,
+        "upstream_src": true,
+        "has_patches": true
+      }
     }
   }
 }
