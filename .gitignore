@@ -21,6 +21,9 @@ bin/
 # Temporary runtime artifacts (sqlite DB, caches)
 data/tmp/
 
+# Generated static site (written on each run, not committed)
+data/site/
+
 # test code coverage
 coverage.out
 coverage.html

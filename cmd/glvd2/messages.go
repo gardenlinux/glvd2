@@ -37,3 +37,12 @@ func buildSubmoduleUpdateMessage(scope string) string {
 func buildPkgBuildUpdateMessage() string {
 	return "data(pkgbuild): update\n"
 }
+
+// appendTrailer adds line as a trailing message line, separated by a blank line.
+func appendTrailer(message, line string) string {
+	if line == "" {
+		return message
+	}
+
+	return strings.TrimRight(message, "\n") + "\n\n" + line + "\n"
+}

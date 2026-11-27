@@ -12,6 +12,17 @@ func createCommitGroup() []publish.CommitGroup {
 	}
 }
 
-func testMessageForCommitGroup(name string) string {
+func testMessageForCommitGroup(name string, _ bool) string {
 	return "data(" + name + "): update"
+}
+
+// testMessageWithCompletionMarker is a message function that appends the completion
+// marker to the last group's commit message, mirroring how the cmd layer attaches the trailer.
+func testMessageWithCompletionMarker(name string, isLastCommit bool) string {
+	message := "data(" + name + "): update"
+	if isLastCommit {
+		message += "\n\n" + testCompletionMarker + "\n"
+	}
+
+	return message
 }

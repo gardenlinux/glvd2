@@ -15,6 +15,7 @@ func Validate(cfg *AppConfig) error {
 		{cfg.AuditDir, "audit_dir"},
 		{cfg.AssessmentsDir, "assessments_dir"},
 		{cfg.BaselineCommitAnchor, "baseline_commit_anchor"},
+		{cfg.LastCommitOfRunAnchor, "last_commit_of_run_anchor"},
 		{cfg.GLRDReleasesURL, "glrd_releases_url"},
 	}
 	var errs []error

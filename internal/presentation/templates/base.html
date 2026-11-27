@@ -1,0 +1,147 @@
+{{define "base"}}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{.Title}} - GLVD2</title>
+    <link rel="stylesheet" href="{{.Link "assets/site.css"}}">
+    <link rel="stylesheet" href="{{.Link "assets/datatables.min.css"}}">
+    <script>{{inlineAsset "assets/theme.js"}}</script>
+    <script>{{inlineAsset "assets/table-pending.js"}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header>
+      <a class="brand" href="{{.Link "index.html"}}"{{if eq .Section "home"}} aria-current="page"{{end}}><img src="{{.Link "assets/gardenlinux-logo.svg"}}" alt="" aria-hidden="true"><span>Garden Linux Vulnerability Database</span></a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="{{.Link "cves/index.html"}}"{{if eq .Section "cves"}} aria-current="{{if eq .PagePath "cves/index.html"}}page{{else}}true{{end}}"{{end}}>CVEs</a></li>
+          <li><a href="{{.Link "packages/index.html"}}"{{if eq .Section "packages"}} aria-current="{{if eq .PagePath "packages/index.html"}}page{{else}}true{{end}}"{{end}}>Packages</a></li>
+          <li><a href="{{.Link "releases/index.html"}}"{{if eq .Section "releases"}} aria-current="{{if eq .PagePath "releases/index.html"}}page{{else}}true{{end}}"{{end}}>Releases</a></li>
+          <li><a href="{{.Link "statistics/index.html"}}"{{if eq .Section "statistics"}} aria-current="page"{{end}}>Statistics</a></li>
+        </ul>
+      </nav>
+      <form class="cve-search" role="search" aria-label="Find a CVE by ID" data-cve-base="{{.Link "cves/"}}">
+        <label class="sr-only" for="cve-id">Look up a CVE by ID</label>
+        <input type="text" id="cve-id" name="cve-id" placeholder="Search CVE ID…" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        <button type="submit">Go</button>
+        <p id="cve-search-error" class="error" role="alert" hidden></p>
+      </form>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
+    </header>
+    {{if .Breadcrumbs}}
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumbs">
+        <li><a href="{{.Link "index.html"}}">Home</a></li>
+        {{range .Breadcrumbs}}<li>{{if eq .URL $.PagePath}}<span aria-current="page">{{.Label}}</span>{{else}}<a href="{{$.Link .URL}}">{{.Label}}</a>{{end}}</li>{{end}}
+      </ol>
+    </nav>
+    {{end}}
+    <main id="main" tabindex="-1">
+      <h1>{{.Title}}</h1>
+      {{template "content" .}}
+    </main>
+    <script src="{{.Link "assets/jquery.min.js"}}"></script>
+    <script src="{{.Link "assets/datatables.min.js"}}"></script>
+    <script id="datatables-init" src="{{.Link "assets/datatables-init.js"}}"></script>
+    <script src="{{.Link "assets/search.js"}}"></script>
+    <footer>
+      <div class="footer-top">
+        <div class="funding-notice">
+          <img class="funding-image" src="{{.Link "assets/eu-support.png"}}" alt="EU and German government funding logos">
+          <div class="funding-text">
+            <p><strong>Funded by the European Union – NextGenerationEU.</strong></p>
+            <p>The views and opinions expressed are solely those of the author(s) and do not necessarily reflect the views of the European Union or the European Commission. Neither the European Union nor the European Commission can be held responsible for them.</p>
+          </div>
+        </div>
+        <div class="neonephos-logos">
+          <a href="https://neonephos.org/" target="_blank" rel="noopener noreferrer"><img class="neonephos-logo" src="{{.Link "assets/neonephos-logo.svg"}}" alt="Neonephos Logo"></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">
+          <p>Copyright &copy; Linux Foundation Europe.</p>
+          <p>Garden Linux is a project of the NeoNephos Foundation. For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see <a href="https://linuxfoundation.eu/policies">https://linuxfoundation.eu/policies</a>. Linux is a registered trademark of Linus Torvalds.</p>
+          <p>This site includes data from the CVE&reg; Program. CVE&reg; is a registered trademark of The MITRE Corporation. Use of CVE data is governed by the <a href="https://www.cve.org/Legal/TermsOfUse" target="_blank" rel="noopener noreferrer">CVE Program Terms of Use</a>. Vulnerability assessments shown here are Garden Linux's own analysis and are not endorsed by any CVE data source.</p>
+        </div>
+        {{block "footer-meta" .}}
+        <div id="run-meta" class="run-meta" hidden>
+          <p>Generated: <span id="run-meta-generated-at"></span></p>
+          <p><a href="https://github.com/gardenlinux/glvd2" target="_blank" rel="noopener noreferrer">GLVD2</a>@<span id="run-meta-sha"></span></p>
+        </div>
+        {{end}}
+      </div>
+    </footer>
+    {{block "scripts" .}}{{end}}
+    <script src="{{.Link "assets/footer-meta.js"}}"></script>
+  </body>
+</html>
+{{end}}
+
+{{define "categories"}}
+<nav aria-label="CVE lists">
+  <ul>
+    <li><a href="{{.Link "cves/index.html"}}"{{if eq .PagePath "cves/index.html"}} aria-current="page"{{end}}>Find a CVE</a></li>
+    <li><a href="{{.Link "cves/undecided/index.html"}}"{{if eq .PagePath "cves/undecided/index.html"}} aria-current="page"{{end}}>Undecided</a></li>
+  </ul>
+</nav>
+{{end}}
+
+{{define "affectedness"}}<span class="status {{.}}">{{label .}}</span>{{end}}
+
+{{define "releaseTable"}}
+<div class="table-scroll" role="region" aria-label="Maintained release results" tabindex="0">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Release</th>
+        <th scope="col" class="num">Affected</th>
+        <th scope="col" class="num">Fixed</th>
+        <th scope="col" class="num">Not affected</th>
+        <th scope="col" class="num">Unknown</th>
+        <th scope="col" class="num">Needs review</th>
+        <th scope="col">Flavor analysis</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{range .Releases}}
+      <tr>
+        <th scope="row"><a href="{{$.Link .URL}}">{{.Version}}</a></th>
+        <td class="num">{{num .Affected}}</td>
+        <td class="num">{{num .Fixed}}</td>
+        <td class="num">{{num .NotAffected}}</td>
+        <td class="num">{{num .Unknown}}</td>
+        <td class="num">{{num .NeedsReview}}</td>
+        <td>{{if .FlavorsAvailable}}Available{{else}}Unavailable{{end}}</td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+</div>
+{{end}}
+
+{{define "scopeRows"}}
+<tbody>
+  {{range .CVEs}}
+  <tr>
+    <th scope="row" class="col-compact"><a href="{{$.Link .URL}}">{{.ID}}</a></th>
+    <td class="col-compact" data-search="{{.Affectedness}}">{{template "affectedness" .Affectedness}}</td>
+    <td class="col-compact" data-search="{{if .NeedsReview}}yes{{else}}no{{end}}">{{if .NeedsReview}}Yes{{else}}No{{end}}</td>
+    <td class="col-text">{{range $i, $s := .Sources}}{{if $i}}, {{end}}{{$s}}{{end}}</td>
+  </tr>
+  {{end}}
+</tbody>
+{{end}}
+
+{{define "scopeFilters"}}
+{{with .Filter}}
+<div id="{{.ID}}" class="scope-filter" hidden>
+  {{range .Groups}}
+  <div class="scope-filter-group" role="group" aria-label="{{.Legend}}" data-filter-column="{{.Column}}">
+    <span class="scope-filter-legend">{{.Legend}}</span>
+    {{range .Pills}}<button type="button" class="pill{{if not .Token}} is-active{{end}}" data-filter-value="{{.Token}}" aria-pressed="{{if not .Token}}true{{else}}false{{end}}">{{.Label}}</button>{{end}}
+  </div>
+  {{end}}
+</div>
+{{end}}
+{{end}}

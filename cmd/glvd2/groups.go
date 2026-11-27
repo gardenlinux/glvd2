@@ -33,8 +33,18 @@ func createCommitGroups(cfg *config.AppConfig) []publish.CommitGroup {
 }
 
 // commitMessageForGroup builds the commit message for a commit group by its name,
-// using post-run summary counts where relevant.
-func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummary) string {
+// using post-run summary counts where relevant. isLastCommit marks the last group that will
+// actually commit, so the pipeline-completion marker is attached to that commit's message.
+func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummary, isLastCommit bool) string {
+	message := messageForGroup(name, cfg, summary)
+	if isLastCommit {
+		message = appendTrailer(message, cfg.LastCommitOfRunAnchor)
+	}
+
+	return message
+}
+
+func messageForGroup(name string, cfg *config.AppConfig, summary runSummary) string {
 	switch commitGroupName(name) {
 	case commitGroupCVEList:
 		return buildSubmoduleUpdateMessage("cvelistv5")
@@ -57,6 +67,7 @@ func commitMessageForGroup(name string, cfg *config.AppConfig, summary runSummar
 			"gl_package_inventory.json",
 			"vendored_inclusion.json",
 			"shipped_versions_index.json",
+			"flavor_inventory.json",
 		})
 	default:
 		panic(fmt.Sprintf("no commit message builder for group %q", name))

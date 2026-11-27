@@ -301,8 +301,9 @@ func compositeRank(r ReleaseStatusReason) int {
 	return rankUnranked
 }
 
-// effectiveReasons returns the per-package reason, manual override applied over auto.
-func (d ReleaseDecision) effectiveReasons() map[string]ReleaseStatusReason {
+// EffectiveReasons returns each package's reason, taking the manual override when set and the auto reason otherwise.
+// The result is a fresh map that does not alias the decision's own maps.
+func (d ReleaseDecision) EffectiveReasons() map[string]ReleaseStatusReason {
 	out := make(map[string]ReleaseStatusReason, len(d.Auto.Packages))
 	for key, ps := range d.Auto.Packages {
 		out[key] = ps.Reason
@@ -340,7 +341,7 @@ func reasonForOverride(s ReleaseStatus) ReleaseStatusReason {
 func (d ReleaseDecision) CompositeReason() ReleaseStatusReason {
 	best := ReleaseStatusReason("")
 	bestRank := rankUnranked
-	for _, reason := range d.effectiveReasons() {
+	for _, reason := range d.EffectiveReasons() {
 		rank := compositeRank(reason)
 		if rank == rankUnranked {
 			continue

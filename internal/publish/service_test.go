@@ -39,10 +39,11 @@ type fakeGit struct {
 	restoreErr    error
 
 	// recorded calls
-	committed    []string // group first-path per commit
-	resetCalls   []string
-	pushCalls    int
-	restoreCalls int
+	committed     []string          // group first-path per commit
+	commitMessage map[string]string // group first-path -> message passed to Commit
+	resetCalls    []string
+	pushCalls     int
+	restoreCalls  int
 }
 
 func (f *fakeGit) CurrentBranch(_ context.Context) (string, error) {
@@ -81,11 +82,15 @@ func (f *fakeGit) HasStagedChanges(_ context.Context, paths ...string) (bool, er
 	return f.stagedResult[paths[0]], nil
 }
 
-func (f *fakeGit) Commit(_ context.Context, _ string, paths ...string) error {
+func (f *fakeGit) Commit(_ context.Context, message string, paths ...string) error {
 	if f.commitErr != nil && paths[0] == f.commitErrPath {
 		return f.commitErr
 	}
 	f.committed = append(f.committed, paths[0])
+	if f.commitMessage == nil {
+		f.commitMessage = make(map[string]string)
+	}
+	f.commitMessage[paths[0]] = message
 	return nil
 }
 
@@ -290,6 +295,88 @@ func TestRunPushWhenAdvanced(t *testing.T) {
 	require.NoError(t, s.Run(t.Context(), createCommitGroup(), testMessageForCommitGroup))
 	assert.Equal(t, 1, f.pushCalls)
 	assert.Empty(t, f.resetCalls)
+}
+
+func TestRunCompletionMarkerOnLastCommit(t *testing.T) {
+	t.Parallel()
+
+	const marker = "GLVD2-Last-Commit-Of-Run: true"
+
+	for _, level := range []publish.Level{publish.LevelCommit, publish.LevelPush} {
+		t.Run(level.String(), func(t *testing.T) {
+			t.Parallel()
+
+			f := &fakeGit{heads: []string{"start", "head2"}}
+			cfg := testCfg()
+			cfg.Level = level
+			s := publish.NewService(cfg, f)
+
+			require.NoError(t, s.Run(t.Context(), createCommitGroup(), testMessageWithCompletionMarker))
+			// The last group (audit) carries the marker; the earlier one does not.
+			assert.Equal(t, []string{"data/assessments", "data/audit"}, f.committed)
+			assert.Contains(t, f.commitMessage["data/audit"], marker)
+			assert.NotContains(t, f.commitMessage["data/assessments"], marker)
+		})
+	}
+}
+
+// TestRunCompletionMarkerWithTrailingEmptyGroups verifies the marker lands on the last
+// actual commit even when the last group is empty, so trailing empty groups do not
+// deprive the real last commit of it.
+func TestRunCompletionMarkerWithTrailingEmptyGroups(t *testing.T) {
+	t.Parallel()
+
+	const marker = "GLVD2-Last-Commit-Of-Run: true"
+
+	f := &fakeGit{
+		heads: []string{"start", "head2"},
+		stagedResult: map[string]bool{
+			"data/assessments": true,
+			"data/audit":       false,
+		},
+	}
+	cfg := testCfg()
+	cfg.Level = publish.LevelCommit
+	s := publish.NewService(cfg, f)
+
+	require.NoError(t, s.Run(t.Context(), createCommitGroup(), testMessageWithCompletionMarker))
+	assert.Equal(t, []string{"data/assessments"}, f.committed)
+	assert.Contains(t, f.commitMessage["data/assessments"], marker)
+}
+
+// TestRunNoCompletionMarkerWhenUnchanged verifies that a run with no changes creates no
+// commit and therefore no marker.
+func TestRunNoCompletionMarkerWhenUnchanged(t *testing.T) {
+	t.Parallel()
+
+	f := &fakeGit{
+		heads: []string{"start", "start"},
+		stagedResult: map[string]bool{
+			"data/assessments": false,
+			"data/audit":       false,
+		},
+	}
+	cfg := testCfg()
+	cfg.Level = publish.LevelPush
+	s := publish.NewService(cfg, f)
+
+	require.NoError(t, s.Run(t.Context(), createCommitGroup(), testMessageWithCompletionMarker))
+	assert.Empty(t, f.committed)
+	assert.Zero(t, f.pushCalls)
+}
+
+// TestRunNoCompletionMarkerWhenUnset verifies that when the message builder adds no marker,
+// commit messages stay untouched even though a commit was created.
+func TestRunNoCompletionMarkerWhenUnset(t *testing.T) {
+	t.Parallel()
+
+	f := &fakeGit{heads: []string{"start", "head2"}}
+	cfg := testCfg()
+	cfg.Level = publish.LevelCommit
+	s := publish.NewService(cfg, f)
+
+	require.NoError(t, s.Run(t.Context(), createCommitGroup(), testMessageForCommitGroup))
+	assert.NotContains(t, f.commitMessage["data/audit"], "GLVD2-Last-Commit-Of-Run")
 }
 
 func TestRunRollbackOnNonFastForward(t *testing.T) {

@@ -2,7 +2,6 @@ package reactor_test
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
 	"log/slog"
 	"testing"
@@ -42,7 +41,7 @@ func runReact(t *testing.T, r reactor.DebianVerdictDeadline, rec *assessment.Rec
 	var buf bytes.Buffer
 	r.Logger = slog.New(slog.NewJSONHandler(&buf, nil))
 
-	require.NoError(t, r.React(context.Background(), assessment.Record{}, rec, assessment.ChangeSet{}))
+	require.NoError(t, r.React(t.Context(), assessment.Record{}, rec, assessment.ChangeSet{}))
 
 	if buf.Len() == 0 {
 		return nil

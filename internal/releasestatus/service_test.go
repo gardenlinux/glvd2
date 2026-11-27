@@ -86,7 +86,7 @@ func TestService_Assess_PopulatesPerReleaseFromResolver(t *testing.T) {
 
 	s := releasestatus.NewService(resolver, index)
 
-	out, err := s.Assess(context.Background(), relevantRecord(fooIdentity, barIdentity), &cve_v5.CVEV5{})
+	out, err := s.Assess(t.Context(), relevantRecord(fooIdentity, barIdentity), &cve_v5.CVEV5{})
 	require.NoError(t, err)
 
 	// releaseA ships both sources; releaseB ships only foo.
@@ -124,7 +124,7 @@ func TestService_Assess_NotShippedSourceIsOmitted(t *testing.T) {
 
 	s := releasestatus.NewService(resolver, index)
 
-	out, err := s.Assess(context.Background(), relevantRecord(fooIdentity, notShippedPURL), &cve_v5.CVEV5{})
+	out, err := s.Assess(t.Context(), relevantRecord(fooIdentity, notShippedPURL), &cve_v5.CVEV5{})
 	require.NoError(t, err)
 
 	rel := out[releaseA]
@@ -150,7 +150,7 @@ func TestService_Assess_VendoredSkipsResolver(t *testing.T) {
 
 	s := releasestatus.NewService(resolver, index)
 
-	out, err := s.Assess(context.Background(), rec, &cve_v5.CVEV5{})
+	out, err := s.Assess(t.Context(), rec, &cve_v5.CVEV5{})
 	require.NoError(t, err)
 
 	got := out[releaseA].Auto.Packages[fooIdentity]
@@ -172,7 +172,7 @@ func TestService_Assess_PropagatesResolverError(t *testing.T) {
 
 	s := releasestatus.NewService(resolver, index)
 
-	_, err := s.Assess(context.Background(), relevantRecord(fooIdentity), &cve_v5.CVEV5{})
+	_, err := s.Assess(t.Context(), relevantRecord(fooIdentity), &cve_v5.CVEV5{})
 	require.Error(t, err)
 }
 
@@ -184,6 +184,6 @@ func TestService_Assess_PropagatesIndexError(t *testing.T) {
 
 	s := releasestatus.NewService(resolver, index)
 
-	_, err := s.Assess(context.Background(), relevantRecord(fooIdentity), &cve_v5.CVEV5{})
+	_, err := s.Assess(t.Context(), relevantRecord(fooIdentity), &cve_v5.CVEV5{})
 	require.Error(t, err)
 }

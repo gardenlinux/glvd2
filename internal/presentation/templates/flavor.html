@@ -1,0 +1,22 @@
+{{define "content"}}
+<section aria-labelledby="cves-heading">
+  <h2 id="cves-heading">CVEs</h2>
+  <p>{{num (len .CVEs)}} CVEs with results for source packages included in this flavor. Only CVEs relevant to Garden Linux are listed.</p>
+  {{if .CVEs}}
+  {{template "scopeFilters" .}}
+  <div class="table-scroll" role="region" aria-label="Flavor CVE results" tabindex="0">
+    <table class="datatable"{{with .Filter}} data-scope-filter="{{.ID}}"{{end}}>
+      <thead>
+        <tr>
+          <th scope="col" class="col-compact">CVE</th>
+          <th scope="col" class="col-compact">Flavor status</th>
+          <th scope="col" class="col-compact">Needs review</th>
+          <th scope="col" class="col-text">Source packages</th>
+        </tr>
+      </thead>
+      {{template "scopeRows" .}}
+    </table>
+  </div>
+  {{else}}<p>No relevant CVEs with recorded results for source packages in this flavor.</p>{{end}}
+</section>
+{{end}}

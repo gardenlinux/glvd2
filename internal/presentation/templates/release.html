@@ -1,0 +1,28 @@
+{{define "content"}}
+{{if .Flavors}}
+<section aria-labelledby="flavors-heading">
+  <h2 id="flavors-heading">Flavors</h2>
+  <ul class="flavors">{{range .Flavors}}<li><a href="{{$.Link .URL}}">{{.Name}}</a></li>{{end}}</ul>
+</section>
+{{else}}<p>No per-flavor SBOM data is available for this release. Showing release-wide results only.</p>{{end}}
+<section aria-labelledby="cves-heading">
+  <h2 id="cves-heading">Relevant CVEs</h2>
+  <p>{{num (len .CVEs)}} CVEs with recorded release results. Only CVEs relevant to Garden Linux are listed. Needs review is independent of release status.</p>
+  {{if .CVEs}}
+  {{template "scopeFilters" .}}
+  <div class="table-scroll" role="region" aria-label="Release CVE results" tabindex="0">
+    <table class="datatable"{{with .Filter}} data-scope-filter="{{.ID}}"{{end}}>
+      <thead>
+        <tr>
+          <th scope="col" class="col-compact">CVE</th>
+          <th scope="col" class="col-compact">Release status</th>
+          <th scope="col" class="col-compact">Needs review</th>
+          <th scope="col" class="col-text">Source packages</th>
+        </tr>
+      </thead>
+      {{template "scopeRows" .}}
+    </table>
+  </div>
+  {{else}}<p>No relevant CVEs with recorded results for this release.</p>{{end}}
+</section>
+{{end}}

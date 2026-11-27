@@ -1,0 +1,28 @@
+{{define "content"}}
+<section aria-label="CVE counts">
+  <p>Of the <a href="{{.Link "cves/index.html"}}">{{num .Counts.Total}} CVE records</a> published worldwide:</p>
+  <ul class="summary">
+    <li><strong>{{num .Counts.Relevant}}</strong> Relevant to Garden Linux</li>
+    <li><strong>{{num .Counts.NotRelevant}}</strong> Not relevant</li>
+    <li><a href="{{.Link "cves/undecided/index.html"}}"><strong>{{num .Counts.Undecided}}</strong> Undecided</a></li>
+  </ul>
+  <p>A relevant CVE is one worth tracking for Garden Linux. Relevance alone does not mean a release is affected. Check the release and flavor results for affectedness.</p>
+</section>
+<section aria-labelledby="releases">
+  <h2 id="releases">Maintained releases</h2>
+  {{if .Releases}}
+  {{template "releaseTable" .}}
+  {{else}}<p>No maintained releases are included in this database.</p>{{end}}
+</section>
+<section aria-labelledby="data-sources">
+  <h2 id="data-sources">Data sources</h2>
+  <p>Vulnerability data is derived from the <a href="https://www.cve.org/" target="_blank" rel="noopener noreferrer">CVE&reg; Program</a> and the <a href="https://security-tracker.debian.org/" target="_blank" rel="noopener noreferrer">Debian Security Tracker</a>. Triage results shown here are Garden Linux's own analysis and are not endorsed by these projects.</p>
+</section>
+{{end}}
+
+{{define "footer-meta"}}
+<div class="run-meta">
+  <p>Generated: {{.GeneratedAt}}</p>
+  <p><a href="https://github.com/gardenlinux/glvd2" target="_blank" rel="noopener noreferrer">GLVD2</a>@<span title="{{.BuildSHA}}">{{.BuildSHAShort}}</span></p>
+</div>
+{{end}}

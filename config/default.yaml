@@ -11,7 +11,11 @@ deb_sec_tracker_sub_repo_path: "./submodules/debian-security-tracker"
 
 baseline_commit_anchor: "GLVD2-Baseline: true"
 
+last_commit_of_run_anchor: "GLVD2-Last-Commit-Of-Run: true"
+
 glrd_releases_url: "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
+
+site_out_dir: "./data/site"
 
 # CVE relevance screening tunables.
 screening:

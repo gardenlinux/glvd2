@@ -1,0 +1,29 @@
+{{define "content"}}
+<p>{{num (len .Packages)}} Garden Linux source packages have recorded decisions for relevant CVEs.</p>
+{{if .Packages}}
+<div class="table-scroll" role="region" aria-label="Source packages" tabindex="0">
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th scope="col" class="col-value">Package</th>
+        <th scope="col" class="col-compact">Namespace</th>
+        <th scope="col" class="num">CVEs</th>
+        <th scope="col" class="num">Affected</th>
+        <th scope="col" class="num">Needs review</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{range .Packages}}
+      <tr>
+        <th scope="row" class="col-value"><a href="{{$.Link .URL}}">{{.Name}}</a></th>
+        <td class="col-compact">{{.Namespace}}</td>
+        <td class="num">{{num .Total}}</td>
+        <td class="num">{{num .Affected}}</td>
+        <td class="num">{{num .NeedsReview}}</td>
+      </tr>
+    {{end}}
+    </tbody>
+  </table>
+</div>
+{{else}}<p>No packages with relevant CVEs are recorded.</p>{{end}}
+{{end}}

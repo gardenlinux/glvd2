@@ -1,6 +1,8 @@
 package assessment_test
 
 import (
+	"context"
+	"errors"
 	"os"
 	"path/filepath"
 	"testing"
@@ -122,4 +124,86 @@ func TestStore_Save_InvalidID(t *testing.T) {
 	rec := assessment.Record{ID: "not-a-cve"}
 	err := store.Save(rec)
 	require.Error(t, err)
+}
+
+func TestStore_Walk_VisitsAllRecords(t *testing.T) {
+	t.Parallel()
+
+	dir := t.TempDir()
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
+
+	ids := []string{"CVE-2024-0001", "CVE-2024-50001", "CVE-2023-9"}
+	for _, id := range ids {
+		require.NoError(t, store.Save(assessment.Record{ID: id}))
+	}
+
+	seen := make(map[string]struct{})
+	err := store.Walk(t.Context(), func(rec assessment.Record) error {
+		seen[rec.ID] = struct{}{}
+		return nil
+	})
+	require.NoError(t, err)
+
+	for _, id := range ids {
+		_, ok := seen[id]
+		assert.True(t, ok, "Walk must visit %s", id)
+	}
+	assert.Len(t, seen, len(ids))
+}
+
+func TestStore_Walk_PropagatesCallbackError(t *testing.T) {
+	t.Parallel()
+
+	dir := t.TempDir()
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
+	require.NoError(t, store.Save(assessment.Record{ID: "CVE-2024-0001"}))
+
+	sentinel := errors.New("boom")
+	err := store.Walk(t.Context(), func(assessment.Record) error {
+		return sentinel
+	})
+	require.ErrorIs(t, err, sentinel)
+}
+
+func TestStore_Walk_FailsOnMismatchedIdentity(t *testing.T) {
+	t.Parallel()
+
+	dir := t.TempDir()
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
+
+	// Write a record whose file name does not match its declared ID.
+	path := filepath.Join(dir, "2024", "0xxx", "CVE-2024-0001.json")
+	require.NoError(t, os.MkdirAll(filepath.Dir(path), 0o755))
+	require.NoError(t, os.WriteFile(path, []byte(`{"id":"CVE-2024-0002"}`), 0o644))
+
+	err := store.Walk(t.Context(), func(assessment.Record) error { return nil })
+	require.ErrorIs(t, err, assessment.ErrRecordIDMismatch)
+}
+
+func TestStore_Walk_FailsOnCorruptRecord(t *testing.T) {
+	t.Parallel()
+
+	dir := t.TempDir()
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
+
+	path := filepath.Join(dir, "2024", "0xxx", "CVE-2024-0001.json")
+	require.NoError(t, os.MkdirAll(filepath.Dir(path), 0o755))
+	require.NoError(t, os.WriteFile(path, []byte(`{not json`), 0o644))
+
+	err := store.Walk(t.Context(), func(assessment.Record) error { return nil })
+	require.Error(t, err)
+}
+
+func TestStore_Walk_HonorsContextCancellation(t *testing.T) {
+	t.Parallel()
+
+	dir := t.TempDir()
+	store := assessment.NewStore(&config.AppConfig{AssessmentsDir: dir})
+	require.NoError(t, store.Save(assessment.Record{ID: "CVE-2024-0001"}))
+
+	ctx, cancel := context.WithCancel(t.Context())
+	cancel()
+
+	err := store.Walk(ctx, func(assessment.Record) error { return nil })
+	require.ErrorIs(t, err, context.Canceled)
 }

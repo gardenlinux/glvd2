@@ -1,0 +1,26 @@
+{{define "content"}}
+{{template "categories" .}}
+<p>{{num (len .CVEs)}} CVEs are still awaiting a relevance decision for Garden Linux. Each row shows when we first saw the CVE ("Undecided since") and its upstream publication date. Sort by "Undecided since" to find the oldest pending records.</p>
+{{if .CVEs}}
+<div class="table-scroll" role="region" aria-label="Undecided CVE records" tabindex="0">
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th scope="col" class="col-compact">CVE</th>
+        <th scope="col" class="col-compact">Undecided since</th>
+        <th scope="col" class="col-compact">Published</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{range .CVEs}}
+      <tr>
+        <th scope="row" class="col-compact"><a href="{{$.Link .URL}}">{{.ID}}</a></th>
+        <td class="col-compact">{{if .UndecidedSince}}<time datetime="{{.UndecidedSince}}">{{.UndecidedSince}}</time>{{else}}-{{end}}</td>
+        <td class="col-compact">{{if .Published}}<time datetime="{{.Published}}">{{.Published}}</time>{{else}}-{{end}}</td>
+      </tr>
+    {{end}}
+    </tbody>
+  </table>
+</div>
+{{else}}<p>No CVEs are awaiting a relevance decision.</p>{{end}}
+{{end}}
