@@ -1284,10 +1284,7 @@
             "pkg:deb/debian/sqlparse": 8
         },
         "\"angular\":\"angular\"": {
-            "pkg:deb/debian/angular.js": 35
-        },
-        "\"angular\":\"devtools\"": {
-            "pkg:deb/debian/angular.js": 1
+            "pkg:deb/debian/angular.js": 34
         },
         "\"angularjs\":\"angular.js\"": {
             "pkg:deb/debian/angular.js": 2
@@ -1565,7 +1562,7 @@
             "pkg:deb/debian/jakarta-jmeter": 3
         },
         "\"apache software foundation\":\"apache jspwiki\"": {
-            "pkg:deb/debian/jspwiki": 23
+            "pkg:deb/debian/jspwiki": 42
         },
         "\"apache software foundation\":\"apache kafka clients\"": {
             "pkg:deb/debian/kafka": 1
@@ -2903,7 +2900,7 @@
         },
         "\"canonical\":\"lxd\"": {
             "pkg:deb/debian/incus": 24,
-            "pkg:deb/debian/lxd": 46
+            "pkg:deb/debian/lxd": 48
         },
         "\"canonical\":\"ppp\"": {
             "pkg:deb/debian/ppp": 1
@@ -3826,7 +3823,7 @@
             "pkg:deb/debian/docker.io": 1
         },
         "\"docker\":\"docker engine\"": {
-            "pkg:deb/debian/docker.io": 4,
+            "pkg:deb/debian/docker.io": 5,
             "pkg:deb/debian/golang-github-moby-go-archive": 1
         },
         "\"docker\":\"docker sandboxes\"": {
@@ -4312,6 +4309,24 @@
         "\"evolution-data-server3\":\"evolution-data-server3\"": {
             "pkg:deb/debian/evolution-data-server3": 1
         },
+        "\"ex-aws\":\"ex_aws\"": {
+            "pkg:deb/debian/elixir-ex-aws": 3
+        },
+        "\"ex-aws\":\"ex_aws_dynamo\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"ex-aws\":\"ex_aws_kms\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"ex-aws\":\"ex_aws_lambda\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"ex-aws\":\"ex_aws_s3\"": {
+            "pkg:deb/debian/elixir-ex-aws": 7
+        },
+        "\"ex-aws\":\"ex_aws_ses\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
         "\"excon\":\"excon\"": {
             "pkg:deb/debian/ruby-excon": 2
         },
@@ -4322,7 +4337,7 @@
             "pkg:deb/debian/libimage-exiftool-perl": 1
         },
         "\"exim\":\"exim\"": {
-            "pkg:deb/debian/exim4": 22
+            "pkg:deb/debian/exim4": 23
         },
         "\"exim\":\"libspf2\"": {
             "pkg:deb/debian/libspf2": 1
@@ -4686,6 +4701,9 @@
         },
         "\"freedesktop.org\":\"libslirp\"": {
             "pkg:deb/debian/libslirp": 1
+        },
+        "\"freedesktop.org\":\"modemmanager\"": {
+            "pkg:deb/debian/modemmanager": 1
         },
         "\"freedesktop.org\":\"spice-gtk\"": {
             "pkg:deb/debian/spice-gtk": 1
@@ -5123,7 +5141,7 @@
             "pkg:deb/debian/ekiga": 1
         },
         "\"gnome\":\"epiphany\"": {
-            "pkg:deb/debian/epiphany-browser": 4
+            "pkg:deb/debian/epiphany-browser": 6
         },
         "\"gnome\":\"evolution data server\"": {
             "pkg:deb/debian/evolution": 1,
@@ -9205,7 +9223,7 @@
         },
         "\"moby\":\"moby\"": {
             "pkg:deb/debian/containerd": 1,
-            "pkg:deb/debian/docker.io": 19
+            "pkg:deb/debian/docker.io": 20
         },
         "\"moby\":\"moby/v2/daemon\"": {
             "pkg:deb/debian/docker.io": 1
@@ -9341,7 +9359,7 @@
             "pkg:deb/debian/libbson-xs-perl": 1
         },
         "\"mongodb\":\"c driver\"": {
-            "pkg:deb/debian/mongo-c-driver": 20
+            "pkg:deb/debian/mongo-c-driver": 22
         },
         "\"mongodb\":\"c++ driver\"": {
             "pkg:deb/debian/mongo-cxx-driver": 5
@@ -9361,6 +9379,9 @@
         },
         "\"mongodb\":\"java_driver\"": {
             "pkg:deb/debian/mongo-java-driver": 1
+        },
+        "\"mongodb\":\"libmongocrypt driver\"": {
+            "pkg:deb/debian/libmongocrypt": 1
         },
         "\"mongodb\":\"libmongocrypt\"": {
             "pkg:deb/debian/libmongocrypt": 7
@@ -9392,7 +9413,7 @@
             "pkg:deb/debian/php-mongodb": 5
         },
         "\"mongodb\":\"python driver\"": {
-            "pkg:deb/debian/pymongo": 7
+            "pkg:deb/debian/pymongo": 8
         },
         "\"mongodb\":\"ruby driver\"": {
             "pkg:deb/debian/ruby-mongo": 1
@@ -12447,7 +12468,7 @@
             "pkg:deb/debian/fort-validator": 2
         },
         "\"nicolargo\":\"glances\"": {
-            "pkg:deb/debian/glances": 25
+            "pkg:deb/debian/glances": 26
         },
         "\"nicotine-plus\":\"nicotine-plus\"": {
             "pkg:deb/debian/nicotine-plus": 1
@@ -14754,6 +14775,9 @@
         "\"psf\":\"requests\"": {
             "pkg:deb/debian/requests": 4
         },
+        "\"pulp\":\"pulp_python\"": {
+            "pkg:deb/debian/python-pulp": 1
+        },
         "\"puma\":\"puma\"": {
             "pkg:deb/debian/puma": 14
         },
@@ -14852,8 +14876,8 @@
             "pkg:deb/debian/fpdf2": 2
         },
         "\"py-pdf\":\"pypdf\"": {
-            "pkg:deb/debian/pypdf": 72,
-            "pkg:deb/debian/pypdf2": 71
+            "pkg:deb/debian/pypdf": 73,
+            "pkg:deb/debian/pypdf2": 72
         },
         "\"py-pdf\":\"pypdf2\"": {
             "pkg:deb/debian/pypdf2": 1
@@ -16208,7 +16232,7 @@
         "\"samba\":\"samba\"": {
             "pkg:deb/debian/cifs-utils": 1,
             "pkg:deb/debian/heimdal": 2,
-            "pkg:deb/debian/samba": 16
+            "pkg:deb/debian/samba": 17
         },
         "\"samboy\":\"maradns\"": {
             "pkg:deb/debian/maradns": 1
@@ -16306,7 +16330,7 @@
             "pkg:deb/debian/libstb": 1
         },
         "\"seaweedfs\":\"seaweedfs\"": {
-            "pkg:deb/debian/seaweedfs": 15
+            "pkg:deb/debian/seaweedfs": 17
         },
         "\"sebastianbergmann\":\"phpunit\"": {
             "pkg:deb/debian/phpunit": 3
@@ -19080,7 +19104,7 @@
             "pkg:deb/debian/trac": 1
         },
         "\"traefik\":\"traefik\"": {
-            "pkg:deb/debian/traefik": 81
+            "pkg:deb/debian/traefik": 86
         },
         "\"trailofbits\":\"rfc3161-client\"": {
             "pkg:deb/debian/python-rfc3161-client": 1
@@ -19607,7 +19631,7 @@
             "pkg:deb/debian/vllm": 2
         },
         "\"vllm-project\":\"vllm\"": {
-            "pkg:deb/debian/vllm": 131
+            "pkg:deb/debian/vllm": 134
         },
         "\"vllm-project\":\"vllm-project/vllm\"": {
             "pkg:deb/debian/vllm": 4
@@ -21399,8 +21423,26 @@
         "cpe:2.3:a:eventlet:eventlet:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/dnspython": 1
         },
+        "cpe:2.3:a:ex-aws:ex_aws:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/elixir-ex-aws": 3
+        },
+        "cpe:2.3:a:ex-aws:ex_aws_dynamo:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "cpe:2.3:a:ex-aws:ex_aws_kms:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "cpe:2.3:a:ex-aws:ex_aws_lambda:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "cpe:2.3:a:ex-aws:ex_aws_s3:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/elixir-ex-aws": 7
+        },
+        "cpe:2.3:a:ex-aws:ex_aws_ses:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
         "cpe:2.3:a:exim:exim:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/exim4": 20
+            "pkg:deb/debian/exim4": 21
         },
         "cpe:2.3:a:exim:libspf2:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspf2": 1
@@ -23675,8 +23717,8 @@
             "pkg:deb/debian/putty": 6
         },
         "cpe:2.3:a:py-pdf:pypdf:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/pypdf": 3,
-            "pkg:deb/debian/pypdf2": 3
+            "pkg:deb/debian/pypdf": 4,
+            "pkg:deb/debian/pypdf2": 4
         },
         "cpe:2.3:a:pydantic_project:pydantic:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/pydantic": 1
@@ -24427,7 +24469,7 @@
             "pkg:deb/debian/tpm2-tss": 1
         },
         "cpe:2.3:a:traefik:traefik:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/traefik": 28
+            "pkg:deb/debian/traefik": 33
         },
         "cpe:2.3:a:traefik:traefik_enterprise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/traefik": 1
@@ -24550,7 +24592,7 @@
             "pkg:deb/debian/vllm": 9
         },
         "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/vllm": 53
+            "pkg:deb/debian/vllm": 56
         },
         "cpe:2.3:a:vmware:spring:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/libspring-java": 1
@@ -25362,7 +25404,7 @@
             "pkg:deb/debian/firewalld": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"flatpak\"": {
-            "pkg:deb/debian/flatpak": 16
+            "pkg:deb/debian/flatpak": 18
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"flatpak-builder\"": {
             "pkg:deb/debian/flatpak-builder": 2
@@ -25584,7 +25626,7 @@
             "pkg:deb/debian/keycloak": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 147
+            "pkg:deb/debian/keycloak": 148
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -25636,6 +25678,9 @@
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libraw1394\"": {
             "pkg:deb/debian/libraw": 4
+        },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"librelp\"": {
+            "pkg:deb/debian/librelp": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"libreoffice\"": {
             "pkg:deb/debian/libreoffice": 2
@@ -26340,7 +26385,7 @@
             "pkg:deb/debian/resteasy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rh-sso7-keycloak\"": {
-            "pkg:deb/debian/keycloak": 43
+            "pkg:deb/debian/keycloak": 44
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rhoso-openvswitch\"": {
             "pkg:deb/debian/openvswitch": 1
@@ -26382,13 +26427,13 @@
             "pkg:deb/debian/rust-rpm-sequoia": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba\"": {
-            "pkg:deb/debian/samba": 26
+            "pkg:deb/debian/samba": 27
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba-winbind\"": {
             "pkg:deb/debian/samba": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"samba4\"": {
-            "pkg:deb/debian/samba": 25
+            "pkg:deb/debian/samba": 26
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"sbc\"": {
             "pkg:deb/debian/sbc": 1
@@ -26881,7 +26926,7 @@
             "pkg:deb/debian/jss": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow\"": {
-            "pkg:deb/debian/undertow": 11
+            "pkg:deb/debian/undertow": 10
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-core\"": {
             "pkg:deb/debian/undertow": 16
@@ -27871,6 +27916,24 @@
             "pkg:deb/debian/erlang-hex": 3,
             "pkg:deb/debian/rebar3": 4
         },
+        "\"https://github.com\":\"ex-aws/ex_aws\"": {
+            "pkg:deb/debian/elixir-ex-aws": 3
+        },
+        "\"https://github.com\":\"ex-aws/ex_aws_dynamo\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"https://github.com\":\"ex-aws/ex_aws_kms\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"https://github.com\":\"ex-aws/ex_aws_lambda\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"https://github.com\":\"ex-aws/ex_aws_s3\"": {
+            "pkg:deb/debian/elixir-ex-aws": 7
+        },
+        "\"https://github.com\":\"ex-aws/ex_aws_ses\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
         "\"https://github.com\":\"gleam-lang/gleam\"": {
             "pkg:deb/debian/gleam": 6
         },
@@ -28213,6 +28276,9 @@
         "\"https://github.com/protocolbuffers/protobuf/\":\"protobuf\"": {
             "pkg:deb/debian/protobuf": 1
         },
+        "\"https://github.com/pulp/pulp_python\":\"pulp_python\"": {
+            "pkg:deb/debian/python-pulp": 1
+        },
         "\"https://github.com/pyca/cryptography\":\"python-cryptography\"": {
             "pkg:deb/debian/python-cryptography": 1
         },
@@ -28382,10 +28448,13 @@
             "pkg:deb/debian/qemu": 1
         },
         "\"https://gitlab.com/samba-team/samba\":\"samba\"": {
-            "pkg:deb/debian/samba": 1
+            "pkg:deb/debian/samba": 2
         },
         "\"https://gitlab.freedesktop.org/gstreamer/gst-plugins-good\":\"gst-plugins-good\"": {
             "pkg:deb/debian/gst-plugins-good1.0": 5
+        },
+        "\"https://gitlab.freedesktop.org/mobile-broadband/ModemManager\":\"ModemManager\"": {
+            "pkg:deb/debian/modemmanager": 1
         },
         "\"https://gitlab.freedesktop.org/pipewire/pipewire\":\"pipewire\"": {
             "pkg:deb/debian/pipewire": 1
@@ -28442,7 +28511,7 @@
             "pkg:deb/debian/dia": 1
         },
         "\"https://gitlab.gnome.org/GNOME/epiphany\":\"epiphany\"": {
-            "pkg:deb/debian/epiphany-browser": 5
+            "pkg:deb/debian/epiphany-browser": 7
         },
         "\"https://gitlab.gnome.org/GNOME/evolution-data-server\":\"evolution-data-server\"": {
             "pkg:deb/debian/evolution-data-server": 1
@@ -29574,6 +29643,24 @@
             "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
         },
+        "\"https://repo.hex.pm\":\"ex_aws\"": {
+            "pkg:deb/debian/elixir-ex-aws": 3
+        },
+        "\"https://repo.hex.pm\":\"ex_aws_dynamo\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"https://repo.hex.pm\":\"ex_aws_kms\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"https://repo.hex.pm\":\"ex_aws_lambda\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "\"https://repo.hex.pm\":\"ex_aws_s3\"": {
+            "pkg:deb/debian/elixir-ex-aws": 7
+        },
+        "\"https://repo.hex.pm\":\"ex_aws_ses\"": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
         "\"https://repo.hex.pm\":\"hex_core\"": {
             "pkg:deb/debian/erlang": 1,
             "pkg:deb/debian/erlang-hex": 4,
@@ -29759,8 +29846,14 @@
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.jena:jena-arq\"": {
             "pkg:deb/debian/apache-jena": 2
         },
-        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-war\"": {
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-main\"": {
             "pkg:deb/debian/jspwiki": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-tika-searchprovider\"": {
+            "pkg:deb/debian/jspwiki": 1
+        },
+        "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-war\"": {
+            "pkg:deb/debian/jspwiki": 18
         },
         "\"https://repo.maven.apache.org/maven2\":\"org.apache.kafka:connect-runtime\"": {
             "pkg:deb/debian/kafka": 2
@@ -31068,6 +31161,24 @@
         "pkg:github/esnet/iperf": {
             "pkg:deb/debian/iperf3": 1
         },
+        "pkg:github/ex-aws/ex_aws": {
+            "pkg:deb/debian/elixir-ex-aws": 3
+        },
+        "pkg:github/ex-aws/ex_aws_dynamo": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "pkg:github/ex-aws/ex_aws_kms": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "pkg:github/ex-aws/ex_aws_lambda": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "pkg:github/ex-aws/ex_aws_s3": {
+            "pkg:deb/debian/elixir-ex-aws": 7
+        },
+        "pkg:github/ex-aws/ex_aws_ses": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
         "pkg:github/ffmpeg/ffmpeg": {
             "pkg:deb/debian/ffmpeg": 179
         },
@@ -31582,10 +31693,10 @@
             "pkg:deb/debian/traefik": 1
         },
         "pkg:golang/github.com/traefik/traefik/v2": {
-            "pkg:deb/debian/traefik": 13
+            "pkg:deb/debian/traefik": 16
         },
         "pkg:golang/github.com/traefik/traefik/v3": {
-            "pkg:deb/debian/traefik": 26
+            "pkg:deb/debian/traefik": 31
         },
         "pkg:golang/helm.sh/helm/v4": {
             "pkg:deb/debian/helm-kubernetes": 1
@@ -31600,6 +31711,24 @@
             "pkg:deb/debian/erlang-cowboy": 1,
             "pkg:deb/debian/erlang-cowlib": 7,
             "pkg:deb/debian/rabbitmq-server": 1
+        },
+        "pkg:hex/ex_aws": {
+            "pkg:deb/debian/elixir-ex-aws": 3
+        },
+        "pkg:hex/ex_aws_dynamo": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "pkg:hex/ex_aws_kms": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "pkg:hex/ex_aws_lambda": {
+            "pkg:deb/debian/elixir-ex-aws": 1
+        },
+        "pkg:hex/ex_aws_s3": {
+            "pkg:deb/debian/elixir-ex-aws": 7
+        },
+        "pkg:hex/ex_aws_ses": {
+            "pkg:deb/debian/elixir-ex-aws": 1
         },
         "pkg:hex/hex_core": {
             "pkg:deb/debian/erlang": 1,
@@ -31699,8 +31828,14 @@
         "pkg:maven/org.apache.jena/jena-arq": {
             "pkg:deb/debian/apache-jena": 2
         },
-        "pkg:maven/org.apache.jspwiki/jspwiki-war": {
+        "pkg:maven/org.apache.jspwiki/jspwiki-main": {
             "pkg:deb/debian/jspwiki": 1
+        },
+        "pkg:maven/org.apache.jspwiki/jspwiki-tika-searchprovider": {
+            "pkg:deb/debian/jspwiki": 1
+        },
+        "pkg:maven/org.apache.jspwiki/jspwiki-war": {
+            "pkg:deb/debian/jspwiki": 18
         },
         "pkg:maven/org.apache.kafka/connect-runtime": {
             "pkg:deb/debian/kafka": 2
@@ -32264,8 +32399,8 @@
             "pkg:deb/debian/pymupdf": 1
         },
         "pkg:pypi/pypdf": {
-            "pkg:deb/debian/pypdf": 3,
-            "pkg:deb/debian/pypdf2": 3
+            "pkg:deb/debian/pypdf": 4,
+            "pkg:deb/debian/pypdf2": 4
         },
         "pkg:pypi/pytest": {
             "pkg:deb/debian/pytest": 1
@@ -32301,7 +32436,7 @@
             "pkg:deb/debian/uv": 3
         },
         "pkg:pypi/vllm": {
-            "pkg:deb/debian/vllm": 52
+            "pkg:deb/debian/vllm": 55
         },
         "pkg:pypi/weblate": {
             "pkg:deb/debian/weblate": 5

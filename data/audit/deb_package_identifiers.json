@@ -629,7 +629,6 @@
             "\"@angular\":\"router\"",
             "\"@angular/\":\"platform-server\"",
             "\"angular\":\"angular\"",
-            "\"angular\":\"devtools\"",
             "\"angularjs\":\"angular.js\"",
             "\"google\":\"angularjs\"",
             "\"n/a\":\"angular\"",
@@ -5017,6 +5016,52 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/elixir-ex-aws": {
+        "VendorProductIDs": [
+            "\"ex-aws\":\"ex_aws\"",
+            "\"ex-aws\":\"ex_aws_dynamo\"",
+            "\"ex-aws\":\"ex_aws_kms\"",
+            "\"ex-aws\":\"ex_aws_lambda\"",
+            "\"ex-aws\":\"ex_aws_s3\"",
+            "\"ex-aws\":\"ex_aws_ses\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:ex-aws:ex_aws:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ex-aws:ex_aws_dynamo:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ex-aws:ex_aws_kms:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ex-aws:ex_aws_lambda:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ex-aws:ex_aws_s3:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ex-aws:ex_aws_ses:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": [
+            "\"https://github.com\":\"ex-aws/ex_aws\"",
+            "\"https://github.com\":\"ex-aws/ex_aws_dynamo\"",
+            "\"https://github.com\":\"ex-aws/ex_aws_kms\"",
+            "\"https://github.com\":\"ex-aws/ex_aws_lambda\"",
+            "\"https://github.com\":\"ex-aws/ex_aws_s3\"",
+            "\"https://github.com\":\"ex-aws/ex_aws_ses\"",
+            "\"https://repo.hex.pm\":\"ex_aws\"",
+            "\"https://repo.hex.pm\":\"ex_aws_dynamo\"",
+            "\"https://repo.hex.pm\":\"ex_aws_kms\"",
+            "\"https://repo.hex.pm\":\"ex_aws_lambda\"",
+            "\"https://repo.hex.pm\":\"ex_aws_s3\"",
+            "\"https://repo.hex.pm\":\"ex_aws_ses\""
+        ],
+        "PackageURLs": [
+            "pkg:github/ex-aws/ex_aws",
+            "pkg:github/ex-aws/ex_aws_dynamo",
+            "pkg:github/ex-aws/ex_aws_kms",
+            "pkg:github/ex-aws/ex_aws_lambda",
+            "pkg:github/ex-aws/ex_aws_s3",
+            "pkg:github/ex-aws/ex_aws_ses",
+            "pkg:hex/ex_aws",
+            "pkg:hex/ex_aws_dynamo",
+            "pkg:hex/ex_aws_kms",
+            "pkg:hex/ex_aws_lambda",
+            "pkg:hex/ex_aws_s3",
+            "pkg:hex/ex_aws_ses"
+        ]
     },
     "pkg:deb/debian/elixir-lang": {
         "VendorProductIDs": [
@@ -12349,9 +12394,13 @@
         ],
         "CPEs": null,
         "PackageIDs": [
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-main\"",
+            "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-tika-searchprovider\"",
             "\"https://repo.maven.apache.org/maven2\":\"org.apache.jspwiki:jspwiki-war\""
         ],
         "PackageURLs": [
+            "pkg:maven/org.apache.jspwiki/jspwiki-main",
+            "pkg:maven/org.apache.jspwiki/jspwiki-tika-searchprovider",
             "pkg:maven/org.apache.jspwiki/jspwiki-war"
         ]
     },
@@ -15321,6 +15370,7 @@
     },
     "pkg:deb/debian/libmongocrypt": {
         "VendorProductIDs": [
+            "\"mongodb\":\"libmongocrypt driver\"",
             "\"mongodb\":\"libmongocrypt\""
         ],
         "CPEs": null,
@@ -15966,6 +16016,14 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/librelp": {
+        "VendorProductIDs": null,
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"librelp\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/libreoffice": {
@@ -18923,6 +18981,16 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/modemmanager": {
+        "VendorProductIDs": [
+            "\"freedesktop.org\":\"modemmanager\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://gitlab.freedesktop.org/mobile-broadband/ModemManager\":\"ModemManager\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/modsecurity": {
@@ -28466,6 +28534,16 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
+        "PackageURLs": null
+    },
+    "pkg:deb/debian/python-pulp": {
+        "VendorProductIDs": [
+            "\"pulp\":\"pulp_python\""
+        ],
+        "CPEs": null,
+        "PackageIDs": [
+            "\"https://github.com/pulp/pulp_python\":\"pulp_python\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/python-pyramid": {
