@@ -52,8 +52,8 @@ func fixDateIssues() error {
 	slog.Info("clean up of problematic CVEs (invalid dates)")
 
 	problematicFiles := []string{
-		"submodules/cvelistV5/cves/2022/38xxx/CVE-2022-38369.json",
-		"submodules/cvelistV5/cves/2022/38xxx/CVE-2022-38370.json",
+		"_submodules/cvelistV5/cves/2022/38xxx/CVE-2022-38369.json",
+		"_submodules/cvelistV5/cves/2022/38xxx/CVE-2022-38370.json",
 	}
 
 	for _, file := range problematicFiles {

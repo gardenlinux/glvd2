@@ -3,7 +3,7 @@ BINARY:=bin/glvd2
 default: build
 
 setup:
-	mkdir -p data
+	mkdir -p _data/tmp
 	mise install
 
 .PHONY: build
@@ -47,11 +47,13 @@ db_migrate_create:
 
 .PHONY: db_migrate_up
 db_migrate_up:
-	migrate -path=internal/db/migrations -database "sqlite://data/internal.sqlite?x-no-tx-wrap=true" -verbose up
+	mkdir -p _data/tmp
+	migrate -path=internal/db/migrations -database "sqlite://_data/tmp/internal.sqlite?x-no-tx-wrap=true" -verbose up
 
 .PHONY: db_migrate_down
 db_migrate_down:
-	migrate -path=internal/db/migrations -database "sqlite://data/internal.sqlite?x-no-tx-wrap=true" -verbose down
+	mkdir -p _data/tmp
+	migrate -path=internal/db/migrations -database "sqlite://_data/tmp/internal.sqlite?x-no-tx-wrap=true" -verbose down
 
 .PHONY: regenerate
 regenerate:

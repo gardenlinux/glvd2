@@ -13,12 +13,12 @@ func TestValidate_AcceptsValidConfig(t *testing.T) {
 	t.Parallel()
 
 	cfg := &config.AppConfig{
-		CVEListV5SubRepoPath:     "./submodules/cvelistV5",
-		DebSecTrackerSubRepoPath: "./submodules/debian-security-tracker",
-		InternalSqliteDBPath:     "./data/tmp/internal.sqlite",
-		PkgBuildStoreDir:         "./data/pkg-build",
-		AuditDir:                 "./data/audit",
-		AssessmentsDir:           "./data/assessments",
+		CVEListV5SubRepoPath:     "./_submodules/cvelistV5",
+		DebSecTrackerSubRepoPath: "./_submodules/debian-security-tracker",
+		InternalSqliteDBPath:     "./_data/tmp/internal.sqlite",
+		PkgBuildStoreDir:         "./_data/pkg-build",
+		AuditDir:                 "./_data/audit",
+		AssessmentsDir:           "./_data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 		LastCommitOfRunAnchor:    "GLVD2-Last-Commit-Of-Run: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
@@ -31,12 +31,12 @@ func TestValidate_ValidationErrors(t *testing.T) {
 	t.Parallel()
 
 	full := config.AppConfig{
-		CVEListV5SubRepoPath:     "./submodules/cvelistV5",
-		DebSecTrackerSubRepoPath: "./submodules/debian-security-tracker",
-		InternalSqliteDBPath:     "./data/tmp/internal.sqlite",
-		PkgBuildStoreDir:         "./data/pkg-build",
-		AuditDir:                 "./data/audit",
-		AssessmentsDir:           "./data/assessments",
+		CVEListV5SubRepoPath:     "./_submodules/cvelistV5",
+		DebSecTrackerSubRepoPath: "./_submodules/debian-security-tracker",
+		InternalSqliteDBPath:     "./_data/tmp/internal.sqlite",
+		PkgBuildStoreDir:         "./_data/pkg-build",
+		AuditDir:                 "./_data/audit",
+		AssessmentsDir:           "./_data/assessments",
 		BaselineCommitAnchor:     "GLVD2-Baseline: true",
 		LastCommitOfRunAnchor:    "GLVD2-Last-Commit-Of-Run: true",
 		GLRDReleasesURL:          "https://example.com/releases-minor.json",
