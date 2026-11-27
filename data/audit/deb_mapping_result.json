@@ -1376,6 +1376,9 @@
         "\"apache software foundation\":\"apache airflow cncf kubernetes provider\"": {
             "pkg:deb/debian/airflow": 1
         },
+        "\"apache software foundation\":\"apache airflow docker provider\"": {
+            "pkg:deb/debian/airflow": 1
+        },
         "\"apache software foundation\":\"apache airflow mysql provider\"": {
             "pkg:deb/debian/airflow": 1
         },
@@ -1389,7 +1392,7 @@
             "pkg:deb/debian/airflow": 1
         },
         "\"apache software foundation\":\"apache airflow\"": {
-            "pkg:deb/debian/airflow": 163
+            "pkg:deb/debian/airflow": 162
         },
         "\"apache software foundation\":\"apache ant\"": {
             "pkg:deb/debian/ant": 3
@@ -8242,7 +8245,7 @@
             "pkg:deb/debian/libpoe-component-irc-perl": 1
         },
         "\"libraw\":\"libraw\"": {
-            "pkg:deb/debian/libraw": 12
+            "pkg:deb/debian/libraw": 14
         },
         "\"librdf\":\"raptor rdf syntax library\"": {
             "pkg:deb/debian/raptor2": 3
@@ -8694,7 +8697,7 @@
             "pkg:deb/debian/masqmail": 1
         },
         "\"mastodon\":\"mastodon\"": {
-            "pkg:deb/debian/mastodon": 44
+            "pkg:deb/debian/mastodon": 45
         },
         "\"mastodon\":\"mastodon/mastodon\"": {
             "pkg:deb/debian/mastodon": 2
@@ -14463,8 +14466,8 @@
             "pkg:deb/debian/node-send": 1
         },
         "\"pion\":\"dtls\"": {
-            "pkg:deb/debian/golang-github-pion-dtls-v3": 2,
-            "pkg:deb/debian/golang-github-pion-dtls.v2": 2,
+            "pkg:deb/debian/golang-github-pion-dtls-v3": 8,
+            "pkg:deb/debian/golang-github-pion-dtls.v2": 8,
             "pkg:deb/debian/snowflake": 3
         },
         "\"pion\":\"interceptor\"": {
@@ -14678,7 +14681,7 @@
             "pkg:deb/debian/pdns-recursor": 3
         },
         "\"powerdns\":\"dnsdist\"": {
-            "pkg:deb/debian/dnsdist": 28,
+            "pkg:deb/debian/dnsdist": 37,
             "pkg:deb/debian/pdns": 2,
             "pkg:deb/debian/pdns-recursor": 2
         },
@@ -14972,6 +14975,9 @@
         "\"pyrad\":\"pyrad\"": {
             "pkg:deb/debian/pyrad": 2
         },
+        "\"pytables\":\"pytables\"": {
+            "pkg:deb/debian/pytables": 1
+        },
         "\"pytest\":\"pytest\"": {
             "pkg:deb/debian/pytest": 1
         },
@@ -15097,6 +15103,9 @@
             "pkg:deb/debian/python3.13": 3,
             "pkg:deb/debian/python3.7": 2,
             "pkg:deb/debian/python3.9": 5
+        },
+        "\"pytorch foundation\":\"pytorch\"": {
+            "pkg:deb/debian/pytorch": 8
         },
         "\"pytorch\":\"pytorch\"": {
             "pkg:deb/debian/pytorch": 4
@@ -16952,6 +16961,12 @@
         "\"siemens\":\"pads standard - xcr\"": {
             "pkg:deb/debian/php8.2": 2,
             "pkg:deb/debian/php8.4": 2
+        },
+        "\"siemens\":\"palo alto networks\\u00a0pan-os\\u00a0vm-series\"": {
+            "pkg:deb/debian/brotli": 1,
+            "pkg:deb/debian/edk2": 1,
+            "pkg:deb/debian/nodejs": 1,
+            "pkg:deb/debian/python-brotlicffi": 1
         },
         "\"siemens\":\"panopticon streams\"": {
             "pkg:deb/debian/php8.2": 2,
@@ -22460,7 +22475,7 @@
             "pkg:deb/debian/libpng1.6": 1
         },
         "cpe:2.3:a:libraw:libraw:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/libraw": 6
+            "pkg:deb/debian/libraw": 8
         },
         "cpe:2.3:a:librdf:raptor_rdf_syntax_library:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/raptor2": 3
@@ -22597,6 +22612,9 @@
         },
         "cpe:2.3:a:markdown-to-jsx:markdown-to-jsx:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/node-markdown-to-jsx": 1
+        },
+        "cpe:2.3:a:mastodon-tootdon:tootdon_for_mastodon:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/mastodon": 1
         },
         "cpe:2.3:a:matrix:olm:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/olm": 3
@@ -25209,7 +25227,7 @@
             "pkg:deb/debian/cpio": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"cri-o\"": {
-            "pkg:deb/debian/cri-o": 15
+            "pkg:deb/debian/cri-o": 16
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"criu\"": {
             "pkg:deb/debian/criu": 1
@@ -25626,7 +25644,7 @@
             "pkg:deb/debian/keycloak": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 148
+            "pkg:deb/debian/keycloak": 151
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -26385,7 +26403,7 @@
             "pkg:deb/debian/resteasy": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rh-sso7-keycloak\"": {
-            "pkg:deb/debian/keycloak": 44
+            "pkg:deb/debian/keycloak": 47
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"rhoso-openvswitch\"": {
             "pkg:deb/debian/openvswitch": 1
@@ -30212,7 +30230,7 @@
             "pkg:deb/debian/libspring-security-2.0-java": 1
         },
         "\"https://repo.powerdns.com/\":\"dnsdist\"": {
-            "pkg:deb/debian/dnsdist": 27,
+            "pkg:deb/debian/dnsdist": 36,
             "pkg:deb/debian/pdns": 2,
             "pkg:deb/debian/pdns-recursor": 2
         },
@@ -30999,6 +31017,9 @@
         "pkg:github/LASzip/LASzip": {
             "pkg:deb/debian/laszip": 1
         },
+        "pkg:github/LibRaw/LibRaw": {
+            "pkg:deb/debian/libraw": 2
+        },
         "pkg:github/LibVNC/libvncserver": {
             "pkg:deb/debian/libvncserver": 2
         },
@@ -31349,6 +31370,9 @@
         },
         "pkg:github/madler/zlib": {
             "pkg:deb/debian/zlib": 2
+        },
+        "pkg:github/mastodon/mastodon": {
+            "pkg:deb/debian/mastodon": 1
         },
         "pkg:github/mborgerding/kissfft": {
             "pkg:deb/debian/kissfft": 2

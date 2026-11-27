@@ -311,6 +311,7 @@
     "pkg:deb/debian/airflow": {
         "VendorProductIDs": [
             "\"apache software foundation\":\"apache airflow cncf kubernetes provider\"",
+            "\"apache software foundation\":\"apache airflow docker provider\"",
             "\"apache software foundation\":\"apache airflow mysql provider\"",
             "\"apache software foundation\":\"apache airflow providers fab\"",
             "\"apache software foundation\":\"apache airflow providers smtp\"",
@@ -2190,6 +2191,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
+            "\"siemens\":\"palo alto networks\\u00a0pan-os\\u00a0vm-series\"",
             "\"siemens\":\"pave360 automotive 2026\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
@@ -4884,6 +4886,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
+            "\"siemens\":\"palo alto networks\\u00a0pan-os\\u00a0vm-series\"",
             "\"siemens\":\"pave360 automotive 2026\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
@@ -15969,7 +15972,9 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"LibRaw\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"libraw1394\""
         ],
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/LibRaw/LibRaw"
+        ]
     },
     "pkg:deb/debian/libre": {
         "VendorProductIDs": [
@@ -18424,10 +18429,13 @@
             "\"mastodon\":\"mastodon/mastodon\""
         ],
         "CPEs": [
-            "cpe:2.3:a:joinmastodon:mastodon:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:joinmastodon:mastodon:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:mastodon-tootdon:tootdon_for_mastodon:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/mastodon/mastodon"
+        ]
     },
     "pkg:deb/debian/materialize": {
         "VendorProductIDs": [
@@ -22329,6 +22337,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
+            "\"siemens\":\"palo alto networks\\u00a0pan-os\\u00a0vm-series\"",
             "\"siemens\":\"pave360 automotive 2026\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
@@ -27657,6 +27666,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/pytables": {
+        "VendorProductIDs": [
+            "\"pytables\":\"pytables\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/pytest": {
         "VendorProductIDs": [
             "\"pytest\":\"pytest\""
@@ -27845,6 +27862,7 @@
             "\"siemens\":\"pads pro essentials\"",
             "\"siemens\":\"pads pro student edition\"",
             "\"siemens\":\"pads professional\"",
+            "\"siemens\":\"palo alto networks\\u00a0pan-os\\u00a0vm-series\"",
             "\"siemens\":\"pave360 automotive 2026\"",
             "\"siemens\":\"process preparation x\"",
             "\"siemens\":\"project server web administration tool\"",
@@ -29088,6 +29106,7 @@
     "pkg:deb/debian/pytorch": {
         "VendorProductIDs": [
             "\"n/a\":\"pytorch\"",
+            "\"pytorch foundation\":\"pytorch\"",
             "\"pytorch\":\"pytorch\"",
             "\"pytorch\":\"torchserve\"",
             "\"pytorchlightning\":\"pytorch_lightning\""
