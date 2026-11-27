@@ -8,6 +8,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/affectedness"
 	"github.com/gardenlinux/glvd2/internal/assessment"
 	"github.com/gardenlinux/glvd2/internal/audit"
+	"github.com/gardenlinux/glvd2/internal/buildinfo"
 	"github.com/gardenlinux/glvd2/internal/config"
 	"github.com/gardenlinux/glvd2/internal/configpath"
 	"github.com/gardenlinux/glvd2/internal/cvelistv5"
@@ -24,6 +25,7 @@ import (
 	"github.com/gardenlinux/glvd2/internal/git"
 	"github.com/gardenlinux/glvd2/internal/glmap"
 	"github.com/gardenlinux/glvd2/internal/pkgsuggest"
+	"github.com/gardenlinux/glvd2/internal/presentation"
 	"github.com/gardenlinux/glvd2/internal/publish"
 	"github.com/gardenlinux/glvd2/internal/reactor"
 	"github.com/gardenlinux/glvd2/internal/releasestatus"
@@ -33,6 +35,7 @@ import (
 
 type pipelineFlags struct {
 	SkipSubmoduleUpdate bool
+	SkipSiteGeneration  bool
 	PublishLevel        publish.Level
 }
 
@@ -131,25 +134,43 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 		return err
 	}
 
-	curated, vendored, inv, shippedIndex, flavorInv, err := buildSBOMProjections(ctx, cfg)
+	curated, err := glmap.New(configpath.DefaultGLSpecificMappingConfigPath)
+	if err != nil {
+		return fmt.Errorf("loading curated GL-specific mapping: %w", err)
+	}
+
+	packageInventory, vendoredMappings, shippedVersions, flavorInventory, releaseVersions, err := loadSBOMData(ctx, cfg)
 	if err != nil {
 		return err
 	}
 
-	if err = recordAudits(auditService, curated, inv, vendored, shippedIndex, flavorInv); err != nil {
+	if err = recordAudits(
+		auditService,
+		curated,
+		packageInventory,
+		vendoredMappings,
+		shippedVersions,
+		flavorInventory,
+	); err != nil {
 		return err
 	}
 
-	screener := screening.NewService(curated, vendored, inv, debSecTrackerIngestion, idsForCVEs)
+	screener := screening.NewService(
+		curated,
+		vendoredMappings,
+		packageInventory,
+		debSecTrackerIngestion,
+		idsForCVEs,
+	)
 
-	assessor, err := buildReleaseStatusAssessor(ctx, cfg, debSecTrackerIngestion, shippedIndex)
+	assessor, err := buildReleaseStatusAssessor(ctx, cfg, debSecTrackerIngestion, shippedVersions)
 	if err != nil {
 		return err
 	}
 
 	suggester := pkgsuggest.New(debMapping, idsForCVEs)
 
-	assessmentService, err := buildAssessmentService(ctx, cfg, suggester)
+	assessmentService, assessmentStore, err := buildAssessmentService(ctx, cfg, suggester)
 	if err != nil {
 		return err
 	}
@@ -169,6 +190,13 @@ func runPipeline(ctx context.Context, cfg *config.AppConfig, flags pipelineFlags
 	}); err != nil {
 		slog.Error("publishing artifacts failed", slog.Any("error", err))
 		return err
+	}
+
+	if !flags.SkipSiteGeneration {
+		if err = renderSite(ctx, cfg, assessmentStore, flavorInventory, releaseVersions, buildinfo.SHA()); err != nil {
+			slog.Error("site generation failed after assessments were published", slog.Any("error", err))
+			return err
+		}
 	}
 
 	return nil
@@ -229,14 +257,14 @@ func buildAssessmentService(
 	ctx context.Context,
 	cfg *config.AppConfig,
 	suggester *pkgsuggest.Suggester,
-) (*assessment.Service, error) {
+) (*assessment.Service, *assessment.Store, error) {
 	assessmentStore := assessment.NewStore(cfg)
 
 	gitReader := git.NewReader(".")
 
 	baseline, err := assessment.NewBaseline(ctx, gitReader, cfg)
 	if err != nil {
-		return nil, fmt.Errorf("resolving baseline: %w", err)
+		return nil, nil, fmt.Errorf("resolving baseline: %w", err)
 	}
 
 	deadline := reactor.DebianVerdictDeadline{
@@ -250,30 +278,29 @@ func buildAssessmentService(
 		deadline,
 	})
 	if err != nil {
-		return nil, fmt.Errorf("setting up CVE data service: %w", err)
+		return nil, nil, fmt.Errorf("setting up CVE data service: %w", err)
 	}
 
-	return assessmentService, nil
+	return assessmentService, assessmentStore, nil
 }
 
-func buildSBOMProjections(
+func loadSBOMData(
 	ctx context.Context,
 	cfg *config.AppConfig,
-) (glmap.Rules, glmap.Rules, inventory.Set, shippedversions.Index, flavorinventory.Inventory, error) {
-	curated, err := glmap.New(configpath.DefaultGLSpecificMappingConfigPath)
-	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
-			fmt.Errorf("loading curated GL-specific mapping: %w", err)
-	}
-
+) (inventory.Set, glmap.Rules, shippedversions.Index, flavorinventory.Inventory, []string, error) {
 	// Fetch the maintained releases once and feed them to the shared SBOM pass.
 	releases, err := glrd.GetMaintainedReleases(ctx, cfg.GLRDReleasesURL)
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+		return inventory.Set{}, glmap.Rules{}, shippedversions.Index{}, flavorinventory.Inventory{}, nil,
 			fmt.Errorf("listing maintained releases: %w", err)
 	}
 	releaseSource := func(context.Context) ([]glrd.Release, error) {
 		return releases, nil
+	}
+
+	releaseVersions := make([]string, len(releases))
+	for i, r := range releases {
+		releaseVersions[i] = r.Version.String()
 	}
 
 	invAcc := inventory.NewAccumulator()
@@ -284,29 +311,29 @@ func buildSBOMProjections(
 	if err = sbom.Feed(
 		ctx, releaseSource, sbom.LocateSBOM, sbom.FetchCycloneDX, invAcc, vmAcc, svAcc, fiAcc,
 	); err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+		return inventory.Set{}, glmap.Rules{}, shippedversions.Index{}, flavorinventory.Inventory{}, nil,
 			fmt.Errorf("feeding SBOMs: %w", err)
 	}
 
 	inv, err := invAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+		return inventory.Set{}, glmap.Rules{}, shippedversions.Index{}, flavorinventory.Inventory{}, nil,
 			fmt.Errorf("building GL package inventory: %w", err)
 	}
 
 	vendored, err := vmAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+		return inventory.Set{}, glmap.Rules{}, shippedversions.Index{}, flavorinventory.Inventory{}, nil,
 			fmt.Errorf("building vendored-inclusion resolver: %w", err)
 	}
 
 	shippedIndex, err := svAcc.Result()
 	if err != nil {
-		return glmap.Rules{}, glmap.Rules{}, inventory.Set{}, shippedversions.Index{}, flavorinventory.Inventory{},
+		return inventory.Set{}, glmap.Rules{}, shippedversions.Index{}, flavorinventory.Inventory{}, nil,
 			fmt.Errorf("building per-release versioned index: %w", err)
 	}
 
-	return curated, vendored, inv, shippedIndex, fiAcc.Result(), nil
+	return inv, vendored, shippedIndex, fiAcc.Result(), releaseVersions, nil
 }
 
 func recordAudits(
@@ -338,7 +365,7 @@ func recordAudits(
 	return nil
 }
 
-// processCVEs consumes the CVE stream, screens and persists each record, and returns a summary.
+// processCVEs consumes the CVE stream, screens and persists each record, and returns a run summary.
 func processCVEs(
 	ctx context.Context,
 	cveV5Service *cvelistv5.Service,
@@ -413,4 +440,31 @@ func processCVEs(
 	}
 
 	return summary, nil
+}
+
+// renderSite creates the GLVD2 HTML site.
+func renderSite(
+	ctx context.Context,
+	cfg *config.AppConfig,
+	src presentation.RecordWalker,
+	flavorInv flavorinventory.Inventory,
+	releaseVersions []string,
+	buildSHA string,
+) error {
+	renderer, err := presentation.NewRenderer(presentation.RenderConfig{
+		OutDir:   cfg.SiteOutDir,
+		BuildSHA: buildSHA,
+	})
+	if err != nil {
+		return fmt.Errorf("creating renderer: %w", err)
+	}
+
+	result, err := renderer.Render(ctx, src, flavorInv, releaseVersions)
+	if err != nil {
+		return fmt.Errorf("rendering site under %q: %w", cfg.SiteOutDir, err)
+	}
+
+	slog.Info("site generated", slog.String("outDir", result.OutDir))
+
+	return nil
 }

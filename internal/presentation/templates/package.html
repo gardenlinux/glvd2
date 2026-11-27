@@ -1,0 +1,57 @@
+{{define "content"}}
+<section aria-labelledby="package-heading">
+  <h2 id="package-heading">Package</h2>
+  <dl>
+    <dt>Source package PURLs</dt><dd>{{range $i, $purl := .SourcePackagePURLs}}{{if $i}}<br>{{end}}<code>{{$purl}}</code>{{end}}</dd>
+    {{if .Namespaces}}<dt>Namespaces</dt><dd>{{range $i, $namespace := .Namespaces}}{{if $i}}, {{end}}{{$namespace}}{{end}}</dd>{{end}}
+  </dl>
+</section>
+<section aria-labelledby="cves-heading">
+  <h2 id="cves-heading">Relevant CVEs</h2>
+  <p>{{num (len .CVEs)}} recorded decisions for relevant CVEs across maintained releases. Each row is one release decision.</p>
+  {{if .CVEs}}
+  <div class="table-scroll" role="region" aria-label="CVE decisions for this package" tabindex="0">
+    <table class="datatable" data-column-visibility="true">
+      <thead>
+        <tr>
+          <th scope="col" class="col-compact">CVE</th>
+          <th scope="col" class="col-compact">Release</th>
+          <th scope="col" class="col-compact">Decision</th>
+          <th scope="col" class="col-compact">Status</th>
+          <th scope="col" class="col-text">Reason</th>
+          <th scope="col" class="col-compact">Needs review</th>
+          <th scope="col" class="col-text">Basis</th>
+          <th scope="col" class="col-prose">Explanation</th>
+          <th scope="col" class="col-value">Shipped version</th>
+          <th scope="col" class="col-value">Vulnerable range</th>
+          <th scope="col" class="col-text">Authority</th>
+          <th scope="col" class="col-text">Provenance</th>
+          <th scope="col" class="col-value">Vendored component</th>
+          <th scope="col" class="col-prose">Justification</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{range .CVEs}}
+        <tr>
+          <th scope="row" class="col-compact"><a href="{{$.Link .CVEURL}}">{{.ID}}</a></th>
+          <td class="col-compact"><a href="{{$.Link .ReleaseURL}}">{{.Release}}</a></td>
+          <td class="col-compact">{{if .IsManual}}Manual{{else}}Automated{{end}}{{if gt (len $.SourcePackagePURLs) 1}}<small class="evidence-identity">{{.SourcePackagePURL}}</small>{{end}}</td>
+          <td class="col-compact">{{template "affectedness" .Status}}</td>
+          <td class="col-text">{{if .Reason}}{{label .Reason}}{{end}}</td>
+          <td class="col-compact">{{if .NeedsReview}}Yes{{else}}No{{end}}</td>
+          <td class="col-text">{{if .Basis}}{{label .Basis}}{{end}}</td>
+          <td class="col-prose">{{.BasisWhy}}</td>
+          <td class="col-value">{{.ShippedVersion}}</td>
+          <td class="col-value">{{.VulnerableRange}}</td>
+          <td class="col-text">{{.Authority}}</td>
+          <td class="col-text">{{.Provenance}}</td>
+          <td class="col-value">{{if .Vendored}}{{if .Component}}{{.Component}}{{else}}Vendored (component unavailable){{end}}{{end}}</td>
+          <td class="col-prose">{{.Justification}}</td>
+        </tr>
+      {{end}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}<p>No recorded CVE decisions for this package.</p>{{end}}
+</section>
+{{end}}

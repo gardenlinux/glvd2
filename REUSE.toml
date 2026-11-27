@@ -14,3 +14,33 @@ path = "**.md"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2020-2026 SAP SE or an SAP affiliate company and Gardenlinux contributors"
 SPDX-License-Identifier = "CC-BY-4.0"
+
+# Vendored third-party assets served by the presentation layer.
+[[annotations]]
+path = [
+  "internal/presentation/assets/jquery.min.js",
+  "internal/presentation/assets/jquery.LICENSE.txt",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "OpenJS Foundation and other contributors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+  "internal/presentation/assets/datatables.min.js",
+  "internal/presentation/assets/datatables.min.css",
+  "internal/presentation/assets/datatables.LICENSE.txt",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "SpryMedia Limited and other contributors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+  "internal/presentation/assets/inter-roman-latin.woff2",
+  "internal/presentation/assets/inter-roman-latin-ext.woff2",
+  "internal/presentation/assets/inter.LICENSE.txt",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2016 The Inter Project Authors"
+SPDX-License-Identifier = "OFL-1.1"

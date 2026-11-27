@@ -38,6 +38,7 @@ type AppConfig struct {
 	BaselineCommitAnchor     string    `mapstructure:"baseline_commit_anchor"`
 	LastCommitOfRunAnchor    string    `mapstructure:"last_commit_of_run_anchor"`
 	GLRDReleasesURL          string    `mapstructure:"glrd_releases_url"`
+	SiteOutDir               string    `mapstructure:"site_out_dir"`
 	Screening                Screening `mapstructure:"screening"`
 	Push                     Push      `mapstructure:"push"`
 	Committer                Committer `mapstructure:"committer"`
@@ -59,6 +60,7 @@ func LoadAppConfig(configDir string) (*AppConfig, error) {
 	v.SetDefault("baseline_commit_anchor", "GLVD2-Baseline: true")
 	v.SetDefault("last_commit_of_run_anchor", "GLVD2-Last-Commit-Of-Run: true")
 	v.SetDefault("glrd_releases_url", "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json")
+	v.SetDefault("site_out_dir", "./data/site")
 	v.SetDefault("screening.escalation_window", defaultEscalationWindow.String())
 	v.SetDefault("push.remote", "origin")
 	v.SetDefault("push.branch", "main")

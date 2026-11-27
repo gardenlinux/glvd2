@@ -1,0 +1,5 @@
+{{define "content"}}
+{{if .Releases}}
+{{template "releaseTable" .}}
+{{else}}<p>No maintained releases are included in this database.</p>{{end}}
+{{end}}

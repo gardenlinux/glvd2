@@ -120,3 +120,44 @@ func TestAccumulator_HardFailsOnSBOMConversionError(t *testing.T) {
 	err := s.AddSBOM("1877.3", "kvm", &cdx.BOM{Components: &components})
 	require.Error(t, err)
 }
+
+func TestInventory_Accessors(t *testing.T) {
+	t.Parallel()
+
+	s := flavorinventory.NewAccumulator()
+	require.NoError(t, s.AddSBOM("1877.3", "zlast", gltest.BOM(gldeb("libc6", "glibc"))))
+	require.NoError(t, s.AddSBOM("1877.3", "metal", gltest.BOM(gldeb("libc6", "glibc"))))
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(
+		gldeb("libc6", "glibc"),
+		gldeb("libssl3", "openssl"),
+	)))
+	inv := s.Result()
+
+	assert.True(t, inv.HasFlavors("1877.3"))
+	assert.False(t, inv.HasFlavors("9999.0"))
+	assert.Equal(t, []string{"1877.3"}, inv.Releases())
+	assert.Equal(t, []string{"kvm", "metal", "zlast"}, inv.Flavors("1877.3"), "flavors are sorted")
+	assert.Nil(t, inv.Flavors("9999.0"))
+}
+
+func TestInventory_ContainsIsNamespaceTolerant(t *testing.T) {
+	t.Parallel()
+
+	s := flavorinventory.NewAccumulator()
+	require.NoError(t, s.AddSBOM("1877.3", "kvm", gltest.BOM(gldeb("libssl3", "openssl"))))
+	inv := s.Result()
+
+	// Membership stores the gardenlinux namespace; the debian variant still matches.
+	found, err := inv.Contains("1877.3", "kvm", "pkg:deb/debian/openssl")
+	require.NoError(t, err)
+	assert.True(t, found)
+
+	absent, err := inv.Contains("1877.3", "kvm", "pkg:deb/gardenlinux/glibc")
+	require.NoError(t, err)
+	assert.False(t, absent)
+
+	// A release or flavor that is not covered contains nothing.
+	missing, err := inv.Contains("9999.0", "kvm", "pkg:deb/gardenlinux/openssl")
+	require.NoError(t, err)
+	assert.False(t, missing)
+}

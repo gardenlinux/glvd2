@@ -1,0 +1,53 @@
+{{define "content"}}
+<p>These statistics describe triage activity and upstream CVE record states.</p>
+<section aria-labelledby="manual-heading">
+  <h2 id="manual-heading">Manual relevance decisions</h2>
+  <p>{{num .ManualOverrides}} CVE records carry a manual relevance decision.</p>
+</section>
+<section aria-labelledby="automated-heading">
+  <h2 id="automated-heading">Automated triage reasons</h2>
+  {{if .AutoReasons}}
+  <div class="table-scroll" role="region" aria-label="Automated triage reasons" tabindex="0">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Reason</th>
+          <th scope="col" class="num">CVEs</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{range .AutoReasons}}
+        <tr>
+          <th scope="row">{{label .Label}}</th>
+          <td class="num">{{num .Count}}</td>
+        </tr>
+      {{end}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}<p>None recorded.</p>{{end}}
+</section>
+<section aria-labelledby="states-heading">
+  <h2 id="states-heading">Upstream CVE states</h2>
+  {{if .LifecycleStates}}
+  <div class="table-scroll" role="region" aria-label="Upstream CVE states" tabindex="0">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col" class="num">CVEs</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{range .LifecycleStates}}
+        <tr>
+          <th scope="row">{{label .Label}}</th>
+          <td class="num">{{num .Count}}</td>
+        </tr>
+      {{end}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}<p>None recorded.</p>{{end}}
+</section>
+{{end}}

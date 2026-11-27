@@ -15,6 +15,8 @@ last_commit_of_run_anchor: "GLVD2-Last-Commit-Of-Run: true"
 
 glrd_releases_url: "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
 
+site_out_dir: "./data/site"
+
 # CVE relevance screening tunables.
 screening:
   # How long we wait until an unresolved CVE (waiting for its Debian triage) is escalated to a human.

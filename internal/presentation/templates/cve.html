@@ -1,0 +1,155 @@
+{{define "content"}}
+<div class="external-sources" aria-label="External sources">
+  <span class="external-sources-caption">This CVE in other databases:</span>
+  <ul>{{range .ExternalSources}}<li><a href="{{.URL}}" target="_blank" rel="noopener noreferrer">{{.Label}}</a></li>{{end}}</ul>
+</div>
+{{if .Rejected}}
+<aside class="cve-notice" aria-labelledby="rejected-heading">
+  <strong id="rejected-heading">Rejected upstream</strong>
+  <p>The upstream publisher has rejected this CVE record. It should not be treated as an active CVE. Recorded Garden Linux decisions are retained below for context.</p>
+</aside>
+{{end}}
+<div class="cve-details">
+  <p class="description-caption">Upstream description</p>
+  <p class="help-text">As published in the CVE record, not Garden Linux's own analysis.</p>
+  {{if .Description}}<p class="description">{{.Description}}</p>{{else}}<p>No upstream description is recorded.</p>{{end}}
+  <dl class="cve-metadata">
+    {{if .State}}<div><dt>Upstream state</dt><dd>{{label .State}}</dd></div>{{end}}
+    {{if .PublishedAt}}<div><dt>Published</dt><dd><time datetime="{{.PublishedAt}}">{{.PublishedAt}}</time></dd></div>{{end}}
+    {{if .FirstSeenAt}}<div><dt>First tracked by GLVD</dt><dd><time datetime="{{.FirstSeenAt}}">{{.FirstSeenAt}}</time></dd></div>{{end}}
+    {{if .CVSSv3}}<div><dt>CVSS v3</dt><dd>{{.CVSSv3}}</dd></div>{{end}}
+    {{if .CVSSv4}}<div><dt>CVSS v4</dt><dd>{{.CVSSv4}}</dd></div>{{end}}
+    {{if .CWEs}}<div><dt>CWEs</dt><dd>{{range $i, $c := .CWEs}}{{if $i}}, {{end}}{{$c}}{{end}}</dd></div>{{end}}
+  </dl>
+</div>
+<nav class="section-nav" aria-label="On this page">
+  <ul><li><a href="#affectedness-heading">Affectedness</a></li><li><a href="#release-details-heading">Release details</a></li><li><a href="#screening-heading">Screening</a></li>{{if .References}}<li><a href="#references-heading">References</a></li>{{end}}</ul>
+</nav>
+<section aria-labelledby="affectedness-heading">
+  <h2 id="affectedness-heading">Affectedness</h2>
+  <p class="relevance-explanation">{{.RelevanceExplanation}}</p>
+  <p class="help-text">Relevance does not imply vulnerability. Release results below show whether shipped versions are affected, fixed, not affected, or unknown.</p>
+  {{if .AffectednessSummary.Releases}}
+  <p>Maintained releases with recorded results: {{num (len .AffectednessSummary.Releases)}}.</p>
+  <ul class="affectedness-counts" aria-label="Maintained release status counts">
+    {{range .AffectednessSummary.Counts}}<li><span class="status {{.Label}}">{{label .Label}}: {{num .Count}}</span></li>{{end}}
+  </ul>
+  {{if .AffectednessSummary.NeedsReview}}<p class="review-notice"><strong>Human review needed in {{num .AffectednessSummary.NeedsReview}} maintained release{{if ne .AffectednessSummary.NeedsReview 1}}s{{end}}.</strong> These results require human evaluation before the status is confirmed.</p>{{end}}
+  <div class="table-scroll" role="region" aria-label="Maintained release affectedness" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">Release</th><th scope="col">Status</th><th scope="col">Needs review</th><th scope="col">Source packages</th></tr></thead>
+      <tbody>
+        {{range .AffectednessSummary.Releases}}
+        <tr>
+          <th scope="row"><a href="#release-{{.Version}}">{{.Version}}</a></th>
+          <td>{{template "affectedness" .Affectedness}}</td>
+          <td>{{if .NeedsReview}}Yes{{else}}No{{end}}</td>
+          <td>{{range $i, $s := .Sources}}{{if $i}}, {{end}}{{if .URL}}<a href="{{$.Link .URL}}" title="{{.SourcePackagePURL}}">{{.Name}}</a>{{else}}<span title="{{.SourcePackagePURL}}">{{.Name}}</span>{{end}}{{else}}None recorded{{end}}</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}<p>No maintained-release results are recorded for this CVE.</p>{{end}}
+  <p class="help-text">Only recorded results are shown. Missing analysis does not mean that a release is unaffected. Historical results are excluded from this summary.</p>
+</section>
+<section aria-labelledby="release-details-heading">
+  <h2 id="release-details-heading">Release and flavor details</h2>
+  {{if .Releases}}
+  {{range .Releases}}
+  <article aria-labelledby="release-{{.Version}}">
+    <h3 id="release-{{.Version}}">{{if .ReleaseURL}}<a href="{{$.Link .ReleaseURL}}">Release {{.Version}}</a>{{else}}Release {{.Version}}{{end}}{{if .Historical}} <small>(historical, no longer maintained)</small>{{end}}</h3>
+    <p>{{template "affectedness" .Affectedness}} {{.Explanation}}</p>
+    <dl>
+      <dt>Needs review</dt><dd>{{if .NeedsReview}}Yes - at least one package finding needs human confirmation.{{else}}No{{end}}</dd>
+      {{if .Sources}}<dt>Source packages</dt><dd>{{range $i, $s := .Sources}}{{if $i}}, {{end}}{{if .URL}}<a href="{{$.Link .URL}}" title="{{.SourcePackagePURL}}">{{.Name}}</a>{{else}}<span title="{{.SourcePackagePURL}}">{{.Name}}</span>{{end}}{{end}}</dd>{{end}}
+    </dl>
+    <h4>Flavors</h4>
+    {{if .FlavorsAvailable}}
+    <p class="help-text">Outside scope means that the contributing source packages are not included in that flavor.</p>
+    <div class="table-scroll" role="region" aria-label="Flavors in release {{.Version}}" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Flavor</th>
+            <th scope="col">Analysis coverage</th>
+            <th scope="col">Flavor status</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{range .Flavors}}
+          <tr>
+            <th scope="row"><a href="{{$.Link .URL}}">{{.Name}}</a></th>
+            <td>{{label .ScopeStatus}}</td>
+            <td>{{if .Affectedness}}{{template "affectedness" .Affectedness}}{{else}}Not applicable{{end}}</td>
+          </tr>
+        {{end}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}<p class="flavor-unavailable"><strong>Flavor analysis unavailable.</strong> {{if .Historical}}Per-flavor analysis is not provided for historical releases.{{else}}No usable flavor package inventory is available for this release.{{end}} The release result does not establish the status of individual flavors.</p>{{end}}
+    {{if .Packages}}
+    <h4>Package evidence</h4>
+    <p>Each source package shows the decision that applies. A manual decision replaces the automated finding for that package.</p>
+    <div class="table-scroll" role="region" aria-label="Package evidence for release {{.Version}}" tabindex="0">
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th scope="col" class="col-value">Source package</th>
+            <th scope="col" class="col-compact">Decision source</th>
+            <th scope="col" class="col-compact">Status</th>
+            <th scope="col" class="col-text">Reason</th>
+            <th scope="col" class="col-text">Evidence basis</th>
+            <th scope="col" class="col-prose">Explanation</th>
+            <th scope="col" class="col-value">Shipped version</th>
+            <th scope="col" class="col-value">Vulnerable range</th>
+            <th scope="col" class="col-text">Authority</th>
+            <th scope="col" class="col-text">Provenance</th>
+            <th scope="col" class="col-value">Vendored component</th>
+            <th scope="col" class="col-prose">Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{range .Packages}}
+          <tr>
+            <th scope="row" class="col-value">{{if .URL}}<a href="{{$.Link .URL}}">{{.Name}}</a>{{else}}{{.Name}}{{end}} <small class="evidence-identity">{{.Source}}</small></th>
+            <td class="col-compact">{{if .IsManual}}Manual{{else}}Automated{{end}}</td>
+            <td class="col-compact">{{template "affectedness" .Status}}</td>
+            <td class="col-text">{{if .Reason}}{{explain .Reason}} <small class="evidence-identity">{{.Reason}}</small>{{end}}</td>
+            <td class="col-text">{{if .Basis}}{{explainBasis .Basis}} <small class="evidence-identity">{{.Basis}}</small>{{end}}</td>
+            <td class="col-prose">{{.BasisWhy}}</td>
+            <td class="col-value">{{.ShippedVersion}}</td>
+            <td class="col-value">{{.VulnerableRange}}</td>
+            <td class="col-text">{{.Authority}}</td>
+            <td class="col-text">{{.Provenance}}</td>
+            <td class="col-value">{{if .Vendored}}{{if .Component}}{{.Component}}{{else}}Embedded component (name unavailable){{end}}{{end}}</td>
+            <td class="col-prose">{{.Justification}}</td>
+          </tr>
+        {{end}}
+        </tbody>
+      </table>
+    </div>
+    {{end}}
+  </article>
+  {{end}}
+  {{else}}<p>No release results are recorded for this CVE. Per-flavor affectedness has not been assessed.</p>{{end}}
+</section>
+<section aria-labelledby="screening-heading">
+  <h2 id="screening-heading">Screening</h2>
+  <p>Screening determines whether this CVE is relevant to Garden Linux. It is separate from assessing the affectedness of a particular release or flavor.</p>
+  <dl>
+    {{if .AutoStatus}}<dt>Automated relevance</dt><dd>{{label .AutoStatus}}</dd>{{end}}
+    {{if .AutoReason}}<dt>Automated reason</dt><dd>{{explain .AutoReason}} <small class="evidence-identity">{{.AutoReason}}</small></dd>{{end}}
+    {{if .ManualTriage}}<dt>Manual relevance</dt><dd>{{label .ManualTriage}} - takes precedence over automated relevance.</dd>{{else}}{{if .ManualJustification}}<dt>Manual justification (no decision recorded)</dt><dd>{{.ManualJustification}}</dd>{{end}}{{end}}
+    {{if .Notes}}<dt>Notes</dt><dd>{{.Notes}}</dd>{{end}}
+    {{if .Matched}}<dt>Matched packages</dt><dd>{{range $i, $m := .Matched}}{{if $i}}, {{end}}{{if .URL}}<a href="{{$.Link .URL}}" title="{{.SourcePackagePURL}}">{{.Name}}</a>{{else}}<span title="{{.SourcePackagePURL}}">{{.Name}}</span>{{end}}{{end}}</dd>{{end}}
+  </dl>
+</section>
+{{if .References}}
+<section aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  <p class="help-text">Listed in the upstream CVE record, not curated by Garden Linux.</p>
+  <ul>{{range .References}}<li><a href="{{.}}" target="_blank" rel="noopener noreferrer">{{.}}</a></li>{{end}}</ul>
+</section>
+{{end}}
+{{end}}

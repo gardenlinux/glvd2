@@ -46,8 +46,14 @@ func newRootCmd(cfg *config.AppConfig) *cobra.Command {
 				)
 			}
 
+			skipSiteGeneration, err := cmd.Flags().GetBool("skip-site-generation")
+			if err != nil {
+				return err
+			}
+
 			flags := pipelineFlags{
 				SkipSubmoduleUpdate: skipSubmoduleUpdates,
+				SkipSiteGeneration:  skipSiteGeneration,
 				PublishLevel:        level,
 			}
 			err = runPipeline(cmd.Context(), cfg, flags)
@@ -60,6 +66,8 @@ func newRootCmd(cfg *config.AppConfig) *cobra.Command {
 		Bool("skip-submodule-updates", false, "skip updating the submodules used for data ingestion")
 	rootCmd.Flags().
 		String("publish-level", "none", "artifact publishing level: none | commit | push")
+	rootCmd.Flags().
+		Bool("skip-site-generation", false, "skip generating the static site output")
 
 	return rootCmd
 }

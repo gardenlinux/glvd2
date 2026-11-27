@@ -58,6 +58,56 @@ func (i Inventory) Record() Record {
 	return rec
 }
 
+// HasFlavors reports whether the release has usable flavor membership.
+func (i Inventory) HasFlavors(release string) bool {
+	_, ok := i.byRelease[release]
+
+	return ok
+}
+
+// Releases returns the covered release versions, ordered numerically.
+func (i Inventory) Releases() []string {
+	return slices.SortedFunc(maps.Keys(i.byRelease), compareReleases)
+}
+
+// Flavors returns the covered flavor names for a release, sorted.
+// It returns nil for a release without usable flavor membership.
+func (i Inventory) Flavors(release string) []string {
+	flavors, ok := i.byRelease[release]
+	if !ok {
+		return nil
+	}
+
+	return slices.Sorted(maps.Keys(flavors))
+}
+
+// Contains reports whether identityPURL is a member of the release flavor, using namespace-tolerant matching.
+// A release or flavor that is not covered contains nothing.
+func (i Inventory) Contains(release, flavor, identityPURL string) (bool, error) {
+	sources, ok := i.flavorSourcePURLs(release, flavor)
+	if !ok {
+		return false, nil
+	}
+
+	_, found, err := sources.Get(identityPURL)
+	if err != nil {
+		return false, fmt.Errorf("membership lookup for %q: %w", identityPURL, err)
+	}
+
+	return found, nil
+}
+
+// flavorSourcePURLs returns the source PURL set of a release flavor and whether it is covered.
+func (i Inventory) flavorSourcePURLs(release, flavor string) (purl.VariantMap[struct{}], bool) {
+	flavors, ok := i.byRelease[release]
+	if !ok {
+		return nil, false
+	}
+	sources, ok := flavors[flavor]
+
+	return sources, ok
+}
+
 // compareReleases orders release version strings numerically. Strings that are neither
 // major.minor nor major.minor.patch are unparseable and sort after parseable ones,
 // lexically among themselves, so the ordering is total and deterministic.

@@ -1,0 +1,10 @@
+{{define "content"}}
+{{template "categories" .}}
+<p>Use the search box in the header to jump straight to a CVE's details by its identifier.</p>
+<p>Relevance describes whether a CVE is tracked for Garden Linux, not whether a particular release is affected.</p>
+<ul>
+  <li><strong>{{num .Relevant}}</strong> relevant to Garden Linux</li>
+  <li><a href="{{.Link "cves/undecided/index.html"}}">Relevance undecided</a> ({{num .Undecided}})</li>
+</ul>
+<p>{{num .Total}} CVE records are tracked in total, {{num .NotRelevant}} of them not relevant to Garden Linux.</p>
+{{end}}
