@@ -1,13 +1,13 @@
-internal_sqlite_db_path: "./data/tmp/internal.sqlite"
+internal_sqlite_db_path: "./_data/tmp/internal.sqlite"
 
-audit_dir: "./data/audit"
+audit_dir: "./_data/audit"
 
-assessments_dir: "./data/assessments"
+assessments_dir: "./_data/assessments"
 
-pkgbuild_store_dir: "./data/pkg-build"
+pkgbuild_store_dir: "./_data/pkg-build"
 
-cve_list_v5_sub_repo_path: "./submodules/cvelistV5"
-deb_sec_tracker_sub_repo_path: "./submodules/debian-security-tracker"
+cve_list_v5_sub_repo_path: "./_submodules/cvelistV5"
+deb_sec_tracker_sub_repo_path: "./_submodules/debian-security-tracker"
 
 baseline_commit_anchor: "GLVD2-Baseline: true"
 
@@ -15,7 +15,7 @@ last_commit_of_run_anchor: "GLVD2-Last-Commit-Of-Run: true"
 
 glrd_releases_url: "https://gardenlinux-glrd.s3.eu-central-1.amazonaws.com/releases-minor.json"
 
-site_out_dir: "./data/site"
+site_out_dir: "./_data/site"
 
 # CVE relevance screening tunables.
 screening:

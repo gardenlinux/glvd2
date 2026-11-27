@@ -11,5 +11,6 @@ output:
   - "cyclonedx-json=sbom.cyclonedx.json"
 
 exclude:
-  - "./submodules/**/"
+  - "./_submodules/**/"
+  - "./_data/**/"
   - "**/*_test.go"

@@ -19,10 +19,10 @@ bin/
 .glide/
 
 # Temporary runtime artifacts (sqlite DB, caches)
-data/tmp/
+/_data/tmp/
 
 # Generated static site (written on each run, not committed)
-data/site/
+/_data/site/
 
 # test code coverage
 coverage.out

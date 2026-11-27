@@ -77,7 +77,7 @@ func loadExternallyModifiedCVEs(ctx context.Context, baseline *Baseline) map[str
 
 	extModifiedCVEs := make(map[string]struct{}, len(changedFiles))
 	for _, f := range changedFiles {
-		// Extract CVE ID from path like "data/cves/2025/1xxx/CVE-2025-1234.json".
+		// Extract CVE ID from a path like "_data/assessments/2025/1xxx/CVE-2025-1234.json".
 		base := filepath.Base(f)
 		id := strings.TrimSuffix(base, ".json")
 		if _, _, idErr := parseCVEID(id); idErr != nil {

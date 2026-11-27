@@ -28,7 +28,7 @@ type GitReader interface {
 type Baseline struct {
 	git            GitReader
 	commitSHA      string // empty if no previous baseline commit exists (first run)
-	assessmentsDir string // relative path to assessments (default: data/assessments)
+	assessmentsDir string // relative path to assessments, defaulting to _data/assessments
 }
 
 // NewBaseline resolves the last baseline commit and returns a [Baseline].
