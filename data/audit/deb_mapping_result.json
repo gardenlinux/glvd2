@@ -5369,6 +5369,9 @@
         "\"gnu\":\"pspp\"": {
             "pkg:deb/debian/pspp": 8
         },
+        "\"gnu\":\"screen\"": {
+            "pkg:deb/debian/screen": 3
+        },
         "\"gnu\":\"sed\"": {
             "pkg:deb/debian/sed": 1
         },
@@ -14098,6 +14101,9 @@
             "pkg:deb/debian/otrs2": 1,
             "pkg:deb/debian/znuny": 1
         },
+        "\"otrs gmbh (former otrs ag)\":\"otrs\"": {
+            "pkg:deb/debian/znuny": 1
+        },
         "\"overleaf\":\"overleaf\"": {
             "pkg:deb/debian/overleaf": 2
         },
@@ -14389,6 +14395,9 @@
         },
         "\"phpmyadmin\":\"phpmyadmin\"": {
             "pkg:deb/debian/phpmyadmin": 10
+        },
+        "\"phpmyadmin\":\"shapefile\"": {
+            "pkg:deb/debian/phpmyadmin-shapefile": 1
         },
         "\"phpmyadmin\":\"sql-parser\"": {
             "pkg:deb/debian/phpmyadmin-sql-parser": 1
@@ -18219,6 +18228,54 @@
         "\"symfony\":\"symfony\"": {
             "pkg:deb/debian/symfony": 55
         },
+        "\"symfony\":\"symfony/doctrine-bridge\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/expression-language\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"symfony\":\"symfony/framework-bundle\"": {
+            "pkg:deb/debian/symfony": 3
+        },
+        "\"symfony\":\"symfony/html-sanitizer\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/http-client\"": {
+            "pkg:deb/debian/symfony": 4
+        },
+        "\"symfony\":\"symfony/http-foundation\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/http-kernel\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/json-path\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/mailer\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"symfony\":\"symfony/routing\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"symfony\":\"symfony/security-bundle\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/security-core\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/security-guard\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/security-http\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"symfony\":\"symfony/serializer\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"symfony\":\"symfony/symfony\"": {
+            "pkg:deb/debian/symfony": 23
+        },
         "\"symfony\":\"twig\"": {
             "pkg:deb/debian/php-twig": 1,
             "pkg:deb/debian/twig": 1
@@ -19601,7 +19658,7 @@
             "pkg:deb/debian/open-vm-tools": 1
         },
         "\"vmware\":\"vmware tools\"": {
-            "pkg:deb/debian/open-vm-tools": 3
+            "pkg:deb/debian/open-vm-tools": 4
         },
         "\"voidzero-dev\":\"vite-plus\"": {
             "pkg:deb/debian/node-vite": 1
@@ -21692,6 +21749,9 @@
         "cpe:2.3:a:gnu:pspp:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/pspp": 5
         },
+        "cpe:2.3:a:gnu:screen:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/screen": 3
+        },
         "cpe:2.3:a:gnu:wget:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/wget": 6
         },
@@ -23482,6 +23542,9 @@
         "cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/phpmyadmin": 9
         },
+        "cpe:2.3:a:phpmyadmin:shapefile:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/phpmyadmin-shapefile": 1
+        },
         "cpe:2.3:a:phpmyadmin:sql-parser:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/phpmyadmin-sql-parser": 1
         },
@@ -23840,7 +23903,7 @@
             "pkg:deb/debian/jboss-xnio": 1,
             "pkg:deb/debian/node-serialize-javascript": 1,
             "pkg:deb/debian/plexus-utils2": 2,
-            "pkg:deb/debian/undertow": 6
+            "pkg:deb/debian/undertow": 7
         },
         "cpe:2.3:a:redhat:cost_management_on_premise:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/gdb": 1,
@@ -25490,6 +25553,9 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-oauth\"": {
             "pkg:deb/debian/keycloak": 1
         },
+        "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-parent\"": {
+            "pkg:deb/debian/keycloak": 2
+        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-policy-enforcer\"": {
             "pkg:deb/debian/keycloak": 1
         },
@@ -25505,9 +25571,6 @@
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-rest-admin-ui-ext\"": {
             "pkg:deb/debian/keycloak": 1
         },
-        "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-rhel9-operator-bundle-container\"": {
-            "pkg:deb/debian/keycloak": 1
-        },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core\"": {
             "pkg:deb/debian/keycloak": 2
         },
@@ -25515,13 +25578,13 @@
             "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server\"": {
-            "pkg:deb/debian/keycloak": 4
+            "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server-spi\"": {
-            "pkg:deb/debian/keycloak": 2
+            "pkg:deb/debian/keycloak": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-services\"": {
-            "pkg:deb/debian/keycloak": 145
+            "pkg:deb/debian/keycloak": 147
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"krb5\"": {
             "pkg:deb/debian/krb5": 13
@@ -25965,7 +26028,7 @@
             "pkg:deb/debian/openvswitch": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"org.keycloak-keycloak-parent\"": {
-            "pkg:deb/debian/keycloak": 3
+            "pkg:deb/debian/keycloak": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"org.keycloak.authentication\"": {
             "pkg:deb/debian/keycloak": 1
@@ -26431,7 +26494,7 @@
             "pkg:deb/debian/undertow": 13
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-core\"": {
-            "pkg:deb/debian/undertow": 11
+            "pkg:deb/debian/undertow": 14
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"undertow-parent\"": {
             "pkg:deb/debian/undertow": 1
@@ -26713,6 +26776,9 @@
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-core\"": {
             "pkg:deb/debian/keycloak": 4
         },
+        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-parent\"": {
+            "pkg:deb/debian/keycloak": 2
+        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-policy-enforcer\"": {
             "pkg:deb/debian/keycloak": 1
         },
@@ -26781,9 +26847,6 @@
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.eap-jboss-eap-xp\"": {
             "pkg:deb/debian/undertow": 4
         },
-        "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.hal/hal-console\"": {
-            "pkg:deb/debian/wildfly": 1
-        },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.resteasy/resteasy-core\"": {
             "pkg:deb/debian/resteasy": 3,
             "pkg:deb/debian/resteasy3.0": 3
@@ -26792,7 +26855,7 @@
             "pkg:deb/debian/jboss-xnio": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak-keycloak-parent\"": {
-            "pkg:deb/debian/keycloak": 4
+            "pkg:deb/debian/keycloak": 2
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.keycloak/keycloak-policy-enforcer\"": {
             "pkg:deb/debian/keycloak": 1
@@ -26818,10 +26881,10 @@
             "pkg:deb/debian/jss": 1
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow\"": {
-            "pkg:deb/debian/undertow": 12
+            "pkg:deb/debian/undertow": 11
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-core\"": {
-            "pkg:deb/debian/undertow": 15
+            "pkg:deb/debian/undertow": 16
         },
         "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"undertow-core-2.3.10.Final.jar\"": {
             "pkg:deb/debian/undertow": 1
@@ -27128,6 +27191,9 @@
         },
         "\"https://catalog.redhat.com/software/containers/\":\"busybox-main\"": {
             "pkg:deb/debian/busybox": 12
+        },
+        "\"https://catalog.redhat.com/software/containers/\":\"cpio-main\"": {
+            "pkg:deb/debian/cpio": 1
         },
         "\"https://catalog.redhat.com/software/containers/\":\"crun-main\"": {
             "pkg:deb/debian/crun": 2
@@ -28704,6 +28770,54 @@
         },
         "\"https://packagist.org\":\"apache/thrift\"": {
             "pkg:deb/debian/thrift": 11
+        },
+        "\"https://packagist.org\":\"symfony/doctrine-bridge\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/expression-language\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"https://packagist.org\":\"symfony/framework-bundle\"": {
+            "pkg:deb/debian/symfony": 3
+        },
+        "\"https://packagist.org\":\"symfony/html-sanitizer\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/http-client\"": {
+            "pkg:deb/debian/symfony": 4
+        },
+        "\"https://packagist.org\":\"symfony/http-foundation\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/http-kernel\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/json-path\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/mailer\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"https://packagist.org\":\"symfony/routing\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"https://packagist.org\":\"symfony/security-bundle\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/security-core\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/security-guard\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/security-http\"": {
+            "pkg:deb/debian/symfony": 1
+        },
+        "\"https://packagist.org\":\"symfony/serializer\"": {
+            "pkg:deb/debian/symfony": 2
+        },
+        "\"https://packagist.org\":\"symfony/symfony\"": {
+            "pkg:deb/debian/symfony": 23
         },
         "\"https://packagist.org\":\"twig/html-extra\"": {
             "pkg:deb/debian/php-twig": 1

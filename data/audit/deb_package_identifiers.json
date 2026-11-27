@@ -3517,7 +3517,8 @@
             "cpe:2.3:a:gnu:cpio:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"cpio\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"cpio\"",
+            "\"https://catalog.redhat.com/software/containers/\":\"cpio-main\""
         ],
         "PackageURLs": null
     },
@@ -12750,12 +12751,12 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-ldap-federation\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-model-jpa\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-oauth\"",
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-parent\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-policy-enforcer\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-quarkus-server\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-quarkus-server-app\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-quarkus-server-deployment\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-rest-admin-ui-ext\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-rhel9-operator-bundle-container\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-saml-core-public\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"keycloak-server\"",
@@ -12775,6 +12776,7 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-adapter-sso7_5-eap6\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-admin-ui\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-core\"",
+            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-parent\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-policy-enforcer\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-quarkus-server\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"keycloak-quarkus-server-app\"",
@@ -26291,6 +26293,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/phpmyadmin-shapefile": {
+        "VendorProductIDs": [
+            "\"phpmyadmin\":\"shapefile\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:phpmyadmin:shapefile:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/phpmyadmin-sql-parser": {
         "VendorProductIDs": [
             "\"phpmyadmin\":\"sql-parser\""
@@ -32681,8 +32693,12 @@
         ]
     },
     "pkg:deb/debian/screen": {
-        "VendorProductIDs": null,
-        "CPEs": null,
+        "VendorProductIDs": [
+            "\"gnu\":\"screen\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:gnu:screen:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://git.savannah.gnu.org/cgit/screen.git\":\"screen\""
         ],
@@ -34040,6 +34056,22 @@
             "\"symfony\":\"runtime\"",
             "\"symfony\":\"security-http\"",
             "\"symfony\":\"symfony\"",
+            "\"symfony\":\"symfony/doctrine-bridge\"",
+            "\"symfony\":\"symfony/expression-language\"",
+            "\"symfony\":\"symfony/framework-bundle\"",
+            "\"symfony\":\"symfony/html-sanitizer\"",
+            "\"symfony\":\"symfony/http-client\"",
+            "\"symfony\":\"symfony/http-foundation\"",
+            "\"symfony\":\"symfony/http-kernel\"",
+            "\"symfony\":\"symfony/json-path\"",
+            "\"symfony\":\"symfony/mailer\"",
+            "\"symfony\":\"symfony/routing\"",
+            "\"symfony\":\"symfony/security-bundle\"",
+            "\"symfony\":\"symfony/security-core\"",
+            "\"symfony\":\"symfony/security-guard\"",
+            "\"symfony\":\"symfony/security-http\"",
+            "\"symfony\":\"symfony/serializer\"",
+            "\"symfony\":\"symfony/symfony\"",
             "\"symfony\":\"twig-bridge\"",
             "\"symfony\":\"twilio-notifier\"",
             "\"symfony\":\"web-profiler-bundle\"",
@@ -34052,6 +34084,22 @@
             "cpe:2.3:a:symphony_php_framework:symphony_process:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
+            "\"https://packagist.org\":\"symfony/doctrine-bridge\"",
+            "\"https://packagist.org\":\"symfony/expression-language\"",
+            "\"https://packagist.org\":\"symfony/framework-bundle\"",
+            "\"https://packagist.org\":\"symfony/html-sanitizer\"",
+            "\"https://packagist.org\":\"symfony/http-client\"",
+            "\"https://packagist.org\":\"symfony/http-foundation\"",
+            "\"https://packagist.org\":\"symfony/http-kernel\"",
+            "\"https://packagist.org\":\"symfony/json-path\"",
+            "\"https://packagist.org\":\"symfony/mailer\"",
+            "\"https://packagist.org\":\"symfony/routing\"",
+            "\"https://packagist.org\":\"symfony/security-bundle\"",
+            "\"https://packagist.org\":\"symfony/security-core\"",
+            "\"https://packagist.org\":\"symfony/security-guard\"",
+            "\"https://packagist.org\":\"symfony/security-http\"",
+            "\"https://packagist.org\":\"symfony/serializer\"",
+            "\"https://packagist.org\":\"symfony/symfony\"",
             "\"https://packagist.org/packages/symfony/config\":\"symfony/config\"",
             "\"https://packagist.org/packages/symfony/expression-language\":\"symfony/expression-language\"",
             "\"https://packagist.org/packages/symfony/html-sanitizer\":\"symfony/html-sanitizer\"",
@@ -36393,7 +36441,6 @@
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk11-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk17-openshift-rhel8\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"jboss-eap-7/eap74-els-openjdk8-openshift-rhel8\"",
-            "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"org.jboss.hal/hal-console\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-cli\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-controller\"",
             "\"https://access.redhat.com/jbossnetwork/restricted/listSoftware.html\":\"wildfly-controller-client\"",
@@ -37651,6 +37698,7 @@
             "\"otrs ag\":\"otrs\"",
             "\"otrs ag\":\"otrsstorm\"",
             "\"otrs ag\":\"systemmonitoring\"",
+            "\"otrs gmbh (former otrs ag)\":\"otrs\"",
             "\"znuny\":\"lts\"",
             "\"znuny\":\"znuny\""
         ],
