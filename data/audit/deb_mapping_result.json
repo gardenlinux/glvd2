@@ -2571,6 +2571,9 @@
         "\"bgp\":\"openbgpd\"": {
             "pkg:deb/debian/openbgpd": 1
         },
+        "\"bgpq4\":\"bgpq4\"": {
+            "pkg:deb/debian/bgpq4": 1
+        },
         "\"bigpresh\":\"dancer::session::abstract\"": {
             "pkg:deb/debian/libdancer-perl": 1
         },
@@ -2582,6 +2585,9 @@
         },
         "\"binutils\":\"objdump\"": {
             "pkg:deb/debian/binutils": 1
+        },
+        "\"binwiederhier\":\"ntfy\"": {
+            "pkg:deb/debian/ntfy": 1
         },
         "\"biopython\":\"biopython\"": {
             "pkg:deb/debian/python-biopython": 1
@@ -4106,6 +4112,9 @@
         "\"ecryptfs-utils\":\"ecryptfs-utils\"": {
             "pkg:deb/debian/ecryptfs-utils": 1
         },
+        "\"edbrowse\":\"edbrowse\"": {
+            "pkg:deb/debian/edbrowse": 1
+        },
         "\"edeploy\":\"edeploy\"": {
             "pkg:deb/debian/edeploy": 3
         },
@@ -4611,7 +4620,7 @@
         },
         "\"flightgear\":\"simgear\"": {
             "pkg:deb/debian/flightgear": 1,
-            "pkg:deb/debian/simgear": 1
+            "pkg:deb/debian/simgear": 2
         },
         "\"floraison\":\"fugit\"": {
             "pkg:deb/debian/ruby-fugit": 1
@@ -4801,6 +4810,9 @@
         "\"gambas3\":\"gambas3\"": {
             "pkg:deb/debian/gambas2": 1,
             "pkg:deb/debian/gambas3": 1
+        },
+        "\"gammu\":\"gammu\"": {
+            "pkg:deb/debian/gammu": 5
         },
         "\"garycourt\":\"uri-js\"": {
             "pkg:deb/debian/node-uri-js": 3
@@ -6257,7 +6269,7 @@
             "pkg:deb/debian/gpac": 47
         },
         "\"gphoto\":\"libgphoto2\"": {
-            "pkg:deb/debian/libgphoto2": 10
+            "pkg:deb/debian/libgphoto2": 11
         },
         "\"gpsd\":\"gpsd\"": {
             "pkg:deb/debian/gpsd": 2
@@ -8896,7 +8908,7 @@
             "pkg:deb/debian/node-micromatch": 1
         },
         "\"micromatch\":\"picomatch\"": {
-            "pkg:deb/debian/node-anymatch": 3
+            "pkg:deb/debian/node-anymatch": 4
         },
         "\"micropython\":\"micropython\"": {
             "pkg:deb/debian/micropython": 3
@@ -12688,6 +12700,9 @@
         },
         "\"ntfs-3g\":\"ntfs-3g\"": {
             "pkg:deb/debian/ntfs-3g": 1
+        },
+        "\"ntfy\":\"ntfy\"": {
+            "pkg:deb/debian/ntfy": 1
         },
         "\"ntlk\":\"ntlk\"": {
             "pkg:deb/debian/nltk": 1
@@ -21556,6 +21571,9 @@
         "cpe:2.3:a:flatpress:flatpress:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/flatpress": 5
         },
+        "cpe:2.3:a:flightgear:simgear:*:*:*:*:*:*:*:*": {
+            "pkg:deb/debian/simgear": 1
+        },
         "cpe:2.3:a:floraison:fugit:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/ruby-fugit": 1
         },
@@ -22293,7 +22311,7 @@
             "pkg:deb/debian/node-braces": 1
         },
         "cpe:2.3:a:jonschlinkert:picomatch:*:*:*:*:*:*:*:*": {
-            "pkg:deb/debian/node-anymatch": 1
+            "pkg:deb/debian/node-anymatch": 2
         },
         "cpe:2.3:a:joplin_project:joplin:*:*:*:*:*:*:*:*": {
             "pkg:deb/debian/joplin": 1
@@ -25546,7 +25564,7 @@
             "pkg:deb/debian/giflib": 2
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp\"": {
-            "pkg:deb/debian/gimp": 76
+            "pkg:deb/debian/gimp": 77
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"gimp:2.8\"": {
             "pkg:deb/debian/gimp": 18
@@ -26206,7 +26224,7 @@
             "pkg:deb/debian/pacemaker": 1
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"pam\"": {
-            "pkg:deb/debian/pam": 5
+            "pkg:deb/debian/pam": 6
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"parted\"": {
             "pkg:deb/debian/parted": 2
@@ -26588,7 +26606,7 @@
             "pkg:deb/debian/tracker-miners": 5
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"tuned\"": {
-            "pkg:deb/debian/tuned": 2
+            "pkg:deb/debian/tuned": 3
         },
         "\"https://access.redhat.com/downloads/content/package-browser/\":\"udisks2\"": {
             "pkg:deb/debian/udisks2": 4
@@ -31170,6 +31188,9 @@
         "pkg:github/benoitc/erlang-idna": {
             "pkg:deb/debian/erlang-idna": 1
         },
+        "pkg:github/binwiederhier/ntfy": {
+            "pkg:deb/debian/ntfy": 1
+        },
         "pkg:github/bitwarden/server": {
             "pkg:deb/debian/bitwarden": 7
         },
@@ -31226,6 +31247,9 @@
         },
         "pkg:github/domoticz/domoticz": {
             "pkg:deb/debian/domoticz": 1
+        },
+        "pkg:github/edbrowse/edbrowse": {
+            "pkg:deb/debian/edbrowse": 1
         },
         "pkg:github/elixir-lang/elixir": {
             "pkg:deb/debian/elixir-lang": 5
@@ -31299,6 +31323,9 @@
         "pkg:github/froxlor/Froxlor": {
             "pkg:deb/debian/froxlor": 1
         },
+        "pkg:github/gammu/gammu": {
+            "pkg:deb/debian/gammu": 5
+        },
         "pkg:github/gdraheim/zziplib": {
             "pkg:deb/debian/zziplib": 2
         },
@@ -31316,6 +31343,9 @@
         },
         "pkg:github/gpac/gpac": {
             "pkg:deb/debian/gpac": 93
+        },
+        "pkg:github/gphoto/libgphoto2": {
+            "pkg:deb/debian/libgphoto2": 1
         },
         "pkg:github/gridcf/gct": {
             "pkg:deb/debian/globus-gss-assist": 1
@@ -32277,7 +32307,7 @@
             "pkg:deb/debian/node-path-to-regexp": 3
         },
         "pkg:npm/picomatch": {
-            "pkg:deb/debian/node-anymatch": 1
+            "pkg:deb/debian/node-anymatch": 2
         },
         "pkg:npm/pnpm": {
             "pkg:deb/debian/pnpm": 2

@@ -1711,6 +1711,14 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/bgpq4": {
+        "VendorProductIDs": [
+            "\"bgpq4\":\"bgpq4\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": null
+    },
     "pkg:deb/debian/binaryen": {
         "VendorProductIDs": [
             "\"webassembly\":\"binaryen\""
@@ -4815,6 +4823,16 @@
         "PackageIDs": null,
         "PackageURLs": null
     },
+    "pkg:deb/debian/edbrowse": {
+        "VendorProductIDs": [
+            "\"edbrowse\":\"edbrowse\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/edbrowse/edbrowse"
+        ]
+    },
     "pkg:deb/debian/edeploy": {
         "VendorProductIDs": [
             "\"edeploy\":\"edeploy\""
@@ -6640,6 +6658,16 @@
         "PackageIDs": null,
         "PackageURLs": [
             "pkg:github/libgme/game-music-emu"
+        ]
+    },
+    "pkg:deb/debian/gammu": {
+        "VendorProductIDs": [
+            "\"gammu\":\"gammu\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/gammu/gammu"
         ]
     },
     "pkg:deb/debian/gatsby": {
@@ -14659,7 +14687,9 @@
         ],
         "CPEs": null,
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/gphoto/libgphoto2"
+        ]
     },
     "pkg:deb/debian/libgsf": {
         "VendorProductIDs": [
@@ -22551,6 +22581,17 @@
         ],
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/ntfy": {
+        "VendorProductIDs": [
+            "\"binwiederhier\":\"ntfy\"",
+            "\"ntfy\":\"ntfy\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/binwiederhier/ntfy"
+        ]
     },
     "pkg:deb/debian/ntopng": {
         "VendorProductIDs": [
@@ -33151,7 +33192,9 @@
         "VendorProductIDs": [
             "\"flightgear\":\"simgear\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:flightgear:simgear:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
         "PackageURLs": null
     },
