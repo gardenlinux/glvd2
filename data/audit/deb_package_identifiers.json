@@ -2395,6 +2395,18 @@
             "pkg:github/Blosc/c-blosc2"
         ]
     },
+    "pkg:deb/debian/c-icap": {
+        "VendorProductIDs": [
+            "\"c-icap\":\"c-icap-server\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:c-icap_project:c-icap:*:*:*:*:*:*:*:*"
+        ],
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/c-icap/c-icap-server"
+        ]
+    },
     "pkg:deb/debian/c3p0": {
         "VendorProductIDs": [
             "\"n/a\":\"c3p0\"",
@@ -5027,7 +5039,8 @@
             "\"ex-aws\":\"ex_aws_kms\"",
             "\"ex-aws\":\"ex_aws_lambda\"",
             "\"ex-aws\":\"ex_aws_s3\"",
-            "\"ex-aws\":\"ex_aws_ses\""
+            "\"ex-aws\":\"ex_aws_ses\"",
+            "\"ex-aws\":\"ex_aws_sns\""
         ],
         "CPEs": [
             "cpe:2.3:a:ex-aws:ex_aws:*:*:*:*:*:*:*:*",
@@ -5035,7 +5048,8 @@
             "cpe:2.3:a:ex-aws:ex_aws_kms:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ex-aws:ex_aws_lambda:*:*:*:*:*:*:*:*",
             "cpe:2.3:a:ex-aws:ex_aws_s3:*:*:*:*:*:*:*:*",
-            "cpe:2.3:a:ex-aws:ex_aws_ses:*:*:*:*:*:*:*:*"
+            "cpe:2.3:a:ex-aws:ex_aws_ses:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:ex-aws:ex_aws_sns:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": [
             "\"https://github.com\":\"ex-aws/ex_aws\"",
@@ -5044,12 +5058,14 @@
             "\"https://github.com\":\"ex-aws/ex_aws_lambda\"",
             "\"https://github.com\":\"ex-aws/ex_aws_s3\"",
             "\"https://github.com\":\"ex-aws/ex_aws_ses\"",
+            "\"https://github.com\":\"ex-aws/ex_aws_sns\"",
             "\"https://repo.hex.pm\":\"ex_aws\"",
             "\"https://repo.hex.pm\":\"ex_aws_dynamo\"",
             "\"https://repo.hex.pm\":\"ex_aws_kms\"",
             "\"https://repo.hex.pm\":\"ex_aws_lambda\"",
             "\"https://repo.hex.pm\":\"ex_aws_s3\"",
-            "\"https://repo.hex.pm\":\"ex_aws_ses\""
+            "\"https://repo.hex.pm\":\"ex_aws_ses\"",
+            "\"https://repo.hex.pm\":\"ex_aws_sns\""
         ],
         "PackageURLs": [
             "pkg:github/ex-aws/ex_aws",
@@ -5058,12 +5074,14 @@
             "pkg:github/ex-aws/ex_aws_lambda",
             "pkg:github/ex-aws/ex_aws_s3",
             "pkg:github/ex-aws/ex_aws_ses",
+            "pkg:github/ex-aws/ex_aws_sns",
             "pkg:hex/ex_aws",
             "pkg:hex/ex_aws_dynamo",
             "pkg:hex/ex_aws_kms",
             "pkg:hex/ex_aws_lambda",
             "pkg:hex/ex_aws_s3",
-            "pkg:hex/ex_aws_ses"
+            "pkg:hex/ex_aws_ses",
+            "pkg:hex/ex_aws_sns"
         ]
     },
     "pkg:deb/debian/elixir-lang": {
@@ -5653,7 +5671,9 @@
             "cpe:2.3:a:tasemulators:fceux:*:*:*:*:*:*:*:*"
         ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:github/TASEmulators/fceux"
+        ]
     },
     "pkg:deb/debian/fence-agents": {
         "VendorProductIDs": [
@@ -6886,6 +6906,16 @@
         "CPEs": null,
         "PackageIDs": null,
         "PackageURLs": null
+    },
+    "pkg:deb/debian/geos": {
+        "VendorProductIDs": [
+            "\"osgeo\":\"geos\""
+        ],
+        "CPEs": null,
+        "PackageIDs": null,
+        "PackageURLs": [
+            "pkg:github/libgeos/geos"
+        ]
     },
     "pkg:deb/debian/gerbv": {
         "VendorProductIDs": [
@@ -8722,8 +8752,14 @@
         "PackageURLs": null
     },
     "pkg:deb/debian/golang-github-containers-gvisor-tap-vsocks": {
-        "VendorProductIDs": null,
-        "CPEs": null,
+        "VendorProductIDs": [
+            "\"red hat\":\"dpu kit for nvidia\"",
+            "\"red hat\":\"nvidia jetpack 7 for rhel\""
+        ],
+        "CPEs": [
+            "cpe:2.3:a:redhat:dpu_kit:*:*:*:*:*:*:*:*",
+            "cpe:2.3:a:redhat:jetpack:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": [
             "\"https://github.com/containers/gvisor-tap-vsock\":\"gvisor-tap-vsock\""
         ],
@@ -9280,7 +9316,9 @@
     },
     "pkg:deb/debian/golang-github-moby-sys": {
         "VendorProductIDs": [
-            "\"moby\":\"sys\""
+            "\"docker\":\"docker engine\"",
+            "\"moby\":\"sys\"",
+            "\"moby\":\"sys/user\""
         ],
         "CPEs": null,
         "PackageIDs": null,
@@ -9314,9 +9352,13 @@
         "VendorProductIDs": [
             "\"open-policy-agent\":\"opa\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:openpolicyagent:open_policy_agent:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:golang/github.com/open-policy-agent/opa"
+        ]
     },
     "pkg:deb/debian/golang-github-openpubkey-openpubkey": {
         "VendorProductIDs": [
@@ -26471,7 +26513,8 @@
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"python-pillow\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"python3.11-pillow\"",
             "\"https://access.redhat.com/downloads/content/package-browser/\":\"python3.12-pillow\"",
-            "\"https://access.redhat.com/downloads/content/package-browser/\":\"python3x-pillow\""
+            "\"https://access.redhat.com/downloads/content/package-browser/\":\"python3x-pillow\"",
+            "\"https://pypi.python.org\":\"pillow\""
         ],
         "PackageURLs": null
     },
@@ -26562,11 +26605,16 @@
     "pkg:deb/debian/plantuml": {
         "VendorProductIDs": [
             "\"n/a\":\"net.sourceforge.plantuml:plantuml\"",
+            "\"plantuml\":\"plantuml\"",
             "\"plantuml\":\"plantuml/plantuml\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:plantuml:plantuml:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:maven/net.sourceforge.plantuml/plantuml"
+        ]
     },
     "pkg:deb/debian/plasma-workspace": {
         "VendorProductIDs": [
@@ -27210,7 +27258,9 @@
             "\"postgresql\":\"psqlodbc\""
         ],
         "CPEs": null,
-        "PackageIDs": null,
+        "PackageIDs": [
+            "\"https://odbc.postgresql.org/\":\"psqlodbc\""
+        ],
         "PackageURLs": null
     },
     "pkg:deb/debian/pulseaudio": {
@@ -28732,9 +28782,13 @@
         "VendorProductIDs": [
             "\"deeplook\":\"svglib\""
         ],
-        "CPEs": null,
+        "CPEs": [
+            "cpe:2.3:a:svglib_project:svglib:*:*:*:*:*:*:*:*"
+        ],
         "PackageIDs": null,
-        "PackageURLs": null
+        "PackageURLs": [
+            "pkg:pypi/svglib"
+        ]
     },
     "pkg:deb/debian/python-tablib": {
         "VendorProductIDs": [
@@ -30368,6 +30422,7 @@
     },
     "pkg:deb/debian/roundcube": {
         "VendorProductIDs": [
+            "\"roundcube\":\"roundcube webmail\"",
             "\"roundcube\":\"roundcube\"",
             "\"roundcube\":\"roundcube_webmail\"",
             "\"roundcube\":\"roundcubemail\"",
@@ -34155,6 +34210,7 @@
             "\"symfony\":\"symfony\"",
             "\"symfony\":\"symfony/doctrine-bridge\"",
             "\"symfony\":\"symfony/expression-language\"",
+            "\"symfony\":\"symfony/filesystem\"",
             "\"symfony\":\"symfony/framework-bundle\"",
             "\"symfony\":\"symfony/html-sanitizer\"",
             "\"symfony\":\"symfony/http-client\"",
@@ -34183,6 +34239,7 @@
         "PackageIDs": [
             "\"https://packagist.org\":\"symfony/doctrine-bridge\"",
             "\"https://packagist.org\":\"symfony/expression-language\"",
+            "\"https://packagist.org\":\"symfony/filesystem\"",
             "\"https://packagist.org\":\"symfony/framework-bundle\"",
             "\"https://packagist.org\":\"symfony/html-sanitizer\"",
             "\"https://packagist.org\":\"symfony/http-client\"",
